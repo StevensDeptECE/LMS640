@@ -1,0 +1,24 @@
+p {
+    font-size: 20px;
+    font-weight:300 ;
+    text-align: center;
+}
+table {
+    width:100%;
+    text-align: center;
+}
+table,th, td {
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+table tr:nth-child(even) {
+    background-color: #eee;
+}
+table tr:nth-child(odd) {
+   background-color:#fff;
+}
+table th {
+    background-color: dodgerblue;
+    color: white;
+}
