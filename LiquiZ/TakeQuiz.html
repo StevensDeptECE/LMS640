@@ -1,8 +1,160 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+	<meta charset="utf-8">
 	<title>Student Quiz</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+		crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/main.css">
 </head>
+
 <body>
+	<div class="header-main">
+		<h1>TestQuiz1</h1>
+	</div>
+	<div class="wrapper">
+
+		<!-- Right Sidebar -->
+		<div class="sidebar-right">
+			<ul class="sidebar-nav">
+				<li>
+					<a href="#">Question 1</a> <i class="QComplete">&#10004</i>
+				</li>
+				<li>
+					<a href="#">Question 2</a> <i class="QComplete">&#10004</i>
+				</li>
+				<li>
+					<a href="#">Question 3</a>
+				</li>
+				<li>
+					<a href="#">Question 4</a> <i class="QComplete">&#10004</i>
+				</li>
+				<li>
+					<a href="#">Question 5</a> <i class="QComplete">&#10004</i>
+				</li>
+				<li>
+					<a href="#">Question 6</a>
+				</li>
+				<li>
+					<a href="#">Question 7</a>
+				</li>
+			</ul>
+			<p>Time Remaining: 13:42</p>
+		</div>
+		<!-- /#sidebar-wrapper -->
+
+		<!-- Page Content -->
+		<div class="page-content-wrapper">
+			<div class="container-fluid">
+				<div id="content">
+					<div class="qc">
+						<div class="header">1. Addition</div>What is 2+2
+						<div><label><input type="Radio" name="choice">3</label></div>
+						<div><label><input type="Radio" name="choice">4</label></div>
+						<div><label><input type="Radio" name="choice">5</label></div>
+						<div><label><input type="Radio" name="choice">6</label></div>
+					</div>
+					<div class="qc">
+						<div class="header">2. Multiplication</div>What is 3*4
+						<input type="text" style="text-align: center;">
+					</div>
+					<div class="qc">
+						<div class="header">3. Multiplication</div>What is 3*4
+						<div><label><input type="Radio" name="choice">9</label></div>
+						<div><label><input type="Radio" name="choice">12</label></div>
+					</div>
+					<div class="qc">
+						<div class="header">4. Grid</div>Enter 1 through 5<div style="height: 50px; width: 50px; border: 1px solid black; display: inline-block;"><input type="text" style="width: 50px; height: 50px; text-align: center;"></div>
+							<div style="height: 50px; width: 50px; border: 1px solid black; display: inline-block;"><input type="text" style="width: 50px; height: 50px; text-align: center;"></div>
+							<div style="height: 50px; width: 50px; border: 1px solid black; display: inline-block;"><input type="text" style="width: 50px; height: 50px; text-align: center;"></div>
+							<div style="height: 50px; width: 50px; border: 1px solid black; display: inline-block;"><input type="text" style="width: 50px; height: 50px; text-align: center;"></div>
+							<div style="height: 50px; width: 50px; border: 1px solid black; display: inline-block;"><input type="text" style="width: 50px; height: 50px; text-align: center;"></div>
+						</div>
+					<div class="qc">
+						<div class="header">5. Survey</div>Enter your honest opinions. There are no right or wrong answers
+						<div class="SurveyContainer">I like Chinese food
+							<div class="ChoiceContainer">
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Chinese food">Strongly Agree</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Chinese food">Agree</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Chinese food">Neutral</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Chinese food">Disagree</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Chinese food">Strongly Disagree</label></div>
+							</div>
+						</div>
+						<div class="SurveyContainer">I like Korean food
+							<div class="ChoiceContainer">
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Korean food">Strongly Agree</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Korean food">Agree</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Korean food">Neutral</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Korean food">Disagree</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Korean food">Strongly Disagree</label></div>
+							</div>
+						</div>
+						<div class="SurveyContainer">I like Indian food
+							<div class="ChoiceContainer">
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Indian food">Strongly Agree</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Indian food">Agree</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Indian food">Neutral</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Indian food">Disagree</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I like Indian food">Strongly Disagree</label></div>
+							</div>
+						</div>
+						<div class="SurveyContainer">I got sick on sushi
+							<div class="ChoiceContainer">
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I got sick on sushi">Strongly Agree</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I got sick on sushi">Agree</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I got sick on sushi">Neutral</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I got sick on sushi">Disagree</label></div>
+								<div class="Choice" style="display: inline-block;"><label><input type="Radio" name="I got sick on sushi">Strongly Disagree</label></div>
+							</div>
+						</div>
+					</div>
+					<div class="qc">
+						<div class="header">6. Matrix</div>Enter any 3x3 matrix
+						<div>
+							<div style="height: 50px; width: 50px; border: 1px solid black; display: inline-block;"><input type="text" style="width: 50px; height: 50px; text-align: center;"></div>
+							<div style="height: 50px; width: 50px; border: 1px solid black; display: inline-block;"><input type="text" style="width: 50px; height: 50px; text-align: center;"></div>
+							<div style="height: 50px; width: 50px; border: 1px solid black; display: inline-block;"><input type="text" style="width: 50px; height: 50px; text-align: center;"></div>
+						</div>
+						<div>
+							<div style="height: 50px; width: 50px; border: 1px solid black; display: inline-block;"><input type="text" style="width: 50px; height: 50px; text-align: center;"></div>
+							<div style="height: 50px; width: 50px; border: 1px solid black; display: inline-block;"><input type="text" style="width: 50px; height: 50px; text-align: center;"></div>
+							<div style="height: 50px; width: 50px; border: 1px solid black; display: inline-block;"><input type="text" style="width: 50px; height: 50px; text-align: center;"></div>
+						</div>
+						<div>
+							<div style="height: 50px; width: 50px; border: 1px solid black; display: inline-block;"><input type="text" style="width: 50px; height: 50px; text-align: center;"></div>
+							<div style="height: 50px; width: 50px; border: 1px solid black; display: inline-block;"><input type="text" style="width: 50px; height: 50px; text-align: center;"></div>
+							<div style="height: 50px; width: 50px; border: 1px solid black; display: inline-block;"><input type="text" style="width: 50px; height: 50px; text-align: center;"></div>
+						</div>
+					</div>
+					<div class="qc">
+						<div class="header">7. Addition</div>What is 2+2
+						<div><select><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></div>
+					</div>
+					<div class="qc">
+						<div class="header">8. Drag and Drop</div>Locate the parts of the cat
+						<div class="imgDiv"><img src="assets/images/cat.jpg" draggable="false">
+							<div class="dragdropLocation" ondrop="drop(event)" ondragover="allowDrop(event)" style="position:absolute; left:215px; top:30px;"></div>
+							<div class="dragdropLocation" ondrop="drop(event)" ondragover="allowDrop(event)" style="position:absolute; left:255px; top:120px;"></div>
+							<div class="dragdropLocation" ondrop="drop(event)" ondragover="allowDrop(event)" style="position:absolute; left:285px; top:160px;"></div>
+							<div class="dragdropLocation" ondrop="drop(event)" ondragover="allowDrop(event)" style="position:absolute; left:285px; top:220px;"></div>
+						</div>
+						<div class="container">
+							<div class="dragDropOption" draggable="true" ondragstart="drag(event)">Ear</div>
+							<div class="dragDropOption" draggable="true" ondragstart="drag(event)">Eye</div>
+							<div class="dragDropOption" draggable="true" ondragstart="drag(event)">Nose</div>
+							<div class="dragDropOption" draggable="true" ondragstart="drag(event)">Tongue</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- /#page-content-wrapper -->
+
+	</div>
+<!-- /#wrapper -->
+
 </body>
+
 </html>

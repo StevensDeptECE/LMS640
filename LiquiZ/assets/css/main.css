@@ -1,0 +1,111 @@
+/*TakeQuiz*/
+body{
+    background-color: #efefef;
+    
+}
+
+.header-main {
+    background-color: #f5f5f5;
+    padding-left: 35px;
+    padding-bottom: 10px;
+    padding-top:10px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.header-main h1{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+div#content {
+	font-family: Arial;
+	font-size: 28pt;
+}
+
+div.header {
+	background-color: #FF7272;
+	font-family: Arial;
+	font-size: 28px;
+	border: 1px solid black;
+}
+
+.qc {
+	border: 1px solid black;
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
+}
+
+.disp {
+	padding: 15px;
+}
+
+.qc.Instr {
+	
+    font-size: 32px
+}
+
+.wrapper {
+    padding-right: 250px;
+}
+.sidebar-right {
+    position: fixed;
+    width: 250px;
+    right: 250px;
+    margin-right: -250px;
+    padding: 10px;
+    border-left: 1px solid #ddd;
+}
+
+.page-content-wrapper {
+    position: relative;
+}
+
+.QComplete {
+    color: limegreen;
+}
+
+.imgDiv {
+	position: relative;
+}
+
+.dragDropOption {
+	background-color: white;
+	font-size: 18px;
+	padding: 5px;
+	cursor:move;
+	position:relative; /* important (all position that's not `static`) */
+	border-radius: 3px;
+	border: 1px solid black;
+}
+
+.container {
+	display: flex;
+}
+
+.container .dragDropOption {
+	margin-right: 5px;
+}
+
+.dragdropLocation {
+	background-color: white;
+	min-width:20px;
+	min-height:20px;
+	border-radius: 3px;
+	border: 1px solid black;
+}
+
+.SurveyContainer {
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.ChoiceContainer {
+    padding-top: 5px;
+}
+.Choice{
+    font-size: 10px;
+    display: inline-block;
+}
