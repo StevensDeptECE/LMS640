@@ -1,0 +1,94 @@
+/*ReadyToTake.css*/
+body{
+    background-color: #bebebe;
+}
+
+.sidebar_left{
+    background-color: #bebebe;
+    position: fixed;
+    top: 50px;
+    left: 40px;
+    width: 160px;
+    height: fill;
+    border-right: 1px solid white;
+}
+
+.sidebar_left ul{
+    
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+a:link,a:visited{
+    display:block;
+    font-weight:bold;
+    color:#FFFFFF;
+    background-color:#bebebe;
+    width:120px;
+    text-align:center;
+    padding:10px;
+    text-decoration:none;
+    text-transform:uppercase;
+}
+
+a:hover,a:active{
+    background-color:#cc0000;
+}
+
+.page_content_wrapper{
+   
+    position:relative;
+    left: 201px;
+    
+}
+
+.quiz_title{
+    padding: 20px;
+    border-bottom: 1px solid black;
+}
+
+.info_table{
+    margin: 20px;
+}
+
+.info_table td{
+    padding : 10px;
+    text-align: left;
+}
+
+.info_table th{
+    padding : 10px;
+    text-align: left;
+}
+
+.info_table tr{
+    padding : 10px;
+}
+
+.quiz_info{
+    border-bottom: 1px solid black;
+}
+
+.instruction{
+    padding: 20px;
+    border-bottom: 1px solid black;
+}
+
+.start_button{
+    padding: 20px;
+    border-bottom: 1px solid black;
+}
+
+.attempt_table th{
+    text-align: left;
+    padding: 10px;
+}
+.attempt_table td{
+    text-align: left;
+    padding: 10px;
+}
+.attempt_table tr{
+    padding: 10px;
+}
