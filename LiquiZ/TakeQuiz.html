@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
 		crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/main.css">
+	<script src="assets/javascript/takequiz.js"></script>
 </head>
 
 <body>
@@ -142,10 +143,10 @@
 							<div class="dragdropLocation" ondrop="drop(event)" ondragover="allowDrop(event)" style="position:absolute; left:285px; top:220px;"></div>
 						</div>
 						<div class="container">
-							<div class="dragDropOption" draggable="true" ondragstart="drag(event)">Ear</div>
-							<div class="dragDropOption" draggable="true" ondragstart="drag(event)">Eye</div>
-							<div class="dragDropOption" draggable="true" ondragstart="drag(event)">Nose</div>
-							<div class="dragDropOption" draggable="true" ondragstart="drag(event)">Tongue</div>
+							<div id="term0" class="dragDropOption" draggable="true" ondragstart="drag(event)">Ear</div>
+							<div id="term1" class="dragDropOption" draggable="true" ondragstart="drag(event)">Eye</div>
+							<div id="term2" class="dragDropOption" draggable="true" ondragstart="drag(event)">Nose</div>
+							<div id="term3" class="dragDropOption" draggable="true" ondragstart="drag(event)">Tongue</div>
 						</div>
 					</div>
 					<div class="submit"><input class="submitquiz" type="submit" value="Submit Quiz"></div>
