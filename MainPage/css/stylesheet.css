@@ -1,0 +1,142 @@
+body {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0;
+    color: black;
+    font-size: 10pt;
+}
+
+body p {
+  font-size: 14pt;
+}
+
+#menu {
+    font-family: Arial, sanserif;
+    font-size: 12pt;
+    width: 100%;
+    height: 6%;
+    /* background-color: #6699CC; */
+    background-color: #FDFDFD;
+    position: fixed;
+    z-index: 1;
+
+    /*Shadow on Bottom Border */
+    -webkit-box-shadow:0px 1px 1px #C0C0C0;
+    -moz-box-shadow:0px 1px 1px #C0C0C0;
+    box-shadow:0px 1px 1px #C0C0C0;
+}
+
+#spacer {
+  width: 100%;
+  height: 6%;
+}
+
+#menu ul {
+    position: absolute;
+    margin-left: 108px;
+    text-align: center;
+}
+
+#menu li {
+    list-style: none;
+    display: inline-block;
+    margin: auto 25px auto 25px;
+    color: gray;
+    /* padding: 10px; */
+}
+
+#menuleft {
+    height: 100%;
+    width: 10%;
+    float: left;
+    clear: left;
+    background-color: #D3D3D3;
+}
+
+div img {
+  width: 50px;
+  height: 33px;
+  z-index: 1;
+  margin: 5px 0 5px 5px;
+}
+
+/* menu right */
+#upcoming {
+  height: 100%;
+  width: 12%;
+  float: right;
+  background-color: #D3D3D3;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #2F4F4f;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#upcoming .header h1 {
+  text-align: left;
+  margin-top: -40px;
+}
+
+#main {
+  position: relative;
+  float: left;
+  margin: 10px 20px 20px 20px;
+  background-color: white;
+  font-family: Arial, sans-serif;
+  color: black;
+}
+
+.menuitem {
+  padding: 10px;
+  border: 1px solid #FDFDFD;
+}
+
+.menuitem:hover {
+    /* text-decoration: underline; */
+    /* padding: 10px; */
+    /* border: 1px solid black; */
+    border-color: black;
+    background: gray;
+    color: white;
+}
+
+.menuitemdropdown {
+    display: inline-block;
+    position: relative;
+    /*
+    width: 200px;
+    background: #7A9DD2;
+    border: solid 0px;
+    border-width: 0 2px 2px 2px;
+    border-radius: 0 0 10px 10px;
+    border-color: #A7C1E8;
+    padding: 20px;
+    */
+}
+
+.menuitemdropdown .menuitem {
+    line-height: 30px;
+}
+
+.menuitemdropdown:hover .menuitem {
+    display: block;
+}
+
+.loginform {
+    position: relative;
+    margin-top: -43px;
+    margin-right: -20px;
+}
+
+.loginformabs {
+    padding: 5px 5px 5px 5px;
+    border: solid 0px;
+    border-radius: 0 0 5px 5px;
+    background-color: #355380;
+    position: absolute;
+    right: 30px;
+    top: 0px;
+}
