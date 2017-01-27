@@ -1,0 +1,109 @@
+html, body{
+    
+}
+
+.nav ul{
+    margin: 0 0 30px;
+    text-align: left;
+    background-color: azure;
+}
+
+.nav li{
+    display: inline-flex;
+    margin: 11px;
+    text-align: center;
+    font-family: cursive;
+    font-size: 25px;
+    color: aqua;
+    background-color: azure;
+}
+h4{
+    font-family: cursive;
+    color: brown;
+}
+/* section1
+  
+*/
+.section1{
+    background-color: darkkhaki;
+    width: 
+}
+.section1 ul{
+    margin: auto;
+    text-align: left;
+    display: inline;
+}
+.section1 li{
+    display: inline;
+}
+.pills li a{
+    color: chocolate;
+    font-size: 15px;
+}
+.first{
+    display: inline;
+}
+.second{
+    text-align: left;
+    display: flex;
+}
+.third li{
+    margin: 5px;
+    display: inline;
+}
+.third li a{
+    display: inline;
+    color: #d8192f;
+    font-size:18px;
+}
+.third li a: hover{
+     background-color:rgba(216,25,47,1);
+     box-shadow:0 2px 4px rgba(0,0,0,.5); 
+     color:#fff;
+}
+/*section2*/
+.section2{
+    background-color:darkgrey;
+}
+.section2 ul{
+    margin: auto;
+    text-align: left;
+    display: inline;
+}
+.section2 li{
+    display: inline;
+}
+
+/*section3*/
+.section3{
+    background-color: bisque;
+}
+.section3 ul{
+    margin: auto;
+    text-align: left;
+    display: inline;
+}
+.section3 li{
+    display: inline;
+}
+
+/*section4*/
+.section4{
+    background-color: darkseagreen;
+}
+.section4 ul{
+    margin: auto;
+    text-align: left;
+    display: inline;
+}
+.section4 li{
+    display: inline;
+}
+
+.note{
+    background-color: deepskyblue;
+    float: right;
+    height: 1000px;
+    width: 150px;
+    margin: auto;
+}
