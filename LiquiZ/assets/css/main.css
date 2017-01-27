@@ -63,6 +63,13 @@ div.header {
     margin-right: -250px;
     padding: 10px;
     border-left: 1px solid #ddd;
+    text-align: center;
+}
+
+.sidebar-nav {
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
 }
 
 .page-content-wrapper {
@@ -114,4 +121,12 @@ div.header {
 .Choice{
     font-size: 10px;
     display: inline-block;
+}
+
+.submit {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.submitquiz {
+    font-size: medium;
 }
