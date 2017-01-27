@@ -1,0 +1,143 @@
+body	{background-color:white}
+h1		{font-family:Impact;color:yellow}
+h2		{font-family:Arial Black;color:red}
+
+address {font-family:Courier New;color:rgb(100,100,100)}
+q		{font-family:Palatino Linotype}
+a:link	{color:black;background-color:transparent;text-decoration:none}
+a:hover	{color:red;background-color:yellow;text-decoration:underline}
+a:visited{color:gary;background-color:black;text-decoration:none}
+a:active{color:white;background-color:white;text-decoration:none}
+table,th,td	{border: 1px solid black;text-align:left;padding:1px}
+table	{border-spacing:1px;}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+ul	{list-style-type:disc}
+#ul01	{list-style-type:none;
+		margin:0;
+		padding:0;
+		overflow:hidden;
+		background-color:#333333}
+li.menu		{float:left;
+				}
+				li.menus		{float:right;
+				}
+li.menu a	{display:block;
+		 color:white;
+		 text-align:center;
+		 padding:16px;
+		 text-decoration:none;}
+li.menu a:hover{
+			background-color:#111111;
+			text-decoration:none;
+			color:white;
+}
+li.menus a	{display:block;
+		 color:white;
+		 text-align:center;
+		 padding:16px;
+		 text-decoration:none;}
+li.menus a:hover{
+			background-color:#111111;
+			text-decoration:none;
+			color:white;
+}
+div.container {
+	float: left;
+    width: 70%;
+    height: 900px;
+    background-color: lightgray;
+    border: 1px solid red;
+}
+#topic {
+	background-color: lightgray;
+	margin:10px 10px 10px 10px;
+}
+#topics {
+	padding: 5px;
+	background-color: lightgray;
+    border-left: 6px solid red;
+    border-bottom: 3px solid red;
+}
+.lines {
+	clear: left;
+	clear: right;
+}
+.tag {
+	padding-left: 10px;
+	float: left;
+	
+}
+.contexts{
+	padding-left: 20px;
+	float: left;
+}
+.time {
+	padding-left: 5px;
+	float: right;
+}
+.person {
+	float: right;
+}
+
+#addtopic {
+	border-style: inset;
+	background-color: lightyellow;
+	margin-top: 100px;
+	margin-left: 10px;
+	margin-right: 10px;
+	height: 300px;
+}
+#context {
+	border-style: inset;
+	background-color: white;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	height: 60%;
+}
+#title {
+	float: left;
+	border-style: inset;
+	background-color: white;
+	margin-top: 10px;
+	margin-left: 10px;
+	height: 50px;
+	width: 80%;
+}
+#button {
+	float: left;
+	position: relative;
+	margin-top: 9px;
+	margin-left: 5px;
+}
+#b1 {
+	background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+#aside {
+	float: left;
+	height: 600px;
+	margin-left: 20px;
+	background-color: lightgray;
+}
+#asidecontext
+{
+	padding:10px;
+}
+
+#board{
+width: 80%;	height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;s
+}
