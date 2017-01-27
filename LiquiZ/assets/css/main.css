@@ -5,12 +5,13 @@ body{
 }
 
 .header-main {
-    background-color: #f5f5f5;
+    background-color: white;
     padding-left: 35px;
     padding-bottom: 10px;
     padding-top:10px;
     border-bottom: 1px solid #ddd;
     border-radius: 10px;
+    box-shadow: 1px 1px 1px #888888;
 }
 
 .header-main h1{
@@ -24,18 +25,23 @@ div#content {
 	font-size: 28pt;
 }
 
+
 div.header {
-	background-color: #FF7272;
 	font-family: Arial;
 	font-size: 28px;
-	border: 1px solid black;
+	border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
 }
 
+
 .qc {
-	border: 1px solid black;
+	border: 1px solid #ddd;
     padding: 20px;
     margin: 20px;
     background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px #888888;
+
 }
 
 .disp {
