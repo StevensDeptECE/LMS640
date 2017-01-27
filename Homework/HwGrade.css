@@ -1,0 +1,54 @@
+body{
+    background-color: #efefef; 
+}
+
+.header-main {
+    background-color: darkorange;
+    padding-left: 35px;
+    padding-bottom: 10px;
+    padding-top:10px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+div#content {
+	font-family: Arial;
+	font-size: 28pt;
+    padding-top: 10px;
+    margin: 20px;
+}
+
+div.header {
+	background-color: sandybrown;
+	font-family: Arial;
+	font-size: 28px;
+	border: 1px solid black;
+}
+
+.container {
+	border: 1px solid black;
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
+}
+
+.Choice{
+    font-size: 10px;
+    display:inline-block;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color:gainsboro;
+    border: 1px solid black;
+    padding: 60px;
+    text-align:center;
+}
+
+table, th, tr, td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+tr:hover {background-color: coral}
