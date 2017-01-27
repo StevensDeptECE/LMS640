@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width-device-width,initial-scale=1.0" />
+<style>
+.body{
+	padding-top: 8px;
+	position: relative;
+	box-sizing: border-box;
+}
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1193e2;
+}
+
+li{
+    float: right;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #dddddd;
+}
+.main{
+	min-height: 600px;
+	width: 70%;
+	border: 1px solid #bcc1c1;
+	border-radius: 5px;
+	margin: 25px;
+	background-color: white;
+	padding-bottom: 25px;
+
+}
+.pagename{
+	display: block;
+	font-size: 14px;
+	line-height: 20px;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	position: relative;
+	border: 0;
+	background-color: white;
+}
+h1{
+	font-family: arial;
+	font-size: 20px;
+	display: inline-block;
+	margin: 5px;
+}
+a{
+	color: inherit;
+	text-decoration: none;
+}
+.button{
+    float: right;
+    background-color: inherit;
+    border: 1px solid #bcc1c1;
+    color: #1193e2;
+    padding: 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+    margin: 10px;
+    cursor: pointer;
+    position: relative;
+}
+.lists{
+	position: relative;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 14px;
+	line-height: 20px;
+}
+.box .menu{
+	box-sizing: border-box;
+}
+.memberbutton{
+	background-color: white;
+	border: 1px solid #bcc1c1;
+	padding:10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	float: left;
+	border-radius: 5px;
+}
+table{
+	font-family: arial,sansserif;
+	border-collapse: collapse;
+	border-color: #bcc1c1;
+	width: 100%;
+}
+td,th{
+	border: 1px solid #bcc1c1;
+	text-align: left;
+	padding: 4px;
+}
+tr:nth-child(even){
+	background-color: #dddddd;
+}
+tfoot{
+	display: table-footer-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+ul{
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+.nohover{
+	display: inline;
+	text-align: -webkit-match-parent;
+}
+.from1-7{
+	color: inherit;
+	background-color: #ffffff;
+	position:relative;
+	float: right;
+	padding: 6px 12px;
+	text-decoration: none;
+	border: 1px solid #dddddd;
+}
+.form-control{
+	display: block;
+	width:90%;
+	height:34px;
+	padding:6px 12px;
+	font-size: 16px;
+	color: #555555;
+	background-color: #ffffff;
+	background-image: none;
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+	margin-left: 4px;
+	margin-right: 4px;
+
+}
+.EmailInvitation{
+	float: right;
+	text-align: center;
+	margin: 4px;
+	padding:4px;
+	font-size: 16px;
+
+}
+.PandingMembershipRequests{
+	margin:4px;
+	padding: 4px;
+}
+.sidebar{
+	float:right;
+	diaplay: block;
+	border: 1px solid #cdcdcd;
+	border-radius: 5px;
+	width: 25%;
+	min-height: 200px;
+	background-color: #ffffff;
+	margin: 25px;
+	padding-bottom: 25px;
+}
+.menubar{
+	display: block;
+	border: 1px solid #cdcdcd;
+	border-radius: 5px;
+	width:95%;
+	margin-left: 4px;
+	margin-right: 4px;
+	margin-bottom: 10px;
+	height: 25px;
+	background-color: #cdcdcd;
+}
+.homepage{
+	display: block;
+	border: 1px solid #cdcdcd;
+	border-radius: 5px;
+	width:95%;
+	margin-left: 4px;
+	margin-right: 4px;
+	margin-bottom: 10px;
+	height: 50px;
+	background-color: #cdcdcd;
+}
+.home{
+	display: block;
+	background-color: #1193e2;
+	height:50%;
+	border: 1px solid #1193e2;
+}
+.pageschanges{
+	display: block;
+	background-color: #1193e2;
+	height: 50%;
+	border: 1px solid #1193e2;
+}
+.pageslink{
+	float: left;
+	display: inline-block;
+	margin-left: 18px;
+	color: inherit;
+}
+.pageschangeslink{
+	float: right;
+	display: inline-block;
+	margin-right: 18px;
+	color: inherit;
+}
+.allpages{
+	display: block;
+	background-color: #cdcdcd;
+	min-height: 25px;
+	border: 1px solid #cdcdcd;
+	margin-top: 10px;
+}
+.pagebutton{
+	background-color: #1193e2;
+	border: 1px solid #1193e2;
+	color: #555;
+	text-align: center;
+	text-decoration: none;
+	display: block;
+	font-size: 16px;
+	cursor: pointer;
+	width:100%;
+}
+.form-group{
+	width: 100%;
+	display: block;
+	margin-left: 10px;
+}
+.join-Code{
+	display: block;
+	width:100%;
+}
+
+
+
+</style>
+</head>
+<body>
+<div class="body">
+<div class="container">
+	<ul class="navbar">
+		<li class="Members"><a href="#Members">Members</a></li>
+		<li class="Projects"><a href="#Projects">Projects</a></li>
+		<li class="Events"><a href="#Events">Events</a></li>
+		<li class="Engagment"><a href="#Engagment">Engagment</a></li>
+		<li class="Settings"><a href="#Settings">Settings</a></li>
+	</ul>
+</div>
+<div class="sidebar">
+	<div class="menubar"></div>
+	<div class="homepage">
+		<div class="home">
+			<a href="#homepage" class="homelink">Home</a>
+		</div>
+		<div class="pageschanges">
+		
+			<a href="#pages" class="pageschangeslink">Pages</a>
+			<a href="changes" class="pageschangeslink">Changes</a>
+			
+		</div>
+		<div class="allpages">
+			
+			<button class="pagebutton">All pages</button>
+			<button class="pagebutton"><a href="#Home">Home</a></button>
+			<button class="pagebutton"><a href="#Todolist">To do list</a></button>
+			<button class="pagebutton"><a href="#Whatwedo">What we may want to do</a></button>
+			
+		</div>
+	</div>
+</div>
+<div class="main">
+	<div class="pagename">
+		<h1><a "href="#members">Members</a></h1>
+	<a class="button">Invite People</a>
+	</div>
+	<div class="lists">
+	<div class="box">
+		<div class="menu">
+			<button class="memberbutton">Remove</button>
+			<button class="memberbutton">Make Organizer</button>
+			<button class="memberbutton">Remote to member</button>
+		</div>
+			<table>
+			<thead>
+				<tr>
+					<th>
+						<input type="checkbox" name="selectAll" class="selectAll" value="1">
+					</th>
+					<th href="#name">Name</th>
+					<th href="#MemberSince">Member Since</th>
+					<th href="#Type">Type</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<th><input type="checkbox" name="selectAll" class="selectAll" value="1"></th>
+					<th>bhavitha590</th>
+					<th>Yesterday</th>
+					<th>Organizer</th>
+				</tr>
+				<tr>
+					<th><input type="checkbox" name="selectAll" class="selectAll" value="1"></th>
+					<th>kanbd</th>
+					<th>Today 12:28am</th>
+					<th>Organizer</th>
+				</tr>
+				<tr>
+					<th><input type="checkbox" name="selectAll" class="selectAll" value="1"></th>
+					<th>songnian</th>
+					<th>Yesterday</th>
+					<th>Organizer</th>
+				</tr>
+				<tr>
+					<th><input type="checkbox" name="selectAll" class="selectAll" value="1"></th>
+					<th>ybai8</th>
+					<th>Yesterday</th>
+					<th>Organizer</th>
+				</tr>
+				<tr>
+					<th><input type="checkbox" name="selectAll" class="selectAll" value="1"></th>
+					<th>Yliu0808</th>
+					<th>Yesterday</th>
+					<th>Organizer</th>
+				</tr>
+				<tr>
+					<th><input type="checkbox" name="selectAll" class="selectAll" value="1"></th>
+					<th>yzhan90top</th>
+					<th>Yesterday</th>
+					<th>Organizer</th>
+				</tr>
+				<tr>
+					<th><input type="checkbox" name="selectAll" class="selectAll" value="1"></th>
+					<th>fzhao6</th>
+					<th>Yesterday</th>
+					<th>Organizer</th>
+				</tr>
+				</tbody>
+				<tfoot>
+				<tr>
+				
+				<ul class="pagination">
+				<li class="nohover">
+				<span class="from1-7">1-7 of 7</span>
+				</li>
+				</ul>
+				
+				</tr>
+				</tfoot>
+			</table>
+	</div>
+	</div>
+	<div class="join-Code">
+<h1><br>Join Code</h1>
+<p>A join code allows users to easily join the wiki. Share the code or address with the people you'd like to join.<b>It will expire on Jan 28,2017</b>.</p>
+<form >
+	<div class="form-group">
+		<label>Code</label>
+		<div>
+			<input type="text" value="MTMDDFK" class="form-control">
+		</div>
+	</div>
+	<div>
+		<label>URL</label>
+		<div>
+			<input type="text" value="http://localhost" class="form-control">
+		</div>
+	</div>
+</form>
+<h1>Pending Membership Requests</h1>
+<div class="cobWrapper">
+  <table class="PendingMembershipRequests">
+  <thead>
+    <tr>
+      <th>
+              </th>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Comment</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+      <td colspan="5" class="noDataHolder">There are no pending membership requests.</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<h1>Pending Email Invitations</h1>
+<button class="EmailInvitation">Withdraw Invitation</button>
+<div class="cobWrapper">
+  <table class="PendingMembershipRequests">
+  <thead>
+    <tr>
+      <th>
+              </th>
+      <th>Email</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+      <td colspan="5" class="noDataHolder">There are no pending Email Invitations.</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>
+
