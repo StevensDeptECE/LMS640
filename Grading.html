@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">  
+        <meta charset="utf-8">
+        <title>Speed Grade</title>
+        <link rel="stylesheet" href="HwGrade.css">
+        <script type="text/javascript">  
+           function init(){  
+            if(SpeedGrade.checked){  
+             SpeedGradeTable.style.display='';  
+             WholeGradeTable.style.display='none';  
+            }  
+            else{  
+             SpeedGradeTable.style.display='none';  
+             WholeGradeTable.style.display='';  
+            }  
+           }  
+        </script>
+    </head>
+    
+    <body onload="init()">
+        <div class="header-main">
+             <h1>Grade</h1>
+	    </div>					
+        <div class="container">
+            <div class="header">Grade:
+                <input type="Radio" name="choice" checked="checked" value="WholeGrade" 
+                id="WholeGrade"    onclick="WholeGradeTable.style.display='';SpeedGradeTable.style.display='none'">  WholeGrade 
+                <input type="Radio" name="choice" value="SpeedGrade" id="SpeedGrade" onclick="WholeGradeTable.style.display='none';SpeedGradeTable.style.display=''"> 
+                SpeedGrade
+            </div>
+                <div class="content">
+                    <br>
+                       <form action="" id="SpeedGradeTable">  
+                            <table style="overflow-x:auto;" class="table" id="sTable">
+                                <tr>
+                                    <th>Firstname</th>
+                                    <th>Lastname</th>
+                                    <th>Assignment</th>
+                                    <th>Assignment</th>
+                                    <th>Quiz</th>
+                                    <th>Quiz</th>
+                                    <th>Test</th>
+                                    <th>Test</th>
+                                    <th>Test</th>
+                                </tr>
+                                <tr>
+                                    <td>Peter</td>
+                                    <td>Griffin</td>
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>  
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>
+                                    <td>98</td>
+                                    <td>92</td>
+                                    <td>87</td>
+                                </tr>
+                                <tr>
+                                    <td>Lois</td>
+                                    <td>Griffin</td>
+                                    <td>88</td>  
+                                    <td>93</td>
+                                    <td>97</td>
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>
+                                    <td>96</td>
+                                    <td>85</td>
+                                    <td>95</td>
+                                </tr>
+                                <tr>
+                                    <td>Joe</td>
+                                    <td>Swanson</td>
+                                    <td>100</td>  
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>
+                                    <td>96</td>
+                                    <td>99</td>
+                                    <td>100</td>
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>
+                                    <td>105</td>
+                                </tr>
+                                <tr>
+                                    <td>Cleveland</td>
+                                    <td>Brown</td>
+                                    <td>96</td>  
+                                    <td>90</td>
+                                    <td>87</td>
+                                    <td>89</td>
+                                    <td>92</td>
+                                    <td>97</td>
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>
+                                </tr>
+                           </table>
+                        </form>
+                    </div>
+                    <div class="content">
+                        <br>
+                        <form action="" id="WholeGradeTable" style="display:'none'">  
+                            <table style="overflow-x:auto;" class="table" id="hTable">
+                                <tr>
+                                    <th>Firstname</th>
+                                    <th>Lastname</th>
+                                    <th>Assignment</th>
+                                    <th>Assignment</th>
+                                    <th>Quiz</th>
+                                    <th>Quiz</th>
+                                    <th>Test</th>
+                                    <th>Test</th>
+                                    <th>Test</th>
+                                </tr>
+                                <tr>
+                                    <td>Grant</td>
+                                    <td>Gustin</td>
+                                    <td>97</td>  
+                                    <td>94</td>
+                                    <td>92</td>
+                                    <td>99</td>
+                                    <td>89</td>
+                                    <td>86</td>
+                                    <td>98</td>
+                                </tr>
+                                <tr>
+                                    <td>Peter</td>
+                                    <td>Griffin</td>
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>  
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>
+                                    <td>98</td>
+                                    <td>92</td>
+                                    <td>87</td>
+                                </tr>
+                                <tr>
+                                    <td>Amma</td>
+                                    <td>Stone</td>
+                                    <td>100</td>  
+                                    <td>86</td>
+                                    <td>100</td>
+                                    <td>96</td>
+                                    <td>76</td>
+                                    <td>100</td>
+                                    <td>98</td>
+                                </tr>
+                                <tr>
+                                    <td>Lois</td>
+                                    <td>Griffin</td>
+                                    <td>88</td>  
+                                    <td>93</td>
+                                    <td>97</td>
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>
+                                    <td>96</td>
+                                    <td>85</td>
+                                    <td>95</td>
+                                </tr>
+                                <tr>
+                                    <td>Ronney</td>
+                                    <td>Mara</td>
+                                    <td>100</td>  
+                                    <td>105</td>
+                                    <td>100</td>
+                                    <td>100</td>
+                                    <td>100</td>
+                                    <td>100</td>
+                                    <td>103</td>
+                                </tr>
+                                <tr>
+                                    <td>Cate</td>
+                                    <td>Blanchett</td>
+                                    <td>100</td>  
+                                    <td>105</td>
+                                    <td>100</td>
+                                    <td>96</td>
+                                    <td>100</td>
+                                    <td>100</td>
+                                    <td>98</td>
+                                </tr>
+                                <tr>
+                                    <td>Joe</td>
+                                    <td>Swanson</td>
+                                    <td>100</td>  
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>
+                                    <td>96</td>
+                                    <td>99</td>
+                                    <td>100</td>
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>
+                                    <td>105</td>
+                                </tr>
+                                <tr>
+                                    <td>Jay</td>
+                                    <td>Asher</td>
+                                    <td>80</td>  
+                                    <td>97</td>
+                                    <td>76</td>
+                                    <td>96</td>
+                                    <td>77</td>
+                                    <td>92</td>
+                                    <td>98</td>
+                                </tr>
+                                <tr>
+                                    <td>Cleveland</td>
+                                    <td>Brown</td>
+                                    <td>96</td>  
+                                    <td>90</td>
+                                    <td>87</td>
+                                    <td>89</td>
+                                    <td>92</td>
+                                    <td>97</td>
+                                    <td><input type="text" value = "0"  style="text-align: center;"></td>
+                                </tr>
+                                <tr>
+                                    <td>Bruno</td>
+                                    <td>Mars</td>
+                                    <td>100</td>  
+                                    <td>99</td>
+                                    <td>100</td>
+                                    <td>96</td>
+                                    <td>94</td>
+                                    <td>100</td>
+                                    <td>98</td>
+                                </tr>
+                        </table>
+                    </form>
+                </div>
+          </div>
+    </body>
+</html>
