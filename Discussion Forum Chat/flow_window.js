@@ -1,4 +1,4 @@
-
+var win=false;
 var z=1,i=1,left=10
 var isIE = (document.all) ? true : false;
 var $ = function (id) {
@@ -106,6 +106,7 @@ var Dialog = new Class({
     addListener(this._resize,'mousedown',BindAsEventListener(this, this.Start,false));
   },
   Disappear:function(e){
+    win=false;
     this.Cancelbubble(e);
     document.body.removeChild(this._dragobj);
   },
@@ -161,6 +162,16 @@ var Dialog = new Class({
 // new Dialog({Width:300,Height:300,Left:300,Top:300});
 // new Dialog({Info:"hello",Content:"i just want to talk with you"});
  function creates(){
-  new Dialog({Info:title="title"+i,Left:300+left,Top:300+left,Content:'content'+i,Zindex:(++Dialog.Zindex)});
- i++;left +=10;
+  if(!win)
+  {
+    var a=new Dialog({Info:title="title"+i,Left:300+left,Top:300+left,Content:'content'+i,Zindex:(++Dialog.Zindex)});
+    //i++;
+    left +=10;
+    win=true;
+  }
+  else
+  {
+    document.body.removeChild(a._dragobj);
+    win=false;
+  }
  }
