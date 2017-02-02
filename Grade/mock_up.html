@@ -18,7 +18,7 @@ body {
 }
 
 .account {
-	margin-top:10px;
+  margin-top:10px;
 }
 
 .navigation li a {
@@ -43,11 +43,11 @@ margin-left: 120px;
 }
 
 .dropdown {
-	float:left;
+  float:left;
 }
 
 .menu {
-	display:inline-block;
+  display:inline-block;
     background-color: #555;
     border:none;
     color:white;
@@ -85,38 +85,38 @@ margin-left: 120px;
 }
 
 .dropdown-menu a:hover {
-	background-color:#555;
+  background-color:#555;
     color:white;
 }
 
 .dropdown:hover .dropdown-menu {
-	display: block;
+  display: block;
 }
 
 .nav-top {
-	float: left;
+  float: left;
     margin-top: 10px;
 }
 
 .nav-top nav ul li span a {
-	color:#2e73d6;
-	text-decoration:none;
+  color:#2e73d6;
+  text-decoration:none;
 }
 
 .nav-top nav ul li span a:hover {
-	text-decoration:underline;
+  text-decoration:underline;
 }
 
 .nav-top nav ul li {
-	display:inline;
+  display:inline;
 }
 
 .up2 {
-	margin-top:1em;
+  margin-top:1em;
 }
 
 .aggreate {
-	background-color: #555;
+  background-color: #555;
     border: none;
     color: white;
     padding: 7.5px 16px;
@@ -130,55 +130,33 @@ margin-left: 120px;
 }
 
 .filter {
-	clear:left;
+  clear:left;
 }
 
 .in-ex {
-	position:relative;
+  position:relative;
     bottom:40px;
 }
 
 .grade {
     float:left;
-    top:10px;
+    position:relative;
+    left:10px;
     }
-    
-table, td, th {    
-    border: 1px solid #ddd;
-    text-align: center;
-    font-size:3px;
-	}
-
-table {
+    table {
     border-collapse: collapse;
-	width:150%;
-	}
-
-th {
-	background-color: #e6f2ff;
-	vertical-align: text-top;
-	}
-    
-th:hover {
-    background-color:#66b3ff
     }
-
-	th, td {
-    padding: 15px;
-    height:40px;
-	}
-
-	tr:hover{background-color:#f5f5f5}
-    
-.grade table tr th a{
-    text-decoration:none;
-    color:0080ff;
+    .grade table td,th{
+    border: 1px solid black;
+    }
+    .grade table tr td {
+      font-size:20px
     }
 
 .button, .in-ex {
-	padding:8px 16px;
-	border:none;
-	color: white;
+  padding:8px 16px;
+  border:none;
+  color: white;
     border-radius: 4px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     background: rgb(66, 184, 221);
@@ -259,25 +237,31 @@ th:hover {
 </div>
 
 <div class="grade">
-<table>
-<tr>
-<th>Student Name</th>
-<th>Secondary ID</th>
-<th>Note</th>
-<th><a href="#">Assignment 1</a></th>
-<th><a href="#">Assignment 2</a></th>
-<th><a href="#">Assignment 3</a></th>
-</tr>
-<tr>
-<td>Qihang Chen</td>
-<td>10404483</td>
-<td>null</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
+<table id="demo">
 </table>
 </div>
+
+<script>
+
+var text = '[{"name":"john","grade":[{"name":"assignment1","grade":"98"},{"name":"assignment2","grade":"88"}]},{"name":"kelly","grade":[{"name":"assignment1","grade":"68"},{"name":"assignment2","grade":"78"}]}]';
+var obj = JSON.parse(text);
+var text = "";
+text = "<tr><th>name</th>";
+for (var i in obj[0].grade) {
+  text += "<th>" + obj[0].grade[i].name + "</th>";
+}
+  text += "</tr>";
+  for (var i in obj) {
+      text += "<tr><td>" + obj[i].name + "</td>";
+        for (var j in obj[i].grade) {
+          text += "<td>" + obj[i].grade[j].grade +"</td>";
+        }
+        text += "</tr>"
+    }
+    document.getElementById("demo").innerHTML = text;
+
+
+</script>
 
 </div>
 
