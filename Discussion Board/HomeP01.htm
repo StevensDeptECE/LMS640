@@ -33,16 +33,14 @@
     <![endif]-->
     <script>
     function clickButton() {
-
-
       var xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
               myObj = JSON.parse(this.responseText);
-              document.getElementById("demo").innerHTML = myObj.name;
+              document.getElementById("demo").innerHTML = myObj.results[0].address_components[0].long_name;
           }
       };
-      xmlhttp.open("GET", "http://www.w3schools.com/js/json_demo.txt", true);
+      xmlhttp.open("GET", "http://maps.googleapis.com/maps/api/geocode/json?address=Hoboken", true);
       xmlhttp.send();
     }
 
