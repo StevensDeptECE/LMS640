@@ -1,0 +1,24 @@
+        table {
+            width: 700px;
+            height: 300px;
+            border-collapse: collapse;
+        }
+        table, td, th {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #a9c6c9;
+            text-align: center;
+        }
+        td.pre{
+            background-color: gainsboro;
+        }
+        td.current{
+            background-color: #c3dde0;
+        }
+        td.next{
+            background-color: lightgreen;
+        }
+        td.today{
+            background-color: #87ceeb;
+
+        }
