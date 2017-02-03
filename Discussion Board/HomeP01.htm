@@ -107,9 +107,9 @@
            display: none;
            position: absolute;
            top: 25%;
-           left: 25%;
-           width: 50%;
-           padding: 6px 16px;
+           left: 30%;
+           width: 40%;
+           padding: 10px 16px;
            border: 12px solid #D6E9F1;
            background-color: white;
            z-index:1002;
@@ -258,28 +258,28 @@
         <p><b>Log in</b></p>
         <div class="win_login_center">
           <form action="">
-            First name:<br>
-            <input type="text" name="Username:" value="">
+            Username:<br>
+            <input type="text" name="Username">
             <br>
-            Last name:<br>
-            <input type="text" name="Password:" value="">
+            Password:<br>
+            <input type="text" name="Password">
             <br><br>
             <input type="button" class="btn btn-xs btn-info" value="Submit" onclick="login_hide('win_login')">
           </form>
         </div>
     </div>
+    <!-- pop up bill board post window -->
     <div id="bb_post" class="white_content2">
         <button type="button" class="btn btn-xs btn-danger btn-right" onclick="login_hide('bb_post')">Close</button>
         <p><b>POST</b></p>
         <div class="win_login_center">
           <form action="">
-            First name:<br>
-            <input type="text" name="Username:" value="">
+            <b>Topic</b>&#32;<input style="border: 2px solid #9ACD32" type="text" size="74" name="Topic">
             <br>
-            Last name:<br>
-            <input type="text" name="Password:" value="">
+            <br>
+            <textarea style="border: 1.5px solid #FF7F50" name="billboard" rows="10" cols="83">add something...</textarea>
             <br><br>
-            <input type="button" class="btn btn-xs btn-info" value="Submit" onclick="login_hide('win_login')">
+            <input type="button" class="btn btn-sm btn-info" value="Post" onclick="login_hide('bb_post')">
           </form>
         </div>
     </div>
