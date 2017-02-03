@@ -1,0 +1,7 @@
+.currentUser {
+    background-color: gray;
+    float: right;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 1px 1px 1px #888888;
+}
