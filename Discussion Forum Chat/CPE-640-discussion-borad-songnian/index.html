@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
@@ -33,7 +36,7 @@
 
   <body>
 
-      <nav class="navbar navbar-fixed-top navbar-inverse">
+<nav class="navbar navbar-fixed-top navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -43,24 +46,31 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">CPE-640</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+          <!-- LEAVE IT ALONE MAYBE WE WILL USE IT LATER>
         <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
         <li><a href="#">Link</a></li>
+          <-->
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Discussion<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a role="button" class="btn btn-reverse" onclick="document.getElementById('create-discussion').style.display='block'" style="width:auto;">Create</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><a href="#discussion">View</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a role="button" class="btn btn-reverse" onclick="document.getElementById('create-project').style.display='block'" style="width:auto;">Create</a></li>
+>Create</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><a href="#project">View</a></li>
           </ul>
         </li>
       </ul>
@@ -71,17 +81,9 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
+        <ul class="nav navbar-nav">
+        <li><a role="button" class="btn btn-reverse" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</a></li>
+        </ul>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -103,59 +105,95 @@
             <!--topic area / project area-->
     <div>
         <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#">Discussion</a></li>
-            <li role="presentation"><a href="#">Project</a></li>
+            <li class="active"><a data-toggle="tab" href="#discussion">Discussion</a></li>
+            <li><a data-toggle="tab" href="#project">Project</a></li>
         </ul>
-                  <div class="row">
-            <div class="col-xs-6 col-lg-4">
+          <div class="row">
+             <div class="tab-content">
+              <div class="tab-pane fade in active"  id="discussion">
+            <div class="col-xs-12 col-lg-12">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
+            <div class="col-xs-12 col-lg-12">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
+            <div class="col-xs-12 col-lg-12">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
+            <div class="col-xs-12 col-lg-12">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
+            <div class="col-xs-12 col-lg-12">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
+            <div class="col-xs-12 col-lg-12">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div><!--/.col-xs-6.col-lg-4-->
+            </div>
+               <div class="tab-pane fade in active"  id="project">
+            <div class="col-xs-12 col-lg-12">
+              <h2>Project 1</h2>
+              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div><!--/.col-xs-6.col-lg-4-->
+                 </div>
+           </div>
           </div><!--/row-->
+        <div class="text-center">
+            <ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul>
+          </div>
         </div><!--/.col-xs-12.col-sm-9-->
 
     </div>
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-          <div class="list-group">
-            <a href="#" class="list-group-item active">student 1</a>
-            <a href="#" class="list-group-item">student 2</a>
-            <a href="#" class="list-group-item">student 3</a>
-            <a href="#" class="list-group-item">student 4</a>
-            <a href="#" class="list-group-item">student 5</a>
-            <a href="#" class="list-group-item">student 6</a>
-            <a href="#" class="list-group-item">student 7</a>
-            <a href="#" class="list-group-item">student 8</a>
-            <a href="#" class="list-group-item">student 9</a>
-            <a href="#" class="list-group-item">student 10</a>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#student">Student</a></li>
+            <li><a data-toggle="tab" href="#group">Group</a></li>
+        </ul>
+         <div class="tab-content">
+             <div class="tab-pane fade in active"  id="student">
+              <div class="list-group">
+                <a href="#" class="list-group-item">student 1</a>
+                <a href="#" class="list-group-item">student 2</a>
+                <a href="#" class="list-group-item">student 3</a>
+                <a href="#" class="list-group-item">student 4</a>
+                <a href="#" class="list-group-item">student 5</a>
+                <a href="#" class="list-group-item">student 6</a>
+                <a href="#" class="list-group-item">student 7</a>
+                <a href="#" class="list-group-item">student 8</a>
+                <a href="#" class="list-group-item">student 9</a>
+                <a href="#" class="list-group-item">student 10</a>
+              </div>
+             </div>
+              <div class="tab-pan fade" id="group">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">group 1</a>
+                    <a href="#" class="list-group-item">group 2</a>
+              </div>
+             </div>
+            </div><!--/.sidebar-offcanvas-->
           </div>
-        </div><!--/.sidebar-offcanvas-->
       </div><!--/row-->
 
       <hr>
@@ -165,6 +203,60 @@
       </footer>
 
     </div><!--/.container-->
+      
+    <!--login page-->
+    <div id="id01" class="login-modal">
+        <form class="modal-content animate" action="">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>
+            </div>
+            
+            <div class="login-container">
+                <label><b>UserName</b></label>
+                <input class="login-input" type="text" placeholder="Enter UserName" name="uname" required>
+                
+                <label><b>Password</b></label>
+                <input class="login-input" type="password" placeholder="Enter Password" name="psw" required>
+                
+                <button type="submit">Login</button>
+                <input type="checkbox" checked="checked">Remember me
+            </div>
+            
+            <div class="login-container" style="background-color: #f1f1f1">
+                <button type="button" onclick="doucment.getElementById('id01').style.display='none' class='login-cancelbtn'">Cancel</button>
+                <span class="psw">Forgot<a href="#">password?</a></span>
+            </div>
+        </form>
+        
+    </div>
+
+
+
+        <!--create disscussion-->
+    <div id="create-discussion" class="login-modal">
+        <form class="modal-content animate" action="">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>
+            </div>
+            
+            <div class="login-container">
+                <label><b>UserName</b></label>
+                <input class="login-input" type="text" placeholder="Enter UserName" name="uname" required>
+                
+                <label><b>Password</b></label>
+                <input class="login-input" type="password" placeholder="Enter Password" name="psw" required>
+                
+                <button type="submit">Login</button>
+                <input type="checkbox" checked="checked">Remember me
+            </div>
+            
+            <div class="login-container" style="background-color: #f1f1f1">
+                <button type="button" onclick="doucment.getElementById('id01').style.display='none' class='login-cancelbtn'">Cancel</button>
+                <span class="psw">Forgot<a href="#">password?</a></span>
+            </div>
+        </form>
+
+    </div>
 
 
     <!-- Bootstrap core JavaScript
