@@ -49,6 +49,7 @@
 
         /* show or hide pop up login window */
         function login_show(tag){
+
           var light=document.getElementById(tag);
           var fade=document.getElementById('fade1');
           var fade=document.getElementById('fade2');
@@ -64,6 +65,8 @@
           light.style.display='none';
           fade1.style.display='none';
           fade2.style.display='none';
+              location.reload();
+
         }
 
     </script>
@@ -181,7 +184,7 @@
 
       <div class="panel panel-default">
       <div class="panel-heading" style="padding 10px 10px">
-        <span class="navbar-right" style="padding:0px 10px"><span style="padding:0px 5px"><input onclick="clickButton();login_show('bb_post')" type="submit" class="btn btn-xs btn-info" value="Post" align="right"></span><button id="billboard_collapse" type="button" class="btn btn-xs btn-info btn-coll" data-toggle="collapse" data-target="#collapse1"></button></span>
+        <span class="navbar-right" style="padding:0px 10px"><span style="padding:0px 5px"><input onclick="login_show('bb_post')" type="submit" class="btn btn-xs btn-info" value="Post" align="right"></span><button id="billboard_collapse" type="button" class="btn btn-xs btn-info btn-coll" data-toggle="collapse" data-target="#collapse1"></button></span>
         <h4 class="panel-title">
           Bill Board
         </h4>
@@ -277,7 +280,7 @@
             <br>
             <textarea style="border: 1.5px solid #FF7F50" name="billboard" rows="10" cols="83">add something...</textarea>
             <br><br>
-            <input type="button" class="btn btn-sm btn-info" value="Post" onclick="login_hide('bb_post')">
+            <button type="button" class="btn btn-sm btn-info" onclick="clickButton();login_hide('bb_post')">Post</button>
           </form>
         </div>
     </div>
