@@ -1,0 +1,23 @@
+<html>
+<head>
+<script src="homework.js"></script>
+<script>
+    
+$(document).ready(function(){
+  $("button").click(function(){
+  $.getJSON("homework.json",function(result){$.each(result, function(i, field){
+        $("p").append(field + " ");
+      });
+    });
+  });
+});
+</script>
+</head>
+
+<body>
+
+<button> getJson </button>
+<p></p>
+
+</body>
+</html>
