@@ -5,18 +5,6 @@ function MC(choices, id) {
 	this.id = id;
 	this.choices = choices;
 	this.responses = [];
-	/*
-	for(var i = 0; i < choices.length; i++) {
-		console.log(choices[i]["ans"]);
-		this.choices[i] = choices[i]["ans"];
-		if (typeof(choices[i]["resp"]) != 'undefined')
-			this.responses[i]  = choices[i]["resp"];
-		else
-			this.responses[i] = "";
-		if(choices[i]["correct"] = 1)
-			this.correct = i;		
-	}	
-	*/
 }
 
 MC.prototype.draw = function(div) {
@@ -38,18 +26,8 @@ MC.prototype.draw = function(div) {
 /*A multiple choice question where options are in a dropdown menu*/
 function MCDrop(choices, id) {
 	this.id = id;
-	this.choices = [];
+	this.choices = choices;
 	this.responses = [];
-	for(var i = 0; i < choices.length; i++) {
-		console.log(choices[i]["ans"]);
-		this.choices[i] = choices[i]["ans"];
-		if (typeof(choices[i]["resp"]) != 'undefined')
-			this.responses[i]  = choices[i]["resp"];
-		else
-			this.responses[i] = "";
-		if(choices[i]["correct"] = 1)
-			this.correct = i;		
-	}
 }
 
 MCDrop.prototype.draw = function(div) {
