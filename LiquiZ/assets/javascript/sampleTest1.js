@@ -196,8 +196,11 @@ function load() {
 	comp: [
 		["Instr", "What is ", "1"],
 		["Eqn", "2+2", "2"],
+        ["MC", [3,4,5,6],"7"]
+        /*
 		["MC", [ {"ans":3, "resp": "res6"}, {"ans": 4, "correct": 1 },
 			{"ans":5, "resp": "res6"}, {"ans": 6}], "7"]
+            */
 	]
 },
 {
@@ -209,19 +212,6 @@ function load() {
 		[ "Fillin", "q1000"]
 	]
 },
-
-{
-	id: "qc101",
-	title: "Multiplication",
-	comp: [
-		["Instr", "What is ","5"],
-		["Eqn", "3*4", "6"],
-		["MC", [ {"ans":9}, {"ans": 12}]]
-	]
-},
-
-
-
 
 {
 	id: "qc1002",
@@ -262,7 +252,7 @@ function load() {
 	comp: [
 		["Instr", "What is ", "1"],
 		["Eqn", "2+2", "2"],
-		["MCSEL", [ {"ans":1, "resp": "res6"}, {"ans": 2 },
+		["MCDrop", [ {"ans":1, "resp": "res6"}, {"ans": 2 },
 			{"ans":3, "resp": "res6"}, {"ans": 4, "correct": 1}], "7"]
 	]
 },

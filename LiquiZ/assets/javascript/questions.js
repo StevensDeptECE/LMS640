@@ -1,8 +1,11 @@
 /*display elements like multiple choice, fillin, etc*/
+
+/*Regular multiple choice with options shown vertically*/ 
 function MC(choices, id) {
 	this.id = id;
-	this.choices = [];
+	this.choices = choices;
 	this.responses = [];
+	/*
 	for(var i = 0; i < choices.length; i++) {
 		console.log(choices[i]["ans"]);
 		this.choices[i] = choices[i]["ans"];
@@ -13,6 +16,7 @@ function MC(choices, id) {
 		if(choices[i]["correct"] = 1)
 			this.correct = i;		
 	}	
+	*/
 }
 
 MC.prototype.draw = function(div) {
@@ -30,7 +34,9 @@ MC.prototype.draw = function(div) {
 	}
 }
 
-function MCSEL(choices, id) {
+
+/*A multiple choice question where options are in a dropdown menu*/
+function MCDrop(choices, id) {
 	this.id = id;
 	this.choices = [];
 	this.responses = [];
@@ -46,7 +52,7 @@ function MCSEL(choices, id) {
 	}
 }
 
-MCSEL.prototype.draw = function(div) {
+MCDrop.prototype.draw = function(div) {
 	var x = document.createElement('div');
     var selectList = document.createElement("select");
     
