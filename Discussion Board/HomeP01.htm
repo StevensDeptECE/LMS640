@@ -32,6 +32,26 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script>
+    // at beginning we run following code, the page will get data from remote json file
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var dis_num = 0;
+            myObj = JSON.parse(this.responseText);
+            dis_num = myObj.results[0].geometry.bounds.northeast.lat;
+            if(dis_num != 0){
+            document.getElementById("demo").innerHTML = myObj.results[0].address_components[1].long_name;
+          }
+            document.getElementById("dis-first").innerHTML = myObj.results[0].address_components[2].long_name;
+            if(document.getElementById("dis-third").innerHTML = myObj.results[0].address_components[0].long_name != NaN)
+            document.getElementById("dis-second").innerHTML = myObj.results[0].address_components[3].long_name;
+
+        }
+    };
+    xmlhttp.open("GET", "http://maps.googleapis.com/maps/api/geocode/json?address=Hoboken", true);
+    xmlhttp.send();
+
     function clickButton() {
       var xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function() {
@@ -65,7 +85,7 @@
           light.style.display='none';
           fade1.style.display='none';
           fade2.style.display='none';
-              location.reload();
+            //  location.reload();
 
         }
 
@@ -203,9 +223,9 @@
       <div class="tab-content">
         <div id="discussion" class="tab-pane fade in active">
             <div class="list-group">
-                <a href="#" class="list-group-item active">First item</a>
-                <a href="#" class="list-group-item">Second item</a>
-                <a href="#" class="list-group-item active">Third item</a>
+                <a id="dis-first" href="#" class="list-group-item active">First item</a>
+                <a id="dis-second" href="#" class="list-group-item">Second item</a>
+                <a id="dis-third" href="#" class="list-group-item active">Third item</a>
             </div>
           </div>
         <div id="project" class="tab-pane fade">
