@@ -34,9 +34,15 @@ body p {
 }
 
 #menu ul {
+  list-style-type: none;
+  margin 0;
+  padding 0;
+  overflow: hidden;
+  /*
     position: absolute;
     margin-left: 108px;
     text-align: center;
+  */
 }
 
 #menu li {
@@ -57,9 +63,9 @@ body p {
 
 div img {
   width: 50px;
-  height: 33px;
-  z-index: 1;
-  margin: 5px 0 5px 5px;
+  height: 30px;
+  margin: 0;
+  padding: 0
 }
 
 /* menu right */
