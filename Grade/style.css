@@ -15,7 +15,7 @@ body {
 }
 
 .account {
-	margin-top:10px;
+  margin-top:10px;
 }
 
 .navigation li a {
@@ -40,11 +40,11 @@ margin-left: 120px;
 }
 
 .dropdown {
-	float:left;
+  float:left;
 }
 
 .menu {
-	display:inline-block;
+  display:inline-block;
     background-color: #555;
     border:none;
     color:white;
@@ -82,38 +82,38 @@ margin-left: 120px;
 }
 
 .dropdown-menu a:hover {
-	background-color:#555;
+  background-color:#555;
     color:white;
 }
 
 .dropdown:hover .dropdown-menu {
-	display: block;
+  display: block;
 }
 
 .nav-top {
-	float: left;
+  float: left;
     margin-top: 10px;
 }
 
 .nav-top nav ul li span a {
-	color:#2e73d6;
-	text-decoration:none;
+  color:#2e73d6;
+  text-decoration:none;
 }
 
 .nav-top nav ul li span a:hover {
-	text-decoration:underline;
+  text-decoration:underline;
 }
 
 .nav-top nav ul li {
-	display:inline;
+  display:inline;
 }
 
 .up2 {
-	margin-top:1em;
+  margin-top:1em;
 }
 
 .aggreate {
-	background-color: #555;
+  background-color: #555;
     border: none;
     color: white;
     padding: 7.5px 16px;
@@ -127,57 +127,47 @@ margin-left: 120px;
 }
 
 .filter {
-	clear:left;
+  clear:left;
 }
 
 .in-ex {
-	position:relative;
+  position:relative;
     bottom:40px;
 }
 
 .grade {
     float:left;
-    top:10px;
-    }
-    
-table, td, th {    
-    border: 1px solid #ddd;
-    text-align: center;
-    font-size:3px;
-	}
-
-table {
-    border-collapse: collapse;
-	width:150%;
-	}
-
-th {
-	background-color: #e6f2ff;
-	vertical-align: text-top;
-	}
-    
-th:hover {
-    background-color:#66b3ff
-    }
-
-	th, td {
-    padding: 15px;
-    height:40px;
-	}
-
-	tr:hover{background-color:#f5f5f5}
-    
-.grade table tr th a{
-    text-decoration:none;
-    color:0080ff;
+    position:relative;
+    left:10px;
     }
 
 .button, .in-ex {
-	padding:8px 16px;
-	border:none;
-	color: white;
+  padding:8px 16px;
+  border:none;
+  color: white;
     border-radius: 4px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     background: rgb(66, 184, 221);
 }
+
+.grade_left{
+  float: left;
+}
+
+.grade_right {
+    float: left;
+}
+
+.head div{
+  border:1px solid grey;
+    float:left;
+    padding:10px;
+}
+
+.score {
+  float:left;
+    border:1px solid grey;
+    padding:10px;
+}
+
 </style>

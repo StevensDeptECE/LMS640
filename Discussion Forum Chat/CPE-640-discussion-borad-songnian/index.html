@@ -11,11 +11,40 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
+    <!-- upload file button-->
+<!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-->
+    <!-- end upload file button-->
+    <!--chose time button jquery and datetimepick.bootstrap-->
+    
+      <script src="https://code.jquery.com/jquery-3.1.1.slim.js" integrity="sha256-5i/mQ300M779N2OVDrl16lbohwXNUdzL/R2aVUXyXWA="
+      crossorigin="anonymous"></script>
 
-    <title>Off Canvas Template for Bootstrap</title>
+      <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+      <!-- Bootstrap Date-Picker Plugin -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+      <!--end of choose time-->
+    <title>CPE-640 Discussion board/chat</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -32,9 +61,9 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+      
   </head>
-
-  <body>
+<body>
 
 <nav class="navbar navbar-fixed-top navbar-inverse">
   <div class="container-fluid">
@@ -68,7 +97,6 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a role="button" class="btn btn-reverse" onclick="document.getElementById('create-project').style.display='block'" style="width:auto;">Create</a></li>
->Create</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#project">View</a></li>
           </ul>
@@ -78,7 +106,7 @@
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default btn-primary">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <ul class="nav navbar-nav">
@@ -167,30 +195,30 @@
     </div>
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs ">
             <li class="active"><a data-toggle="tab" href="#student">Student</a></li>
             <li><a data-toggle="tab" href="#group">Group</a></li>
         </ul>
          <div class="tab-content">
              <div class="tab-pane fade in active"  id="student">
               <div class="list-group">
-                <a href="#" class="list-group-item">student 1</a>
-                <a href="#" class="list-group-item">student 2</a>
-                <a href="#" class="list-group-item">student 3</a>
-                <a href="#" class="list-group-item">student 4</a>
-                <a href="#" class="list-group-item">student 5</a>
-                <a href="#" class="list-group-item">student 6</a>
-                <a href="#" class="list-group-item">student 7</a>
-                <a href="#" class="list-group-item">student 8</a>
-                <a href="#" class="list-group-item">student 9</a>
-                <a href="#" class="list-group-item">student 10</a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 1<span class="badge">message 2</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 2<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 3<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 4<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 5<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 6<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 7<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 8<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 9<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 10<span class="badge">message 15</span></a>
               </div>
              </div>
               <div class="tab-pan fade" id="group">
                 <div class="list-group">
                     <a href="#" class="list-group-item active">group 1</a>
                     <a href="#" class="list-group-item">group 2</a>
-              </div>
+                </div>
              </div>
             </div><!--/.sidebar-offcanvas-->
           </div>
@@ -204,59 +232,7 @@
 
     </div><!--/.container-->
       
-    <!--login page-->
-    <div id="id01" class="login-modal">
-        <form class="modal-content animate" action="">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>
-            </div>
-            
-            <div class="login-container">
-                <label><b>UserName</b></label>
-                <input class="login-input" type="text" placeholder="Enter UserName" name="uname" required>
-                
-                <label><b>Password</b></label>
-                <input class="login-input" type="password" placeholder="Enter Password" name="psw" required>
-                
-                <button type="submit">Login</button>
-                <input type="checkbox" checked="checked">Remember me
-            </div>
-            
-            <div class="login-container" style="background-color: #f1f1f1">
-                <button type="button" onclick="doucment.getElementById('id01').style.display='none' class='login-cancelbtn'">Cancel</button>
-                <span class="psw">Forgot<a href="#">password?</a></span>
-            </div>
-        </form>
-        
-    </div>
-
-
-
-        <!--create disscussion-->
-    <div id="create-discussion" class="login-modal">
-        <form class="modal-content animate" action="">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>
-            </div>
-            
-            <div class="login-container">
-                <label><b>UserName</b></label>
-                <input class="login-input" type="text" placeholder="Enter UserName" name="uname" required>
-                
-                <label><b>Password</b></label>
-                <input class="login-input" type="password" placeholder="Enter Password" name="psw" required>
-                
-                <button type="submit">Login</button>
-                <input type="checkbox" checked="checked">Remember me
-            </div>
-            
-            <div class="login-container" style="background-color: #f1f1f1">
-                <button type="button" onclick="doucment.getElementById('id01').style.display='none' class='login-cancelbtn'">Cancel</button>
-                <span class="psw">Forgot<a href="#">password?</a></span>
-            </div>
-        </form>
-
-    </div>
+-
 
 
     <!-- Bootstrap core JavaScript
@@ -264,9 +240,11 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     <script src="offcanvas.js"></script>
+    <script src="flow-windows.js"></script>
+<!--    <script src="datepick.js"></script>-->
   </body>
 </html>

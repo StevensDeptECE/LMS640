@@ -183,7 +183,8 @@
                  <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
                </div>
                <div class="col-xs-10">
-                 <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>
+
+		       <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>
                  <p>Me too! WOW!</p>
                </div>
              </div>
@@ -247,5 +248,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="data.js"></script>
+
+    <script scr="./script.js">
+
+//        console.log(data);
+
+        document.write(data.length);
+
+        for(var i = 0 ; i < data.length; i++)
+
+            {
+
+                document.write(data[i].record);
+
+            }
+
+
+    </script>	  
   </body>
 </html>

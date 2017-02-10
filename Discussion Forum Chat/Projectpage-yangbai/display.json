@@ -1,0 +1,62 @@
+
+	var project={"projects":
+		[
+		{
+			"name": "CSP",
+			"Info": "This is Info",
+			"projectID": "01",
+			"member": ["Zhang San","Li Si"],
+			"starttime":"",
+			"endtime": "",
+			"filename": ["file1","file2"],
+			"fileuploadtime": ["",""]
+		}
+		{
+			"name": "Homework",
+			"Info": "This is Info",
+			"projectID": "02",
+			"member": ["Zhang San","Li Si"],
+			"starttime":"",
+			"endtime": "",
+			"filename": ["file1","file2"],
+			"fileuploadtime": ["",""]
+		}
+		{
+			"name": "Graph",
+			"Info": "This is Info",
+			"projectID": "03",
+			"member": ["Zhang San","Li Si"],
+			"starttime":"",
+			"endtime": "",
+			"filename": ["file1","file2"],
+			"fileuploadtime": ["",""]
+		}
+		{
+			"name": "Discussion forum",
+			"Info": "This is Info",
+			"projectID": "04",
+			"member": ["Zhang San","Li Si"],
+			"starttime":"",
+			"endtime": "",
+			"filename": ["file1","file2"],
+			"fileuploadtime": ["",""]
+		}
+	]
+
+		    }
+var createnewproject={"newproject":
+		      [
+			  { "name": "Liquiz",
+                            "Info": "This is Info",
+			    "projectID":"05"}
+		      ]
+		     }
+var sendfile={"file":
+	      [
+		  {"projectID": "04",
+                   "uploadtime": "",
+		   "file": "",
+		   "filename":"",
+		   "tag":"success"
+		  }
+	      ]}
