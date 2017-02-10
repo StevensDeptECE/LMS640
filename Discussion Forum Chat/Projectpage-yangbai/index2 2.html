@@ -27,8 +27,9 @@
 </head>
 
 <body>
-<div class="container">
-    <nav class="navbar navbar-inverse">
+
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
           <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -85,7 +86,7 @@
                     </a>
                 </li>
                 <li>
-                    <a id="CSP"></a>
+                    <a href="#CSP">CSP</a>
                 </li>
                 <li>
                     <a href="#Homework">Homework</a>
@@ -115,7 +116,7 @@
                          <label for="comment">Members:</label>
                          <textarea class="form-control" rows="2" id="comment"></textarea>
                        </div>
-                      
+
         <!-- /#page-content-wrapper -->
 
     </div>
@@ -124,16 +125,16 @@
     </div>
     </div>
     </div>
-    
-    
+
+
     <div class=col-sm-3>
-    
+
           <p class="pull-right visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
-            
-            
-        
+
+
+
         <div class="sidebar-offcanvas" id="sidebar">
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#student">Student</a></li>
@@ -163,7 +164,7 @@
                 </div>
              </div><!--tab-content-->
             </div><!--sidebar-->
-           
+
 </div><!--col-sm-3-->
 
 </div><!--container-->
@@ -179,11 +180,7 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
-<script src="js/display.js"></script>
-<script>
-    
-    document.getElementById("CSP").write(project[0].name);
-</script>
+
 </body>
 
 </html>
