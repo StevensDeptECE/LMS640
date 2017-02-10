@@ -1,0 +1,46 @@
+<DOCTYPE! html>
+<html>
+<head>
+  <title>LMS Home</title>
+  <!-- Add links for CSS and JS when those are writtent -->
+  <link type="text/css" rel="stylesheet" href="css/stylesheet2.css">
+</head>
+
+<body>
+  <div id="menu">
+    <ul>
+      <!-- <li> <img src="images/LMS_logo.png" alt="LMS Logo"></li> -->
+      <li><a href="#mylmsaccount">My LMS Account</a></li>
+      <li><a href="#dashboard" class="clicked">Dashboard</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Courses</a>
+        <div class="dropdown-content">
+          <a href="#">CPE640</a>
+          <a href="#">CPE593</a>
+          <a href="#">EE810</a>
+        </div>
+      </li>
+      <li><a href="#calendar">Calendar</a></li>
+      <li><a href="#inbox">Inbox</a></li>
+      <li><a href="#help">Help</a></li>
+    </ul>
+  </div>
+
+  <div class="loginformabs">
+    <!-- <form method="POST" action="AJAXLogin.jsp"> -->
+    <input name="userid" placeholder="Student ID"/>
+    <input type="password" name="passwd" placeholder="Password"/>
+    <!-- <input id="login" type="button" onclick="requestResponse('AJAXLogin.jsp', this.form.userid, getAjax)" value="Login"/> -->
+    <!-- </form> -->
+  </div>
+
+  <div id="main">
+    <h1>Welcome to LMS!</h1>
+    <hr />
+    <p>This will serve as the main page to navigate the learning mangement system.</p>
+    <p>The left most column will contain information specific to the option chosen from the menu above.</p>
+    <p>The menu to the right will list any upcoming items.</p>
+  </div>
+
+</body>
+</html>

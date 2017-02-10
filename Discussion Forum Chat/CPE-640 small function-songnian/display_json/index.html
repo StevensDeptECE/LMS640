@@ -1,0 +1,52 @@
+<html>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+
+<script>
+
+    $(function() {
+
+
+   var people = [];
+
+   $.getJSON('people.json', function(data) {
+       $.each(data.project, function(i, f) {
+          var tblRow = "<tr>" + "<td>" + f.projectName + "</td>" +
+           "<td>" + f.projectInfo + "</td>" + "<td>" + f.project_start_time + "</td>" + "<td>" + f.project_end_time + "</td>" + "</tr>"
+           $(tblRow).appendTo("#userdata tbody");
+           
+           for(var i = 0 ; i < f.projectMemberInfo.length; i ++)
+               {
+                   var name = "<a href='#'>" +f.projectMemberInfo[i] +"</a>";
+                   $(name).appendTo("#userdata tbody");
+               }
+     });
+       
+
+   });
+
+});
+</script>
+</head>
+
+<body>
+
+<div class="wrapper">
+<div class="profile">
+   <table id= "userdata" border="2">
+  <thead>
+            <th>Project Name</th>
+            <th>Project Info</th>
+            <th>Project start time</th>
+            <th>Project end time</th>
+        </thead>
+      <tbody>
+
+       </tbody>
+   </table>
+
+</div>
+</div>
+
+</body>
+</html>

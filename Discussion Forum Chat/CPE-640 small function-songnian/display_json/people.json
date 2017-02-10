@@ -1,0 +1,29 @@
+{
+   "project": [
+       {
+           "projectName": "Home work",
+           "projectInfo": "Kent",
+           "project_start_time": "2017-02-01",
+           "project_end_time": "2017-05-31",
+           "projectId":1,
+           "projectMemberInfo":["Josh","Emma"],
+           "FileId":1
+           
+       },
+       {
+           "projectName": "Chat",
+           "projectInfo": "Wayne",
+           "project_start_time": "2017-02-01",
+           "project_end_time": "2017-05-31",
+           "projectMemberInfo":["Songnian Yin"]
+       },
+       {
+           "projectName": "Liquiz",
+           "projectInfo": "Parker",
+           "project_start_time": "2017-02-01",
+           "project_end_time": "2017-05-31",
+           "projectMemberInfo":["Dov"]
+       }
+   ]
+    
+}
