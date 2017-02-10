@@ -22,6 +22,32 @@ MC.prototype.draw = function(div) {
 	}
 }
 
+function MCS(choices, id) {
+    this.id = id;
+    this.choices = choices;
+    this.responses = [];
+}
+
+MCS.prototype.draw = function(div) {
+    var x = document.createElement('div');
+    var myForm = document.createElement("form");
+    var selectList = document.createElement("select");
+
+    for (var i = 0; i < this.choices.length; i++) {
+
+        var y = document.createElement('div');
+        var option = document.createElement('option');
+        option.value = this.choices[i];
+        option.text = this.choices[i];
+        y.appendChild(option);
+
+    }
+    selectList.appendChild(y);
+    myForm.appendChild(selectList);
+    x.appendChild(myForm);
+    div.appendChild(x);
+}
+
 
 /*A multiple choice question where options are in a dropdown menu*/
 function MCDrop(choices, id) {
@@ -100,11 +126,27 @@ function Fillin(id) { //parent) {
 	//pattern for regex
 }
 
-Fillin.prototype.draw = function(div) { 
+Fillin.prototype.draw = function(div) {
 	var inp = document.createElement("input");
 	inp.type = "text";
 	inp.style.textAlign = 'center';
 	div.appendChild(inp);
+}
+
+function Code(code, id) { //parent) {
+	this.code = code;
+    this.id = id;
+    //pattern for regex
+}
+
+Code.prototype.draw = function(div) {
+    var br = document.createElement("br");
+    div.appendChild(br);
+    var inp = document.createElement("TEXTAREA");
+    this.code.replace("newLine","\n");
+    var myCode = document.createTextNode(this.code);
+    inp.append(myCode);
+    div.appendChild(inp);
 }
 
 function Survey(id, choices, terms) {
