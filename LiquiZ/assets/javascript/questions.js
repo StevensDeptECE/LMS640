@@ -1,6 +1,6 @@
 /*display elements like multiple choice, fillin, etc*/
 
-/*Regular multiple choice with options shown vertically*/
+/*Regular multiple choice with options shown vertically*/ 
 function MC(choices, id) {
 	this.id = id;
 	this.choices = choices;
@@ -54,7 +54,7 @@ function MCDrop(choices, id) {
 MCDrop.prototype.draw = function(div) {
 	var x = document.createElement('div');
     var selectList = document.createElement("select");
-
+    
 	for (var i = 0; i < this.choices.length; i++) {
         var option = document.createElement('option');
 		option.value = this.choices[i];
@@ -64,28 +64,6 @@ MCDrop.prototype.draw = function(div) {
     x.appendChild(selectList);
     div.appendChild(x);
 }
-
-/*function Match(choices, id) {
-	this.id = id;
-	this.choices = choices;
-	this.responses = [];
-}
-
-Match.prototype.draw = function(div) {
-	var x = document.createElement('div');
-    var selectList = document.createElement("select");
-
-	for (var i = 0; i < this.choices.length; i++) {
-        var option = document.createElement('option');
-		option.value = this.choices[i];
-        option.text = this.choices[i];
-        selectList.appendChild(option);
-	}
-    x.appendChild(selectList);
-    div.appendChild(x);
-}
-*/
-
 
 function Matrix(rows, cols, id) {
 	this.id = id;
@@ -206,7 +184,7 @@ Survey.prototype.draw = function(div) {
         termBox.appendChild(surveyChoiceList);
 		div.appendChild(termBox);
 	}
-
+	
 }
 
 function Likert5(questions, id) {
@@ -249,3 +227,4 @@ Likert5.prototype.draw = function(div) {
 	question3.appendChild(tbl);
 	div.appendChild(question3);
 }
+
