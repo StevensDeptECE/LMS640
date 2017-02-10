@@ -1,0 +1,220 @@
+/*
+ * Globals
+ */
+
+body {
+	font-family: 'Open Sans', Arial, sans-serif;
+	color: #000;
+	/*
+	background-image:url('');
+	background-repeat: no-repeat;
+    background-position: right bottom;
+	*/
+    background-color: #EFEFEF;
+}
+
+a{
+
+}
+
+a:hover, a:focus{
+	color: #F57D55;
+}
+
+.about-img{
+	width: 100px;
+	height:120px;
+	float:left;
+	padding-right:5px;
+	padding-bottom:5px;
+}
+
+.glyphicon{
+	padding-right:10px;
+}
+
+/*
+ * Override Bootstrap's default container.
+ */
+
+@media (min-width: 1200px) {
+	.container {
+		width: 1100px;
+	}
+}
+
+/*
+ * Main column and sidebar layout
+ */
+
+.content-main {
+	font-size: 18px;
+	line-height: 1.5;
+	position: relative;
+	top: -150px;
+	margin-bottom: -100px;
+	padding-right: 40px;
+	background: linear-gradient(to bottom, rgba(202, 235, 242, 0.5), rgba(202, 235, 242, 0.5)) repeat-x scroll 0% 0% rgba(202, 235, 242, 0.8);
+	box-shadow: 0px 0px 5px #0b0c10;
+}
+
+.content-sidebar {
+	margin-bottom: 50px;
+}
+
+.content-header{
+	background-color:#FF3B3F;
+	color: #fff;
+	border-bottom:5px solid #999;
+	padding:5px;
+	margin-top: 0px;
+	text-transform: uppercase;
+	text-shadow: 0 0 1px #FF3B3F;
+}
+
+/*
+ * sidebar-styles
+ */
+
+.sidebar-header{
+	background-color:#FF3B3F;
+	color: #fff;
+	border-bottom:5px solid #999;
+	padding:5px;
+	margin-top: 0px;
+	text-transform: uppercase;
+	text-shadow: 0 0 1px #FF3B3F;
+}
+
+.sidebar-recent-item {
+	padding-bottom:20px;
+}
+
+.sidebar-recent-item-title{
+	font-weight:bold;
+}
+
+.sidebar-recent-item-date{
+	
+}
+
+.sidebar-content > .list-group > .list-group-item {
+	background: linear-gradient(to bottom, rgba(202, 235, 242, 0.5), rgba(202, 235, 242, 0.5)) repeat-x scroll 0% 0% rgba(202, 235, 242, 0.8);
+	border: 1px solid #CAEBF2;
+	color:#FF3B3F;
+	padding-top:5px;
+	padding-bottom: 5px;
+}
+
+.sidebar-content > .list-group > .list-group-item:hover {
+	color:#F57D55;
+}
+
+.sidebar-content > .list-group > .list-group-item > .badge:hover {
+	background-color:#999999;
+}
+
+.sidebar-content > .list-group{
+	margin-left: -15px;
+	margin-right: -15px;
+	margin-top: -10px;
+	margin-bottom: 5px;
+}
+
+.sidebar-content > .list-group > .list-group-item:first-child {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.sidebar-content > .list-group > .list-group-item:last-child {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+/* Sidebar modules for boxing content */
+.sidebar-module {
+	box-shadow: 0px 0px 5px #CAEBF2;
+	background: linear-gradient(to bottom, rgba(202, 235, 242, 0.5), rgba(202, 235, 242, 0.5)) repeat-x scroll 0% 0% rgba(202, 235, 242, 0.8);
+	overflow:auto;
+	box-shadow: 0px 0px 5px #0b0c10;
+}
+
+.sidebar-content {
+	padding-left: 15px;
+	padding-bottom: 5px;
+	padding-right: 15px;
+}
+
+/*
+ * Footer
+ */
+
+.footer {
+	padding: 40px 0;
+	color: #999;
+	text-align: center;
+	background-color: #45484d;
+	border-bottom: 5px solid #FF3B3F;
+	/*background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)) repeat-x scroll 0% 0% rgba(0, 0, 0, 0.08);*/
+	border-top: 1px solid rgb(34, 34, 34);
+	/*-webkit-box-shadow: 0px -33px 100px 5px rgba(37,153,220,1);
+	-moz-box-shadow: 0px -33px 100px 5px rgba(37,153,220,1);
+	box-shadow: 0px -33px 100px 5px rgba(37,153,220,1);*/
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)) repeat-x scroll 0% 0% rgba(0, 0, 0, 0.08);
+	box-shadow: 0px 0px 5px #0b0c10;
+}
+
+/*
+ * JumboTron
+ */
+ 
+.jumbotron {
+    padding: 0px;
+    margin-top: -86px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: transparent;
+	height:500px;
+    z-index: -1;
+    /*box-shadow: inset 0 0 100px rgba(0,0,0,.5);*/ /* buggy, fix later */
+	overflow: hidden;
+}
+
+.jumbolimits {
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:-2;
+	width: 100%;
+	height:500px;
+	overflow:hidden;
+	/*-webkit-box-shadow: 0px 33px 100px 5px rgba(37,153,220,1);
+	-moz-box-shadow: 0px 33px 100px 5px rgba(37,153,220,1);
+	box-shadow: 0px 33px 100px 5px rgba(37,153,220,1);*/
+}
+
+.jumbotron img{
+	position: relative;
+	left: 0;
+	z-index: -2;
+	min-width: 100%;
+	min-height: 500px;
+}
+
+.jumbotext {
+	margin-top:100px;
+	font-size: 26px;
+	font-family: inherit;
+	font-weight: 500;
+	line-height: 1.1;
+	color: #fff;
+	text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/*
+ * horizontal rule
+ */
+
+hr{
+	border: 3px solid #000;
+}

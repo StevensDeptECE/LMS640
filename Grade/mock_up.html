@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<ul class="navigation">
+  <li><a class="account" href="#">Account</a></li>
+  <li><a href="#">Dashboard</a></li>
+  <li><a class="active" href="#">Course</a></li>
+  <li><a href="#">Groups</a></li>
+  <li><a href="#">Calendar</a></li>
+  <li><a href="#">Inbox</a></li>
+  <li><a href="#">Commons</a></li>
+  <li><a href="#">Help</a></li>
+</ul>
+
+<div class="right">
+<div class="up1">
+<div class="dropdown">
+<button class="menu"><span>Menu</span></button>
+  <div class="dropdown-menu" style="left:0;">
+    <a href="#">Home</a>
+    <a href="#">Announcements</a>
+    <a href="#">Assignments</a>
+    <a href="#">Discussions</a>
+    <a href="#">Grades</a>
+    <a href="#">People</a>
+    <a href="#">Pages</a>
+    <a href="#">Files</a>
+    <a href="#">Syllabus</a>
+    <a href="#">Outcomes</a>
+    <a href="#">Quizzes</a>
+    <a href="#">Modules</a>
+    <a href="#">Conferences</a>
+    <a href="#">Collaborations</a>
+    <a href="#">Blackboard</a>
+    <a href="#">Chat</a>
+  </div>
+</div>
+<div  class="nav-top">
+<nav>
+<ul>
+<li><span><a href="#">DOV DEV</a></span></li>
+<span>></span>
+<li><span class="nav-grade"><a href="#">Grade</a></span></li>
+</ul>
+</nav>
+</div>
+
+<hr style="clear:left; margin-top:4em;">
+
+<div class="up2">
+<button class="aggreate" style="margin-left:10px;">Grade</button>
+<button class="aggreate">Graph</button>
+<button class="button" style="float:right;">Individual View</button>
+<button class="button" style="float:right;">Showing All Section</button>
+</div>
+
+<hr style="clear:left; margin-top:4em;">
+
+<div class="up3">
+
+<div class="filter">
+<form>
+<br>
+<input type="text" name="filter_student" placeholder="Filter by student" style="margin-left:10px; padding:10px;">
+<input type="text" name="filter_assignment" placeholder="Filter by assignment" style=" padding:10px;">
+</form>
+</div>
+
+<button class="in-ex" style="float:right">export</button>
+<button class="in-ex" style="float:right">import</button>
+<br>
+</div>
+
+<div class="grade">
+
+<div class="grade_left">
+  <div class="head">
+      <div>Name</div>
+        <div>Secondary ID</div>
+    </div>
+    
+    <div class="student">
+    </div>
+</div>
+
+<div class="grade_right">
+
+<div class="head" id="grade_right">
+</div>
+
+<div id="score">
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+var text = '[{"name":"john","grade":[{"name":"assignment1","grade":"98"},{"name":"assignment2","grade":"88"}]},{"name":"kelly","grade":[{"name":"assignment1","grade":"68"},{"name":"assignment2","grade":"78"}]}]';
+var obj = JSON.parse(text);
+var rightHead='';
+for (var i in obj[0].grade) {
+  rightHead += "<div class='head'>" + obj[0].grade[i].name + "</div>";
+}
+document.getElementById("grade_right").innerHTML = rightHead;
+var data = "";
+for(var i in obj){
+  data += "<div class='score' style='clear:left'>" + obj[i].grade[0].grade + "</div>"
+    for (var j = 1; j < obj[i].grade.length; j++) {
+      data += "<div class='score'>" + obj[i].grade[j].grade + "</div>"
+    }
+}
+    document.getElementById("score").innerHTML = data;
+
+
+</script>
+
+</div>
+
+</body>
+</html>
+
