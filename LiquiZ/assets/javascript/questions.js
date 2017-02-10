@@ -29,23 +29,18 @@ function MCS(choices, id) {
 }
 
 MCS.prototype.draw = function(div) {
-    var x = document.createElement('div');
-    var myForm = document.createElement("form");
-    var selectList = document.createElement("select");
-
     for (var i = 0; i < this.choices.length; i++) {
-
-        var y = document.createElement('div');
-        var option = document.createElement('option');
-        option.value = this.choices[i];
-        option.text = this.choices[i];
-        y.appendChild(option);
-
+        var x = document.createElement('div');
+        var label = document.createElement('label');
+        var xbutton = document.createElement('INPUT');
+        xbutton.type = 'checkbox';
+        xbutton.name = "choice";
+        xbutton.label = this.choices[i];
+        label.appendChild(xbutton);
+        label.appendChild(document.createTextNode(this.choices[i]));
+        x.appendChild(label);
+        div.appendChild(x);
     }
-    selectList.appendChild(y);
-    myForm.appendChild(selectList);
-    x.appendChild(myForm);
-    div.appendChild(x);
 }
 
 

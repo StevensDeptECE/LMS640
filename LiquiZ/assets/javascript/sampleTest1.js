@@ -213,17 +213,16 @@ function load() {
 },
 
 {
-	id: "qc10001",
+	id: "qc1001",
 	title: "Addition",
 	comp: [
-		["Instr", "What is ", "1"],
-		["Eqn", "2+2", "2"],
-		["MCS", [3,4,5,6],"3"]
+		["Instr", "Which sport do you like?", "1"],
+		["MCS", ["basketball","football","volleyball","baseball"],"2"]
 	]
 },
 
 {
-	id: "qc1001",
+	id: "qc1002",
 	title: "Multiplication",
 	comp: [
 		["Instr", "What is ","1"],
@@ -233,7 +232,7 @@ function load() {
 },
 
 {
-	id: "qc1002",
+	id: "qc1003",
 	title: "Cloze",
 	comp: [
 		["Instr", "Complete the code below so it prints \"Hello\"","1"],
@@ -252,7 +251,7 @@ function load() {
 },
 
 {
-	id: "qc1003",
+	id: "qc1004",
 	title: "Code",
 	comp: [
 		["Instr", "Complete the code below so it prints \"Hello\"","1"],
@@ -261,7 +260,7 @@ function load() {
 },
 
 {
-	id: "qc1004",
+	id: "qc1005",
 	title: "Grid",
 	comp: [
 		["Instr", "Enter 1 through 5","1"],
@@ -270,7 +269,7 @@ function load() {
 },
 
 {
-	id: "qc1005",
+	id: "qc1006",
 	title: "Survey",
 	comp: [
 		["Instr", "Enter your honest opinions.  There are no right or wrong answers"],
@@ -284,7 +283,7 @@ function load() {
 },
 
 {
-	id: "qc1006",
+	id: "qc1007",
 	title: "Matrix",
 	comp: [
 		["Instr", "Enter any 3x3 matrix","1"],
@@ -293,7 +292,7 @@ function load() {
 },
 
 {
-    id: "qc1007",
+    id: "qc1008",
 	title: "Addition",
 	comp: [
 		["Instr", "What is ", "1"],
@@ -303,7 +302,7 @@ function load() {
 },
 
 {
-    id: "qc1008",
+    id: "qc1009",
 	title: "Drag and Drop",
 	comp: [
 		["Instr", "Locate the parts of the cat ",'1'],
