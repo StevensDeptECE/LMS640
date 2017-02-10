@@ -39,18 +39,65 @@
         if (this.readyState == 4 && this.status == 200) {
             var dis_num = 0;
             myObj = JSON.parse(this.responseText);
-            dis_num = myObj.results[0].geometry.bounds.northeast.lat;
+           	dis_num = myObj.discussion.dis_num;
             if(dis_num != 0){
-            document.getElementById("demo").innerHTML = myObj.results[0].address_components[1].long_name;
-          }
-            document.getElementById("dis-first").innerHTML = myObj.results[0].address_components[2].long_name;
-            if(document.getElementById("dis-third").innerHTML = myObj.results[0].address_components[0].long_name != NaN)
-            document.getElementById("dis-second").innerHTML = myObj.results[0].address_components[3].long_name;
-
+            	document.getElementById("demo").innerHTML = myObj.discussion.dis_num;
+          	var i="dis-third";
+            document.getElementById("dis-first").innerHTML = myObj.discussion.dis_list[0].topic;
+            document.getElementById("dis-second").innerHTML = myObj.discussion.dis_list[1].topic;
+            document.getElementById("dis-second").href=myObj.discussion.dis_list[1].link;
+            document.getElementById(i).innerHTML = myObj.discussion.dis_list[2].topic;
+            }
+        	document.getElementById("demo").innerHTML = myObj.discussion.dis_num;
+            
         }
     };
-    xmlhttp.open("GET", "http://maps.googleapis.com/maps/api/geocode/json?address=Hoboken", true);
+    xmlhttp.open("GET", "http://localhost:8080/discussionB/test01.json", true);
     xmlhttp.send();
+    
+    function pro_tp_create() {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function(){
+            var dis_num = 0;
+            var dis_href1;
+            var dis_tp_name;
+            var tab = document.getElementById("pro_tab");
+            var pro_tag_a;
+            var node;
+            if (this.readyState == 4 && this.status == 200) {
+
+                myObj = JSON.parse(this.responseText);
+               	dis_num = myObj.discussion.dis_num;
+               	for(i=0;i<dis_num;i++){
+               		dis_href = myObj.discussion.dis_list[i].link;
+               		dis_tp_name = myObj.discussion.dis_list[i].topic;
+               	
+            		pro_tag_a = document.createElement("a");
+            		node = document.createTextNode(dis_tp_name);
+            		pro_tag_a.appendChild(node);
+            		pro_tag_a.setAttribute("href", dis_href);
+            		if(i%2 != 0){
+                		pro_tag_a.setAttribute("class", "list-group-item");      			
+            		}else{
+                		pro_tag_a.setAttribute("class", "list-group-item active");           			
+            		}
+            		tab.appendChild(pro_tag_a);
+            	}
+               	
+            }
+
+
+                	
+
+            
+        };
+        
+            xmlhttp.open("GET", "http://localhost:8080/discussionB/test01.json", true);
+            xmlhttp.send();
+
+    
+        }
+
 
     function clickButton() {
       var xmlhttp = new XMLHttpRequest();
@@ -223,16 +270,16 @@
       <div class="tab-content">
         <div id="discussion" class="tab-pane fade in active">
             <div class="list-group">
-                <a id="dis-first" href="#" class="list-group-item active">First item</a>
-                <a id="dis-second" href="#" class="list-group-item">Second item</a>
-                <a id="dis-third" href="#" class="list-group-item active">Third item</a>
+                <a id="dis-first" href="" class="list-group-item active">First item</a>
+                <a id="dis-second" href="" class="list-group-item">Second item</a>
+                <a id="dis-third" href="" class="list-group-item active">Third item</a>
             </div>
           </div>
         <div id="project" class="tab-pane fade">
-          <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-text">First item</a>
-              <a href="#" class="list-group-item list-group-item-info">Second item</a>
-              <a href="#" class="list-group-item list-group-item-text">Third item</a>
+          <div id="pro_tab" class="list-group">
+          	<script>
+          		pro_tp_create();
+          	</script>
           </div>
         </div>
 

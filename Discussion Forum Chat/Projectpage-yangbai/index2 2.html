@@ -16,14 +16,31 @@
 
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
-
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+<script scr="./script.js">
+    
+        $.getJSON('Project.json', function(data){
+           var output="<li>";
+           for(var i in data.Pnames){
+            output+="<a>"+data.Pnames[i].Name+"</a>";
+           }
+           output+="</li>";
+            document.getElementById("CSP").innerHTML=output;
+            document.getElementById("info").innerHTML=data.Pnames[0].Info;
+          for(var i in data.Pnames){
+              document.getElementById("members").innerHTML=data.Pnames[0].members[i];
+          }
+           
+           
+           
+    });
+</script>
 </head>
 
 <body>
@@ -86,19 +103,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#CSP">CSP</a>
-                </li>
-                <li>
-                    <a href="#Homework">Homework</a>
-                </li>
-                <li>
-                    <a href="#Graph">Graph</a>
-                </li>
-                <li>
-                    <a href="#Discussion forum">Discussion forum</a>
-                </li>
-                <li>
-                    <a href="#Liquiz">Liquiz</a>
+                    <a id="CSP"></a>
                 </li>
             </ul>
         </div>
@@ -112,9 +117,9 @@
                        <h2>CSP</h2>
                        <div class="form-group">
                          <label for="comment">Info:</label>
-                         <textarea class="form-control" rows="5" id="comment"></textarea>
+                         <textarea class="form-control" rows="5" id="info"></textarea>
                          <label for="comment">Members:</label>
-                         <textarea class="form-control" rows="2" id="comment"></textarea>
+                         <textarea class="form-control" rows="2" id="members"></textarea>
                        </div>
 
         <!-- /#page-content-wrapper -->

@@ -18,6 +18,10 @@ function app(div, text) {
 	div.appendChild(document.createTextNode(text));
 }
 
+function app2(div, text) {
+	div.appendChild(document.createElement(text));
+}
+
 // make a div under the parent. This is a utility function for display
 // objects but not every display object necessarily creates a div
 Display.prototype.md = function(parent) {
@@ -94,6 +98,15 @@ Eqn.prototype.draw = function(div) {
 	app(div, this.s);
 }
 
+function Eqn2(s, id) {
+    this.id = id;
+    this.s = s;
+}
+
+Eqn2.prototype.draw = function(div) {
+    app2(div, this.s);
+}
+
 function QC(parent, json) {
 	this.id = json.id;
 	this.title = json.title;
@@ -122,6 +135,7 @@ function QC(parent, json) {
 		}
 		c += ')';		
 		//c = "new " + comp[0] + "(";  + comp[2] + "' , '" + comp[1] + "')"; //need to loop this for more than 3 elements in array?
+
 		console.log(c);
 		this.comp.push(eval(c));
 	}
@@ -175,9 +189,7 @@ Quiz.prototype.drawQuiz = function() {
 		console.log(this.questions[i].draw); //this is thinking to do quiz.draw??
 		this.questions[i].draw();
 	}
-
 }
-
 
 
 function load() {
@@ -196,30 +208,68 @@ function load() {
 	comp: [
 		["Instr", "What is ", "1"],
 		["Eqn", "2+2", "2"],
-        ["MC", [3,4,5,6],"7"]
+        ["MC", [3,4,5,6],"3"]
 	]
 },
+
 {
 	id: "qc1001",
-	title: "Multiplication",
+	title: "Addition",
 	comp: [
-		["Instr", "What is ","5"],
-		["Eqn", "3*4", "6"],
-		[ "Fillin", "q1000"]
+		["Instr", "Which sport do you like?", "1"],
+		["MCS", ["basketball","football","volleyball","baseball"],"2"]
 	]
 },
 
 {
 	id: "qc1002",
-	title: "Grid",
+	title: "Multiplication",
 	comp: [
-		["Instr", "Enter 1 through 5","5"],
-		[ "Grid", 5, "q1000"]
+		["Instr", "What is ","1"],
+		["Eqn", "3*4", "2"],
+		[ "Fillin", "3"]
 	]
 },
 
 {
-	id: "qc102",
+	id: "qc1003",
+	title: "Cloze",
+	comp: [
+		["Instr", "Complete the code below so it prints \"Hello\"","1"],
+        ["Eqn2", "br", "2"],
+		["Eqn", "public A {", "3"],
+        ["Eqn2", "br", "4"],
+		["Eqn", "void (String[] args) {", "5"],
+        ["Eqn2", "br", "6"],
+		["Eqn", "System.", "7"],
+        ["Fillin", "8"],
+        ["Eqn", "}", "9"],
+        ["Eqn2", "br", "10"],
+        ["Eqn", "}", "11"],
+        ["Eqn2", "br", "12"]
+	]
+},
+
+{
+	id: "qc1004",
+	title: "Code",
+	comp: [
+		["Instr", "Complete the code below so it prints \"Hello\"","1"],
+        ["Code", "public A {\\n  void (String[] args) {\\n  System.\\n  }\\n}\\n", "2"]
+	]
+},
+
+{
+	id: "qc1005",
+	title: "Grid",
+	comp: [
+		["Instr", "Enter 1 through 5","1"],
+		[ "Grid", 5, "2"]
+	]
+},
+
+{
+	id: "qc1006",
 	title: "Survey",
 	comp: [
 		["Instr", "Enter your honest opinions.  There are no right or wrong answers"],
@@ -233,32 +283,32 @@ function load() {
 },
 
 {
-	id: "qc1003",
+	id: "qc1007",
 	title: "Matrix",
 	comp: [
-		["Instr", "Enter any 3x3 matrix","5"],
-		[ "Matrix", 3,3, "q1000"]
+		["Instr", "Enter any 3x3 matrix","1"],
+		[ "Matrix", 3,3, "2"]
 	]
 },
 
-
 {
-    id: "qc1004",
+    id: "qc1008",
 	title: "Addition",
 	comp: [
 		["Instr", "What is ", "1"],
 		["Eqn", "2+2", "2"],
-		["MCDrop", [1,2,3,4], "7"]
+		["MCDrop", [1,2,3,4], "3"]
 	]
 },
+
 {
-    id: "qc1005",
+    id: "qc1009",
 	title: "Drag and Drop",
 	comp: [
-		["Instr", "Locate the parts of the cat ",'4'],
-		["Img", "cat.jpg","4"],
-		["dragDrop", [ {"Ear": {"left":215,"top":30}}, {"Eye": {"left":255,"top":120}},{"Nose":{"left":285,"top":160}},{"Tongue":{"left":285,"top":220}}], "7"]
+		["Instr", "Locate the parts of the cat ",'1'],
+		["dragDrop", "cat.jpg",["Ear","Eye","Nose","Tongue"], [ {"left":215,"top":30}, {"left":255,"top":120},{"left":285,"top":160},{"left":285,"top":220}], 7]
 	]
+
 },
 {
     id: "qc1006",
@@ -270,6 +320,7 @@ function load() {
 	]
 },
 	];
+
 	var json = {
   		title: "test",
  		class: "L-quiz",
