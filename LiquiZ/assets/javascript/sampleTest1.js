@@ -256,8 +256,7 @@ function load() {
 	title: "Drag and Drop",
 	comp: [
 		["Instr", "Locate the parts of the cat ",'4'],
-		["Img", "cat.jpg","4"],
-		["dragDrop", [ {"Ear": {"left":215,"top":30}}, {"Eye": {"left":255,"top":120}},{"Nose":{"left":285,"top":160}},{"Tongue":{"left":285,"top":220}}], "7"]
+		["dragDrop", "cat.jpg",["Ear","Eye","Nose","Tongue"], [ {"left":215,"top":30},  {"left":255,"top":120}], 7]
 	]
 },
 	];
