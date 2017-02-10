@@ -39,7 +39,7 @@ Display.prototype.disp = function(div) {
 
 
 function Prefs() {
-	
+
 }
 
 Prefs.prototype.getPolicy = function(json) {
@@ -47,7 +47,7 @@ Prefs.prototype.getPolicy = function(json) {
 }
 
 function Response() {
-	
+
 
 }
 
@@ -66,7 +66,7 @@ Prefs.prototype.getRegex = function(id) {
 var prefs = new Prefs();
 
 function Answer(id) {
-	
+
 }
 
 Util.subClass(Display, Answer);
@@ -118,7 +118,7 @@ function QC(parent, json) {
 	this.comp = [];
 	for (var i = 0; i < json.comp.length; ++i) {
 		var comp = json.comp[i];
-		var c = "new " + comp[0] + "("; 
+		var c = "new " + comp[0] + "(";
 		for(var j = 1;  j < comp.length; j++) {
 			var value = comp[j];
 			console.log(value);
@@ -130,10 +130,10 @@ function QC(parent, json) {
 			}
 			else
 				c += comp[j];
-			if(j != comp.length-1) 
+			if(j != comp.length-1)
 				c += ', ';
 		}
-		c += ')';		
+		c += ')';
 		//c = "new " + comp[0] + "(";  + comp[2] + "' , '" + comp[1] + "')"; //need to loop this for more than 3 elements in array?
 
 		console.log(c);
@@ -161,7 +161,7 @@ QC.prototype.draw = function() {  //need to pass in some kind of element to draw
 
 
 function Quiz(parent, json) {
-	
+
 	for (var k in json) {
 		this[k] = json[k];
 	}
@@ -179,7 +179,7 @@ Util.subClass(Display, Quiz);
 
 //add question container
 Quiz.prototype.add = function(qc) {
-	this.questions.push(qc);	
+	this.questions.push(qc);
 }
 
 Quiz.prototype.drawQuiz = function() {
@@ -195,12 +195,12 @@ Quiz.prototype.drawQuiz = function() {
 function load() {
 	var p = document.getElementById("content");
 	console.log(p);
-	
+
 	var test = [1,2,3,4];
 	console.log(typeof(test));
 	console.log(test);
-	
-	
+
+
 	var quest = [
 {
 	id: "qc1000",
@@ -309,6 +309,15 @@ function load() {
 		["dragDrop", "cat.jpg",["Ear","Eye","Nose","Tongue"], [ {"left":215,"top":30}, {"left":255,"top":120},{"left":285,"top":160},{"left":285,"top":220}], 7]
 	]
 }
+
+/*{
+  id: "qc1010",
+  tittle: "Match",
+  comp:[
+    ["Instr","Match the two sides",'1'],
+    ["MCDrop",/*[“animal”, “number”,food],*/[ice cream, dog, three], "2"]
+  ]
+}*/
     ];
 	var json = {
   		title: "test",
