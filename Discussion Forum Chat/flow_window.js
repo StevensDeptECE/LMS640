@@ -91,7 +91,7 @@ var Dialog = new Class({
     obj[2].innerHTML = this.Info;
     //obj[4].innerHTML = this.Content;
     obj[4].innerHTML =
-    " <div class=\"row\"> <div class=\"col-lg-6\"><div class=\"input-group\"><input type=\"text\" class=\"form-control\" placeholder=\"Search for...\"><span class=\"input-group-btn\"><button class=\"btn btn-default\" type=\"button\">Go!</button></span></div></div></div> ";
+    " <div class=\"row\"><div class=\"input-group-lg\"><div class=\"input-group\"><input type=\"text\" class=\"form-control\" placeholder=\"Please Input...\"><span class=\"input-group-btn\"><button class=\"btn btn-default\" type=\"button\">Send</button></span></div></div></div>";
     obj[1].appendChild(obj[2]);
     obj[1].appendChild(obj[3]);
     obj[0].appendChild(obj[1]);
