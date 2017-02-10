@@ -1,0 +1,20 @@
+<html>
+ <head>
+   <script type="text/javascript">
+    var intervalID = null;
+    function runjava()   
+      {   
+       s=new ActiveXObject("WScript.Shell");   
+       s.Run("c:/test.java",0,true);    //should have default dir
+      }  
+
+    function runcpp()   
+      {   
+       s=new ActiveXObject("WScript.Shell");   
+       s.Run("c:/test.cpp",0,true);    
+      }  
+
+ </head>
+ <body onload="runcommand()">
+ </body>
+</html>
