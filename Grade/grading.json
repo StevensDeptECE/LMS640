@@ -1,0 +1,15 @@
+{"CourseGrades":[
+{"Courseid":"50849377","Coursename":"Computer Engineering","Studentid":  "10413588","Studentname":"abc","Grades":"93","Semester":"2017 Spring"}
+],
+"AssignementGrades":[
+{"Courseid":"50849377","Coursename":"Computer Engineering","Studentid":  "10413588","Studentname":"abc","Assignmentid":"1234","Grades":"100","Weights":"10%","Average":"95","Date":"02/03/2017"}
+], 
+"Student":[
+{"Studentid":"10413588","Studentname":"abc","Studentemail":"abc@stevens.edu"}
+],             
+"Teacher":[
+{"Teacherid":"1234567","Teachername":"cba","Teacheremail":"cba@stevens.edu"}
+],             
+"Course":[
+{"Courseid":"50849377","Coursename":"Computer Engineering","Teacherid":"1234567","Teachername":"cba","Semester":"2017 Spring","start date":"01/18/2017","End date":"05/17/2017"}
+]}
