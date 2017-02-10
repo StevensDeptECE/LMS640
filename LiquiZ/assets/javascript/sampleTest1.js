@@ -260,6 +260,15 @@ function load() {
 		["dragDrop", [ {"Ear": {"left":215,"top":30}}, {"Eye": {"left":255,"top":120}},{"Nose":{"left":285,"top":160}},{"Tongue":{"left":285,"top":220}}], "7"]
 	]
 },
+{
+    id: "qc1006",
+	title: "Code Example",
+	comp: [
+        ["Instr","What does this code do?","77"],
+		["Code", "for(int i = 0 ; i<10 ; i++){/n}fdfd "],
+		
+	]
+},
 	];
 	var json = {
   		title: "test",
