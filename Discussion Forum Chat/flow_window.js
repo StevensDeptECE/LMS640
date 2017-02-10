@@ -1,4 +1,6 @@
-var win=false;
+
+
+var win = false;
 var z=1,i=1,left=10
 var isIE = (document.all) ? true : false;
 var $ = function (id) {
@@ -28,7 +30,10 @@ var CurrentStyle = function(element){
 }
 
 function create(elm,parent,fn){var element = document.createElement(elm);fn&&fn(element); parent&&parent.appendChild(element);return element};
-function addListener(element,e,fn){ element.addEventListener?element.addEventListener(e,fn,false):element.attachEvent("on" + e,fn)};
+function addListener(element,e,fn)
+{ 
+  element.addEventListener?element.addEventListener(e,fn,false):element.attachEvent("on" + e,fn)
+};
 function removeListener(element,e,fn){ element.removeEventListener?element.removeEventListener(e,fn,false):element.detachEvent("on" + e,fn)};
 var Class = function(properties){
   var _class = function(){return (arguments[0] !== null && this.initialize && typeof(this.initialize) == 'function') ? this.initialize.apply(this, arguments) : this;};
@@ -78,9 +83,15 @@ var Dialog = new Class({
 //create dialog
     var obj = ['dialogcontainter','dialogtitle','dialogtitleinfo','dialogtitleico','dialogbody','dialogbottom'];
     for(var i = 0;i<obj.length;i++)
-    { obj[i]=create('div',null,function(elm){elm.className = obj[i];}); }
+    { 
+      obj[i]=create('div',null,function(elm){ 
+                                                elm.className = obj[i]; 
+                                              }); 
+    } 
     obj[2].innerHTML = this.Info;
-    obj[4].innerHTML = this.Content;
+    //obj[4].innerHTML = this.Content;
+    obj[4].innerHTML =
+    " <div class=\"row\"> <div class=\"col-lg-6\"><div class=\"input-group\"><input type=\"text\" class=\"form-control\" placeholder=\"Search for...\"><span class=\"input-group-btn\"><button class=\"btn btn-default\" type=\"button\">Go!</button></span></div></div></div> ";
     obj[1].appendChild(obj[2]);
     obj[1].appendChild(obj[3]);
     obj[0].appendChild(obj[1]);
@@ -102,10 +113,12 @@ var Dialog = new Class({
     addListener(this._cancel,'mouseover',Bind(this,this.Changebg,[this._cancel,'0px 0px','-21px 0px']));
     addListener(this._cancel,'mouseout',Bind(this,this.Changebg,[this._cancel,'0px 0px','-21px 0px']));
     addListener(this._cancel,'mousedown',BindAsEventListener(this,this.Disappear));
+    //addListener('list-group-item','mousedown',BindAsEventListener(this,this.Disappear));
     addListener(this._body,'mousedown',BindAsEventListener(this, this.Cancelbubble));
     addListener(this._resize,'mousedown',BindAsEventListener(this, this.Start,false));
   },
   Disappear:function(e){
+    //alert(e);
     win=false;
     this.Cancelbubble(e);
     document.body.removeChild(this._dragobj);
@@ -161,17 +174,24 @@ var Dialog = new Class({
 })
 // new Dialog({Width:300,Height:300,Left:300,Top:300});
 // new Dialog({Info:"hello",Content:"i just want to talk with you"});
+var a;
  function creates(){
+
   if(!win)
   {
-    var a=new Dialog({Info:title="title"+i,Left:300+left,Top:300+left,Content:'content'+i,Zindex:(++Dialog.Zindex)});
-    //i++;
-    left +=10;
+    a = new Dialog({Info:title="title"+i,Left:300+left,Top:300+left,Content:'content'+i,Zindex:(++Dialog.Zindex)});
+    i++;left +=10;
     win=true;
+    //addListener(document.getElementById('hellotest'),'mousedown',BindAsEventListener(a,a.Disappear));
   }
   else
   {
     document.body.removeChild(a._dragobj);
+    //alert("hello");
     win=false;
+    i--;
+    
+    
+    
   }
  }
