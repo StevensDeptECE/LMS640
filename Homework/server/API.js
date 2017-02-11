@@ -4,12 +4,12 @@ function showJSON() {
             "assignmentId":"1244",
             "studentId": "2322",
             "fileType": "pde/java/cpp/html",
-            "dueDate":{
+            "dueDate":[{
                 "month": "Jan",
                 "day": "23th",
                 "year": "2089",
                 "time": "12:45:45"
-            }
+            }],
             
             "courseName":"CPE640",
             "url":"",
