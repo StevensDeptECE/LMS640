@@ -264,7 +264,7 @@ function load() {
                 "    }",
                 "}"
 			],
-			"1",
+			"1"
 		]
 	]
 },
@@ -337,7 +337,6 @@ function load() {
 		["Match",["animal","number","food"],["ice cream", "dog", "three"], "2" ]
 	]
 }
-
     ];
 	var json = {
   		title: "test",
