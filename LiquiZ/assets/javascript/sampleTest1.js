@@ -271,10 +271,10 @@ function load() {
 
 {
 	id: "qc1004",
-	title: "Code",
+	title: "Codes",
 	comp: [
 		["Instr", "Complete the code below so it prints \"Hello\"","1"],
-        ["Code", "public class A {\\n  public void main(String[] args) {\\n  System.\\n  }\\n}\\n", "2"]
+        ["Codes", "public class A {\\n  public void main(String[] args) {\\n  System.\\n  }\\n}\\n", "2"]
 	]
 },
 
