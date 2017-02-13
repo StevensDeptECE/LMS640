@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Discussion Board for beating CANVAS</title>
+
+    <!-- Bootstrap core CSS -->
+    <!--<link href="CSS/bootstrap.min.css" rel="stylesheet">-->
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="CSS/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="CSS/offcanvas.css" rel="stylesheet">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="dis_mainP.css">
+  	
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    
+    <script src="CSS/ie-emulation-modes-warning.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<script src="/disB.js"></script>-->
+    
+    <!--<script src="js/jquery.min.js"></script>*/
+    <script src="js/bootstrap.min.js"></script><!-->  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+	function div_cre(div_id, div_class, append_target){
+    	var cre_element = document.createElement("div");
+    	var target;
+		target = document.getElementById(append_target);
+    
+		cre_element.setAttribute("id", div_id);
+
+
+		cre_element.setAttribute("class", div_class);
+		target.appendChild(cre_element);
+
+	}
+	function ul_cre(ul_id, ul_class, append_target){
+    	var cre_element = document.createElement("ul");
+    	var target, node;
+
+		target = document.getElementById(append_target);
+
+
+		cre_element.setAttribute("id", ul_id);
+
+
+		cre_element.setAttribute("class", ul_class);
+
+
+
+		target.appendChild(cre_element);
+	}
+	function li_cre(li_id, li_class, append_target){
+    	var cre_element = document.createElement("li");
+    	var target;
+
+		target = document.getElementById(append_target);
+
+
+		cre_element.setAttribute("id", li_id);
+
+
+		cre_element.setAttribute("class", li_class);
+
+		target.appendChild(cre_element);
+	}
+	function a_cre(a_href, a_node, append_target){
+    	var cre_element = document.createElement("a");
+    	var target, node;
+
+
+		target = document.getElementById(append_target);
+
+
+		cre_element.setAttribute("id", "a_test");
+
+
+		cre_element.setAttribute("href", a_href);
+		node = document.createTextNode(a_node);
+		cre_element.appendChild(node);
+		
+
+		target.appendChild(cre_element);
+	}
+    <script>
+    function create_div_regular(div_id_tag, div_id, div_class_tag, div_class, div_event_tag, div_event_type, div_event, append_tag, append_target){
+    	var cre_element = document.createElement("div");
+    	var target;
+		target = document.getElementById(append_target);
+    
+		cre_element.setAttribute("id", div_id);
+
+
+		cre_element.setAttribute("class", div_class);
+		target.appendChild(cre_element);
+
+    }
+
+    function create_ul_regular(ul_id_tag, ul_id, ul_class_tag, ul_class, ul_event_tag, ul_event_type, ul_event, append_tag, append_target){
+    	var cre_element = document.createElement("ul");
+    	var target;
+
+		target = document.getElementById(append_target);
+
+
+		cre_element.setAttribute("id", ul_id);
+
+
+		cre_element.setAttribute("class", ul_class);
+
+
+
+		target.appendChild(cre_element);
+    }
+
+    function create_li_regular(li_id_tag, li_id, li_class_tag, li_class, li_event_tag, li_event_type, li_event, append_tag, append_target){
+    	var cre_element = document.createElement("li");
+    	var target;
+
+		target = document.getElementById(append_target);
+
+
+		cre_element.setAttribute("id", li_id);
+
+
+		cre_element.setAttribute("class", li_class);
+
+		target.appendChild(cre_element);
+    }
+
+    function create_a_regular(a_id_tag, a_id, a_href_tag, a_href, a_node_tag, a_node, append_tag, append_target){
+    	var cre_element = document.createElement("a");
+    	var target, node;
+
+
+		target = document.getElementById(append_target);
+
+
+		cre_element.setAttribute("id", "a_test");
+
+
+		cre_element.setAttribute("href", a_href);
+		node = document.createTextNode(a_node);
+		cre_element.appendChild(node);
+		
+
+		target.appendChild(cre_element);
+
+    	
+    }
+    </script>
+    </script>
+</head>
+<body id="main">
+	<script>
+	div_cre("nav","collapse navbar-collapse", "main");
+	ul_cre("ul_id","nav navbar-nav", "nav");
+	li_cre("li_id","active", "ul_id");
+	a_cre("test01.json", "Home", "li_id");
+	</script>
+
+</body>
+</html>

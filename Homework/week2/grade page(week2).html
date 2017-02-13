@@ -6,7 +6,8 @@
         </title>
         <link type="text/css" rel="stylesheet" href="grade%20page(week2).css">
         <input type = "file" id = "files" name = "file[]" multiple/>
-        <output id = "list"></output>
+        <output id = "list">
+        </output>
         <script>
             function handleFileSelect(evt){
                 var files = evt.target.files;
@@ -29,9 +30,40 @@
         </script>-->
         
        <!-- <div id="main"> -->
+        <script>
+                function run() {
+	               alert("run successfully");
+                }
+
+                function next() {
+	               $.ajax(
+			         {
+				            url: `http://localhost:3000/code/test${++curFileNum}.java`,
+				            data: {
+					           format: 'text'
+				            },
+				            error: function(err) {
+					// $('#info').html('<p>An error has occurred</p>');
+					           console.log(err);
+				            },
+				            success: function(data) {
+					           $('#code').text(data);
+				            },
+				            type: 'GET'
+			         }
+		          )
+	           if (curFileNum == maxFileNum) {
+		          curFileNum = 0;
+	           }
+            }
+
+        </script>
             <div id="left">
                 <h1>HOMEWORKTITLE/PAGES</h1>
-                <div class = "textarea">    <textarea class = "code" rows = "30" cols = "100" align ="center"></textarea></div>
+                <div class = "textarea">    
+                    <textarea class = "code" rows = "30" cols = "100" align ="center">
+                    </textarea>
+                </div>
                 
                <!-- <div class = "row"> 
                     <div class = "col-sm-4"><button type = "button">Compile</button></div>
@@ -41,18 +73,37 @@
                 </div>
                 why this not work??-->
                 <div class = "buttons">
-                    <ul><li><button type = "button">Compile</button></li>
-                        <li><button type = "button">Run</button></li>
-                        <li><button type = "button">Next</button></li>
+                    <ul>
+                        <li><button type = "button">Compile
+                        </button>
+                        </li>
+                        <li><button type = "button">Run
+                            </button>
+                        </li>
+                        <li><button type = "button">Next
+                            </button>
+                        </li>
                     </ul>
                 </div>
                 
             </div>
             <div id="right">
                 <h3>        Concole</h3>
-                <div class = "textarea"><textarea class = "concole" rows ="15" cols = "100"></textarea></div>
+                <div class = "textarea">
+                    <textarea class = "concole" rows ="15" cols = "100">
+                    </textarea>
+                </div>
                 <div class = "buttons">
-                    <ul><li><textarea rows = "1" cols = "3">100</textarea></li><li><button type = "button">Enter</button></li></ul>
+                    <ul>
+                        <li>
+                            <textarea rows = "1" cols = "3">100
+                            </textarea>
+                        </li>
+                        <li>
+                            <button type = "button">Enter
+                            </button>
+                        </li>
+                    </ul>
                 </div>
             </div>
        <!-- </div>-->

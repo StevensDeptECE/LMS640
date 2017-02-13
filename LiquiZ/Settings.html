@@ -31,11 +31,23 @@
 					<div class="qc">
                         <h2>Visual Preferences</h2>
                         <p>Do you prefer the light or dark theme? </p>
-                        <label class="sett"><input type="Radio" name="choice">Light</label>
-                        <label><input type="Radio" name="choice">Dark</label>
+                        
+                        <input type="Radio" name="choice"><label>Light</label>
+                        <input type="Radio" name="choice"><label>Dark</label>
                     </div>
 					<div class="qc">
-                        <h2>Question Preferences</h2>
+                        <h2>Quiz Defaults</h2>
+                        <p>Number of tries</p>
+                        <select>
+                          <option value="Unlimited">Unlimited</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="5">5</option>
+                        </select>                        
+                        <p>Time length</p>
+                        <input type="text" name="timeLength" value="10">
+                        <label>mins</label>
                     </div>
 					
 					

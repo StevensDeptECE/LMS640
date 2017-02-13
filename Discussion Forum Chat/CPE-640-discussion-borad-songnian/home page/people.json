@@ -1,0 +1,36 @@
+{
+   "project": [
+       {
+           "projectName": "Home work",
+           "projectInfo": "Homw work did not display right",
+           "project_start_time": "2017-02-01",
+           "project_end_time": "2017-05-31",
+           "projectId":1,
+           "projectMemberInfo":["Josh","Emma"],
+           "FileId":1
+           
+       },
+       {
+           "projectName": "Chat",
+           "projectInfo": "Wayne",
+           "project_start_time": "2017-02-01",
+           "project_end_time": "2017-05-31",
+           "projectMemberInfo":["Songnian Yin"]
+       },
+       {
+           "projectName": "Liquiz",
+           "projectInfo": "They did not finsished their work",
+           "project_start_time": "2017-02-01",
+           "project_end_time": "2017-05-31",
+           "projectMemberInfo":["Dov"]
+       },
+       {
+           "projectName": "Liquiz",
+           "projectInfo": "They did not finsished their work",
+           "project_start_time": "2017-02-01",
+           "project_end_time": "2017-05-31",
+           "projectMemberInfo":["Dov"]
+       }
+   ]
+    
+}

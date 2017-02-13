@@ -1,0 +1,92 @@
+  "student":[
+  	{
+  		"name":["name_first":"Barack","name_last":"Obama"], 
+  		"stu_id":"000", "status":"true", 
+  		"icon_link":"icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico", 
+  		"chat_link":"#"
+  	
+  	},
+  	  	{
+  		"name":["name_first":"Donald","name_last":"Trump"], 
+  		"stu_id":"001", "status":"true", 
+  		"icon_link":"icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico", 
+  		"chat_link":"#"
+  	
+  	},
+  	  	{
+  		"name":["name_first":"Justin","name_last":"Bieber"], 
+  		"stu_id":"002", "status":"true", 
+  		"icon_link":"icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico", 
+  		"chat_link":"#"
+  	
+  	},
+  	  	{
+  		"name":["name_first":"Kim","name_last":"Kardashian"], 
+  		"stu_id":"003", "status":"true", 
+  		"icon_link":"icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico", 
+  		"chat_link":"#"
+  	
+  	},
+  	  	{
+  		"name":["name_first":"Oprah","name_last":"Winfrey"], 
+  		"stu_id":"004", "status":"true", 
+  		"icon_link":"icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico", 
+  		"chat_link":"#"
+  	
+  	},
+  	  	{
+  		"name":["name_first":"Cristiano","name_last":"Ronaldo"], 
+  		"stu_id":"005", "status":"true", 
+  		"icon_link":"icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico", 
+  		"chat_link":"#"
+  	
+  	},
+  	  	{
+  		"name":["name_first":"Taylor","name_last":"Swift"], 
+  		"stu_id":"006", "status":"true", 
+  		"icon_link":"icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico", 
+  		"chat_link":"#"
+  	
+  	},
+  	  	{
+  		"name":["name_first":"Elvis","name_last":"Presley"], 
+  		"stu_id":"007", "status":"true", 
+  		"icon_link":"icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico", 
+  		"chat_link":"#"
+  	
+  	},
+  	  	{
+  		"name":["name_first":"Tiger","name_last":"Woods"], 
+  		"stu_id":"008", "status":"true", 
+  		"icon_link":"icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico", 
+  		"chat_link":"#"
+  	
+  	},
+  	  	{
+  		"name":["name_first":"Abraham","name_last":"Lincoln"], 
+  		"stu_id":"009", "status":"true", 
+  		"icon_link":"icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico", 
+  		"chat_link":"#"
+  	
+  	},
+  	  	{
+  		"name":["name_first":"James","name_last":"Bond"], 
+  		"stu_id":"010", "status":"true", 
+  		"icon_link":"icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico", 
+  		"chat_link":"#"
+  	
+  	},
+  	  	{
+  		"name":["name_first":"Jack","name_last":"Bauer"], 
+  		"stu_id":"011", "status":"true", 
+  		"icon_link":"icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico", 
+  		"chat_link":"#"
+  	
+  	},
+  		{
+  	  	"name":["name_first":"Jason","name_last":"Bourne"], 
+  		"stu_id":"012", "status":"true", 
+  		"icon_link":"icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico", 
+  		"chat_link":"#" 	
+  	}
+  ]
