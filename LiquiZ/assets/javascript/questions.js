@@ -22,6 +22,7 @@ MC.prototype.draw = function(div) {
 	}
 }
 
+//Multiple Choice which need select all that apply
 function MCS(choices, id) {
     this.id = id;
     this.choices = choices;
@@ -31,11 +32,10 @@ function MCS(choices, id) {
 MCS.prototype.draw = function(div) {
     for (var i = 0; i < this.choices.length; i++) {
         var x = document.createElement('div');
-        var label = document.createElement('label');
         var xbutton = document.createElement('INPUT');
         xbutton.type = 'checkbox';
         xbutton.name = "choice";
-        xbutton.label = this.choices[i];
+        var label = document.createElement('label');
         label.appendChild(xbutton);
         label.appendChild(document.createTextNode(this.choices[i]));
         x.appendChild(label);
@@ -64,6 +64,33 @@ MCDrop.prototype.draw = function(div) {
     x.appendChild(selectList);
     div.appendChild(x);
 }
+
+function Match(types,choices, id) {
+    this.id = id;
+    this.types=types;
+    this.choices = choices;
+    this.responses = [];
+}
+
+Match.prototype.draw = function(div) {
+    for (var j=0;j<this.types.length;j++){
+        var x = document.createElement('div');
+        var selectList = document.createElement("select");
+        for (var i = 0; i < this.choices.length; i++) {
+            var option = document.createElement('option');
+            option.value = this.choices[i];
+            option.text = this.choices[i];
+            selectList.appendChild(option);
+        }
+        var label = document.createElement('label');
+        label.appendChild(document.createTextNode(this.types[j]));
+        x.appendChild(label);
+        x.appendChild(selectList);
+
+        div.appendChild(x);
+    }
+}
+
 
 function Matrix(rows, cols, id) {
 	this.id = id;
@@ -144,6 +171,30 @@ Code.prototype.draw = function(div) {
     div.appendChild(inp);
 }
 
+function Cloze(text,id) { //parent) {
+    this.id = id;
+    this.text = text;
+    //pattern for regex
+}
+
+Cloze.prototype.draw = function(div) {
+    for(var j = 0; j < this.text.length; j++) {
+        var termBox = document.createElement('div');
+        console.log(this.text);
+        termBox.className = "SurveyContainer";
+        if (this.text[j] !== "[]") {
+        	this.text[j] = this.text[j].replace(" ","\u00a0\u00a0");
+            termBox.appendChild(document.createTextNode(this.text[j]));
+        } else {
+            var inp = document.createElement("input");
+            inp.type = "text";
+            inp.style.textAlign = 'center';
+            div.appendChild(inp);
+		}
+        div.appendChild(termBox);
+    }
+}
+
 function Survey(id, choices, terms) {
 	this.id = id;
 	this.terms = terms;
@@ -162,7 +213,7 @@ function Survey(id, choices, terms) {
 Survey.prototype.draw = function(div) {
 	for(var j = 0; j < this.terms.length; j++) {
 		var termBox = document.createElement('div');
-		//console.log(this.terms);
+		console.log(this.terms);
         termBox.className = "SurveyContainer";
 		termBox.appendChild(document.createTextNode(this.terms[j]));
         var surveyChoiceList = document.createElement('div');
@@ -178,13 +229,12 @@ Survey.prototype.draw = function(div) {
 			label.appendChild(xbutton);
 			label.appendChild(document.createTextNode(this.choices[i]));
 			x.appendChild(label);
-			x.style.display = "inline-block";
+			//x.style.display = "inline-block";
 			surveyChoiceList.appendChild(x);
 		}
         termBox.appendChild(surveyChoiceList);
 		div.appendChild(termBox);
 	}
-	
 }
 
 function Likert5(questions, id) {

@@ -231,22 +231,41 @@ function load() {
 	]
 },
 
+// {
+// 	id: "qc1003",
+// 	title: "Cloze",
+// 	comp: [
+// 		["Instr", "Complete the code below so it prints \"Hello\"","1"],
+//         ["Eqn2", "br", "2"],
+// 		["Eqn", "public A {", "3"],
+//         ["Eqn2", "br", "4"],
+// 		["Eqn", "void (String[] args) {", "5"],
+//         ["Eqn2", "br", "6"],
+// 		["Eqn", "System.", "7"],
+//         ["Fillin", "8"],
+//         ["Eqn", "}", "9"],
+//         ["Eqn2", "br", "10"],
+//         ["Eqn", "}", "11"],
+//         ["Eqn2", "br", "12"]
+// 	]
+// },
+
 {
 	id: "qc1003",
 	title: "Cloze",
 	comp: [
-		["Instr", "Complete the code below so it prints \"Hello\"","1"],
-        ["Eqn2", "br", "2"],
-		["Eqn", "public A {", "3"],
-        ["Eqn2", "br", "4"],
-		["Eqn", "void (String[] args) {", "5"],
-        ["Eqn2", "br", "6"],
-		["Eqn", "System.", "7"],
-        ["Fillin", "8"],
-        ["Eqn", "}", "9"],
-        ["Eqn2", "br", "10"],
-        ["Eqn", "}", "11"],
-        ["Eqn2", "br", "12"]
+        ["Instr", "Complete the code below so it prints \"Hello\"","1"],
+		["Cloze",
+			[
+                "public class A {",
+                "    public static void main(String[] args) {",
+				"    System.",
+				"[]",
+                "    }",
+                "}"
+			],
+			"1",
+		]
 	]
 },
 
@@ -255,7 +274,7 @@ function load() {
 	title: "Code",
 	comp: [
 		["Instr", "Complete the code below so it prints \"Hello\"","1"],
-        ["Code", "public A {\\n  void (String[] args) {\\n  System.\\n  }\\n}\\n", "2"]
+        ["Code", "public class A {\\n  public void main(String[] args) {\\n  System.\\n  }\\n}\\n", "2"]
 	]
 },
 
@@ -273,7 +292,7 @@ function load() {
 	title: "Survey",
 	comp: [
 		["Instr", "Enter your honest opinions.  There are no right or wrong answers"],
-		["Survey", "q104", "Likert5", [
+		["Survey", "1", "Likert5", [
 			"I like Chinese food",
 			"I like Korean food",
 			"I like Indian food",
@@ -308,7 +327,17 @@ function load() {
 		["Instr", "Locate the parts of the cat ",'1'],
 		["dragDrop", "cat.jpg",["Ear","Eye","Nose","Tongue"], [ {"left":215,"top":30}, {"left":255,"top":120},{"left":285,"top":160},{"left":285,"top":220}], 7]
 	]
+},
+
+{
+	id: "qc1010",
+	title: "Match",
+	comp: [
+		["Instr", "Match the types", "1"],
+		["Match",["animal","number","food"],["ice cream", "dog", "three"], "2" ]
+	]
 }
+
     ];
 	var json = {
   		title: "test",
