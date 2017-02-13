@@ -1,6 +1,3 @@
-/**
- * Created by yucheng on 2/13/17.
- */
 
 //Multiple Choice which need select all that apply
 function MCS(choices, id) {
