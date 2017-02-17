@@ -214,7 +214,7 @@ function load() {
 
 {
 	id: "qc1001",
-	title: "Addition",
+	title: "Multiple Choices",
 	comp: [
 		["Instr", "Which sport do you like?", "1"],
 		["MCS", ["basketball","football","volleyball","baseball"],"2"]
@@ -257,13 +257,20 @@ function load() {
         ["Instr", "Complete the code below so it prints \"Hello\"","1"],
 		["Cloze",
 			[
-                "public class A {",
-                "    public static void main(String[] args) {",
-				"    System.",
+                // "public class A {",
+                // "    public static",
+                // "[]",
+                // "  main(String[] args) {",
+                // "    System.",
+                // "[]",
+                // "    }",
+                // "}"
+				"(3 +",
 				"[]",
-                "    }",
-                "}"
-			],
+				") * 2 =",
+				"[]",
+				"* 6"
+            ],
 			"1"
 		]
 	]
