@@ -257,19 +257,19 @@ function load() {
         ["Instr", "Complete the code below so it prints \"Hello\"","1"],
 		["Cloze",
 			[
-                // "public class A {",
-                // "    public static",
+                "public class A {",
+                "    public static",
+                "[]",
+                "  main(String[] args) {",
+                "    System.",
+                "[]",
+                "    }",
+                "}"
+                // "(3 +",
                 // "[]",
-                // "  main(String[] args) {",
-                // "    System.",
+                // ") * 2 =",
                 // "[]",
-                // "    }",
-                // "}"
-				"(3 +",
-				"[]",
-				") * 2 =",
-				"[]",
-				"* 6"
+                // "* 6"
             ],
 			"1"
 		]
