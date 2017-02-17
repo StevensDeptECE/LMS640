@@ -2,27 +2,10 @@
 <html>
 	<head>
 		<script src="assets/javascript/jquery.js"></script>
-		<script>
-			var target = document.getElementById("11");
-			function findPos(obj){
-				var curleft = 0;
-				var curtop = 0;
-
-				if (obj.offsetParent) {
-					do {
-        				curleft += obj.offsetLeft;
-        				curtop += obj.offsetTop;
-       					} while (obj = obj.offsetParent);
-					console.log({X:curleft,Y:curtop});
-    				return {X:curleft,Y:curtop};
-				}
-			}
-			function getTop(e){
-    			var offset=e.offsetTop;
-    			if(e.offsetParent!=null) offset+=getTop(e.offsetParent);
-				console.log(offset);
-    			return offset;
-			}
+		<script type="text/javascript">
+			var x1=10;
+			var y1=10;
+			var left=0;
 		</script>	
 	</head>
 	
@@ -30,19 +13,36 @@
 		<div>
 			<div style="position:relative;">
 				<div id="mid" style="background-color:yellow; position:relative; width:150px; float:left">
-					<svg style="background-color:pink"></svg>
+					<canvas id="myCanvas" style="background-color:pink"></canvas>
 				</div>
-				<div id="left" style="background-color:blue; position:relative; width:50px; margin-left:-150px; float:left ">
-					<input type="button" onclick="" value="A">
-					<input type="button" onclick="" value="A"><br>
-					<input type="button" onclick="" value="A"><br>
+				<div id="left" style=" position:relative; width:50px; margin-top:10px; margin-left:-150px; float:left ">
+					<input type="button" onclick="drawLine(1,0)" value="A">
+					<input type="button" onclick="drawLine(2,0)" value="A"><br>
+					<input type="button" onclick="drawLine(3,0)" value="A"><br>
 				</div>
-				<div id="right" style="background-color:red; position:relative; width:50px;  float:left">
-					<input type="button" onclick="" value="A">
-					<input type="button" onclick="" value="A"><br>
-					<input type="button" onclick="" value="A"><br>
+				<div id="right" style=" position:relative; width:50px; margin-top:10px;  float:left">
+					<input type="button" onclick="drawLine(1,1)" value="A">
+					<input type="button" onclick="drawLine(2,1)" value="A"><br>
+					<input type="button" onclick="drawLine(3,1)" value="A"><br>
 				</div>
 			</div>
 		</div>
+		<script>
+		var c = document.getElementById("myCanvas");
+			var ctx = c.getContext("2d");
+			function drawLine(num,pos){
+				if(pos == 0){
+					left = 1;
+					x1=10;
+					y1=20*num;
+				}
+				if(left == 1 && pos==1){
+					ctx.moveTo(x1,y1);
+					ctx.lineTo(150,20*num);
+					ctx.stroke();
+					left=0;
+				}
+			}
+		</script>
 	</body>
 </html>
