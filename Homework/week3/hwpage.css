@@ -10,7 +10,7 @@ html, body{
     float:left;
     width:50%;
     height:100%;
-    background-color:antiquewhite;
+    background-color:#F0F8FF;
 }
 #left h1{
     
@@ -24,6 +24,9 @@ html, body{
     width:20px;
     text-align: center;
     table-layout: fixed;
+    border-radius: 4px;
+    background-color: #e7e7e7;
+    border: 2px solid #555555;
 }
 .button ul{
       height: 30px;
@@ -34,7 +37,7 @@ html, body{
     float:right;
     width:50%;
     height:100%;
-    background-color:beige;
+    background-color:#FFEBCD;
 }
 .code{
     height:80%;
@@ -52,4 +55,11 @@ html, body{
 }
 .buttons{
     text-align: center;
+}
+
+.dropdown{
+    display: inline;
+    text-align: center;
+    margin-left: 275px;
+    position:relative;
 }

@@ -13,3 +13,15 @@ function Eqn(s, id) {
 Eqn.prototype.draw = function(div) {
 	app(div, this.s);
 }
+
+function Code(s) {
+	this.p = document.createElement("p");
+    this.p.className= "Code";
+	this.s = s;
+}
+
+Code.prototype.draw = function(div) {
+
+    this.p.appendChild(document.createTextNode(this.s));
+    div.appendChild(this.p);
+}
