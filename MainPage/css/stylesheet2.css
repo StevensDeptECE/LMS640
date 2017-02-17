@@ -146,3 +146,11 @@ div img {
 
 /* Table class for grades */
 /* TODO */
+.gradestable {
+  margin-top: 20px;
+  border: 1px solid black;
+}
+
+.grades {
+  font-family: Arial sanserif;
+}
