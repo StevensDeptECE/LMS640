@@ -237,3 +237,25 @@ a.two:visited {color:grey;}
 a.two:hover {color:green;}
 a.two:active {color:yellow;}
 /*---------------------------*/
+
+.currentUser {
+    background-color: gray;
+    float: right;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 1px 1px 1px #888888;
+}
+
+p {
+    font-size: 14px;
+    
+}
+
+h2{
+    padding-top: 0px;
+    margin-top: 0px;
+}
+label{
+    font-size: 14px;
+    padding-left: 5px;
+}
