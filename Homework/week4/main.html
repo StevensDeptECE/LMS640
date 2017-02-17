@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        Assignment Grade
+        </title>
+        <link type="text/css" rel="stylesheet" href="main.css">
+        <input type = "file" id = "files" name = "file[]" multiple/>
+        <output id = "list"></output>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    </head>
+    
+    <body>
+        <div id="left">
+            <h1>HOMEWORKTITLE/PAGES</h1>
+            <div class = "textarea">
+                <textarea  id = "code" rows = "30" cols = "100" align ="center">
+                
+                </textarea>
+            </div>
+            <div class = "buttons">
+                <ul>
+                    <li><button id = "demo" type = "button" onclick = "compile()">Compile</button></li>
+                    <li><button type = "button" onclick="next()">Next</button></li>
+                    <li><button type="button" onclick="run()">run</button>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        <div id="right">
+            <h3>Concole</h3>
+            <div class = "textarea">
+                <textarea id = "console" rows ="15" cols = "100">            
+                </textarea>
+            </div>
+            <div class = "buttons">
+                <ul>
+                    <li><textarea rows = "1" cols = "3">100</textarea></li>
+                    <li><button type = "button">Enter</button></li>
+                </ul>
+            </div>
+        </div>
+        
+    </body>
+    <script src="app.js" type="text/javascript" ></script>
+</html>
