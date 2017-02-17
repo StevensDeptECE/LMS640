@@ -29,3 +29,5 @@ function drawAttempt() {
 	}
 	table.append("</table>");
 }
+
+//function drawPolicy(){}

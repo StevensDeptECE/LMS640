@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="assets/javascript/jquery.js"></script>
+		<script>
+			var target = document.getElementById("11");
+			function findPos(obj){
+				var curleft = 0;
+				var curtop = 0;
+
+				if (obj.offsetParent) {
+					do {
+        				curleft += obj.offsetLeft;
+        				curtop += obj.offsetTop;
+       					} while (obj = obj.offsetParent);
+					console.log({X:curleft,Y:curtop});
+    				return {X:curleft,Y:curtop};
+				}
+			}
+			function getTop(e){
+    			var offset=e.offsetTop;
+    			if(e.offsetParent!=null) offset+=getTop(e.offsetParent);
+    			return offset;
+			}
+		</script>	
+	</head>
+	
+	<body>
+		<div>
+			<div style="position:relative;">
+				<div id="left" style="background-color:blue; position:relative; width:50px; "><input type="button" onclick="" value="A"></div>
+				<div id="mid" style="background-color:yellow; position:relative; width:150px; margin-left:50;"><input type="button" onclick="" value="A"></div>
+				<div id="right" style="background-color:blue; position:relative; width:50px"><input type="button" onclick="" value="A"></div>
+				<input type="button" id="111" onclick="getTop(target)" value="A">
+				<input type="button" onclick="" value="A"><br>
+				<input type="button" onclick="" value="A">
+				<input type="button" onclick="" value="A"><br>
+				<input type="button" onclick="" value="A">
+				<input type="button" onclick="" value="A"><br>	
+			</div>
+		</div>
+	</body>
+</html>
