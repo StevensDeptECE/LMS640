@@ -5,7 +5,7 @@ function Match(types,choices, id) {
     this.responses = [];
 }
 
-Match.prototype.draw = function(div) {
+Match.prototype.draw = function(div) {  
     for (var j=0;j<this.types.length;j++){
         var x = document.createElement('div');
         var selectList = document.createElement("select");
