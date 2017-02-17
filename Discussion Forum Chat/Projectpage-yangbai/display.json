@@ -1,5 +1,5 @@
 
-	var project={"projects":
+{"projects":
 		[
 		{
 			"name": "CSP",
@@ -10,7 +10,7 @@
 			"endtime": "",
 			"filename": ["file1","file2"],
 			"fileuploadtime": ["",""]
-		}
+		},
 		{
 			"name": "Homework",
 			"Info": "This is Info",
@@ -20,7 +20,7 @@
 			"endtime": "",
 			"filename": ["file1","file2"],
 			"fileuploadtime": ["",""]
-		}
+		},
 		{
 			"name": "Graph",
 			"Info": "This is Info",
@@ -30,7 +30,7 @@
 			"endtime": "",
 			"filename": ["file1","file2"],
 			"fileuploadtime": ["",""]
-		}
+		},
 		{
 			"name": "Discussion forum",
 			"Info": "This is Info",
@@ -44,14 +44,14 @@
 	]
 
 		    }
-var createnewproject={"newproject":
+{"newproject":
 		      [
 			  { "name": "Liquiz",
                             "Info": "This is Info",
 			    "projectID":"05"}
 		      ]
 		     }
-var sendfile={"file":
+{"file":
 	      [
 		  {"projectID": "04",
                    "uploadtime": "",

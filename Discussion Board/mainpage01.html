@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Discussion Board for beating CANVAS</title>
+
+    <!-- Bootstrap core CSS -->
+    <!--<link href="CSS/bootstrap.min.css" rel="stylesheet">-->
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="CSS/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="CSS/offcanvas.css" rel="stylesheet">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="dis_mainP.css">
+  	
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    
+    <script src="CSS/ie-emulation-modes-warning.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="disB.js"></script>
+    
+    <!--<script src="js/jquery.min.js"></script>*/
+    <script src="js/bootstrap.min.js"></script><!-->  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+	<script>
+//--------------------------------- the following is nav-bar---------------------------------------------------
+		create_div_regular(true, "fade1", true, "black_overlay", false, null, null, "body");
+		create_nav_regular(true, "nav_bar_start", true, "navbar navbar-fixed-top navbar-inverse", "body");
+			create_div_regular(true, "fade1", true, "black_overlay", false, null, null, "nav_bar_start");
+			create_div_regular(true, "nav_bar_container", true, "container", false, null, null,"nav_bar_start");
+		
+				create_div_regular(true, "nav_bar_header", true, "navbar-header", false, null, null,"nav_bar_container");
+					create_btn_N(true, "header_btn", true, "navbar-toggle collapsed",  true, "button", true, "collapse", true, "#navbar", true, "false", true, "navbar", false, null,
+								 "nav_bar_header");
+						create_span_N(false, null, true, "sr-only", true, "Toggle navigation", "header_btn");
+						create_span_N(false, null, true, "icon-bar", false, null, "header_btn");
+						create_span_N(false, null, true, "icon-bar", false, null, "header_btn");
+						create_span_N(false, null, true, "icon-bar", false, null, "header_btn");
+					create_a_regular(false, null, true, "navbar-brand", false, null, false, null, false, null, false, null, true, "#", true, "CPE640",
+									 0, null, "nav_bar_header");
+				create_div_regular(true, "nav_bar_navbar", true, "collapse navbar-collapse", false, null, null,"nav_bar_container");
+					
+					create_ul_regular(true, "nav_ul", true, "nav navbar-nav", false, null, null,"nav_bar_navbar");
+						create_li_regular(true, "nav_ul_li_1", true, "active", false, null, null, "nav_ul");
+							create_a_regular(false, null, false, null, false, null, false, null, false, null, false, null, true, "test01.json", 
+											 true, "Home", 0, null, "nav_ul_li_1");
+						create_li_regular(true, "nav_ul_li_2", true, "dropdown", false, null, null, "nav_ul");
+							create_a_regular(true, "nav_ul_li_2_a1", true, "dropdown-toggle", true, "dropdown", true, "button", true, "true", true, "false", 
+											 true, "#", true, "Discussion ", 0, null, "nav_ul_li_2");
+								create_span_N(false, null, true, "caret", false, null, "nav_ul_li_2_a1");
+							create_ul_regular(true, "li_2_ul_1", true, "dropdown-menu", false, null, null, "nav_ul_li_2");
+								create_li_regular(true, "ul_1_li", false, null, false, null, null, "li_2_ul_1");
+									create_a_regular(false, null, false, null, false, null, false, null, false, null, false, null, true, "test01.json",
+													 true, "Create Discussion", 0, null, "ul_1_li");
+						create_li_regular(true, "nav_ul_li_3", true, "dropdown", false, null, null, "nav_ul");
+							create_a_regular(true, "nav_ul_li_2_a2", true, "dropdown-toggle", true, "dropdown", true, "button", true, "true", true, "false", 
+											true, "#", true, "Project ", 0, null, "nav_ul_li_3");
+								create_span_N(false, null, true, "caret", false, null, "nav_ul_li_2_a2");
+							create_ul_regular(true, "li_2_ul_2", true, "dropdown-menu", false, null, null, "nav_ul_li_3");
+								create_li_regular(true, "ul_2_li", false, null, false, null, null, "li_2_ul_2");
+									create_a_regular(false, null, false, null, false, null, false, null, false, null, false, null, true, "test01.json",
+													 true, "Create Project", 0, null, "ul_2_li");
+					create_ul_regular(true, "login_ul_1", true, "nav navbar-nav navbar-right", false, null, null,"nav_bar_navbar");
+						create_li_regular(true, "login_li_1", false, null, false, null, null, "login_ul_1");
+						create_a_regular(true, "login_a_1", false, null, false, null, false, null, false, null, false, null, true, "javascript:void(0)", 
+										 true, "Login ", 0, null, "login_li_1");
+							create_span_N(false, null, true, "glyphicon glyphicon-log-in", false, null, "login_a_1");
+						
+	</script>
+
+</body>
+</html>

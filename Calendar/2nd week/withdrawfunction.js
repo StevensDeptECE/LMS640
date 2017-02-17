@@ -130,6 +130,7 @@ function show(customDate) {
     dateString += "<tr>" + row + returnRow;
     dateString += "</table>";
 
+    var draw= document.createElement("calendarContainer");
     var calendarContainer = document.getElementById("calendarContainer");
     calendarContainer.innerHTML = dateString;
 }
@@ -229,9 +230,9 @@ function fillDate(){
     display.innerHTML = getTempDate().toLocaleDateString();
 }
 
-function launchCalendar(name,payload){
+/*function launchCalendar(name,payload){
   console.log("launchCalendar");
   var x=new calendar(payload); // TODO calendar constructor
   var c= document.getElementById("content");
   x.draw(c);
-}
+}*/

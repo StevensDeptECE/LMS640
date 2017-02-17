@@ -131,3 +131,32 @@ div.header {
 .submitquiz {
     font-size: medium;
 }
+
+p.Code {
+    font-family: "courier";
+    color: lawngreen;
+    background: black;
+    font-size: 16px;
+    padding: 20px;
+}
+.currentUser {
+    background-color: gray;
+    float: right;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 1px 1px 1px #888888;
+}
+
+p {
+    font-size: 14px;
+    
+}
+
+h2{
+    padding-top: 0 px;
+    margin-top: 0px;
+}
+label{
+    font-size: 14px;
+    padding-left: 5px;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head> 
+<title>
+    Assignment
+</title>
+	<link type="text/css" rel="stylesheet" href="hwpage.css">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div id="left">
+            <h1>Assignment</h1>
+            <br/>
+            <div class="dropdown">
+    			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Files
+    			<span class="caret"></span></button>
+    			<ul class="dropdown-menu">
+      			<li><a href="#">A.java</a></li>
+      			<li><a href="#">B.java</a></li>
+      			<li><a href="#">C.java</a></li>
+    			</ul>
+  			</div>
+  			<br/>
+  			<br/>
+            <div class = "textarea">
+                <textarea  id = "code" rows = "20" cols = "80" align ="center">
+                </textarea>
+            </div>
+            <div class = "buttons">
+                <ul>
+                    <li><button id = "demo" type = "button" onclick = "compile()">Compile</button></li>
+                    <li><button type = "button" onclick="next()">Next</button></li>
+                    <li><button type="button" onclick="run()">run</button>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        
+    	<div id="right">
+            <h3>Console</h3>
+            <div class = "textarea">
+                <textarea id = "console" rows ="15" cols = "80">            
+                </textarea>
+            </div>
+            <div class = "buttons">
+                <ul>
+                    <li> <textarea id="t1" rows = "1" cols = "3">100 </textarea></li>
+                    <li><button type = "button">Enter</button></li>
+                </ul>
+            </div>
+
+            <div class = "textarea">
+            	<textarea id = "comment" rows="5" cols = "80"></textarea>
+            </div>
+            <div class= "buttons">
+            <ul>
+            	<li><button type = "button"> Add Comment</button></li>
+            </ul>
+            </div>
+        </div>
+
+</body>
+</html>
+
+

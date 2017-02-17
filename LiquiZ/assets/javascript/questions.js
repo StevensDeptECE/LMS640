@@ -22,7 +22,6 @@ MC.prototype.draw = function(div) {
 	}
 }
 
-
 /*A multiple choice question where options are in a dropdown menu*/
 function MCDrop(choices, id) {
 	this.id = id;
@@ -43,6 +42,8 @@ MCDrop.prototype.draw = function(div) {
     x.appendChild(selectList);
     div.appendChild(x);
 }
+
+
 
 function Matrix(rows, cols, id) {
 	this.id = id;
@@ -100,7 +101,7 @@ function Fillin(id) { //parent) {
 	//pattern for regex
 }
 
-Fillin.prototype.draw = function(div) { 
+Fillin.prototype.draw = function(div) {
 	var inp = document.createElement("input");
 	inp.type = "text";
 	inp.style.textAlign = 'center';
@@ -125,7 +126,7 @@ function Survey(id, choices, terms) {
 Survey.prototype.draw = function(div) {
 	for(var j = 0; j < this.terms.length; j++) {
 		var termBox = document.createElement('div');
-		//console.log(this.terms);
+		console.log(this.terms);
         termBox.className = "SurveyContainer";
 		termBox.appendChild(document.createTextNode(this.terms[j]));
         var surveyChoiceList = document.createElement('div');
@@ -147,7 +148,6 @@ Survey.prototype.draw = function(div) {
         termBox.appendChild(surveyChoiceList);
 		div.appendChild(termBox);
 	}
-	
 }
 
 function Likert5(questions, id) {
