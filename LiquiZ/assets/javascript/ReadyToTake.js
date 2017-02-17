@@ -1,6 +1,9 @@
-function ReadyToTake() {
-    this.body = document.getElementById("container");
-}
+/*global
+alert, confirm, console, Debug, opera, prompt, WSH
+*/
+/*function ReadyToTake() {
+    //this.body = document.getElementById("container");
+} ;
 
 ReadyToTake.SATARTDATE = "0";
 ReadyToTake.DUEDATE = "0";
@@ -14,13 +17,13 @@ ReadyToTake.ALLOWEDATTEMPS = "0";
 ReadyToTake.ROWS = "0";
     
 ReadyToTake.prototype.showInformation = function () {
-    document.getElementById("start").innerHTML = ReadyToTake.SATARTDATE;
+    //document.getElementById("start").innerHTML = ReadyToTake.SATARTDATE;
     document.getElementById("due").innerHTML = ReadyToTake.DUEDATE;
     document.getElementById("avaible").innerHTML = ReadyToTake.AVAIABLEDATE;
     document.getElementById("points").innerHTML = ReadyToTake.POINTS;
     document.getElementById("questions").innerHTML = ReadyToTake.QUESTIONS;
     document.getElementById("timelimit").innerHTML = ReadyToTake.TIMELIMIT;
-    document.getElementById("allowedattempts").innerHTML = ReadyToTake.ALLOWEDATTEMPS;
+    document.getElementById("allowedattempts").innerHTML = ReadyToTake.ALLOWEDATTEMPS; 
 };
 
 ReadyToTake.prototype.getInformation = function () {
@@ -31,12 +34,12 @@ ReadyToTake.prototype.getInformation = function () {
 ReadyToTake.protype.buttonAlert = function () {
     if (ReadyToTake.ALLOWEDATTEMPS === 0) {
         document.getElementById("button").attributes = "bidden";
+        alert("Once you start you can not exit this page unless you submit your answer!");
     }
 };
 
-ReadyToTake.prototype.drawAttemptHistory = function () {
-    var columns = 4; 
-    var rows = ReadyToTake.ROWS;
+function attemptHistory() {
+    var columns = 4, rows = 4;
     for (var i = 0; i < rows; i++){
        document.getElementById("table").innerHTML = "<tr>"; 
         for(var j = 0; j < columns; j++){
@@ -45,3 +48,15 @@ ReadyToTake.prototype.drawAttemptHistory = function () {
        document.getElementById("table").innerHTML = "</tr>";
     }
 }
+*/
+
+var attemptHistory = {}
+function SubmitOnclick() {
+    document.getElementById("questions").innerHTML = "123132131";
+    alert("Once you begin you can not close this page unless time up or you submit!");
+}
+
+function myfunction() {
+    console.log("test");
+}
+
