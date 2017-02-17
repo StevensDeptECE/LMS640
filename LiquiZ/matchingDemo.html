@@ -20,6 +20,7 @@
 			function getTop(e){
     			var offset=e.offsetTop;
     			if(e.offsetParent!=null) offset+=getTop(e.offsetParent);
+				console.log(offset);
     			return offset;
 			}
 		</script>	
@@ -28,15 +29,19 @@
 	<body>
 		<div>
 			<div style="position:relative;">
-				<div id="left" style="background-color:blue; position:relative; width:50px; "><input type="button" onclick="" value="A"></div>
-				<div id="mid" style="background-color:yellow; position:relative; width:150px; margin-left:50;"><input type="button" onclick="" value="A"></div>
-				<div id="right" style="background-color:blue; position:relative; width:50px"><input type="button" onclick="" value="A"></div>
-				<input type="button" id="111" onclick="getTop(target)" value="A">
-				<input type="button" onclick="" value="A"><br>
-				<input type="button" onclick="" value="A">
-				<input type="button" onclick="" value="A"><br>
-				<input type="button" onclick="" value="A">
-				<input type="button" onclick="" value="A"><br>	
+				<div id="mid" style="background-color:yellow; position:relative; width:150px; float:left">
+					<svg style="background-color:pink"></svg>
+				</div>
+				<div id="left" style="background-color:blue; position:relative; width:50px; margin-left:-150px; float:left ">
+					<input type="button" onclick="" value="A">
+					<input type="button" onclick="" value="A"><br>
+					<input type="button" onclick="" value="A"><br>
+				</div>
+				<div id="right" style="background-color:red; position:relative; width:50px;  float:left">
+					<input type="button" onclick="" value="A">
+					<input type="button" onclick="" value="A"><br>
+					<input type="button" onclick="" value="A"><br>
+				</div>
 			</div>
 		</div>
 	</body>
