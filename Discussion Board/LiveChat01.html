@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+<body>
+	<form>
+		<input id="textMessage" type="text">
+		<input onclick="sendMessage();" value="send" type="button"><button type="submit" onclick="closeWebsocket()">Close</button><br>
+		
+		<textarea id="textMessageArea" rows="10" cols="50"></textarea>
+		<script type="text/javascript">
+			var webSocket = new WebSocket("ws://localhost:8080/discussionB/ServerEndPointDemo");
+			var textmessagearea = document.getElementById("textMessageArea");
+			var textmessage = document.getElementById("textMessage");
+			webSocket.onopen = function(message){processOpen(message);};
+			webSocket.onmessage = function(message){processMessage(message);};
+			webSocket.onclose = function(message){processClose(message);};
+			webSocket.onerror = function(message){processError(message);};
+			function processOpen(message){
+				textmessagearea.value +="Server connect..." + "\n";
+			}
+			function processClose(message){
+				webSocket.send("client is disconnected");
+				textmessagearea.value +="Server disconnected..." + "\n";
+			}
+			function processError(message){
+				textmessagearea.value +="Error!!!" + "\n";
+			}
+			function prcessMessage(message){
+				textmessagearea.value += "Receive from Server <<==--" + message.data;
+			}
+			function sendMessage(){
+				webSocket.send(textmessage.value);
+				textmessagearea.value += "Send Message --==>>" + textmessage.value;
+				textmessage.value = "";
+			}
+			function closeWebsocket(){
+				webSocket.close();
+			}
+			
+		</script>
+		
+	</form>
+</body>
+</html>
