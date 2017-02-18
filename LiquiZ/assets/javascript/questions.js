@@ -1,6 +1,6 @@
 /*display elements like multiple choice, fillin, etc*/
 
-/*Regular multiple choice with options shown vertically*/
+/*Regular multiple choice with options shown vertically*/ 
 function MC(choices, id) {
 	this.id = id;
 	this.choices = choices;
@@ -22,28 +22,6 @@ MC.prototype.draw = function(div) {
 	}
 }
 
-function MCS(choices, id) {
-    this.id = id;
-    this.choices = choices;
-    this.responses = [];
-}
-
-MCS.prototype.draw = function(div) {
-    for (var i = 0; i < this.choices.length; i++) {
-        var x = document.createElement('div');
-        var label = document.createElement('label');
-        var xbutton = document.createElement('INPUT');
-        xbutton.type = 'checkbox';
-        xbutton.name = "choice";
-        xbutton.label = this.choices[i];
-        label.appendChild(xbutton);
-        label.appendChild(document.createTextNode(this.choices[i]));
-        x.appendChild(label);
-        div.appendChild(x);
-    }
-}
-
-
 /*A multiple choice question where options are in a dropdown menu*/
 function MCDrop(choices, id) {
 	this.id = id;
@@ -54,7 +32,7 @@ function MCDrop(choices, id) {
 MCDrop.prototype.draw = function(div) {
 	var x = document.createElement('div');
     var selectList = document.createElement("select");
-
+    
 	for (var i = 0; i < this.choices.length; i++) {
         var option = document.createElement('option');
 		option.value = this.choices[i];
@@ -65,31 +43,6 @@ MCDrop.prototype.draw = function(div) {
     div.appendChild(x);
 }
 
-function Match(types,choices, id) {
-	this.id = id;
-	this.types=types;
-	this.choices = choices;
-	this.responses = [];
-}
-
-Match.prototype.draw = function(div) {
-	for (var j=0;j<this.types.length;j++){
-	var x = document.createElement('div');
-	var selectList = document.createElement("select");
-  for (var i = 0; i < this.choices.length; i++) {
-			var option = document.createElement('option');
-	    option.value = this.choices[i];
-			option.text = this.choices[i];
-			selectList.appendChild(option);
-}
-		var label = document.createElement('label');
-		label.appendChild(document.createTextNode(this.types[j]));
-		x.appendChild(label);
-		x.appendChild(selectList);
-
-    div.appendChild(x);
-	}
-}
 
 
 function Matrix(rows, cols, id) {
@@ -155,22 +108,6 @@ Fillin.prototype.draw = function(div) {
 	div.appendChild(inp);
 }
 
-function Code(code, id) { //parent) {
-	this.code = code;
-    this.id = id;
-    //pattern for regex
-}
-
-Code.prototype.draw = function(div) {
-    var br = document.createElement("br");
-    div.appendChild(br);
-    var inp = document.createElement("TEXTAREA");
-    this.code.replace("newLine","\n");
-    var myCode = document.createTextNode(this.code);
-    inp.append(myCode);
-    div.appendChild(inp);
-}
-
 function Survey(id, choices, terms) {
 	this.id = id;
 	this.terms = terms;
@@ -189,7 +126,7 @@ function Survey(id, choices, terms) {
 Survey.prototype.draw = function(div) {
 	for(var j = 0; j < this.terms.length; j++) {
 		var termBox = document.createElement('div');
-		//console.log(this.terms);
+		console.log(this.terms);
         termBox.className = "SurveyContainer";
 		termBox.appendChild(document.createTextNode(this.terms[j]));
         var surveyChoiceList = document.createElement('div');
@@ -211,7 +148,6 @@ Survey.prototype.draw = function(div) {
         termBox.appendChild(surveyChoiceList);
 		div.appendChild(termBox);
 	}
-
 }
 
 function Likert5(questions, id) {
@@ -254,3 +190,4 @@ Likert5.prototype.draw = function(div) {
 	question3.appendChild(tbl);
 	div.appendChild(question3);
 }
+

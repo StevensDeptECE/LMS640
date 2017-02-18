@@ -140,9 +140,17 @@ div img {
 }
 
 #content {
-  margin-top: 20px;
+  /*margin-top: 20px;*/
   padding: 40px 10px 10px 180px;
 }
 
 /* Table class for grades */
 /* TODO */
+.gradestable {
+  margin-top: 20px;
+  border: 1px solid black;
+}
+
+.grades {
+  font-family: Arial sanserif;
+}

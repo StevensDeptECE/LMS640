@@ -5,9 +5,10 @@
         <meta charset="utf-8">
         <title>Student Quiz</title>
         <link rel="stylesheet" href="assets/css/ReadyToTake.css">
+        <script type="text/javascript" scr="assets/javascript/ReadyToTake.js"></script>
     </head>
     
-    <body>
+    <body onload = "myfunction()">
         <div class = "wrapper">
             
             <div class = "sidebar_left">
@@ -59,7 +60,8 @@
                     </div>
                     
                     <div class = "start_button">
-                    <input type="button" value = "Take Quiz" id="quiz_button" onclick = "location.href = 'takeQuiz.html'">
+                    <input type="button" value = "Take Quiz" id="quiz_button" onclick = "SubmitOnclick()">
+                        <!--"location.href = 'takeQuiz.html'"-->
                     </div>
                     
                     <!-- I will add js make it show up after first attempt-->
@@ -80,6 +82,12 @@
                             <tr>
                                 <th>Latest</th>
                                 <td>Attempt 1</td>
+                                <td>2 min</td>
+                                <td>8 out of 8</td>
+                            </tr>
+							 <tr>
+                                
+                                <td>Attempt 2</td>
                                 <td>2 min</td>
                                 <td>8 out of 8</td>
                             </tr>

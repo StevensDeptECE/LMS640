@@ -21,7 +21,7 @@ function Code(s) {
 }
 
 Code.prototype.draw = function(div) {
-	
+
     this.p.appendChild(document.createTextNode(this.s));
     div.appendChild(this.p);
 }

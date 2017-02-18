@@ -39,7 +39,7 @@ Display.prototype.disp = function(div) {
 
 
 function Prefs() {
-
+	
 }
 
 Prefs.prototype.getPolicy = function(json) {
@@ -47,7 +47,7 @@ Prefs.prototype.getPolicy = function(json) {
 }
 
 function Response() {
-
+	
 
 }
 
@@ -66,7 +66,7 @@ Prefs.prototype.getRegex = function(id) {
 var prefs = new Prefs();
 
 function Answer(id) {
-
+	
 }
 
 Util.subClass(Display, Answer);
@@ -118,7 +118,7 @@ function QC(parent, json) {
 	this.comp = [];
 	for (var i = 0; i < json.comp.length; ++i) {
 		var comp = json.comp[i];
-		var c = "new " + comp[0] + "(";
+		var c = "new " + comp[0] + "("; 
 		for(var j = 1;  j < comp.length; j++) {
 			var value = comp[j];
 			console.log(value);
@@ -130,10 +130,10 @@ function QC(parent, json) {
 			}
 			else
 				c += comp[j];
-			if(j != comp.length-1)
+			if(j != comp.length-1) 
 				c += ', ';
 		}
-		c += ')';
+		c += ')';		
 		//c = "new " + comp[0] + "(";  + comp[2] + "' , '" + comp[1] + "')"; //need to loop this for more than 3 elements in array?
 
 		console.log(c);
@@ -161,7 +161,7 @@ QC.prototype.draw = function() {  //need to pass in some kind of element to draw
 
 
 function Quiz(parent, json) {
-
+	
 	for (var k in json) {
 		this[k] = json[k];
 	}
@@ -179,7 +179,7 @@ Util.subClass(Display, Quiz);
 
 //add question container
 Quiz.prototype.add = function(qc) {
-	this.questions.push(qc);
+	this.questions.push(qc);	
 }
 
 Quiz.prototype.drawQuiz = function() {
@@ -195,12 +195,12 @@ Quiz.prototype.drawQuiz = function() {
 function load() {
 	var p = document.getElementById("content");
 	console.log(p);
-
+	
 	var test = [1,2,3,4];
 	console.log(typeof(test));
 	console.log(test);
-
-
+	
+	
 	var quest = [
 {
 	id: "qc1000",
@@ -214,7 +214,7 @@ function load() {
 
 {
 	id: "qc1001",
-	title: "Addition",
+	title: "Multiple Choices",
 	comp: [
 		["Instr", "Which sport do you like?", "1"],
 		["MCS", ["basketball","football","volleyball","baseball"],"2"]
@@ -231,31 +231,57 @@ function load() {
 	]
 },
 
+// {
+// 	id: "qc1003",
+// 	title: "Cloze",
+// 	comp: [
+// 		["Instr", "Complete the code below so it prints \"Hello\"","1"],
+//         ["Eqn2", "br", "2"],
+// 		["Eqn", "public A {", "3"],
+//         ["Eqn2", "br", "4"],
+// 		["Eqn", "void (String[] args) {", "5"],
+//         ["Eqn2", "br", "6"],
+// 		["Eqn", "System.", "7"],
+//         ["Fillin", "8"],
+//         ["Eqn", "}", "9"],
+//         ["Eqn2", "br", "10"],
+//         ["Eqn", "}", "11"],
+//         ["Eqn2", "br", "12"]
+// 	]
+// },
+
 {
 	id: "qc1003",
 	title: "Cloze",
 	comp: [
-		["Instr", "Complete the code below so it prints \"Hello\"","1"],
-        ["Eqn2", "br", "2"],
-		["Eqn", "public A {", "3"],
-        ["Eqn2", "br", "4"],
-		["Eqn", "void (String[] args) {", "5"],
-        ["Eqn2", "br", "6"],
-		["Eqn", "System.", "7"],
-        ["Fillin", "8"],
-        ["Eqn", "}", "9"],
-        ["Eqn2", "br", "10"],
-        ["Eqn", "}", "11"],
-        ["Eqn2", "br", "12"]
+        ["Instr", "Complete the code below so it prints \"Hello\"","1"],
+		["Cloze",
+			[
+                "public class A {",
+                "    public static",
+                "[]",
+                "  main(String[] args) {",
+                "    System.",
+                "[]",
+                "    }",
+                "}"
+                // "(3 +",
+                // "[]",
+                // ") * 2 =",
+                // "[]",
+                // "* 6"
+            ],
+			"1"
+		]
 	]
 },
 
 {
 	id: "qc1004",
-	title: "Code",
+	title: "Codes",
 	comp: [
 		["Instr", "Complete the code below so it prints \"Hello\"","1"],
-        ["Code", "public A {\\n  void (String[] args) {\\n  System.\\n  }\\n}\\n", "2"]
+        ["Codes", "public class A {\\n  public void main(String[] args) {\\n  System.\\n  }\\n}\\n", "2"]
 	]
 },
 
@@ -273,7 +299,7 @@ function load() {
 	title: "Survey",
 	comp: [
 		["Instr", "Enter your honest opinions.  There are no right or wrong answers"],
-		["Survey", "q104", "Likert5", [
+		["Survey", "1", "Likert5", [
 			"I like Chinese food",
 			"I like Korean food",
 			"I like Indian food",
@@ -311,14 +337,13 @@ function load() {
 },
 
 {
-    id: "qc1010",
+	id: "qc1010",
 	title: "Match",
 	comp: [
 		["Instr", "Match the types", "1"],
 		["Match",["animal","number","food"],["ice cream", "dog", "three"], "2" ]
 	]
 }
-
     ];
 	var json = {
   		title: "test",

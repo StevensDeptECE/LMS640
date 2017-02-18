@@ -1,47 +1,33 @@
-function ReadyToTake() {
-    this.body = document.getElementById("container");
+function SubmitOnclick() {
+    document.getElementById("questions").innerHTML = "123132131";
+    alert("Once you begin you can not close this page unless time up or you submit!");
 }
 
-ReadyToTake.SATARTDATE = "0";
-ReadyToTake.DUEDATE = "0";
-ReadyToTake.NAME = "0";
-ReadyToTake.AVAIABLEDATE = "0";
-ReadyToTake.POINTS = "0";
-ReadyToTake.QUESTIONS = "0";
-ReadyToTake.TIMELIMIT = "0";
-ReadyToTake.ALLOWEDATTEMPS = "0";
-
-ReadyToTake.ROWS = "0";
-    
-ReadyToTake.prototype.showInformation = function () {
-    document.getElementById("start").innerHTML = ReadyToTake.SATARTDATE;
-    document.getElementById("due").innerHTML = ReadyToTake.DUEDATE;
-    document.getElementById("avaible").innerHTML = ReadyToTake.AVAIABLEDATE;
-    document.getElementById("points").innerHTML = ReadyToTake.POINTS;
-    document.getElementById("questions").innerHTML = ReadyToTake.QUESTIONS;
-    document.getElementById("timelimit").innerHTML = ReadyToTake.TIMELIMIT;
-    document.getElementById("allowedattempts").innerHTML = ReadyToTake.ALLOWEDATTEMPS;
-};
-
-ReadyToTake.prototype.getInformation = function () {
-    
-    // will pull down the information from the server
-};
-
-ReadyToTake.protype.buttonAlert = function () {
-    if (ReadyToTake.ALLOWEDATTEMPS === 0) {
-        document.getElementById("button").attributes = "bidden";
-    }
-};
-
-ReadyToTake.prototype.drawAttemptHistory = function () {
-    var columns = 4; 
-    var rows = ReadyToTake.ROWS;
-    for (var i = 0; i < rows; i++){
-       document.getElementById("table").innerHTML = "<tr>"; 
-        for(var j = 0; j < columns; j++){
-            document.getElementById("table").innerHTML = "<td>sore</td>";
-        }
-       document.getElementById("table").innerHTML = "</tr>";
-    }
+function myfunction() {
+    console.log("test");
 }
+
+AttemptHistory = [{number:"Attempt1",time:"3min18s",sore:5.5},
+				  {number:"Attempt2",time:"2min58s",sore:6},
+				  {number:"Attempt3",time:"1min18s",sore:7}
+				 ]
+
+function drawAttempt() {
+	if(AttemptHistory.length == 0) return;
+	var i = 0;
+	var hightest = AttemptHistory[0];
+	var table ="<table><tr><th>Attempt</th><th>Time</th><th>Sore</th></tr>"
+	for(i = 0; i < AttemptHistory.length; i++){
+	 if(AttemptHistory[i].sore > hightest.sore) hightest = AttemptHistory[i];
+	}
+	table.append("<tr><th>Kept</th><td>"+hightest.number+"</td><td>"+hightest.time+"</td><td>"+hightest.sore+"</td></tr>");
+	for(i = 0; i < AttemptHistory.length; i++){
+		if(i == 0){
+			table.append("<tr><th>Lastest</th><td>"+AttemptHistory[i].number+"</td><td>"+AttemptHistory[i].time+"</td><td>"+AttemptHistory[i].sore+"</td></tr>");	
+		}
+		table.append("<tr><td>"+AttemptHistory[i].number+"</td><td>"+AttemptHistory[i].time+"</td><td>"+AttemptHistory[i].sore+"</td></tr>");
+	}
+	table.append("</table>");
+}
+
+//function drawPolicy(){}

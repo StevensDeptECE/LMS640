@@ -14,7 +14,7 @@ table, th, td {
 }
 th, td {
     padding: 5px;
-    text-align: middle;
+    text-align: center;
 }
 table#t01 tr:nth-child(even) {
     background-color: #eee;
@@ -56,4 +56,3 @@ a.one:active {
 a.two:visited {color:grey;}
 a.two:hover {color:green;}
 a.two:active {color:yellow;}
-}
