@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Quiz Index</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<body>
+<h1 id="h01">Quiz Index</h1>
+<div class = "container">
+    <table id="t01">
+        <thead>
+            <tr>
+                <th>Publish</th>
+                <th>Quiz Name</th>
+                <th>Course Name</th>
+                <th>Due Date</th>
+                <th>Close Date</th>
+                <th>Show Statistic</th>
+                <th>Take & Edit</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<script>
+//another way to draw the table
+//    $.getJSON("data.json",function(data){
+//        var items = [];
+//        $.each(data,function(key, val){
+//            items.push("<tr>");
+//            items.push("<td id =''" + key + "''>" + val.publish + "</td>");
+//            items.push("<td id =''" + key + "''>" + val.quizName + "</td>");
+//            items.push("<td id =''" + key + "''>" + val.course + "</td>");
+//            items.push("<td id =''" + key + "''>" + val.dueDate + "</td>");
+//            items.push("<td id =''" + key + "''>" + val.closeDate + "</td>");
+//            items.push("<td id =''" + key + "''>" + "<a class='one' href = " + val.stats + ">Stats</a>" + "</td>");
+//            items.push("<td id =''" + key + "''>" + "<a class='one' href = " + val.take + ">Take</a>" + "<a class='one' href = " + val.edit + ">Edit</a>" + "<a class='one' href = " + val.dup + ">Dup</a>" + "<a class='one' href = " + val.del + ">Del</a>" + "</td>");
+//            items.push("</tr>");
+//        });
+//        $('<tbody/>',{html:items.join("")}).appendTo("table");
+//    });
+
+var table = $("table");
+
+$.getJSON("data.json",function(data){
+    for (var i = 0; i < data.length; i++) {
+        var row = "<tr id='row-" + i + "'>";
+        row += "<td>" + data[i].publish +"</td>";
+        row += "<td>" + data[i].quizName +"</td>";
+        row += "<td>" + data[i].course + "</td>";
+        row += "<td>" + data[i].dueDate + "</td>";
+        row += "<td>" + data[i].closeDate + "</td>";
+        row += "<td >" + "<a class='one' href = " + data[i].stats + ">Stats</a>" + "</td>";
+        row += "<td >" + "<a class='one' href = " + data[i].take + ">Take</a><a class='one' href = " + data[i].edit + ">Edit</a>" + "</td>";
+        row += "<td><button class='del-button' data-id='" + i + "'>Del</button><button class='dup-button' data-id='" + i + "'>Dup</button></td>";
+        row += "</tr>";
+        table.append(row);
+    }
+
+    $(".del-button").click(function(){
+        var rowId = $(this).data("id");
+        $("#row-" + rowId).remove();
+    });
+    $(".dup-button").click(function(){
+        var rowId = $(this).data("id");
+        $("#row-" + rowId).clone().appendTo(table);
+    });
+
+});
+
+</script>
+
+</body>
+</html>
