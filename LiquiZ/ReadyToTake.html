@@ -5,10 +5,10 @@
         <meta charset="utf-8">
         <title>Student Quiz</title>
         <link rel="stylesheet" href="assets/css/ReadyToTake.css">
-        <script type="text/javascript" scr="assets/javascript/ReadyToTake.js"></script>
+		<script type="text/javascript" src="assets/javascript/jquery.js"></script>
     </head>
     
-    <body onload = "myfunction()">
+    <body onload = "drawAttempt()">
         <div class = "wrapper">
             
             <div class = "sidebar_left">
@@ -26,37 +26,14 @@
         
             <div class = "page_content_wrapper">
                 <div class = "container_fluid" >
-                    <div class = "quiz_title">
+                    <div id = "quiz_title">
                     <h1>Quiz 1. Hello World!</h1>
                     </div>
                     
-                    <div class = "quiz_info">
-                    <table class = "info_table" >
-                        <tr>
-                            <th><b>Due</b></th>
-                            <td id = "due_date">Feb 7 at 11:59pm</td>
-                            <th><b>Points</b></th>
-                            <td id = "points">8</td>
-                            <th><b>Questions</b></th>
-                            <td id = "questions">8</td>
-                        </tr>
-                        <tr>
-                            <th><b>Available</b></th>
-                            <td id = "available_date">Jan 24 at 12am - Feb 7 at 11:59pm</td>
-                        </tr>
-                        <tr>
-                            <th><b>Time Limit</b></th>
-                            <td id = "time_limit">none</td>
-                            <th><b>Allowed Attempts</b></th>
-                            <td id = "allowed_attempts">4</td>
-                        </tr>
-                    </table>
+                    <div id = "quiz_info">
                     </div>
                     
-                    <div class = "instruction">
-                    <p><b>Instructions:</b></p>
-                    <p id = "instruction">This quiz will test the basic knowledge of how to programming in C++. Make sure you have reviewed before taking this test. Good luck to you.</p>
-                    <p><b>Caution:</b> once you start a time-limit quiz, unless the time out or you submit quiz the time counting will not stop.</p>
+                    <div id = "instruction">
                     </div>
                     
                     <div class = "start_button">
@@ -65,33 +42,7 @@
                     </div>
                     
                     <!-- I will add js make it show up after first attempt-->
-                    <div class = "attempt_history">
-                        <h2>Attempt History</h2>
-                        <table class="attempt_table">
-                            <tr>
-                                <th>Attempt</th>
-                                <th>Time</th>
-                                <th>Sore</th>
-                            </tr>
-                            <tr>
-                                <th>Kept</th>
-                                <td>Attempt 1</td>
-                                <td>2 min</td>
-                                <td>8 out of 8</td>
-                            </tr>
-                            <tr>
-                                <th>Latest</th>
-                                <td>Attempt 1</td>
-                                <td>2 min</td>
-                                <td>8 out of 8</td>
-                            </tr>
-							 <tr>
-                                
-                                <td>Attempt 2</td>
-                                <td>2 min</td>
-                                <td>8 out of 8</td>
-                            </tr>
-                        </table>
+                    <div id = "attempt_history">	
                     </div>
                 </div>
             </div>
@@ -99,5 +50,5 @@
         </div>
 
     </body>
-    
+    <script type="text/javascript" src="assets/javascript/ReadyToTake.js"></script>
 </html>
