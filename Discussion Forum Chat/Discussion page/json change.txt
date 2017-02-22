@@ -1,0 +1,28 @@
+{ 		
+	"discussion":[
+	{		"id": "1",	
+			"subject": "CSP",
+			"member":"name",					
+			"createtime":"MM/DD/YYYY",
+			"content":{"content_id":"1","text":"...","file":"*.*"},						
+			"reply"	:[{"member":"name","content":"...","reply_time":"MM/DD/YYYY"},
+					  {"member":"name","content":"...","reply_time":"MM/DD/YYYY"},
+					  {"member":"name","content":"...","reply_time":"MM/DD/YYYY"}]
+					  }]   
+
+}
+
+{"member":[{"id":100,
+		"name":"...",
+		"picture":".*."},
+		
+		{"id":101,
+		"name":"...",
+		"picture":".*."},
+		
+		{"id":102,
+		"name":"...",
+		"picture":".*."}]	
+		}	
+
+

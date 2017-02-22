@@ -23,7 +23,7 @@ body{
 
 div#content {
 	font-family: Arial;
-	font-size: 28pt;
+	font-size: 20pt;
 }
 
 
@@ -94,15 +94,12 @@ div.header {
 	border-radius: 3px;
 	border: 1px solid black;
 }
-
 .container {
 	display: flex;
 }
-
 .container .dragDropOption {
 	margin-right: 5px;
 }
-
 .dragdropLocation {
 	background-color: white;
 	min-width:20px;
@@ -110,12 +107,12 @@ div.header {
 	border-radius: 3px;
 	border: 1px solid black;
 }
-
 .SurveyContainer {
     font-size: 20px;
     padding-top: 10px;
+    clear: both;
+    margin: 20px;
 }
-
 .ChoiceContainer {
     padding-top: 5px;
 }
@@ -123,7 +120,51 @@ div.header {
     font-size: 10px;
     display: inline-block;
 }
-
+.choiceText{
+    font-weight: normal;
+    font-size: 20px;
+}
+/*For yucheng.js*/
+.MCSText{
+    font-weight: normal;
+    font-size: 20px;
+    margin-left: 5px;
+}
+.inputCode{
+    font-size: 20px;
+    height: 300px;
+    width: 1000px;
+    background: lightgrey;
+    padding: 20px 20px 20px 20px;
+}
+.containerStyle{
+    margin: 20px 20px;
+}
+.mainText {
+    font-size: 20px;
+    clear: both;
+}
+.inputCloze{
+    background: lightgrey;
+    width: 200px !important;
+    height: 28px !important;
+    font-size: 20px !important;
+    text-align: center;
+    position: relative;
+    left: 10px;
+    float: left;
+}
+.textBeforeCloze{
+    font-size: 20px;
+    float: left;
+    clear: left;
+}
+.textAfterCloze{
+    font-size: 20px;
+    float: left;
+    clear: right;
+}
+/*---------------------------*/
 .submit {
     margin-left: 20px;
     margin-bottom: 20px;
@@ -131,7 +172,6 @@ div.header {
 .submitquiz {
     font-size: medium;
 }
-
 p.Code {
     font-family: "courier";
     color: lawngreen;
@@ -139,6 +179,88 @@ p.Code {
     font-size: 16px;
     padding: 20px;
 }
+
+/*For index.html*/
+h1#h01 {
+    font-size: 40px;
+    text-align: center;
+    text-shadow: 0 0 3px #FF0000;
+}
+table#t01 {
+    width:100%;
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+table#t01 th{
+    /*padding: 10px 20px;*/
+    text-align: center;
+    border: 1px solid grey;
+    border-collapse: collapse;
+    /*margin: 20px;*/
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+table#t01 td {
+    /*padding: 10px 20px;*/
+    text-align: center;
+    border: 1px solid grey;
+    border-collapse: collapse;
+    /*margin: 20px;*/
+    font-size: 20px;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+    background-color:#fff;
+}
+a.one:link, a.one:visited {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 8px #999;
+    margin: 15px 15px;
+}
+a.one:hover {background-color: #3e8e41}
+a.one:active {
+    background-color: #3e8e41;
+    box-shadow: 0 3px #666;
+    transform: translateY(2px);
+}
+input[type=checkbox] {
+    transform: scale(1.5);
+}
+button {
+    padding: 10px 15px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 8px #999;
+    margin: 15px 15px;
+}
+button:hover {background-color: #3e8e41}
+button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 3px #666;
+    transform: translateY(2px);
+}
+
+/*---------------------------*/
+
 .currentUser {
     background-color: gray;
     float: right;
@@ -153,7 +275,7 @@ p {
 }
 
 h2{
-    padding-top: 0 px;
+    padding-top: 0px;
     margin-top: 0px;
 }
 label{

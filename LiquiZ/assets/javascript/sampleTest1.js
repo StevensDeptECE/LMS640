@@ -165,6 +165,7 @@ function Quiz(parent, json) {
 	for (var k in json) {
 		this[k] = json[k];
 	}
+	console.log(this);
 		this.md(parent);
 	//parent.appendChild(this.div);
 	this.policy = prefs.getPolicy(json);
@@ -214,7 +215,7 @@ function load() {
 
 {
 	id: "qc1001",
-	title: "Addition",
+	title: "Multiple Choices",
 	comp: [
 		["Instr", "Which sport do you like?", "1"],
 		["MCS", ["basketball","football","volleyball","baseball"],"2"]
@@ -258,12 +259,19 @@ function load() {
 		["Cloze",
 			[
                 "public class A {",
-                "    public static void main(String[] args) {",
-				"    System.",
-				"[]",
+                "    public static",
+                "[]",
+                "  main(String[] args) {",
+                "    System.",
+                "[]",
                 "    }",
                 "}"
-			],
+                // "(3 +",
+                // "[]",
+                // ") * 2 =",
+                // "[]",
+                // "* 6"
+            ],
 			"1"
 		]
 	]
