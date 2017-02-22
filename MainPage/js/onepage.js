@@ -8,6 +8,7 @@ if (performance.navigation.type == 1) {
   console.info( "This page is not reloaded");
 }
 
+
 /* Grade payload construcotr. The payload is a 2D array. */
 function Grade(payload) {
   this.payload = payload;

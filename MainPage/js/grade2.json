@@ -1,0 +1,17 @@
+var grade = [
+{identity:["name","id"],assignment:["homework","test"]},
+{name:"bruce",id:321412,grade:[95,95]}
+{name:"natasha",id:12345,grade:[92,78]},
+{name:"tony",id:321412,grade:[100,45]}
+{name:"steve",id:12345,grade:[92, 65]},
+{name:"thor",id:321412,grade:[94,69]},
+{name:"clint",id:321412,grade:[95,95]}
+{name:"wanda",id:12345,grade:[92,78]},
+{name:"james",id:321412,grade:[100,45]}
+{name:"vision",id:12345,grade:[92, 65]},
+{name:"sam",id:321412,grade:[94,69]},
+{name:"t'challa",id:12345,grade:[92, 65]},
+{name:"peter",id:321412,grade:[94,69]},
+{name:"scptt",id:321412,grade:[99,99]},
+{name:"pietro",id:321412,grade:[0,0]}
+];

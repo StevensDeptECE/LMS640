@@ -250,3 +250,14 @@ Util = {
       });
   },
 };
+
+/* Sets the class attribute of an HTML object to nothing */
+function clearClass(name)
+{
+    var change = document.getElementsByClassName(name);  // Find the elements
+    for (var i = 0; i < change.length; i++)
+    {
+      change[i].className="";    // Change the content
+    }
+
+}
