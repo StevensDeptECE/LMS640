@@ -1,0 +1,36 @@
+[
+  {
+    "id": "qc1111",
+    "publish": "yes",
+    "quizName": "Quiz1",
+    "course": "CPE-593",
+    "dueDate": "1/1/2017",
+    "closeDate": "2/2/2017",
+    "stats": "StatisticView2.html",
+    "take": "TakeTest1.html",
+    "edit": "TakeTest1.html"
+
+  },
+  {
+    "id": "qc2222",
+    "publish": "yes",
+    "quizName": "Quiz2",
+    "course": "CPE-593",
+    "dueDate": "2/2/2017",
+    "closeDate": "3/3/2017",
+    "stats": "StatisticView2.html",
+    "take": "TakeTest1.html",
+    "edit": "TakeTest1.html"
+  },
+  {
+    "id": "qc3333",
+    "publish": "no",
+    "quizName": "Quiz1",
+    "course": "CPE-810",
+    "dueDate": "3/3/2017",
+    "closeDate": "4/4/2017",
+    "stats": "StatisticView2.html",
+    "take": "TakeTest1.html",
+    "edit": "TakeTest1.html"
+  }
+]

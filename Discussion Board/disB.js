@@ -9,8 +9,8 @@
  * ======================================================================== */
 
 
-//--------- format of function: (id, class, event(future), target(to be appended))-----------
-function create_div_regular(div_id_tag, div_id, div_class_tag, div_class, div_event_tag, div_event_type, div_event, append_target){
+//--------- format of function: (id, class, style, event(future), target(to be appended))-----------
+function create_div_regular(div_id_tag, div_id, div_class_tag, div_class, div_style_tag, div_style, div_event, append_target){
 	var cre_element = document.createElement("div");
 	var target;
 	target = document.getElementById(append_target);
@@ -19,6 +19,9 @@ function create_div_regular(div_id_tag, div_id, div_class_tag, div_class, div_ev
 	}
 	if(div_class_tag == true){
 		cre_element.setAttribute("class", div_class);
+	}
+	if(div_style_tag == true){
+		cre_element.style.cssText = div_style;
 	}
 	if(append_target == "body"){
 		document.body.appendChild(cre_element);
@@ -145,8 +148,8 @@ function create_nav_regular(nav_id_tag, nav_id, nav_class_tag, nav_class, append
 		
 }
 
-//--------- format of function: (id, class, event(future), target(to be appended))-----------
-function create_span_N(span_id_tag, span_id, span_class_tag, span_class, span_node_tag, span_node, append_target){
+//--------- format of function: (id, class, style, node, target(to be appended))-----------
+function create_span_N(span_id_tag, span_id, span_class_tag, span_class, span_style_tag, span_style, span_node_tag, span_node, append_target){
 	var cre_element = document.createElement("span");
 	var target;
 
@@ -157,6 +160,9 @@ function create_span_N(span_id_tag, span_id, span_class_tag, span_class, span_no
 	}
 	if(span_class_tag == true){
 		cre_element.setAttribute("class", span_class);
+	}
+	if(span_style_tag == true){
+		cre_element.style.cssText = span_style;
 	}
 	if(span_node_tag == true){
 		node = document.createTextNode(span_node);
@@ -171,7 +177,7 @@ function create_span_N(span_id_tag, span_id, span_class_tag, span_class, span_no
 
 //--------- format of function: (id, class, type, data-toggle, data-target, aria-expanded, aria-controls, event, target(to be appended))-----------
 function create_btn_N(btn_id_tag, btn_id, btn_class_tag, btn_class, btn_type_tag, btn_type, btn_data_toggle_tag, btn_data_toggle, btn_data_target_tag, btn_data_target, btn_aria_expanded_tag, 
-						  btn_aria_expanded, btn_aria_controls_tag, btn_aria_controls, btn_event_tag, btn_event, append_target){
+						  btn_aria_expanded, btn_aria_controls_tag, btn_aria_controls, btn_event_tag, btn_event, btn_node_tag, btn_node, append_target){
 	var cre_element = document.createElement("button");
 	var target, node;
 
@@ -201,9 +207,112 @@ function create_btn_N(btn_id_tag, btn_id, btn_class_tag, btn_class, btn_type_tag
 	if(btn_event_tag == true){
 		cre_element.setAttribute("#", btn_event);
 	}
+	if(btn_node_tag == true){
+		node = document.createTextNode(btn_node);
+		cre_element.appendChild(node);
+	}
 	if(append_target == "body"){
 		document.body.appendChild(cre_element);
 	}else{
 		target.appendChild(cre_element);
 	}
+}
+
+//--------- format of function: (id, class, target(to be appended))-----------
+function create_p_N(p_id_tag, p_id, p_class_tag, p_class, append_target){
+	var cre_element = document.createElement("p");
+	var target, node;
+
+	target = document.getElementById(append_target);
+
+	if(p_id_tag == true){
+		cre_element.setAttribute("id", p_id);
+	}
+	if(p_class_tag == true){
+		cre_element.setAttribute("class", p_class);
+	}
+	if(append_target == "body"){
+		document.body.appendChild(cre_element);
+	}else{
+		target.appendChild(cre_element);
+	}
+}
+//--------- format of function: (id, type, class, align, value, event, target(to be appended))-----------
+function create_inp_N(inp_id_tag, inp_id, inp_type_tag, inp_type, inp_class_tag, inp_class, inp_align_tag, inp_align, inp_value_tag, inp_value, 
+					  inp_event_tag, inp_event, append_target){
+	var cre_element = document.createElement("inp");
+	var target, node;
+
+	target = document.getElementById(append_target);
+
+	if(inp_id_tag == true){
+		cre_element.setAttribute("id", inp_id);
+	}
+	if(inp_type_tag == true){
+		cre_element.setAttribute("type", inp_type);
+	}
+	if(inp_class_tag == true){
+		cre_element.setAttribute("class", inp_class);
+	}
+	if(inp_align_tag == true){
+		cre_element.setAttribute("align", inp_align);
+	}
+	if(inp_value_tag == true){
+		cre_element.setAttribute("value", inp_value);
+	}
+	switch(inp_event_tag){
+	case 0:
+		break;
+	case 1: 
+		cre_element.setAttribute("onclick", inp_event);
+		break;
+	default:
+		break;
+}
+	if(append_target == "body"){
+		document.body.appendChild(cre_element);
+	}else{
+		target.appendChild(cre_element);
+	}	
+	
+}
+//--------- format of function: (id, class, target(to be appended))-----------
+function create_h_N(h_id_tag, h_id, h_tag, h_node_tag, h_node, append_target){
+	var cre_element = "";
+	var target;
+	if(h_id_tag == true){
+		cre_element.setAttribute("id", h_id);
+	}
+	switch(h_tag){
+		case 1:
+			cre_element = document.createElement("h1");
+			break;
+		case 2:
+			cre_element = document.createElement("h2");
+			break;
+		case 3:
+			cre_element = document.createElement("h3");
+			break;
+		case 4:
+			cre_element = document.createElement("h4");
+			break;
+		case 5:
+			cre_element = document.createElement("h5");
+			break;
+		case 6:
+			cre_element = document.createElement("h6");
+			break;
+		default:
+			break;			
+	}
+	if(h_node_tag == true){
+		node = document.createTextNode(h_node);
+		cre_element.appendChild(node);
+	}
+	if(append_target == "body"){
+		document.body.appendChild(cre_element);
+	}else{
+		target.appendChild(cre_element);
+	}	
+	
 }

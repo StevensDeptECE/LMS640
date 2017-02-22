@@ -80,6 +80,16 @@ StringAnswer.prototype.draw = function(div) {
 	app(div, this.s);
 }
 
+function CorrectAnswer(s, id) {
+	this.id = id; // do in parent
+	this.s = s;
+}
+
+CorrectAnswer.prototype.draw = function(div) {
+	app(div, "Correct Answer: " + this.s);
+}
+
+
 function Instr(s, id) {
 	this.id = id;
 	this.s = s;
@@ -165,7 +175,6 @@ function Quiz(parent, json) {
 	for (var k in json) {
 		this[k] = json[k];
 	}
-	console.log(this);
 		this.md(parent);
 	//parent.appendChild(this.div);
 	this.policy = prefs.getPolicy(json);
@@ -209,7 +218,8 @@ function load() {
 	comp: [
 		["Instr", "What is ", "1"],
 		["Eqn", "2+2", "2"],
-        ["MC", [3,4,5,6],"3"]
+        ["MC", [3,4,5,6],"3"],
+		["CorrectAnswer","4","5"]
 	]
 },
 
@@ -228,7 +238,7 @@ function load() {
 	comp: [
 		["Instr", "What is ","1"],
 		["Eqn", "3*4", "2"],
-		[ "Fillin", "3"]
+		[ "Fillin", "3"],
 	]
 },
 
