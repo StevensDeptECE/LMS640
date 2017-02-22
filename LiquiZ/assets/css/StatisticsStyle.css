@@ -1,24 +1,23 @@
-p {
-    font-size: 20px;
-    font-weight:300 ;
+.Info {
     text-align: center;
 }
-table {
+
+table.stats{
     width:100%;
     text-align: center;
 }
-table,th, td {
+table.stats  th, td{
     border-collapse: collapse;
     padding: 5px;
 }
 
-table tr:nth-child(even) {
+table.stats tr:nth-child(even) {
     background-color: #eee;
 }
-table tr:nth-child(odd) {
-   background-color:#fff;
+table.stats tr:nth-child(odd) {
+    background-color: #fff;
 }
-table th {
+table.stats th {
     background-color: dodgerblue;
     color: white;
 }

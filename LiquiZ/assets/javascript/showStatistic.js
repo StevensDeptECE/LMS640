@@ -17,7 +17,7 @@ function load(){
 
     p=document.getElementById("Information");
     drawInfo(p,data);
-    s=document.getElementById("ShowGrades");
+    s=document.getElementById("ShowGrades")
     drawTable(s,data);
 
 }
@@ -26,7 +26,9 @@ function drawInfo(p,data){
     var p1=document.createElement("h2");
     p1.className="Info";
     p1.appendChild(document.createTextNode(data.Course+" : "+data.Quizname));
+    var d=document.createElement("div");
     var p2=document.createElement("tr");
+    d.className="Info"
     var t1=document.createElement("td");
     t1.appendChild(document.createTextNode("Due Date : "+data.DueDate));
     var t2=document.createElement("td");
@@ -36,23 +38,25 @@ function drawInfo(p,data){
     p2.appendChild(t1);
     p2.appendChild(t2);
     p2.appendChild(t3);
+    d.appendChild(p2);
     p.appendChild(p1);
-    p.appendChild(p2);
+    p.appendChild(d);
     p.appendChild(document.createElement("br"));
 }
 
-function drawTable(s,data){
+function drawTable(s,data) {
     console.log(data);
-    var t=document.createElement("table");
-    var thead=document.createElement("thead");
-    var tr=document.createElement("tr");
-    var th1=document.createElement("th");
+    var t = document.createElement("table");
+    t.className = "stats";
+    var thead = document.createElement("thead");
+    var tr = document.createElement("tr");
+    var th1 = document.createElement("th");
     th1.appendChild(document.createTextNode("QuestionId"));
-    var th2=document.createElement("th");
+    var th2 = document.createElement("th");
     th2.appendChild(document.createTextNode("Mean Score"));
-    var th3=document.createElement("th");
+    var th3 = document.createElement("th");
     th3.appendChild(document.createTextNode("Lowest Score"));
-    var th4=document.createElement("th");
+    var th4 = document.createElement("th");
     th4.appendChild(document.createTextNode("Highest Score"));
     tr.appendChild(th1);
     tr.appendChild(th2);
@@ -60,24 +64,35 @@ function drawTable(s,data){
     tr.appendChild(th4);
     thead.appendChild(tr);
 
-    var tbody=document.createElement("tbody");
-    for( var i=0;i<data.Grades.length;i++){
-        tr=document.createElement("tr");
-        td=document.createElement("td");
+    var tbody = document.createElement("tbody");
+    for (var i = 0; i < data.Grades.length; i++) {
+        tr = document.createElement("tr");
+        td = document.createElement("td");
         td.appendChild(document.createTextNode(data.Grades[i].QuestionId));
         tr.appendChild(td);
-        for(var j=0;j<data.Grades[i].grade.length;j++){
-            td=document.createElement("td");
+        for (var j = 0; j < data.Grades[i].grade.length; j++) {
+            td = document.createElement("td");
             td.appendChild(document.createTextNode(data.Grades[i].grade[j]));
             tr.appendChild(td);
         }
         tbody.appendChild(tr);
 
     }
+    tr = document.createElement("tr");
+    tr.className="total";
+    td = document.createElement("td");
+    td.appendChild(document.createTextNode("total"));
+    tr.appendChild(td);
+    for (var j = 0; j < data.TotalGrades.length; j++) {
+        td = document.createElement("td");
+        td.appendChild(document.createTextNode(data.TotalGrades[j]));
+        tr.appendChild(td);
+    }
+        tbody.appendChild(tr);
+        t.appendChild(thead);
+        t.appendChild(tbody);
+        s.appendChild(t);
 
-    t.appendChild(thead);
-    t.appendChild(tbody);
-    s.appendChild(t);
 
 
 }
