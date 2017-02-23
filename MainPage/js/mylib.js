@@ -56,10 +56,11 @@ Util = {
    */
 
    //list --> list of lists
-  table: function (list, header, className) {
+  table: function (list, header, className, id) {
       console.log("new table");
       var result = Util.make("table", {
           className: className,
+          id: id
       });
 
       /*

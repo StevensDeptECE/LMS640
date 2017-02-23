@@ -10,7 +10,7 @@ if (performance.navigation.type == 1) {
 
 
 /* Grade payload construcotr. The payload is a 2D array. */
-function Grade(payload) {
+function Grade_Old(payload) {
   this.payload = payload;
 }
 
@@ -23,11 +23,11 @@ function clearElements(elementID)
 
 /* Draw function to clear and then redraw the 'content'
    box with given data. */
-Grade.prototype.draw = function(c) {
+Grade_Old.prototype.draw = function(c) {
   console.log("draw");
   clearElements('content');
   //var u = new Util();
-  var newTable = Util.table(gradepayload, "Grades Table Example", "gradestable");
+  var newTable = Util.table(this.payload, "Grades Table Example", "gradestable", "");
   //TODO add onclick functionality to the reDraw variable and the h1 that gets created
   var reDraw = Util.h1("Redraw Grades", "grades", "redrawgrades");
   //var text = document.createTextNode("Re Draw Grades");
@@ -38,11 +38,13 @@ Grade.prototype.draw = function(c) {
 }
 
 //TEST - launch with grade payload
+//name - object type
 function launch(name, payload) {
   console.log("Calling Launch");
   console.log(name);
-  var x = new name(payload);
-  var c = document.getElementById("content");
+  console.log(payload);
+  var x = new name(payload); // grade object
+  var c = document.getElementById("up3");
   x.draw(c);
 }
 /*
