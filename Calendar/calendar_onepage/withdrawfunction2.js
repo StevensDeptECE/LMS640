@@ -1,3 +1,7 @@
+function Calendar() {
+  ;
+}
+
 var tempDate;
 
 function getRightNow() {
@@ -130,56 +134,16 @@ function show(customDate) {
     dateString += "<tr>" + row + returnRow;
     dateString += "</table>";
 
-
-    var calendarContainer = document.getElementById("up3");
+    //clearElements("content");
+    var calendarContainer = document.getElementsByClassName("content");
     calendarContainer.innerHTML = dateString;
-    //calendarContainer.appendChild(ateString);
 }
-
-function drawCalendarButtons() {
-  console.log("Draw Calendar Buttons");
-  var btn_left = Util.button("<", preButton, "", "");        // Create a <button> element
-  //var t_left = document.createTextNode("<");       // Create a text node
-  //btn_left.appendChild(t_left);                                // Append the text to <button>
-  document.getElementById("up3").appendChild(btn_left);                    // Append <button> to <body>
-
-  //in fillDate() function
-  //var t_todayDate = getTempDate().toLocaleDateString()
-  //var todayDate = Util.span(t_todayDate, "", "displayDate");
-
-  fillDate();
-
-  var btn_today = Util.button("Today", resume, "", "");        // Create a <button> element
-  //var btn_today = document.createElement("BUTTON");        // Create a <button> element
-  //var t_today = document.createTextNode("Today");       // Create a text node
-  //btn_today.appendChild(t_today);                                // Append the text to <button>
-
-  var btn_right = Util.button(">", nextButton, "", "");        // Create a <button> element
-  //var btn_right = document.createElement("BUTTON");        // Create a <button> element
-  //var t_right = document.createTextNode(">");       // Create a text node
-  //btn_right.appendChild(t_right);                                // Append the text to <button>
-
-  document.getElementById("up3").appendChild(btn_today);                    // Append <button> to <body>
-  document.getElementById("up3").appendChild(btn_right);                    // Append <button> to <body>
-}
-
-
 function drawCalendar() {
     console.log("Draw Calendar");
-    clearElements("up2");
-
-    var newHeader = Util.h1("Calendar", "", "");
-    document.getElementById("up2").appendChild(newHeader);
-
     clearElements("up3");
     show(getRightNow());
-    //fillDate();
+    fillDate();
     changeWeekendStyle();
-    drawCalendarButtons();
-    //onclickClass("active", launch)
-    clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
-    document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
-
 }
 
 function getTempDate(){
@@ -213,21 +177,18 @@ function getPreMonth() {
 }
 
 function preButton(){
-    console.log("Pre Button");
     var preMonth = getPreMonth();
     show(preMonth);
-    //fillDate();
+    fillDate();
     changeWeekendStyle();
-    drawCalendarButtons();
 }
 
 
 function resume(){
     tempDate = getRightNow();
     show(tempDate);
-    //fillDate();
+    fillDate();
     changeWeekendStyle();
-    drawCalendarButtons();
 }
 
 function getNextMonth() {
@@ -259,9 +220,8 @@ function getNextMonth() {
 function nextButton() {
     var nextMonth = getNextMonth();
     show(nextMonth);
-    //fillDate();
+    fillDate();
     changeWeekendStyle();
-    drawCalendarButtons();
 }
 
 function changeWeekendStyle(){
@@ -271,23 +231,9 @@ function changeWeekendStyle(){
         $("tr:eq(" + i + ")>td:gt(4)").css("color", "red");
     }
 }
-
-
 function fillDate(){
-/*
-    var display =  document.getElementById("displayDate");
-    display.innerHTML = getTempDate().toLocaleDateString();
-*/
-  var t_todayDate = getTempDate().toLocaleDateString()
-  var todayDate = Util.span(t_todayDate, "", "displayDate");
-  document.getElementById("up3").appendChild(todayDate);
+  //var display =  document.getElementById("displayDate");
+  //display.innerHTML = getTempDate().toLocaleDateString();
+  var display =  document.getElementsByClassName("content");
+  display.innerHTML = getTempDate().toLocaleDateString();
 }
-
-
-
-/*function launchCalendar(name,payload){
-  console.log("launchCalendar");
-  var x=new calendar(payload); // TODO calendar constructor
-  var c= document.getElementById("content");
-  x.draw(c);
-}*/

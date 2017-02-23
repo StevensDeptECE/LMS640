@@ -249,15 +249,49 @@ Util = {
           id: id,
       });
   },
+
+  /*
+   * Takes the innerHTML, the className and the id of the tag you want,
+   * in that order.
+   */
+  span: function (innerHTML, className, id) {
+      return Util.make("span", {
+          innerHTML: innerHTML,
+          className: className,
+          id: id,
+      });
+  },
+
+  button: function (value, onClick, className, id) {
+      return Util.make("input", {
+          type: "button",
+          value: value,
+          className: className,
+          id: id,
+          onclick: onClick,
+          disabled: (onClick) ? false : true,
+      });
+  },
 };
 
 /* Sets the class attribute of an HTML object to nothing */
 function clearClass(name)
 {
+    console.log("Clear Class: " + name);
     var change = document.getElementsByClassName(name);  // Find the elements
     for (var i = 0; i < change.length; i++)
     {
       change[i].className="";    // Change the content
     }
+}
 
+/* Sets the onclick attribute of to HTML elements of a given class "name" */
+function onclickClass(name, func)
+{
+    console.log("Onlick Class: " + name);
+    var change = document.getElementsByClassName(name);  // Find the elements
+    for (var i = 0; i < change.length; i++)
+    {
+      change[i].onclick = func;    // Change the content
+    }
 }
