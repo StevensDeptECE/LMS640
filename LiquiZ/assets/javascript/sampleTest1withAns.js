@@ -80,16 +80,6 @@ StringAnswer.prototype.draw = function(div) {
 	app(div, this.s);
 }
 
-function CorrectAnswer(s, id) {
-	this.id = id; // do in parent
-	this.s = s;
-}
-
-CorrectAnswer.prototype.draw = function(div) {
-	app(div, "Correct Answer: " + this.s);
-}
-
-
 function Instr(s, id) {
 	this.id = id;
 	this.s = s;
