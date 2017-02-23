@@ -1,12 +1,8 @@
-/* Utilizes functions in mylib.js */
+/* A simple example of creating an object, clearing part of a page, and drawing
+ * the object.
+*/
 
-/* Try to stop the clearing of changes when a page refreshes */
-if (performance.navigation.type == 1) {
-  console.info( "This page is reloaded" );
-  //preventDefault()
-} else {
-  console.info( "This page is not reloaded");
-}
+/* Utilizes functions in mylib.js */
 
 
 /* Grade payload construcotr. The payload is a 2D array. */
@@ -37,16 +33,6 @@ Grade_Old.prototype.draw = function(c) {
   document.getElementById("redrawgrades").onclick = function() { console.log("Hello"); };
 }
 
-//TEST - launch with grade payload
-//name - object type
-function launch(name, payload) {
-  console.log("Calling Launch");
-  console.log(name);
-  console.log(payload);
-  var x = new name(payload); // grade object
-  var c = document.getElementById("up3");
-  x.draw(c);
-}
 /*
 void function launch(name, payload) {
     var x = eval("new " + name + "(" + payload + ")");
@@ -54,6 +40,19 @@ void function launch(name, payload) {
     x.draw(c);
 }
 */
+
+
+
+/* Try to stop the clearing of changes when a page refreshes */
+/*
+if (performance.navigation.type == 1) {
+  console.info( "This page is reloaded" );
+  //preventDefault()
+} else {
+  console.info( "This page is not reloaded");
+}
+*/
+
 var gradepayload = [
 [1, 2, 3],
 [3,4,5],

@@ -5,9 +5,17 @@ function Grade(payload) {
 
 Grade.prototype.draw = function(c) {
   console.log("draw");
+
+  var up2 = document.getElementById("up2")
+
   clearElements("up2");
-  var newHeader = Util.h1("Grades", "", "");
-  document.getElementById("up2").appendChild(newHeader);
+  //var newHeader = Util.h1("Grades", "", "");
+  //up2.appendChild(newHeader);
+  var btn_grade = Util.button("Grade", "", "aggreate", "");
+  up2.appendChild(btn_grade);
+
+
+
   clearElements("up3");
   var newDiv = Util.div("", "wrapper");
   var newTable = Util.table(this.payload, true, "gradeTable", "keywords");

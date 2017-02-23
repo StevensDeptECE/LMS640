@@ -1,3 +1,9 @@
+/* This file contains useful functions for creating HTML elements and interacting
+*  with the HTML page. "Util" is used to create specific HTML elements. All other
+* functions are located below Util.
+*/
+
+
 Util = {
   aryCons: ([]).constructor,
   strCons: ("").constructor,
@@ -275,6 +281,29 @@ Util = {
   },
 };
 
+/*
+  * Calls the constructor for the object that needs to be drawn. "Name" is the name
+  * of that object. "payload" is the thing you need to construct your object.
+  * For example if you need a list to construct a certain object, paylod should be a
+  * list. It then calls the draw function for the object, and draws it in the HTML
+  * element with the id that is passed.
+*/
+function launch(name, payload, id) {
+  console.log("Calling Launch");
+  console.log(name);
+  console.log(payload);
+  var x = new name(payload); // grade object
+  var c = document.getElementById(id);
+  x.draw(c);
+}
+
+/* Given an HTML element ID, clears the content the box with that ID. */
+function clearElements(elementID)
+{
+    console.log("clearing '" + elementID + "'");
+    document.getElementById(elementID).innerHTML = "";
+}
+
 /* Sets the class attribute of an HTML object to nothing */
 function clearClass(name)
 {
@@ -287,6 +316,7 @@ function clearClass(name)
 }
 
 /* Sets the onclick attribute of to HTML elements of a given class "name" */
+/* TODO not currently used */
 function onclickClass(name, func)
 {
     console.log("Onlick Class: " + name);

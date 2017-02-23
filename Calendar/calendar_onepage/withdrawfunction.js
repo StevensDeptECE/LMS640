@@ -179,7 +179,6 @@ function drawCalendar() {
     //onclickClass("active", launch)
     clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
     document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
-
 }
 
 function getTempDate(){
