@@ -10,12 +10,7 @@ function Grade_Old(payload) {
   this.payload = payload;
 }
 
-/* Given an HTML element ID, clears the content the box with that ID. */
-function clearElements(elementID)
-{
-    console.log("clearing '" + elementID + "'");
-    document.getElementById(elementID).innerHTML = "";
-}
+
 
 /* Draw function to clear and then redraw the 'content'
    box with given data. */
