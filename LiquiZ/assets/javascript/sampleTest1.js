@@ -165,6 +165,7 @@ function Quiz(parent, json) {
 	for (var k in json) {
 		this[k] = json[k];
 	}
+	console.log(this);
 		this.md(parent);
 	//parent.appendChild(this.div);
 	this.policy = prefs.getPolicy(json);

@@ -25,3 +25,27 @@ Code.prototype.draw = function(div) {
     this.p.appendChild(document.createTextNode(this.s));
     div.appendChild(this.p);
 }
+
+function CorrectAnswer(s, id) {
+	this.id = id; // do in parent
+	this.s = s;
+}
+
+CorrectAnswer.prototype.draw = function(div) {
+	var x = document.createElement('div');
+	x.className = "correctanswer";
+	app(x, "Correct Answer: " + this.s);
+	div.appendChild(x);
+}
+
+function YourAnswer(s, id) {
+	this.id = id; // do in parent
+	this.s = s;
+}
+
+YourAnswer.prototype.draw = function(div) {
+	var x = document.createElement('div');
+	x.className = "youranswer";
+	app(x, "Your Answer: " + this.s);
+	div.appendChild(x);
+}

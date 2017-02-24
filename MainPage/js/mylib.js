@@ -1,3 +1,9 @@
+/* This file contains useful functions for creating HTML elements and interacting
+*  with the HTML page. "Util" is used to create specific HTML elements. All other
+* functions are located below Util.
+*/
+
+
 Util = {
   aryCons: ([]).constructor,
   strCons: ("").constructor,
@@ -56,10 +62,11 @@ Util = {
    */
 
    //list --> list of lists
-  table: function (list, header, className) {
+  table: function (list, header, className, id) {
       console.log("new table");
       var result = Util.make("table", {
           className: className,
+          id: id
       });
 
       /*
@@ -249,4 +256,73 @@ Util = {
           id: id,
       });
   },
+
+  /*
+   * Takes the innerHTML, the className and the id of the tag you want,
+   * in that order.
+   */
+  span: function (innerHTML, className, id) {
+      return Util.make("span", {
+          innerHTML: innerHTML,
+          className: className,
+          id: id,
+      });
+  },
+
+  button: function (value, onClick, className, id) {
+      return Util.make("input", {
+          type: "button",
+          value: value,
+          className: className,
+          id: id,
+          onclick: onClick,
+          disabled: (onClick) ? false : true,
+      });
+  },
 };
+
+/*
+  * Calls the constructor for the object that needs to be drawn. "Name" is the name
+  * of that object. "payload" is the thing you need to construct your object.
+  * For example if you need a list to construct a certain object, paylod should be a
+  * list. It then calls the draw function for the object, and draws it in the HTML
+  * element with the id that is passed.
+*/
+function launch(name, payload, id) {
+  console.log("Calling Launch");
+  console.log(name);
+  console.log(payload);
+  var x = new name(payload); // grade object
+  var c = document.getElementById(id);
+  x.draw(c);
+}
+
+/* Given an HTML element ID, clears the content the box with that ID. */
+function clearElements(elementID)
+{
+    console.log("clearing '" + elementID + "'");
+    document.getElementById(elementID).innerHTML = "";
+}
+
+/* Sets the class attribute of an HTML object to nothing */
+function clearClass(name)
+{
+    console.log("Clear Class: " + name);
+    var change = document.getElementsByClassName(name);  // Find the elements
+    for (var i = 0; i < change.length; i++)
+    {
+      change[i].className="";    // Change the content
+    }
+}
+
+/* Sets the onclick attribute of to HTML elements of a given class "name" */
+/* TODO not currently used */
+function onclickClass(name, func)
+{
+    console.log("Onlick Class: " + name);
+    var change = document.getElementsByClassName(name);  // Find the elements
+    for (var i = 0; i < change.length; i++)
+    {
+      change[i].onclick = func;    // Change the content
+    }
+}

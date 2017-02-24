@@ -1,0 +1,58 @@
+<DOCTYPE! html>
+<html>
+<head>
+  <title>LMS Home</title>
+  <!-- Add links for CSS and JS when those are writtent -->
+  <link type="text/css" rel="stylesheet" href="css_old/stylesheet2.css">
+  <script src="js/onepage.js"></script>
+  <script src="js/mylib.js"></script>
+  <script src="../Calendar/calendar_onepage/withdrawfunction.js"></script>
+</head>
+
+<body>
+  <div class="loginformabs">
+    <!-- <form method="POST" action="AJAXLogin.jsp"> -->
+    <input name="userid" placeholder="Student ID"/>
+    <input type="password" name="passwd" placeholder="Password"/>
+    <!-- <input id="login" type="button" onclick="requestResponse('AJAXLogin.jsp', this.form.userid, getAjax)" value="Login"/> -->
+    <!-- </form> -->
+  </div>
+  <!--
+  <div id = "menu_top">
+    <img src="images/LMS_logo.png" />
+  </div>
+-->
+
+  <div id="menu">
+    <ul>
+      <li><a href="#mylmsaccount">My LMS Account</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Courses</a>
+        <div class="dropdown-content">
+          <a href="#">CPE640</a>
+          <a href="#">CPE593</a>
+          <a href="#">EE810</a>
+        </div>
+      </li>
+      <li><a href="#calendar" onclick="drawCalendar()">Calendar</a></li>
+      <li><a href="#inbox" onclick="launch(Grade, gradepayload)">Inbox</a></li>
+      <li><a href="#help">Help</a></li>
+    </ul>
+  </div>
+
+  <div id="menu_left">
+
+  </div>
+  <div id="content">
+    <h1>Welcome to LMS!</h1>
+    <hr />
+    <p>This will serve as the main page to navigate the learning mangement system.</p>
+    <p>The left most column will contain information specific to the option chosen from the menu above.</p>
+    <p>The menu to the right will list any upcoming items.</p>
+    <p><br /></p>
+    <button onclick="launch(Grade_Old, gradepayload2)">Grades</button>
+    <p><a>Somethind Else</a></p>
+  </div>
+</body>
+</html>

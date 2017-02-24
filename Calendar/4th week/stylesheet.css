@@ -1,3 +1,4 @@
+@CHARSET "UTF-8";
         table {
             width: 700px;
             height: 300px;
@@ -25,4 +26,16 @@
 			width: 100px;
 
         }
-		
+		.holiday{
+			background-color: pink;
+			position: absolute;
+			left:450px;
+			top:150px;
+			width:300px;
+			height:200px;
+			border-width: 1px;
+			border-style: solid;
+			margin: 0 auto;
+
+        }
+			

@@ -1,0 +1,233 @@
+<style type="text/css">
+body {
+    margin: 0;
+}
+
+.navigation {
+    list-style-type: none;
+    padding: 0;
+    margin:0;
+    width: 120px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+#account {
+  margin-top:10px;
+}
+
+.navigation li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.navigation li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.navigation li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+#content {
+margin-left: 120px;
+}
+
+.dropdown {
+  float:left;
+}
+
+.menu {
+  display:inline-block;
+    background-color: #555;
+    border:none;
+    color:white;
+    text-aligh:center;
+    font-size: 20px;
+    padding: 10px;
+    transition: all 0.5s;
+    cursor: pointer;
+    width:100px;
+    height:50px;
+    margin:10px;
+}
+
+.menu span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.dropdown-menu {
+    display: none;
+    position: fixed;
+    margin-left: 120px;
+    background-color: #f9f9f9;
+    width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+  background-color:#555;
+    color:white;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.nav-top {
+  float: left;
+    margin-top: 10px;
+}
+
+.nav-top nav ul li span a {
+  color:#2e73d6;
+  text-decoration:none;
+}
+
+.nav-top nav ul li span a:hover {
+  text-decoration:underline;
+}
+
+.nav-top nav ul li {
+  display:inline;
+}
+
+.up1 {
+  margin-top:1em;
+}
+
+#up2 {
+  margin-left:1em;
+}
+
+#up3 {
+  margin-left:1em;
+}
+
+.aggreate {
+  background-color: #555;
+  border: none;
+  color: white;
+  padding: 7.5px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+  margin-left:10px;
+}
+
+.filter {
+  clear:left;
+}
+
+.in-ex {
+  position:relative;
+  bottom:40px;
+  float:right
+}
+
+.grade {
+    float:left;
+    position:relative;
+    left:10px;
+    }
+
+.button, .in-ex {
+  padding:8px 16px;
+  border:none;
+  color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: rgb(66, 184, 221);
+}
+
+.grade_left{
+  float: left;
+}
+
+.grade_right {
+    float: left;
+}
+
+.head div{
+  border:1px solid grey;
+    float:left;
+    padding:10px;
+}
+
+.score {
+  float:left;
+    border:1px solid grey;
+    padding:10px;
+}
+#wrapper {
+  display: block;
+  width: 850px;
+  background: #fff;
+  float:left;
+}
+
+#keywords {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+
+#keywords thead {
+  cursor: pointer;
+  background: #c9dff0;
+}
+#keywords thead tr th {
+  font-weight: bold;
+  padding: 12px 30px;
+  padding-left: 42px;
+}
+#keywords thead tr th span {
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+}
+
+#keywords thead tr th.headerSortUp, #keywords thead tr th.headerSortDown {
+  background: #acc8dd;
+}
+
+#keywords thead tr th.headerSortUp span {
+  background-image: url('up-arrow.png');
+}
+#keywords thead tr th.headerSortDown span {
+  background-image: url('down-arrow.png');
+}
+
+
+#keywords tbody tr {
+  color: #555;
+}
+#keywords tbody tr td {
+  text-align: center;
+  padding: 15px 10px;
+}
+#keywords tbody tr td.lalign {
+  text-align: left;
+}
+table.gradeTable { border-collapse: collapse; border-spacing: 0; }
+
+</style>

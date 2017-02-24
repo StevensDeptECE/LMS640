@@ -1,0 +1,26 @@
+table {
+    width: 700px;
+    height: 300px;
+    border-collapse: collapse;
+}
+table, td, th {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+td.pre {
+    background-color: gainsboro;
+    width: 100px;
+}
+td.current {
+    background-color: #c3dde0;
+		width: 100px;
+}
+td.next {
+    background-color: lightgreen;
+		width: 100px;
+}
+td.today {
+    background-color: #87ceeb;
+		width: 100px;
+}

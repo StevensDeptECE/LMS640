@@ -25,24 +25,21 @@
   </head>
   <body>
     
+    <div id="navbar">
      <nav class="navbar navbar-inverse navbar-fixed-top" data-spy="affix">
        <div class="container-fluid">   
-         <!-- Brand and toggle get grouped for better mobile display -->
-         <div class="navbar-header">
-           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-           </button>
-           <a class="navbar-brand" href="#">Discussion Board</a>
-         </div>
-
+         <a class="navbar-brand" href="#">Discussion Board</a>
          <!-- Collect the nav links, forms, and other content for toggling -->
-         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+         <div class="collapse navbar-collapse">
            <ul class="nav navbar-nav">
              <li><a href="#">Home</a></li>
-             <li class="active"><a href="#">Discussion<span class="sr-only">(current)</span></a></li>
+             <li class="dropdown active">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Discussion<span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                 <li><a href="#">Create Discussion</a></li>
+                 <li><a href="#">View Discussion</a></li>
+               </ul>
+             </li>
              <li class="dropdown">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project<span class="caret"></span></a>
                <ul class="dropdown-menu">
@@ -50,7 +47,6 @@
                  <li><a href="#">View Project</a></li>
                </ul>
              </li>
-             <li><a href="#">Engagement</a></li>
            </ul>
            <form class="navbar-form navbar-left">
              <div class="form-group">
@@ -58,27 +54,18 @@
              </div>             
              <div class="btn-group">
                <button type="button" class="btn btn-primary">Search</button>
-               <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-               </button>
-               <ul class="dropdown-menu">
-                 <li><a href="#">Search for Username</a></li>
-                 <li><a href="#">Search for Subject</a></li>
-                 <li><a href="#">Search for Keywords</a></li>
-               </ul>
              </div>    
            </form>           
            <ul class="nav navbar-nav navbar-right">
-             <li><a href="#">Help</a></li>
+             <li><a href="#"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Sign In</a></li>
+             <li><a href="#"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sign Out</a></li>
              <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quick Links<span class="caret"></span></a>
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Quick Links<span class="caret"></span></a>
                <ul class="dropdown-menu">
                  <li><a href="#">LiquiZ</a></li>
                  <li><a href="#">Homework</a></li>
                  <li><a href="#">Grading</a></li>
                  <li class="active"><a href="#">Discussion Board</a></li>
-                 <li role="separator" class="divider"></li>
                  <li><a href="#">Calendar</a></li>
                </ul>
              </li>
@@ -86,10 +73,11 @@
          </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
      </nav>
+    </div>
      
-     <br><br><br>
+     <br><br>
      
-     <div class="container">
+     <div id="quickDiscussion" class="container">
        <div class="col-xs-12 col-sm-9">
            <div class="jumbotron">
                <form role="form">
@@ -102,55 +90,18 @@
                   <label class="sr-only" for="InputBody">Input body</label>
                   <textarea class="form-control" id="InputBody "rows="3" placeholder="Body"></textarea>
                   </div>
-                  <div class="form-group">
-                    <label class="sr-only" for="InputFile">File input</label>
-                    <input type="file" id="InputFile">
-                  </div>
                   <button type="submit" class="btn btn-primary btn-sm">Post</button>
                </form>
            </div>	               
        </div>
-       <div class="col-xs-6 col-sm-3 sidebar-offcanvas col-xs-offset-8" id="sidebar" data-spy="affix" style="text-align: center">
-	       <div class="panel panel-primary">
-             <div class="panel-heading">
-               <h2 class="panel-title">Member list</h2>
-             </div>
-             <div class="panel-body">
-               <div class="list-group">
-                 <a href="#" class="list-group-item">
-	               <h5 class="list-group-item-heading">Dov Kruger</h5>
-                   <p class="list-group-item-text">Professor</p>
-	             </a>
-                 <a href="#" class="list-group-item">
-	               <h5 class="list-group-item-heading">Xiaolu Wang</h5>
-                   <p class="list-group-item-text">Teaching Assistant</p>  
-                 </a>
-                 <a href="#" class="list-group-item">
-	               <h5 class="list-group-item-heading">Yang Liu</h5>
-                   <p class="list-group-item-text">Student</p>  
-                 </a>
-                 <a href="#" class="list-group-item">
-	               <h5 class="list-group-item-heading">He Song</h5>
-                   <p class="list-group-item-text">Student</p>  
-                 </a>
-                 <a href="#" class="list-group-item">
-	               <h5 class="list-group-item-heading">Fangming Zhao</h5>
-                   <p class="list-group-item-text">Student</p>  
-                 </a>
-               </div>
-             </div>
-	       </div>
-        </div>           
      </div>    
          
-     <div class="container">
+     <div id="discusscontent" class="container">
        <div class="col-xs-12 col-sm-9">
-	     <h4><small>RECENT DISCUSSIONS</small></h4>
 	     <hr>
 	     <h2>How to learn JS and CSS?</h2>
+	     <p></p>
          <h5><span class="glyphicon glyphicon-time"></span> Post by Yang Liu, Jan 27, 2017.</h5>
-         <h5><span class="label label-danger">JS</span> <span class="label label-success">CSS</span></h5><br>
-         <p>Food is my passion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
          <hr>
          <h4>Leave a Comment:</h4>
          <form role="form">
@@ -177,17 +128,6 @@
              <h4>John Row <small>Jan 28, 2017, 8:25 PM</small></h4>
              <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
              <br>
-             <p><span class="badge">1</span> Comment:</p><br>
-             <div class="row">
-               <div class="col-sm-2 text-center">
-                 <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-               </div>
-               <div class="col-xs-10">
-
-		       <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>
-                 <p>Me too! WOW!</p>
-               </div>
-             </div>
            </div>
          </div>
          
@@ -195,7 +135,6 @@
          
          <h2>How to learn JS and CSS?</h2>
          <h5><span class="glyphicon glyphicon-time"></span> Post by Yang Liu, Jan 27, 2017.</h5>
-         <h5><span class="label label-danger">JS</span> <span class="label label-success">CSS</span></h5><br>
          <p>Food is my passion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
          <hr>
          <h4>Leave a Comment:</h4>
@@ -223,48 +162,20 @@
              <h4>John Row <small>Jan 28, 2017, 8:25 PM</small></h4>
              <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
              <br>
-             <p><span class="badge">1</span> Comment:</p><br>
-             <div class="row">
-               <div class="col-sm-2 text-center">
-                 <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-               </div>
-               <div class="col-xs-10">
-                 <h4>Nested Bro <small>Jan 30, 2017, 8:28 PM</small></h4>
-                 <p>Me too! WOW!</p>
-               </div>
-             </div>
            </div>
          </div>  
        </div>
      </div>
-     
-    
+     <hr>
+     <footer><br><br></footer>      
            
            
-           
-        
-     
+         
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="data.js"></script>
-
-    <script scr="./script.js">
-
-//        console.log(data);
-
-        document.write(data.length);
-
-        for(var i = 0 ; i < data.length; i++)
-
-            {
-
-                document.write(data[i].record);
-
-            }
-
-
-    </script>	  
+    <script src="data.js"></script>  
   </body>
 </html>
+
