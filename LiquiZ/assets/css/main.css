@@ -170,7 +170,7 @@ div.header {
 .submitquiz {
     font-size: medium;
 }
-p.Code {
+textarea.inputCode {
     font-family: "courier";
     color: lawngreen;
     background: black;
