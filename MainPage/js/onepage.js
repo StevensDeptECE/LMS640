@@ -1,16 +1,12 @@
-/* Utilizes functions in mylib.js */
+/* A simple example of creating an object, clearing part of a page, and drawing
+ * the object.
+*/
 
-/* Try to stop the clearing of changes when a page refreshes */
-if (performance.navigation.type == 1) {
-  console.info( "This page is reloaded" );
-  //preventDefault()
-} else {
-  console.info( "This page is not reloaded");
-}
+/* Utilizes functions in mylib.js */
 
 
 /* Grade payload construcotr. The payload is a 2D array. */
-function Grade(payload) {
+function Grade_Old(payload) {
   this.payload = payload;
 }
 
@@ -23,11 +19,11 @@ function clearElements(elementID)
 
 /* Draw function to clear and then redraw the 'content'
    box with given data. */
-Grade.prototype.draw = function(c) {
+Grade_Old.prototype.draw = function(c) {
   console.log("draw");
   clearElements('content');
   //var u = new Util();
-  var newTable = Util.table(gradepayload, "Grades Table Example", "gradestable");
+  var newTable = Util.table(this.payload, "Grades Table Example", "gradestable", "");
   //TODO add onclick functionality to the reDraw variable and the h1 that gets created
   var reDraw = Util.h1("Redraw Grades", "grades", "redrawgrades");
   //var text = document.createTextNode("Re Draw Grades");
@@ -37,14 +33,6 @@ Grade.prototype.draw = function(c) {
   document.getElementById("redrawgrades").onclick = function() { console.log("Hello"); };
 }
 
-//TEST - launch with grade payload
-function launch(name, payload) {
-  console.log("Calling Launch");
-  console.log(name);
-  var x = new name(payload);
-  var c = document.getElementById("content");
-  x.draw(c);
-}
 /*
 void function launch(name, payload) {
     var x = eval("new " + name + "(" + payload + ")");
@@ -52,6 +40,19 @@ void function launch(name, payload) {
     x.draw(c);
 }
 */
+
+
+
+/* Try to stop the clearing of changes when a page refreshes */
+/*
+if (performance.navigation.type == 1) {
+  console.info( "This page is reloaded" );
+  //preventDefault()
+} else {
+  console.info( "This page is not reloaded");
+}
+*/
+
 var gradepayload = [
 [1, 2, 3],
 [3,4,5],

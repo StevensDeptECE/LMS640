@@ -112,7 +112,7 @@ margin-left: 120px;
   margin-top:1em;
 }
 
-.up2 {
+#up2 {
   margin-left:1em;
 }
 
@@ -122,16 +122,16 @@ margin-left: 120px;
 
 .aggreate {
   background-color: #555;
-    border: none;
-    color: white;
-    padding: 7.5px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    float: left;
-
+  border: none;
+  color: white;
+  padding: 7.5px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+  margin-left:10px;
 }
 
 .filter {
@@ -140,7 +140,8 @@ margin-left: 120px;
 
 .in-ex {
   position:relative;
-    bottom:40px;
+  bottom:40px;
+  float:right
 }
 
 .grade {
@@ -227,5 +228,6 @@ margin-left: 120px;
 #keywords tbody tr td.lalign {
   text-align: left;
 }
-table { border-collapse: collapse; border-spacing: 0; }
+table.gradeTable { border-collapse: collapse; border-spacing: 0; }
+
 </style>

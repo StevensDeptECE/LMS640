@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<link type="text/css" charset="utf-8" rel="stylesheet" href="holidayIn.css">
+
+<body>
+
+<section>
+  <h1><p id="year"> </p> Holidays</h1>
+
+  <form class="holiday">
+    <div>
+      <label>Holiday Name</label>
+      <input id="name" class="holiday" name= "Name" type="text"/>
+    </div>
+
+    <div>
+      <label>Date</label>
+      <select id="month" class="holiday" name="Month" onchange="limit()">
+        <option value="1" class="holiday">January</option>
+        <option value="2" class="holiday">February</option>
+        <option value="3" class="holiday">March</option>
+        <option value="4" class="holiday">April</option>
+        <option value="5" class="holiday">May</option>
+        <option value="6" class="holiday">June</option>
+        <option value="7" class="holiday">July</option>
+        <option value="8" class="holiday">August</option>
+        <option value="9" class="holiday">September</option>
+        <option value="10" class="holiday">October</option>
+        <option value="11" class="holiday">November</option>
+        <option value="12" class="holiday">December</option>
+      </select>
+        <input id="day" class="holiday" name="Day" type="number" min="1" max="31"> </input>
+    </div>
+
+    <button type="submit">Add it!</button>
+  </form>
+</section>
+
+<div class="results">
+  <h2>Form Data</h2>
+    <code class="resultsDisplay">
+    </code>
+</div>
+
+<div class="list">
+  <h2> List of Holidays </h2>
+  <ul id="holidays"> </ul>
+<script language="JavaScript" src="holidayIn.js"></script>
+</body>
+</html>

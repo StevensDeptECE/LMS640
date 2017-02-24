@@ -7,14 +7,16 @@
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
   <script src="js/onepage.js"></script>
+  <script src="js/account.js"></script>
   <script src="js/mylib.js"></script>
   <script src="../Calendar/calendar_onepage/withdrawfunction.js"></script>
+  <script src="../Grade/js/onepage_grade.js"></script>
   <!--<script src="../Calendar/2nd week/2.js"></script>-->
 </head>
 
 <body>
   <ul class="navigation">
-    <li><a id="account" class="active" href="#">Account</a></li>
+    <li><a id="account" class="active"  onclick="launch(Account, accountpayload, 'up3')"href="#">Account</a></li>
     <li><a id="dashboard" href="#">Dashboard</a></li>
     <li><a id="course" href="#">Course</a></li>
     <li><a id="groups" href="#">Groups</a></li>
@@ -33,7 +35,7 @@
       <a href="#">Announcements</a>
       <a href="#">Assignments</a>
       <a href="#">Discussions</a>
-      <a href="#">Grades</a>
+      <a href="#" onclick="launch(Grade, gradepayload2, 'up3')">Grades</a>
       <a href="#">People</a>
       <a href="#">Pages</a>
       <a href="#">Files</a>
@@ -59,7 +61,7 @@
   </div>
   <hr style="clear:left; margin-top:4em;">
 
-  <div class="up2">
+  <div id="up2">
     <!--
   <button class="aggreate" style="margin-left:10px;">Grade</button>
   <button class="aggreate" onclick="window.location.href='grades distribution.html'" formtarget="_blank">Graph</button>
