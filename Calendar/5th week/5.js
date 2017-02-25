@@ -122,7 +122,7 @@
                 row += "<td class='today'>" + i;
 				for(var j = 0; j < 2; j++){
 					if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
-					row += '\n' + "<button class='create' onclick='creatwindow("+j+")'>"+holiday[j].name+"</button>";
+					row += '\n' + "<button class='createholiday' onclick='createwindow("+j+")'>"+holiday[j].name+"</button>";
 				}
 				row += "</td>";
             }
@@ -130,7 +130,7 @@
                 row += "<td class='current'>" + i;
 				for(var j = 0; j < 2; j++){
 					if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
-					row += '\n'+ "<button class='create' onclick='creatwindow("+j+")'> " + holiday[j].name + " </button>";
+					row += '\n'+ "<button class='createholiday' onclick='createwindow("+j+")'> " + holiday[j].name + " </button>";
 				}
 				row += "</td>";
             }
@@ -148,7 +148,7 @@
         calendarContainer.innerHTML = dateString;
     }
     
-    function creatwindow(n){
+    function createwindow(n){
     	var para = document.createElement("div");
 		para.setAttribute("class","holiday");
 		para.setAttribute("id", "holiday");
@@ -157,13 +157,30 @@
     	document.body.appendChild(para);
     }
 	
+	function createEventwindow(){
+    	var para = document.createElement("div");
+		para.setAttribute("class","event");
+		para.setAttribute("id", "event");
+    	var node = document.createTextNode("please add your event");
+    	para.appendChild(node);
+    	document.body.appendChild(para);
+		console.log("i made a window");
+    }
+	
 	window.onclick = function(e) {
-		if(e.target.id != "holiday" && e.target.className != "create") {
+		if(document.getElementById("holiday")){
+			if(e.target.id != "holiday" && e.target.className != "createholiday") {
 			var holiday = document.getElementById("holiday");
 			holiday.parentNode.removeChild(holiday);
 		}
+		}if(document.getElementById("event")){
+		if(e.target.id != "event" && e.target.id != "createevent") {
+			var event = document.getElementById("event");
+			event.parentNode.removeChild(event);
+			console.log("i took away the window");
+		}
+		}
 	}
-	
 	
     function setCalendar() {
         show(getRightNow());
