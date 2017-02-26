@@ -15,7 +15,7 @@
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-static-top">
-  <div class="container-fluid" ng-controller="AppCtrl">
+  <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -60,46 +60,41 @@
 </nav><!-- /.navbar -->
 
 <div class="row row-offcanvas row-offcanvas-left">
-  <div class=col-sm-9>  
-    <div class="btn-group pull-right">
-      <button class="btn btn-primary" type="button"> All Projects</button>          
-    </div>    
-    <div class="col-md-2" id="2">
-      <ul class="nav nav-pills nav-stacked" id="data" ng-repeat="project in projectlist">
-        <!-- <li class="active"><a href="#">Create</a></li> -->
-      
-        <li><a href="#">{{projectlist.pnames.Name}}</a></li>
-        
-     
-    
-      </ul>
-    </div>
-    <div class="col-md-1" >
-    </div>
-    <div id="page-content-wrapper">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6"> 
+<div class=col-sm-1></div>
+<div class=col-sm-7 ng-controller="AppCtrl">
 
-          
-            <form action="action_page.php" method="get">
-              <div class="form-group" rows="10">
+<table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Info</th>
+        <th class=col-sm-1>Team Size</th>
+        <th>Action</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input class="form-control" ng-model="project.name"></td>
+        <td><input class="form-control" ng-model="project.info"></td>
+        <td><input class="form-control" ng-model="project.team"></td>
+        <td><button class="btn btn-primary" ng-click="addproject()">Add Project</button></td>
+        <td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+      </tr>
+      <tr ng-repeat="project in projectlist">
+        <td>{{project.name}}</td>
+        <td>{{project.info}}</td>
+        <td>{{project.team}}</td>
+        <td><button class="btn btn-danger" ng-click="remove(project._id)">Remove</button></td>
+        <td><button class="btn btn-warning" ng-click="edit(project._id)">Edit</button></td>
+      </tr>
+    </tbody>
+</table>
+</div>
 
-                  <label for="Pname"></label>
-                  <input type="text" class="form-control" id="email" placeholder="Name"> 
-                  <label for="Description" ></label>
-                  <textarea name="message" class="form-control" rows="3" cols="50" placeholder="Description"></textarea>
-              </div>  
-              <button type="submit" class="btn btn-primary" >Create</button>
-            </form>
-          </div>  
-        </div> 
-      </div>
-    </div>
-  </div>
 
           <!-- add your code here-->
-      
+ <div class=col-sm-1></div>     
         
   <div class=col-sm-2>
 
@@ -118,7 +113,8 @@
       </ul>
         <div class="tab-content">
           <div class="tab-pane fade in active"  id="student">
-            <div class="list-group"><!-- we need json or datebase to dispaly here-->
+          <!-- we need json or datebase to dispaly here-->
+            <div class="list-group">
                   <a href="#" class="list-group-item" onclick="creates()">student 1<span class="badge">message 2</span></a>
                   <a href="#" class="list-group-item" onclick="creates()">student 2<span class="badge">message 15</span></a>
                   <a href="#" class="list-group-item" onclick="creates()">student 3<span class="badge">message 15</span></a>
@@ -140,6 +136,7 @@
         </div>
     </div>
   </div>
+  <div class=col-sm-1></div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>

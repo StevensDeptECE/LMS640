@@ -1,50 +1,49 @@
-var myApp= angular.module('myApp',[]);
-myApp.controller('AppCtrl',['$scope','$http',function($scope,$http){
-	console.log("hello world from controller");
-	$http.get('/projectlist')
-
-		{
-		"Pnames":[
-        {
-            "Name":"DiscussionForum",
-            "Info":"This is e-platform where students can have discussions about their projects.",
-            "Teams" : ["team1","team2"],
-            "teammembers" : ["Yang bai, Bhavitha"]
+var myApp = angular.module('myApp', []);
+myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
+    console.log("Hello World from controller");
 
 
-        },
+var refresh = function() {
+  $http.get('/projectlist').success(function(response) {
+    console.log("I got the data I requested");
+    $scope.projectlist = response;
+    $scope.project = "";
+  });
+};
 
-        {
-            "Name":"Calender",
-            "Info":"This is e-platform where students can have discussions about their projects.",
-            "Teams" : ["team1","team2"],
-            "teammembers" : ["Amulya", "charith"] 
-            
-        },
+refresh();
 
-        {
-            "Name":"Homework",
-            "Info":"This is e-platform where students can have discussions about their projects.",
-            "Teams" :["team1","team2"],
-            "teammembers" : ["Rajesh", "Aravind"]
-            
-        },
+$scope.addproject = function() {
+  console.log($scope.project);
+  $http.post('/projectlist', $scope.project).success(function(response) {
+    console.log(response);
+    refresh();
+  });
+};
 
-        {
-            "Name":"C++ Server",
-            "Info":"This is e-platform where students can have discussions about their projects.",
-            "Teams" : ["team1","team2"],
-            "teammembers": ["sreeman" ,"sri Nidh"]
-        },
+$scope.remove = function(id) {
+  console.log(id);
+  $http.delete('/projectlist/' + id).success(function(response) {
+    refresh();
+  });
+};
 
-        {
-            "Name":"LiQuiz",
-            "Info":"This is e-platform where students can have discussions about their projects.",
-            "Teams" :["team1","team2"],
-            "teammembers" : ["Rajesh", "Aravind"]
-            
-        }
-]}
-	var projectlist =[Pnames[0].Name,Pnames[1].Name,Pnames[2].Name];
-	$scope.projectlist = projectlist;
-}]);
+$scope.edit = function(id) {
+  console.log(id);
+  $http.get('/projectlist/' + id).success(function(response) {
+    $scope.project = response;
+  });
+};
+
+$scope.update = function() {
+  console.log($scope.project._id);
+  $http.put('/projectlist/' + $scope.project._id, $scope.project).success(function(response) {
+    refresh();
+  })
+};
+
+$scope.deselect = function() {
+  $scope.project = "";
+}
+
+}]);﻿
