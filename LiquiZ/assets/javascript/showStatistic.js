@@ -17,7 +17,7 @@ function load(){
 
     p=document.getElementById("Information");
     drawInfo(p,data);
-    s=document.getElementById("ShowGrades")
+    s=document.getElementById("ShowGrades");
     drawTable(s,data);
 
 }
@@ -28,7 +28,7 @@ function drawInfo(p,data){
     p1.appendChild(document.createTextNode(data.Course+" : "+data.Quizname));
     var d=document.createElement("div");
     var p2=document.createElement("tr");
-    d.className="Info"
+    d.className="Info";
     var t1=document.createElement("td");
     t1.appendChild(document.createTextNode("Due Date : "+data.DueDate));
     var t2=document.createElement("td");
