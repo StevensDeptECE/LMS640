@@ -1,5 +1,9 @@
 /*Contains objects for general components of questions such as 
 instructions, and equations */
+function Instr(s, id) {
+	this.id = id;
+	this.s = s;
+}
 
 Instr.prototype.draw = function(div) {
 	app(div, this.s);
@@ -49,3 +53,5 @@ YourAnswer.prototype.draw = function(div) {
 	app(x, "Your Answer: " + this.s);
 	div.appendChild(x);
 }
+
+
