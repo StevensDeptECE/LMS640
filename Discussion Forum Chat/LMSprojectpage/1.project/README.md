@@ -35,6 +35,6 @@ Run these commands in git bash after cloning to this repository
     from your MongoDB directory,
     mongod
 
-3. and then run the server(web server: localhost:3000)
-    command : node server
-    in git bash
+3. then run the server(web server: localhost:3000)  in git bash
+
+   node server
