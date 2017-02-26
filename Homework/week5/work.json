@@ -1,0 +1,38 @@
+ {
+    "Assignment": [
+        {
+            "assignmentId":"1244",
+            "studentId": "2345",
+            "fileType": "pde/java/cpp/html",
+            "dueDate":{
+                "month": "Jan",
+                "day": "23th",
+                "year": "2089",
+                "time": "12:45:45"
+            },
+            "courseName": "CPE640",
+            "url":"",
+            "grade":"100"
+        }],
+    "Submittion":[
+        {
+            "Name":"countPrime.java",
+            "url":"https://raw.githubusercontent.com/sihanwang94/CPE640/master/10412388/1244/countPrime.java"
+        }],
+    "Student": [
+        {
+            "studentId":"2345",
+            "studentName":"blabla",
+            "CWID":"10412388",
+            "mailAddress":"***@stevens.edu"
+        }],
+    "Course" :[
+        {
+            "courseName":"software Engineering I",
+            "courseId":"CPE640",
+            "instructor":"",
+            "gitName":"sihanwang94",
+            "studentCapacity":"",
+            "teachingAssistant":""
+        }]
+}

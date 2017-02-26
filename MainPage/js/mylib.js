@@ -33,21 +33,71 @@ Util = {
       return element;
   },
 
+  td: function(tElement, className, id) {
+    //console.log("new td");
+    var td = Util.make("td", {
+        className: className, //set td class name
+        id: id // set td id
+    });
+    td.innerHTML = tElement;
+
+    return td;
+  },
+
+  thead: function(tElement, className, id) {
+    //console.log("new td");
+    var thead = Util.make("thead", {
+        className: className, //set td class name
+        id: id // set td id
+    });
+    var newTr = Util.tr(tElement);
+    /*
+    for (var i = 0; i < tElement.length; i++) {
+      var newTd = Util.td(tElement[i]);
+      thead.appendChild(newTd);
+    }
+    */
+    thead.appendChild(newTr);
+    //thead.innerHTML = tElement;
+    return thead;
+  },
+
   /*
    * Generic <tr> generator. For the use of Util.table().
    */
-
-  tr: function (list) {
-      console.log("new tr");
-      var tr = Util.make("tr");
+  tr: function (list, className, id) {
+      //console.log("new tr");
+      var tr = Util.make("tr", {
+          className: className, //set tr class name
+          id: id // set tr id
+      });
       for (var i = 0; i < list.length; i++) {
           var tElement;
+          /*
           tElement = Util.make("td", {
               innerHTML: list[i],
           });
+          */
+          /*
+          if (header) {
+            tElement= Util.thead(list[i]);
+          }
+          else {
+            tElement = Util.td(list[i]);
+          }
+          */
+          tElement = Util.td(list[i]);
           tr.appendChild(tElement);
       }
       return tr;
+  },
+
+  tbody: function (className, id) {
+    var tbody = Util.make("tbody", {
+        className: className, //set tr class name
+        id: id // set tr id
+    });
+    return tbody;
   },
 
   /*
@@ -62,11 +112,12 @@ Util = {
    */
 
    //list --> list of lists
+   //header --> boolean of whether or not the first row is a table header
   table: function (list, header, className, id) {
-      console.log("new table");
+      //console.log("new table");
       var result = Util.make("table", {
-          className: className,
-          id: id
+          className: className, //set table class name
+          id: id // set table id
       });
 
       /*
@@ -77,11 +128,18 @@ Util = {
       }
       */
 
-      var tbody = Util.make("tbody");
+      var tbody = Util.tbody();
       result.appendChild(tbody);
       for (var i = 0; i < list.length; i++) {
-          var row = Util.tr(list[i]);
-          tbody.appendChild(row);
+          var row;
+          if (header && i == 0) {
+            row = Util.thead(list[i]);
+            result.appendChild(row);
+          }
+          else {
+            row = row = Util.tr(list[i]);
+            tbody.appendChild(row);
+          }
       }
       return result;
   },

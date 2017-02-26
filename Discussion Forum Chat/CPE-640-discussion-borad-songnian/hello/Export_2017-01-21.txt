@@ -1,0 +1,10 @@
+person (driver id, name, address)
+car (license, model, year)
+accident (report number, date, location)
+owns (driver id, license)
+participated (driver id, car, report number, damage amount)
+
+employee (employee name, street, city)
+works (employee name, company name, salary)
+company (company name, city)
+manages (employee name, manager name)

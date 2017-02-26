@@ -122,7 +122,7 @@
                 row += "<td class='today'>" + i;
 				for(var j = 0; j < 2; j++){
 					if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
-					row += '\n' + "<button onclick='creatwindow()'>holiday</button>";
+					row += '\n' + "<button class='create' onclick='creatwindow("+j+")'>"+holiday[j].name+"</button>";
 				}
 				row += "</td>";
             }
@@ -130,7 +130,7 @@
                 row += "<td class='current'>" + i;
 				for(var j = 0; j < 2; j++){
 					if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
-					row += '\n'+ "<button onclick='creatwindow("+j+")'> holiday </button>";
+					row += '\n'+ "<button class='create' onclick='creatwindow("+j+")'> " + holiday[j].name + " </button>";
 				}
 				row += "</td>";
             }
@@ -151,10 +151,20 @@
     function creatwindow(n){
     	var para = document.createElement("div");
 		para.setAttribute("class","holiday");
+		para.setAttribute("id", "holiday");
     	var node = document.createTextNode(holiday[n].name);
     	para.appendChild(node);
     	document.body.appendChild(para);
     }
+	
+	window.onclick = function(e) {
+		if(e.target.id != "holiday" && e.target.className != "create") {
+			var holiday = document.getElementById("holiday");
+			holiday.parentNode.removeChild(holiday);
+		}
+	}
+	
+	
     function setCalendar() {
         show(getRightNow());
         fillDate();
