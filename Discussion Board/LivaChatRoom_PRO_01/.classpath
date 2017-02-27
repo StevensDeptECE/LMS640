@@ -14,5 +14,12 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="/home/killer/Downloads/spring-websocket-5.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="/home/killer/Downloads/commons-beanutils-1.8.0.jar"/>
+	<classpathentry kind="lib" path="/home/killer/Downloads/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="/home/killer/Downloads/commons-lang-2.5.jar"/>
+	<classpathentry kind="lib" path="/home/killer/Downloads/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/killer/Downloads/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="/home/killer/Downloads/commons-beanutils-1.9.3/commons-beanutils-1.9.3.jar"/>
+	<classpathentry kind="lib" path="/home/killer/Downloads/commons-collections4-4.1/commons-collections4-4.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
