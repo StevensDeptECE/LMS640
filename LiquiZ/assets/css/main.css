@@ -181,17 +181,17 @@ textarea.inputCode {
 }
 
 /*For index.html*/
-h1#h01 {
+#h01 {
     font-size: 40px;
     text-align: center;
     text-shadow: 0 0 3px #FF0000;
 }
-table#t01 {
+#t01 {
     width:100%;
     border: 1px solid grey;
     border-collapse: collapse;
 }
-table#t01 th{
+#t01 th{
     /*padding: 10px 20px;*/
     text-align: center;
     border: 1px solid grey;
@@ -201,7 +201,7 @@ table#t01 th{
     color: white;
     font-size: 20px;
 }
-table#t01 td {
+#t01 td {
     /*padding: 10px 20px;*/
     text-align: center;
     border: 1px solid grey;
@@ -209,13 +209,13 @@ table#t01 td {
     /*margin: 20px;*/
     font-size: 20px;
 }
-table#t01 tr:nth-child(even) {
+#t01 tr:nth-child(even) {
     background-color: #eee;
 }
-table#t01 tr:nth-child(odd) {
+#t01 tr:nth-child(odd) {
     background-color:#fff;
 }
-a.one:link, a.one:visited {
+.one:link, .one:visited {
     display: inline-block;
     padding: 10px 15px;
     font-size: 20px;
@@ -230,8 +230,8 @@ a.one:link, a.one:visited {
     box-shadow: 0 8px #999;
     margin: 15px 15px;
 }
-a.one:hover {background-color: #3e8e41}
-a.one:active {
+.one:hover {background-color: #3e8e41}
+.one:active {
     background-color: #3e8e41;
     box-shadow: 0 3px #666;
     transform: translateY(2px);
@@ -257,6 +257,12 @@ button:active {
     background-color: #3e8e41;
     box-shadow: 0 3px #666;
     transform: translateY(2px);
+}
+
+.add_button {
+    position: absolute;
+    top: 15px;
+    right: 100px;
 }
 
 /*---------------------------*/

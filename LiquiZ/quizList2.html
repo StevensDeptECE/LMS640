@@ -1,0 +1,130 @@
+<!--This version put JSON as an object and use Jquery-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Quiz Index</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<body>
+<div><h1 id="h01">Quiz Index</h1><button class="add_button">Add a Quiz</button></div>
+<div class = "container">
+    <table id="t01">
+        <thead>
+        <tr>
+            <th>Publish</th>
+            <th>Quiz Name</th>
+            <th>Course Name</th>
+            <th>Due Date</th>
+            <th>Close Date</th>
+            <th>Show Statistic</th>
+            <th>Take & Edit</th>
+            <th>Operation</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+<script>
+
+    var data = [
+            {
+                "id": "qc1111",
+                "publish": "yes",
+                "quizName": "Quiz1",
+                "course": "CPE-593",
+                "dueDate": "1/1/2017",
+                "closeDate": "2/2/2017",
+                "stats": "StatisticView2.html",
+                "take": "TakeTest1.html",
+                "edit": "TakeTest1.html"
+            },
+            {
+                "id": "qc2222",
+                "publish": "yes",
+                "quizName": "Quiz2",
+                "course": "CPE-593",
+                "dueDate": "2/2/2017",
+                "closeDate": "3/3/2017",
+                "stats": "StatisticView2.html",
+                "take": "TakeTest1.html",
+                "edit": "TakeTest1.html"
+            },
+            {
+                "id": "qc3333",
+                "publish": "no",
+                "quizName": "Quiz1",
+                "course": "CPE-810",
+                "dueDate": "3/3/2017",
+                "closeDate": "4/4/2017",
+                "stats": "StatisticView2.html",
+                "take": "TakeTest1.html",
+                "edit": "TakeTest1.html"
+            }
+    ]
+
+    var table = $("table");
+
+    for (var i = 0; i < data.length; i++) {
+        var row = "<tr id='row-" + i + "'>";
+        row += "<td>" + data[i].publish + "</td>";
+        row += "<td>" + data[i].quizName + "</td>";
+        row += "<td>" + data[i].course + "</td>";
+        row += "<td>" + data[i].dueDate + "</td>";
+        row += "<td>" + data[i].closeDate + "</td>";
+        row += "<td >" + "<a class='one' href = " + data[i].stats + ">Stats</a>" + "</td>";
+        row += "<td >" + "<a class='one' href = " + data[i].take + ">Take</a><a class='one' href = " + data[i].edit + ">Edit</a>" + "</td>";
+        row += "<td><button class='del-button' data-id=" + i + ">Del</button><button class='dup-button' data-id=" + i + ">Dup</button></td>";
+        row += "</tr>";
+        console.log(row);
+        table.append(row);
+    }
+
+    $(".del-button").click(function(){
+        var rowId = $(this).data("id");
+        $("#row-" + rowId).remove();
+        data.splice(rowId,1);
+        console.log(data);
+        //table.ajax.reload();
+    });
+
+    $(".dup-button").click(function(){
+        var rowId = $(this).data("id");
+        console.log(rowId);
+        $("#row-" + rowId).clone().appendTo(table);
+        var bbb = {
+            "id": data[rowId].id,
+            "publish": data[rowId].publish,
+            "quizName": data[rowId].quizName,
+            "course": data[rowId].course,
+            "dueDate": data[rowId].dueDate,
+            "closeDate": data[rowId].closeDate,
+            "stats": data[rowId].stats,
+            "take": data[rowId].take,
+            "edit": data[rowId].edit
+        };
+        data.push(bbb);
+        console.log(data);
+        //table.ajax.reload();
+    });
+    //for refresh html when json changed
+
+    var previous = null;
+    var current = null;
+    setInterval(function() {
+        $.getJSON("data.json", function(json) {
+            current = JSON.stringify(json);
+            if (previous && current && previous !== current) {
+                console.log('refresh');
+                location.reload();
+            }
+            previous = current;
+        });
+    }, 2000);
+
+</script>
+
+</body>
+</html>

@@ -1,3 +1,4 @@
+<!--This is the first version use Jquery and put JSON into data.json-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <body>
-<h1 id="h01">Quiz Index</h1>
+<div><h1 id="h01">Quiz Index</h1><button class="add_button">Add a Quiz</button></div>
 <div class = "container">
     <table id="t01">
         <thead>
@@ -64,13 +65,45 @@ $.getJSON("data.json",function(data){
     $(".del-button").click(function(){
         var rowId = $(this).data("id");
         $("#row-" + rowId).remove();
+        data.splice(rowId,1);
+        console.log(data);
+        //table.ajax.reload();
     });
+
     $(".dup-button").click(function(){
         var rowId = $(this).data("id");
         $("#row-" + rowId).clone().appendTo(table);
+        var bbb = {
+            "id": data[rowId].id,
+            "publish": data[rowId].publish,
+            "quizName": data[rowId].quizName,
+            "course": data[rowId].course,
+            "dueDate": data[rowId].dueDate,
+            "closeDate": data[rowId].closeDate,
+            "stats": data[rowId].stats,
+            "take": data[rowId].take,
+            "edit": data[rowId].edit
+        };
+        data.push(bbb);
+        console.log(data);
+        //table.ajax.reload();
     });
 
-});
+})
+
+//for refresh html when json changed
+var previous = null;
+var current = null;
+setInterval(function() {
+    $.getJSON("data.json", function(json) {
+        current = JSON.stringify(json);
+        if (previous && current && previous !== current) {
+            console.log('refresh');
+            location.reload();
+        }
+        previous = current;
+    });
+}, 2000);
 
 </script>
 
