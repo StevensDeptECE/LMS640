@@ -1,9 +1,9 @@
 /* Grade payload construcotr. The payload is a 2D array. */
-function Grade(payload) {
+function Grade2(payload) {
   this.payload = payload;
 }
 
-Grade.prototype.draw = function(c) {
+Grade2.prototype.draw = function(c) {
   console.log("draw");
 
   var up2 = document.getElementById("up2")
@@ -21,22 +21,21 @@ Grade.prototype.draw = function(c) {
   var newDiv = Util.div("", "wrapper");
   var newTable = Util.table(this.payload, true, "gradeTable", "keywords");
 
-  var newTable2 = Util.table([], true, "gradeTable", "keywords");
+  var newTable2 = Util.table([], false, "gradeTable", "keywords");
   //try creating table one element at a time
-  console.log("table length: " + this.payload.length);
-  var newThead = Util.thead(this.payload[i]);
+  var newThead = Util.thead(this.payload[0]);
   newTable2.appendChild(newThead);
   var newTbody = Util.tbody();
   for (var i = 1; i < this.payload.length; i++) {
     console.log("table row " + i + " length: " + this.payload[i].length);
     var newTr = Util.tr([]); //create new table row
     for (var j = 0; j < this.payload[i].length; j++) {
-      if (i == 0) {
-        var newTd = Util.thead(this.payload[i][j]); //create new table element
-      }
-      else {
+      //if (i == 0) {
+        //var newTd = Util.thead(this.payload[i][j]); //create new table element
+      //}
+      //else {
         var newTd = Util.td(this.payload[i][j]); //create new table element
-      }
+      //}
       newTr.appendChild(newTd);
     }
     newTbody.appendChild(newTr);

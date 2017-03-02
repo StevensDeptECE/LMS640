@@ -33,6 +33,9 @@ Util = {
       return element;
   },
 
+  /*
+   * Creates a td (table element) with a given class name and id
+  */
   td: function(tElement, className, id) {
     //console.log("new td");
     var td = Util.make("td", {
@@ -44,8 +47,15 @@ Util = {
     return td;
   },
 
+  /*
+   * Creates a thead (table header). Creates a tr (table row) from tElement.
+   * Appends that tr to the thead.
+   * The thead has a given class name and id.
+   * tElement can be a list or a single element.
+  */
   thead: function(tElement, className, id) {
     //console.log("new td");
+    console.log("in thead: telement = " + tElement);
     var thead = Util.make("thead", {
         className: className, //set td class name
         id: id // set td id
@@ -63,7 +73,8 @@ Util = {
   },
 
   /*
-   * Generic <tr> generator. For the use of Util.table().
+   * Creates a tr (table row) from a list of elements
+   * with a given className and id.
    */
   tr: function (list, className, id) {
       //console.log("new tr");
@@ -104,11 +115,9 @@ Util = {
    * Takes in a class for the table, a list of elements to be inserted into
    * the table, an optional boolean if there's a header in the table, and an
    * optional function that will accept a list and a bool if the list passed
-   * in is the header and return a tr element
-   *
-   * trFunction should be used to modify escape characters that you pass in
-   * through the list. It lets you insert any arbitrary formatting to any tr
-   * element based on whatever escape mechanism you choose.
+   * in is the header and return a tr element. If you wish to create your own
+   * header, pas the header argument as false, create a thead separately,
+   * and append it to the table.
    */
 
    //list --> list of lists
@@ -119,14 +128,6 @@ Util = {
           className: className, //set table class name
           id: id // set table id
       });
-
-      /*
-      if (header) {
-          var headList = list.shift();
-          var thead = result.createTHead();
-          thead.appendChild(trFunction(headList, true));
-      }
-      */
 
       var tbody = Util.tbody();
       result.appendChild(tbody);

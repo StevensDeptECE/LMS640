@@ -138,29 +138,13 @@ function show(customDate) {
 
 function drawCalendarButtons() {
   console.log("Draw Calendar Buttons");
-  var btn_left = Util.button("<", preButton, "", "");        // Create a <button> element
-  //var t_left = document.createTextNode("<");       // Create a text node
-  //btn_left.appendChild(t_left);                                // Append the text to <button>
-  document.getElementById("up3").appendChild(btn_left);                    // Append <button> to <body>
-
-  //in fillDate() function
-  //var t_todayDate = getTempDate().toLocaleDateString()
-  //var todayDate = Util.span(t_todayDate, "", "displayDate");
-
-  fillDate();
-
-  var btn_today = Util.button("Today", resume, "", "");        // Create a <button> element
-  //var btn_today = document.createElement("BUTTON");        // Create a <button> element
-  //var t_today = document.createTextNode("Today");       // Create a text node
-  //btn_today.appendChild(t_today);                                // Append the text to <button>
-
-  var btn_right = Util.button(">", nextButton, "", "");        // Create a <button> element
-  //var btn_right = document.createElement("BUTTON");        // Create a <button> element
-  //var t_right = document.createTextNode(">");       // Create a text node
-  //btn_right.appendChild(t_right);                                // Append the text to <button>
-
-  document.getElementById("up3").appendChild(btn_today);                    // Append <button> to <body>
-  document.getElementById("up3").appendChild(btn_right);                    // Append <button> to <body>
+  var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
+  document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
+  fillDate();                                              // write current date
+  var btn_today = Util.button("Today", resume, "", "");    // Create a <button> element
+  var btn_right = Util.button(">", nextButton, "", "");    // Create a <button> element
+  document.getElementById("up3").appendChild(btn_today);   // Append <button> to <body>
+  document.getElementById("up3").appendChild(btn_right);   // Append <button> to <body>
 }
 
 
