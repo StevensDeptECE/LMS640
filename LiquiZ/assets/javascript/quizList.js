@@ -1,44 +1,15 @@
-function load(){
-    var data = [
-        {
-            "id": "qc1111",
-            "publish": "yes",
-            "quizName": "Quiz1",
-            "course": "CPE-593",
-            "dueDate": "1/1/2017",
-            "closeDate": "2/2/2017",
-            "stats": "StatisticView2.html",
-            "take": "TakeTest1.html",
-            "edit": "TakeTest1.html"
-        },
-        {
-            "id": "qc2222",
-            "publish": "yes",
-            "quizName": "Quiz2",
-            "course": "CPE-593",
-            "dueDate": "2/2/2017",
-            "closeDate": "3/3/2017",
-            "stats": "StatisticView2.html",
-            "take": "TakeTest1.html",
-            "edit": "TakeTest1.html"
-        },
-        {
-            "id": "qc3333",
-            "publish": "no",
-            "quizName": "Quiz1",
-            "course": "CPE-810",
-            "dueDate": "3/3/2017",
-            "closeDate": "4/4/2017",
-            "stats": "StatisticView2.html",
-            "take": "TakeTest1.html",
-            "edit": "TakeTest1.html"
-        }
-    ]
-    s=document.getElementById("quizList");
-    drawTable(s,data);
+function quizIndex(payload){
+    this.payload = payload;
+   // s=document.getElementById("quizList");
+    //drawTable(s,data);
 }
 
-function drawTable(s,data) {
+quizIndex.prototype.draw = function(s) {
+    var header = Util.h1("Quizzes");
+    clearElements("up2");
+    document.getElementById("up2").appendChild(header);
+    clearElements("up3");
+    var newDiv = Util.div("wrapper","quizIndex");
     var t = document.createElement("table");
     t.id = "t01";
     var thead = document.createElement("thead");
@@ -70,33 +41,34 @@ function drawTable(s,data) {
     thead.appendChild(tr);
 
     var tbody = document.createElement("tbody");
-
+/*
     var createClickHandler = function(arg) {
         return function () {
             var row = this.parentNode.parentNode;
-            data.splice(arg,1);
+            this.payload.splice(arg,1);
             row.parentNode.removeChild(row);
-            console.log(data);
+            console.log(this.payload);
         }
     };
+    */
 
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < this.payload.length; i++) {
         tr = document.createElement("tr");
         var td1 = document.createElement("td");
-            td1.appendChild(document.createTextNode(data[i].publish));
+            td1.appendChild(document.createTextNode(this.payload[i].publish));
         var td2 = document.createElement("td");
-            td2.appendChild(document.createTextNode(data[i].quizName));
+            td2.appendChild(document.createTextNode(this.payload[i].quizName));
         var td3 = document.createElement("td");
-            td3.appendChild(document.createTextNode(data[i].course));
+            td3.appendChild(document.createTextNode(this.payload[i].course));
         var td4 = document.createElement("td");
-            td4.appendChild(document.createTextNode(data[i].dueDate));
+            td4.appendChild(document.createTextNode(this.payload[i].dueDate));
         var td5 = document.createElement("td");
-            td5.appendChild(document.createTextNode(data[i].closeDate));
+            td5.appendChild(document.createTextNode(this.payload[i].closeDate));
 
         var td6 = document.createElement("td");
             var bt1 = document.createElement("a");
             bt1.className = "one";
-            bt1.href = data[i].stats;
+            bt1.href = this.payload[i].stats;
             var text = document.createTextNode("Stats");
             bt1.appendChild(text);
         td6.appendChild(bt1);
@@ -104,13 +76,13 @@ function drawTable(s,data) {
         var td7 = document.createElement("td");
             var bt2 = document.createElement("a");
             bt2.className = "one";
-            bt2.href = data[i].take;
+            bt2.href = this.payload[i].take;
             text = document.createTextNode("Take");
             bt2.appendChild(text);
         td7.appendChild(bt2);
             var bt3 = document.createElement("a");
             bt3.className = "one";
-            bt3.href = data[i].edit;
+            bt3.href = this.payload[i].edit;
             text = document.createTextNode("edit");
             bt3.appendChild(text);
         td7.appendChild(bt3);
@@ -118,7 +90,7 @@ function drawTable(s,data) {
         var td8 = document.createElement("td");
             var bt4 = document.createElement("button");
             bt4.className = "one";
-            bt4.onclick = createClickHandler(i);
+            bt4.onclick = this.createClickHandler(i, this.payload);
             // bt4.onclick = function(arg) {
             //     return function () {
             //         var row = this.parentNode.parentNode;
@@ -149,5 +121,50 @@ function drawTable(s,data) {
     }
     t.appendChild(thead);
     t.appendChild(tbody);
-    s.appendChild(t);
+    newDiv.appendChild(t)
+    s.appendChild(newDiv);
 }
+
+quizIndex.prototype.createClickHandler = function(arg, data){
+    return function () {
+        var row = this.parentNode.parentNode;
+        data.splice(arg,1);
+        row.parentNode.removeChild(row);
+    }    
+};
+
+var quizIndexPayload = [
+    {
+        "id": "qc1111",
+        "publish": "yes",
+        "quizName": "Quiz1",
+        "course": "CPE-593",
+        "dueDate": "1/1/2017",
+        "closeDate": "2/2/2017",
+        "stats": "StatisticView2.html",
+        "take": "TakeTest1.html",
+        "edit": "TakeTest1.html"
+    },
+    {
+        "id": "qc2222",
+        "publish": "yes",
+        "quizName": "Quiz2",
+        "course": "CPE-593",
+        "dueDate": "2/2/2017",
+        "closeDate": "3/3/2017",
+        "stats": "StatisticView2.html",
+        "take": "TakeTest1.html",
+        "edit": "TakeTest1.html"
+    },
+    {
+        "id": "qc3333",
+        "publish": "no",
+        "quizName": "Quiz1",
+        "course": "CPE-810",
+        "dueDate": "3/3/2017",
+        "closeDate": "4/4/2017",
+        "stats": "StatisticView2.html",
+        "take": "TakeTest1.html",
+        "edit": "TakeTest1.html"
+    }
+]
