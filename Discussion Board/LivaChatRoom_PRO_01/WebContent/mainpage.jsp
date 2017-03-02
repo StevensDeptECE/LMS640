@@ -146,6 +146,18 @@
             //  location.reload();
 
         }
+        function logout_show(tag){
+
+            var light=document.getElementById(tag);
+            var fade=document.getElementById('fade1');
+            var fade=document.getElementById('fade2');
+            light.style.display='block';
+            fade1.style.display='block';
+            fade2.style.display='block';
+
+            
+
+          }
 
     </script>
     <style>
@@ -194,7 +206,22 @@
 
 
           <ul class="nav navbar-nav navbar-right">
-              <li><a href="javascript:void(0)" onclick="login_show('win_login')"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+             <%
+            	String username;
+        		username = (String)session.getAttribute("username");
+        		if(username != null){
+        			%>
+        			<li><a href="javascript:void(0)" onclick="logout_show('win_logout')">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+        			<% 
+
+        		}else{
+        			%>
+					<li><a href="javascript:void(0)" onclick="login_show('win_login')"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			<% }%>
+              
+              
+              
+
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -248,7 +275,23 @@
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
           <div id="list-stu" class="list-group">
-            <a href="#" class="list-group-item active"><img alt="ok" class="stu_icon" src="icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico"></img>&#9819Link</a>
+            <a href="#" class="list-group-item active"><img alt="ok" class="stu_icon" src="icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico"></img>
+
+            <%
+        		if(username != null){
+        			%>
+        			&#9819
+        			<% 
+        			out.print(username);
+        		}else{
+        			%>
+        			&#9822
+					Link
+			<% }%>
+           </a>
+            
+            
+            
             <a href="#" class="list-group-item"><img alt="ok" class="stu_icon" src="icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico"></img>&#9822Link</a>
             <a href="#" class="list-group-item"><img alt="ok" class="stu_icon" src="icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico"></img>&#9822Link</a>
             <a href="#" class="list-group-item"><img alt="ok" class="stu_icon" src="icon/usr_icon/Ph03nyx-Super-Mario-Lakitu.ico"></img>&#9822Link</a>
@@ -296,6 +339,19 @@
           </form>
         </div>
     </div>
+    
+    <div id="win_logout" class="white_content">
+        <button type="button" class="btn btn-xs btn-danger btn-right" onclick="login_hide('win_logout')">Close</button>
+        <p><b>Are you sure?</b></p>
+        <div class="win_login_center">
+        	<form action="" method="get"> 
+            	<input type="submit" class="btn btn-xs btn-danger" value="Yes">
+            	<input type="button" class="btn btn-xs btn-info btn-right" value="No" onclick="login_hide('win_logout')">
+        	</form>
+
+        </div>
+    </div>
+    
     <!-- pop up bill board post window -->
     <div id="bb_post" class="white_content2">
         <button type="button" class="btn btn-xs btn-danger btn-right" onclick="login_hide('bb_post')">Close</button>

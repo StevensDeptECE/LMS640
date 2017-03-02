@@ -30,7 +30,10 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	String username = req.getParameter("Username");
     	String password = req.getParameter("Password");
-    	HttpSession session = req.getSession();
+    	HttpSession usersession = req.getSession();
+    	usersession.setMaxInactiveInterval(1*50);
+    	usersession.setAttribute("username", username);
+
     	if(username.equals("killer") && password.equals("abc123")){
     		resp.sendRedirect("mainpage.jsp");
     		System.out.println("welcome back " + username);
