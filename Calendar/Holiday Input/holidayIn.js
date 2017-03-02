@@ -44,12 +44,13 @@ var handleFormSubmit = function handleFormSubmit(event) {
 
 function displayHolidays(){
   var h=document.getElementById("holidays");
-  var li=document.createElement("li");
+
   //clear list
   while(h.firstChild){
     h.removeChild(h.firstChild);
   }
   for(var i=0; i<holidays.length; i++){
+    var li=document.createElement("li");
     var text= document.createTextNode(JSON.stringify(holidays[i], null, " "));
     li.appendChild(text);
     h.appendChild(li);
