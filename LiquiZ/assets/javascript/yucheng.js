@@ -106,3 +106,25 @@ Cloze.prototype.draw = function(div) {
         div.appendChild(container);
     }
 }
+
+function Numbers(len,id) { //parent) {
+    this.id = id;
+    this.len = len;
+    //pattern for regex
+}
+
+Numbers.prototype.draw = function(div) {
+    var inp = document.createElement("input");
+    inp.className = 'inputNumber';
+    inp.type = "text";
+    inp.maxLength = this.len;
+    inp.style.textAlign = 'center';
+    inp.onkeypress= function isNumberKey(evt)
+    {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    };
+    div.appendChild(inp);
+}

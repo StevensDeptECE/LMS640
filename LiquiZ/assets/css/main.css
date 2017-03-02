@@ -131,11 +131,11 @@ div.header {
     margin-left: 5px;
 }
 .inputCode{
-    font-size: 20px;
+    /*font-size: 20px;*/
     height: 300px;
     width: 1000px;
-    background: lightgrey;
-    padding: 20px 20px 20px 20px;
+    /*background: lightgrey;*/
+    /*padding: 20px 20px 20px 20px;*/
 }
 .containerStyle{
     margin: 20px 20px;
@@ -145,7 +145,8 @@ div.header {
     clear: both;
 }
 .inputCloze{
-    background: lightgrey;
+    color: lawngreen;
+    background: black;
     width: 200px !important;
     height: 28px !important;
     font-size: 20px !important;
@@ -163,6 +164,17 @@ div.header {
     font-size: 20px;
     float: left;
     clear: right;
+}
+
+.inputNumber{
+    color: lawngreen;
+    background: black;
+    width: 200px !important;
+    height: 28px !important;
+    font-size: 20px !important;
+    text-align: center;
+    position: relative;
+    left: 10px;
 }
 /*---------------------------*/
 .submit {
@@ -186,12 +198,12 @@ textarea.inputCode {
     text-align: center;
     text-shadow: 0 0 3px #FF0000;
 }
-#t01 {
+.t01 {
     width:100%;
     border: 1px solid grey;
     border-collapse: collapse;
 }
-#t01 th{
+.t01 th{
     /*padding: 10px 20px;*/
     text-align: center;
     border: 1px solid grey;
@@ -201,7 +213,7 @@ textarea.inputCode {
     color: white;
     font-size: 20px;
 }
-#t01 td {
+.t01 td {
     /*padding: 10px 20px;*/
     text-align: center;
     border: 1px solid grey;
@@ -209,10 +221,10 @@ textarea.inputCode {
     /*margin: 20px;*/
     font-size: 20px;
 }
-#t01 tr:nth-child(even) {
+.t01 tr:nth-child(even) {
     background-color: #eee;
 }
-#t01 tr:nth-child(odd) {
+.t01 tr:nth-child(odd) {
     background-color:#fff;
 }
 .one:link, .one:visited {

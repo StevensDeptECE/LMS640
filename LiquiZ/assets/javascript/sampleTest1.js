@@ -192,7 +192,6 @@ Quiz.prototype.drawQuiz = function() {
 	}
 }
 
-
 function load() {
 	var p = document.getElementById("content");
 	console.log(p);
@@ -201,7 +200,7 @@ function load() {
 	console.log(typeof(test));
 	console.log(test);
 	
-	
+
 	var quest = [
 {
 	id: "qc1000",
@@ -209,7 +208,7 @@ function load() {
 	comp: [
 		["Instr", "What is ", "1"],
 		["Eqn", "2+2", "2"],
-        ["MC", [3,4,5,6],"3"]
+        ["MC", [3,4,5,6], "3"]
 	]
 },
 
@@ -218,7 +217,7 @@ function load() {
 	title: "Multiple Choices",
 	comp: [
 		["Instr", "Which sport do you like?", "1"],
-		["MCS", ["basketball","football","volleyball","baseball"],"2"]
+		["MCS", ["basketball","football","volleyball","baseball"], "2"]
 	]
 },
 
@@ -229,6 +228,16 @@ function load() {
 		["Instr", "What is ","1"],
 		["Eqn", "3*4", "2"],
 		[ "Fillin", "3"]
+	]
+},
+
+{
+	id: "qc10022",
+	title: "Division",
+	comp: [
+		["Instr", "What is ","1"],
+		["Eqn", "10 ／ 3", "2"],
+		[ "Numbers", "6", "3"]
 	]
 },
 
@@ -355,3 +364,11 @@ function load() {
 
 	q.drawQuiz();
 }
+
+
+
+
+
+
+
+

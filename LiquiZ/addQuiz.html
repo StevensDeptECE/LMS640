@@ -1,0 +1,64 @@
+<html>
+<head>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script type="text/javascript" src="assets/javascript/addQuiz.js"></script>
+
+</head>
+
+<body>
+<div><h1 id="h01">Create New Quiz</h1></div>
+
+<div id="wrapper">
+<table class = "t01" id = "data_table">
+<!--<table align='center' cellspacing=2 cellpadding=5 id="data_table" border=1>-->
+<tr>
+<th>ID</th>
+<th>Title</th>
+<th>Instruction</th>
+<th>Equation</th>
+<th>Operation</th>
+<th>Edit</th>
+</tr>
+
+<tr id="row1">
+<td id="id_row1">qc1000</td>
+<td id="title_row1">Addition</td>
+<td id="instr_row1">Instr, What is , 1</td>
+<td id="eqn_row1">Eqn, 2+2, 2</td>
+<td id="oper_row1">MC, [3,4,5,6],3</td>
+<td>
+<input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row('1')">
+<input type="button" id="save_button1" value="Save" class="save" onclick="save_row('1')">
+<input type="button" value="Delete" class="delete" onclick="delete_row('1')">
+</td>
+</tr>
+
+<tr id="row2">
+<td id="id_row2">qc1001</td>
+<td id="title_row2">Multiple Choices</td>
+<td id="instr_row2">Instr, Which sport do you like?, 1</td>
+<td id="eqn_row2"></td>
+<td id="oper_row2">MCS, ["basketball","football","volleyball","baseball",2</td>
+<td>
+<input type="button" id="edit_button2" value="Edit" class="edit" onclick="edit_row('2')">
+<input type="button" id="save_button2" value="Save" class="save" onclick="save_row('2')">
+<input type="button" value="Delete" class="delete" onclick="delete_row('2')">
+</td>
+</tr>
+
+<tr>
+<td><input type="text" id="new_id"></td>
+<td><input type="text" id="new_title"></td>
+<td><input type="text" id="new_instr"></td>
+<td><input type="text" id="new_eqn"></td>
+<td><input type="text" id="new_oper"></td>
+<td><input type="button" class="add" onclick="add_row();" value="Add Row"></td>
+</tr>
+
+</table>
+</div>
+
+<div><input type="button" onclick="tableToJson(data_table);" value="Submit"></div>
+
+</body>
+</html>

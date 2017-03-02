@@ -1,6 +1,6 @@
 function quizIndex(payload){
     this.payload = payload;
-   // s=document.getElementById("quizList");
+    //s=document.getElementById("quizList");
     //drawTable(s,data);
 }
 
@@ -50,7 +50,7 @@ quizIndex.prototype.draw = function(s) {
             console.log(this.payload);
         }
     };
-    */
+*/
 
     for (var i = 0; i < this.payload.length; i++) {
         tr = document.createElement("tr");
@@ -130,7 +130,7 @@ quizIndex.prototype.createClickHandler = function(arg, data){
         var row = this.parentNode.parentNode;
         data.splice(arg,1);
         row.parentNode.removeChild(row);
-    }    
+    }
 };
 
 var quizIndexPayload = [
