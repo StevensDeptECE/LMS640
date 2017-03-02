@@ -1,5 +1,5 @@
 {
-	"body-nav":["nav","navbar navbar-fixed-top navbar-inverse","body",{"data-spy":"affix"}],
+"body-nav":["nav","navbar navbar-fixed-top navbar-inverse","body",{"data-spy":"affix"}],
     "nav-div":["div","container-fluid","#body-nav"],
     "nav-div-div":["div","navbar-header","#nav-div"],
     "nav-div-div-a":["a","navbar-brand","#nav-div-div",{"content":"Discussion Board"},{"href":"#"}],
@@ -15,7 +15,7 @@
     "nav-div-div1-ul-li1-ul-li":["li","","#nav-div-div1-ul-li1-ul"],
     "nav-div-div1-ul-li1-ul-li-a":["a","","#nav-div-div1-ul-li1-ul-li",{"href":"#"},{"content":"Creat Discussion"}],
     "nav-div-div1-ul-li1-ul-li1":["li","","#nav-div-div1-ul-li1-ul"],
-    "nav-div-div1-ul-li1-ul-li1-a":["a","","#nav-div-div1-ul-li1-ul-li1",{"href":"#"},{"content":"View Discussion"}],   
+    "nav-div-div1-ul-li1-ul-li1-a":["a","","#nav-div-div1-ul-li1-ul-li1",{"href":"#"},{"content":"View Discussion"}],      
     "nav-div-div1-ul-li2":["li","dropdown","#nav-div-div1-ul"],
     "nav-div-div1-ul-li2-a":["a","dropdown-toggle","#nav-div-div1-ul-li2",{"data-toggle":"dropdown"},{"role":"button"},
     {"aria-haspopup":"true"},{"aria-expanded":"false"},{"content":"Project"}],
@@ -29,23 +29,18 @@
     "nav-div-div1-form-div":["div","form-group","#nav-div-div1-form"],
     "nav-div-div1-form-div-input":["input","form-control","#nav-div-div1-form-div",{"type":"text"},{"placeholder":"search"}],
     "nav-div-div1-form-div1":["div","btn-group","#nav-div-div1-form"],
-    "nav-div-div1-form-div1-button":["button","btn btn-primary","#nav-div-div1-form-div1",{"type":"button"},{"content":"Search"}],
-    
-    
-    "nav-div-div1-ul":["ul","nav navbar-nav navbar-right","#nav-div-div1"],
-    "nav-div-div1-ul-li":["li","","#nav-div-div1-ul"],
-    "nav-div-div1-ul-li-a":["a","","#nav-div-div1-ul-li",{"href":"#"}],
-    "nav-div-div1-ul-li-a-span":["span","glyphicon glyphicon-log-in","#nav-div-div1-ul-li-a",{"aria-hidden":"true"},
-    {"content":"Sign In"}],
-    "nav-div-div1-ul-li1":["li","","#nav-div-div1-ul"],
-    "nav-div-div1-ul-li1-a":["a","","#nav-div-div1-ul-li1",{"href":"#"}],
-    "nav-div-div1-ul-li1-a-span":["span","glyphicon glyphicon-log-out","#nav-div-div1-ul-li1-a",{"aria-hidden":"true"},
-    {"content":"Sign Out"}],
-        
+    "nav-div-div1-form-div1-button":["button","btn btn-primary","#nav-div-div1-form-div1",{"type":"button"},{"content":"Search"}],   
+    "nav-div-div1-ul1":["ul","nav navbar-nav navbar-right","#nav-div-div1"],
+    "nav-div-div1-ul1-li":["li","","#nav-div-div1-ul1"],
+    "nav-div-div1-ul1-li-a":["a","","#nav-div-div1-ul1-li",{"href":"#"}],
+    "nav-div-div1-ul1-li-a-span":["span","glyphicon glyphicon-log-in","#nav-div-div1-ul1-li-a",{"aria-hidden":"true"},
+    {"content":" Sign_In"}],    
     "nav-div-div1-ul1-li2":["li","dropdown","#nav-div-div1-ul1"],
-    "nav-div-div1-ul1-li2-a":["a","dropdown-toggle","#nav-div-div1-ul1-li2",{"data-toggle"="dropdown"},{"role"="button"},
-    {"aria-haspopup"="true"},{"aria-expanded"="false"},{"content":"Quick Link"}],
-    "nav-div-div1-ul1-li2-a-span":["span","caret","#nav-div-div1-ul1-li2-a"],
+    "nav-div-div1-ul1-li2-a":["a","dropdown-toggle","#nav-div-div1-ul1-li2",{"data-toggle":"dropdown"},{"role":"button"},
+    {"aria-haspopup":"true"},{"aria-expanded":"false"}],
+    "nav-div-div1-ul1-li2-a-span":["span","glyphicon glyphicon-globe","#nav-div-div1-ul1-li2-a",{"aira-hidden":"true"},
+    {"content":" Links"}],
+    "nav-div-div1-ul1-li2-a-span1":["span","caret","#nav-div-div1-ul1-li2-a"],
     "nav-div-div1-ul1-li2-ul":["ul","dropdown-menu","#nav-div-div1-ul1-li2"],
     "nav-div-div1-ul1-li2-ul-li":["li","","#nav-div-div1-ul1-li2-ul"],
     "nav-div-div1-ul1-li2-ul-li-a":["a","","#nav-div-div1-ul1-li2-ul-li",{"href":"#"},{"content":"LiquiZ"}],
@@ -53,11 +48,11 @@
     "nav-div-div1-ul1-li2-ul-li1-a":["a","","#nav-div-div1-ul1-li2-ul-li1",{"href":"#"},{"content":"Homework"}],
     "nav-div-div1-ul1-li2-ul-li2":["li","","#nav-div-div1-ul1-li2-ul"],
     "nav-div-div1-ul1-li2-ul-li2-a":["a","","#nav-div-div1-ul1-li2-ul-li2",{"href":"#"},{"content":"Grading"}],
-    "nav-div-div1-ul1-li2-ul-li3":["li","active","#nav-div-div1-ul1-li2-ul"],
-    "nav-div-div1-ul1-li2-ul-li3-a":["a","","#nav-div-div1-ul1-li2-ul-li4",{"href":"#"},{"content":"Discussion"}],
     "nav-div-div1-ul1-li2-ul-li4":["li","","#nav-div-div1-ul1-li2-ul"],
     "nav-div-div1-ul1-li2-ul-li4-a":["a","","#nav-div-div1-ul1-li2-ul-li4",{"href":"#"},{"content":"Calendar"}]
-}
+    
 
+       
+}
 
 
