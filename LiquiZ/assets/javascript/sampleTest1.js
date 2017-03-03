@@ -353,6 +353,15 @@ function load() {
 		["Instr", "Match the types", "1"],
 		["Match",["animal","number","food"],["ice cream", "dog", "three"], "2" ]
 	]
+},
+
+{
+	id: "qc101s",
+	title: "Short Essay",
+	comp: [
+		["Instr", "Please analyze the relationship between Lennie and George in Of Mice and Men", "1"],
+		["Essay", "2" ]
+	]
 }
     ];
 	var json = {

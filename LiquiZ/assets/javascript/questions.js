@@ -108,6 +108,20 @@ Fillin.prototype.draw = function(div) {
 	div.appendChild(inp);
 }
 
+function Essay(id) { //parent) {
+	this.id = id;
+	//pattern for regex
+}
+
+Essay.prototype.draw = function(div) {
+	var inp = document.createElement("textarea");
+	inp.type = "text";
+    inp.className = "Essay";
+	inp.style.textAlign = 'left';
+	div.appendChild(inp);
+}
+
+
 function Survey(id, choices, terms) {
 	this.id = id;
 	this.terms = terms;
