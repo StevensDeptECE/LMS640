@@ -183,10 +183,9 @@ div.header {
     display: block;
     padding: 10px;
     resize: vertical;
-    font-size: 14px;
-   
-    
+    font-size: 14px; 
 }
+
 /*---------------------------*/
 .submit {
     margin-left: 20px;
@@ -201,6 +200,8 @@ textarea.inputCode {
     background: black;
     font-size: 16px;
     padding: 20px;
+    width: 100%;
+    resize: vertical;
 }
 
 /*For index.html*/
