@@ -1,0 +1,81 @@
+!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Grade Homework</title>
+        <link rel="stylesheet" media="screen" href="style.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+       
+        
+    </head>
+    <body>
+     <div class = "homeworkName">
+         <p>
+             <a href = "">Homework Name</a>
+         </p>
+     </div>
+        
+        
+     <div class = "Left">
+         <div class = "dropdown">
+             <select class = "form-control">
+                 <option>A.java</option>
+                 <option>B.java</option>
+                 <option>C.java</option>
+             </select>
+         </div>
+         <div class = "textarea">
+             <textarea class = "form-control" rows = "16"></textarea>
+             
+         </div>
+         <div class = "graded"></div>
+         <div class = "ungraded"></div>
+         <div class = "compilebuttons">
+             <table>
+                 <tr>
+                     <th>
+                         <button type="button" class = "btn btn-success">Run</button>
+                     </th>
+                 
+                     <th>
+                         <button type="button" class = "btn btn-info">Next</button>
+                     </th>
+                 </tr>
+             </table>
+         </div>
+     </div>
+        
+        
+     <div class = "right">
+         <div class = "console">
+             <textarea class = "form-control" rows ="5">console:</textarea>
+         </div>
+         <div class = "grades">
+             <table>
+                 <tr>
+                     <th>
+                         <div class = "gradeinput"><input type = "text" class = "form-control" placeholder="Text input"></div>
+                     </th>
+                     <th>
+                         <div class = "entergradebutton">
+                         <button type="button" class = "btn btn-primary">enter</button>
+                         </div>
+                     </th>
+                 </tr>
+             </table>
+         </div>
+         <div class = "average"></div>
+         <div class = "comment">
+             <textarea class = "form-control" rows = "3">commit:</textarea>
+         </div>
+         <div class = "commentdropdown">
+             <select class = "form-control">
+                 <option>Bad variable names</option>
+                 <option>Add comments to the code</option>
+                 <option>Compile time error</option>
+                 <option>Run time error</option>
+             </select>
+         </div>
+     </div>
+    </body>
+</html>
