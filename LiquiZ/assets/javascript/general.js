@@ -6,7 +6,7 @@ function Instr(s, id) {
 }
 
 Instr.prototype.draw = function(div) {
-	app(div, this.s);
+	div.appendChild(Util.text(this.s));
 }
 
 function Eqn(s, id) {
@@ -15,7 +15,7 @@ function Eqn(s, id) {
 }
 
 Eqn.prototype.draw = function(div) {
-	app(div, this.s);
+	div.appendChild(Util.text(this.s));
 }
 
 function Code(s) {
@@ -25,32 +25,31 @@ function Code(s) {
 }
 
 Code.prototype.draw = function(div) {
-
     this.p.appendChild(document.createTextNode(this.s));
     div.appendChild(this.p);
 }
 
 function CorrectAnswer(s, id) {
-	this.id = id; // do in parent
+	this.id = id;
 	this.s = s;
 }
 
 CorrectAnswer.prototype.draw = function(div) {
 	var x = document.createElement('div');
 	x.className = "correctanswer";
-	app(x, "Correct Answer: " + this.s);
+	x.appendChild(Util.text("Correct Answer: " + this.s));
 	div.appendChild(x);
 }
 
 function YourAnswer(s, id) {
-	this.id = id; // do in parent
+	this.id = id;
 	this.s = s;
 }
 
 YourAnswer.prototype.draw = function(div) {
 	var x = document.createElement('div');
 	x.className = "youranswer";
-	app(x, "Your Answer: " + this.s);
+	x.appendChild(Util.text("Your Answer: " + this.s));
 	div.appendChild(x);
 }
 
