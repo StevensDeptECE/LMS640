@@ -4,16 +4,16 @@
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <link href="../MainPage/css/style.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="../MainPage/js/jquery.js"></script>
-  <script src="../MainPage/js/mylib.js"></script>
+  <script src="../MainPage/js/onepagelib.js"></script>
   <script src="../LiquiZ/assets/javascript/quizList.js"></script>
 </head>
 
 <body>
   <ul class="navigation">
     <li><a id="allquizzes" href="#" onclick="launch(quizIndex, quizIndexPayload, 'up3')">All Quizzes</a></li>
-    <li><a id="quizstats" href="#">Quiz Statistics</a></li>
+    <li><a id="quizstats" href="#" onclick="launch(quizStats, statsPayload, 'up3')">Quiz Statistics</a></li>
     <li><a id="readytotake" href="#" >Ready to Take Quiz</a></li>
-    <li><a id="settings" href="#">Settings</a></li>
+    <li><a id="settings" href="#"onclick="launch(quiz, quizIndexPayload, 'up3')">Settings</a></li>
   </ul>
 
   <div id="content">
