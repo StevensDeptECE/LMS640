@@ -1,0 +1,47 @@
+<script type="text/javascript">
+function getNowFormatDate() {
+    var date = new Date();
+    var seperator1 = "-";
+    var seperator2 = ":";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+            + " " + date.getHours() + seperator2 + date.getMinutes()
+            + seperator2 + date.getSeconds();
+    return currentdate;
+} 
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+$("#post").click(function(){	
+	var title=document.getElementById("InputSubject").value;
+	$("#discusscontent div").prepend("<hr><div id='s'><div>");
+	$("#s").html(title);	
+	var content=document.getElementById("InputSub").value;
+	$("#s").after("<hr><div id='c'><div>");
+	$("#c").html(content);	
+	var time= getNowFormatDate() ;
+	$("#c").after("<br><div id='t'><div>");
+	$("#t").html(time);	
+	$("#t").after("<hr><h4 id='l'>Leave a Comment:</h4>");
+    $("#l").after("<form id='s' role='form'><div class='form-group'><textarea id='text1' class='form-control' rows='3' ></textarea></div><button id='submit' type='button' class='btn btn-primary'>Submit</button></form>"); 
+
+	$("#submit").on("click",function(){		
+		var comment=document.getElementById("text1").value;
+		var commenttime=getNowFormatDate();
+		
+		$("#onetime").html(commenttime);
+		$("#comment").html(comment);
+});
+});
+});
+
+</script>
