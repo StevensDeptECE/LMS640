@@ -123,6 +123,8 @@ quizIndex.prototype.draw = function(s) {
     t.appendChild(tbody);
     newDiv.appendChild(t)
     s.appendChild(newDiv);
+    clearClass("active");
+    document.getElementById("allquizzes").className = "active";
 }
 
 quizIndex.prototype.createClickHandler = function(arg, data){
