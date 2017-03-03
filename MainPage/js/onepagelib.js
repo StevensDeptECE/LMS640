@@ -1,6 +1,7 @@
-/* This file contains useful functions for creating HTML elements and interacting
-*  with the HTML page. "Util" is used to create specific HTML elements. All other
-* functions are located below Util.
+/*
+  * This file contains useful functions for creating HTML elements and interacting
+  * with the HTML page. "Util" is used to create specific HTML elements. All other
+  * functions are located below "Util".
 */
 
 
@@ -341,19 +342,20 @@ Util = {
 };
 
 /*
-  * Calls the constructor for the object that needs to be drawn. "Name" is the name
+  * Calls the constructor for the object that needs to be drawn. "object" is the name
   * of that object. "payload" is the thing you need to construct your object.
   * For example if you need a list to construct a certain object, paylod should be a
   * list. It then calls the draw function for the object, and draws it in the HTML
-  * element with the id that is passed.
+  * element with the id that is passed. If you need to draw in more than one div, do it
+  * in the objects corresponding draw function.
 */
-function launch(name, payload, id) {
+function launch(object, payload, id) {
   console.log("Calling Launch");
-  console.log(name);
+  console.log(object);
   console.log(payload);
-  var x = new name(payload); // grade object
-  var c = document.getElementById(id);
-  x.draw(c);
+  var newObject = new object(payload); // grade object
+  var content = document.getElementById(id);
+  newObject.draw(content);
 }
 
 /* Given an HTML element ID, clears the content the box with that ID. */
@@ -374,8 +376,8 @@ function clearClass(name)
     }
 }
 
-/* Sets the onclick attribute of to HTML elements of a given class "name" */
-/* TODO not currently used */
+/* Sets the onclick attribute of the HTML elements of a given class "name" */
+/* TODO not currently used nor tested */
 function onclickClass(name, func)
 {
     console.log("Onlick Class: " + name);

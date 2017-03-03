@@ -1,3 +1,5 @@
+/* This file is used to test onepagelib.js */
+
 /* Grade payload construcotr. The payload is a 2D array. */
 function Grade2(payload) {
   this.payload = payload;
