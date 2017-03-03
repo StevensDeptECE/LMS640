@@ -13,11 +13,11 @@ dragDrop.prototype.draw = function(div) {
     var image = new Img(this.image);
     image.draw(div);
 	var imgDiv = div.getElementsByClassName("imgDiv");
-	//create draggable items
+	/*create draggable items*/
 	var optionsBox = document.createElement('div');
 	optionsBox.setAttribute("class","container");
 	for(var i = 0; i < this.options.length; i++) {
-        //create draggable options
+        /*create draggable options*/
         var termBox = document.createElement('div');
         termBox.className += "dragDropOption";
         termBox.setAttribute("draggable", "true");
@@ -25,14 +25,12 @@ dragDrop.prototype.draw = function(div) {
         termBox.setAttribute("ondragstart","drag(event)");
         termBox.appendChild(document.createTextNode(this.options[i]));
         optionsBox.appendChild(termBox);
-        //create location divs
+        /*create location divs*/
         var coord = "left:" + this.locations[i]["left"] + "px; top:"+ this.locations[i]["top"] + "px;";
         var answerDiv = document.createElement('div');
         answerDiv.className += "dragdropLocation";
         answerDiv.setAttribute("ondrop","drop(event)");
         answerDiv.setAttribute("ondragover","allowDrop(event)");
-        /*not including answer id bc then user could match numbers to figure out answers*/ 
-        //answerDiv.setAttribute("id","location" + i);
         answerDiv.setAttribute("style","position:absolute; "+ coord);
         imgDiv[0].appendChild(answerDiv);
 			

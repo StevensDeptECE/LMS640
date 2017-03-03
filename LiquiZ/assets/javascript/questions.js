@@ -140,7 +140,6 @@ function Survey(id, choices, terms) {
 Survey.prototype.draw = function(div) {
 	for(var j = 0; j < this.terms.length; j++) {
 		var termBox = document.createElement('div');
-		console.log(this.terms);
         termBox.className = "SurveyContainer";
 		termBox.appendChild(document.createTextNode(this.terms[j]));
         var surveyChoiceList = document.createElement('div');
