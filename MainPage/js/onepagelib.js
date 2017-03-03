@@ -49,6 +49,20 @@ Util = {
   },
 
   /*
+   * Creates a th (table element) with a given class name and id
+  */
+  th: function(tElement, className, id) {
+    //console.log("new td");
+    var th = Util.make("th", {
+        className: className, //set td class name
+        id: id // set td id
+    });
+    th.innerHTML = tElement;
+
+    return th;
+  },
+
+  /*
    * Creates a thead (table header). Creates a tr (table row) from tElement.
    * Appends that tr to the thead.
    * The thead has a given class name and id.
