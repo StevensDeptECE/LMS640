@@ -1,28 +1,44 @@
 /**
- * Created by yucheng on 3/3/17.
+ * Created by yucheng on 3/1/17.
  */
 
-/*This is the implementation of quiz editor that is integrated with the quizList page */
-
-function quizEditor(payload){
-    this.payload=payload;
+function load(){
+    var data = [
+        {
+            id: "qc1000",
+            title: "Addition",
+            comp: [
+                ["Instr", "What is ", "1"],
+                ["Eqn", "2+2", "2"],
+                ["MC", [3,4,5,6], "3"]
+            ]
+        },
+        {
+            id: "qc1001",
+            title: "Multiple Choices",
+            comp: [
+                ["Instr", "Which sport do you like?", "1"],
+                [],
+                ["MCS", ["basketball","football","volleyball","baseball"], "2"]
+            ]
+        },
+        {
+            id: "qc1002",
+            title: "Multiplication",
+            comp: [
+                ["Instr", "What is ","1"],
+                ["Eqn", "3*4", "2"],
+                [ "Fillin", "3"]
+            ]
+        }
+    ];
+    s=document.getElementById("quizEdit");
+    drawTable(s,data);
 }
 
-quizEditor.prototype.draw= function(s){
-    var header = Util.h1("Quiz Editor");
-    clearElements("up2");
-    document.getElementById("up2").appendChild(header);
-    clearElements("up3");
-    var newDiv = Util.div("wrapper","quizEditor");
-    drawEditor(newDiv,quizEditorPayLoad);
-    s.appendChild(newDiv);
-    clearClass("active");
-    document.getElementById("allquizzes").className = "active";
-};
-
-function drawEditor(s,data) {
+function drawTable(s,data) {
     var dd = document.createElement("div");
-    dd.id = "editorTable";
+    dd.id = "wrapper";
     var t = document.createElement("table");
     t.className = "t01";
     // t.id = "data_table";
@@ -67,6 +83,7 @@ function drawEditor(s,data) {
         td5.contentEditable = true;
         td5.appendChild(document.createTextNode(data[i].comp[2]));
         var td6 = document.createElement("td");
+        td6.contentEditable = true;
         var bt = document.createElement("input");
         bt.type = "button";
         bt.value = "Delete";
@@ -92,34 +109,3 @@ function drawEditor(s,data) {
     t.appendChild(tbody);
     s.appendChild(t);
 }
-
-
-var quizEditorPayLoad = [
-    {
-        id: "qc1000",
-        title: "Addition",
-        comp: [
-            ["Instr", "What is ", "1"],
-            ["Eqn", "2+2", "2"],
-            ["MC", [3,4,5,6], "3"]
-        ]
-    },
-    {
-        id: "qc1001",
-        title: "Multiple Choices",
-        comp: [
-            ["Instr", "Which sport do you like?", "1"],
-            [],
-            ["MCS", ["basketball","football","volleyball","baseball"], "2"]
-        ]
-    },
-    {
-        id: "qc1002",
-        title: "Multiplication",
-        comp: [
-            ["Instr", "What is ","1"],
-            ["Eqn", "3*4", "2"],
-            [ "Fillin", "3"]
-        ]
-    }
-];

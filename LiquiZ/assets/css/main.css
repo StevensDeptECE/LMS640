@@ -152,6 +152,7 @@ div.header {
     font-size: 20px !important;
     text-align: center;
     position: relative;
+    top: 10px;
     left: 10px;
     float: left;
 }
@@ -205,7 +206,7 @@ textarea.inputCode {
 }
 
 /*For index.html*/
-#h01 {
+.h01 {
     font-size: 40px;
     text-align: center;
     text-shadow: 0 0 3px #FF0000;

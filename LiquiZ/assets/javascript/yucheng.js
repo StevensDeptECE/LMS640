@@ -20,7 +20,7 @@ MCS.prototype.draw = function(div) {
         x.appendChild(label);
         div.appendChild(x);
     }
-}
+};
 
 function Codes(code, id) { //parent) {
     this.code = code;
@@ -37,7 +37,7 @@ Codes.prototype.draw = function(div) {
     var myCode = document.createTextNode(this.code);
     inp.append(myCode);
     div.appendChild(inp);
-}
+};
 
 function Cloze(text,id) { //parent) {
     this.id = id;
@@ -49,6 +49,15 @@ Cloze.prototype.draw = function(div) {
     for(var j = 0; j < this.text.length; j++) {
         var container = document.createElement('div');
         container.className = "containerStyle";
+        if(this.text[j] == " []") {
+            this.text[j] = "[]";
+        }
+        if(this.text[j+1] == " []") {
+            this.text[j+1] = "[]";
+        }
+        if(this.text[j-1] == " []") {
+            this.text[j-1] = "[]";
+        }
         if (this.text[j] != "[]" && this.text[j-1] != "[]" && this.text[j+1] != "[]") {
             this.text[j] = this.text[j].replace(" ", "\u00a0\u00a0");
             var x = document.createElement("div");
@@ -105,7 +114,7 @@ Cloze.prototype.draw = function(div) {
         }
         div.appendChild(container);
     }
-}
+};
 
 function Numbers(len,id) { //parent) {
     this.id = id;
@@ -122,9 +131,8 @@ Numbers.prototype.draw = function(div) {
     inp.onkeypress= function isNumberKey(evt)
     {
         var charCode = (evt.which) ? evt.which : evt.keyCode;
-        if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
-        return true;
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
+
     };
     div.appendChild(inp);
-}
+};

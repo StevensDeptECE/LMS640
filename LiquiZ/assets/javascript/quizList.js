@@ -5,13 +5,16 @@ function quizIndex(payload){
 }
 
 quizIndex.prototype.draw = function(s) {
-    var header = Util.h1("Quizzes");
+    var header = Util.h1("Quiz List","h01");
+    clearElements("up3");
+    var createButton = Util.button("Create Quiz",function () {launch(addQuiz, "", 'up3')}, "one");
+    header.appendChild(createButton);
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
     clearElements("up3");
     var newDiv = Util.div("wrapper","quizIndex");
     var t = document.createElement("table");
-    t.id = "t01";
+    t.className = "t01";
     var thead = document.createElement("thead");
     var tr = document.createElement("tr");
     var th1 = document.createElement("th");
@@ -80,17 +83,17 @@ quizIndex.prototype.draw = function(s) {
             text = document.createTextNode("Take");
             bt2.appendChild(text);
         td7.appendChild(bt2);
-            var bt3 = document.createElement("a");
+            var bt3 = document.createElement("button");
             bt3.className = "one";
-            bt3.href = this.payload[i].edit;
-            text = document.createTextNode("edit");
+            bt3.onclick = function () {launch(quizEditor, quizEditorPayLoad, 'up3')};
+            text = document.createTextNode("Edit");
             bt3.appendChild(text);
         td7.appendChild(bt3);
 
         var td8 = document.createElement("td");
             var bt4 = document.createElement("button");
             bt4.className = "one";
-            bt4.onclick = this.createClickHandler(i, this.payload);
+            bt4.onclick = this.createClickHandler1(i, this.payload);
             // bt4.onclick = function(arg) {
             //     return function () {
             //         var row = this.parentNode.parentNode;
@@ -103,7 +106,7 @@ quizIndex.prototype.draw = function(s) {
             bt4.appendChild(text);
         td8.appendChild(bt4);
 
-            var bt5 = document.createElement("button")
+            var bt5 = document.createElement("button");
             bt5.className = "one";
             text = document.createTextNode("Dup");
             bt5.appendChild(text);
@@ -121,13 +124,13 @@ quizIndex.prototype.draw = function(s) {
     }
     t.appendChild(thead);
     t.appendChild(tbody);
-    newDiv.appendChild(t)
+    newDiv.appendChild(t);
     s.appendChild(newDiv);
     clearClass("active");
     document.getElementById("allquizzes").className = "active";
 }
 
-quizIndex.prototype.createClickHandler = function(arg, data){
+quizIndex.prototype.createClickHandler1 = function(arg, data){
     return function () {
         var row = this.parentNode.parentNode;
         data.splice(arg,1);
@@ -169,4 +172,4 @@ var quizIndexPayload = [
         "take": "TakeTest1.html",
         "edit": "TakeTest1.html"
     }
-]
+];

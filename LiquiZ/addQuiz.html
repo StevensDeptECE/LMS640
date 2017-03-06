@@ -1,12 +1,12 @@
 <html>
 <head>
     <link rel="stylesheet" href="assets/css/main.css">
-    <script type="text/javascript" src="assets/javascript/addQuiz.js"></script>
+    <script type="text/javascript" src="assets/javascript/addQuiz_old.js"></script>
 
 </head>
 
 <body onLoad="load()">
-<div><h1 id="h01">Create New Quiz</h1></div>
+<div><h1 class="h01">Create New Quiz</h1></div>
 
 <div id="wrapper">
 <table class = "t01" id = "data_table">
@@ -27,7 +27,7 @@
 <td id="eqn_row1">Eqn, 2+2, 2</td>
 <td id="oper_row1">MC, [3,4,5,6],3</td>
 <td>
-<input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row('1')">
+<input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row_old('1')">
 <input type="button" id="save_button1" value="Save" class="save" onclick="save_row('1')">
 <input type="button" value="Delete" class="delete" onclick="delete_row('1')">
 </td>
@@ -40,7 +40,7 @@
 <td id="eqn_row2"></td>
 <td id="oper_row2">MCS, ["basketball","football","volleyball","baseball",2</td>
 <td>
-<input type="button" id="edit_button2" value="Edit" class="edit" onclick="edit_row('2')">
+<input type="button" id="edit_button2" value="Edit" class="edit" onclick="edit_row_old('2')">
 <input type="button" id="save_button2" value="Save" class="save" onclick="save_row('2')">
 <input type="button" value="Delete" class="delete" onclick="delete_row('2')">
 </td>
@@ -59,9 +59,6 @@
 </div>
 
 <div><input type="button" onclick="tableToJson(data_table);" value="Submit"></div>
-
-<div><button onclick="load()">Click me</button></div>
-
 
 </body>
 </html>

@@ -122,7 +122,7 @@ Essay.prototype.draw = function(div) {
 }
 
 
-function Survey(id, choices, terms) {
+function Survey(choices, terms, id) {
 	this.id = id;
 	this.terms = terms;
 	if(choices == "Likert5") {

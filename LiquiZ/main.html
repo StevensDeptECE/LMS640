@@ -3,6 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <link href="../MainPage/css/style.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="assets/css/main.css">
   <script type="text/javascript" src="../MainPage/js/jquery.js"></script>
   <script src="../MainPage/js/onepagelib.js"></script>
   <script src="../LiquiZ/assets/javascript/quizList.js"></script>
@@ -10,11 +11,17 @@
   <script src="../LiquiZ/assets/javascript/general.js"></script>
   <script src="../LiquiZ/assets/javascript/multimedia.js"></script>
   <script src="../LiquiZ/assets/javascript/questions.js"></script>
-  <script src="assets/javascript/carly.js"></script>
-  <script src="assets/javascript/yucheng.js"></script>
-  <script src="assets/javascript/Junkai.js"></script>   
+  <script src="../LiquiZ/assets/javascript/carly.js"></script>
+  <script src="../LiquiZ/assets/javascript/yucheng.js"></script>
+  <script src="../LiquiZ/assets/javascript/Junkai.js"></script>
   <script src="../MainPage/js/onepagelib.js"></script>
   <script src="../LiquiZ/assets/javascript/quizStats.js"></script>
+  <script src="../LiquiZ/assets/javascript/quizEditor.js"></script>
+  <script src="../LiquiZ/assets/javascript/addQuiz.js"></script>
+  <script src="../LiquiZ/assets/javascript/takeNewQuiz.js"></script>
+
+
+
 </head>
 
 <body>
@@ -24,12 +31,12 @@
     <li><a id="readytotake" href="#" >Ready to Take Quiz</a></li>
     <li><a id="settings" href="#"onclick="launch(quiz, quizIndexPayload, 'up3')">Settings</a></li>
     <li><a id="takequiz1" href="#"onclick="launch(takeQuiz, quiz1Payload, 'up3')">Take Quiz 1</a></li>
-    
+
 
   </ul>
 
   <div id="content">
-  <div class="up1">
+  <div id="up1">
     <p> This will be used for additional navigation. </p>
   </div>
   <hr style="clear:left; margin-top:4em;">
@@ -41,7 +48,8 @@
   <hr style="clear:left; margin-top:4em;">
 
   <div id="up3">
-      <h2>This is where your page contenct will go.</h2>
+      <h2>This is where your page content will go.</h2>
+  </div>
   </div>
 
 </body>
