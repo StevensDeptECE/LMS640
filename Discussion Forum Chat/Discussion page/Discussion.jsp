@@ -9,58 +9,55 @@
 <script src="jquery-3.1.1.min.js"></script>
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
 <script type="text/javascript">
-var user =[
-	{name:"luoyu",
-	 sex:"male",
-	 cwid:"1041511",
-	 picture:"url"},
-	
-	{name:"zhangyang",
-     sex:"male",
-     cwid:"1041512",
-     picture:"url"}
+function getNowFormatDate() {
+    var date = new Date();
+    var seperator1 = "-";
+    var seperator2 = ":";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+            + " " + date.getHours() + seperator2 + date.getMinutes()
+            + seperator2 + date.getSeconds();
+    return currentdate;
+} 
+</script>
 
-];
+<script type="text/javascript">
 
-var time =new Date();
+$(document).ready(function(){
+$("#post").click(function(){	
+	var title=document.getElementById("InputSubject").value;
+	$("#discusscontent div").prepend("<hr><div id='s'><div>");
+	$("#s").html(title);	
+	var content=document.getElementById("InputSub").value;
+	$("#s").after("<hr><div id='c'><div>");
+	$("#c").html(content);	
+	var time= getNowFormatDate() ;
+	$("#c").after("<br><div id='t'><div>");
+	$("#t").html(time);	
+	$("#t").after("<hr><h4 id='l'>Leave a Comment:</h4>");
+    $("#l").after("<form id='s' role='form'><div class='form-group'><textarea id='text1' class='form-control' rows='3' ></textarea></div><button id='submit' type='button' class='btn btn-primary'>Submit</button></form>"); 
 
-var discussion=[
-	{		"id": "1",	
-			"subject": "CSP",
-			"user":user[0].name,					
-			"posttime":time,
-			"content":"text",						
-			"reply"	:[{"user":user[0].name,"content":"text","reply_time":time},
-					  {"user":user[1].name,"content":"text","reply_time":time},
-					  ]
-					  }]; 
-					  
-$(function(){
-	$("#post").click(function(){			
-		  $("#s").html($("#InputSubject").val());			 
-		  $("#c").html($("#InputBody").val());			  
-		  var now=nowtime();		  
-		  $("#posttime").append(now);
+	$("#submit").on("click",function(){		
+		var comment=document.getElementById("text1").value;
+		var commenttime=getNowFormatDate();
+		
+		$("#onetime").html(commenttime);
+		$("#comment").html(comment);
 });
 });
-function nowtime(){
-    var mydate = new Date();
-    var str = "" + mydate.getFullYear();
-    var mm = mydate.getMonth()+1
-    if(mydate.getMonth()>9){
-     str += mm;
-    }
-    else{
-     str += "0" + mm;
-    }
-    if(mydate.getDate()>9){
-     str += mydate.getDate();
-    }
-    else{
-     str += "0" + mydate.getDate();
-    }
-    return str;
-  }
+});
+
+</script>
+
+<script type="text/javascript">
+
 </script>
 
 </head>
@@ -113,14 +110,12 @@ function nowtime(){
          </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
      </nav>
-    </div>
-     
+    </div>     
      <br><br>
      
      <div id="quickDiscussion" class="container">
        <div class="col-xs-12 col-sm-9">
-           <div class="jumbotron">
-               <form role="form">
+           <div class="jumbotron">              
                   <h4>Quick Discuss</h4>
                   <div class="form-group">
                     <label class="sr-only" for="InputSubject">Input subject</label>
@@ -128,88 +123,30 @@ function nowtime(){
                   </div>
                   <div class="form-group">
                   <label class="sr-only" for="InputBody">Input body</label>
-                  <textarea class="form-control" id="InputBody "rows="3" placeholder="Body"></textarea>
+                	 <textarea id="InputSub" class="form-control" rows="3"></textarea>
                   </div>
-                  <button id="post" type="button" class="btn btn-primary btn-sm">Post</button>
-               </form>
+                  <button id="post" type="button" class="btn btn-primary btn-sm">Post</button>               
            </div>	               
        </div>
      </div>    
          
      <div id="discusscontent" class="container">
-       <div class="col-xs-12 col-sm-9">
-	     <hr>
-	    	<div id="s"> <h2></h2></div>
-	    <hr>
-	     	<div id="c" class="panel-body">
-    			<p></p>
-  				</div>
-         <h5 ><span class="glyphicon glyphicon-time" id="posttime" >&nbsp;</span> </h5>
-         <hr>
-         
-         <h4>Leave a Comment:</h4>
-         <form role="form">
-           <div class="form-group">
-             <textarea class="form-control" rows="3" required></textarea>
-           </div>
-           <button type="submit" class="btn btn-primary">Submit</button>
-         </form>
-         <br><br>     
-         <p><span class="badge">2</span> Comments:</p><br> 
+       <div class="col-xs-12 col-sm-9">         
+         <br><br>            
+         <p><span class="badge">2</span> Comments:</p>
          <div class="row">
            <div class="col-sm-2 text-center">
              <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
            </div>
            <div class="col-sm-10">
-	         <h4>Anja <small>Jan 29, 2017, 9:12 PM</small></h4>
-             <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	         <h4>Anja <small id="onetime"></small></h4>
+             <p id="comment"></p>
              <br>
            </div>
-           <div class="col-sm-2 text-center">
-             <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-           </div>
-           <div class="col-sm-10">
-             <h4>John Row <small>Jan 28, 2017, 8:25 PM</small></h4>
-             <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-             <br>
-           </div>
+           
          </div>
+        
          
-         <hr>  
-         
-         <h2>How to learn JS and CSS?</h2>
-         <h5><span class="glyphicon glyphicon-time"></span> Post by Yang Liu, Jan 27, 2017.</h5>
-         <p>Food is my passion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-         <hr>
-         <h4>Leave a Comment:</h4>
-         <form role="form">
-           <div class="form-group">
-             <textarea class="form-control" rows="3" required></textarea>
-           </div>
-           <button type="submit" class="btn btn-primary">Submit</button>
-         </form>
-         <br><br>     
-         <p><span class="badge">2</span> Comments:</p><br> 
-         <div class="row">
-           <div class="col-sm-2 text-center">
-             <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-           </div>
-           <div class="col-sm-10">
-	         <h4>Anja <small>Jan 29, 2017, 9:12 PM</small></h4>
-             <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-             <br>
-           </div>
-           <div class="col-sm-2 text-center">
-             <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-           </div>
-           <div class="col-sm-10">
-             <h4>John Row <small>Jan 28, 2017, 8:25 PM</small></h4>
-             <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-             <br>
-           </div>
-         </div>  
-       </div>
-     </div>
      <hr>
      <footer><br><br></footer> 
    </body>
