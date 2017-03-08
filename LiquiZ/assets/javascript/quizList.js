@@ -69,9 +69,9 @@ quizIndex.prototype.draw = function(s) {
             td5.appendChild(document.createTextNode(this.payload[i].closeDate));
 
         var td6 = document.createElement("td");
-            var bt1 = document.createElement("a");
+            var bt1 = document.createElement("Button");
             bt1.className = "one";
-            bt1.href = this.payload[i].stats;
+            bt1.onclick= function () {launch(quizStats, statsPayload, 'up3')};
             var text = document.createTextNode("Stats");
             bt1.appendChild(text);
         td6.appendChild(bt1);
@@ -128,7 +128,7 @@ quizIndex.prototype.draw = function(s) {
     s.appendChild(newDiv);
     clearClass("active");
     document.getElementById("allquizzes").className = "active";
-}
+};
 
 quizIndex.prototype.createClickHandler1 = function(arg, data){
     return function () {

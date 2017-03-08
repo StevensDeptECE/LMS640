@@ -1,8 +1,8 @@
 /**
  * Created by junkai on 3/3/2017.
  */
-function quizStats(payload){
-    this.payload=payload;
+function quizStats(data){
+    this.data=data;
 }
 
 quizStats.prototype.draw= function(s){
@@ -18,7 +18,7 @@ quizStats.prototype.draw= function(s){
     clearClass("active");
     document.getElementById("allquizzes").className = "active";
 
-}
+};
 
 
 function drawInfo(p,data){
@@ -40,7 +40,6 @@ function drawInfo(p,data){
     d.appendChild(p2);
     p.appendChild(p1);
     p.appendChild(d);
-    p.appendChild(document.createElement("br"));
 }
 
 
