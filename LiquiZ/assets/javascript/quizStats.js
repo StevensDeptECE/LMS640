@@ -91,6 +91,10 @@ function drawTable(s,data) {
     t.appendChild(thead);
     t.appendChild(tbody);
     s.appendChild(t);
+    b1=document.createElement("Button");
+    b1.onclick=function(){launch(quizIndex, quizIndexPayload, 'up3')};
+    b1.appendChild(document.createTextNode("BACK"));
+    s.appendChild(b1);
 
 
 
