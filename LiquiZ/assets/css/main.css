@@ -124,18 +124,41 @@ div.header {
     font-weight: normal;
     font-size: 20px;
 }
+
+
+.Matrix{
+    width : 50px;
+    height : 50px;
+    text-align : center;
+    border : 1px solid black;
+    display : inline-block;
+    font-size: 20px;
+}
+.fillIn{
+    color: lawngreen;
+    background: black;
+    width: 200px !important;
+    height: 28px !important;
+    font-size: 20px !important;
+    text-align: center;
+    position: relative;
+    left: 10px;
+}
 /*For yucheng.js*/
 .MCSText{
     font-weight: normal;
     font-size: 20px;
     margin-left: 5px;
 }
-.inputCode{
-    /*font-size: 20px;*/
+.inputCode {
     height: 300px;
-    width: 1000px;
-    /*background: lightgrey;*/
-    /*padding: 20px 20px 20px 20px;*/
+    width: 90%;
+    font-family: "courier";
+    color: lawngreen;
+    background: black;
+    font-size: 16px;
+    padding: 20px;
+    resize: vertical;
 }
 .containerStyle{
     margin: 20px 20px;
@@ -177,9 +200,9 @@ div.header {
     position: relative;
     left: 10px;
 }
-
 .Essay{
-    width: 100%;
+    width: 90%;
+    height: 200px;
     margin-top: 20px;
     display: block;
     padding: 10px;
@@ -195,21 +218,29 @@ div.header {
 .submitquiz {
     font-size: medium;
 }
-textarea.inputCode {
-    font-family: "courier";
-    color: lawngreen;
-    background: black;
-    font-size: 16px;
-    padding: 20px;
-    width: 100%;
-    resize: vertical;
-}
+/*textarea.inputCode {*/
+    /*font-family: "courier";*/
+    /*color: lawngreen;*/
+    /*background: black;*/
+    /*font-size: 16px;*/
+    /*padding: 20px;*/
+    /*!*width: 100%;*!*/
+    /*resize: vertical;*/
+/*}*/
 
 /*For index.html*/
 .h01 {
     font-size: 40px;
     text-align: center;
-    text-shadow: 0 0 3px #FF0000;
+    text-shadow: 0 0 3px green;
+}
+.h02 {
+    font-size: 50px;
+    text-align: left;
+    position: relative;
+    top: 30px;
+
+    text-shadow: -2px 0 2px #db6, 2px 0 2px #6bd;
 }
 .t01 {
     width:100%;
@@ -261,9 +292,31 @@ textarea.inputCode {
     box-shadow: 0 3px #666;
     transform: translateY(2px);
 }
-input[type=checkbox] {
-    transform: scale(1.5);
+
+/*input[type=checkbox] {*/
+    /*transform: scale(1.5);*/
+/*}*/
+
+input[type = button] {
+    padding: 10px 15px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 8px #999;
+    margin: 15px 15px;
 }
+input[type = button]:hover {background-color: #3e8e41}
+input[type = button]:active {
+    background-color: #3e8e41;
+    box-shadow: 0 3px #666;
+    transform: translateY(2px);
+}
+
 button {
     padding: 10px 15px;
     font-size: 20px;
@@ -306,8 +359,8 @@ p {
 }
 
 h2{
-    padding-top: 0px;
-    margin-top: 0px;
+    padding-top: 0;
+    margin-top: 0;
 }
 label{
     font-size: 14px;

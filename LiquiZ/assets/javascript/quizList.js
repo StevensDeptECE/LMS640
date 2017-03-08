@@ -5,7 +5,7 @@ function quizIndex(payload){
 }
 
 quizIndex.prototype.draw = function(s) {
-    var header = Util.h1("Quiz List","h01");
+    var header = Util.h1("Quiz List","h02");
     clearElements("up3");
     var createButton = Util.button("Create Quiz",function () {launch(addQuiz, "", 'up3')}, "one");
     header.appendChild(createButton);

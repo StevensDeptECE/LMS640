@@ -52,26 +52,17 @@ function Matrix(rows, cols, id) {
 }
 
 Matrix.prototype.draw = function(div) {
-	var size = '50px';
 	for(var i = 0; i < this.rows; i++) {
 		var row = document.createElement("div");
 		for(var j = 0; j<this.cols; j++) {
-			var box = document.createElement("div");
-			box.style.height = size;
-			box.style.width = size;
-			box.style.border = "1px solid black";
-			box.style.display = 'inline-block';
 			var inp = document.createElement('input');
 			inp.type = 'text';
-			inp.style.width = size;
-			inp.style.height = size;
-			inp.style.textAlign = 'center';
-			box.appendChild(inp);
-			row.appendChild(box);
+			inp.className = "Matrix";
+			row.appendChild(inp);
 		}
 		div.appendChild(row);
 	}
-}
+};
 
 function Grid(length, id) {
 	this.id = id;
@@ -79,22 +70,13 @@ function Grid(length, id) {
 }
 
 Grid.prototype.draw = function(div) {
-	var size = '50px';
 	for(var i = 0; i < this.length; i++) {
-		var box = document.createElement("div");
-		box.style.height = size;
-		box.style.width = size;
-		box.style.border = "1px solid black";
-		box.style.display = 'inline-block';
 		var inp = document.createElement('input');
 		inp.type = 'text';
-		inp.style.width = size;
-		inp.style.height = size;
-		inp.style.textAlign = 'center';
-		box.appendChild(inp);
-		div.appendChild(box);
+		inp.className = "Matrix";
+		div.appendChild(inp);
 	}
-}
+};
 
 function Fillin(id) { //parent) {
 	this.id = id;
@@ -105,8 +87,9 @@ Fillin.prototype.draw = function(div) {
 	var inp = document.createElement("input");
 	inp.type = "text";
 	inp.style.textAlign = 'center';
+    inp.className = 'fillIn';
 	div.appendChild(inp);
-}
+};
 
 function Essay(id) { //parent) {
 	this.id = id;
@@ -119,7 +102,7 @@ Essay.prototype.draw = function(div) {
     inp.className = "Essay";
 	inp.style.textAlign = 'left';
 	div.appendChild(inp);
-}
+};
 
 
 function Survey(choices, terms, id) {
@@ -161,7 +144,7 @@ Survey.prototype.draw = function(div) {
         termBox.appendChild(surveyChoiceList);
 		div.appendChild(termBox);
 	}
-}
+};
 
 function Likert5(questions, id) {
 	this.id = id;
@@ -202,5 +185,4 @@ Likert5.prototype.draw = function(div) {
 	}
 	question3.appendChild(tbl);
 	div.appendChild(question3);
-}
-
+};

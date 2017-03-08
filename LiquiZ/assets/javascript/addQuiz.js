@@ -11,7 +11,7 @@ function addQuiz(payload){
 }
 
 addQuiz.prototype.draw = function(s) {
-    var header = Util.h1("Create New Quiz", "h01");
+    var header = Util.h1("Create New Quiz", "h02");
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
     clearElements("up3");
@@ -48,7 +48,7 @@ addQuiz.prototype.draw = function(s) {
     td1.appendChild(document.createTextNode("qc1000"));
     var td2 = document.createElement("td");
     td2.id = "title_row1";
-    td2.appendChild(document.createTextNode("Addition"));
+    td2.appendChild(document.createTextNode("Drag and Drop"));
     var td3 = document.createElement("td");
     td3.id = "instr_row1";
     td3.appendChild(document.createTextNode("Instr, Locate the parts of the cat ,1"));
@@ -57,11 +57,11 @@ addQuiz.prototype.draw = function(s) {
     // td4.appendChild(document.createTextNode("Eqn, 3*4, 2"));
     var td5 = document.createElement("td");
     td5.id = "oper_row1";
-    td5.appendChild(document.createTextNode("Survey, Likert5, [I like Chinese food, I like Korean food, I like Indian food, I got sick on sushi], 1"));
+    td5.appendChild(document.createTextNode("dragDrop, cat.jpg,[Ear,Eye,Nose,Tongue], [ {left:215,top:30}, {left:255,top:120},{left:285,top:160},{left:285,top:220}], 7"));
     var td6 = document.createElement("td");
-    var bt1 = Util.button("Edit", function () {edit_row('1')}, "one", "edit_button1");
-    var bt2 = Util.button("Save", function () {save_row('1')}, "one", "save_button1");
-    var bt3 = Util.button("Delete", function () {delete_row('1')}, "one");
+    var bt1 = Util.button("Edit", function () {edit_row('1')}, '', "edit_button1");
+    var bt2 = Util.button("Save", function () {save_row('1')}, '', "save_button1");
+    var bt3 = Util.button("Del", function () {delete_row('1')}, '');
     td6.appendChild(bt1);
     td6.appendChild(bt2);
     td6.appendChild(bt3);
@@ -101,7 +101,7 @@ addQuiz.prototype.draw = function(s) {
     inputText5.id = "new_oper";
     td55.appendChild(inputText5);
     var td66 = document.createElement("td");
-    var bt11 = Util.button("Add Row", function () {add_row()}, "one", "add");
+    var bt11 = Util.button("Add", function () {add_row()},"", "add");
     td66.appendChild(bt11);
 
     tr3.appendChild(td11);
@@ -113,8 +113,8 @@ addQuiz.prototype.draw = function(s) {
 
     t.appendChild(tr3);
     newDiv.appendChild(t);
-    var saveQuiz = Util.button("save",function () {tableToJson(data_table)});
-    var submitQuiz = Util.button("Submit",function () {launch(takeNewQuiz, newQuizPayload, 'up3')});
+    var saveQuiz = Util.button("Save Quiz",function () {tableToJson(data_table); window.location.reload(false);});
+    var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')});
     newDiv.appendChild(saveQuiz);
     newDiv.appendChild(submitQuiz);
     s.appendChild(newDiv);
@@ -182,9 +182,9 @@ function add_row() {
         "<td id='instr_row" + table_len + "'>" + new_instr + "</td>" +
         "<td id='eqn_row" + table_len + "'>" + new_eqn + "</td>" +
         "<td id='oper_row" + table_len + "'>" + new_oper + "</td>" +
-        "<td><input type='button' id='edit_button" + table_len + "' value='Edit' class='edit' onclick= 'edit_row(" + table_len + ")'> " +
-        "<input type='button' id='save_button" + table_len + "' value='Save' class='save' onclick='save_row(" + table_len + ")'> " +
-        "<input type='button' value='Delete' class='delete' onclick='delete_row(" + table_len + ")'></td></tr>";
+        "<td><input type='button' id='edit_button" + table_len + "' value='Edit' onclick= 'edit_row(" + table_len + ")'> " +
+        "<input type='button' id='save_button" + table_len + "' value='Save' onclick='save_row(" + table_len + ")'> " +
+        "<input type='button' value='Del' onclick='delete_row(" + table_len + ")'></td></tr>";
 
     document.getElementById("new_id").value = "";
     document.getElementById("new_title").value = "";
@@ -193,14 +193,10 @@ function add_row() {
     document.getElementById("new_oper").value = "";
 }
 
-var datas = [];
+
 function tableToJson(table) {
-    // var datas = []; // first row needs to be headers
+    var datas = []; // first row needs to be headers
     var headers = ["id", "title", "comp"];
-    // for (var i=0; i<table.rows[0].cells.length; i++) {
-    //     headers[i] = table.rows[0].cells[i].innerHTML.toLowerCase().replace(/ /gi,'');
-    // }
-    // go through cells
     for (var i = 1; i < table.rows.length - 1; i++) {
         var tableRow = table.rows[i];
         var rowData = {};
@@ -299,5 +295,5 @@ function tableToJson(table) {
         datas.push(rowData);
         console.log(datas);
     }
-    localStorage.setItem("mytext", JSON.stringify(datas));
+    sessionStorage.setItem("mytext", JSON.stringify(datas));
 }

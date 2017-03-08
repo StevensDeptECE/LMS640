@@ -109,7 +109,7 @@ newQC.prototype.draw = function() {
         this.comp[i].draw(this.div);
 };
 
-
+var newQuestions;
 /*constructor for takeNewQuiz object*/
 function takeNewQuiz (payload) {
     for (var k in payload) {
@@ -119,10 +119,12 @@ function takeNewQuiz (payload) {
     //this.policy = prefs.getPolicy(json);
     /*Create the objects for each question*/
     this.div= Util.div("wrapper",this.title);
+    newQuestions = this.questions.slice();
     for (var i = 0; i < this.questions.length; ++i) {
         /*this changes questions[i] so if we click on the quiz again it won't draw right
          should be okay because you should only be able to load a quiz once*/
-        this.questions[i] = new newQC(this.div, this.questions[i]);
+         newQuestions[i] =  new newQC(this.div, this.questions[i]);
+         //this.questions[i] = new newQC(this.div, this.questions[i]);
     }
 }
 
@@ -130,18 +132,20 @@ Util2.subClass(Display, takeNewQuiz);
 
 /*draw method for takeNewQuiz object*/
 takeNewQuiz.prototype.draw = function(div){
-    var header = Util.h1(this.title);
+    var header = Util.h1(this.title, "h02");
+    var createButton = Util.button("Clear localStorage",function () {sessionStorage.clear(); window.location.reload(false);}, "one");
+    header.appendChild(createButton);
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
     clearElements("up3");
     div.appendChild(this.div);
-    for (var i = 0; i < this.questions.length; ++i) {
-        this.questions[i].draw();
+    for (var i = 0; i < newQuestions.length; ++i) {
+        newQuestions[i].draw();
     }
 
 };
 
-var newQuest = JSON.parse(localStorage.getItem("mytext"));
+var newQuest = JSON.parse(sessionStorage.getItem("mytext"));
 var newQuizPayload = {
     title: "Quiz 1",
     class: "L-quiz",
