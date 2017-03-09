@@ -190,7 +190,6 @@ margin-left: 120px;
   margin-bottom: 15px;
 }
 
-
 #keywords thead {
   cursor: pointer;
   background: #c9dff0;
@@ -229,5 +228,62 @@ margin-left: 120px;
   text-align: left;
 }
 table.gradeTable { border-collapse: collapse; border-spacing: 0; }
+
+.loginformabs {
+    padding: 5px 5px 5px 5px;
+    border: solid 0px;
+    border-radius: 0 0 0 5px;
+    background-color: #ADD8E6;
+    position: absolute;
+    right: 30px;
+    top: 0px;
+    margin-top: 0;
+    margin-right: -30px;
+}
+
+.loginformabs .container {
+  margin: 5px 5px 5px 5px;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    /*padding: 12px 20px;
+    margin: 8px 0;*/
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for login buttons */
+.loginformabs button {
+    background-color: #4CAF50;
+    color: white;
+    /*padding: 14px 20px;
+    margin: 8px 0;*/
+    border: none;
+    cursor: pointer;
+}
+
+/* Add a hover effect for buttons */
+.loginformabs button:hover {
+    opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+.loginformabs .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.loginformabs label {
+  color: white;
+}
+
+/* The "Forgot password" text */
+.loginformabs span.psw {
+    float: right;
+    padding-top: 16px;
+}
 
 </style>

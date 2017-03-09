@@ -186,6 +186,8 @@ Calendar.prototype.draw = function(content) {
     clearElements("up3");
     drawCalendarButtons();
     var calendar = show(getRightNow());
+    //ISSUE - show is used for many things
+    //      - current implementation really only works for the intial drawing
     content.appendChild(calendar);
 
     //fillDate();
@@ -274,7 +276,7 @@ function nextButton() {
     show(nextMonth);
     //fillDate();
     changeWeekendStyle();
-    //drawCalendarButtons();
+    //  drawCalendarButtons();
 }
 
 function changeWeekendStyle(){

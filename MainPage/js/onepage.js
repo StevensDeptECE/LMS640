@@ -1,4 +1,5 @@
-/* A simple example of creating an object, clearing part of a page, and drawing
+/*
+ * A simple example of creating an object, clearing part of a page, and drawing
  * the object.
 */
 
