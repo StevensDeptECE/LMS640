@@ -30,6 +30,7 @@
         <option value="12" class="holiday">December</option>
       </select>
         <input id="day" class="holiday" name="Day" type="number" min="1" max="31"> </input>
+        <button type="button" id="calendar" > Date Picker <div id=cal></div></button>
     </div>
 
     <button type="submit">Add it!</button>
@@ -44,7 +45,11 @@
 
 <div class="list">
   <h2> List of Holidays </h2>
+  <div id= "dvtable"></div>
   <ul id="holidays"> </ul>
+  <button type="button" id="sortName">Sort by Name</button>
+  <button type="button" id="sortDate">Sort by Date</button> <br>
+  <button type="button" id="remove">Delete it!</button>
 </div>
 <script language="JavaScript" src="holidayIn.js"></script>
 </body>
