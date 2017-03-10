@@ -7,12 +7,12 @@ function quizStats(data){
 
 quizStats.prototype.draw= function(s){
     var header = Util.div("wrapper","Information");
-    drawInfo(header,statsPayload);
+    drawInfo(header,this.data);
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
     clearElements("up3");
     var newDiv = Util.div("wrapper","showGrades");
-    drawTable(newDiv,statsPayload);
+    drawTable(newDiv,this.data);
 
     s.appendChild(newDiv);
     clearClass("active");
@@ -91,7 +91,7 @@ function drawTable(s,data) {
     t.appendChild(thead);
     t.appendChild(tbody);
     s.appendChild(t);
-    b1=document.createElement("Button");
+    var b1=document.createElement("Button");
     b1.id="backButton";
     b1.onclick=function(){launch(quizIndex, quizIndexPayload, 'up3')};
     b1.appendChild(document.createTextNode("BACK"));
