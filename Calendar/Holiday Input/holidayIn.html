@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
+<head>
 <link type="text/css" charset="utf-8" rel="stylesheet" href="holidayIn.css">
-
+</head>
 <body>
+
+<title> Input Holidays </title>
 
 <section>
   <h1><p id="year"> </p> Holidays</h1>
@@ -30,7 +33,18 @@
         <option value="12" class="holiday">December</option>
       </select>
         <input id="day" class="holiday" name="Day" type="number" min="1" max="31"> </input>
-        <button type="button" id="calendar" > Date Picker <div id=cal></div></button>
+<!--    <input id="day" type= "date" class="holiday" name="Date"> </input> not supported in firefox-->
+        <button type="button" id="calendar" > Date Picker </button>
+        <div id="popup" class="popup">
+          <div class="popup-content">
+            <span class="close">&times;</span> <!--//pretty x close character-->
+            <p>will be calendar</p><br>
+            <button type="button" id="back" name="back"><</button>
+            <button type="button" id="forward" name="forward">></button>
+            <label id="currentMonth">March 2017</label>
+            <div id="chart"></div>
+          </div>
+        </div>
     </div>
 
     <button type="submit">Add it!</button>

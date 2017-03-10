@@ -119,10 +119,32 @@ function sortByDate(){
 	 displayHolidays();
 }
 
-function miniCalendar(){
-	console.log("imma make a calendar");
-
+var popup = document.getElementById("popup");
+var btn = document.getElementById("calendar");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+	popup.style.display = "block";
 }
+span.onclick = function() { //close button
+	popup.style.display = "none";
+}
+window.onclick = function(event) {	//click away close
+	if (event.target == popup) {
+		popup.style.display = "none";
+	}
+}
+
+var displayMonth= month;
+var counter=0;
+var back=document.getElementById("back");
+back.onclick= function(){
+	if(displayMonth==0){
+		displayMonth=11;
+	}
+	displayMonth--;
+}
+var forward=document.getElementById("forward");
+
 
 
 //buttons and functions
@@ -130,8 +152,6 @@ var form = document.getElementsByClassName("holiday")[0];
 form.addEventListener('submit', handleFormSubmit);
 var remove=document.getElementById("remove");
 remove.addEventListener('click', removeHolidays);
-var miniCal=document.getElementById("calendar");
-miniCal.addEventListener('click', miniCalendar);
 var sortName=document.getElementById("sortName");
 sortName.addEventListener('click', sortByName);
 var sortDate=document.getElementById("sortDate");
