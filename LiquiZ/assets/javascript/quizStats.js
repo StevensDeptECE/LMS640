@@ -16,7 +16,7 @@ quizStats.prototype.draw= function(s){
 
     s.appendChild(newDiv);
     clearClass("active");
-    document.getElementById("allquizzes").className = "active";
+    document.getElementById("quizstats").className = "active";
 
 };
 
