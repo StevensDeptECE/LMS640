@@ -378,6 +378,15 @@ Util = {
           }
       });
   },
+
+  label: function (htmlFor, innerHTML, className, id) {
+      return Util.make("label", {
+          htmlFor: htmlFor,
+          innerHTML: innerHTML,
+          className: className,
+          id: id,
+      });
+  },
 };
 
 
@@ -394,6 +403,7 @@ function launch(object, payload, id) {
   console.log("Calling Launch");
   console.log(object);
   console.log(payload);
+  console.log("id: " + id);
   console.log("prev active link: " + activeLink);
   var newObject = new object(payload); // grade object
   var content = document.getElementById(id);
@@ -409,6 +419,7 @@ function clearElements(elementID)
 }
 
 /* Sets the class attribute of an HTML object to nothing */
+/* TODO Should only clear if something is not null. Should work for classes and id's */
 function clearClass(name)
 {
     console.log("Clear Class: " + name);

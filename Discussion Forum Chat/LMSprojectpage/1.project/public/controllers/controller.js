@@ -1,6 +1,11 @@
 var myApp = angular.module('myApp', []);
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     console.log("Hello World from controller");
+    
+    $scope.showMe = false;
+    $scope.myFunc = function() {
+        $scope.showMe = !$scope.showMe;
+    };
 
 
 var refresh = function() {
@@ -12,6 +17,7 @@ var refresh = function() {
 };
 
 refresh();
+
 
 $scope.addproject = function() {
   console.log($scope.project);

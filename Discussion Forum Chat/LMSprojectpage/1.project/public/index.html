@@ -12,6 +12,7 @@
 
 <title>sample project</title>
 
+
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-static-top">
@@ -59,42 +60,49 @@
   </div><!-- /.container -->
 </nav><!-- /.navbar -->
 
-<div class="row row-offcanvas row-offcanvas-left">
-<div class=col-sm-1></div>
-<div class=col-sm-7 ng-controller="AppCtrl">
 
-<table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Info</th>
-        <th class=col-sm-1>Team Size</th>
-        <th>Action</th>
-        <th>&nbsp;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><input class="form-control" ng-model="project.name"></td>
-        <td><input class="form-control" ng-model="project.info"></td>
-        <td><input class="form-control" ng-model="project.team"></td>
-        <td><button class="btn btn-primary" ng-click="addproject()">Add Project</button></td>
-        <td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
-      </tr>
-      <tr ng-repeat="project in projectlist">
-        <td>{{project.name}}</td>
-        <td>{{project.info}}</td>
-        <td>{{project.team}}</td>
-        <td><button class="btn btn-danger" ng-click="remove(project._id)">Remove</button></td>
-        <td><button class="btn btn-warning" ng-click="edit(project._id)">Edit</button></td>
-      </tr>
-    </tbody>
-</table>
-</div>
+
+<div class="row row-offcanvas row-offcanvas-left" >
+  <div class=col-sm-9 ng-controller="AppCtrl">  
+    <div class="btn-group pull-right">
+      <button class="btn btn-primary" type="button" ng-click="myFunc()"> All Projects</button>          
+    </div>    
+    <div class="col-md-2" ng-show="showMe">
+      <ul class="nav nav-pills nav-stacked" id="data" ng-repeat="project in projectlist">
+        <li >{{project.name}}</li>
+        <li>&nbsp;</li>
+        <!-- <li class="active"><a href="#">Create</a></li> -->
+      </ul>
+    </div>
+    <div class="col-md-1" >
+    </div>
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6"> 
+
+          
+          
+              <div class="form-group" rows="10">
+
+                  <label for="Pname" ></label>
+                  <input type="text" class="form-control" ng-model="project.name" id="email" placeholder="Name"> 
+                  <label for="Description"></label>
+                  <textarea name="message" ng-model="project.info" class="form-control" rows="3" cols="50" placeholder="Description"></textarea>
+                  
+              </div>
+              <button class="btn btn-primary" ng-click="addproject()">Create</button>  
+              
+            </form>
+          </div>  
+        </div> 
+      </div>
+    </div>
+  </div>
 
 
           <!-- add your code here-->
- <div class=col-sm-1></div>     
+    
         
   <div class=col-sm-2>
 
