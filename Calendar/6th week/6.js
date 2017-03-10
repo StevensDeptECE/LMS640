@@ -1,13 +1,13 @@
 	var holiday = [
 	{ "name":"Christmas","day":25,"month":12,"year":2017},
 	{ "name":"President's Day","day":20,"month":2,"year":2017}];
-	
+
     var tempDate;
- 
+
     function getRightNow() {
         return new Date();
     }
- 
+
     function getDay(date){
         var day = date.getDay();
         if(0 == day){
@@ -15,19 +15,19 @@
         }
         return day;
     }
- 
+
     function getDays(date) {
         var month = date.getMonth() + 1;
         var currentDate = date.getDate();
- 
+
         date.setMonth(month, 0);
         var days = date.getDate();
- 
+
         date.setMonth(month - 1, currentDate);
- 
+
         return days;
     }
- 
+
     function getFirstDayOfMonth(date){
         var currentDate = date.getDate();
         date.setDate(1);
@@ -35,7 +35,7 @@
         date.setDate(currentDate);
         return firstDayOfMonth;
     }
- 
+
     function getLastDayOfMonth(date){
         var currentDate = date.getDate();
         var days = getDays(date);
@@ -44,20 +44,20 @@
         date.setDate(currentDate);
         return lastDayOfMonth;
     }
- 
+
     function getHeadOfNextMonth(date) {
         var days = getDays(date);
         var firstDayOfMonth = getFirstDayOfMonth(date);
         var verbose = firstDayOfMonth;
         var row = "";
         var line = 0;
- 
+
         for (var i = 1; i <= days; i++) {
             if ((i + verbose) % 7 == 0) {
                 line++;
             }
         }
-		
+
         var year = date.getFullYear();
         var month = date.getMonth();
         if (month == 11) {
@@ -67,11 +67,11 @@
         else {
             month += 1;
         }
- 
+
         var nextMonth = new Date(year, month);
         var firstDayOfNextMonth = getFirstDayOfMonth(nextMonth);
         verbose = firstDayOfNextMonth;
- 
+
         if (line == 5 || line == 4) {
             for (var i = 1; i <= 7 - verbose; i++) {
                 row += "<td class='next'>"+i+"</td>";
@@ -80,7 +80,7 @@
         }
         return row;
     }
- 
+
     function getEndOfPreMonth(date){
         var year = date.getFullYear();
         var month = date.getMonth();
@@ -96,17 +96,17 @@
         var firstDayOfMonth = getFirstDayOfMonth(preMonth);
         var verbose = firstDayOfMonth;
         var row = "";
- 
+
         for (var i = 1; i <= days; i++) {
             row += "<td class='pre'>" + i + "</td>";
- 
+
             if ((i + verbose) % 7 == 0) {
                 row = "";
             }
         }
         return row;
     }
- 
+
     function show(customDate) {
         var today = getRightNow();
 		var date = customDate.getDate();
@@ -114,7 +114,7 @@
         var firstDayOfMonth = getFirstDayOfMonth(customDate);
         var verbose = firstDayOfMonth;
         var dateString = "";
-        dateString += "<table><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>"; 
+        dateString += "<table><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>";
         var row = "";
         row = getEndOfPreMonth(customDate);
         for (var i = 1; i <= days; i++) {
@@ -141,13 +141,13 @@
         }
 
         var returnRow = getHeadOfNextMonth(customDate);
- 
+
         dateString += "<tr>" + row + returnRow;
         dateString += "</table>";
         var calendarContainer = document.getElementById("calendarContainer");
         calendarContainer.innerHTML = dateString;
     }
-    
+
     function createwindow(n){
     	var para = document.createElement("div");
 		para.setAttribute("class","holiday");
@@ -156,7 +156,7 @@
     	para.appendChild(node);
     	document.body.appendChild(para);
     }
-	
+
 	function createEventwindow(){
     	var para = document.createElement("div");
 		para.setAttribute("class","event");
@@ -170,8 +170,41 @@
 		linktest.appendChild(node);
 		document.getElementById("event").appendChild(linktest);
 		console.log("i made a window");
+
+		var form=['<form class="holiday">',
+		'<div>',
+		'<label>Holiday Name</label>',
+		'<input id="name" class="holiday" name= "Name" type="text"/>',
+		'</div>',
+			'<label>Date</label>',
+			'<select id="month" class="holiday" name="Month" onchange="limit()">',
+			'<option value="1" class="holiday">January</option>',
+			'<option value="2" class="holiday">February</option>',
+			'<option value="3" class="holiday">March</option>',
+			'<option value="4" class="holiday">April</option>',
+			'<option value="5" class="holiday">May</option>',
+			'<option value="6" class="holiday">June</option>',
+			'<option value="7" class="holiday">July</option>',
+			'<option value="8" class="holiday">August</option>',
+			'<option value="9" class="holiday">September</option>',
+			'<option value="10" class="holiday">October</option>',
+			'<option value="11" class="holiday">November</option',
+			'<option value="12" class="holiday">December</option>',
+			'</select>',
+			'<input id="day" class="holiday" name="Day" type="number" min="1" max="31"> </input>',
+			'<button type="button" id="calendar" > Date Picker </button>',
+			'<div id="popup" class="popup">',
+			'<div class="popup-content">',
+			'<span class="close">&times;</span>',
+			'<p>will be calendar</p><br>',
+			'</div>',
+			'</div>',
+		   '<button type="submit">Add it!</button>']. join('');
+			 para.innerHTML= form;
+
     }
-	
+
+
 	window.onclick = function(e) {
 		if(document.getElementById("holiday")){
 			if(e.target.id != "holiday" && e.target.className != "createholiday") {
@@ -186,27 +219,27 @@
 		}
 		}
 	}
-	
+
     function setCalendar() {
         show(getRightNow());
         fillDate();
         changeWeekendStyle();
     }
- 
+
     function getTempDate(){
         if(tempDate == undefined) {
             tempDate = getRightNow();
         }
         return tempDate;
     }
- 
+
     function getPreMonth() {
         tempDate = getTempDate();
- 
+
         var year = tempDate.getFullYear();
         var month = tempDate.getMonth();
         var date = tempDate.getDate();
- 
+
         if (month == 0) {
             year -= 1;
             tempDate.setFullYear(year, 11, 1);
@@ -229,7 +262,7 @@
         fillDate();
         changeWeekendStyle();
     }
- 
+
 
     function resume(){
         tempDate = getRightNow();
@@ -237,14 +270,14 @@
         fillDate();
         changeWeekendStyle();
     }
- 
+
     function getNextMonth() {
         tempDate = getTempDate();
- 
+
         var year = tempDate.getFullYear();
         var month = tempDate.getMonth();
         var date = tempDate.getDate();
- 
+
         if (month == 11) {
             year += 1;
             tempDate.setFullYear(year, 0, 1);
@@ -253,24 +286,24 @@
             month += 1;
             tempDate.setMonth(month, 1);
         }
- 
+
         var nextDays = getDays(tempDate);
 
         if(date >= nextDays){
             date = nextDays;
         }
         tempDate.setDate(date);
- 
+
         return tempDate;
     }
- 
+
     function nextButton() {
         var nextMonth = getNextMonth();
         show(nextMonth);
         fillDate();
         changeWeekendStyle();
     }
- 
+
     function changeWeekendStyle(){
 
         $("th:gt(4)").css("color", "red");
@@ -282,4 +315,157 @@
         var display =  document.getElementById("displayDate");
         display.innerHTML = getTempDate().toLocaleDateString();
     }
- 
+
+//add holiday code
+		function limit(){ //sets month limit for input dates
+  var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
+      monthLength[2]=29;
+    }
+  var cmonth=document.getElementById("month").value; //cmonth= chosen month
+  var maxday=monthLength[cmonth-1];
+  var cday=document.getElementById("day");
+  cday.max=maxday;
+}
+
+function capitalize(inStr) { //look for word, nonwhitespace characters, global match
+  return inStr.replace(/\w\S*/g, function(tStr) {
+     return tStr.charAt(0).toUpperCase() + tStr.substr(1).toLowerCase();
+    });
+}
+
+function isValidElement(element){ //checks for non-empty name and values
+  element.value=capitalize(element.value);
+  return element.name && element.value;
+}
+
+function formToJSON(elements) {
+  return [].reduce.call(elements, function (data, element) {
+    if (isValidElement(element)) {
+        data[element.name] = element.value;
+    }
+    return data;
+  }, {});
+}
+
+function handleFormSubmit(event) {	//adds holiday as JSON obj
+  event.preventDefault();
+  var data = formToJSON(form.elements);
+  var dataContainer = document.getElementsByClassName("resultsDisplay")[0];
+  dataContainer.textContent = JSON.stringify(data, null, "  ");
+  holiday.push(data);
+  //displayHolidays();
+}
+
+/*function displayHolidays(){	//prints holidays
+  var h=document.getElementById("holidays");
+
+  //clear list
+  while(h.firstChild){
+    h.removeChild(h.firstChild);
+  }
+  for(var i=0; i<holidays.length; i++){
+    var li=document.createElement("li");
+    var input= document.createElement("input");
+    var label= document.createElement("label");
+    var br= document.createElement("br");
+    input.setAttribute("type", "checkbox");
+    input.setAttribute("name", "dates");
+		var text=Util.text(JSON.stringify(holidays[i], null, " "));
+		//var text= document.createTextNode(JSON.stringify(holidays[i], null, " "));
+		h.appendChild(input);
+    h.appendChild(text);
+    h.appendChild(label);
+    label.appendChild(text);
+    label.appendChild(br);
+  }
+}
+
+function removeHolidays(){	//deletes checked holidays
+  var boxes= document.getElementsByName("dates");
+	var count=0;
+  for(var i=0; i<boxes.length;i++){
+    if(boxes[i].checked){
+      holidays.splice(i-count,1);
+			count++;
+    }
+  }
+	displayHolidays();
+}
+
+function sortByName(){
+	holidays.sort(function(a,b){
+      if( a["Name"] > b["Name"]){
+          return 1;
+      }
+			else if( a["Name"] < b["Name"] ){
+          return -1;
+      }
+		return 0;
+	});
+	displayHolidays();
+}
+
+function sortByDate(){
+	 holidays.sort(function(a,b){
+      if( parseInt(a["Month"],10) > parseInt(b["Month"],10)){
+          return 1;
+      }
+			else if( parseInt(a["Month"],10) < parseInt(b["Month"],10) ){
+          return -1;
+      }
+			else if( parseInt(a["Month"],10) == parseInt(b["Month"],10)){
+					if( parseInt(a["Day"],10) > parseInt(b["Day"],10)){
+						return 1;
+					}
+					else if( parseInt(a["Day"],10) < parseInt(b["Day"],10) ){
+						return -1;
+					}
+			}
+      return 0;
+   });
+	 displayHolidays();
+}
+*/
+var popup = document.getElementById("popup");
+var btn = document.getElementById("calendar");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+	popup.style.display = "block";
+}
+span.onclick = function() { //close button
+	popup.style.display = "none";
+}
+window.onclick = function(event) {	//click away close
+	if (event.target == popup) {
+		popup.style.display = "none";
+	}
+}
+/*
+var displayMonth= month;
+var counter=0;
+var back=document.getElementById("back");
+back.onclick= function(){
+	if(displayMonth==0){
+		displayMonth=11;
+	}
+	displayMonth--;
+}
+var forward=document.getElementById("forward");
+
+*/
+
+//buttons and functions
+var form = document.getElementsByClassName("holiday")[0];
+form.addEventListener('submit', handleFormSubmit);
+/*var remove=document.getElementById("remove");
+remove.addEventListener('click', removeHolidays);
+var sortName=document.getElementById("sortName");
+sortName.addEventListener('click', sortByName);
+var sortDate=document.getElementById("sortDate");
+sortDate.addEventListener('click', sortByDate);
+var range=document.getElementById("rangedHoliday");
+range.addEventListener('click', dateRange);
+var repeat=document.getElementById("repeatHoliday");
+repeat.addEventListener('click', dateRepeat);
+*/
