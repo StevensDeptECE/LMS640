@@ -46,7 +46,7 @@ app.put('/projectlist/:id', function (req, res) {
   console.log(req.body.name);
   db.projectlist.findAndModify({
     query: {_id: mongojs.ObjectId(id)},
-    update: {$set: {name: req.body.name, info: req.body.info, team: req.body.team}},
+    update: {$set: {name: req.body.name, info: req.body.info}},
     new: true}, function (err, doc) {
       res.json(doc);
     }
