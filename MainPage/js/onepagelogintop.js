@@ -1,21 +1,13 @@
 /* Login construcotr. It currently takes no arguments */
-function Login(payload) {
+function LoginTop(payload) {
   this.payload = payload;
 }
 
 
-Login.prototype.draw = function(content) {
+LoginTop.prototype.draw = function(content) {
   console.log("draw");
 
-  //clearElements("loginformabs_top");
-
-  var up2 = document.getElementById("up2")
-  clearElements("up2");
-  var header = Util.h1("Welcome to LMS.");
-  up2.appendChild(header);
-
-  clearElements('up3');
-  var newDiv = Util.div("loginformabs", "");
+  var newDiv = Util.div("loginformabs_top", "");
     var newForm = Util.form("/action_page.php", "", "", ""); //TODO - no php, this is a placeholder
       var newDiv2 = Util.div("container", "");
         var userNameTxt = Util.label("", "Username", "", "");
@@ -43,8 +35,4 @@ Login.prototype.draw = function(content) {
     newDiv.appendChild(newForm);
 
   content.appendChild(newDiv);
-  clearClass("active");
-
-  //set active to some other class
-  document.getElementById("account").className = "active";
 }
