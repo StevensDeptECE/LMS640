@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+
+<head>
+    <meta charset="utf-8" />
+    <title>模板数据绑定</title>
+    <script type="text/javascript" src="/angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-controller="testC">
+        <h1>{{question.newtitle}}</h1> 题目:
+        <input type="text" ng-model="question.name" />
+        <br /> 分数:
+        <input type="text" number ng-model="question.fraction" />
+        <br /> 选项:
+        <button ng-click="addOption()">增加选项</button>
+        <br />
+        <ul>
+            <li ng-repeat="o in question.options"> <b>{{$index+1}}.</b>
+                <input type="text" ng-model="o.content" value="o.content" /> <a href="javascript:void(0);" ng-click="delOption($index)">删除</a> </li>
+        </ul>
+        <hr>
+        <div>
+            <h1>{{question.previewtitle}}</h1> <b>{{question.name}}</b>({{question.fraction}}分)
+            <ul>
+                <li ng-repeat="o in question.options"> <b>{{$index+1}}.</b>
+                    <input type="radio" name="optcheck" /> {{o.content}} </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        var app = angular.module('MyApp', [], function () {
+            console.log('started')
+        });
+        var questionModel = {
+            newtitle: '新建试题'
+            , previewtitle: '预览试题'
+            , name: ''
+            , fraction: ''
+            , options: []
+        };
+        app.controller('testC', function ($scope) {
+            $scope.question = questionModel;
+            $scope.addOption = function () {
+                var o = {
+                    content: ''
+                };
+                $scope.question.options.push(o);
+            };
+            $scope.delOption = function (index) {
+                $scope.question.options.splice(index, 1);
+            };
+        });
+    </script>
+</body>
+
+</html>
