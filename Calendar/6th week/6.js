@@ -192,15 +192,8 @@
 			'<option value="12" class="holiday">December</option>',
 			'</select>',
 			'<input id="day" class="holiday" name="Day" type="number" min="1" max="31"> </input>',
-			'<button type="button" id="calendar" > Date Picker </button>',
-			'<div id="popup" class="popup">',
-			'<div class="popup-content">',
-			'<span class="close">&times;</span>',
-			'<p>will be calendar</p><br>',
-			'</div>',
-			'</div>',
-		   '<button type="submit">Add it!</button>']. join('');
-			 para.innerHTML= form;
+			'<button type="submit">Add it!</button>']. join('');
+			 document.getElementById("event").appendChild( createTextNode(form));
 
     }
 
@@ -426,7 +419,7 @@ function sortByDate(){
    });
 	 displayHolidays();
 }
-*/
+
 var popup = document.getElementById("popup");
 var btn = document.getElementById("calendar");
 var span = document.getElementsByClassName("close")[0];
@@ -441,7 +434,7 @@ window.onclick = function(event) {	//click away close
 		popup.style.display = "none";
 	}
 }
-/*
+
 var displayMonth= month;
 var counter=0;
 var back=document.getElementById("back");
