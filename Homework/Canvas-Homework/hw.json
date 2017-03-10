@@ -1,0 +1,36 @@
+var homework552 = 
+{
+    "name" = "EE552-Homework",
+    "semester" = "2017s",
+    "CouseId" = 19886,
+    "SemesterStart" = {
+        "year" = 2017,
+        "month" = 01,
+        "day" = 18
+
+    },
+    "StartDate" = {
+        "year" = 2017,
+        "month" = 01,
+        "day" = 23
+    }
+    "ClassDates" = {
+        "year" = 2017,
+        "month" = 01,
+        "day" = 23
+    }
+    "DueDate" = {
+        "year" = 2017,
+        "month" = 01,
+        "day" = 23
+    }
+    "HomeworkDue" = -1,
+    "Points" = 100,
+    "Upload" = {
+        "file1" = "java",
+        "file2" = "cpe",
+        "file3" = "URL",
+    }
+    "question" = "1. Start with a circle radius = 1 2. Circumscribe an equilateral triangle, (n=3) around the circle 3. Circumscribe a circle around the triangle, and print out the radius. 4. Circumscribe a square (n=4) around the circle 5. Circumscribe a circle around the square... Here is a diagram showing the first two polygons (triangle, square) and the first three circles ngons.png Keep going until n=1,000,000 (10^6) print out the radius for n=1, n=10, 100, 1000, 10000, 100000, 10^6"
+    
+}
