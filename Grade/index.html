@@ -3,8 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="css/style.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/jquery.tablesorter.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script> 
+<script type="text/javascript" src="js/edit_table.js"></script>
+<script type="text/javascript" src="js/table.js"></script>
 </head>
 <body>
 
@@ -56,7 +57,7 @@
 
 <div class="up2">
 <button class="aggreate" style="margin-left:10px;">Grade</button>
-<button class="aggreate" onclick="window.location.href='grades distribution.html'" formtarget="_blank">Graph</button>
+<button class="aggreate">Graph</button>
 <button class="button" style="float:right;">Individual View</button>
 <button class="button" style="float:right;">Showing All Section</button>
 </div>
@@ -68,7 +69,7 @@
 <div class="filter">
 <form>
 <br>
-<input type="text" name="filter_student" placeholder="Filter by student" style="margin-left:10px; padding:10px;">
+<input type="text" onkeyup="nameFilter()" id="name" name="filter_student" placeholder="Filter by student" style="margin-left:10px; padding:10px;">
 <input type="text" name="filter_assignment" placeholder="Filter by assignment" style=" padding:10px;">
 </form>
 </div>
@@ -79,16 +80,14 @@
 </div>
 
 <div id="wrapper">
-<table id="keywords">
-    <thead>
+<table id="grades">
       <tr>
         <th><span>Name</span></th>
         <th><span>ID</span></th>
-        <th><span>Assignment</span></th>
-        <th><span>Test</span></th>
-        <th><span>Quiz</span></th>
+        <th EditType="TextBox"><span onclick="sortTable(2)">Assignment</span></th>
+        <th EditType="TextBox"><span onclick="sortTable(3)">Test</span></th>
+        <th EditType="TextBox"><span onclick="sortTable(4)">Quiz</span></th>
       </tr>
-    </thead>
     <tbody>
       <tr>
         <td class="lalign">John</td>
@@ -127,21 +126,20 @@
       </tr>
       <tr>
         <td class="lalign">Lich King</td>
-        <td>412643</td>
+        <td contentEditable="true">523523</td>
         <td>98</td>
         <td>77</td>
         <td>88</td>
       </tr>
     </tbody>
   </table>
- </div>
-
+ </div> 
+ 
 </div>
 
 <script type="text/javascript">
-$(document).ready(function() {
-    $("#keywords").tablesorter();
-});
+var table = document.getElementById("grades");
+SetTableCanEdit(table);
 </script>
 
 </body>

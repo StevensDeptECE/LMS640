@@ -1,12 +1,12 @@
 function SetTableCanEdit(table) {
-	for (var i = 1; i < table.tbody.rows.length; i++) {
-		SetRowCanEdit(table.tBodies[0].rows[i]);
+	for (var i = 1; i < table.rows.length; i++) {
+		SetRowCanEdit(table.rows[i]);
 	}
 }
 
 function SetRowCanEdit(row) {
 	for (var j = 2; j < row.cells.length; j++) {
-		var editType = document.getElementById("keywords").tHead.rows[0].cells[j].getAttribute("EditType");
+		var editType = document.getElementById("grades").rows[0].cells[j].getAttribute("EditType");
 		if (editType) {
 			row.cells[j].onclick = function() {
 				EditCell(this);
@@ -24,7 +24,7 @@ function CreateTextBox(element, value) {
 	if (editState != "true") {
 		var textBox = document.createElement("INPUT");
 		textBox.type = "text";
-		textBox.className = "EditCell_TextBox";
+		textBox.className = "lalign";
 
 		if (!value) {
 			value = element.getAttribute("Value");
@@ -45,6 +45,10 @@ function CreateTextBox(element, value) {
 	}
 }
 
+function ClearChild(element) {
+	element.innerHTML="";
+}
+
 function CancelEditCell(element, value, text) {
 	element.setAttribute("Value", value);
 	if (text) {
@@ -53,5 +57,4 @@ function CancelEditCell(element, value, text) {
 		element.innerHTML = value;
 	}
 	element.setAttribute("EditState", "false");
-	
 }
