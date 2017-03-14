@@ -230,7 +230,7 @@ margin-left: 120px;
 table.gradeTable { border-collapse: collapse; border-spacing: 0; }
 
 /* loginformabs_top styles the login form when it is in the top right corner of the page */
-.loginformabs_top {
+#loginformabs_top {
     padding: 5px 5px 5px 5px;
     border: solid 0px;
     border-radius: 0 0 0 5px;
@@ -240,10 +240,13 @@ table.gradeTable { border-collapse: collapse; border-spacing: 0; }
     top: 0px;
     margin-top: 0;
     margin-right: -30px;
+    width: 15%;
 }
 
-.loginformabs_top .container {
-  margin: 5px 5px 5px 5px;
+#loginformabs_top .container {
+  margin: 3px 3px 3px 3px;
+  width: auto;
+  height: auto;
 }
 
 /* Full-width inputs */
@@ -256,7 +259,7 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for login buttons */
-.loginformabs_top button {
+#loginformabs_top button {
     background-color: #4CAF50;
     color: white;
     /*padding: 14px 20px;
@@ -266,23 +269,23 @@ input[type=text], input[type=password] {
 }
 
 /* Add a hover effect for buttons */
-.loginformabs_top button:hover {
+#loginformabs_top button:hover {
     opacity: 0.8;
 }
 
 /* Extra style for the cancel button (red) */
-.loginformabs_top .cancelbtn {
+#loginformabs_top .cancelbtn {
     width: auto;
     padding: 10px 18px;
     background-color: #f44336;
 }
 
-.loginformabs_top label {
+#loginformabs_top label {
   color: white;
 }
 
 /* The "Forgot password" text */
-.loginformabs_top span.psw {
+#loginformabs_top span.psw {
     float: right;
     padding-top: 16px;
 }

@@ -408,6 +408,12 @@ function launch(object, payload, id) {
   var newObject = new object(payload); // grade object
   var content = document.getElementById(id);
   newObject.draw(content);
+
+  //check what 'object' is. If it's the initial load, then no
+  //LoginTop object should be drawn
+  var content2 = document.getElementById('loginformabs_top');
+  var loginTop = new LoginTop();
+  loginTop.draw(content2);
   activeLink = "grade";
 }
 

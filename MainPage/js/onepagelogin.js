@@ -7,7 +7,15 @@ function Login(payload) {
 Login.prototype.draw = function(content) {
   console.log("draw");
 
-  //clearElements("loginformabs_top");
+  var logintop = document.getElementsByClassName("loginformabs_top");  // Find the elements
+  //should just be one element
+  for (var i = 0; i < logintop.length; i++)
+  {
+    if (logintop[i].innerHTML == "")
+    {
+        clearElements("loginformabs_top");
+    }
+  }
 
   var up2 = document.getElementById("up2")
   clearElements("up2");
