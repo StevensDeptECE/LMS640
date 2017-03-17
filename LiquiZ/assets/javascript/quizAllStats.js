@@ -113,7 +113,7 @@ var quizAllStatsPayload = [
         {
         "id": "qz3333",
         "publish": "no",
-        "quizName": "Quiz1",
+        "quizName": "Quiz3",
         "course": "CPE-810",
         "dueDate": "3/3/2017",
         "closeDate": "4/4/2017",
@@ -121,7 +121,7 @@ var quizAllStatsPayload = [
             "grade": {
                 "mean": "80",
                 "low": "50",
-                "hign": "100"
+                "high": "100"
             }
     }
 ]
