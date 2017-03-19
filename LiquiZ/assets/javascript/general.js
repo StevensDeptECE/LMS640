@@ -53,4 +53,24 @@ YourAnswer.prototype.draw = function(div) {
 	div.appendChild(x);
 }
 
+/*in progress*/
+/*
+function Sidebar (questions, parentDiv){
+	this.parentDiv = parentDiv;
+	this.questions = [];
+	for (var i in questions){
+		this.questions.push(questions[i]["id"]);
+	}
+}
+
+Sidebar.prototype.draw = function(){
+	var x = document.createElement('div');
+	x.className = "sidebar-nav";
+	for (var i = 0; i < this.questions.length; i++){
+		x.appendChild(Util.text("Question: " + this.questions[i]));
+	}
+	this.parentDiv.appendChild(x);
+	
+}
+*/
 

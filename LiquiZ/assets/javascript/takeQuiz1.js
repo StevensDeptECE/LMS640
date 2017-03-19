@@ -82,12 +82,18 @@ function takeQuiz (payload) {
 	/*will need to add this once we apply policy stuff*/
     //this.policy = prefs.getPolicy(json);
 	/*Create the objects for each question*/
-    this.div= Util.div("wrapper",this.title);
+    this.div= Util.div("wrapper");
     for (var i = 0; i < this.questions.length; ++i) {
 		/*this changes questions[i] so if we click on the quiz again it won't draw right
 		 should be okay because you should only be able to load a quiz once*/
         this.questions[i] = new QC(this.div, this.questions[i]);
     }
+    /*Create sidebar using question list--in progress*/
+    /*
+    this.navDiv = Util.div("quiz-nav-right");
+    this.sidebar = new Sidebar(payload["questions"],this.navDiv);
+    */
+
 }
 
 Util.subClass(Display, takeQuiz);
@@ -99,6 +105,10 @@ takeQuiz.prototype.draw = function(div){
     document.getElementById("up2").appendChild(header);
     clearElements("up3");
     div.appendChild(this.div);
+    /*in progress
+    div.appendChild(this.navDiv);
+    this.sidebar.draw();
+    */
     for (var i = 0; i < this.questions.length; ++i) {
         this.questions[i].draw();
     }
