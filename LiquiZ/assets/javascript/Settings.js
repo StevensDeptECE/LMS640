@@ -18,11 +18,11 @@ settings.prototype.draw = function(s) {
 }
 
 
-var settingsPayload = [
+var settingsPayload = {
     title: "Settings",
     class: "L-quiz",
     questions: 
-
+    [
         {
             id: "qc1008",
             title: "Addition",
@@ -41,4 +41,5 @@ var settingsPayload = [
                 ["Match",["animal","number","food"],["ice cream", "dog", "three"], "2" ]
             ]
         }
-    ];
+    ]
+};
