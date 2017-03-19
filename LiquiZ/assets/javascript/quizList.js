@@ -77,9 +77,9 @@ quizIndex.prototype.draw = function(s) {
         td6.appendChild(bt1);
 
         var td7 = document.createElement("td");
-            var bt2 = document.createElement("a");
+            var bt2 = document.createElement("Button");
             bt2.className = "one";
-            bt2.href = this.payload[i].take;
+            bt2.onclick= function () {launch(takeQuiz, quiz1Payload, 'up3')};
             text = document.createTextNode("Take");
             bt2.appendChild(text);
         td7.appendChild(bt2);
