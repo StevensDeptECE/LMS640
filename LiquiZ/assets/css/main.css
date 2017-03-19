@@ -368,7 +368,7 @@ label{
 }
 
 /*-------------------------------*/
-/*for page StatisticsView2.html*/
+/*for page Statistic.html*/
 body#stats{
     background-color : #ffffff;
 }
@@ -392,11 +392,16 @@ table.stats tr:nth-child(odd) {
     background-color: #fff;
 }
 table.stats th {
-    background-color: dodgerblue;
+    background-color: #505050;
     color: white;
 }
 tr.total {
   font-weight: bold;
+}
+
+button#backButton {
+    position : absolute;
+    right: 200px;
 }
 
 

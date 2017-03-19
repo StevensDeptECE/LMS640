@@ -1,0 +1,124 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+		<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+       
+var gradepayload2 = [
+["Name", "ID", "Assignment", "Test", "Quiz"],
+["John", 104083, 59, 76, 98],
+["Kelly", 123456, 87, 88, 98],
+["Tom", 13579, 90, 89, 90],
+["Mike", 73826, 69, 70, 80],
+["Alex", 84625, 98, 50, 70]
+];
+var assignment = [0,0,0,0,0]
+for(var i=1; i<=5; i++){
+    if(gradepayload2[2][i] < 60) assignment[0]++;
+    else if(gradepayload2[2][i] >= 60 && gradepayload2[2][i] <70) assignment[1]++;
+    else if(gradepayload2[2][i] >= 70 && gradepayload2[2][i] <80) assignment[2]++;
+    else if(gradepayload2[2][i] >= 80 && gradepayload2[2][i] <90) assignment[3]++;
+    else if(gradepayload2[2][i] >= 90 ) assignment[4]++;
+}
+var test = [0,0,0,0,0]
+for(var j=1; j<=5; j++){
+    if(gradepayload2[3][j] < 60) test[0]++;
+    else if(gradepayload2[3][j] >= 60 && gradepayload2[3][j] <70) test[1]++;
+    else if(gradepayload2[3][j] >= 70 && gradepayload2[3][j] <80) test[2]++;
+    else if(gradepayload2[3][j] >= 80 && gradepayload2[3][j] <90) test[3]++;
+    else if(gradepayload2[3][j] >= 90 ) test[4]++;
+}
+var quiz = [0,0,0,0,0]
+for(var k=1; k<=5; k++){
+    if(gradepayload2[4][k] < 60) quiz[0]++;
+    else if(gradepayload2[4][k] >= 60 && gradepayload2[4][k] <70) quiz[1]++;
+    else if(gradepayload2[4][k] >= 70 && gradepayload2[4][k] <80) quiz[2]++;
+    else if(gradepayload2[4][k] >= 80 && gradepayload2[4][k] <90) quiz[3]++;
+    else if(gradepayload2[4][k] >= 90 ) quiz[4]++;
+}
+
+$(function () {
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'grades distribution'
+        },
+        xAxis: {
+            categories: ['assignment', 'test', 'quiz']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'number of students'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 25,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                }
+            }
+        },
+        series: [{
+            name: '<60', 
+            data: [assignment[0], test[0], quiz[0]]
+                  
+        }, {
+            name: '60-69',
+            data: [assignment[1], test[1], quiz[1]]
+        }, {
+            name: '70-79',
+            data: [assignment[2], test[2], quiz[2]]
+        },{
+            name: '80-89',
+            data: [assignment[3], test[3], quiz[3]]
+        }, {
+            name: '90-100',
+            data: [assignment[4], test[4], quiz[4]]
+        }]
+    });
+});
+		</script>
+	</head>
+	<body>
+       
+<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>

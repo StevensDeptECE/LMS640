@@ -353,7 +353,43 @@ Util = {
           disabled: (onClick) ? false : true,
       });
   },
+
+  form: function (action, innerHTML, className, id) {
+      return Util.make("form", {
+          innerHTML: innerHTML,
+          className: className,
+          id: id,
+          action: action,
+      });
+  },
+
+  input: function (type, className, id, value, oninput, onEnter) {
+      onEnter = (typeof onEnter === "undefined") ? function () {} : onEnter;
+      return Util.make("input", {
+          type: type,
+          className: className,
+          id: id,
+          value: value,
+          oninput: oninput,
+          onkeydown: function (e) {
+              if (e.keyCode === 13) {
+                  onEnter(e);
+              }
+          }
+      });
+  },
+
+  label: function (htmlFor, innerHTML, className, id) {
+      return Util.make("label", {
+          htmlFor: htmlFor,
+          innerHTML: innerHTML,
+          className: className,
+          id: id,
+      });
+  },
 };
+
+
 
 /*
   * Calls the constructor for the object that needs to be drawn. "object" is the name
@@ -367,9 +403,18 @@ function launch(object, payload, id) {
   console.log("Calling Launch");
   console.log(object);
   console.log(payload);
+  console.log("id: " + id);
+  console.log("prev active link: " + activeLink);
   var newObject = new object(payload); // grade object
   var content = document.getElementById(id);
   newObject.draw(content);
+
+  //check what 'object' is. If it's the initial load, then no
+  //LoginTop object should be drawn
+  var content2 = document.getElementById('loginformabs_top');
+  var loginTop = new LoginTop();
+  loginTop.draw(content2);
+  activeLink = "grade";
 }
 
 /* Given an HTML element ID, clears the content the box with that ID. */
@@ -380,6 +425,7 @@ function clearElements(elementID)
 }
 
 /* Sets the class attribute of an HTML object to nothing */
+/* TODO Should only clear if something is not null. Should work for classes and id's */
 function clearClass(name)
 {
     console.log("Clear Class: " + name);
@@ -401,3 +447,6 @@ function onclickClass(name, func)
       change[i].onclick = func;    // Change the content
     }
 }
+
+//global variable for last visited page
+var activeLink = "Home"; //resets on reload - store in file???

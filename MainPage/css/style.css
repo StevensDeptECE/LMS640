@@ -229,7 +229,8 @@ margin-left: 120px;
 }
 table.gradeTable { border-collapse: collapse; border-spacing: 0; }
 
-.loginformabs {
+/* loginformabs_top styles the login form when it is in the top right corner of the page */
+#loginformabs_top {
     padding: 5px 5px 5px 5px;
     border: solid 0px;
     border-radius: 0 0 0 5px;
@@ -239,10 +240,13 @@ table.gradeTable { border-collapse: collapse; border-spacing: 0; }
     top: 0px;
     margin-top: 0;
     margin-right: -30px;
+    width: 15%;
 }
 
-.loginformabs .container {
-  margin: 5px 5px 5px 5px;
+#loginformabs_top .container {
+  margin: 3px 3px 3px 3px;
+  width: auto;
+  height: auto;
 }
 
 /* Full-width inputs */
@@ -255,13 +259,78 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for login buttons */
-.loginformabs button {
+#loginformabs_top button {
     background-color: #4CAF50;
     color: white;
     /*padding: 14px 20px;
     margin: 8px 0;*/
     border: none;
     cursor: pointer;
+}
+
+/* Add a hover effect for buttons */
+#loginformabs_top button:hover {
+    opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+#loginformabs_top .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+#loginformabs_top label {
+  color: white;
+}
+
+/* The "Forgot password" text */
+#loginformabs_top span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+
+
+/* loginformabs styles the login form when it is on the main part of the page */
+.loginformabs {
+    padding: 5px 5px 5px 5px;
+    border: solid 0px;
+    border-radius: 0 0 0 5px;
+    background-color: #ADD8E6;
+    right: 30px;
+    top: 0px;
+    margin-top: 0;
+    width: 75%;
+}
+
+.loginformabs form {
+    border: 3px solid #F1F1F1;
+}
+
+.loginformabs .container {
+  padding: 16px;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for login buttons */
+.loginformabs button {
+    background-color: #4CAF50;
+    /* color: white; */
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
 }
 
 /* Add a hover effect for buttons */
@@ -273,11 +342,11 @@ input[type=text], input[type=password] {
 .loginformabs .cancelbtn {
     width: auto;
     padding: 10px 18px;
-    background-color: #f44336;
+    background-color: #F44336;
 }
 
 .loginformabs label {
-  color: white;
+  /* color: white; */
 }
 
 /* The "Forgot password" text */
