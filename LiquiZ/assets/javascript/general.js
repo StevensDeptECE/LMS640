@@ -64,15 +64,22 @@ function Sidebar (questions, parentDiv){
 }
 
 Sidebar.prototype.draw = function(){
+	var pdiv = document.createElement('div');
+	pdiv.className = "quiz-nav-right-child";
 	var list = document.createElement('ul');
 	for (var i = 0; i < this.questions.length; i++){
 		var item = document.createElement('li');
 		item.id = this.questions[i];
+		var a = document.createElement('a');
+		a.href = '#'+ this.questions[i];
+	//	a.setAttribute('href','#'+ this.questions[i]);
 		var num = i + 1;
-		item.appendChild(Util.text("Question: " + num));
+		a.appendChild(Util.text("Question: " + num));
+		item.appendChild(a);
 		list.appendChild(item);
 	}
-	this.parentDiv.appendChild(list);
+	pdiv.appendChild(list)
+	this.parentDiv.appendChild(pdiv);
 	
 }
 

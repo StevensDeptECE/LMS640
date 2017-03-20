@@ -56,6 +56,7 @@ div.header {
 
 .wrapper {
     padding-right: 250px;
+    position: relative;
 }
 .sidebar-right {
     position: fixed;
@@ -410,13 +411,23 @@ button#backButton {
 
 /*---------quiz question navbar ---------*/
 .quiz-nav-right{
-    float: right;
+    position: absolute;
+    width: 250px;	
+    height:250px;
+    top:0px;
+    right:0px;
+}
+.quiz-nav-right-child{
+    position:fixed;
+    top: 0px;
+    right: 0px;
     width: 250px;	
     font-size: 18px;
     border: 1px solid #ddd;
     background-color: white;
     border-radius: 10px;
     box-shadow: 1px 1px 1px #888888;
+
 }
 
 /*---------------------------------------*/
