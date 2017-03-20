@@ -11,11 +11,12 @@ function addQuiz(payload){
 }
 
 addQuiz.prototype.draw = function(s) {
-    var header = Util.h1("Create New Quiz", "h02");
+    var header = Util.h1("Create New Quiz", "h03");
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
     clearElements("up3");
     var newDiv = Util.div("wrapper", "addQuiz");
+
     var t = document.createElement("table");
     t.className = "t01";
     t.id = "data_table";
@@ -79,26 +80,33 @@ addQuiz.prototype.draw = function(s) {
     var inputText1 = document.createElement("input");
     inputText1.type = "text";
     inputText1.id = "new_id";
+    inputText1.className = "addQuiz";
     td11.appendChild(inputText1);
     var td22 = document.createElement("td");
     var inputText2 = document.createElement("input");
     inputText2.type = "text";
     inputText2.id = "new_title";
+    inputText2.className = "addQuiz";
     td22.appendChild(inputText2);
     var td33 = document.createElement("td");
     var inputText3 = document.createElement("input");
     inputText3.type = "text";
     inputText3.id = "new_instr";
+    inputText3.className = "addQuiz";
+    inputText3.style.width = "300px";
     td33.appendChild(inputText3);
     var td44 = document.createElement("td");
     var inputText4 = document.createElement("input");
     inputText4.type = "text";
     inputText4.id = "new_eqn";
+    inputText4.className = "addQuiz";
     td44.appendChild(inputText4);
     var td55 = document.createElement("td");
     var inputText5 = document.createElement("input");
     inputText5.type = "text";
     inputText5.id = "new_oper";
+    inputText5.className = "addQuiz";
+    inputText5.style.width = "500px";
     td55.appendChild(inputText5);
     var td66 = document.createElement("td");
     var bt11 = Util.button("Add", function () {add_row()},"", "add");
@@ -132,17 +140,17 @@ function edit_row(no) {
     var eqn = document.getElementById("eqn_row" + no);
     var oper = document.getElementById("oper_row" + no);
 
-    var id_data = id.innerHTML;
-    var title_data = title.innerHTML;
-    var instr_data = instr.innerHTML;
-    var eqn_data = eqn.innerHTML;
-    var oper_data = oper.innerHTML;
+    var id_data = id.innerText;
+    var title_data = title.innerText;
+    var instr_data = instr.innerText;
+    var eqn_data = eqn.innerText;
+    var oper_data = oper.innerText;
 
-    id.innerHTML = "<input type='text' id='id_text" + no + "' value='" + id_data + "'>";
-    title.innerHTML = "<input type='text' id='title_text" + no + "' value='" + title_data + "'>";
-    instr.innerHTML = "<input type='text' id='instr_text" + no + "' value='" + instr_data + "'>";
-    eqn.innerHTML = "<input type='text' id='eqn_text" + no + "' value='" + eqn_data + "'>";
-    oper.innerHTML = "<input type='text' id='oper_text" + no + "' value='" + oper_data + "'>";
+    id.innerHTML = "<input type='text' id='id_text" + no + "' value='" + id_data + "' class = 'addQuiz'>";
+    title.innerHTML = "<input type='text' id='title_text" + no + "' value='" + title_data + "' class = 'addQuiz'>";
+    instr.innerHTML = "<input type='text' id='instr_text" + no + "' value='" + instr_data + "' class = 'addQuiz' style='width: 300px;'>";
+    eqn.innerHTML = "<input type='text' id='eqn_text" + no + "' value='" + eqn_data + "' class = 'addQuiz'>";
+    oper.innerHTML = "<input type='text' id='oper_text" + no + "' value='" + oper_data + "' class = 'addQuiz' style='width: 500px;'>";
 }
 
 function save_row(no) {
@@ -201,11 +209,11 @@ function tableToJson(table) {
         var tableRow = table.rows[i];
         var rowData = {};
         for (var j = 0; j < 2; j++) {
-            rowData[headers[j]] = tableRow.cells[j].innerHTML;
+            rowData[headers[j]] = tableRow.cells[j].innerText;
         }
         var instr = tableRow.cells[2].innerText.split(/,(?=[^\]]*(?:\[|$))/g);
-        var eqn = tableRow.cells[3].innerHTML.split(/,/g);
-        var oper = tableRow.cells[4].innerHTML;
+        var eqn = tableRow.cells[3].innerText.split(/,/g);
+        var oper = tableRow.cells[4].innerText;
 
         var left = 0, right = oper.length - 1;
         while(left < right) {

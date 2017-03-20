@@ -259,12 +259,12 @@ function load() {
 		["Cloze",
 			[
                 "public class A {",
-                "    public static",
+                "public static",
                 "[]",
-                "  main(String[] args) {",
-                "    System.",
+                "main(String[] args) {",
+                "System.",
                 "[]",
-                "    }",
+                "}",
                 "}"
                 // "(3 +",
                 // "[]",
