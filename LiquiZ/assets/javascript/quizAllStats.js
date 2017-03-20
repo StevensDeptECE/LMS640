@@ -10,7 +10,8 @@ AllStats.prototype.draw= function(s){
     var data = quizAllStatsPayload;
     var header = Util.div("wrapper","Information");
     var p1=document.createElement("h2");
-    p1.className="Info";
+    p1.className = "h03";
+    // p1.className="Info";
     p1.appendChild(document.createTextNode("Quiz Statistics"));
     header.appendChild(p1);
     clearElements("up2");
@@ -20,7 +21,8 @@ AllStats.prototype.draw= function(s){
 
 
     var t = document.createElement("table");
-    t.className = "stats";
+    t.className = "t01";
+    // t.className = "stats";
     var thead = document.createElement("thead");
     var tr = document.createElement("tr");
     var th1 = document.createElement("th");
@@ -121,7 +123,7 @@ var quizAllStatsPayload = [
             "grade": {
                 "mean": "80",
                 "low": "50",
-                "hign": "100"
+                "high": "100"
             }
     }
 ]

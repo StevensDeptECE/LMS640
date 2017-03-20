@@ -100,7 +100,7 @@ Util.subClass(Display, takeQuiz);
 
 /*draw method for takeQuiz object*/
 takeQuiz.prototype.draw = function(div){
-    var header = Util.h1(this.title);
+    var header = Util.h1(this.title,"h03");
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
     clearElements("up3");
@@ -112,7 +112,7 @@ takeQuiz.prototype.draw = function(div){
         this.questions[i].draw();
     }
 
-}
+};
 
 var quest = [
     {
@@ -153,6 +153,7 @@ var quest = [
             [ "Numbers", "6", "3"]
         ]
     },
+
     {
         id: "qc1003",
         title: "Cloze",
@@ -161,12 +162,12 @@ var quest = [
             ["Cloze",
                 [
                     "public class A {",
-                    "    public static",
+                    "public static",
                     "[]",
-                    "  main(String[] args) {",
-                    "    System.",
+                    "main(String[] args) {",
+                    "System.",
                     "[]",
-                    "    }",
+                    "}",
                     "}"
                 ],
                 "1"
@@ -179,7 +180,7 @@ var quest = [
         title: "Codes",
         comp: [
             ["Instr", "Complete the code below so it prints \"Hello\"","1"],
-            ["Codes", "public class A {\\n  public void main(String[] args) {\\n  System.\\n  }\\n}\\n", "2"]
+            ["Codes", "public class A {<>  public void main(String[] args) {<>  System.<>  }<>}", "2"]
         ]
     },
 
@@ -256,4 +257,4 @@ var quiz1Payload = {
     title: "Quiz 1",
     class: "L-quiz",
     questions: quest
-}
+};
