@@ -48,7 +48,7 @@ function MCDrop(choices, id) {
 MCDrop.prototype.draw = function(div) {
 	var x = document.createElement('div');
     var selectList = document.createElement("select");
-    
+    selectList.className = "newSelect";
 	for (var i = 0; i < this.choices.length; i++) {
         var option = document.createElement('option');
 		option.value = this.choices[i];
@@ -278,6 +278,7 @@ Match.prototype.draw = function(div) {
     var t = document.createElement("table");
     for (var j = 0; j < this.types.length; j++) {
     var selectList = document.createElement("select");
+        selectList.className = "newSelect";
     for (var i = 0; i < this.choices.length; i++) {
         var option = document.createElement('option');
         option.value = this.choices[i];

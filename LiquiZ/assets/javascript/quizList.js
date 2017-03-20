@@ -86,6 +86,7 @@ quizIndex.prototype.draw = function(s) {
             var bt1 = document.createElement("button");
             bt1.onclick= function () {launch(quizStats, statsPayload, 'up3')};
             var text = document.createTextNode("Stats");
+            bt1.className = "three";
             bt1.appendChild(text);
         td6.appendChild(bt1);
 
@@ -93,11 +94,13 @@ quizIndex.prototype.draw = function(s) {
             var bt2 = document.createElement("button");
             bt2.onclick=function () {launch(takeQuiz, quiz1Payload, 'up3')};
             text = document.createTextNode("Take");
+            bt2.className = "three";
             bt2.appendChild(text);
         td7.appendChild(bt2);
             var bt3 = document.createElement("button");
             bt3.onclick = function () {launch(quizEditor, quizEditorPayLoad, 'up3')};
             text = document.createTextNode("Edit");
+            bt3.className = "three";
             bt3.appendChild(text);
         td7.appendChild(bt3);
 
@@ -113,6 +116,7 @@ quizIndex.prototype.draw = function(s) {
             //     }
             // }(i);
             text = document.createTextNode("Del");
+            bt4.className = "three";
             bt4.appendChild(text);
         td8.appendChild(bt4);
 

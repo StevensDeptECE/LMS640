@@ -60,9 +60,9 @@ addQuiz.prototype.draw = function(s) {
     td5.id = "oper_row1";
     td5.appendChild(document.createTextNode("dragDrop, cat.jpg,[Ear,Eye,Nose,Tongue], [ {left:215,top:30}, {left:255,top:120},{left:285,top:160},{left:285,top:220}], 7"));
     var td6 = document.createElement("td");
-    var bt1 = Util.button("Edit", function () {edit_row('1')}, '', "edit_button1");
-    var bt2 = Util.button("Save", function () {save_row('1')}, '', "save_button1");
-    var bt3 = Util.button("Del", function () {delete_row('1')}, '');
+    var bt1 = Util.button("Edit", function () {edit_row('1')}, 'three', "edit_button1");
+    var bt2 = Util.button("Save", function () {save_row('1')}, 'three', "save_button1");
+    var bt3 = Util.button("Del", function () {delete_row('1')}, 'three');
     td6.appendChild(bt1);
     td6.appendChild(bt2);
     td6.appendChild(bt3);
@@ -109,7 +109,7 @@ addQuiz.prototype.draw = function(s) {
     inputText5.style.width = "500px";
     td55.appendChild(inputText5);
     var td66 = document.createElement("td");
-    var bt11 = Util.button("Add", function () {add_row()},"", "add");
+    var bt11 = Util.button("Add", function () {add_row()},"three", "add");
     td66.appendChild(bt11);
 
     tr3.appendChild(td11);
@@ -121,8 +121,8 @@ addQuiz.prototype.draw = function(s) {
 
     t.appendChild(tr3);
     newDiv.appendChild(t);
-    var saveQuiz = Util.button("Save Quiz",function () {tableToJson(data_table); window.location.reload(false);});
-    var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')});
+    var saveQuiz = Util.button("Save Quiz",function () {tableToJson(data_table); window.location.reload(false);},"three");
+    var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"three");
     newDiv.appendChild(saveQuiz);
     newDiv.appendChild(submitQuiz);
     s.appendChild(newDiv);
@@ -190,9 +190,9 @@ function add_row() {
         "<td id='instr_row" + table_len + "'>" + new_instr + "</td>" +
         "<td id='eqn_row" + table_len + "'>" + new_eqn + "</td>" +
         "<td id='oper_row" + table_len + "'>" + new_oper + "</td>" +
-        "<td><input type='button' id='edit_button" + table_len + "' value='Edit' onclick= 'edit_row(" + table_len + ")'> " +
-        "<input type='button' id='save_button" + table_len + "' value='Save' onclick='save_row(" + table_len + ")'> " +
-        "<input type='button' value='Del' onclick='delete_row(" + table_len + ")'></td></tr>";
+        "<td><input type='button' id='edit_button" + table_len + "' value='Edit' onclick= 'edit_row(" + table_len + ")' class='three'> " +
+        "<input type='button' id='save_button" + table_len + "' value='Save' onclick='save_row(" + table_len + ")' class='three'> " +
+        "<input type='button' value='Del' onclick='delete_row(" + table_len + ")' class='three'></td></tr>";
 
     document.getElementById("new_id").value = "";
     document.getElementById("new_title").value = "";

@@ -66,9 +66,9 @@ function add_row()
         "<td id='instr_row"+table_len+"'>"+new_instr+"</td>" +
         "<td id='eqn_row"+table_len+"'>"+new_eqn+"</td>" +
         "<td id='oper_row"+table_len+"'>"+new_oper+"</td>" +
-        "<td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row_old("+table_len+")'> " +
-        "<input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> " +
-        "<input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
+        "<td><input type='button' id='edit_button"+table_len+"' value='Edit' class='edit' onclick='edit_row_old("+table_len+")' class = 'three'> " +
+        "<input type='button' id='save_button"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")' class = three> " +
+        "<input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")' class = 'three'></td></tr>";
 
     document.getElementById("new_id").value="";
     document.getElementById("new_title").value="";

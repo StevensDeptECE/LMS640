@@ -75,6 +75,7 @@ Sidebar.prototype.draw = function(){
 	//	a.setAttribute('href','#'+ this.questions[i]);
 		var num = i + 1;
 		a.appendChild(Util.text("Question: " + num));
+		a.style.color = "green";
 		item.appendChild(a);
 		list.appendChild(item);
 	}

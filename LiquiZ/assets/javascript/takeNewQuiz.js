@@ -132,8 +132,8 @@ Util2.subClass(Display, takeNewQuiz);
 
 /*draw method for takeNewQuiz object*/
 takeNewQuiz.prototype.draw = function(div){
-    var header = Util.h1(this.title, "h02");
-    var createButton = Util.button("Clear localStorage",function () {sessionStorage.clear(); window.location.reload(false);}, "one");
+    var header = Util.h1(this.title, "h03");
+    var createButton = Util.button("Clear localStorage",function () {sessionStorage.clear(); window.location.reload(false);}, "three");
     header.appendChild(createButton);
     clearElements("up2");
     document.getElementById("up2").appendChild(header);

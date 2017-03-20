@@ -62,6 +62,7 @@ questionEditor.prototype.draw = function(s) {
     }
     selectList.onchange = function() {createClickHandler2(this,'1')};
     selectList.id = "type_row1";
+    selectList.className = "newSelect";
     td1.appendChild(selectList);
 
     var td2 = document.createElement("td");
@@ -108,7 +109,7 @@ questionEditor.prototype.draw = function(s) {
     td7.appendChild(questionCont3);
 
     var td8 = document.createElement("td");
-    var bt1 = Util.button("Del", function () {delete_question('1')}, '');
+    var bt1 = Util.button("Del", function () {delete_question('1')}, "three");
     td8.appendChild(bt1);
 
     trow1.appendChild(td1);
@@ -155,7 +156,7 @@ questionEditor.prototype.draw = function(s) {
     td77.appendChild(document.createTextNode("Please input the location of objects above"));
 
     var td88 = document.createElement("td");
-    var bt11 = Util.button("Add", function () {add_question()}, "", "add");
+    var bt11 = Util.button("Add", function () {add_question()}, "three");
     td88.appendChild(bt11);
 
     trow3.appendChild(td11);
@@ -171,8 +172,8 @@ questionEditor.prototype.draw = function(s) {
 
     newDiv.appendChild(t);
 
-    var saveQuiz = Util.button("Save Quiz",function () {tableToJson3(data_table); window.location.reload(false);});
-    var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')});
+    var saveQuiz = Util.button("Save Quiz",function () {tableToJson3(data_table); window.location.reload(false);},"three");
+    var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"three");
     newDiv.appendChild(saveQuiz);
     newDiv.appendChild(submitQuiz);
 
@@ -187,14 +188,14 @@ function add_question() {
     var table_len = (table.rows.length) - 1;
     var row = table.insertRow(table_len).outerHTML =
         "<tr id='row" + table_len + "'>" +
-        "<td>" + "<select id='type_row" + table_len + "' onchange = 'createClickHandler2(this," + table_len + ")'>" + "<option disabled selected value>" + "-- select question type --" + "</option>" + "<option>" + "Multi Choice" + "</option>" + "<option>" + "Multi Choice Select" + "</option>" + "<option>" + "Fill in" + "</option>" + "<option>" + "Numbers" + "</option>" + "<option>" + "Cloze" + "</option>" + "<option>" + "Codes" + "</option>" + "<option>" + "Grid" + "</option>" + "<option>" + "Survey" + "</option>" + "<option>" + "Matrix" + "</option>" + "<option>" + "Multi Choice drop" + "</option>" + "<option>" + "Drag and Drop" + "</option>" + "<option>" + "Matching" + "</option>" + "<option>" + "Essay" + "</option>" + "</select>" + "</td>" +
+        "<td>" + "<select id='type_row" + table_len + "' onchange = 'createClickHandler2(this," + table_len + ")' class = 'newSelect'>" + "<option disabled selected value>" + "-- select question type --" + "</option>" + "<option>" + "Multi Choice" + "</option>" + "<option>" + "Multi Choice Select" + "</option>" + "<option>" + "Fill in" + "</option>" + "<option>" + "Numbers" + "</option>" + "<option>" + "Cloze" + "</option>" + "<option>" + "Codes" + "</option>" + "<option>" + "Grid" + "</option>" + "<option>" + "Survey" + "</option>" + "<option>" + "Matrix" + "</option>" + "<option>" + "Multi Choice drop" + "</option>" + "<option>" + "Drag and Drop" + "</option>" + "<option>" + "Matching" + "</option>" + "<option>" + "Essay" + "</option>" + "</select>" + "</td>" +
         "<td>" + "<textarea class = 'questionCont' id='title_row" + table_len + "' placeholder='Click to input'>" + "</textarea>" + "</td>" +
         "<td>" + "<textarea class = 'questionCont' id='instr_row" + table_len + "' placeholder='Click to input'>" + "</textarea>" + "</td>" +
         "<td>" + "<textarea class = 'questionCont' id='eqn_row" + table_len + "' placeholder='Click to input'>" + "</textarea>" + "</td>" +
         "<td>" + "<textarea class = 'questionCont' id='1cont_row" + table_len + "' placeholder='Click to input'>" + "</textarea>" + "</td>" +
         "<td>" + "<textarea class = 'questionCont' id='2cont_row" + table_len + "' placeholder='Click to input'>" + "</textarea>" + "</td>" +
         "<td>" + "<textarea class = 'questionCont' id='3cont_row" + table_len + "' placeholder='Click to input'>" + "</textarea>" + "</td>" +
-        "<td>" + "<input type='button' value='Del' onclick='delete_question(" + table_len + ")'></td></tr>";
+        "<td>" + "<input type='button' value='Del' onclick='delete_question(" + table_len + ")' class = 'three'></td></tr>";
 }
 
 
