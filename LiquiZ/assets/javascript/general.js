@@ -53,8 +53,8 @@ YourAnswer.prototype.draw = function(div) {
 	div.appendChild(x);
 }
 
-/*in progress*/
-/*
+/*sidebar object for quizzes containing list of questions
+and whether they are complete or not*/
 function Sidebar (questions, parentDiv){
 	this.parentDiv = parentDiv;
 	this.questions = [];
@@ -64,13 +64,15 @@ function Sidebar (questions, parentDiv){
 }
 
 Sidebar.prototype.draw = function(){
-	var x = document.createElement('div');
-	x.className = "sidebar-nav";
+	var list = document.createElement('ul');
 	for (var i = 0; i < this.questions.length; i++){
-		x.appendChild(Util.text("Question: " + this.questions[i]));
+		var item = document.createElement('li');
+		item.id = this.questions[i];
+		var num = i + 1;
+		item.appendChild(Util.text("Question: " + num));
+		list.appendChild(item);
 	}
-	this.parentDiv.appendChild(x);
+	this.parentDiv.appendChild(list);
 	
 }
-*/
 

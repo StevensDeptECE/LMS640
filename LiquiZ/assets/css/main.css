@@ -411,6 +411,12 @@ button#backButton {
 /*---------quiz question navbar ---------*/
 .quiz-nav-right{
     float: right;
+    width: 250px;	
+    font-size: 18px;
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px #888888;
 }
 
 /*---------------------------------------*/

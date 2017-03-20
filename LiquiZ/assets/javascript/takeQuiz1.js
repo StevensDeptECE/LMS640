@@ -26,7 +26,8 @@ Display.prototype.md = function(parent) {
     parent.appendChild(this.div);
 }
 
-function QC(parent, json) {
+function QC(parent, json, index) {
+    this.questionNum = index + 1;
     this.id = json.id;
     this.title = json.title;
     //TODO: inherit default from quiz, then from user (not 1)
@@ -34,6 +35,7 @@ function QC(parent, json) {
     this.level = (typeof json.level === 'undefined') ? 1 : json.level;
     this.md(parent);
     this.div.className = 'qc';
+    this.div.id = this.id;
     this.comp = [];
     for (var i = 0; i < json.comp.length; ++i) {
         var comp = json.comp[i];
@@ -61,7 +63,7 @@ Util.subClass(Display, QC);
 QC.prototype.buildHeader = function() { //is this needed?
     var header = document.createElement('div');
     header.className = 'header';
-    var headerString = this.id + ': ' + this.title;
+    var headerString = this.questionNum + ': ' + this.title;
     header.appendChild(document.createTextNode(headerString));
     return header;
 }
@@ -81,19 +83,17 @@ function takeQuiz (payload) {
     }
 	/*will need to add this once we apply policy stuff*/
     //this.policy = prefs.getPolicy(json);
+    /*Create sidebar using question list--in progress*/
+    this.navDiv = Util.div("quiz-nav-right");
+    this.sidebar = new Sidebar(payload["questions"],this.navDiv);
 	/*Create the objects for each question*/
     this.div= Util.div("wrapper");
     for (var i = 0; i < this.questions.length; ++i) {
 		/*this changes questions[i] so if we click on the quiz again it won't draw right
 		 should be okay because you should only be able to load a quiz once*/
-        this.questions[i] = new QC(this.div, this.questions[i]);
+        this.questions[i] = new QC(this.div, this.questions[i], i);
     }
-    /*Create sidebar using question list--in progress*/
-    /*
-    this.navDiv = Util.div("quiz-nav-right");
-    this.sidebar = new Sidebar(payload["questions"],this.navDiv);
-    */
-
+    
 }
 
 Util.subClass(Display, takeQuiz);
@@ -104,11 +104,9 @@ takeQuiz.prototype.draw = function(div){
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
     clearElements("up3");
-    div.appendChild(this.div);
-    /*in progress
     div.appendChild(this.navDiv);
+    div.appendChild(this.div);
     this.sidebar.draw();
-    */
     for (var i = 0; i < this.questions.length; ++i) {
         this.questions[i].draw();
     }
