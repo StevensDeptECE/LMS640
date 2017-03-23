@@ -57,7 +57,7 @@ $.getJSON("data.json",function(data){
         row += "<td>" + data[i].closeDate + "</td>";
         row += "<td >" + "<a class='one' href = " + data[i].stats + ">Stats</a>" + "</td>";
         row += "<td >" + "<a class='one' href = " + data[i].take + ">Take</a><a class='one' href = " + data[i].edit + ">Edit</a>" + "</td>";
-        row += "<td><button class='del-button' data-id='" + i + "'>Del</button><button class='dup-button' data-id='" + i + "'>Dup</button></td>";
+        row += "<td><button class='del-button three' data-id='" + i + "'>Del</button><button class='dup-button three' data-id='" + i + "'>Dup</button></td>";
         row += "</tr>";
         table.append(row);
     }

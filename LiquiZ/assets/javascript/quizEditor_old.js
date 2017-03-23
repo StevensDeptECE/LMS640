@@ -95,6 +95,7 @@ function drawTable(s,data) {
                 console.log(data);
             }
         }(i);
+        bt.className = "three";
         td6.appendChild(bt);
 
         tr.appendChild(td1);

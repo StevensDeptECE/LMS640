@@ -10,15 +10,16 @@ function MCS(choices, id) {
 
 MCS.prototype.draw = function(div) {
     for (var i = 0; i < this.choices.length; i++) {
-        var x = document.createElement('div');
+        var label = document.createElement('label');
+        label.className = "control control--checkbox";
         var xbutton = document.createElement('input');
         xbutton.type = 'checkbox';
-        var label = document.createElement('label');
-        label.className = "MCSText";
+        var diva = document.createElement("div");
+        diva.className = "control__indicator";
+        label.appendChild(xbutton);
+        label.appendChild(diva);
         label.appendChild(document.createTextNode(this.choices[i]));
-        x.appendChild(xbutton);
-        x.appendChild(label);
-        div.appendChild(x);
+        div.appendChild(label);
     }
 };
 
@@ -32,9 +33,9 @@ Codes.prototype.draw = function(div) {
     var br = document.createElement("br");
     div.appendChild(br);
     var inp = document.createElement("textarea");
-    this.code.replace("newLine","\n");
+    var newCodes = this.code.replace(/<>/g,"\n");
     inp.className = "inputCode";
-    var myCode = document.createTextNode(this.code);
+    var myCode = document.createTextNode(newCodes);
     inp.append(myCode);
     div.appendChild(inp);
 };
@@ -69,25 +70,25 @@ Cloze.prototype.draw = function(div) {
             container.appendChild(x);
         } else if (this.text[j] != "[]" && this.text[j-1] == "[]" && this.text[j+1] == null) {
             this.text[j] = this.text[j].replace(" ", "\u00a0\u00a0");
-            var x = document.createElement("div");
-            var mainText = document.createElement("p");
+            x = document.createElement("div");
+            mainText = document.createElement("p");
             mainText.className = "mainText";
-            var p0 = document.createTextNode(this.text[j]);
+            p0 = document.createTextNode(this.text[j]);
             mainText.appendChild(p0);
             x.appendChild(mainText);
             container.appendChild(x);
         } else if (this.text[j] != "[]" && this.text[j-1] != "[]" && this.text[j+1] == "[]") {
             this.text[j] = this.text[j].replace(" ", "\u00a0\u00a0");
-            var x = document.createElement("div");
-            var textBefore = document.createElement("p");
+            x = document.createElement("div");
+            textBefore = document.createElement("p");
             textBefore.className = "textBeforeCloze";
-            var pp = document.createTextNode(this.text[j]);
+            pp = document.createTextNode(this.text[j]);
             textBefore.appendChild(pp);
             x.appendChild(textBefore);
             container.appendChild(x);
         } else if (this.text[j] != "[]" && this.text[j-1] == "[]" && this.text[j+1] == "[]") {
             this.text[j] = this.text[j].replace(" ", "\u00a0\u00a0");
-            var x = document.createElement("div");
+            x = document.createElement("div");
             var textBefore = document.createElement("p");
             textBefore.className = "textBeforeCloze";
             var pp = document.createTextNode(this.text[j]);
@@ -96,7 +97,7 @@ Cloze.prototype.draw = function(div) {
             container.appendChild(x);
         } else if (this.text[j] != "[]" && this.text[j-1] == "[]" && this.text[j+1] != "[]") {
             this.text[j] = this.text[j].replace(" ", "\u00a0\u00a0");
-            var x = document.createElement("div");
+            x = document.createElement("div");
             var textAfter = document.createElement("p");
             textAfter.className ="textAfterCloze";
             var ppp = document.createTextNode(this.text[j]);
@@ -104,7 +105,7 @@ Cloze.prototype.draw = function(div) {
             x.appendChild(textAfter);
             container.appendChild(x);
         } else if (this.text[j] == "[]" && this.text[j-1] != "[]" && this.text[j+1] != "[]") {
-            var x = document.createElement("div");
+            x = document.createElement("div");
             var inp = document.createElement("input");
             inp.className = 'inputCloze';
             inp.type = "text";

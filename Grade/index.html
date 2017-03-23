@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -74,20 +75,32 @@
 </form>
 </div>
 
-<button class="in-ex" style="float:right">export</button>
+<button id="export" class="in-ex" style="float:right">export</button>
 <button class="in-ex" style="float:right">import</button>
 <br>
 </div>
 
 <div id="wrapper">
 <table id="grades">
+	<thead>
       <tr>
         <th><span>Name</span></th>
         <th><span>ID</span></th>
         <th EditType="TextBox"><span onclick="sortTable(2)">Assignment</span></th>
-        <th EditType="TextBox"><span onclick="sortTable(3)">Test</span></th>
+        <th EditType="TextBox">
+        	<span onclick="sortTable(3)">Test</span>
+        	<div class="drop-down">
+			<div onclick="clickDropDown()" class="arrow-down dropbtn"></div>
+			<div id="myDropdown" class="dropdown-content">
+				<a href="#">Graph</a>
+				<a href="#">Quick Gradeing</a>
+				<a id="set-grade">Setting</a>
+			</div>
+			</div>
+        </th>
         <th EditType="TextBox"><span onclick="sortTable(4)">Quiz</span></th>
       </tr>
+    </thead>
     <tbody>
       <tr>
         <td class="lalign">John</td>
@@ -134,12 +147,84 @@
     </tbody>
   </table>
  </div> 
- 
+	
+</div>
+
+<div class="overlay" style="display:none;">
+	<div class="set-wrapper">
+		<div class="set-content">
+		<a class="close">x</a>
+		<h1>Grade Setting</h1>
+		<form method="post" action="set-grade.java">
+			<label for="max-grade">
+        		max-grade
+        		<input type="text" name="max-grade" id="max-grade" placeholder="input the max grade" pattern="+\d" required="required" />
+        	</label>
+        	<br>
+        	<label for="max-grade">
+        		lowest-grade
+        		<input type="text" name="lowest-grade" id="lowest-grade" placeholder="input the lowest grade" pattern="+\d" required="required" />
+        	</label>
+        	<br>
+			<button type="submit" style="margin-top:20px;">Save</button>
+		</form>
+		</div>
+	</div>
 </div>
 
 <script type="text/javascript">
 var table = document.getElementById("grades");
 SetTableCanEdit(table);
+function clickDropDown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+$(document).ready(function() {
+	$("#set-grade").click(function(event){
+		$(".overlay").fadeToggle("fast");
+      });
+});
+$(document).ready(function() {
+    $(".close").click(function(){
+        $(".overlay").fadeToggle("fast");
+    });
+});
+$(document).ready(function() {
+    $(document).keyup(function(e) {
+        if(e.keyCode == 27 && $(".overlay").css("display") != "none" ) { 
+            $(".overlay").fadeToggle("fast");
+        }
+    });
+});
+$(document).ready(function() {
+	  $("#export").click(function(e) {
+	    e.preventDefault();
+
+	    //getting data from our table
+	    var data_type = 'data:application/vnd.ms-excel';
+	    var table_div = document.getElementById('wrapper');
+	    var table_html = table_div.outerHTML.replace(/ /g, '%20');
+
+	    var a = document.createElement('a');
+	    a.href = data_type + ', ' + table_html;
+	    a.download = 'grade' + '.xls';
+	    a.click();
+	  });
+	});
 </script>
 
 </body>

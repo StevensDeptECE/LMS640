@@ -9,14 +9,14 @@ function quizEditor(payload){
 }
 
 quizEditor.prototype.draw= function(s){
-    var header = Util.h1("Quiz Editor");
+    var header = Util.h1("Quiz Editor","h03");
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
     clearElements("up3");
     var newDiv = Util.div("wrapper","quizEditor");
     drawEditor(newDiv,quizEditorPayLoad);
-    var saveQuiz = Util.button("Save Quiz",function () {tableToJson2(edit_table); window.location.reload(false);});
-    var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')});
+    var saveQuiz = Util.button("Save Quiz",function () {tableToJson2(edit_table); window.location.reload(false);},"three");
+    var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"three");
     newDiv.appendChild(saveQuiz);
     newDiv.appendChild(submitQuiz);
     s.appendChild(newDiv);
@@ -85,7 +85,7 @@ function drawEditor(s,data) {
             aa = aa.replace(/"/g, "");
 
             td5.appendChild(document.createTextNode(aa));
-        } else if(data[i].comp.length == 2) {
+        }else if(data[i].comp.length == 2) {
             var td3 = document.createElement("td");
             td3.contentEditable = true;
             td3.appendChild(document.createTextNode(data[i].comp[0]));
@@ -120,6 +120,7 @@ function drawEditor(s,data) {
                 console.log(data);
             }
         }(i);
+        bt.className = "three";
         td6.appendChild(bt);
 
         tr.appendChild(td1);
@@ -143,11 +144,11 @@ function tableToJson2(table) {
         var tableRow = table.rows[i];
         var rowData = {};
         for (var j = 0; j < 2; j++) {
-            rowData[headers[j]] = tableRow.cells[j].innerHTML;
+            rowData[headers[j]] = tableRow.cells[j].innerText;
         }
         var instr = tableRow.cells[2].innerText.split(/,(?=[^\]]*(?:\[|$))/g);
-        var eqn = tableRow.cells[3].innerHTML.split(/,/g);
-        var oper = tableRow.cells[4].innerHTML;
+        var eqn = tableRow.cells[3].innerText.split(/,/g);
+        var oper = tableRow.cells[4].innerText;
 
         var left = 0, right = oper.length - 1;
         while(left < right) {
@@ -287,12 +288,12 @@ var quizEditorPayLoad = [
             ["Cloze",
                 [
                     "public class A {",
-                    "    public static",
+                    "public static",
                     "[]",
-                    "  main(String[] args) {",
-                    "    System.",
+                    "main(String[] args) {",
+                    "System.",
                     "[]",
-                    "    }",
+                    "}",
                     "}"
                 ],
                 "1"
@@ -305,7 +306,7 @@ var quizEditorPayLoad = [
         title: "Codes",
         comp: [
             ["Instr", "Complete the code below so it prints \"Hello\"","1"],
-            ["Codes", "public class A {\n  public void main(String[] args) {\n  System.\n  }\n}\n", "2"]
+            ["Codes", "public class A {<>  public void main(String[] args) {<>  System.<>  }<>}", "2"]
 
         ]
     },
@@ -314,7 +315,7 @@ var quizEditorPayLoad = [
         id: "qc1005",
         title: "Grid",
         comp: [
-            ["Instr", "Enter 1 through 5","1"],
+            ["Instr", "Enter 1 through 5", "1"],
             [ "Grid", 5, "2"]
         ]
     },
@@ -323,7 +324,7 @@ var quizEditorPayLoad = [
         id: "qc1006",
         title: "Survey",
         comp: [
-            ["Instr", "Enter your honest opinions.  There are no right or wrong answers"],
+            ["Instr", "Enter your honest opinions. There are no right or wrong answers", "1"],
             ["Survey", "Likert5", [
                 "I like Chinese food",
                 "I like Korean food",
@@ -337,7 +338,7 @@ var quizEditorPayLoad = [
         id: "qc1007",
         title: "Matrix",
         comp: [
-            ["Instr", "Enter any 3x3 matrix","1"],
+            ["Instr", "Enter any 3x3 matrix", "1"],
             [ "Matrix", 3,3, "2"]
         ]
     },

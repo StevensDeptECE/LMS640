@@ -4,8 +4,8 @@
 <html>
 <head>
 <link href="css/style.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="js/jquey.js"></script> 
-<script type="text/javascript" src="js/jquery.tablesorter.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script> 
+<script type="text/javascript" src="js/jquery.tablesorter.js"></script> 
 
 <style>
 #keywords {
@@ -109,9 +109,9 @@ header.appendChild(row);
 document.getElementById("demo").appendChild(table);
 }
 
-$("#click").click(function(){
-	$('#keywords').tablesorter();
-})
+$(document).ready(function() { 
+    $("#keywords").tablesorter(); 
+});
 </script>
 
 </body>

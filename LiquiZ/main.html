@@ -5,15 +5,14 @@
   <link href="../MainPage/css/style.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="assets/css/main.css">
   <script type="text/javascript" src="../MainPage/js/jquery.js"></script>
+  <script src="../MainPage/js/account.js"></script>
   <script src="../MainPage/js/onepagelib.js"></script>
   <script src="../LiquiZ/assets/javascript/quizList.js"></script>
   <script src="../LiquiZ/assets/javascript/takeQuiz1.js"></script>
   <script src="../LiquiZ/assets/javascript/general.js"></script>
   <script src="../LiquiZ/assets/javascript/multimedia.js"></script>
   <script src="../LiquiZ/assets/javascript/questions.js"></script>
-  <script src="../LiquiZ/assets/javascript/carly.js"></script>
-  <script src="../LiquiZ/assets/javascript/yucheng.js"></script>
-  <script src="../LiquiZ/assets/javascript/Junkai.js"></script>
+  <!-- why do we need this script here too to prevent an error? -->
   <script src="../MainPage/js/onepagelib.js"></script>
   <script src="../LiquiZ/assets/javascript/quizStats.js"></script>
   <script src="../LiquiZ/assets/javascript/quizAllStats.js"></script>
@@ -21,7 +20,9 @@
   <script src="../LiquiZ/assets/javascript/addQuiz.js"></script>
   <script src="../LiquiZ/assets/javascript/takeNewQuiz.js"></script>
   <script src="../LiquiZ/assets/javascript/Settings.js"></script>
-    
+  <script src="../LiquiZ/assets/javascript/questionEditor.js"></script>
+
+
 
 
 
@@ -32,8 +33,8 @@
     <li><a id="allquizzes" href="#" onclick="launch(quizIndex, quizIndexPayload, 'up3')">All Quizzes</a></li>
     <li><a id="quizstats" href="#" onclick="launch(AllStats, quizAllStatsPayload, 'up3')">Quiz Statistics</a></li>
     <li><a id="readytotake" href="#" >Ready to Take Quiz</a></li>
-    <li><a id="settings" href="#"onclick="launch(settings, settingsPayload, 'up3')">Settings</a></li>
-    <li><a id="takequiz1" href="#"onclick="launch(takeQuiz, quiz1Payload, 'up3')">Take Quiz 1</a></li>
+    <li><a id="settings" href="#" onclick="launch(settings, settingsPayload, 'up3')">Settings</a></li>
+    <li><a id="takequiz1" href="#" onclick="launch(takeQuiz, quiz1Payload, 'up3')">Take Quiz 1</a></li>
 
 
   </ul>

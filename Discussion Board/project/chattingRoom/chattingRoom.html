@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,13 +12,16 @@
 <!-- No Baidu Siteapp-->
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<link rel="alternate icon" href="assets/i/favicon.ico">
-<link rel="stylesheet" href="assets/css/amazeui.min.css">
-<link rel="stylesheet" href="assets/css/app.css">
+<link rel="alternate icon" href="public/assets/i/favicon.ico">
+<link rel="stylesheet" href="public/assets/css/amazeui.min.css">
+<link rel="stylesheet" href="public/assets/css/app.css">
 
 <!-- umeditor css -->
-<link href="utf8-jsp/themes/default/css/ueditor.css" rel="stylesheet">
-<link href="utf8-jsp/themes/default/css/ueditor.min.css" rel="stylesheet">
+<link href="public/stylesheets/utf8-jsp/themes/default/css/ueditor.css" rel="stylesheet">
+<link href="public/stylesheets/utf8-jsp/themes/default/css/ueditor.min.css" rel="stylesheet">
+    <script src="public/javascripts/angular.min.js"></script>
+    <script src="public/javascripts/chattingRoom.js"></script>
+    
 
 
 <style>
@@ -34,7 +36,7 @@
 }
 </style>
 </head>
-<body>
+<body ng-app="chatRoom">
     <!-- title start -->
     <div class="title">
         <div class="am-g am-g-fixed">
@@ -83,7 +85,7 @@
     <!-- message input end -->
 
     <!--[if (gte IE 9)|!(IE)]><!-->
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="public/assets/js/jquery.min.js"></script>
     <!--<![endif]-->
     <!--[if lte IE 8 ]>
     <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
@@ -94,10 +96,10 @@
     
    
     </script>
-    <script charset="utf-8" src="utf8-jsp/ueditor.config.js"></script>
-    <script charset="utf-8" src="utf8-jsp/ueditor.all.min.js"></script>
-    <script charset="utf-8" src="utf8-jsp/ueditor.all.js"></script>
-    <script src="utf8-jsp/lang/en/en.js">
+    <script charset="utf-8" src="public/stylesheets/utf8-jsp/ueditor.config.js"></script>
+    <script charset="utf-8" src="public/stylesheets/utf8-jsp/ueditor.all.min.js"></script>
+    <script charset="utf-8" src="public/stylesheets/utf8-jsp/ueditor.all.js"></script>
+    <script src="public/stylesheets/utf8-jsp/lang/en/en.js">
     /*var ue = UE.getEditor('myEditor', {
 	    toolbars: [['undo', 'redo', 'bold', 'emotion']],
 	    autoHeightEnabled: true,

@@ -15,20 +15,20 @@ body{
 }
 
 .header-main h1{
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
     display: inline-block;
 }
 
 
 div#content {
-	font-family: Arial;
+    font-family: Arial, serif;
 	font-size: 20pt;
 }
 
 
 div.header {
-	font-family: Arial;
+	font-family: Arial, serif;
 	font-size: 28px;
 	border-bottom: 2px solid #ddd;
     margin-bottom: 20px;
@@ -55,7 +55,8 @@ div.header {
 }
 
 .wrapper {
-    padding-right: 250px;
+    padding-right: 1em;
+    position: relative;
 }
 .sidebar-right {
     position: fixed;
@@ -126,13 +127,14 @@ div.header {
 }
 
 
-.Matrix{
+input.Matrix{
     width : 50px;
     height : 50px;
     text-align : center;
     border : 1px solid black;
     display : inline-block;
     font-size: 20px;
+    margin: 0;
 }
 .fillIn{
     color: lawngreen;
@@ -144,6 +146,16 @@ div.header {
     position: relative;
     left: 10px;
 }
+
+.submit {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.submitquiz {
+    font-size: medium;
+}
+
+
 /*For yucheng.js*/
 .MCSText{
     font-weight: normal;
@@ -153,7 +165,7 @@ div.header {
 .inputCode {
     height: 300px;
     width: 90%;
-    font-family: "courier";
+    font-family: "courier", serif;
     color: lawngreen;
     background: black;
     font-size: 16px;
@@ -176,8 +188,8 @@ div.header {
     text-align: center;
     position: relative;
     top: 10px;
-    left: 10px;
     float: left;
+    margin: 3px;
 }
 .textBeforeCloze{
     font-size: 20px;
@@ -210,25 +222,7 @@ div.header {
     font-size: 14px; 
 }
 
-/*---------------------------*/
-.submit {
-    margin-left: 20px;
-    margin-bottom: 20px;
-}
-.submitquiz {
-    font-size: medium;
-}
-/*textarea.inputCode {*/
-    /*font-family: "courier";*/
-    /*color: lawngreen;*/
-    /*background: black;*/
-    /*font-size: 16px;*/
-    /*padding: 20px;*/
-    /*!*width: 100%;*!*/
-    /*resize: vertical;*/
-/*}*/
-
-/*For index.html*/
+/*For table framework*/
 .h01 {
     font-size: 40px;
     text-align: center;
@@ -239,38 +233,108 @@ div.header {
     text-align: left;
     position: relative;
     top: 30px;
-
     text-shadow: -2px 0 2px #db6, 2px 0 2px #6bd;
 }
+
+.h03 {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    cursor: pointer;
+    border: 2px;
+    line-height: normal;
+    font-weight: bold;
+    font-variant: normal;
+    font-style: normal;
+    font-size: 80px;
+    font-family: Helvetica, class, "support css-value", sans-serif;
+    color: rgba(255,255,255,1);
+    text-align: left;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 1px 1px 0 #2ecc71 , -1px -1px 0 #2ecc71 , 1px -1px 0 #2ecc71 , -1px 1px 0 #2ecc71 ;
+    -webkit-transition: text-shadow 500ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: text-shadow 500ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: text-shadow 500ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: text-shadow 500ms cubic-bezier(0.42, 0, 0.58, 1);
+    position: relative;
+    top: 30px;
+}
+
+.h03:hover {
+    text-shadow: 1px 1px 8px rgba(46,204,113,0.5) , -1px -1px 8px rgba(46,204,113,0.5) , 1px -1px 8px rgba(46,204,113,0.5) , -1px 1px 8px rgba(46,204,113,0.5) ;
+    -webkit-transition: text-shadow 250ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: text-shadow 250ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: text-shadow 250ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: text-shadow 250ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
 .t01 {
+    position: relative;
+    left: 5px;
+    right: 0;
+    width: 100%;
+    border: 1px solid grey;
+    border-collapse: collapse;
+    font-family: Arial, serif;
+    height: auto;
+}
+.t01 th{
+    text-align: center;
+    border: 1px solid grey;
+    border-collapse: collapse;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+}
+.t01 td {
+    text-align: center;
+    border: 1px solid grey;
+    border-collapse: collapse;
+    margin: 20px;
+    font-size: 20px;
+    height: 50%;
+    padding: 5px;
+}
+.t01 tr:nth-child(odd) {
+    background-color: #eee;
+}
+.t01 tr:nth-child(even) {
+    background-color:#fff;
+}
+
+.t02 {
+    position: relative;
+    left: 5px;
+    right: 0;
     width:100%;
     border: 1px solid grey;
     border-collapse: collapse;
+    background-color: #eee;
+    font-family: Arial, serif;
+    height: auto;
 }
-.t01 th{
-    /*padding: 10px 20px;*/
+.t02 th{
     text-align: center;
     border: 1px solid grey;
     border-collapse: collapse;
-    /*margin: 20px;*/
-    background-color: black;
+    background-color: #4CAF50;
     color: white;
     font-size: 20px;
+    padding: 5px;
 }
-.t01 td {
-    /*padding: 10px 20px;*/
+.t02 td {
     text-align: center;
     border: 1px solid grey;
     border-collapse: collapse;
-    /*margin: 20px;*/
+    margin: 20px;
     font-size: 20px;
+    height: 50%;
+    padding: 5px;
 }
-.t01 tr:nth-child(even) {
-    background-color: #eee;
-}
-.t01 tr:nth-child(odd) {
-    background-color:#fff;
-}
+
+/*For button*/
 .one:link, .one:visited {
     display: inline-block;
     padding: 10px 15px;
@@ -293,50 +357,228 @@ div.header {
     transform: translateY(2px);
 }
 
-/*input[type=checkbox] {*/
-    /*transform: scale(1.5);*/
+.two {
+    padding: 10px 15px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 8px #999;
+    margin: 20px 20px;
+    position: relative;
+    top: -20px;
+    left: 30px;
+    float: inherit;
+
+}
+.two:hover {background-color: #3e8e41}
+.two:active {
+    background-color: #3e8e41;
+    box-shadow: 0 3px #666;
+    transform: translateY(2px);
+}
+
+.three {
+    padding: 10px 15px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 8px #999;
+    margin: 15px 15px;
+}
+.three:hover {background-color: #3e8e41}
+.three:active {
+    background-color: #3e8e41;
+    box-shadow: 0 3px #666;
+    transform: translateY(2px);
+}
+
+/*For checkbox*/
+.newCheckbox {
+    width: 80px;
+    height: 26px;
+    background: #333;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+}
+.newCheckbox:after {
+    content: 'OFF';
+    color: #000;
+    position: absolute;
+    right: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
+}
+.newCheckbox:before {
+    content: 'ON';
+    color: #4CAF50;
+    position: absolute;
+    left: 10px;
+    z-index: 0;
+    font: 12px/26px Arial, sans-serif;
+    font-weight: bold;
+}
+.newCheckbox label {
+    display: block;
+    width: 34px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: #fcfff4;
+    background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    border-radius: 50px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+.newCheckbox input[type=checkbox] {
+    visibility: hidden;
+}
+.newCheckbox input[type=checkbox]:checked + label {
+    left: 43px;
+}
+
+/*For select*/
+.newSelect{
+    font: 400 12px/1.3 "Helvetica Neue", sans-serif;
+    -webkit-appearance: none;
+    border: 1px solid #4CAF50;
+    line-height: 1;
+    outline: 0;
+    color: #4CAF50;
+    padding: 0.65em 2.5em 0.55em 0.75em;
+    border-radius: 3px;
+    background:
+            linear-gradient(#4CAF50, #4CAF50) no-repeat,
+            linear-gradient(-135deg, rgba(255,255,255,0) 50%, white 50%) no-repeat,
+            linear-gradient(-225deg, rgba(255,255,255,0) 50%, white 50%) no-repeat,
+            linear-gradient(#4CAF50, #4CAF50) no-repeat;
+    background-color: white;
+    background-size: 1px 100%, 20px 20px, 20px 20px, 20px 60%;
+    background-position: right 20px center, right bottom, right bottom, right bottom;
+}
+
+/*For radio and checkbox inside quiz*/
+.control {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    top: 10px;
+}
+.control input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.control__indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background: #e6e6e6;
+}
+.control--radio .control__indicator {
+    border-radius: 50%;
+}
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+    background: #ccc;
+}
+.control input:checked ~ .control__indicator {
+    background: limegreen;
+}
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+    background: green;
+}
+.control input:disabled ~ .control__indicator {
+    background: white;
+    opacity: 0.6;
+    pointer-events: none;
+}
+.control__indicator:after {
+    content: '';
+    position: absolute;
+    display: none;
+}
+.control input:checked ~ .control__indicator:after {
+    display: block;
+}
+.control--checkbox .control__indicator:after {
+    left: 8px;
+    top: 4px;
+    width: 3px;
+    height: 8px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.control--checkbox input:disabled ~ .control__indicator:after {
+    border-color: #7b7b7b;
+}
+.control--radio .control__indicator:after {
+    left: 7px;
+    top: 7px;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background: white;
+}
+.control--radio input:disabled ~ .control__indicator:after {
+    background: #7b7b7b;
+
+}
+
+/*For questionEditor.js*/
+.questionCont {
+    /*font-family: "courier", serif;*/
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    resize: both;
+    padding: 0;
+    border: 0;
+    background-color: #eee;
+}
+
+.t02 td.instrText {
+    font-family: "courier", serif;
+    font-size: 14px;
+    color: grey;
+}
+
+/*For addQuiz.js*/
+.addQuiz {
+    font-size: 15px;
+    height: auto;
+}
+/*.wrapper {*/
+/*padding-right: 1em;*/
+/*position: relative;*/
 /*}*/
 
-input[type = button] {
-    padding: 10px 15px;
-    font-size: 20px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 8px #999;
-    margin: 15px 15px;
-}
-input[type = button]:hover {background-color: #3e8e41}
-input[type = button]:active {
-    background-color: #3e8e41;
-    box-shadow: 0 3px #666;
-    transform: translateY(2px);
-}
-
-button {
-    padding: 10px 15px;
-    font-size: 20px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 8px #999;
-    margin: 15px 15px;
-}
-button:hover {background-color: #3e8e41}
-button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 3px #666;
-    transform: translateY(2px);
-}
-
+/*For quizList.html*/
 .add_button {
     position: absolute;
     top: 15px;
@@ -404,5 +646,28 @@ button#backButton {
     right: 200px;
 }
 
-
 /*----------------------------------------*/
+/*---------quiz question navbar ---------*/
+.quiz-nav-right{
+    position: absolute;
+    width: 250px;
+    height:250px;
+    top:0px;
+    right:0px;
+    color: green;
+}
+.quiz-nav-right-child{
+    position:fixed;
+    top: 0px;
+    right: 0px;
+    width: 250px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px #888888;
+    color: green;
+
+}
+
+/*---------------------------------------*/
