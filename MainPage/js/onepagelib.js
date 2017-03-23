@@ -436,16 +436,25 @@ function clearClass(name)
     }
 }
 
-/* Sets the onclick attribute of the HTML elements of a given class "name" */
+/* Sets the onclick attribute of the HTML elements of a given class "className" */
 /* TODO not currently used nor tested */
-function onclickClass(name, func)
+function onclickClass(className, func)
 {
-    console.log("Onlick Class: " + name);
-    var change = document.getElementsByClassName(name);  // Find the elements
+    console.log("Onlick Class: " + className);
+    var change = document.getElementsByClassName(className);  // Find the elements
     for (var i = 0; i < change.length; i++)
     {
       change[i].onclick = func;    // Change the content
     }
+}
+
+/* Sets the onclick attribute of the HTML elements of a given id "id" */
+/* TODO not currently used nor tested */
+function onclickId(id, func)
+{
+    console.log("Onlick Class: " + id);
+    var change = document.getElementsByClassName(id);  // Find the elements
+    change.onclick = func;    // Change the content
 }
 
 //global variable for last visited page
