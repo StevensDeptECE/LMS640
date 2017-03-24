@@ -119,15 +119,15 @@ var quest = [
         id: "qc1000",
         title: "Addition",
         comp: [
-            ["Instr", "What is ", "1"],
-            ["Eqn", "2+2", "2"],
+            ["Instr", "What is 2+2? ", "1"],
+           // ["Eqn", "2+2", "2"],
             ["MC", [3,4,5,6], "3"]
         ]
     },
 
     {
         id: "qc1001",
-        title: "Multiple Choices",
+        title: "Select All that Apply",
         comp: [
             ["Instr", "Which sport do you like?", "1"],
             ["MCS", ["basketball","football","volleyball","baseball"], "2"]
@@ -136,20 +136,20 @@ var quest = [
 
     {
         id: "qc1002",
-        title: "Multiplication",
+        title: "Fill in",
         comp: [
-            ["Instr", "What is ","1"],
-            ["Eqn", "3*4", "2"],
+            ["Instr", "What is 3*4? ","1"],
+          //  ["Eqn", "3*4", "2"],
             [ "Fillin", "3"]
         ]
     },
 
     {
         id: "qc10022",
-        title: "Division",
+        title: "Fill in Numbers",
         comp: [
-            ["Instr", "What is ","1"],
-            ["Eqn", "10 / 3", "2"],
+            ["Instr", "What is 10/3? ","1"],
+          //  ["Eqn", "10 / 3", "2"],
             [ "Numbers", "6", "3"]
         ]
     },
@@ -177,7 +177,7 @@ var quest = [
 
     {
         id: "qc1004",
-        title: "Codes",
+        title: "Code",
         comp: [
             ["Instr", "Complete the code below so it prints \"Hello\"","1"],
             ["Codes", "public class A {<>  public void main(String[] args) {<>  System.<>  }<>}", "2"]
@@ -188,7 +188,7 @@ var quest = [
         id: "qc1005",
         title: "Grid",
         comp: [
-            ["Instr", "Enter 1 through 5","1"],
+            ["Instr", "Enter the first pass of bubblesort for the array [5, 1, 3, 4, 2]","1"],
             [ "Grid", 5, "2"]
         ]
     },
@@ -211,17 +211,17 @@ var quest = [
         id: "qc1007",
         title: "Matrix",
         comp: [
-            ["Instr", "Enter any 3x3 matrix","1"],
+            ["Instr", "Enter any 3x3 magic square","1"],
             [ "Matrix", 3,3, "2"]
         ]
     },
 
     {
         id: "qc1008",
-        title: "Addition",
+        title: "Drop Down",
         comp: [
-            ["Instr", "What is ", "1"],
-            ["Eqn", "2+2", "2"],
+            ["Instr", "What is 2+2? ", "1"],
+            //["Eqn", "2+2", "2"],
             ["MCDrop", [1,2,3,4], "3"]
         ]
     },
@@ -237,7 +237,7 @@ var quest = [
 
     {
         id: "qc1010",
-        title: "Match",
+        title: "Matching",
         comp: [
             ["Instr", "Match the types", "1"],
             ["Match",["animal","number","food"],["ice cream", "dog", "three"], "2" ]

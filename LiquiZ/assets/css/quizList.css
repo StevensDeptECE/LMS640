@@ -353,3 +353,155 @@
 /*padding-right: 1em;*/
 /*position: relative;*/
 /*}*/
+
+/*For takeQuiz page*/
+/*---------quiz question navbar ---------*/
+.quiz-nav-right{
+    position: absolute;
+    width: 250px;
+    height:250px;
+    top:0px;
+    right:0px;
+}
+.quiz-nav-right-child{
+    position:fixed;
+    top: 0px;
+    right: 0px;
+    width: 250px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px #888888;
+}
+.quiz-nav-right-child a{
+    color: black;
+    text-decoration: none;
+
+}
+.quiz-nav-right-child a:hover{
+    text-decoration: underline;
+    font-size: larger;
+    font-weight: bold;
+
+}
+
+
+/*---------------------------------------*/
+/*-----Question containers---------------*/
+.qc {
+	border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px #888888;
+
+}
+div.header {
+	font-family: Arial, serif;
+	font-size: 28px;
+	border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+.fillIn{
+    width: 200px !important;
+    height: 28px !important;
+    font-size: 20px !important;
+    text-align: center;
+    position: relative;
+    left: 10px;
+}
+.inputNumber{
+    width: 200px !important;
+    height: 28px !important;
+    font-size: 20px !important;
+    text-align: center;
+    position: relative;
+    left: 10px;
+}
+.inputCode {
+    height: 300px;
+    width: 90%;
+    font-family: "courier", serif;
+    color: lawngreen;
+    background: black;
+    font-size: 16px;
+    padding: 20px;
+    resize: vertical;
+}
+.mainText {
+    font-size: 20px;
+    clear: both;
+}
+.containerStyle{
+    margin: 20px 20px;
+}
+.inputCloze{
+    color: lawngreen;
+    background: black;
+    width: 250px !important;
+    height: 28px !important;
+    font-size: 14px !important;
+    font-family: "courier", serif;
+    text-align: center;
+    position: relative;
+    top: 10px;
+    float: left;
+    margin: 3px;
+}
+.textBeforeCloze{
+    font-size: 20px;
+    float: left;
+    clear: left;
+}
+.textAfterCloze{
+    font-size: 20px;
+    float: left;
+    clear: right;
+}
+input.Matrix{
+    width : 50px;
+    height : 50px;
+    text-align : center;
+    border : 1px solid black;
+    display : inline-block;
+    font-size: 20px;
+    margin: 0;
+}
+.Essay{
+    width: 90%;
+    height: 200px;
+    margin-top: 20px;
+    display: block;
+    padding: 10px;
+    resize: vertical;
+    font-size: 14px; 
+}
+.imgDiv {
+	position: relative;
+}
+
+.dragDropOption {
+	background-color: white;
+	font-size: 18px;
+	padding: 5px;
+	cursor:move;
+	position:relative; /* important (all position that's not `static`) */
+	border-radius: 3px;
+	border: 1px solid black;
+}
+.container {
+	display: flex;
+}
+.container .dragDropOption {
+	margin-right: 5px;
+}
+.dragdropLocation {
+	background-color: white;
+	min-width:20px;
+	min-height:20px;
+	border-radius: 3px;
+	border: 1px solid black;
+}
+/*-----end question styling------*/

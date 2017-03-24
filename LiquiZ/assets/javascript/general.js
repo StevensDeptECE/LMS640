@@ -6,7 +6,9 @@ function Instr(s, id) {
 }
 
 Instr.prototype.draw = function(div) {
-	div.appendChild(Util.text(this.s));
+	var newdiv = document.createElement('div');
+	newdiv.appendChild(Util.text(this.s));
+	div.appendChild(newdiv);
 }
 
 function Eqn(s, id) {
@@ -75,7 +77,7 @@ Sidebar.prototype.draw = function(){
 	//	a.setAttribute('href','#'+ this.questions[i]);
 		var num = i + 1;
 		a.appendChild(Util.text("Question: " + num));
-		a.style.color = "green";
+	//	a.style.color = "green";
 		item.appendChild(a);
 		list.appendChild(item);
 	}
