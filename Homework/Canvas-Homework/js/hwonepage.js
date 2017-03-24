@@ -27,7 +27,7 @@ Homework.prototype.draw = function(content) {
       var newTable = Util.table([], false, "table table-hober", "");
         var newTr1 = Util.tr([]);
         var newTh1 = Util.th("", "", "");
-        var newA2 = Util.a("../Homework/Canvas-Homework/page5(Assignment-S).html", "Software Engineering", "", "");
+        var newA2 = Util.a("javascript:launch(HomeworkCourse, [], 'up3')", "Software Engineering", "", "");
         newTh1.appendChild(newA2);
         newTr1.appendChild(newTh1);
         var newTr2 = Util.tr([]);
@@ -55,6 +55,8 @@ Homework.prototype.draw = function(content) {
 /* Homework Course page construcotr. This object represents a page within Homework
  * for a specific Course
  */
+
+
 function HomeworkCourse(payload) {
   this.payload = payload;
 }
@@ -67,26 +69,27 @@ HomeworkCourse.prototype.draw = function(content) {
   clearElements('up3');
 
   var divCourseDash = Util.div("","courseDashboard");
-    var divCourseTitle = Util.div("coursetitle","");
-      var newP = Util.p("Course Name", "", "");
-      divCourseTitle.appendChild(newP);
-    divCourseDash.appendChild(newDiv2_2);
+    //var divCourseTitle = Util.div("coursetitle","");
+      //var newP = Util.p("Course Name", "", "");
+      //divCourseTitle.appendChild(newP);
+    //divCourseDash.appendChild(divCourseTitle);
     var divCourse1 = Util.div("course", "");
       var divComingHw = Util.div("comingHW", "");
         var pComing = Util.p("Coming...", "", "");
         var hwTable1 = Util.table([], false, "table table-hover", "");
           var tr1_1 = Util.tr([]);
-            var th1_1 = Util.th();
+            var th1_1 = Util.th("", "", "");
               var a1_1 = Util.a("../Homework/Canvas-Homework/page6(AssignmentDetail).html", "HW1", "", "");
             th1_1.appendChild(a1_1);
           tr1_1.appendChild(th1_1);
           var tr1_2 = Util.tr([], "active", "");
-            var th1_2 = Util.th("HW2");
+            var th1_2 = Util.th("HW2", "", "");
           tr1_2.appendChild(th1_2);
         hwTable1.appendChild(tr1_1);
         hwTable1.appendChild(tr1_2);
+      divCourse1.appendChild(pComing);
       divCourse1.appendChild(hwTable1);
     divCourseDash.appendChild(divCourse1);
 
-
     content.appendChild(divCourseDash);
+  }
