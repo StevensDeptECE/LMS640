@@ -50,8 +50,21 @@
     <!-- chat content start -->
     <div class="chat-content">
         <div class="am-g am-g-fixed chat-content-container">
-            <div class="am-u-sm-12">
-                <ul id="message-list" class="am-comments-list am-comments-list-flip"></ul>
+            <div class="am-u-sm-12" ng-controller="chatContentCtrl">
+                <ul id="message-list" class="am-comments-list am-comments-list-flip">
+                    <li class="am-comment am-comment" ng-repeat="x in names | orderBy:'createBy':true">    <!-- update the last chat -->
+
+                        <a href="javascript:void(0)" ><img src="public/images/Mario.png" alt="" class="am-comment-avatar" width="48" height="48"/></a>
+                        <div class="am-comment-main"><header class="am-comment-hd"><div class="am-comment-meta"><a href="javascript:void(0)"class="am-comment-author">{{x.name}}</a> <time>{{x.createBy}}
+                            </time>
+                            </div>
+                            </header>
+                            <div class="am-comment-bd">
+                                {{x.text}}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -113,17 +126,18 @@
 	</script>
 	
     <script>
-        $(function() {
-        	var ue = UE.getEditor('myEditor', {
-        	    toolbars: [['undo', 'redo', 'bold']],
-        	    autoHeightEnabled: true,
-        	    autoFloatEnabled: true,
-        	   	elementPathEnabled: false,
-        	   	enableContextMenu:false,
-        	   	autoHeightEnabled:false,
-        	  	initialFrameHeight:200,
-        	  	enableAutoSave:false
-        	});
+$(function() {
+    var ue = UE.getEditor('myEditor', {
+        toolbars: [['undo', 'redo', 'bold']],
+        autoHeightEnabled: true,
+        autoFloatEnabled: true,
+        elementPathEnabled: false,
+        enableContextMenu:false,
+        autoHeightEnabled:false,
+        initialFrameHeight:200,
+        enableAutoSave:false
+})
+
             $('#nickname')[0].focus();
             var socket = new WebSocket("ws://localhost:8080/LivaChatRoom_PRO_01/Chatroom");
             // 处理服务器端发送的数据
