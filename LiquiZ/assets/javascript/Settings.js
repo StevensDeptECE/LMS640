@@ -26,20 +26,21 @@ var settingsPayload = {
     [
         {
             id: "qc1008",
-            title: "Addition",
+            title: "Visual Preferences",
             comp: [
-                ["Instr", "What is ", "1"],
-                ["Eqn", "2+2", "2"],
-                ["MCDrop", [1,2,3,4], "3"]
+                ["Instr", "Do you prefer a light or dark theme? ", "1"],
+                ["MCDrop", ["Light","Dark"], "2"]
             ]
         },
 
         {
             id: "qc1010",
-            title: "Match",
+            title: "Quiz Defaults",
             comp: [
-                ["Instr", "Match the types", "1"],
-                ["Match",["animal","number","food"],["ice cream", "dog", "three"], "2" ]
+                ["Instr", "What is the standard time limit?", "1"],
+                [ "Fillin", "2"],
+                ["Instr", "How many tries does a student get?", "1"],
+                [ "Fillin", "2"]
             ]
         }
     ]
