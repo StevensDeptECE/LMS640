@@ -491,7 +491,7 @@ input.Matrix{
 	border-radius: 3px;
 	border: 1px solid black;
 }
-.container {
+.qc .container {
 	display: flex;
 }
 .container .dragDropOption {
