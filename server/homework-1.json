@@ -1,0 +1,1 @@
+{"name":"HW1b-Bouncing Ball","description":"Modify the existing program from class into a bouncing ball that bounces off all four walls. Instead of int as we did in class, use float so that coordinates can be modified slightly","points":"100","due":"01/03/2017","submission":"java file","time":"two weeks "}
