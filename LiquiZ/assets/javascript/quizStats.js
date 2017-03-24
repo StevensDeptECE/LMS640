@@ -23,11 +23,11 @@ quizStats.prototype.draw= function(s){
 
 function drawInfo(p,data){
     var p1=document.createElement("h2");
-    p1.className="Info";
+    p1.className="info";
     p1.appendChild(document.createTextNode(data.Course+" : "+data.Quizname));
     var d=document.createElement("div");
     var p2=document.createElement("tr");
-    d.className="Info";
+    d.className="info";
     var t1=document.createElement("td");
     t1.appendChild(document.createTextNode("Due Date : "+data.DueDate));
     var t2=document.createElement("td");
@@ -46,7 +46,7 @@ function drawInfo(p,data){
 function drawTable(s,data) {
     console.log(data);
     var t = document.createElement("table");
-    t.className = "stats";
+    t.className = "t01";
     var thead = document.createElement("thead");
     var tr = document.createElement("tr");
     var th1 = document.createElement("th");

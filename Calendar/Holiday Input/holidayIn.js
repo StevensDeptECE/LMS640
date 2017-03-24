@@ -27,6 +27,28 @@ function capitalize(inStr) { //look for word, nonwhitespace characters, global m
     });
 }
 
+function dateRange(){
+	var endDate=document.getElementById("endDate");
+	var button=document.getElementById("rangedHoliday");
+	var buttonState=button.value;
+	if(buttonState=="off"){
+		var div = document.createElement("div");
+		div.setAttribute("id", "endForm")
+		div.innerHTML = document.getElementById("endDateInput").innerHTML;
+		endDate.appendChild(div);
+		button.setAttribute("value", "on")
+	}
+	else{
+		var getRid= document.getElementById("endForm");
+		getRid.parentNode.removeChild(getRid);
+		button.setAttribute("value", "off");
+	}
+}
+
+function dateRepeat(){
+
+}
+
 function isValidElement(element){ //checks for non-empty name and values
   element.value=capitalize(element.value);
   return element.name && element.value;
@@ -64,8 +86,9 @@ function displayHolidays(){	//prints holidays
     var br= document.createElement("br");
     input.setAttribute("type", "checkbox");
     input.setAttribute("name", "dates");
-    var text= document.createTextNode(JSON.stringify(holidays[i], null, " "));
-    h.appendChild(input);
+		var text=Util.text(JSON.stringify(holidays[i], null, " "));
+		//var text= document.createTextNode(JSON.stringify(holidays[i], null, " "));
+		h.appendChild(input);
     h.appendChild(text);
     h.appendChild(label);
     label.appendChild(text);
@@ -73,7 +96,7 @@ function displayHolidays(){	//prints holidays
   }
 }
 
-function removeHolidays(){	//deletes holidays
+function removeHolidays(){	//deletes checked holidays
   var boxes= document.getElementsByName("dates");
 	var count=0;
   for(var i=0; i<boxes.length;i++){
@@ -156,3 +179,7 @@ var sortName=document.getElementById("sortName");
 sortName.addEventListener('click', sortByName);
 var sortDate=document.getElementById("sortDate");
 sortDate.addEventListener('click', sortByDate);
+var range=document.getElementById("rangedHoliday");
+range.addEventListener('click', dateRange);
+var repeat=document.getElementById("repeatHoliday");
+repeat.addEventListener('click', dateRepeat);
