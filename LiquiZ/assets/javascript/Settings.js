@@ -9,10 +9,11 @@ settings.prototype.draw = function(s) {
     
 
 	var p = document.getElementById("up3");
+	console.log(settingsPayload);
 	
-	var q = new QC(p, settingsPayload);
+	var q = new takeQuiz(settingsPayload);
 
-	q.drawQuiz();
+	q.draw(p);
     clearClass("active");
     document.getElementById("settings").className = "active";
 }

@@ -37,6 +37,7 @@ function QC(parent, json, index) {
     this.div.className = 'qc';
     this.div.id = this.id;
     this.comp = [];
+	console.log(json.comp);
     for (var i = 0; i < json.comp.length; ++i) {
         var comp = json.comp[i];
         var c = "new " + comp[0] + "(";
