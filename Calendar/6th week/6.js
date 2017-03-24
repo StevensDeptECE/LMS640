@@ -1,6 +1,5 @@
-	var holiday = [
-	{ "name":"Christmas","day":25,"month":12,"year":2017},
-	{ "name":"President's Day","day":20,"month":2,"year":2017}];
+var holiday=new Array({"Name":"New Years", "Month":"1", "Day":"1"},
+{"Name":"Christmas", "Month":"12", "Day":"25"});
 
     var tempDate;
 
@@ -109,7 +108,7 @@
 
     function show(customDate) {
         var today = getRightNow();
-		var date = customDate.getDate();
+				var date = customDate.getDate();
         var days = getDays(customDate);
         var firstDayOfMonth = getFirstDayOfMonth(customDate);
         var verbose = firstDayOfMonth;
@@ -150,68 +149,37 @@
 
     function createwindow(n){
     	var para = document.createElement("div");
-		para.setAttribute("class","holiday");
-		para.setAttribute("id", "holiday");
+			para.setAttribute("class","holiday");
+			para.setAttribute("id", "holiday");
     	var node = document.createTextNode(holiday[n].name);
     	para.appendChild(node);
     	document.body.appendChild(para);
     }
 
-	function createEventwindow(){
-    	var para = document.createElement("div");
-		para.setAttribute("class","event");
-		para.setAttribute("id", "event");
-    	var node = document.createTextNode("please add your event");
-    	para.appendChild(node);
-    	document.body.appendChild(para);
-		var linktest = document.createElement("a");
-		linktest.setAttribute("href","http://my.stevens.edu");
-		node = document.createTextNode("MyStevens");
-		linktest.appendChild(node);
-		document.getElementById("event").appendChild(linktest);
-		console.log("i made a window");
+		function createEventwindow(){
+	    	var para = document.createElement("form");
+				para.setAttribute("class","event");
+				para.setAttribute("id", "event");
+				para.innerHTML = document.getElementById("addHoliday").innerHTML;
+	    	document.body.appendChild(para);
 
-		var form=['<form class="holiday">',
-		'<div>',
-		'<label>Holiday Name</label>',
-		'<input id="name" class="holiday" name= "Name" type="text"/>',
-		'</div>',
-			'<label>Date</label>',
-			'<select id="month" class="holiday" name="Month" onchange="limit()">',
-			'<option value="1" class="holiday">January</option>',
-			'<option value="2" class="holiday">February</option>',
-			'<option value="3" class="holiday">March</option>',
-			'<option value="4" class="holiday">April</option>',
-			'<option value="5" class="holiday">May</option>',
-			'<option value="6" class="holiday">June</option>',
-			'<option value="7" class="holiday">July</option>',
-			'<option value="8" class="holiday">August</option>',
-			'<option value="9" class="holiday">September</option>',
-			'<option value="10" class="holiday">October</option>',
-			'<option value="11" class="holiday">November</option',
-			'<option value="12" class="holiday">December</option>',
-			'</select>',
-			'<input id="day" class="holiday" name="Day" type="number" min="1" max="31"> </input>',
-			'<button type="submit">Add it!</button>']. join('');
-			 document.getElementById("event").appendChild( createTextNode(form));
+				console.log("i made a window");
+	    }
 
-    }
-
-
-	window.onclick = function(e) {
-		if(document.getElementById("holiday")){
-			if(e.target.id != "holiday" && e.target.className != "createholiday") {
-			var holiday = document.getElementById("holiday");
-			holiday.parentNode.removeChild(holiday);
+		window.onclick = function(e) {
+			if(document.getElementById("holiday")){
+				if(e.target.id != "holiday" && e.target.className != "createholiday") {
+				var holiday = document.getElementById("holiday");
+				holiday.parentNode.removeChild(holiday);
+			}
+			}if(document.getElementById("event")){
+			if(e.target.id != "event" && e.target.id != "createevent") {
+				var event = document.getElementById("event");
+				event.parentNode.removeChild(event);
+				console.log("i took away the window");
+			}
+			}
 		}
-		}if(document.getElementById("event")){
-		if(e.target.id != "event" && e.target.id != "createevent") {
-			var event = document.getElementById("event");
-			event.parentNode.removeChild(event);
-			console.log("i took away the window");
-		}
-		}
-	}
 
     function setCalendar() {
         show(getRightNow());
@@ -255,7 +223,6 @@
         fillDate();
         changeWeekendStyle();
     }
-
 
     function resume(){
         tempDate = getRightNow();
@@ -310,16 +277,16 @@
     }
 
 //add holiday code
-		function limit(){ //sets month limit for input dates
-  var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+function limit(){ //sets month limit for input dates
+  	var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
       monthLength[2]=29;
     }
-  var cmonth=document.getElementById("month").value; //cmonth= chosen month
-  var maxday=monthLength[cmonth-1];
-  var cday=document.getElementById("day");
-  cday.max=maxday;
-}
+  	var cmonth=document.getElementById("month").value; //cmonth= chosen month
+  	var maxday=monthLength[cmonth-1];
+  	var cday=document.getElementById("day");
+  	cday.max=maxday;
+	}
 
 function capitalize(inStr) { //look for word, nonwhitespace characters, global match
   return inStr.replace(/\w\S*/g, function(tStr) {
@@ -449,8 +416,7 @@ var forward=document.getElementById("forward");
 */
 
 //buttons and functions
-var form = document.getElementsByClassName("holiday")[0];
-form.addEventListener('submit', handleFormSubmit);
+
 /*var remove=document.getElementById("remove");
 remove.addEventListener('click', removeHolidays);
 var sortName=document.getElementById("sortName");
