@@ -1,9 +1,0 @@
-This past week I worked on two JavaScript objects for the LMS login page. 
-I created one that draws on the whole page and one that draws in the top 
-right corner of the page. Since I needed HTML elements such as labels that
-were not yet in onepagelib.js, I had to make some additions to onepage.js. This
-way, I could create all of the objects using "Util" from onepagelib.js. I added
-label, input, form, and maybe a couple more. I also worked a bit more with 
-the Calendar group to make their page work with JavScript objects. It can 
-currently draw with JavaScript objects, but the functionality is lost. We 
-will continue to work in this in the upcoming weeks.
