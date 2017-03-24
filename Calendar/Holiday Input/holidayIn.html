@@ -2,8 +2,8 @@
 <html>
 <head>
 <link type="text/css" charset="utf-8" rel="stylesheet" href="holidayIn.css">
+<script language="JavaScript" src="onepagelib.js"></script>
 </head>
-<body>
 
 <title> Input Holidays </title>
 
@@ -47,6 +47,10 @@
         </div>
     </div>
 
+  <div id=endDate></div>
+
+    <button type="button" id="rangedHoliday" value="off">Holiday Range</button>
+    <button type="button" id="repeatHoliday" value="off">Repeat</button><br>
     <button type="submit">Add it!</button>
   </form>
 </section>
@@ -65,6 +69,48 @@
   <button type="button" id="sortDate">Sort by Date</button> <br>
   <button type="button" id="remove">Delete it!</button>
 </div>
-<script language="JavaScript" src="holidayIn.js"></script>
+
+<script id="endDateInput" language="text">
+  <label>End Date</label>
+  <select id="endMonth" class="holiday" name="endMonth" onchange="limit()">
+    <option value="1" class="holiday">January</option>
+    <option value="2" class="holiday">February</option>
+    <option value="3" class="holiday">March</option>
+    <option value="4" class="holiday">April</option>
+    <option value="5" class="holiday">May</option>
+    <option value="6" class="holiday">June</option>
+    <option value="7" class="holiday">July</option>
+    <option value="8" class="holiday">August</option>
+    <option value="9" class="holiday">September</option>
+    <option value="10" class="holiday">October</option>
+    <option value="11" class="holiday">November</option>
+    <option value="12" class="holiday">December</option>
+  </select>
+    <input id="endDay" class="holiday" name="endDay" type="number" min="1" max="31"> </input>
+    <button type="button" id="calendar" > Date Picker </button>
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close">&times;</span> <!--//pretty x close character-->
+        <p>will be calendar</p><br>
+        <button type="button" id="back" name="back"><</button>
+        <button type="button" id="forward" name="forward">></button>
+        <label id="currentMonth">March 2017</label>
+        <div id="chart"></div>
+      </div>
+    </div>
+</div>
+</script>
+
+<script id="repeatInput" language="text">
+  <label>Repeat Event </label> <br>
+  <input type="radio" name="repeatFreq" value="day"> Day </input>
+  <input type="radio" name="repeatFreq" value="week"> Week </input>
+  <input type="radio" name="repeatFreq" value="month"> Month </input>
+  <p> This will repeat for</p>
+  <input id="repeatNum" type="number"></input>
+  <p> times </p>
+</script>
+
 </body>
+<script language="JavaScript" src="holidayIn.js"></script>
 </html>

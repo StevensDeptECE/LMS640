@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>HomeWork</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>uploadServlet</display-name>
+    <servlet-name>uploadServlet</servlet-name>
+    <servlet-class>com.rl.controller.uploadServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>DownServlet</display-name>
+    <servlet-name>DownServlet</servlet-name>
+    <servlet-class>com.rl.controller.DownServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>ListDown</display-name>
+    <servlet-name>ListDown</servlet-name>
+    <servlet-class>com.rl.controller.ListDown</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>uploadServlet</servlet-name>
+    <url-pattern>/uploadServlet</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>DownServlet</servlet-name>
+    <url-pattern>/DownServlet</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>ListDown</servlet-name>
+    <url-pattern>/ListDown</url-pattern>
+  </servlet-mapping>
+</web-app>
