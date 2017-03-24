@@ -1,4 +1,36 @@
-/* Homework page construcotr. */
+/* Homework constructor for main page */
+function HomeworkMain(payload) {
+  this.payload = payload;
+}
+
+HomeworkMain.prototype.draw = function(content) {
+  clearElements('up2');
+  var up2 = document.getElementById('up2');
+  var newHeader = Util.h1("Homework", "", "");
+  up2.appendChild(newHeader);
+
+  clearElements('up3');
+  var newDiv1 = Util.div("","");
+    var newDiv1_2 = Util.div("","Grade");
+      var newP1_2 = Util.p("", "", "");
+        var newA1_2 = Util.a("#", "Grade", "", "");
+      newP1_2.appendChild(newA1_2);
+    newDiv1_2.appendChild(newP1_2);
+  newDiv1.appendChild(newDiv1_2);
+
+  var newDiv2 = Util.div("shake shake-constant","");
+    var newDiv2_2 = Util.div("","Homework");
+      var newP2_2 = Util.p("", "", "");
+        var newA2_2 = Util.a("javascript:launch(Homework, [], 'up3')", "Homework", "", "");
+      newP2_2.appendChild(newA2_2);
+    newDiv2_2.appendChild(newP2_2);
+  newDiv2.appendChild(newDiv2_2);
+
+  content.appendChild(newDiv1);
+  content.appendChild(newDiv2);
+}
+
+/* Homework page construcotr after HW main page */
 function Homework(payload) {
   this.payload = payload;
 }
@@ -83,7 +115,9 @@ HomeworkCourse.prototype.draw = function(content) {
             th1_1.appendChild(a1_1);
           tr1_1.appendChild(th1_1);
           var tr1_2 = Util.tr([], "active", "");
-            var th1_2 = Util.th("HW2", "", "");
+            var th1_2 = Util.th("", "", "");
+              var a1_2 = Util.a("javascript:launch(HomeworkAssignment, [], 'up3')", "HW2", "", "");
+            th1_2.appendChild(a1_2);
           tr1_2.appendChild(th1_2);
         hwTable1.appendChild(tr1_1);
         hwTable1.appendChild(tr1_2);
@@ -92,4 +126,21 @@ HomeworkCourse.prototype.draw = function(content) {
     divCourseDash.appendChild(divCourse1);
 
     content.appendChild(divCourseDash);
+  }
+
+  /* Homework constructor for main page */
+  function HomeworkAssignment(payload) {
+    this.payload = payload;
+  }
+
+  HomeworkAssignment.prototype.draw = function(content) {
+    clearElements('up2');
+    var up2 = document.getElementById('up2');
+    //innerHTML should be dynamic - not hardcoded to "Homework A"
+    //may need a parameter for which assignment it is
+    var newHeader = Util.h1("Homework A", "", "");
+    up2.appendChild(newHeader);
+
+    clearElements('up3');
+    //create submission button and everything else needed
   }

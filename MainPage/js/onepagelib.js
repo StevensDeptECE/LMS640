@@ -399,9 +399,10 @@ Util = {
   * element with the id that is passed. If you need to draw in more than one div, do it
   * in the objects corresponding draw function.
 */
+var topLoginDrawn = false; //keeps track of whether or not the top login box is on the screen
 function launch(object, payload, id) {
   console.log("Calling Launch");
-  console.log(object);
+  console.log("Object: " + object);
   console.log(payload);
   console.log("id: " + id);
   console.log("prev active link: " + activeLink);
@@ -411,9 +412,13 @@ function launch(object, payload, id) {
 
   //check what 'object' is. If it's the initial load, then no
   //LoginTop object should be drawn
-  var content2 = document.getElementById('loginformabs_top');
-  var loginTop = new LoginTop();
-  loginTop.draw(content2);
+  if (topLoginDrawn == false)
+  {
+    var content2 = document.getElementById('loginformabs_top');
+    var loginTop = new LoginTop();
+    loginTop.draw(content2);
+    topLoginDrawn = true;
+  }
   activeLink = "grade";
 }
 
@@ -455,6 +460,21 @@ function onclickId(id, func)
     console.log("Onlick Class: " + id);
     var change = document.getElementsByClassName(id);  // Find the elements
     change.onclick = func;    // Change the content
+}
+
+/* Edit the page's header (div id is 'up2'). Creates an HTML element of type
+ * 'object' with inner HTML 'innerHTML' as well as class name 'className' and
+ * id 'id'.
+ */
+//TODO - maybe use make function directly
+function editPageHeader(innerHTML, object, className, id)
+{
+  console.log("Edit page header");
+  var up2 = document.getElementById("up2")
+  clearElements("up2");
+  console.log("HTML ELement: " + object);
+  var header = Util.object(innerHTML);
+  up2.appendChild(header);
 }
 
 //global variable for last visited page

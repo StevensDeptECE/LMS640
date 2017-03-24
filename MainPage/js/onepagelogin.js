@@ -22,6 +22,8 @@ Login.prototype.draw = function(content) {
   var header = Util.h1("Welcome to LMS.");
   up2.appendChild(header);
 
+  //editPageHeader("Welcome to LMS.", h1, "", "");
+
   clearElements('up3');
   var newDiv = Util.div("loginformabs", "");
     var newForm = Util.form("/action_page.php", "", "", ""); //TODO - no php, this is a placeholder
