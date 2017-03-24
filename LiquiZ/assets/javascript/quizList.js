@@ -13,6 +13,8 @@ quizIndex.prototype.draw = function(s) {
     header.appendChild(createQuiz);
     var createQuestion = Util.button("Create Quiz II",function () {launch(questionEditor, "", 'up3')},"two");
     header.appendChild(createQuestion);
+    var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"two");
+    header.appendChild(submitQuiz);
     var editSettings = Util.button("Settings",function () {launch(settings, settingsPayload, 'up3')},"two");
     header.appendChild(editSettings);
 
