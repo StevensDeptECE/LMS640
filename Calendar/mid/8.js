@@ -3,7 +3,7 @@
 	{ "style":"holiday","name":"President's Day","notes":"Have a good day!","day":20,"month":2,"year":2017},
 	{ "style":"mid","name":"EE575 mid-exam","notes":"EE575 midterm exam","day":10,"month":3,"year":2017},
 	{ "style":"quiz","name":"EE552 test2","notes":"EE552 test2","day":20,"month":3,"year":2017},
-	{ "style":"class","name":"CPE-640","notes":"CPE-6400 12:00-14:30","day":24,"month":3,"year":2017}];
+	{ "style":"class","name":"CPE-640","notes":"CPE-640 12:00-14:30","day":24,"month":3,"year":2017}];
 	
     var tempDate;
  
