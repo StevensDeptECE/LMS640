@@ -7,6 +7,7 @@ function Instr(s, id) {
 
 Instr.prototype.draw = function(div) {
 	var newdiv = document.createElement('div');
+    newdiv.className = "instrFont";
 	newdiv.appendChild(Util.text(this.s));
 	div.appendChild(newdiv);
 }

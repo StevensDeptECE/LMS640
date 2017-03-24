@@ -12,7 +12,7 @@ questionEditor.prototype.draw = function(s) {
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
     clearElements("up3");
-    var newDiv = Util.div("wrapper", "questionEditor");
+    var newDiv = Util.div("wrapper_rightside", "questionEditor");
 
     var t = document.createElement("table");
     t.className = "t02";

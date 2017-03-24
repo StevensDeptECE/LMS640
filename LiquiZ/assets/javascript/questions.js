@@ -293,6 +293,7 @@ Match.prototype.draw = function(div) {
     row.appendChild(cell1);
     row.appendChild(cell2);
     t.appendChild(row);
+    t.className = "matchStyle";
 }
     x.appendChild(t);
     div.appendChild(x);

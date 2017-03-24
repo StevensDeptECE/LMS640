@@ -19,7 +19,7 @@ quizIndex.prototype.draw = function(s) {
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
     clearElements("up3");
-    var newDiv = Util.div("wrapper","quizIndex");
+    var newDiv = Util.div("wrapper_rightside","quizIndex");
     var t = document.createElement("table");
     t.className = "t01";
     var thead = document.createElement("thead");

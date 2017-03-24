@@ -13,7 +13,7 @@ quizEditor.prototype.draw= function(s){
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
     clearElements("up3");
-    var newDiv = Util.div("wrapper","quizEditor");
+    var newDiv = Util.div("wrapper_rightside","quizEditor");
     drawEditor(newDiv,quizEditorPayLoad);
     var saveQuiz = Util.button("Save Quiz",function () {tableToJson2(edit_table); window.location.reload(false);},"three");
     var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"three");

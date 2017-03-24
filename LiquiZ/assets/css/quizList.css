@@ -349,10 +349,10 @@
     font-size: 15px;
     height: auto;
 }
-/*.wrapper {*/
-/*padding-right: 1em;*/
-/*position: relative;*/
-/*}*/
+.wrapper_rightside {
+     padding-right: 1em;
+     position: relative;
+ }
 
 /*For takeQuiz page*/
 /*---------quiz question navbar ---------*/
@@ -399,10 +399,16 @@
 
 }
 div.header {
-	font-family: Arial, serif;
+    font-family: Times, serif;
 	font-size: 28px;
+    color: green;
 	border-bottom: 2px solid #ddd;
     margin-bottom: 20px;
+}
+div.instrFont {
+    font-family: Times, serif;
+    font-size: 20px;
+    margin-bottom: 15px;
 }
 .fillIn{
     width: 200px !important;
@@ -469,6 +475,21 @@ input.Matrix{
     font-size: 20px;
     margin: 0;
 }
+.matchStyle {
+    width: auto;
+    border: none;
+    border-collapse: collapse;
+    font-family: Arial, serif;
+    height: auto;
+}
+.matchStyle td {
+    text-align: center;
+    border: none;
+    border-collapse: collapse;
+    font-size: 20px;
+    height: auto;
+    padding: 10px;
+}
 .Essay{
     width: 90%;
     height: 200px;
@@ -503,5 +524,12 @@ input.Matrix{
 	min-height:20px;
 	border-radius: 3px;
 	border: 1px solid black;
+}
+.SurveyContainer {
+    font-size: 20px;
+    font-family: "courier", serif;
+    padding-top: 10px;
+    clear: both;
+    margin: 20px;
 }
 /*-----end question styling------*/
