@@ -1,4 +1,4 @@
-<style type="text/css">
+/*<style type="text/css">*/
 body {
     margin: 0;
 }
@@ -354,5 +354,42 @@ input[type=text], input[type=password] {
     float: right;
     padding-top: 16px;
 }
+/*         css for stats*/
+body#stats{
+    background-color : #ffffff;
+}
+.Info {
+    text-align: center;
+}
 
-</style>
+table.stats{
+    width:100%;
+    text-align: center;
+}
+table.stats  th, td{
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+table.stats tr:nth-child(even) {
+    background-color: #eee;
+}
+table.stats tr:nth-child(odd) {
+    background-color: #fff;
+}
+table.stats th {
+    background-color: #505050;
+    color: white;
+}
+tr.total {
+    font-weight: bold;
+}
+
+button#backButton {
+    position : absolute;
+    right: 200px;
+}
+/*----------------------------------------*/
+
+
+/*</style>

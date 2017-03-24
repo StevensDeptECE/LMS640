@@ -92,7 +92,7 @@ function drawTable(s,data) {
     t.appendChild(tbody);
     s.appendChild(t);
     var b1=document.createElement("Button");
-    b1.id="backButton";
+    b1.className="two";
     b1.onclick=function(){launch(quizIndex, quizIndexPayload, 'up3')};
     b1.appendChild(document.createTextNode("BACK"));
     s.appendChild(b1);
