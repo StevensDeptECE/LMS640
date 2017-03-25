@@ -130,11 +130,11 @@ function show(customDate) {
     dateString += "<tr>" + row + returnRow;
     dateString += "</table>";
 
-    var draw= document.createElement("calendarContainer");
-    var calendarContainer = document.getElementById("calendarContainer");
+    //var draw= document.createElement("calendarContainer");
+    var calendarContainer = document.getElementById("content");
     calendarContainer.innerHTML = dateString;
 }
-function setCalendar() {
+function drawCalendar() {
     show(getRightNow());
     fillDate();
     changeWeekendStyle();
@@ -220,7 +220,8 @@ function nextButton() {
 
 function changeWeekendStyle(){
 
-    $("th:gt(4)").css("color", "red");
+    $("th:gt(4)").
+    css("color", "red");
     for (var i = 0; i < 7; i++) {
         $("tr:eq(" + i + ")>td:gt(4)").css("color", "red");
     }

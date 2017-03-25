@@ -5,6 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
     <meta name="description" content="This is the discssion page.">
     <meta name="author" content="Yang Liu">
     
@@ -15,6 +24,7 @@
 
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
+    <link href="offcanvas.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,32 +35,28 @@
   </head>
   <body>
     
+
      <nav class="navbar navbar-inverse navbar-fixed-top" data-spy="affix">
        <div class="container-fluid">   
-         <!-- Brand and toggle get grouped for better mobile display -->
-         <div class="navbar-header">
-           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-           </button>
-           <a class="navbar-brand" href="#">Discussion Board</a>
-         </div>
-
+         <a class="navbar-brand" href="#">Discussion Board</a>
          <!-- Collect the nav links, forms, and other content for toggling -->
-         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+         <div class="collapse navbar-collapse">
            <ul class="nav navbar-nav">
              <li><a href="#">Home</a></li>
-             <li class="active"><a href="#">Discussion<span class="sr-only">(current)</span></a></li>
+             <li class="dropdown active">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Discussion<span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                 <li><a onclick="document.getElementById('create-discussion').style.display='block'">Create Discussion</a></li>
+                 <li><a href="#">View Discussion</a></li>
+               </ul>
+             </li>
              <li class="dropdown">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project<span class="caret"></span></a>
                <ul class="dropdown-menu">
-                 <li><a href="#">Create Project</a></li>
+                 <li><a onclick="document.getElementById('create-project').style.display='block'">Create Project</a></li>
                  <li><a href="#">View Project</a></li>
                </ul>
              </li>
-             <li><a href="#">Engagement</a></li>
            </ul>
            <form class="navbar-form navbar-left">
              <div class="form-group">
@@ -58,27 +64,17 @@
              </div>             
              <div class="btn-group">
                <button type="button" class="btn btn-primary">Search</button>
-               <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-               </button>
-               <ul class="dropdown-menu">
-                 <li><a href="#">Search for Username</a></li>
-                 <li><a href="#">Search for Subject</a></li>
-                 <li><a href="#">Search for Keywords</a></li>
-               </ul>
              </div>    
            </form>           
            <ul class="nav navbar-nav navbar-right">
-             <li><a href="#">Help</a></li>
+             <li><a onclick="document.getElementById('id01').style.display='block'"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</a></li>
              <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quick Links<span class="caret"></span></a>
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Quick Links<span class="caret"></span></a>
                <ul class="dropdown-menu">
                  <li><a href="#">LiquiZ</a></li>
                  <li><a href="#">Homework</a></li>
                  <li><a href="#">Grading</a></li>
                  <li class="active"><a href="#">Discussion Board</a></li>
-                 <li role="separator" class="divider"></li>
                  <li><a href="#">Calendar</a></li>
                </ul>
              </li>
@@ -86,10 +82,9 @@
          </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
      </nav>
-     
-     <br><br><br>
-     
-     <div class="container">
+
+     <div id="quickDiscussion" class="container">
+      <div class="row row-offcanvas row-offcanvas-right">
        <div class="col-xs-12 col-sm-9">
            <div class="jumbotron">
                <form role="form">
@@ -102,55 +97,14 @@
                   <label class="sr-only" for="InputBody">Input body</label>
                   <textarea class="form-control" id="InputBody "rows="3" placeholder="Body"></textarea>
                   </div>
-                  <div class="form-group">
-                    <label class="sr-only" for="InputFile">File input</label>
-                    <input type="file" id="InputFile">
-                  </div>
                   <button type="submit" class="btn btn-primary btn-sm">Post</button>
                </form>
-           </div>	               
-       </div>
-       <div class="col-xs-6 col-sm-3 sidebar-offcanvas col-xs-offset-8" id="sidebar" data-spy="affix" style="text-align: center">
-	       <div class="panel panel-primary">
-             <div class="panel-heading">
-               <h2 class="panel-title">Member list</h2>
-             </div>
-             <div class="panel-body">
-               <div class="list-group">
-                 <a href="#" class="list-group-item">
-	               <h5 class="list-group-item-heading">Dov Kruger</h5>
-                   <p class="list-group-item-text">Professor</p>
-	             </a>
-                 <a href="#" class="list-group-item">
-	               <h5 class="list-group-item-heading">Xiaolu Wang</h5>
-                   <p class="list-group-item-text">Teaching Assistant</p>  
-                 </a>
-                 <a href="#" class="list-group-item">
-	               <h5 class="list-group-item-heading">Yang Liu</h5>
-                   <p class="list-group-item-text">Student</p>  
-                 </a>
-                 <a href="#" class="list-group-item">
-	               <h5 class="list-group-item-heading">He Song</h5>
-                   <p class="list-group-item-text">Student</p>  
-                 </a>
-                 <a href="#" class="list-group-item">
-	               <h5 class="list-group-item-heading">Fangming Zhao</h5>
-                   <p class="list-group-item-text">Student</p>  
-                 </a>
-               </div>
-             </div>
-	       </div>
-        </div>           
-     </div>    
-         
-     <div class="container">
-       <div class="col-xs-12 col-sm-9">
-	     <h4><small>RECENT DISCUSSIONS</small></h4>
-	     <hr>
+           </div>	
+           
+           <hr>
 	     <h2>How to learn JS and CSS?</h2>
+	     <p></p>
          <h5><span class="glyphicon glyphicon-time"></span> Post by Yang Liu, Jan 27, 2017.</h5>
-         <h5><span class="label label-danger">JS</span> <span class="label label-success">CSS</span></h5><br>
-         <p>Food is my passion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
          <hr>
          <h4>Leave a Comment:</h4>
          <form role="form">
@@ -177,17 +131,6 @@
              <h4>John Row <small>Jan 28, 2017, 8:25 PM</small></h4>
              <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
              <br>
-             <p><span class="badge">1</span> Comment:</p><br>
-             <div class="row">
-               <div class="col-sm-2 text-center">
-                 <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-               </div>
-               <div class="col-xs-10">
-
-		       <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>
-                 <p>Me too! WOW!</p>
-               </div>
-             </div>
            </div>
          </div>
          
@@ -195,7 +138,6 @@
          
          <h2>How to learn JS and CSS?</h2>
          <h5><span class="glyphicon glyphicon-time"></span> Post by Yang Liu, Jan 27, 2017.</h5>
-         <h5><span class="label label-danger">JS</span> <span class="label label-success">CSS</span></h5><br>
          <p>Food is my passion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
          <hr>
          <h4>Leave a Comment:</h4>
@@ -223,48 +165,138 @@
              <h4>John Row <small>Jan 28, 2017, 8:25 PM</small></h4>
              <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
              <br>
-             <p><span class="badge">1</span> Comment:</p><br>
-             <div class="row">
-               <div class="col-sm-2 text-center">
-                 <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-               </div>
-               <div class="col-xs-10">
-                 <h4>Nested Bro <small>Jan 30, 2017, 8:28 PM</small></h4>
-                 <p>Me too! WOW!</p>
-               </div>
-             </div>
            </div>
          </div>  
-       </div>
+                        
+       </div><!--/.col-xs-12.col-sm-9-->
+       
+               <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#student">Student</a></li>
+                <li><a data-toggle="tab" href="#group">Group</a></li>
+            </ul>
+            <div class="tab-content">
+            <div class="tab-pane fade in active"  id="student">
+              <div class="list-group"><!-- we need json or datebase to dispaly here-->
+                  <a href="#" class="list-group-item" onclick="creates()">student 1<span class="badge">message 2</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 2<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 3<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 4<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 5<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 6<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 7<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 8<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 9<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 10<span class="badge">message 15</span></a>
+              </div><!--list-group-->
+            </div><!--tab-pane-->
+            <div class="tab-pan fade" id="group">
+                <div class="list-group"><!-- we need json or datebase to dispaly here-->
+                    <a href="#" class="list-group-item active">group 1</a>
+                    <a href="#" class="list-group-item">group 2</a>
+                </div>
+             </div>
+            </div><!--table content-->
+            </div><!--class="col-xs-6 col-sm-3 sidebar-offcanvas"-->
      </div>
+     </div>    
      
+     <hr>
+     <footer><br><br></footer>      
+           
+    <!--login page-->
+    <div id="id01" class="login-modal">
+        <form class="modal-content animate" action="">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>
+            </div>
+            
+            <div class="login-container">
+                <label><b>UserName</b></label>
+                <input class="login-input" type="text" placeholder="Enter Username" name="uname" required>
+                
+                <label><b>Password</b></label>
+                <input class="login-input" type="password" placeholder="Enter Password" name="psw" required>
+                
+                <button type="submit" class="btn btn-primary">Login</button>
+                <input type="checkbox" checked="checked">Remember me
+            </div>
+            
+            <div class="login-container" style="background-color: #f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display = 'none'" class="btn btn-danger">Cancel</button>
+                <span class="psw">Forgot<a href="#">password?</a></span>
+            </div>
+        </form>        
+    </div>      
     
-           
-           
-           
-        
-     
+    <!--create disscussion-->
+    <div id="create-discussion" class="login-modal">
+        <form class="modal-content animate" action="">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('create-discussion').style.display = 'none'" class="close" title="Close Modal">&times;</span>
+            </div>
+            
+            <div class="login-container">
+                <label><b>topic</b></label>
+                <input class="login-input" type="text" placeholder="Enter tipic name" name="tpname" required>              
+                <label><b>Content:</b></label>
+                <textarea class="form-control" id="" rows="5" placeholder="Body" name="body" required></textarea>
+                <input type="file" id="filecount" multiple="multiple" >                
+                <button type="submit" class="btn btn-primary">Post</button>                
+            </div>
+        </form>
+    </div><!--end of create discussion-->
+    
+      <!--create project-->
+    <div id="create-project" class="login-modal">
+        <form class="modal-content animate" action="">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('create-project').style.display = 'none'" class="close" title="Close Modal">&times;</span>
+            </div>
+            
+            <div class="login-container">
+                <label><b>Project Name</b></label>
+                <input class="login-input" type="text" placeholder="Enter topic name" name="tpname" required>
+                
+                <label><b>Description</b></label>
+                <textarea class="form-control" id="" rows="5" placeholder="Body" name="body" required></textarea>
+                
+                <!--upload file-->
+                <input type="file" id="filecount" multiple="multiple">
+                
+                <!-- pickup start day and end day button right now it doesn't work right-->
+                <div class="bootstrap-iso">
+                 <div class="container-fluid">
+                  <div class="row">
+                   <div class="col-md-4 col-sm-4 col-xs-12">
+
+                    <!-- Form code begins -->
+                    <form method="post">
+                          <div class="form-group"> <!-- Date input -->
+                            <label class="control-label" for="date">Start Date</label>
+                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" onclick="pop"/>
+                          </div>
+                          <div class="form-group"> <!-- Date input -->
+                            <label class="control-label" for="date">End Date</label>
+                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+                          </div>
+                     </form>
+                     <!-- Form code ends --> 
+                    </div>
+                  </div>    
+                 </div>
+                <button class="btn btn-primary" type="submit">Create</button>
+            </div>
+        </form>
+    </div>
+  </div><!-- end of create project-->
+  
+         
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="data.js"></script>
-
-    <script scr="./script.js">
-
-//        console.log(data);
-
-        document.write(data.length);
-
-        for(var i = 0 ; i < data.length; i++)
-
-            {
-
-                document.write(data[i].record);
-
-            }
-
-
-    </script>	  
+    <script src="data.js"></script>  
   </body>
 </html>
+

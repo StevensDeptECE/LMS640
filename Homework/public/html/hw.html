@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Course</title>
+        <link rel="stylesheet" media="screen" href="../css/style.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+        </script>   
+
+        
+    </head>
+    <body>
+      <div id = "login">
+          <p>
+            <a href="">Hello, Yu!</a>
+          </p>
+        </div>
+        
+      <div id = "courseDashboard">
+          <form action="../create"  method = "post">
+              <div class="form-group" ng-app = "myApp" ng-controller = "myCtrl">
+                <label >Homework Name</label>
+                <input name = 'name' ng-model = "name" type = "text" class = "form-control" placeholder = "Text input">
+                  
+              </div>
+              <div class="form-group">
+                <label> Description </label>
+                <textarea name = 'description' class = "form-control" rows= "3"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Points</label>
+                    <input name = 'points' type = "text" class = "form-control" placeholder = "Text input">
+              </div>
+              <div class="form-group">
+                <label >Due</label>
+                <input name = 'due' type = "text" class = "form-control" placeholder = "Text input">
+              </div>            
+              <div class="form-group">
+                <label >Submission Type</label>
+                <input name = 'submission' type = "text" class = "form-control" placeholder = "Text input">
+              </div>           
+              <div class="form-group">
+                <label >Available Time</label>
+                <input name = 'time' type = "text" class = "form-control" placeholder = "Text input">
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+        <div id = "createcourse">
+            <p>Create</p>
+        </div>
+        <!-- <script src="app.js"></script> -->
+    </body>
+</html>

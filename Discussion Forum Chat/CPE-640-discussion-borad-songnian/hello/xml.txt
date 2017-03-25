@@ -1,0 +1,7 @@
+create -- POST
+
+need permission:
+
+Retrieve -- get --list/search
+update -- put/patch --edit
+delete -- delete -- Delete

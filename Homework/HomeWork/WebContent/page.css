@@ -1,0 +1,68 @@
+body{
+    background-color: #0d2c40;
+}
+#Homework {
+    background-color:#f15a30;
+    
+    border:1px solid #f15a30;
+    border-radius:50%;
+    width:380px;
+    height:380px;
+    position: relative;
+    top:100px;
+    left: 100px;
+    text-align: center;
+    line-height: 380px;
+    
+}
+#Grade {
+    background-color:#c879b2;
+    width:250px;
+    height:250px;
+    border:1px solid #c879b2;
+    border-radius:50%;
+    float:right;
+    position:absolute;
+    top:60px;
+    left: 700px;
+    line-height: 250px;
+   
+    
+}
+#LoginTeacher {
+    background-color:rgba(0, 188, 217, 0.8);
+    width:200px;
+    height:200px;
+    border:1px solid rgba(0, 188, 217, 0.8);
+    border-radius:50%;
+    line-height:20%;
+    clear:left;
+    position:absolute;
+    top:450px;
+    left:450px;
+    line-height: 200px;
+}
+#LoginStudent {
+    background-color:whitesmoke;
+    width:200px;
+    height:200px;
+    border:1px solid whitesmoke;
+    border-radius:50%;
+    float:right;
+    position:absolute;
+    top:350px;
+    left: 850px;
+    line-height: 200px;
+}
+#Homework,#Grade,#LoginTeacher.#LoginStudent p {
+    text-align: center;
+}
+p {
+    text-align: center;
+    
+}
+#Grade, #homework{
+    
+}
+
+

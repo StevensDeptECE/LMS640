@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>read json</title>
+	<link href="bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <link href="flow_window.css" rel="">
+</head>
+<body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+//var items = [];
+$.getJSON( "data.json", function( data ) {
+	$.each(data,function(a,b)
+	{
+		if(a=="nav") {
+ 			var test="<nav "+b+">"+"</nav>";
+ 			$(test).appendTo("body");
+ 		}
+ 		if (a=="button") {
+ 			//alert(b);
+ 			var test2="<button "+b+">"+"</button>";
+ 			$(test2).appendTo(".navbar navbar-toggleable-md fixed-top navbar-inverse bg-inverse");
+ 		}
+     	
+     });
+  
+ });
+</script>
+
+</body>
+</html>

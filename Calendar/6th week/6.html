@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>calendar</title>
+    <link type="text/css" charset="utf-8" rel="stylesheet" href="stylesheet.css">
+</head>
+<div align="center">
+<body onload="setCalendar()">
+
+<div>
+    <div>
+        <button onclick="preButton()"><span>&nbsp; < &nbsp;</span></button>
+        <span id="displayDate"></span>
+        <button onclick="resume()"><span>&nbsp; Today &nbsp;</span></button>
+        <button onclick="nextButton()"><span>&nbsp; > &nbsp;</span></button>
+		<button id="createevent" onclick="createEventwindow()"><span>&nbsp; Event &nbsp;</span></button>
+    </div>
+	<div></div>
+    <div id="calendarContainer">ERROR</div>
+
+</div>
+
+<script language="JavaScript" src="6.js"></script>
+
+<script id=addHoliday language="text">
+
+<label>Holiday Name</label>
+<input id="name" class="holiday" name= "Name" type="text"/>
+  <label>Date</label>
+  <select id="month" class="holiday" name="Month" onchange="limit()">
+  <option value="1" class="holiday">January</option>
+  <option value="2" class="holiday">February</option>
+  <option value="3" class="holiday">March</option>
+  <option value="4" class="holiday">April</option>
+  <option value="5" class="holiday">May</option>
+  <option value="6" class="holiday">June</option>
+  <option value="7" class="holiday">July</option>
+  <option value="8" class="holiday">August</option>
+  <option value="9" class="holiday">September</option>
+  <option value="10" class="holiday">October</option>
+  <option value="11" class="holiday">November</option
+  <option value="12" class="holiday">December</option>
+  </select>
+  <input id="day" class="holiday" name="Day" type="number" min="1" max="31"> </input>
+  <button type="submit">Add it!</button>
+</script>
+
+</body>
+</div>
+</html>

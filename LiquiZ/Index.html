@@ -1,54 +1,92 @@
+<!--this is the demo of quiz list, please see quizList.html-->
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <title>Quiz Index</title>
-  <link rel="stylesheet" href="assets/css/index.css">
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-<h1>Quiz Index</h1>
-<table id="t01">
+<h1 class="h01">Quiz Index</h1>
+<table class="t01">
   <tr>
-    <th>Quiz Name</th>
-    <th>Take Quiz</th> 
-    <th>Review Quiz</th>
+    <th>Publish</th>
+    <th>Take Quiz</th>
+    <th>Course Name</th>
+    <th>Due Date</th>
+    <th>Close Date</th>
     <th>Show Statistics</th>
-    <th>Edit Quiz <a class="two" href="http://www.w3schools.com/html/">Add a new Quiz</a></th>
+    <th>Operation</th>
   </tr>
   <tr>
-    <td><a class="one" href=takeQuiz.html>Preview Quiz-1</a></td>
-    <td><a class="one" href=ReadyToTake.html>Take this Quiz</a></td>
-    <td><a class="one" href=takeQuiz.html>Review this Quiz</a></td>
-    <td><a class="one" href=StatisticView2.html>Show Statistics</a></td>
-    <td><a class="one" href=takeQuiz.html>Edit this Quiz</a></td>
+    <td><input type="checkbox" /><br></td>
+    <td><a class="one" href=takeQuiz.html>Quiz-1</a></td>
+    <td>CPE-593</td>
+    <td>1/1/2016</td>
+    <td>2/1/2016</td>
+    <td><a class="one" href=StatisticView2.html>Stats</a></td>
+    <td>
+      <a class="one" href=takeQuiz.html>Prev</a>
+      <a class="one" href=takeQuiz.html>Edit</a>
+      <a class="one" href=takeQuiz.html>Dup</a>
+      <a class="one" href=takeQuiz.html>Del</a>
+    </td>
   </tr>
   <tr>
-    <td><a class="one" href=takeQuiz.html>Preview Quiz-2</a></td>
-    <td><a class="one" href=ReadyToTake.html>Take this Quiz</a></td>
-    <td><a class="one" href=takeQuiz.html>Review this Quiz</a></td>
-    <td><a class="one" href=StatisticView2.html>Show Statistics</a></td>
-    <td><a class="one" href=takeQuiz.html>Edit this Quiz</a></td>
+    <td><input type="checkbox"><br></td>
+    <td><a class="one" href=takeQuiz.html>Quiz-2</a></td>
+    <td>CPE-593</td>
+    <td>2/2/2016</td>
+    <td>3/3/2016</td>
+    <td><a class="one" href=StatisticView2.html>Stats</a></td>
+    <td>
+      <a class="one" href=takeQuiz.html>Prev</a>
+      <a class="one" href=takeQuiz.html>Edit</a>
+      <a class="one" href=takeQuiz.html>Dup</a>
+      <a class="one" href=takeQuiz.html>Del</a>
+    </td>
   </tr>
   <tr>
-    <td><a class="one" href=takeQuiz.html>Preview Quiz-3</a></td>
-    <td><a class="one" href=ReadyToTake.html>Take this Quiz</a></td>
-    <td><a class="one" href=takeQuiz.html>Review this Quiz</a></td>
-    <td><a class="one" href=StatisticView2.html>Show Statistics</a></td>
-    <td><a class="one" href=takeQuiz.html>Edit this Quiz</a></td>
+    <td><input type="checkbox"><br></td>
+    <td><a class="one" href=takeQuiz.html>Quiz-1</a></td>
+    <td>CPE-810</td>
+    <td>3/3/2016</td>
+    <td>4/4/2016</td>
+    <td><a class="one" href=StatisticView2.html>Stats</a></td>
+    <td>
+      <a class="one" href=takeQuiz.html>Prev</a>
+      <a class="one" href=takeQuiz.html>Edit</a>
+      <a class="one" href=takeQuiz.html>Dup</a>
+      <a class="one" href=takeQuiz.html>Del</a>
+    </td>
   </tr>
     <tr>
-    <td><a class="one" href=takeQuiz.html>Preview Quiz-4</a></td>
-    <td><a class="one" href=ReadyToTake.html>Take this Quiz</a></td>
-    <td><a class="one" href=takeQuiz.html>Review this Quiz</a></td>
-    <td><a class="one" href=StatisticView2.html>Show Statistics</a></td>
-    <td><a class="one" href=takeQuiz.html>Edit this Quiz</a></td>
+    <td><input type="checkbox"><br></td>
+    <td><a class="one" href=takeQuiz.html>Quiz-2</a></td>
+    <td>CPE-810</td>
+    <td>4/4/2016</td>
+    <td>5/5/2016</td>
+    <td><a class="one" href=StatisticView2.html>Stats</a></td>
+    <td>
+      <a class="one" href=takeQuiz.html>Prev</a>
+      <a class="one" href=takeQuiz.html>Edit</a>
+      <a class="one" href=takeQuiz.html>Dup</a>
+      <a class="one" href=takeQuiz.html>Del</a>
+    </td>
   </tr>
     <tr>
-    <td><a class="one" href=takeQuiz.html>Preview Quiz-5</a></td>
-    <td><a class="one" href=ReadyToTake.html>Take this Quiz</a></td>
-    <td><a class="one" href=takeQuiz.html>Review this Quiz</a></td>
-    <td><a class="one" href=StatisticView2.html>Show Statistics</a></td>
-    <td><a class="one" href=takeQuiz.html>Edit this Quiz</a></td>
+    <td><input type="checkbox"><br></td>
+    <td><a class="one" href=takeQuiz.html>Quiz-3</a></td>
+    <td>CPE-810</td>
+    <td>5/5/2016</td>
+    <td>6/6/2016</td>
+    <td><a class="one" href=StatisticView2.html>Stats</a></td>
+    <td>
+      <a class="one" href=takeQuiz.html>Prev</a>
+      <a class="one" href=takeQuiz.html>Edit</a>
+      <a class="one" href=takeQuiz.html>Dup</a>
+      <a class="one" href=takeQuiz.html>Del</a>
+    </td>
   </tr>
 </table>
 

@@ -165,6 +165,7 @@ function Quiz(parent, json) {
 	for (var k in json) {
 		this[k] = json[k];
 	}
+	console.log(this);
 		this.md(parent);
 	//parent.appendChild(this.div);
 	this.policy = prefs.getPolicy(json);
@@ -191,7 +192,6 @@ Quiz.prototype.drawQuiz = function() {
 	}
 }
 
-
 function load() {
 	var p = document.getElementById("content");
 	console.log(p);
@@ -200,7 +200,7 @@ function load() {
 	console.log(typeof(test));
 	console.log(test);
 	
-	
+
 	var quest = [
 {
 	id: "qc1000",
@@ -208,16 +208,16 @@ function load() {
 	comp: [
 		["Instr", "What is ", "1"],
 		["Eqn", "2+2", "2"],
-        ["MC", [3,4,5,6],"3"]
+        ["MC", [3,4,5,6], "3"]
 	]
 },
 
 {
 	id: "qc1001",
-	title: "Addition",
+	title: "Multiple Choices",
 	comp: [
 		["Instr", "Which sport do you like?", "1"],
-		["MCS", ["basketball","football","volleyball","baseball"],"2"]
+		["MCS", ["basketball","football","volleyball","baseball"], "2"]
 	]
 },
 
@@ -228,6 +228,16 @@ function load() {
 		["Instr", "What is ","1"],
 		["Eqn", "3*4", "2"],
 		[ "Fillin", "3"]
+	]
+},
+
+{
+	id: "qc10022",
+	title: "Division",
+	comp: [
+		["Instr", "What is ","1"],
+		["Eqn", "10 ／ 3", "2"],
+		[ "Numbers", "6", "3"]
 	]
 },
 
@@ -258,12 +268,19 @@ function load() {
 		["Cloze",
 			[
                 "public class A {",
-                "    public static void main(String[] args) {",
-				"    System.",
-				"[]",
-                "    }",
+                "public static",
+                "[]",
+                "main(String[] args) {",
+                "System.",
+                "[]",
+                "}",
                 "}"
-			],
+                // "(3 +",
+                // "[]",
+                // ") * 2 =",
+                // "[]",
+                // "* 6"
+            ],
 			"1"
 		]
 	]
@@ -336,6 +353,15 @@ function load() {
 		["Instr", "Match the types", "1"],
 		["Match",["animal","number","food"],["ice cream", "dog", "three"], "2" ]
 	]
+},
+
+{
+	id: "qc101s",
+	title: "Short Essay",
+	comp: [
+		["Instr", "Please analyze the relationship between Lennie and George in Of Mice and Men", "1"],
+		["Essay", "2" ]
+	]
 }
     ];
 	var json = {
@@ -347,3 +373,11 @@ function load() {
 
 	q.drawQuiz();
 }
+
+
+
+
+
+
+
+

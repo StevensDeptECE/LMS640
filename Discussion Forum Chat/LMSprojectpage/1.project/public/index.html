@@ -1,0 +1,156 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+
+
+<head>
+  
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<title>sample project</title>
+
+
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">CPE-640</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Discussion<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a onclick="document.getElementById('create-discussion').style.display='block'" >Create</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">View</a></li>
+        </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            <li><a onclick="document.getElementById('create-project').style.display='block'">Create</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">View</a></li>
+            </ul>
+        </li>
+      </ul>
+        <form class="navbar-form navbar-left">
+            <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default btn-primary">Submit</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav">
+            <li><a onclick="document.getElementById('id01').style.display='block'"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </ul>
+    </div><!-- /.nav-collapse -->
+  </div><!-- /.container -->
+</nav><!-- /.navbar -->
+
+
+
+<div class="row row-offcanvas row-offcanvas-left" >
+  <div class=col-sm-9 ng-controller="AppCtrl">  
+    <div class="btn-group pull-right">
+      <button class="btn btn-primary" type="button" ng-click="myFunc()"> All Projects</button>          
+    </div>    
+    <div class="col-md-2" ng-show="showMe">
+      <ul class="nav nav-pills nav-stacked" id="data" ng-repeat="project in projectlist">
+        <li >{{project.name}}</li>
+        <li>&nbsp;</li>
+        <!-- <li class="active"><a href="#">Create</a></li> -->
+      </ul>
+    </div>
+    <div class="col-md-1" >
+    </div>
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6"> 
+
+          
+          
+              <div class="form-group" rows="10">
+
+                  <label for="Pname" ></label>
+                  <input type="text" class="form-control" ng-model="project.name" id="email" placeholder="Name"> 
+                  <label for="Description"></label>
+                  <textarea name="message" ng-model="project.info" class="form-control" rows="3" cols="50" placeholder="Description"></textarea>
+                  
+              </div>
+              <button class="btn btn-primary" ng-click="addproject()">Create</button>  
+              
+            </form>
+          </div>  
+        </div> 
+      </div>
+    </div>
+  </div>
+
+
+          <!-- add your code here-->
+    
+        
+  <div class=col-sm-2>
+
+    <p class="pull-right visible-xs">
+    <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+
+            
+            
+        <!--/.col-xs-12.col-sm-9-->
+
+    <div class="sidebar-offcanvas" id="sidebar">
+      <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#student">Student</a></li>
+      <li><a data-toggle="tab" href="#group">Group</a></li>
+      </ul>
+        <div class="tab-content">
+          <div class="tab-pane fade in active"  id="student">
+          <!-- we need json or datebase to dispaly here-->
+            <div class="list-group">
+                  <a href="#" class="list-group-item" onclick="creates()">student 1<span class="badge">message 2</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 2<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 3<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 4<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 5<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 6<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 7<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 8<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 9<span class="badge">message 15</span></a>
+                  <a href="#" class="list-group-item" onclick="creates()">student 10<span class="badge">message 15</span></a>
+            </div>
+          </div>
+          <div class="tab-pan fade" id="group">
+              <div class="list-group"><!-- we need json or datebase to dispaly here-->
+                    <a href="#" class="list-group-item active">group 1</a>
+                    <a href="#" class="list-group-item">group 2</a>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class=col-sm-1></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+<script src="controllers/controller.js"></script>
+</body>
+</html>
+
+  
+   

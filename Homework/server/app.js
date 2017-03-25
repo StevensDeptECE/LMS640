@@ -1,61 +1,61 @@
-function handleFileSelect(evt) {
-	var files = evt.target.files;
-	var output = [];
-	// for (var i = 0; f; f = files[i]; i++) {
-	//     output.push('<li><strong>', escape(f.name), '<strong>(', f.type || 'n/a', ') -'
-	//                f.size.' bytes, last modified:',   f.lastModifiedDate.toLocaleDateString(), '</li>');
-	// }
-	// document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-}
-document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+"use strict"
+
+const express = require("express");
+const app = express();
+const path = require('path');
+const bp = require('body-parser');
+const fs = require('fs');
+// let configRoutes = require("./routes");
+
+// configRoutes(app);
+console.log(path.resolve(__dirname + '/../public/'));
+
+// parse application/x-www-form-urlencoded
+app.use(bp.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bp.json())
+
+app.use('/html', express.static(path.resolve(__dirname + '/../public/html/')));
+app.use('/css', express.static(path.resolve(__dirname + '/../public/css/')));
+app.use('/js', express.static(path.resolve(__dirname + '/../public/js/')));
+app.use('/img', express.static(path.resolve(__dirname + '/../public/img/')));
+
+let num = 1;
+
+app.post('/create', function(req, res) {
+    console.log('creating new homework');
+    console.log(req.body);
+    fs.writeFile(__dirname + `/homework-${num++}.json`, JSON.stringify(req.body), (err) => {
+        if (err) throw err;
+        console.log('saved');
+    });
+    res.json('{received}');
+})
+
+app.get('/create', function(req, res) {
+    res.sendFile(path.resolve(__dirname + '/../public/html/hw.html'));
+})
+
+app.get('/homework/:hwname',function(req,res){
+
+    let hwname = req.params.hwname;
+    res.sendFile(path.join(__dirname, hwname));
+    console.log('htllow')
+    // fs.readFile(path.join(__dirname, hwname), function(err,buffer){
+    //     if(err) throw err;
+
+    // })
+})
 
 
-const maxFileNum = 5;
-let curFileNum = 0;
-
-function compile() {
-	$('#console').text("running program ...");
-	$.ajax({
-		url: `http://localhost:3000/compile/test${curFileNum}.java`,
-		data: {
-			format: 'json'
-		},
-		error: function(err) {
-			console.log(err);
-		},
-		success: (data) => {
-			$('#console').text(data.output);
-		},
-		type: 'GET'
-	})
-}
+app.listen(3000, () => {
+    console.log("We've now got a server!");
+    console.log("Your routes will be running on http://localhost:3000");
+});
 
 
-function run() {
-	alert("run successfully");
-}
-
-function next() {
-	$.ajax(
-			{
-				url: `http://localhost:3000/code/test${++curFileNum}.java`,
-				data: {
-					format: 'text'
-				},
-				error: function(err) {
-					// $('#info').html('<p>An error has occurred</p>');
-					console.log(err);
-				},
-				success: function(data) {
-					$('#code').text(data);
-				},
-				type: 'GET'
-			}
-		)
-	if (curFileNum == maxFileNum) {
-		curFileNum = 0;
-	}
-}
 
 
 

@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+        table {
+            width: 700px;
+            height: 300px;
+            border-collapse: collapse;
+        }
+        table, td, th {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #a9c6c9;
+        }
+        td.pre{
+            background-color: gainsboro;
+			width: 100px;
+        }
+        td.current{
+            background-color: #c3dde0;
+			width: 100px;
+        }
+        td.next{
+            background-color: lightgreen;
+			width: 100px;
+        }
+        td.today{
+            background-color: #87ceeb;
+			width: 100px;
+
+        }
+		.holiday{
+			background-color: pink;
+			position: absolute;
+			left:450px;
+			top:150px;
+			width:300px;
+			height:200px;
+			border-width: 1px;
+			border-style: solid;
+			margin: 0 auto;
+
+        }
+	    .event{
+			background-color: green;
+			position: absolute;
+			left:400px;
+			top:100px;
+			width:600px;
+			height:400px;
+			border-width: 1px;
+			border-style: solid;
+			margin: 0 auto;
+
+        }

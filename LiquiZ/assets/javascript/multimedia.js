@@ -12,7 +12,7 @@ Aud.prototype.draw = function(div) { //do we want to display the audio?
 function Img(file, id) {
 	this.id = id;
 	this.img = document.createElement("img");
-	this.img.src = 'assets/images/' + file;
+	this.img.src = '../Liquiz/assets/images/' + file;
 	
 }
 

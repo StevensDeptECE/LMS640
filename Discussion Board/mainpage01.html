@@ -47,12 +47,12 @@
 			create_div_regular(true, "nav_bar_container", true, "container", false, null, null,"nav_bar_start");
 		
 				create_div_regular(true, "nav_bar_header", true, "navbar-header", false, null, null,"nav_bar_container");
-					create_btn_N(true, "header_btn", true, "navbar-toggle collapsed",  true, "button", true, "collapse", true, "#navbar", true, "false", true, "navbar", false, null,
-								 "nav_bar_header");
-						create_span_N(false, null, true, "sr-only", true, "Toggle navigation", "header_btn");
-						create_span_N(false, null, true, "icon-bar", false, null, "header_btn");
-						create_span_N(false, null, true, "icon-bar", false, null, "header_btn");
-						create_span_N(false, null, true, "icon-bar", false, null, "header_btn");
+					create_btn_N(true, "header_btn", true, "navbar-toggle collapsed",  true, "button", true, "collapse", true, "#navbar", true, "false", 
+								 true, "navbar", false, null, false, null, "nav_bar_header");
+						create_span_N(false, null, true, "sr-only", false, null, true, "Toggle navigation", "header_btn");
+						create_span_N(false, null, true, "icon-bar", false, null, false, null, "header_btn");
+						create_span_N(false, null, true, "icon-bar", false, null, false, null, "header_btn");
+						create_span_N(false, null, true, "icon-bar", false, null, false, null, "header_btn");
 					create_a_regular(false, null, true, "navbar-brand", false, null, false, null, false, null, false, null, true, "#", true, "CPE640",
 									 0, null, "nav_bar_header");
 				create_div_regular(true, "nav_bar_navbar", true, "collapse navbar-collapse", false, null, null,"nav_bar_container");
@@ -64,7 +64,7 @@
 						create_li_regular(true, "nav_ul_li_2", true, "dropdown", false, null, null, "nav_ul");
 							create_a_regular(true, "nav_ul_li_2_a1", true, "dropdown-toggle", true, "dropdown", true, "button", true, "true", true, "false", 
 											 true, "#", true, "Discussion ", 0, null, "nav_ul_li_2");
-								create_span_N(false, null, true, "caret", false, null, "nav_ul_li_2_a1");
+								create_span_N(false, null, true, "caret", false, null, false, null, "nav_ul_li_2_a1");
 							create_ul_regular(true, "li_2_ul_1", true, "dropdown-menu", false, null, null, "nav_ul_li_2");
 								create_li_regular(true, "ul_1_li", false, null, false, null, null, "li_2_ul_1");
 									create_a_regular(false, null, false, null, false, null, false, null, false, null, false, null, true, "test01.json",
@@ -72,7 +72,7 @@
 						create_li_regular(true, "nav_ul_li_3", true, "dropdown", false, null, null, "nav_ul");
 							create_a_regular(true, "nav_ul_li_2_a2", true, "dropdown-toggle", true, "dropdown", true, "button", true, "true", true, "false", 
 											true, "#", true, "Project ", 0, null, "nav_ul_li_3");
-								create_span_N(false, null, true, "caret", false, null, "nav_ul_li_2_a2");
+								create_span_N(false, null, true, "caret", false, null, false, null, "nav_ul_li_2_a2");
 							create_ul_regular(true, "li_2_ul_2", true, "dropdown-menu", false, null, null, "nav_ul_li_3");
 								create_li_regular(true, "ul_2_li", false, null, false, null, null, "li_2_ul_2");
 									create_a_regular(false, null, false, null, false, null, false, null, false, null, false, null, true, "test01.json",
@@ -81,9 +81,32 @@
 						create_li_regular(true, "login_li_1", false, null, false, null, null, "login_ul_1");
 						create_a_regular(true, "login_a_1", false, null, false, null, false, null, false, null, false, null, true, "javascript:void(0)", 
 										 true, "Login ", 0, null, "login_li_1");
-							create_span_N(false, null, true, "glyphicon glyphicon-log-in", false, null, "login_a_1");
+							create_span_N(false, null, true, "glyphicon glyphicon-log-in", false, null, false, null, "login_a_1");
+
+//--------------------------------- the following is main part under nav-bar ---------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------
+	create_div_regular(true, "mainpage_container", true, "container", false, null, null,"body");
+		create_div_regular(true, "toggle_nav", true, "col-xs-12 col-sm-9", false, null, null,"mainpage_container");
+			create_p_N(true, "toggle_nav_p_1", true, "pull-right visible-xs", "toggle_nav");
+				create_btn_N(true, "toggle_nav_p_btn_1", true, "btn btn-primary btn-xs",  true, "button", true, "offcanvas", false, null, 
+							 false, null, false, null, false, null, true, "Toggle nav", "toggle_nav_p_1");
+			
+			create_div_regular(true, "panel_top", true, "panel panel-default", true, "padding:10px 10px", null,"toggle_nav");
+				create_span_N(true, "panel_top_navbar_R", false, null, true, "padding:0px 10px", false, null, "panel_top");
+					create_span_N(true, "navbar_R_s1", false, null, true, "padding:0px 5px", false, null, "panel_top_navbar_R");
+						create_inp_N(false, null, true, "submit", true, "btn btn-xs btn-info", true, "right", true, "Post", 1, "login_show('bb_post')",
+									 "navbar_R_s1");
+					create_btn_N(true, "billboard_collapse", true, "btn btn-xs btn-info btn-coll",  true, "button", true, "collapse", true, "#collapse1", 
+								 false, null, false, null, false, null, false, null, "panel_top_navbar_R");
+				create_h_N(false, null, 4, true, "Bill Board", "panel_top");
+					
+				
+				
+
 						
 	</script>
+	
+	
 
 </body>
 </html>
