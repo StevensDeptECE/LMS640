@@ -1,0 +1,68 @@
+
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+		<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+        var gradepayload3 = [
+            ["Name", "ID", "Assignment1", "Assignment2","Quiz1", "Quiz2","test"],
+            ["Jane", 123456, 95, 87, 100, 77, 92]
+        ];
+        var n = gradepayload3.length;
+        
+$(function () {
+    Highcharts.chart('container', {
+        title: {
+            text: 'grades in cpe640 '
+        },
+        
+        xAxis: {
+            categories: [gradepayload3[0][2], gradepayload3[0][3], gradepayload3[0][4], gradepayload3[0][5], gradepayload3[0][6]]
+              
+        },
+        // labels: {
+        //     items: [{
+        //         html: 'Total fruit consumption',
+        //         style: {
+        //             left: '50px',
+        //             top: '18px',
+        //             color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+        //         }
+        //     }]
+        // },
+        series: [{
+            type: 'column',
+            name: 'Jane',
+            data: [95, 87, 100, 77, 92]
+      
+        }, {
+            type: 'spline',
+            name: 'Average',
+            data: [88, 90, 97, 78.5, 85],
+            marker: {
+                lineWidth: 2,
+                lineColor: Highcharts.getOptions().colors[3],
+                fillColor: 'white'
+            }
+        }]
+    });
+});
+
+
+		</script>
+	</head>
+	<body>
+<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>
