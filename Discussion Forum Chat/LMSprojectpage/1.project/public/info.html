@@ -1,0 +1,13 @@
+<div class="container">
+	<h2> Project Name:{{projectlist.name}} </h2>
+	Search:
+	<br/>
+		<input type="text" ng-model="name" />
+	<br/>
+	<ul>
+		
+		<li ng-repeat="project in projectlist">{{project.name}} , {{project.info}}</li>
+	</ul>
+	<button class="btn btn-primary" type="button" >Start Discussion</button> 
+	<a href="#/home"> Back</a>
+</div>
