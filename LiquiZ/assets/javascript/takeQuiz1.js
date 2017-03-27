@@ -30,6 +30,7 @@ function QC(parent, json, index) {
     this.questionNum = index + 1;
     this.id = json.id;
     this.title = json.title;
+    this.points = json.points;
     //TODO: inherit default from quiz, then from user (not 1)
     this.points = (typeof json.points === 'undefined') ? 1 : json.points;
     this.level = (typeof json.level === 'undefined') ? 1 : json.level;
@@ -61,11 +62,15 @@ function QC(parent, json, index) {
 Util.subClass(Display, QC);
 
 
-QC.prototype.buildHeader = function() { //is this needed?
+QC.prototype.buildHeader = function() {
     var header = document.createElement('div');
+    var pointsdiv = document.createElement('div');
+    pointsdiv.className = 'qcPoints';
+    pointsdiv.appendChild(document.createTextNode(this.points + " points"));
     header.className = 'header';
     var headerString = this.questionNum + ': ' + this.title;
     header.appendChild(document.createTextNode(headerString));
+    header.appendChild(pointsdiv);
     return header;
 }
 
@@ -119,6 +124,7 @@ var quest = [
     {
         id: "qc1000",
         title: "Addition",
+        points: 10,
         comp: [
             ["Instr", "What is 2+2? ", "1"],
            // ["Eqn", "2+2", "2"],
@@ -129,6 +135,7 @@ var quest = [
     {
         id: "qc1001",
         title: "Select All that Apply",
+        points: 10,
         comp: [
             ["Instr", "Which sport do you like?", "1"],
             ["MCS", ["basketball","football","volleyball","baseball"], "2"]
@@ -138,6 +145,7 @@ var quest = [
     {
         id: "qc1002",
         title: "Fill in",
+        points: 10,
         comp: [
             ["Instr", "What is 3*4? ","1"],
           //  ["Eqn", "3*4", "2"],
@@ -148,6 +156,7 @@ var quest = [
     {
         id: "qc10022",
         title: "Fill in Numbers",
+        points: 10,
         comp: [
             ["Instr", "What is 10/3? ","1"],
           //  ["Eqn", "10 / 3", "2"],
@@ -158,6 +167,7 @@ var quest = [
     {
         id: "qc1003",
         title: "Cloze",
+        points: 10,
         comp: [
             ["Instr", "Complete the code below so it prints \"Hello\"","1"],
             ["Cloze",
@@ -179,6 +189,7 @@ var quest = [
     {
         id: "qc1004",
         title: "Code",
+        points: 10,
         comp: [
             ["Instr", "Complete the code below so it prints \"Hello\"","1"],
             ["Codes", "public class A {<>  public void main(String[] args) {<>  System.<>  }<>}", "2"]
@@ -188,6 +199,7 @@ var quest = [
     {
         id: "qc1005",
         title: "Grid",
+        points: 10,
         comp: [
             ["Instr", "Enter the first pass of bubblesort for the array [5, 1, 3, 4, 2]","1"],
             [ "Grid", 5, "2"]
@@ -197,6 +209,7 @@ var quest = [
     {
         id: "qc1006",
         title: "Survey",
+        points: 10,
         comp: [
             ["Instr", "Enter your honest opinions.  There are no right or wrong answers"],
             ["Survey", "Likert5", [
@@ -211,6 +224,7 @@ var quest = [
     {
         id: "qc1007",
         title: "Matrix",
+        points: 10,
         comp: [
             ["Instr", "Enter any 3x3 magic square","1"],
             [ "Matrix", 3,3, "2"]
@@ -220,9 +234,9 @@ var quest = [
     {
         id: "qc1008",
         title: "Drop Down",
+        points: 10,
         comp: [
             ["Instr", "What is 2+2? ", "1"],
-            //["Eqn", "2+2", "2"],
             ["MCDrop", [1,2,3,4], "3"]
         ]
     },
@@ -230,6 +244,7 @@ var quest = [
     {
         id: "qc1009",
         title: "Drag and Drop",
+        points: 10,
         comp: [
             ["Instr", "Locate the parts of the cat ",'1'],
             ["dragDrop", "cat.jpg",["Ear","Eye","Nose","Tongue"], [ {"left":215,"top":30}, {"left":255,"top":120},{"left":285,"top":160},{"left":285,"top":220}], 7]
@@ -239,6 +254,7 @@ var quest = [
     {
         id: "qc1010",
         title: "Matching",
+        points: 10,
         comp: [
             ["Instr", "Match the types", "1"],
             ["Match",["animal","number","food"],["ice cream", "dog", "three"], "2" ]
@@ -248,6 +264,7 @@ var quest = [
     {
         id: "qc101s",
         title: "Short Essay",
+        points: 10,
         comp: [
             ["Instr", "Please analyze the relationship between Lennie and George in Of Mice and Men", "1"],
             ["Essay", "2" ]

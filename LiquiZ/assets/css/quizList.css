@@ -410,6 +410,11 @@ div.instrFont {
     font-size: 20px;
     margin-bottom: 15px;
 }
+.qcPoints {
+    font-style: italic;
+    font-size: 16px;
+    color: gray;
+}
 .fillIn{
     width: 200px !important;
     height: 28px !important;
