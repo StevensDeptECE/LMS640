@@ -12,37 +12,44 @@
         <span id="displayDate"></span>
         <button onclick="resume()"><span>&nbsp; Today &nbsp;</span></button>
         <button onclick="nextButton()"><span>&nbsp; > &nbsp;</span></button>
-		<button id="createevent" onclick="createEventwindow()"><span>&nbsp; Event &nbsp;</span></button>
+
+        <button id="eventBtn">Add Event</button>
+        <div id="eventWindow" class="addEvent">
+            <div class="addEvent-content">
+              <span class="close">&times;</span>
+              <form class=holiday>
+                <label>Holiday Name</label>
+                <input id="name" class="holiday" name= "Name" type="text"/>
+                <br>
+                <label>Date</label>
+                <select id="month" class="holiday" name="Month" onload="limit()" onchange="limit()">
+                  <option value="1" class="holiday" id="Jan">January</option>
+                  <option value="2" class="holiday" id="Feb">February</option>
+                  <option value="3" class="holiday" id="Mar">March</option>
+                  <option value="4" class="holiday" id="Apr">April</option>
+                  <option value="5" class="holiday" id="May">May</option>
+                  <option value="6" class="holiday" id="Jun">June</option>
+                  <option value="7" class="holiday" id="Jul">July</option>
+                  <option value="8" class="holiday" id="Aug">August</option>
+                  <option value="9" class="holiday" id="Sep">September</option>
+                  <option value="10" class="holiday" id="Oct">October</option>
+                  <option value="11" class="holiday" id="Nov">November</option
+                  <option value="12" class="holiday" id="Dec">December</option>
+                </select>
+                <input id="day" class="holiday" name="Day" type="number" min="1" max="31"> </input>
+                <input id="year" class="holiday" name="Year" type="number"> </input>
+                <br>
+                <button type="submit">Add it!</button>
+              </form>
+            </div>
+          </div>
+
     </div>
-	<div></div>
     <div id="calendarContainer">ERROR</div>
 
 </div>
 
 <script language="JavaScript" src="6.js"></script>
-
-<script id=addHoliday language="text">
-
-<label>Holiday Name</label>
-<input id="name" class="holiday" name= "Name" type="text"/>
-  <label>Date</label>
-  <select id="month" class="holiday" name="Month" onchange="limit()">
-  <option value="1" class="holiday">January</option>
-  <option value="2" class="holiday">February</option>
-  <option value="3" class="holiday">March</option>
-  <option value="4" class="holiday">April</option>
-  <option value="5" class="holiday">May</option>
-  <option value="6" class="holiday">June</option>
-  <option value="7" class="holiday">July</option>
-  <option value="8" class="holiday">August</option>
-  <option value="9" class="holiday">September</option>
-  <option value="10" class="holiday">October</option>
-  <option value="11" class="holiday">November</option
-  <option value="12" class="holiday">December</option>
-  </select>
-  <input id="day" class="holiday" name="Day" type="number" min="1" max="31"> </input>
-  <button type="submit">Add it!</button>
-</script>
 
 </body>
 </div>
