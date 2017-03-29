@@ -377,13 +377,17 @@
 .quiz-nav-right-child a{
     color: black;
     text-decoration: none;
-
 }
 .quiz-nav-right-child a:hover{
     text-decoration: underline;
     font-size: larger;
     font-weight: bold;
-
+}
+.quiz-nav-points {
+    margin: 0px;
+    font-style: italic;
+    font-size: 14px;
+    color: gray
 }
 
 

@@ -61,8 +61,10 @@ and whether they are complete or not*/
 function Sidebar (questions, parentDiv){
 	this.parentDiv = parentDiv;
 	this.questions = [];
+	this.points = [];
 	for (var i in questions){
 		this.questions.push(questions[i]["id"]);
+		this.points.push(questions[i]["points"]);
 	}
 }
 
@@ -78,8 +80,12 @@ Sidebar.prototype.draw = function(){
 	//	a.setAttribute('href','#'+ this.questions[i]);
 		var num = i + 1;
 		a.appendChild(Util.text("Question: " + num));
+		var p = document.createElement('p');
+		p.className = "quiz-nav-points";
+		p.appendChild(Util.text(this.points[i] + " points"));
 	//	a.style.color = "green";
 		item.appendChild(a);
+		item.appendChild(p);
 		list.appendChild(item);
 	}
 	pdiv.appendChild(list)
