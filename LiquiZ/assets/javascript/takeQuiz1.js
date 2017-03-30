@@ -102,6 +102,23 @@ function takeQuiz (payload) {
     
 }
 
+function timerSetter (quizLength){
+    quizLength = parseInt(quizLength);
+    var dueDate = new Date(Date().getTime() +  quizLength*60000);
+    var timer = setInterval(function() {
+        var now = new Date().getTime();
+        var timeLeft = dueDate - now;
+        var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        
+        if (timeLeft < 0) {
+            clearInterval(timer);
+            //FUNCTION TO SUBMIT QUIZ GOES HERE
+        }
+    },1000);
+}
+
 Util.subClass(Display, takeQuiz);
 
 /*draw method for takeQuiz object*/
@@ -109,6 +126,7 @@ takeQuiz.prototype.draw = function(div){
     var header = Util.h1(this.title,"h03");
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
+    timeSetter(time);
     clearElements("up3");
     this.div.appendChild(this.navDiv);
     div.appendChild(this.div);
@@ -128,7 +146,7 @@ var quest = [
         comp: [
             ["Instr", "What is 2+2? ", "1"],
            // ["Eqn", "2+2", "2"],
-            ["MC", [3,4,5,6], "3"]
+            ["MC", [8,4,5,6], "3"]
         ]
     },
 
@@ -274,5 +292,6 @@ var quest = [
 var quiz1Payload = {
     title: "Quiz 1",
     class: "L-quiz",
+    time: "60",
     questions: quest
 };
