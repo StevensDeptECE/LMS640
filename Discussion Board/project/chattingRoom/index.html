@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html  ng-app="chatApp">
+<head>
+</head>
+<body>
+    <div ng-controller="userCreationCtrl as user">
+        {{user.test}}
+    </div>
+    <div ng-controller="chatCtrl as chat">
+        {{chat.test}}
+    </div>
+    
+</body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+
+    <script src="app.js"></script>
+    <script src="/public/javascripts/user-controller-creation.js"></script>
+    <script src="/public/javascripts/chat-controller.js"></script>
+</html>

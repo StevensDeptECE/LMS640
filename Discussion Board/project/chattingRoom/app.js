@@ -5,11 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var http = require('http').Server(app);
+var io = require('socket.io').(http);
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-
+angular.module('chatApp', []);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -41,6 +44,9 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+http.listen(port, function(){
+    console.log("Server is runing at port" + port);
 });
 
 module.exports = app;
