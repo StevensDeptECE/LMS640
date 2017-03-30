@@ -389,7 +389,26 @@ Util = {
   },
 };
 
-
+function getJSONFromServer(filename) {
+  console.log("Get JSON from server");
+  var xhttp;
+  if (window.XMLHttpRequest)
+  {
+    xhttp = new XMLHttpRequest();
+  }
+  else
+  {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("up3").innerHTML = this.responseText;
+    }
+  };
+  xhttp.opn("GET", filename, true);
+  xhttp.send();
+}
 
 /*
   * Calls the constructor for the object that needs to be drawn. "object" is the name
