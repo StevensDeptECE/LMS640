@@ -15,7 +15,7 @@ addQuiz.prototype.draw = function(s) {
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
     clearElements("up3");
-    var newDiv = Util.div("wrapper", "addQuiz");
+    var newDiv = Util.div("wrapper_rightside", "addQuiz");
 
     var t = document.createElement("table");
     t.className = "t01";
@@ -121,10 +121,10 @@ addQuiz.prototype.draw = function(s) {
 
     t.appendChild(tr3);
     newDiv.appendChild(t);
-    var saveQuiz = Util.button("Save Quiz",function () {tableToJson(data_table); window.location.reload(false);},"three");
-    var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"three");
+    var saveQuiz = Util.button("Save Quiz",function () {tableToJson(data_table); location.reload(); launch(quizIndex, quizIndexPayload, "up3"); },"three");
+    // var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"three");
     newDiv.appendChild(saveQuiz);
-    newDiv.appendChild(submitQuiz);
+    // newDiv.appendChild(submitQuiz);
     s.appendChild(newDiv);
     clearClass("active");
     document.getElementById("allquizzes").className = "active";

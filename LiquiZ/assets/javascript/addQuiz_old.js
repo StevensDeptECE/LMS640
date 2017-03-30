@@ -77,33 +77,108 @@ function add_row()
     document.getElementById("new_oper").value="";
 }
 
-var datas = [];
+//modify this part to test localstoraege
 function tableToJson(table) {
-    // var datas = []; // first row needs to be headers
-    var headers = ["id","title","comp"];
-    // for (var i=0; i<table.rows[0].cells.length; i++) {
-    //     headers[i] = table.rows[0].cells[i].innerHTML.toLowerCase().replace(/ /gi,'');
-    // }
-    // go through cells
-    for (var i=1; i<table.rows.length-1; i++) {
+    var datas = []; // first row needs to be headers
+    var headers = ["id", "title", "comp"];
+    for (var i = 1; i < table.rows.length - 1; i++) {
         var tableRow = table.rows[i];
         var rowData = {};
-        for (var j=0; j<2; j++) {
-            rowData[ headers[j] ] = tableRow.cells[j].innerHTML;
+        for (var j = 0; j < 2; j++) {
+            rowData[headers[j]] = tableRow.cells[j].innerText;
         }
-        var instr = [];
-        var eqn = [];
-        var oper = [];
-        instr.push(tableRow.cells[2].innerText.split(/,(?=[^\]]*(?:\[|$))/g));
-        eqn.push(tableRow.cells[3].innerHTML.split(/,(?=[^\]]*(?:\[|$))/g));
-        oper.push(tableRow.cells[4].innerHTML.split(/,(?=[^\]]*(?:\[|$))/g));
+        var instr = tableRow.cells[2].innerText.split(/,(?=[^\]]*(?:\[|$))/g);
+        var eqn = tableRow.cells[3].innerText.split(/,/g);
+        var oper = tableRow.cells[4].innerText;
+
+        var left = 0, right = oper.length - 1;
+        while (left < right) {
+            if (oper.charAt(left) != ",") left++;
+
+            if (oper.charAt(right) != ",") right--;
+
+            if (oper.charAt(left) == "," && oper.charAt(right) == ",") break;
+        }
+        var operTitle = oper.substring(0, left);
+        var operId = oper.substring(right + 1, oper.length);
+
+        var operFinal = [];
+        operFinal.push(operTitle);
+
+        if (left != right) {
+            if (operTitle == "dragDrop") {
+                var operMid = oper.substring(left + 1, right);
+                var left = 0, right = operMid.length - 2;
+                while (left < right) {
+                    if (operMid.charAt(left) != ",") left++;
+
+                    if (operMid.charAt(right) != "]") right--;
+
+                    if (operMid.charAt(left) == "," && operMid.charAt(right) == "]") break;
+                }
+                var operMidOne = operMid.substring(0, left);
+                if (operMidOne.charAt(0) == " ") {
+                    operMidOne = operMidOne.substring(1, operMidOne.length);
+                }
+                var operMidTwo = operMid.substring(left + 1, right + 1);
+                var operMidThree = operMid.substring(right + 2, operMid.length);
+                operFinal.push(operMidOne);
+                operFinal.push(operMidTwo);
+                operFinal.push(operMidThree);
+            } else if (operTitle == "Matrix") {
+                var operMid = oper.substring(left + 1, right);
+                var left = 0;
+                while (left < right) {
+                    if (operMid.charAt(left) != ",") left++;
+                    if (operMid.charAt(left) == ",") break;
+                }
+                var operMidOne = operMid.substring(0, left);
+                var operMidTwo = operMid.substring(left + 1, right + 1);
+                operFinal.push(operMidOne);
+                operFinal.push(operMidTwo);
+            } else if (operTitle == "Match") {
+                var operMid = oper.substring(left + 1, right);
+                var left = 0;
+                right = operMid.length - 2;
+                while (left < right) {
+                    if (operMid.charAt(left) != "]") left++;
+                    if (operMid.charAt(right) != "[") right--;
+                    if (operMid.charAt(left) == "]" && operMid.charAt(right) == "[") break;
+                }
+                var operMidOne = operMid.substring(0, left + 1);
+                var operMidTwo = operMid.substring(right, operMid.length);
+                operFinal.push(operMidOne);
+                operFinal.push(operMidTwo);
+            } else if (operTitle == "Survey") {
+                var operMid = oper.substring(left + 1, right);
+                var left = 0, right = operMid.length - 2;
+                while (left < right) {
+                    if (operMid.charAt(left) != ",") left++;
+
+                    if (operMid.charAt(right) != "[") right--;
+
+                    if (operMid.charAt(left) == "," && operMid.charAt(right) == "[") break;
+                }
+                var operMidOne = operMid.substring(0, left);
+                if (operMidOne.charAt(0) == " ") {
+                    operMidOne = operMidOne.substring(1, operMidOne.length);
+                }
+                var operMidTwo = operMid.substring(right, operMid.length);
+                operFinal.push(operMidOne);
+                operFinal.push(operMidTwo);
+            }
+
+            else operFinal.push(oper.substring(left + 1, right));
+        }
+        operFinal.push(operId);
+
         var comps = [];
         comps.push(instr);
         comps.push(eqn);
-        comps.push(oper);
-        rowData[ headers[2]] = comps;
+        comps.push(operFinal);
+        rowData[headers[2]] = comps;
         datas.push(rowData);
         console.log(datas);
     }
-    return datas;
+    sessionStorage.setItem("mytext", JSON.stringify(datas));
 }
