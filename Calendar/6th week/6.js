@@ -15,7 +15,7 @@ function getRightNow() {
   return new Date();
 }
 
-//returns day of the week SUN-SAT 0-6
+//returns day of the week SUN-SAT 1-7
 function getDay(date){
   var day = date.getDay();
   if(0 == day){
@@ -26,91 +26,95 @@ function getDay(date){
 
 //returns day of the month
 function getDays(date) {
-  var month = date.getMonth(); //gets month 1-12
+  var month = date.getMonth(); //gets month 0-11
   var currentDate = date.getDate(); //gets day 1-31
-  date.setMonth(month - 1, currentDate); //sets date to today
+  date.setMonth(month-1, currentDate); //sets date to last month today
   return currentDate;
 }
 
 //returns what day of the week the 1st is
 function getFirstDayOfMonth(date){
-  var currentDate = date.getDate(); ///gets day of th e month
+  var currentDay = date.getDate(); ///gets day of the month
   date.setDate(1); //set day to the 1st
-  var firstDayOfMonth = getDay(date);
-  date.setDate(currentDate);
+  var firstDayOfMonth = getDay(date); //gets day of week
+  date.setDate(currentDay); //set date back to current day
   return firstDayOfMonth;
 }
 
-    function getLastDayOfMonth(date){
-        var currentDate = date.getDate();
-        var days = getDays(date);
-        date.setDate(days);
-        var lastDayOfMonth = getDay(date);
-        date.setDate(currentDate);
-        return lastDayOfMonth;
+/*//return what day of the week the last day is: getLastDayOfMonth(date)
+function getLastDayOfMonth(date){
+  var currentDate = date.getDate(); //get day of the month
+  var days = getDays(date); //gets day of the week
+  date.setDate(days); //set day to 0-6
+  var lastDayOfMonth = getDay(date);
+  date.setDate(currentDate);
+  return lastDayOfMonth;
+}
+*/
+
+//html string to make end of month data table
+function getHeadOfNextMonth(date) {
+  var days = getDays(date); //day of the month
+  var firstDayOfMonth = getFirstDayOfMonth(date); //day of the week of 1st
+  var verbose = firstDayOfMonth;
+  var row = "";
+  var line = 0;
+
+  for (var i = 1; i <= days; i++) { //count how many lines there are
+    if ((i + verbose) % 7 == 0) {
+      line++;
     }
+  }
 
-    function getHeadOfNextMonth(date) {
-        var days = getDays(date);
-        var firstDayOfMonth = getFirstDayOfMonth(date);
-        var verbose = firstDayOfMonth;
-        var row = "";
-        var line = 0;
+  var year = date.getFullYear(); //gets year
+  var month = date.getMonth(); //gets month
+  if (month == 11) { //if month is dec, next month is jan of next year
+    year += 1;
+    month = 0;
+  }
+  else { //else move month to be next month
+    month += 1;
+  }
 
-        for (var i = 1; i <= days; i++) {
-            if ((i + verbose) % 7 == 0) {
-                line++;
-            }
-        }
+  var nextMonth = new Date(year, month); //date object month/1/year
+  var firstDayOfNextMonth = getFirstDayOfMonth(nextMonth); //where to start next month
+  verbose = firstDayOfNextMonth;
 
-        var year = date.getFullYear();
-        var month = date.getMonth();
-        if (month == 11) {
-            year += 1;
-            month = 0;
-        }
-        else {
-            month += 1;
-        }
-
-        var nextMonth = new Date(year, month);
-        var firstDayOfNextMonth = getFirstDayOfMonth(nextMonth);
-        verbose = firstDayOfNextMonth;
-
-        if (line == 5 || line == 4) {
-            for (var i = 1; i <= 7 - verbose; i++) {
-                row += "<td class='next'>"+i+"</td>";
-            }
-            row += "</tr>";
-        }
-        return row;
+  if (line == 5 || line == 4) {
+    for (var i = 1; i <= 7 - verbose; i++) { //make table data for next month
+      row += "<td class='next'>"+i+"</td>"; //class= next for css styling
     }
+    row += "</tr>";
+  }
+  return row;
+}
 
-    function getEndOfPreMonth(date){
-        var year = date.getFullYear();
-        var month = date.getMonth();
-        if (month == 0) {
-            year -= 1;
-            month = 11;
-        }
-        else {
-            month -= 1;
-        }
-        var preMonth = new Date(year, month);
-        var days = getDays(preMonth);
-        var firstDayOfMonth = getFirstDayOfMonth(preMonth);
-        var verbose = firstDayOfMonth;
-        var row = "";
 
-        for (var i = 1; i <= days; i++) {
-            row += "<td class='pre'>" + i + "</td>";
+function getEndOfPreMonth(date){
+  var year = date.getFullYear();
+  var month = date.getMonth();
+  if (month == 0) { //if month is jan, previous month is dec of last year
+    year -= 1;
+    month = 11;
+  }
+  else {
+    month -= 1;
+  }
+  var preMonth = new Date(year, month); //new date obj month/1/year
+  var days = getDay(preMonth); //get day of prev month BUT ALWAYS GONNA BE 1
+  var firstDayOfMonth = getFirstDayOfMonth(preMonth); //day of week of 1st of prev month
+  var verbose = firstDayOfMonth;
+  var row = "";
 
-            if ((i + verbose) % 7 == 0) {
-                row = "";
-            }
-        }
-        return row;
+  for (var i = 1; i <= days; i++) {
+    row += "<td class='prev'>" + i + "</td>";
+
+    if ((i + verbose) % 7 == 0) {
+      row = "";
     }
+  }
+  return row;
+}
 
     function show(customDate) {
         var today = getRightNow();
@@ -192,7 +196,6 @@ function getFirstDayOfMonth(date){
         fillDate();
         //changeWeekendStyle();
     }
-
 
 
     function getPreMonth() {
@@ -278,20 +281,20 @@ function getFirstDayOfMonth(date){
     }
 
 //code that makes popup form
-    var popup = document.getElementById("eventWindow");
-    var btn = document.getElementById("eventBtn");
-    var span = document.getElementsByClassName("close")[0];
-    btn.onclick = function() {
-        popup.style.display = "block";
-    }
-    span.onclick = function() {
-        popup.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == popup) {
-            popup.style.display = "none";
-        }
-    }
+var popup = document.getElementById("eventWindow");
+var btn = document.getElementById("eventBtn");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  popup.style.display = "block";
+}
+span.onclick = function() {
+  popup.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == popup) {
+    popup.style.display = "none";
+  }
+}
 
 //add holiday code
 var today= new Date();
