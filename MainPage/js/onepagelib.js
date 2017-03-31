@@ -15,7 +15,7 @@ Util = {
    * valid tag was passed.
    */
   make: function (tag, obj) {
-      console.log("make " + tag);
+      //console.log("make " + tag);
       // without a valid tag we can't continue
       if (typeof tag === "undefined" || !tag) {
           console.error("Util.make failed with tag: " + tag);
@@ -389,6 +389,7 @@ Util = {
   },
 };
 
+//https://www.w3schools.com/xml/ajax_xmlhttprequest_response.asp
 function getJSONFromServer(filename) {
   console.log("Get JSON from server");
   var xhttp;
@@ -406,7 +407,7 @@ function getJSONFromServer(filename) {
       document.getElementById("up3").innerHTML = this.responseText;
     }
   };
-  xhttp.opn("GET", filename, true);
+  xhttp.open("GET", filename, true);
   xhttp.send();
 }
 
