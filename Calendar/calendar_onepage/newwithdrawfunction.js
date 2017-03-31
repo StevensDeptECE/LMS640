@@ -148,7 +148,7 @@
         dateString += "<tr>" + row + returnRow;
         dateString += "</table>";
 
-				var calendarContainer = document.getElementById("calendarContainer");
+				var calendarContainer = document.getElementById("up3");
         calendarContainer.innerHTML = dateString;
 
 				//var mainpagecontainer= document.getElementById("up3");
@@ -314,7 +314,7 @@
 		    clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
 		    document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
 		}
-		
+
 //makes the popup for form
 		var popup = document.getElementById("eventWindow");
 		var btn = document.getElementById("eventBtn");
