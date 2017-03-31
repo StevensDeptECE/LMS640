@@ -41,7 +41,7 @@ function getFirstDayOfMonth(date){
   return firstDayOfMonth;
 }
 
-/*//return what day of the week the last day is: getLastDayOfMonth(date)
+/*//return what day of the week the last day is- getLastDayOfMonth NOT USED???
 function getLastDayOfMonth(date){
   var currentDate = date.getDate(); //get day of the month
   var days = getDays(date); //gets day of the week
@@ -52,7 +52,7 @@ function getLastDayOfMonth(date){
 }
 */
 
-//html string to make end of month data table
+//html string to make end of month data table CHECK ME
 function getHeadOfNextMonth(date) {
   var days = getDays(date); //day of the month
   var firstDayOfMonth = getFirstDayOfMonth(date); //day of the week of 1st
@@ -89,7 +89,7 @@ function getHeadOfNextMonth(date) {
   return row;
 }
 
-
+//html string to make end of month data table
 function getEndOfPreMonth(date){
   var year = date.getFullYear();
   var month = date.getMonth();
@@ -100,9 +100,9 @@ function getEndOfPreMonth(date){
   else {
     month -= 1;
   }
-  var preMonth = new Date(year, month); //new date obj month/1/year
-  var days = getDay(preMonth); //get day of prev month BUT ALWAYS GONNA BE 1
-  var firstDayOfMonth = getFirstDayOfMonth(preMonth); //day of week of 1st of prev month
+  var preMonth = new Date(year, month); //new date obj of last month month/1/year
+  var days = getDay(preMonth); //get day of week of 1st of last month
+  var firstDayOfMonth = getFirstDayOfMonth(preMonth); //day of week of 1st of prev month same thing as days?
   var verbose = firstDayOfMonth;
   var row = "";
 
@@ -116,46 +116,47 @@ function getEndOfPreMonth(date){
   return row;
 }
 
-    function show(customDate) {
-        var today = getRightNow();
-				var date = customDate.getDate();
-        var days = getDays(customDate);
-        var firstDayOfMonth = getFirstDayOfMonth(customDate);
-        var verbose = firstDayOfMonth;
-        var dateString = "";
-        dateString += "<table><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>";
-        var row = "";
-        row = getEndOfPreMonth(customDate);
-        for (var i = 1; i <= days; i++) {
-            if(i == today.getDate() && customDate.getMonth() == today.getMonth() && customDate.getFullYear() == today.getFullYear()){
-                row += "<td class='today'>" + i;
-				for(var j = 0; j < 2; j++){
-					if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
-					row += '\n' + "<button class='createholiday' onclick='createwindow("+j+")'>"+holiday[j].name+"</button>";
-				}
-				row += "</td>";
-            }
-            else{
-                row += "<td class='current'>" + i;
-				for(var j = 0; j < 2; j++){
-					if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
-					row += '\n'+ "<button class='createholiday' onclick='createwindow("+j+")'> " + holiday[j].name + " </button>";
-				}
-				row += "</td>";
-            }
-            if ((i + verbose) % 7 == 0) {
-                dateString += "<tr>" + row + "</tr>";
-                row = "";
-            }
-        }
-
-        var returnRow = getHeadOfNextMonth(customDate);
-
-        dateString += "<tr>" + row + returnRow;
-        dateString += "</table>";
-        var calendarContainer = document.getElementById("calendarContainer");
-        calendarContainer.innerHTML = dateString;
+//creates html to displays calendar
+function show(customDate) {
+  var today = getRightNow(); //current date obj
+	var date = customDate.getDate(); //day of month of customDate
+  var days = getDays(customDate);
+  var firstDayOfMonth = getFirstDayOfMonth(customDate);
+  var verbose = firstDayOfMonth;
+  var dateString = "";
+  dateString += "<table><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>";
+  var row = "";
+  row = getEndOfPreMonth(customDate);
+  for (var i = 1; i <= days; i++) {
+    if(i == today.getDate() && customDate.getMonth() == today.getMonth() && customDate.getFullYear() == today.getFullYear()){
+      row += "<td class='today'>" + i;
+			for(var j = 0; j < 2; j++){
+			     if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
+			        row += '\n' + "<button class='createholiday' onclick='createwindow("+j+")'>"+holiday[j].name+"</button>";
+		  }
+			row += "</td>";
     }
+    else{
+      row += "<td class='current'>" + i;
+			for(var j = 0; j < 2; j++){
+			     if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
+			        row += '\n'+ "<button class='createholiday' onclick='createwindow("+j+")'> " + holiday[j].name + " </button>";
+			}
+			row += "</td>";
+    }
+    if ((i + verbose) % 7 == 0) {
+      dateString += "<tr>" + row + "</tr>";
+      row = "";
+    }
+  }
+
+  var returnRow = getHeadOfNextMonth(customDate);
+
+  dateString += "<tr>" + row + returnRow;
+  dateString += "</table>";
+  var calendarContainer = document.getElementById("calendarContainer");
+  calendarContainer.innerHTML = dateString;
+}
 
     function createwindow(n){
     	var para = document.createElement("div");
