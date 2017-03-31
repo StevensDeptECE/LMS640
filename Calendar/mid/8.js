@@ -147,8 +147,12 @@
 
         dateString += "<tr>" + row + returnRow;
         dateString += "</table>";
-        var calendarContainer = document.getElementById("calendarContainer");
+
+				var calendarContainer = document.getElementById("calendarContainer");
         calendarContainer.innerHTML = dateString;
+
+				var mainpagecontainer= document.getElementById("up3");
+				mainpagecontainer.innerHTML=dateString;
     }
 
     function createwindow(n){
@@ -157,7 +161,7 @@
 		para.setAttribute("id", "divholiday");
     	var node = document.createTextNode(holiday[n].notes);
     	para.appendChild(node);
-    	document.body.appendChild(para);			
+    	document.body.appendChild(para);
     }
 
 <<<<<<< HEAD
@@ -176,7 +180,7 @@
 		console.log("i made a window");
     }*/
 
-	document.onclick = function(e) {			
+	document.onclick = function(e) {
 		if(document.getElementById("divholiday")){
 			if(e.target.id != "divholiday" && e.target.className != "createholiday") {
 			var holiday = document.getElementById("divholiday");
@@ -184,7 +188,7 @@
 			console.log("i took away the window");
 		}
 		}
-	} 
+	}
 
     function setCalendar() {
 =======
@@ -299,23 +303,19 @@
 		  document.getElementById("up3").appendChild(btn_today);   // Append <button> to <body>
 		  document.getElementById("up3").appendChild(btn_right);   // Append <button> to <body>
 		}
-
-		//drawfunction
-		var calendarContainer = document.getElementById("up3");
-		calendarContainer.innerHTML = dateString;
-		//calendarContainer.appendChild(ateString);
-}
+		
 		function drawCalendar() {
 		    console.log("Draw Calendar");
 		    clearElements("up2");
 
 		    var newHeader = Util.h1("Calendar", "", "");
-		    document.getElementById("up2").appendChild(newHeader); //gets there
-
+		    document.getElementById("up2").appendChild(newHeader);
 
 		    clearElements("up3");
-		    setCalendar();
-		    drawCalendarButtons(); //doesn't get here
+		    show(getRightNow());
+		    //fillDate();
+		    changeWeekendStyle();
+		    drawCalendarButtons();
 		    //onclickClass("active", launch)
 		    clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
 		    document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
