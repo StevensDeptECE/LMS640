@@ -123,7 +123,7 @@
         for (var i = 1; i <= days; i++) {
             if(i == today.getDate() && customDate.getMonth() == today.getMonth() && customDate.getFullYear() == today.getFullYear()){
                 row += "<td class='today'>" + i;
-				for(var j = 0; j < holiday.length; j++){
+				for(var j = 0; j < 5; j++){
 					if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
 					row += '\n' + "<button class='createholiday' onclick='createwindow("+j+")'>"+holiday[j].name+"</button>";
 				}
@@ -147,12 +147,8 @@
 
         dateString += "<tr>" + row + returnRow;
         dateString += "</table>";
-
-				var calendarContainer = document.getElementById("calendarContainer");
+        var calendarContainer = document.getElementById("calendarContainer");
         calendarContainer.innerHTML = dateString;
-
-				//var mainpagecontainer= document.getElementById("up3");
-				//mainpagecontainer.innerHTML=dateString;
     }
 
     function createwindow(n){
@@ -161,9 +157,8 @@
 		para.setAttribute("id", "divholiday");
     	var node = document.createTextNode(holiday[n].notes);
     	para.appendChild(node);
-    	document.body.appendChild(para);
+    	document.body.appendChild(para);			
     }
-
 
 	/*function createEventwindow(){
     	var para = document.createElement("div");
@@ -180,7 +175,7 @@
 		console.log("i made a window");
     }*/
 
-	document.onclick = function(e) {
+	document.onclick = function(e) {			
 		if(document.getElementById("divholiday")){
 			if(e.target.id != "divholiday" && e.target.className != "createholiday") {
 			var holiday = document.getElementById("divholiday");
@@ -188,10 +183,9 @@
 			console.log("i took away the window");
 		}
 		}
-	}
+	} 
 
-
-		function setCalendar() {
+    function setCalendar() {
         show(getRightNow());
         fillDate();
         //changeWeekendStyle();
@@ -275,8 +269,8 @@
         //changeWeekendStyle();
     }
 
+   /* function changeWeekendStyle(){
 
-/*    function changeWeekendStyle(){
         $("th:gt(4)").css("color", "red");
         for (var i = 0; i < 6; i++) {
             $("tr:eq(" + i + ")>td:gt(4)").css("color", "red");
@@ -287,35 +281,6 @@
         display.innerHTML = getTempDate().toLocaleDateString();
     }
 
-		function drawCalendarButtons() {
-		  console.log("Draw Calendar Buttons");
-		  var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
-		  document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
-		  fillDate();                                              // write current date
-		  var btn_today = Util.button("Today", resume, "", "");    // Create a <button> element
-		  var btn_right = Util.button(">", nextButton, "", "");    // Create a <button> element
-		  document.getElementById("up3").appendChild(btn_today);   // Append <button> to <body>
-		  document.getElementById("up3").appendChild(btn_right);   // Append <button> to <body>
-		}
-
-		function drawCalendar() {
-		    console.log("Draw Calendar");
-		    clearElements("up2");
-
-		    var newHeader = Util.h1("Calendar", "", "");
-		    document.getElementById("up2").appendChild(newHeader);
-
-		    clearElements("up3");
-		    show(getRightNow());
-		    //fillDate();
-		    changeWeekendStyle();
-		    drawCalendarButtons();
-		    //onclickClass("active", launch)
-		    clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
-		    document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
-		}
-		
-//makes the popup for form
 		var popup = document.getElementById("eventWindow");
 		var btn = document.getElementById("eventBtn");
 		var span = document.getElementsByClassName("close")[0];
@@ -378,8 +343,8 @@
 		  event.preventDefault();
 		  var data = formToJSON(form.elements);
 		  holiday.push(data);
+		  console.log(data);
 		  popup.style.display = "none";
-			show(tempDate);
 		}
-		var form = document.getElementsByClassName("holidayForm")[0];
+		var form = document.getElementsByClassName("holiday")[0];
 		form.addEventListener('submit', handleFormSubmit);
