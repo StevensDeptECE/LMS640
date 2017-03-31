@@ -164,7 +164,7 @@
     	document.body.appendChild(para);
     }
 
-<<<<<<< HEAD
+
 	/*function createEventwindow(){
     	var para = document.createElement("div");
 		para.setAttribute("class","event");
@@ -190,10 +190,8 @@
 		}
 	}
 
-    function setCalendar() {
-=======
+
 		function setCalendar() {
->>>>>>> 1630b8f1163c9141e5f8c6748a4bf91f60c6ba32
         show(getRightNow());
         fillDate();
         //changeWeekendStyle();
@@ -277,12 +275,8 @@
         //changeWeekendStyle();
     }
 
-<<<<<<< HEAD
-   /* function changeWeekendStyle(){
-=======
-/*    function changeWeekendStyle(){
->>>>>>> 1630b8f1163c9141e5f8c6748a4bf91f60c6ba32
 
+/*    function changeWeekendStyle(){
         $("th:gt(4)").css("color", "red");
         for (var i = 0; i < 6; i++) {
             $("tr:eq(" + i + ")>td:gt(4)").css("color", "red");
@@ -303,7 +297,7 @@
 		  document.getElementById("up3").appendChild(btn_today);   // Append <button> to <body>
 		  document.getElementById("up3").appendChild(btn_right);   // Append <button> to <body>
 		}
-		
+
 		function drawCalendar() {
 		    console.log("Draw Calendar");
 		    clearElements("up2");
