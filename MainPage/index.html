@@ -35,6 +35,7 @@
   <script src="js/jquery.js"></script>
   <script src="js/jquery.tablesorter.js"></script>
   <script src="../Homework/Canvas-Homework/js/hwonepage.js"></script>
+  <script src="js/onepagecourselist.js"></script>
 </head>
 
 <body onload="launch(Login, '', 'up3')">
@@ -61,7 +62,8 @@
     <!-- x`<li><a id="account" class="active"  onclick="launch(Account, accountpayload, 'up3')"href="#">Account</a></li> -->
     <li><a id="account" class="active"  onclick="launch(Login, '', 'up3')" href="#">Account</a></li>
     <li><a id="dashboard" href="#">Dashboard</a></li>
-    <li><a id="course" href="#" onclick="launch(Grade, gradepayload2, 'up3')">Course</a></li>
+    <!-- <li><a id="course" href="#" onclick="launch(Grade, gradepayload2, 'up3')">Course</a></li> -->
+    <li><a id="course" href="#" onclick="launch(CourseList, courses, 'up3')">Course</a></li>
     <li><a id="groups" href="#" onclick="launch(HomeworkMain, '', 'up3')">Groups</a></li>
     <li><a id="calendar" href="#" onclick="drawCalendar()">Calendar</a></li>
     <li><a id="inbox" href="#">Inbox</a></li>

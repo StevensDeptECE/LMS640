@@ -97,23 +97,30 @@ Util = {
           className: className, //set tr class name
           id: id // set tr id
       });
-      for (var i = 0; i < list.length; i++) {
-          var tElement;
-          /*
-          tElement = Util.make("td", {
-              innerHTML: list[i],
-          });
-          */
-          /*
-          if (header) {
-            tElement= Util.thead(list[i]);
-          }
-          else {
+      if (typeof(list) == "object")
+      {
+        for (var i = 0; i < list.length; i++) {
+            var tElement;
+            /*
+            tElement = Util.make("td", {
+                innerHTML: list[i],
+            });
+            */
+            /*
+            if (header) {
+              tElement= Util.thead(list[i]);
+            }
+            else {
+              tElement = Util.td(list[i]);
+            }
+            */
             tElement = Util.td(list[i]);
-          }
-          */
-          tElement = Util.td(list[i]);
-          tr.appendChild(tElement);
+            tr.appendChild(tElement);
+        }
+      }
+      else {
+        tElement = Util.td(list);
+        tr.appendChild(tElement);
       }
       return tr;
   },
@@ -153,6 +160,7 @@ Util = {
             result.appendChild(row);
           }
           else {
+            console.log(typeof(list[i]));
             row = row = Util.tr(list[i]);
             tbody.appendChild(row);
           }
@@ -392,19 +400,12 @@ Util = {
 //https://www.w3schools.com/xml/ajax_xmlhttprequest_response.asp
 function getJSONFromServer(filename) {
   console.log("Get JSON from server");
-  var xhttp;
-  if (window.XMLHttpRequest)
-  {
-    xhttp = new XMLHttpRequest();
-  }
-  else
-  {
-    // code for IE6, IE5
-    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-  }
+  var xhttp = new XMLHttpRequest();;
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("up3").innerHTML = this.responseText;
+      console.warn(xhttp.responseText);
+      obj = JSON.parse(this.responseText);
+      document.getElementById("up3").innerHTML = obj.name;
     }
   };
   xhttp.open("GET", filename, true);
