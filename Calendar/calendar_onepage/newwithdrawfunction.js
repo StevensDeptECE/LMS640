@@ -151,8 +151,6 @@
 				var calendarContainer = document.getElementById("up3");
         calendarContainer.innerHTML = dateString;
 
-				//var mainpagecontainer= document.getElementById("up3");
-				//mainpagecontainer.innerHTML=dateString;
     }
 
     function createwindow(n){
@@ -283,7 +281,7 @@
         }
     }*/
     function fillDate(){
-        var display =  document.getElementById("displayDate");
+        var display =  document.getElementById("up3");
         display.innerHTML = getTempDate().toLocaleDateString();
     }
 
@@ -291,7 +289,7 @@
 		  console.log("Draw Calendar Buttons");
 		  var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
 		  document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
-		  fillDate();                                              // write current date
+		  //fillDate();                                              // write current date
 		  var btn_today = Util.button("Today", resume, "", "");    // Create a <button> element
 		  var btn_right = Util.button(">", nextButton, "", "");    // Create a <button> element
 		  document.getElementById("up3").appendChild(btn_today);   // Append <button> to <body>
@@ -308,7 +306,7 @@
 		    clearElements("up3");
 		    show(getRightNow());
 		    //fillDate();
-		    changeWeekendStyle();
+		    //changeWeekendStyle();
 		    drawCalendarButtons();
 		    //onclickClass("active", launch)
 		    clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
