@@ -281,15 +281,16 @@
         }
     }*/
     function fillDate(){
-        var display =  document.getElementById("up3");
-        display.innerHTML = getTempDate().toLocaleDateString();
+			var t_todayDate = getTempDate().toLocaleDateString()
+			var todayDate = Util.span(t_todayDate, "", "displayDate");
+			document.getElementById("up3").appendChild(todayDate);
     }
 
 		function drawCalendarButtons() {
 		  console.log("Draw Calendar Buttons");
 		  var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
 		  document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
-		  //fillDate();                                              // write current date
+		  fillDate();                                              // write current date
 		  var btn_today = Util.button("Today", resume, "", "");    // Create a <button> element
 		  var btn_right = Util.button(">", nextButton, "", "");    // Create a <button> element
 		  document.getElementById("up3").appendChild(btn_today);   // Append <button> to <body>
