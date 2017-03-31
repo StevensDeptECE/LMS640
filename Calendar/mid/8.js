@@ -268,18 +268,21 @@
 		}
 
 		//drawfunction
+		var calendarContainer = document.getElementById("up3");
+		calendarContainer.innerHTML = dateString;
+		//calendarContainer.appendChild(ateString);
+}
 		function drawCalendar() {
 		    console.log("Draw Calendar");
 		    clearElements("up2");
 
 		    var newHeader = Util.h1("Calendar", "", "");
-		    document.getElementById("up2").appendChild(newHeader);
+		    document.getElementById("up2").appendChild(newHeader); //gets there
+
 
 		    clearElements("up3");
-		    show(getRightNow());
-		    //fillDate();
-		    changeWeekendStyle();
-		    drawCalendarButtons();
+		    setCalendar();
+		    drawCalendarButtons(); //doesn't get here
 		    //onclickClass("active", launch)
 		    clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
 		    document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar

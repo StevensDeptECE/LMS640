@@ -94,12 +94,12 @@ Grid.prototype.draw = function(div) {
 	}
 };
 
-function Fillin(id) { //parent) {
+function FillIn(id) { //parent) {
 	this.id = id;
 	//pattern for regex
 }
 
-Fillin.prototype.draw = function(div) {
+FillIn.prototype.draw = function(div) {
 	var inp = document.createElement("input");
 	inp.type = "text";
 	inp.style.textAlign = 'center';
@@ -207,14 +207,14 @@ Likert5.prototype.draw = function(div) {
 	div.appendChild(question3);
 };
 
-function dragDrop(image,options,locations, id) {
+function DragDrop(image,options,locations, id) {
     this.image = image;
 	this.id = id;
     this.locations = locations;
 	this.options = options;
 }
 
-dragDrop.prototype.draw = function(div) {
+DragDrop.prototype.draw = function(div) {
 	function dragStart(ev) {
 		ev.dataTransfer.effectAllowed = 'move';
 		ev.dataTransfer.setData("Text")

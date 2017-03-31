@@ -168,7 +168,7 @@ var quest = [
         comp: [
             ["Instr", "What is 3*4? ","1"],
           //  ["Eqn", "3*4", "2"],
-            [ "Fillin", "3"]
+            [ "FillIn", "3"]
         ]
     },
 
@@ -266,7 +266,7 @@ var quest = [
         points: 10,
         comp: [
             ["Instr", "Locate the parts of the cat ",'1'],
-            ["dragDrop", "cat.jpg",["Ear","Eye","Nose","Tongue"], [ {"left":215,"top":30}, {"left":255,"top":120},{"left":285,"top":160},{"left":285,"top":220}], 7]
+            ["DragDrop", "cat.jpg",["Ear","Eye","Nose","Tongue"], [ {"left":215,"top":30}, {"left":255,"top":120},{"left":285,"top":160},{"left":285,"top":220}], 7]
         ]
     },
 
