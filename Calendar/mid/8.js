@@ -256,6 +256,35 @@
         display.innerHTML = getTempDate().toLocaleDateString();
     }
 
+		function drawCalendarButtons() {
+		  console.log("Draw Calendar Buttons");
+		  var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
+		  document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
+		  fillDate();                                              // write current date
+		  var btn_today = Util.button("Today", resume, "", "");    // Create a <button> element
+		  var btn_right = Util.button(">", nextButton, "", "");    // Create a <button> element
+		  document.getElementById("up3").appendChild(btn_today);   // Append <button> to <body>
+		  document.getElementById("up3").appendChild(btn_right);   // Append <button> to <body>
+		}
+
+		//drawfunction
+		function drawCalendar() {
+		    console.log("Draw Calendar");
+		    clearElements("up2");
+
+		    var newHeader = Util.h1("Calendar", "", "");
+		    document.getElementById("up2").appendChild(newHeader);
+
+		    clearElements("up3");
+		    show(getRightNow());
+		    //fillDate();
+		    changeWeekendStyle();
+		    drawCalendarButtons();
+		    //onclickClass("active", launch)
+		    clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
+		    document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
+		}
+//makes the popup for form
 		var popup = document.getElementById("eventWindow");
 		var btn = document.getElementById("eventBtn");
 		var span = document.getElementsByClassName("close")[0];
