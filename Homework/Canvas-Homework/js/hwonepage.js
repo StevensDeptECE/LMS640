@@ -28,6 +28,10 @@ HomeworkMain.prototype.draw = function(content) {
 
   content.appendChild(newDiv1);
   content.appendChild(newDiv2);
+
+  clearClass("active");
+  //set active to some other class
+  document.getElementById("groups").className = "active";
 }
 
 /* Homework page construcotr after HW main page */
@@ -90,6 +94,8 @@ Homework.prototype.draw = function(content) {
 
 
 function HomeworkCourse(payload) {
+  //need to keep track of course name
+  //var course = payload[i];
   this.payload = payload;
 }
 
