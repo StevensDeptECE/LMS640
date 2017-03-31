@@ -173,13 +173,13 @@ questionEditor.prototype.draw = function(s) {
     newDiv.appendChild(t);
 
     var saveQuiz = Util.button("Save Quiz",function () {tableToJson3(data_table); window.location.reload(false);},"three");
-    var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"three");
+    // var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"three");
     newDiv.appendChild(saveQuiz);
-    newDiv.appendChild(submitQuiz);
+    // newDiv.appendChild(submitQuiz);
 
     s.appendChild(newDiv);
-    clearClass("active");
-    document.getElementById("allquizzes").className = "active";
+    // clearClass("active");
+    // document.getElementById("allquizzes").className = "active";
 };
 
 
@@ -204,6 +204,7 @@ function delete_question(no) {
 }
 
 function createClickHandler2(loc,no){
+    console.log(no);
     var eqnInstr = document.getElementById("eqnInstr");
     var cont1Instr = document.getElementById("cont1Instr");
     var cont2Instr = document.getElementById("cont2Instr");

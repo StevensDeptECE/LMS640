@@ -1,7 +1,20 @@
-var http = require("http");
+var express = require('express');
+var app = express();
 
-http.createServer(function (request, response) {
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.end('chattingRoom.html');
-}).listen(8888);
-console.log('Server running at http://127.0.0.1:8888/');
+var http = require('http').Server(app);
+var io = require('socket.io')(http); 
+
+
+var port = 3000;
+
+
+io.on('connection', function(socket){
+    console.log("someone sneaks in...");
+    socket.on("new-message", function(msg){
+        console.log("yes, start to send!!", msg);
+        io.emit("receive-message", msg);
+    })
+});
+http.listen(port, function(){
+    console.log("Server is runing at port" + port);
+});

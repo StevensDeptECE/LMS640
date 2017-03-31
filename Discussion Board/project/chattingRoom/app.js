@@ -5,14 +5,27 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var http = require('http').Server(app);
-var io = require('socket.io').(http);
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-angular.module('chatApp', []);
+
+var http = require('http').Server(app);
+var io = require('socket.io')(http); 
+
+
+var port = 3000;
+
+
+io.on('connection', function(socket){
+    console.log("someone sneaks in...");
+    socket.on("new-message", function(msg){
+        console.log("yes, start to send!!", msg);
+        io.emit("receive-message", msg);
+    })
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

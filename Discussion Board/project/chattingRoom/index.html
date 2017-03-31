@@ -4,15 +4,24 @@
 </head>
 <body>
     <div ng-controller="userCreationCtrl as user">
-        {{user.test}}
+        <input ng-model="user.username", type="text"><button ng-click="user.createUser(user.username)">Submit</button>
     </div>
     <div ng-controller="chatCtrl as chat">
-        {{chat.test}}
+            <h4>Welcome to Chatting Room</h4>
+        <ul>
+            <li ng-repeat="message in chat.messages | orderBy:$index">
+                <strong>{{message.username}}:</strong><span>{{message.message}}</span>
+                
+            </li>
+        </ul>
+        
+        <input ng-model="chat.newMessage" type="text"> <button ng-click="chat.sendMessage()">Send</button>
     </div>
+    
     
 </body>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="/public/javascripts/angular.min.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>

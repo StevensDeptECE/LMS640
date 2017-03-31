@@ -112,6 +112,7 @@ function timerSetter (quizLength){
         var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
         
+       // console.log(dueDate);
         if (timeLeft < 0) {
             clearInterval(timer);
             //FUNCTION TO SUBMIT QUIZ GOES HERE
@@ -126,7 +127,7 @@ takeQuiz.prototype.draw = function(div){
     var header = Util.h1(this.title,"h03");
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
-    timeSetter(time);
+    //timeSetter(time);
     clearElements("up3");
     this.div.appendChild(this.navDiv);
     div.appendChild(this.div);
