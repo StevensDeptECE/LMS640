@@ -22,6 +22,9 @@ CourseList.prototype.draw = function(content) {
     newTable.appendChild(row);
   }
   content.appendChild(newTable);
+  clearClass("active");
+  //set active to some other class
+  document.getElementById("course").className = "active";
 }
 
 courses = ["Software Engineering", "Data Structures", "C++", "Java", "Python"];
