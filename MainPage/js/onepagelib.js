@@ -400,12 +400,14 @@ Util = {
 //https://www.w3schools.com/xml/ajax_xmlhttprequest_response.asp
 function getJSONFromServer(filename) {
   console.log("Get JSON from server");
-  var xhttp = new XMLHttpRequest();;
+  var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.warn(xhttp.responseText);
+      //console.warn(xhttp.responseText);
+      console.log(this.responseText);
       obj = JSON.parse(this.responseText);
       document.getElementById("up3").innerHTML = obj.name;
+      //document.getElementById("up3").innerHTML = xhttp.responseText;
     }
   };
   xhttp.open("GET", filename, true);
