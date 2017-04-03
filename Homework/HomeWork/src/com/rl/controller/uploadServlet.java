@@ -11,6 +11,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
 
+import com.google.gson.JsonObject;
 public class uploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -49,11 +50,19 @@ public class uploadServlet extends HttpServlet {
 				//Long Size = fi.getSize();
 				//true:normal ;false:form
 				boolean isFieldForm = fi.isFormField();
+				doJson d = null;
+				
 				//get inputstream
 				//write the file on the servlet
 				if(!isFieldForm){
 					if(fieldName != null && !"".equals(fieldName)){
 						String uploadPath = request.getSession().getServletContext().getRealPath("/upload");
+						String path = "work.json";
+						JsonObject JO = d.getJsonO(path);
+						String AssignmentId = d.get(JO, "Assignment","assignmentId");
+						String StudentId = d.get(JO, "Assignment","studentId");
+						String actualName = AssignmentId+"_"+StudentId+"_"+origFileName;
+						
 						//create a file
 						File file = new File(uploadPath, origFileName);
 						//System.out.println(file.getAbsolutePath());
@@ -69,10 +78,6 @@ public class uploadServlet extends HttpServlet {
 						
 
 						// Rename file (or directory)
-						
-
-					
-
 						// ...
 						fi.write(file);
 

@@ -84,7 +84,8 @@ $("#post").click(function(){
                  <li><a href="#">View Project</a></li>
                </ul>
              </li>
-           </ul>
+
+		 </ul>
            <form class="navbar-form navbar-left">
              <div class="form-group">
                <input type="text" class="form-control" placeholder="Search">
@@ -136,19 +137,35 @@ $("#post").click(function(){
          <p><span class="badge">2</span> Comments:</p>
          <div class="row">
            <div class="col-sm-2 text-center">
+139
              <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+140
            </div>
+141
            <div class="col-sm-10">
-	         <h4>Anja <small id="onetime"></small></h4>
+142
+                 <h4>Anja <small id="onetime"></small></h4>
+143
              <p id="comment"></p>
+144
              <br>
+145
            </div>
+146
            
+147
          </div>
+148
         
+149
          
+150
      <hr>
+151
      <footer><br><br></footer> 
+152
    </body>
-
+153
+​
+154
 </html>
