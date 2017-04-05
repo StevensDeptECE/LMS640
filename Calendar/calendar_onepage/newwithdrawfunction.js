@@ -387,12 +387,11 @@
 			dayInput.setAttribute("max", "31");
 			form.appendChild(dayInput);
 			var yearInput=document.createElement("input");
-			dayInput.setAttribute("id", "year");
-			dayInput.setAttribute("class", "holidayForm");
-			dayInput.setAttribute("name", "year");
-			dayInput.setAttribute("type", "number");
+			yearInput.setAttribute("id", "year");
+			yearInput.setAttribute("class", "holidayForm");
+			yearInput.setAttribute("name", "year");
+			yearInput.setAttribute("type", "number");
 			form.appendChild(yearInput);
-			var enter=document.createElement("br");
 			form.appendChild(br);
 
 			var submit=document.createElement("button");
@@ -417,6 +416,57 @@
 			  }
 			}
 
+			var today= new Date();
+			var year= today.getFullYear();
+			var month= today.getMonth();
+			var day= today.getDate();
+
+
+			document.getElementById(monthId[month]).setAttribute("selected", "select");
+			document.getElementById("day").setAttribute("value", day);
+			document.getElementById("year").setAttribute("value", year);
+
+			function limit(){ //sets month limit for input dates
+					var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+					if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
+						monthLength[2]=29;
+					}
+					var cmonth=document.getElementById("month").value; //cmonth= chosen month
+					var maxday=monthLength[cmonth-1];
+					var cday=document.getElementById("day");
+					cday.max=maxday;
+				}
+
+			function capitalize(inStr) { //look for word, nonwhitespace characters, global match
+				return inStr.replace(/\w\S*/g, function(tStr) {
+					 return tStr.charAt(0).toUpperCase() + tStr.substr(1).toLowerCase();
+					});
+			}
+
+			function isValidElement(element){ //checks for non-empty name and values
+				element.value=capitalize(element.value);
+				return element.name && element.value;
+			}
+
+			function formToJSON(elements) {
+				return [].reduce.call(elements, function (data, element) {
+					if (isValidElement(element)) {
+							data[element.name] = element.value;
+					}
+					return data;
+				}, {});
+			}
+
+			function handleFormSubmit(event) {	//adds holiday as JSON obj
+				event.preventDefault();
+				var data = formToJSON(form.elements);
+				holiday.push(data);
+				popup.style.display = "none";
+				show(tempDate);
+			}
+			var form = document.getElementsByClassName("holidayForm")[0];
+			form.addEventListener('submit', handleFormSubmit);
+
 		}
 
 //makes the popup for form
@@ -436,53 +486,3 @@
 		}*/
 
 		//add holiday code
-		var today= new Date();
-		var year= today.getFullYear();
-		var month= today.getMonth();
-		var day= today.getDate();
-
-
-		document.getElementById(monthId[month]).setAttribute("selected", "select");
-		document.getElementById("day").setAttribute("value", day);
-		document.getElementById("year").setAttribute("value", year);
-
-		function limit(){ //sets month limit for input dates
-		  	var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-		    if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
-		      monthLength[2]=29;
-		    }
-		  	var cmonth=document.getElementById("month").value; //cmonth= chosen month
-		  	var maxday=monthLength[cmonth-1];
-		  	var cday=document.getElementById("day");
-		  	cday.max=maxday;
-			}
-
-		function capitalize(inStr) { //look for word, nonwhitespace characters, global match
-		  return inStr.replace(/\w\S*/g, function(tStr) {
-		     return tStr.charAt(0).toUpperCase() + tStr.substr(1).toLowerCase();
-		    });
-		}
-
-		function isValidElement(element){ //checks for non-empty name and values
-		  element.value=capitalize(element.value);
-		  return element.name && element.value;
-		}
-
-		function formToJSON(elements) {
-		  return [].reduce.call(elements, function (data, element) {
-		    if (isValidElement(element)) {
-		        data[element.name] = element.value;
-		    }
-		    return data;
-		  }, {});
-		}
-
-		function handleFormSubmit(event) {	//adds holiday as JSON obj
-		  event.preventDefault();
-		  var data = formToJSON(form.elements);
-		  holiday.push(data);
-		  popup.style.display = "none";
-			show(tempDate);
-		}
-		var form = document.getElementsByClassName("holidayForm")[0];
-		form.addEventListener('submit', handleFormSubmit);
