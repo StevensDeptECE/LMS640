@@ -123,6 +123,7 @@
         for (var i = 1; i <= days; i++) {
             if(i == today.getDate() && customDate.getMonth() == today.getMonth() && customDate.getFullYear() == today.getFullYear()){
                 row += "<td class='today'>" + i;
+								console.log(holiday.length);
 				for(var j = 0; j < holiday.length; j++){
 					if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
 					row += '\n' + "<button class='createholiday' onclick='createwindow("+j+")'>"+holiday[j].name+"</button>";
@@ -191,7 +192,6 @@
 
 		function setCalendar() {
         show(getRightNow());
-        //fillDate();
         //changeWeekendStyle();
 				drawCalendarButtons();
     }
@@ -229,7 +229,6 @@
     function preButton(){
         var preMonth = getPreMonth();
         show(preMonth);
-        //fillDate();
 				drawCalendarButtons();
         //changeWeekendStyle();
     }
@@ -238,7 +237,6 @@
     function resume(){
         tempDate = getRightNow();
         show(tempDate);
-        //fillDate();
 				drawCalendarButtons();
         //changeWeekendStyle();
     }
@@ -272,7 +270,6 @@
     function nextButton() {
         var nextMonth = getNextMonth();
         show(nextMonth);
-        //fillDate();
 				drawCalendarButtons();
         //changeWeekendStyle();
     }
@@ -284,11 +281,6 @@
             $("tr:eq(" + i + ")>td:gt(4)").css("color", "red");
         }
     }*/
-    function fillDate(){
-			var t_todayDate = getTempDate().toLocaleDateString()
-			var todayDate = Util.span(t_todayDate, "", "displayDate");
-			document.getElementById("up3").appendChild(todayDate);
-    }
 
 		var monthId=["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul",
 			"Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -310,7 +302,6 @@
 		  console.log("Draw Calendar Buttons");
 		  var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
 		  document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
-		  //fillDate();
 			chooseDate();                                             // write current date
 		  var btn_today = Util.button("Today", resume, "", "");    // Create a <button> element
 		  var btn_right = Util.button(">", nextButton, "", "");    // Create a <button> element
@@ -329,7 +320,7 @@
 
 		    clearElements("up3");
 		    show(getRightNow());
-		    //fillDate();
+				console.log(holiday);
 		    //changeWeekendStyle();
 		    drawCalendarButtons();
 		    //onclickClass("active", launch)
@@ -392,6 +383,18 @@
 			yearInput.setAttribute("name", "year");
 			yearInput.setAttribute("type", "number");
 			form.appendChild(yearInput);
+			var enter= document.createElement("br");
+			form.appendChild(enter);
+
+			var notesLabel= document.createElement("label");
+			notesLabel.appendChild(Util.text("Notes: "));
+			form.appendChild(notesLabel);
+			var notesInput= document.createElement("input");
+			notesInput.setAttribute("id", "notes");
+			notesInput.setAttribute("class", "holidayForm");
+			notesInput.setAttribute("name", "notes");
+			notesInput.setAttribute("type", "text");
+			form.appendChild(notesInput);
 			form.appendChild(br);
 
 			var submit=document.createElement("button");
@@ -461,28 +464,11 @@
 				event.preventDefault();
 				var data = formToJSON(form.elements);
 				holiday.push(data);
+				console.log(data);
 				popup.style.display = "none";
-				show(tempDate);
+				drawCalendar();
 			}
 			var form = document.getElementsByClassName("holidayForm")[0];
 			form.addEventListener('submit', handleFormSubmit);
 
 		}
-
-//makes the popup for form
-		/*var popup = document.getElementById("eventWindow");
-		var btn = document.getElementById("eventBtn");
-		var span = document.getElementsByClassName("close")[0];
-		btn.onclick = function() {
-		  popup.style.display = "block";
-		}
-		span.onclick = function() {
-		  popup.style.display = "none";
-		}
-		window.onclick = function(event) {
-		  if (event.target == popup) {
-		    popup.style.display = "none";
-		  }
-		}*/
-
-		//add holiday code
