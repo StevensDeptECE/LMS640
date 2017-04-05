@@ -213,47 +213,45 @@ function preButton(){
         //changeWeekendStyle();
 }
 
-
-    function resume(){
-        tempDate = getRightNow();
-        show(tempDate);
-				drawCalendarButtons();
+function resume(){
+	tempDate = getRightNow();
+  show(tempDate);
+	drawCalendarButtons();
         //changeWeekendStyle();
-    }
+}
 
-    function getNextMonth() {
-        tempDate = getTempDate();
+function getNextMonth() {
+	tempDate = getTempDate();
 
-        var year = tempDate.getFullYear();
-        var month = tempDate.getMonth();
-        var date = tempDate.getDate();
+  var year = tempDate.getFullYear();
+  var month = tempDate.getMonth();
+  var date = tempDate.getDate();
 
-        if (month == 11) {
-            year += 1;
-            tempDate.setFullYear(year, 0, 1);
-        }
-        else {
-            month += 1;
-            tempDate.setMonth(month, 1);
-        }
+  if (month == 11) {
+  	year += 1;
+    tempDate.setFullYear(year, 0, 1);
+  }
+  else {
+  	month += 1;
+    tempDate.setMonth(month, 1);
+  }
 
-        var nextDays = getDays(tempDate);
+  var nextDays = getDays(tempDate);
 
-        if(date >= nextDays){
-            date = nextDays;
-        }
-        tempDate.setDate(date);
+  if(date >= nextDays){
+  	date = nextDays;
+  }
+  tempDate.setDate(date);
 
-        return tempDate;
-    }
+  return tempDate;
+}
 
-    function nextButton() {
-        var nextMonth = getNextMonth();
-        show(nextMonth);
-				drawCalendarButtons();
+function nextButton() {
+	var nextMonth = getNextMonth();
+  show(nextMonth);
+	drawCalendarButtons();
         //changeWeekendStyle();
-    }
-
+}
 
 /*    function changeWeekendStyle(){
         $("th:gt(4)").css("color", "red");
@@ -262,59 +260,57 @@ function preButton(){
         }
     }*/
 
-		var monthId=["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul",
-			"Aug", "Sep", "Oct", "Nov", "Dec"];
-		var fullMonthId=["January", "February", "March", "April", "May", "June",
-			"July", "August", "Septempber", "October", "November", "December"];
-		function chooseDate(){
-			var a= getTempDate();
-			var m= a.getMonth();
-			var y= a.getFullYear();
+var monthId=["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul",
+	"Aug", "Sep", "Oct", "Nov", "Dec"];
+var fullMonthId=["January", "February", "March", "April", "May", "June",
+	"July", "August", "Septempber", "October", "November", "December"];
 
-			var display= fullMonthId[m] +' '+ y;
+function chooseDate(){
+	var a= getTempDate();
+	var m= a.getMonth();
+	var y= a.getFullYear();
+	var display= fullMonthId[m] +' '+ y;
+	var niceDate = Util.span(display, "", "niceDate");
+	document.getElementById("up3").appendChild(niceDate);
+}
 
-			var niceDate = Util.span(display, "", "niceDate");
-			document.getElementById("up3").appendChild(niceDate);
+function drawCalendarButtons() {
+	console.log("Draw Calendar Buttons");
+	var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
+	document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
+	chooseDate();                                             // write current date
+	var btn_today = Util.button("Today", resume, "", "");    // Create a <button> element
+	var btn_right = Util.button(">", nextButton, "", "");    // Create a <button> element
+	document.getElementById("up3").appendChild(btn_today);   // Append <button> to <body>
+	document.getElementById("up3").appendChild(btn_right);   // Append <button> to <body>
+	var btn_event= Util.button("Add Event", drawEventForm, "eventBtn", "eventBtn");
+	document.getElementById("up3").appendChild(btn_event);
+}
 
-		}
+function drawCalendar() {
+	console.log("Draw Calendar");
+	clearElements("up2");
 
-		function drawCalendarButtons() {
-		  console.log("Draw Calendar Buttons");
-		  var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
-		  document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
-			chooseDate();                                             // write current date
-		  var btn_today = Util.button("Today", resume, "", "");    // Create a <button> element
-		  var btn_right = Util.button(">", nextButton, "", "");    // Create a <button> element
-		  document.getElementById("up3").appendChild(btn_today);   // Append <button> to <body>
-		  document.getElementById("up3").appendChild(btn_right);   // Append <button> to <body>
-			var btn_event= Util.button("Add Event", drawEventForm, "eventBtn", "eventBtn");
-			document.getElementById("up3").appendChild(btn_event);
-		}
+	var newHeader = Util.h1("Calendar", "", "");
+	document.getElementById("up2").appendChild(newHeader);
 
-		function drawCalendar() {
-		    console.log("Draw Calendar");
-		    clearElements("up2");
-
-		    var newHeader = Util.h1("Calendar", "", "");
-		    document.getElementById("up2").appendChild(newHeader);
-
-		    clearElements("up3");
-		    show(getRightNow());
+	clearElements("up3");
+	show(getRightNow());
 		    //changeWeekendStyle();
-		    drawCalendarButtons();
+	drawCalendarButtons();
 		    //onclickClass("active", launch)
-		    clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
-		    document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
-		}
+	clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
+	document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
+}
 
-		function drawEventForm() {
-			console.log("Draw Form");
-			var windo = Util.div("addEvent","eventWindow");
-			document.getElementById("up3").appendChild(windo);
-			var div= Util.div("addEvent-content","");
-			windo.appendChild(div);
-			var close= Util.span("&times;", "close", "");
-			div.appendChild(close);
+function drawEventForm() {
+	console.log("Draw Form");
+	var windo = Util.div("addEvent","eventWindow");
+	document.getElementById("up3").appendChild(windo);
+		var div= Util.div("addEvent-content","");
+		windo.appendChild(div);
+		var close= Util.span("&times;", "close", "");
+		div.appendChild(close);
 			var form= document.createElement("form");
 			form.setAttribute("class", "holidayForm");
 
@@ -383,72 +379,69 @@ function preButton(){
 
 			div.appendChild(form);
 
-			var popup = document.getElementById("eventWindow");
-			var btn = document.getElementById("eventBtn");
-			var span = document.getElementsByClassName("close")[0];
-			btn.onclick = function() {
-			  popup.style.display = "block";
-			}
-			span.onclick = function() {
-			  popup.style.display = "none";
-			}
-			window.onclick = function(event) {
-			  if (event.target == popup) {
-			    popup.style.display = "none";
-			  }
-			}
-
-			var today= new Date();
-			var year= today.getFullYear();
-			var month= today.getMonth();
-			var day= today.getDate();
-
-
-			document.getElementById(monthId[month]).setAttribute("selected", "select");
-			document.getElementById("day").setAttribute("value", day);
-			document.getElementById("year").setAttribute("value", year);
-
-			function limit(){ //sets month limit for input dates
-					var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-					if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
-						monthLength[2]=29;
-					}
-					var cmonth=document.getElementById("month").value; //cmonth= chosen month
-					var maxday=monthLength[cmonth-1];
-					var cday=document.getElementById("day");
-					cday.max=maxday;
-				}
-
-			function capitalize(inStr) { //look for word, nonwhitespace characters, global match
-				return inStr.replace(/\w\S*/g, function(tStr) {
-					 return tStr.charAt(0).toUpperCase() + tStr.substr(1).toLowerCase();
-					});
-			}
-
-			function isValidElement(element){ //checks for non-empty name and values
-				element.value=capitalize(element.value);
-				return element.name && element.value;
-			}
-
-			function formToJSON(elements) {
-				return [].reduce.call(elements, function (data, element) {
-					if (isValidElement(element)) {
-							data[element.name] = element.value;
-					}
-					return data;
-				}, {});
-			}
-
-			function handleFormSubmit(event) {	//adds holiday as JSON obj
-				event.preventDefault();
-				var data = formToJSON(form.elements);
-				holiday.push(data);
-				console.log(data);
-				popup.style.display = "none";
-				show(tempDate);
-				drawCalendarButtons();
-			}
-			var form = document.getElementsByClassName("holidayForm")[0];
-			form.addEventListener('submit', handleFormSubmit);
-
+		var popup = document.getElementById("eventWindow");
+		var btn = document.getElementById("eventBtn");
+		var span = document.getElementsByClassName("close")[0];
+		btn.onclick = function() {
+			popup.style.display = "block";
 		}
+		span.onclick = function() {
+			popup.style.display = "none";
+		}
+		window.onclick = function(event) {
+			if (event.target == popup) {
+				popup.style.display = "none";
+			}
+		}
+
+		var today= new Date();
+		var year= today.getFullYear();
+		var month= today.getMonth();
+		var day= today.getDate();
+
+		document.getElementById(monthId[month]).setAttribute("selected", "select");
+		document.getElementById("day").setAttribute("value", day);
+		document.getElementById("year").setAttribute("value", year);
+
+		function limit(){ //sets month limit for input dates
+			var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+			if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
+				monthLength[2]=29;
+			}
+			var cmonth=document.getElementById("month").value; //cmonth= chosen month
+			var maxday=monthLength[cmonth-1];
+			var cday=document.getElementById("day");
+			cday.max=maxday;
+		}
+
+		function capitalize(inStr) { //look for word, nonwhitespace characters, global match
+			return inStr.replace(/\w\S*/g, function(tStr) {
+				return tStr.charAt(0).toUpperCase() + tStr.substr(1).toLowerCase();
+			});
+		}
+
+		function isValidElement(element){ //checks for non-empty name and values
+			element.value=capitalize(element.value);
+			return element.name && element.value;
+		}
+
+		function formToJSON(elements) {
+			return [].reduce.call(elements, function (data, element) {
+				if (isValidElement(element)) {
+					data[element.name] = element.value;
+				}
+				return data;
+			}, {});
+		}
+
+		function handleFormSubmit(event) {	//adds holiday as JSON obj
+			event.preventDefault();
+			var data = formToJSON(form.elements);
+			holiday.push(data);
+			popup.style.display = "none";
+			show(tempDate);
+			drawCalendarButtons();
+		}
+		var form = document.getElementsByClassName("holidayForm")[0];
+		form.addEventListener('submit', handleFormSubmit);
+}
