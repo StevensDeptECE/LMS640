@@ -183,7 +183,7 @@
 			if(e.target.id != "divholiday" && e.target.className != "createholiday") {
 			var holiday = document.getElementById("divholiday");
 			holiday.parentNode.removeChild(holiday);
-			console.log("i took away the window");
+			//console.log("i took away the window");
 		}
 		}
 	}
@@ -191,8 +191,9 @@
 
 		function setCalendar() {
         show(getRightNow());
-        fillDate();
+        //fillDate();
         //changeWeekendStyle();
+				drawCalendarButtons();
     }
 
     function getTempDate(){
@@ -228,7 +229,8 @@
     function preButton(){
         var preMonth = getPreMonth();
         show(preMonth);
-        fillDate();
+        //fillDate();
+				drawCalendarButtons();
         //changeWeekendStyle();
     }
 
@@ -236,7 +238,8 @@
     function resume(){
         tempDate = getRightNow();
         show(tempDate);
-        fillDate();
+        //fillDate();
+				drawCalendarButtons();
         //changeWeekendStyle();
     }
 
@@ -269,7 +272,8 @@
     function nextButton() {
         var nextMonth = getNextMonth();
         show(nextMonth);
-        fillDate();
+        //fillDate();
+				drawCalendarButtons();
         //changeWeekendStyle();
     }
 
@@ -286,15 +290,34 @@
 			document.getElementById("up3").appendChild(todayDate);
     }
 
+		var monthId=["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul",
+			"Aug", "Sep", "Oct", "Nov", "Dec"];
+		var fullMonthId=["January", "February", "March", "April", "May", "June",
+			"July", "August", "Septempber", "October", "November", "December"];
+		function chooseDate(){
+			var a= getTempDate();
+			var m= a.getMonth();
+			var y= a.getFullYear();
+
+			var display= fullMonthId[m] +' '+ y;
+
+			var niceDate = Util.span(display, "", "niceDate");
+			document.getElementById("up3").appendChild(niceDate);
+
+		}
+
 		function drawCalendarButtons() {
 		  console.log("Draw Calendar Buttons");
 		  var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
 		  document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
-		  fillDate();                                              // write current date
+		  //fillDate();
+			chooseDate();                                             // write current date
 		  var btn_today = Util.button("Today", resume, "", "");    // Create a <button> element
 		  var btn_right = Util.button(">", nextButton, "", "");    // Create a <button> element
 		  document.getElementById("up3").appendChild(btn_today);   // Append <button> to <body>
 		  document.getElementById("up3").appendChild(btn_right);   // Append <button> to <body>
+			var btn_event= Util.button("Add Event", drawEventForm, "eventBtn", "eventBtn");
+			document.getElementById("up3").appendChild(btn_event);
 		}
 
 		function drawCalendar() {
@@ -314,8 +337,90 @@
 		    document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
 		}
 
+		function drawEventForm() {
+			console.log("Draw Form");
+			var windo = Util.div("addEvent","eventWindow");
+			document.getElementById("up3").appendChild(windo);
+			var div= Util.div("addEvent-content","");
+			windo.appendChild(div);
+			var close= Util.span("&times;", "close", "");
+			div.appendChild(close);
+			var form= document.createElement("form");
+			form.setAttribute("class", "holidayForm");
+
+			var holidayName= document.createElement("label");
+			holidayName.appendChild(Util.text("Holiday Name: "))
+			form.appendChild(holidayName);
+			var nameInput= document.createElement("input");
+			nameInput.setAttribute("id","name");
+			nameInput.setAttribute("class","holidayForm");
+			nameInput.setAttribute("name","name");
+			nameInput.setAttribute("type","text");
+			form.appendChild(nameInput);
+			var br=document.createElement("br");
+			form.appendChild(br);
+
+			var dateInLabel= document.createElement("label");
+			dateInLabel.appendChild(Util.text("Date: "));
+			form.appendChild(dateInLabel);
+			var select= document.createElement("select");
+			select.setAttribute("id", "month");
+			select.setAttribute("class", "holidayForm");
+			select.setAttribute("name", "month");
+			select.setAttribute("onload", "limit()");
+			select.setAttribute("onchange", "limit()");
+			for(var i=0; i<12; i++){
+				var option= document.createElement("option");
+				option.setAttribute("value", i);
+				option.setAttribute("class", "holidayForm");
+				option.setAttribute("id", monthId[i]);
+				option.appendChild(Util.text(fullMonthId[i]));
+				select.appendChild(option);
+			}
+			form.appendChild(select);
+			var dayInput=document.createElement("input");
+			dayInput.setAttribute("id", "day");
+			dayInput.setAttribute("class", "holidayForm");
+			dayInput.setAttribute("name", "day");
+			dayInput.setAttribute("type", "number");
+			dayInput.setAttribute("min", "1");
+			dayInput.setAttribute("max", "31");
+			form.appendChild(dayInput);
+			var yearInput=document.createElement("input");
+			dayInput.setAttribute("id", "year");
+			dayInput.setAttribute("class", "holidayForm");
+			dayInput.setAttribute("name", "year");
+			dayInput.setAttribute("type", "number");
+			form.appendChild(yearInput);
+			var enter=document.createElement("br");
+			form.appendChild(br);
+
+			var submit=document.createElement("button");
+			submit.setAttribute("type", "submit");
+			submit.appendChild(Util.text("Add it!"));
+			form.appendChild(submit);
+
+			div.appendChild(form);
+
+			var popup = document.getElementById("eventWindow");
+			var btn = document.getElementById("eventBtn");
+			var span = document.getElementsByClassName("close")[0];
+			btn.onclick = function() {
+			  popup.style.display = "block";
+			}
+			span.onclick = function() {
+			  popup.style.display = "none";
+			}
+			window.onclick = function(event) {
+			  if (event.target == popup) {
+			    popup.style.display = "none";
+			  }
+			}
+
+		}
+
 //makes the popup for form
-		var popup = document.getElementById("eventWindow");
+		/*var popup = document.getElementById("eventWindow");
 		var btn = document.getElementById("eventBtn");
 		var span = document.getElementsByClassName("close")[0];
 		btn.onclick = function() {
@@ -328,7 +433,7 @@
 		  if (event.target == popup) {
 		    popup.style.display = "none";
 		  }
-		}
+		}*/
 
 		//add holiday code
 		var today= new Date();
@@ -336,8 +441,7 @@
 		var month= today.getMonth();
 		var day= today.getDate();
 
-		var monthId=["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul",
-			"Aug", "Sep", "Oct", "Nov", "Dec"];
+
 		document.getElementById(monthId[month]).setAttribute("selected", "select");
 		document.getElementById("day").setAttribute("value", day);
 		document.getElementById("year").setAttribute("value", year);
