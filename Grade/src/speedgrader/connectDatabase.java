@@ -11,11 +11,35 @@ public class connectDatabase {
 	
 	public  static void main(String[] args) 
 	{
+		Properties prop = new Properties();
+		InputStream input = null;
+		String usr ="";
+		String pwd ="";
+		String url ="";
+		try {
 
+			input = new FileInputStream("/Users/xinyu/Documents/workspaces/TomcatTest/conf/conf.properties");
+			
+			
+			prop.load(input);
 
-		String usr ="xinyu";
-		String pwd ="679000";
-		String url ="jdbc:postgresql://localhost:5432/xinyu";
+			// get the property value and print it out
+			 usr = prop.getProperty("usr");
+			 pwd = prop.getProperty("pwd");
+			 url = prop.getProperty("url");
+			
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
 		try
 		{
@@ -35,12 +59,11 @@ public class connectDatabase {
 			System.out.println("Success connecting server!");
 
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM Sales");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM articlee");
 
 			while (rs.next())
 			{
-				System.out.println(rs.getString("cust") + " " + rs.getString("prod") + " " + rs.getString("day") + " " +
-					   	rs.getString("month") + " " + rs.getString("year") + " " + rs.getString("quant"));
+				System.out.println( rs.getString("id")+rs.getString("name"));
 			}
 		}
 
@@ -53,3 +76,4 @@ public class connectDatabase {
 	}
 
 }
+
