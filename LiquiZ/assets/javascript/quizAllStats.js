@@ -48,10 +48,10 @@ AllStats.prototype.draw= function(s){
     for (var i = 0; i < data.length; i++) {
         tr = document.createElement("tr");
         var td1 = document.createElement("td");
-        td1.appendChild(document.createTextNode(data[i].quizName));
+        td1.appendChild(document.createTextNode(data[i].quizTitle));
         tr.appendChild(td1);
         var td2 = document.createElement("td");
-        td2.appendChild(document.createTextNode(data[i].course));
+        td2.appendChild(document.createTextNode(data[i].quizClass));
         tr.appendChild(td2);
         var td3 = document.createElement("td");
         td3.appendChild(document.createTextNode(data[i].grade.low));

@@ -338,6 +338,7 @@ Codes.prototype.draw = function(div) {
     inp.className = "inputCode";
     var myCode = document.createTextNode(newCodes);
     inp.append(myCode);
+    inp.addEventListener('keydown', autosize);
     div.appendChild(inp);
 };
 
