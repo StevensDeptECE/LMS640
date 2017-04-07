@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var App = angular.module('App', []);
+
+	App.controller('TodoCtrl', function($scope, $http) {
+  	$http.get('todos.json')
+       .then(function(res){
+          $scope.todos = res.data;                
+        });
+});
+</script>
+</body>
+</html>
