@@ -41,7 +41,7 @@ function getFirstDayOfMonth(date){
   return firstDayOfMonth;
 }
 
-/*//return what day of the week the last day is- getLastDayOfMonth NOT USED???
+//return what day of the week the last day is- getLastDayOfMonth NOT USED???
 function getLastDayOfMonth(date){
   var currentDate = date.getDate(); //get day of the month
   var days = getDays(date); //gets day of the week
@@ -50,7 +50,7 @@ function getLastDayOfMonth(date){
   date.setDate(currentDate);
   return lastDayOfMonth;
 }
-*/
+
 
 //html string to make end of month data table CHECK ME
 function getHeadOfNextMonth(date) {
@@ -195,7 +195,7 @@ function show(customDate) {
     function setCalendar() {
         show(getRightNow());
         fillDate();
-        //changeWeekendStyle();
+        changeWeekendStyle();
     }
 
 
@@ -269,18 +269,18 @@ function show(customDate) {
         changeWeekendStyle();
     }
 
-/*    function changeWeekendStyle(){
+    function changeWeekendStyle(){
 
         $("th:gt(4)").css("color", "red");
         for (var i = 0; i < 6; i++) {
             $("tr:eq(" + i + ")>td:gt(4)").css("color", "red");
         }
-    }*/
+    }
     function fillDate(){
         var display =  document.getElementById("displayDate");
         display.innerHTML = getTempDate().toLocaleDateString();
     }
-
+/*
 //code that makes popup form
 var popup = document.getElementById("eventWindow");
 var btn = document.getElementById("eventBtn");
@@ -348,4 +348,4 @@ function handleFormSubmit(event) {	//adds holiday as JSON obj
   popup.style.display = "none";
 }
 var form = document.getElementsByClassName("holiday")[0];
-form.addEventListener('submit', handleFormSubmit);
+form.addEventListener('submit', handleFormSubmit);*/

@@ -123,7 +123,7 @@
         for (var i = 1; i <= days; i++) {
             if(i == today.getDate() && customDate.getMonth() == today.getMonth() && customDate.getFullYear() == today.getFullYear()){
                 row += "<td class='today'>" + i;
-				for(var j = 0; j < holiday.length; j++){
+				for(var j = 0; j < 5; j++){
 					if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
 					row += '\n' + "<button class='createholiday' onclick='createwindow("+j+")'>"+holiday[j].name+"</button>";
 				}
@@ -160,7 +160,6 @@
     	document.body.appendChild(para);			
     }
 
-<<<<<<< HEAD
 	/*function createEventwindow(){
     	var para = document.createElement("div");
 		para.setAttribute("class","event");
@@ -187,9 +186,6 @@
 	} 
 
     function setCalendar() {
-=======
-		function setCalendar() {
->>>>>>> 1630b8f1163c9141e5f8c6748a4bf91f60c6ba32
         show(getRightNow());
         fillDate();
         //changeWeekendStyle();
@@ -273,11 +269,7 @@
         //changeWeekendStyle();
     }
 
-<<<<<<< HEAD
    /* function changeWeekendStyle(){
-=======
-/*    function changeWeekendStyle(){
->>>>>>> 1630b8f1163c9141e5f8c6748a4bf91f60c6ba32
 
         $("th:gt(4)").css("color", "red");
         for (var i = 0; i < 6; i++) {
@@ -289,38 +281,6 @@
         display.innerHTML = getTempDate().toLocaleDateString();
     }
 
-		function drawCalendarButtons() {
-		  console.log("Draw Calendar Buttons");
-		  var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
-		  document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
-		  fillDate();                                              // write current date
-		  var btn_today = Util.button("Today", resume, "", "");    // Create a <button> element
-		  var btn_right = Util.button(">", nextButton, "", "");    // Create a <button> element
-		  document.getElementById("up3").appendChild(btn_today);   // Append <button> to <body>
-		  document.getElementById("up3").appendChild(btn_right);   // Append <button> to <body>
-		}
-
-		//drawfunction
-		var calendarContainer = document.getElementById("up3");
-		calendarContainer.innerHTML = dateString;
-		//calendarContainer.appendChild(ateString);
-}
-		function drawCalendar() {
-		    console.log("Draw Calendar");
-		    clearElements("up2");
-
-		    var newHeader = Util.h1("Calendar", "", "");
-		    document.getElementById("up2").appendChild(newHeader); //gets there
-
-
-		    clearElements("up3");
-		    setCalendar();
-		    drawCalendarButtons(); //doesn't get here
-		    //onclickClass("active", launch)
-		    clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
-		    document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
-		}
-//makes the popup for form
 		var popup = document.getElementById("eventWindow");
 		var btn = document.getElementById("eventBtn");
 		var span = document.getElementsByClassName("close")[0];
@@ -383,8 +343,8 @@
 		  event.preventDefault();
 		  var data = formToJSON(form.elements);
 		  holiday.push(data);
+		  console.log(data);
 		  popup.style.display = "none";
-			show(tempDate);
 		}
-		var form = document.getElementsByClassName("holidayForm")[0];
+		var form = document.getElementsByClassName("holiday")[0];
 		form.addEventListener('submit', handleFormSubmit);
