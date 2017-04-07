@@ -341,7 +341,7 @@ function drawEventForm() {
 			select.setAttribute("onchange", "limit()");
 			for(var i=0; i<12; i++){
 				var option= document.createElement("option");
-				option.setAttribute("value", i);
+				option.setAttribute("value", i+1);
 				option.setAttribute("class", "holidayForm");
 				option.setAttribute("id", monthId[i]);
 				option.appendChild(Util.text(fullMonthId[i]));
@@ -442,6 +442,7 @@ function drawEventForm() {
 			event.preventDefault();
 			var data = formToJSON(form.elements);
 			holiday.push(data);
+			console.log(data);
 			popup.style.display = "none";
 			show(tempDate);
 			drawCalendarButtons();
