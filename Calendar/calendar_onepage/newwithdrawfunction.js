@@ -117,21 +117,25 @@ function show(customDate) {
 	dateString += "<table><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>";
 	var row = "";
 	row = getEndOfPreMonth(customDate);
+	console.log(holiday.length);
 	for (var i = 1; i <= days; i++) {
 		if(i == today.getDate() && customDate.getMonth() == today.getMonth() && customDate.getFullYear() == today.getFullYear()){
 			row += "<td class='today'>" + i;
 			for(var j = 0; j < holiday.length; j++){
-				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
+				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
 					row += '\n' + "<button class='createholiday' onclick='createwindow("+j+")'>"+holiday[j].name+"</button>";
-					console.log("i made the holiday " + holiday[j].name);
+					console.log("if made a button for " + holiday[j].name);
+				}
 			}
 			row += "</td>";
 		}
 		else{
 			row += "<td class='current'>" + i;
-			for(var j = 0; j < 5; j++){
-				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
+			for(var j = 0; j < holiday.length; j++){
+				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
 					row += '\n'+ "<button class='createholiday' onclick='createwindow("+j+")'> " + holiday[j].name + " </button>";
+					console.log("else made a button for " + holiday[j].name);
+				}
 			}
 			row += "</td>";
 		}
@@ -441,9 +445,8 @@ function drawEventForm() {
 			popup.style.display = "none";
 			show(tempDate);
 			drawCalendarButtons();
-			var frm = document.getElementsByClassName("holidayForm")[0];
-   		frm.reset();  // Reset
-   		return false;
+			//var frm = document.getElementsByClassName("holidayForm")[0];
+   		//frm.reset();  // Reset
 		}
 		var form = document.getElementsByClassName("holidayForm")[0];
 		form.addEventListener('submit', handleFormSubmit);
