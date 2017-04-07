@@ -103,16 +103,16 @@ function takeQuiz (payload) {
 }
 
 function timerSetter (quizLength){
-    quizLength = parseInt(quizLength);
-    var dueDate = new Date(Date().getTime() +  quizLength*60000);
+    var dueDate = new Date().getTime() +  quizLength*60000;
+    var timeLeftHTML = Util.p("Time Remaining ","h04","countdownTimer"); 
+    document.getElementById("up2").appendChild(timeLeftHTML);
     var timer = setInterval(function() {
         var now = new Date().getTime();
         var timeLeft = dueDate - now;
         var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-        
-       // console.log(dueDate);
+        document.getElementById("countdownTimer").innerHTML = "Time Remaining " hours + ":" + minutes + ":" + seconds;
         if (timeLeft < 0) {
             clearInterval(timer);
             //FUNCTION TO SUBMIT QUIZ GOES HERE
@@ -127,7 +127,7 @@ takeQuiz.prototype.draw = function(div){
     var header = Util.h1(this.title,"h03");
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
-    //timeSetter(time);
+    timerSetter(this.time);
     clearElements("up3");
     this.div.appendChild(this.navDiv);
     div.appendChild(this.div);
