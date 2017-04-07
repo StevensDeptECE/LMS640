@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="css/style1.css" rel="stylesheet" type="text/css">
   <link href="../Calendar/calendar_onepage/stylesheet.css" rel="stylesheet" type="text/css">
   <link href="../LiquiZ/assets/css/quizList.css" rel="stylesheet" type="text/css">
 
@@ -37,9 +37,10 @@
   <script src="../Homework/Canvas-Homework/js/hwonepage.js"></script>
   <script src="js/onepagecourselist.js"></script>
   <script src="js/preferences.js"></script>
+  <script src="js/prefeditor.js"></script>
 </head>
 
-<body onload="launch(Login, '', 'up3')">
+<body onload="loadPrefs('prefs_sample'), launch(Login, '', 'up3')">
   <!--
   <div class="loginformabs_top">
     <form action="/action_page.php">
@@ -69,7 +70,7 @@
     <li><a id="calendar" href="#" onclick="drawCalendar()">Calendar</a></li>
     <li><a id="inbox" href="#" onclick="getJSONFromServer('../grade2.json')">Inbox</a></li>
     <li><a id="commons" href="#">Commons</a></li>
-    <li><a id="help" href="#" onclick="launch(Preferences, 'prefs_sample.json', 'up3')">Help</a></li>
+    <li><a id="help" href="#" onclick="launch(PrefEditor, [], 'up3')">Help</a></li>
   </ul>
 
   <div id="content">

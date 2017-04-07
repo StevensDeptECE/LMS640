@@ -6,6 +6,7 @@ const app = express();
 const path = require('path');
 const bp = require('body-parser');
 const fs = require('fs');
+const busboy = require('connect-busboy');
 // let configRoutes = require("./routes");
 
 // configRoutes(app);
@@ -13,7 +14,7 @@ console.log(path.resolve(__dirname + '/../public/'));
 
 // parse application/x-www-form-urlencoded
 app.use(bp.urlencoded({ extended: false }))
-
+app.use(busboy())
 // parse application/json
 app.use(bp.json())
 
@@ -42,11 +43,24 @@ app.get('/homework/:hwname',function(req,res){
 
     let hwname = req.params.hwname;
     res.sendFile(path.join(__dirname, hwname));
-    console.log('htllow')
+    
     // fs.readFile(path.join(__dirname, hwname), function(err,buffer){
     //     if(err) throw err;
 
     // })
+})
+
+app.post('/upload', function(req, res){
+    req.pipe(req.busboy);
+    req.busboy.on('file', function(fieldname, file, filename) {
+        // console.log(file)
+        var fstream = fs.createWriteStream(__dirname + "/" + filename); 
+        file.pipe(fstream);
+        fstream.on('close', function () {
+            res.send('upload succeeded!');
+        });
+    });
+    res.send("success");
 })
 
 

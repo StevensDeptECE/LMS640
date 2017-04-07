@@ -117,14 +117,14 @@ function show(customDate) {
 	dateString += "<table><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>";
 	var row = "";
 	row = getEndOfPreMonth(customDate);
-	console.log(holiday.length);
+	//console.log(holiday.length);
 	for (var i = 1; i <= days; i++) {
 		if(i == today.getDate() && customDate.getMonth() == today.getMonth() && customDate.getFullYear() == today.getFullYear()){
 			row += "<td class='today'>" + i;
 			for(var j = 0; j < holiday.length; j++){
 				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
 					row += '\n' + "<button class='createholiday' onclick='createwindow("+j+")'>"+holiday[j].name+"</button>";
-					console.log("if made a button for " + holiday[j].name);
+					//console.log("if made a button for " + holiday[j].name);
 				}
 			}
 			row += "</td>";
@@ -134,7 +134,7 @@ function show(customDate) {
 			for(var j = 0; j < holiday.length; j++){
 				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
 					row += '\n'+ "<button class='createholiday' onclick='createwindow("+j+")'> " + holiday[j].name + " </button>";
-					console.log("else made a button for " + holiday[j].name);
+					//console.log("else made a button for " + holiday[j].name);
 				}
 			}
 			row += "</td>";
@@ -306,7 +306,16 @@ function drawCalendar() {
 	clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
 	document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
 }
-
+function limit(){ //sets month limit for input dates
+	var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
+		monthLength[2]=29;
+	}
+	var cmonth=document.getElementById("month").value; //cmonth= chosen month
+	var maxday=monthLength[cmonth-1];
+	var cday=document.getElementById("day");
+	cday.max=maxday;
+}
 function drawEventForm() {
 	console.log("Draw Form");
 	var windo = Util.div("addEvent","eventWindow");
@@ -407,17 +416,6 @@ function drawEventForm() {
 		document.getElementById("day").setAttribute("value", day);
 		document.getElementById("year").setAttribute("value", year);
 
-		function limit(){ //sets month limit for input dates
-			var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-			if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
-				monthLength[2]=29;
-			}
-			var cmonth=document.getElementById("month").value; //cmonth= chosen month
-			var maxday=monthLength[cmonth-1];
-			var cday=document.getElementById("day");
-			cday.max=maxday;
-		}
-
 		function capitalize(inStr) { //look for word, nonwhitespace characters, global match
 			return inStr.replace(/\w\S*/g, function(tStr) {
 				return tStr.charAt(0).toUpperCase() + tStr.substr(1).toLowerCase();
@@ -442,7 +440,6 @@ function drawEventForm() {
 			event.preventDefault();
 			var data = formToJSON(form.elements);
 			holiday.push(data);
-			console.log(data);
 			popup.style.display = "none";
 			show(tempDate);
 			drawCalendarButtons();

@@ -26,12 +26,12 @@ body {
 }
 
 .navigation li a.active {
-    background-color: #0000A0;
+    background-color: #800080;
     color: white;
 }
 
 .navigation li a:hover:not(.active) {
-    background-color: #ADD8E6;
+    background-color: #FF00FF;
     color: white;
 }
 
