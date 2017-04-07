@@ -441,6 +441,9 @@ function drawEventForm() {
 			popup.style.display = "none";
 			show(tempDate);
 			drawCalendarButtons();
+			var frm = document.getElementsByClassName("holidayForm")[0];
+   		frm.reset();  // Reset
+   		return false;
 		}
 		var form = document.getElementsByClassName("holidayForm")[0];
 		form.addEventListener('submit', handleFormSubmit);
