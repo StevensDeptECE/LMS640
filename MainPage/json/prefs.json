@@ -1,0 +1,122 @@
+{
+	"css": "default",
+	"regex": {
+		"physics": {
+			"3sig": {
+				"regex": "\\d{3}|\\d\\.\\d{2}|\\.\\d{3}",
+				"postest": ["132", "1.23", "12.3", ".123"],
+				"negtest": ["1234", "12.45", ".9919"],
+			},
+			"mass": {
+				"regex": "kg|kilo|kilogram",
+				"postest": ["kg", "kilo", "kilos"],
+				"negtest": ["f", "kilog"]
+			},
+			"massqty": "[:3sig:][:mass:]"
+		},
+		"programming": {
+			"cident": "[A-Za-z_][A-Za-z0-9_]*",
+		}
+	},
+	"vars": {
+		"gen": {
+			"r1": "1:10",
+			"r2": "0:10",
+			"r3": "10:10:100",
+			"name": ["Fred", "Mary", "Alice", "Bob", "Rashid", "Anna", "Sarah", "David"],
+		},
+		"C++": {
+			"shortvar": ["i", "j", "k"],
+			"longvar": ["count", "munge", "foo", "bar", "baz", "barf"],
+			"intop": ["+", "-", "*", "/", "%"],
+			"cmpop": ["<", "<=", ">", ">=", "==", "!="],
+			"bitop": ["<<", ">>", "&", "|", "^"],
+			"funcs": ["sin", "cos", "tan", "atan", "atan2", "sqrt"],
+		},
+		"circuits": {
+			"I": ".1:.1:10",
+			"I": "rand(.1,.1,10)",
+			"R": "10:10:1000",
+			"R": "sigfigs(2, 0, 2)",
+			"V": "=I*R",
+		}
+	},
+	"stdchoice": {
+		  "Likert5": [
+		  	"Strongly Agree",
+          	"Agree",
+          	"Neutral",
+          	"Disagree",
+          	"Strongly Disagree"],
+		  "Likert7": [
+		  	"Exceptional",
+          	"Excellent",
+          	"Very Good",
+          	"Good",
+          	"Fair",
+          	"Poor",
+          	"Very Poor"],
+	  	  "Yesno": ["Yes", "No"],
+  		  "Boolean": ["true", "false"]
+
+	},
+	"policies": {
+		"mastery": {
+			"submissioncount": 0,
+			"due": "+7 11:59pm",
+			"close": "due+7",
+			""
+
+		},
+		"assess": {
+			"submissioncount": 1,
+			"due": "now+01:00:00",
+			"close": "=due",
+			""
+		}
+	},
+    "hw": {
+	"default": {
+	    "submission": ".cc",
+	    "due": "+7 11:59pm",
+	    "close": "due+7",
+	}
+
+
+
+    },
+	"responses": {
+		"right": ["randomresponse", "exp", "correct", "right", "excellent", "yes"],
+		"wrong": ["randomresponse", "exp", "incorrect", "wrong", "no", "not quite"],
+		"audright": ["randaudresponse", "exp", "mp3", "right", "yes", "excellent", "great"],
+		"audwrong": ["randaudresponse", "exp", "mp3", "incorrect", "wrong", "no", "not quite"]
+	},
+	"defaults": {
+		"std": {
+		"points": 1,
+		"level": 1,
+		"rightResponse": "right",
+		"wrongResponse": "wrong",
+		},
+		"lev2": ["std", {"level": 2}],
+
+		}
+	},
+	"licenses": {
+		"free": ["No license, do whatever you like", null],
+		"cc-by": ["Creative Commons with attribution",
+			"https://en.wikipedia.org/wiki/Creative_Commons_license#Types_of_licenses",
+			"https://creativecommons.org/licenses"
+		],
+		"cc-sa": ["Creative Commons Share Alike", null, "https://creativecommons.org/licenses"],
+		"NC": ["Non-commercial only", null, null],
+		"ND": ["No Derivative Works (use verbatim only)", null, null],
+		"LGPL3": ["GNU Lesser General Public License", "https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License", "https://opensource.org/licenses/lgpl-3.0.html"],
+		"GPL": ["GNU Lesser General Public License", "https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License", null],
+	},
+	"rights": {
+		"copy": "Copyright ($year$) Dov Kruger, all rights reserved",
+		"default": "GPL", 
+	}
+
+}

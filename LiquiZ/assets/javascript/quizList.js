@@ -67,6 +67,9 @@ quizIndex.prototype.draw = function(s) {
 */
 
     for (var i = 0; i < this.payload.length; i++) {
+        if(this.payload[i] == null) {
+            continue;
+        }
         tr = document.createElement("tr");
         var td1 = document.createElement("td");
         var div = document.createElement("div");
@@ -75,16 +78,16 @@ quizIndex.prototype.draw = function(s) {
         ifPublish.id = "ifPublish" + i;
         var label = document.createElement("label");
         label.htmlFor = "ifPublish" + i;
-        ifPublish.checked = this.payload[i].publish != "no";
+        ifPublish.checked = this.payload[i].published != "no";
         div.appendChild(ifPublish);
         div.appendChild(label);
         div.className = "newCheckbox";
         td1.appendChild(div);
 
         var td2 = document.createElement("td");
-            td2.appendChild(document.createTextNode(this.payload[i].quizName));
+            td2.appendChild(document.createTextNode(this.payload[i].quizTitle));
         var td3 = document.createElement("td");
-            td3.appendChild(document.createTextNode(this.payload[i].course));
+            td3.appendChild(document.createTextNode(this.payload[i].quizClass));
         var td4 = document.createElement("td");
             td4.appendChild(document.createTextNode(this.payload[i].dueDate));
         var td5 = document.createElement("td");
@@ -162,28 +165,29 @@ quizIndex.prototype.createClickHandler1 = function(arg, data){
 
 var quizIndexPayload = [
     {
-        "id": "qc1111",
-        "publish": "yes",
-        "quizName": "Quiz1",
-        "course": "CPE-593",
+        "quizID": "qc1111",
+        "published": "yes",
+        "quizTitle": "Quiz1",
+        "quizClass": "CPE-593",
         "dueDate": "1/1/2017",
         "closeDate": "2/2/2017"
     },
     {
-        "id": "qc2222",
-        "publish": "yes",
-        "quizName": "Quiz2",
-        "course": "CPE-593",
+        "quizID": "qc2222",
+        "published": "yes",
+        "quizTitle": "Quiz2",
+        "quizClass": "CPE-593",
         "dueDate": "2/2/2017",
         "closeDate": "3/3/2017"
     },
     {
-        "id": "qc3333",
-        "publish": "no",
-        "quizName": "Quiz1",
-        "course": "CPE-810",
+        "quizID": "qc3333",
+        "published": "no",
+        "quizTitle": "Quiz1",
+        "quizClass": "CPE-810",
         "dueDate": "3/3/2017",
         "closeDate": "4/4/2017"
 
     }
 ];
+quizIndexPayload.push(JSON.parse(sessionStorage.getItem("quizDetails")));

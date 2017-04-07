@@ -391,5 +391,10 @@ button#backButton {
 }
 /*----------------------------------------*/
 
+table #courseList {
+  border: none;
+  padding: 5px;
+}
+
 
 /*</style>

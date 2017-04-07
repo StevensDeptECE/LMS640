@@ -28,6 +28,10 @@ HomeworkMain.prototype.draw = function(content) {
 
   content.appendChild(newDiv1);
   content.appendChild(newDiv2);
+
+  clearClass("active");
+  //set active to some other class
+  document.getElementById("groups").className = "active";
 }
 
 /* Homework page construcotr after HW main page */
@@ -55,7 +59,7 @@ Homework.prototype.draw = function(content) {
       var newP2 = Util.p("Course", "", "");
       newDiv2_2.appendChild(newP2);
     newDiv2.appendChild(newDiv2_2);
-    var newDiv2_3 = Util.div("course", "");
+    var newDiv2_3 = Util.div("quizClass", "");
       var newTable = Util.table([], false, "table table-hober", "");
         var newTr1 = Util.tr([]);
         var newTh1 = Util.th("", "", "");
@@ -90,6 +94,8 @@ Homework.prototype.draw = function(content) {
 
 
 function HomeworkCourse(payload) {
+  //need to keep track of quizClass name
+  //var quizClass = payload[i];
   this.payload = payload;
 }
 
@@ -105,7 +111,7 @@ HomeworkCourse.prototype.draw = function(content) {
       //var newP = Util.p("Course Name", "", "");
       //divCourseTitle.appendChild(newP);
     //divCourseDash.appendChild(divCourseTitle);
-    var divCourse1 = Util.div("course", "");
+    var divCourse1 = Util.div("quizClass", "");
       var divComingHw = Util.div("comingHW", "");
         var pComing = Util.p("Coming...", "", "");
         var hwTable1 = Util.table([], false, "table table-hover", "");

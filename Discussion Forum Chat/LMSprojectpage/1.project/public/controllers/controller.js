@@ -15,6 +15,8 @@ myApp.config(function($routeProvider) {
     });
 });
 
+
+
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     console.log("Hello World from controller");
     
@@ -84,5 +86,6 @@ $scope.update = function() {
 $scope.deselect = function() {
   $scope.project = "";
 }
+
 
 }]);﻿

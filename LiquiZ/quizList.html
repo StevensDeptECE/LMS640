@@ -33,9 +33,9 @@
 //        var items = [];
 //        $.each(data,function(key, val){
 //            items.push("<tr>");
-//            items.push("<td id =''" + key + "''>" + val.publish + "</td>");
-//            items.push("<td id =''" + key + "''>" + val.quizName + "</td>");
-//            items.push("<td id =''" + key + "''>" + val.course + "</td>");
+//            items.push("<td id =''" + key + "''>" + val.published + "</td>");
+//            items.push("<td id =''" + key + "''>" + val.quizTitle + "</td>");
+//            items.push("<td id =''" + key + "''>" + val.quizClass + "</td>");
 //            items.push("<td id =''" + key + "''>" + val.dueDate + "</td>");
 //            items.push("<td id =''" + key + "''>" + val.closeDate + "</td>");
 //            items.push("<td id =''" + key + "''>" + "<a class='one' href = " + val.stats + ">Stats</a>" + "</td>");
@@ -50,9 +50,9 @@ var table = $("table");
 $.getJSON("data.json",function(data){
     for (var i = 0; i < data.length; i++) {
         var row = "<tr id='row-" + i + "'>";
-        row += "<td>" + data[i].publish +"</td>";
-        row += "<td>" + data[i].quizName +"</td>";
-        row += "<td>" + data[i].course + "</td>";
+        row += "<td>" + data[i].published +"</td>";
+        row += "<td>" + data[i].quizTitle +"</td>";
+        row += "<td>" + data[i].quizClass + "</td>";
         row += "<td>" + data[i].dueDate + "</td>";
         row += "<td>" + data[i].closeDate + "</td>";
         row += "<td >" + "<a class='one' href = " + data[i].stats + ">Stats</a>" + "</td>";
@@ -75,9 +75,9 @@ $.getJSON("data.json",function(data){
         $("#row-" + rowId).clone().appendTo(table);
         var bbb = {
             "id": data[rowId].id,
-            "publish": data[rowId].publish,
-            "quizName": data[rowId].quizName,
-            "course": data[rowId].course,
+            "published": data[rowId].published,
+            "quizTitle": data[rowId].quizTitle,
+            "quizClass": data[rowId].quizClass,
             "dueDate": data[rowId].dueDate,
             "closeDate": data[rowId].closeDate,
             "stats": data[rowId].stats,

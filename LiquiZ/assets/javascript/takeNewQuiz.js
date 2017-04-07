@@ -28,14 +28,18 @@ Display.prototype.md = function(parent) {
     parent.appendChild(this.div);
 };
 
-function newQC(parent, json) {
+
+function newQC(parent, json, index) {
+    this.questionNum = index + 1;
     this.id = json.id;
     this.title = json.title;
+    this.points = json.points;
     //TODO: inherit default from quiz, then from user (not 1)
     this.points = (typeof json.points === 'undefined') ? 1 : json.points;
     this.level = (typeof json.level === 'undefined') ? 1 : json.level;
     this.md(parent);
     this.div.className = 'qc';
+    this.div.id = this.id;
     this.comp = [];
     for (var i = 0; i < json.comp.length; ++i) {
         var comp = json.comp[i];
@@ -56,7 +60,7 @@ function newQC(parent, json) {
                 console.log(a33);
                 a33 = a33.split(/,(?=[^\}]?(?=[\{]))/g);
                 console.log(a33);
-                if (comp[0] == "dragDrop" && a33[0].charAt(a33[0].length-1) == "}") {
+                if (comp[0] == "DragDrop" && a33[0].charAt(a33[0].length-1) == "}") {
                     var objectArray = [];
                     for(var k = 0; k < a33.length; k++) {
                         var objectEle = eval('(' + a33[k] + ')');
@@ -96,9 +100,13 @@ Util2.subClass(Display, newQC);
 
 newQC.prototype.buildHeader = function() { //is this needed?
     var header = document.createElement('div');
+    var pointsdiv = document.createElement('div');
+    pointsdiv.className = 'qcPoints';
+    pointsdiv.appendChild(document.createTextNode(this.points + " points"));
     header.className = 'header';
-    var headerString = this.id + ': ' + this.title;
+    var headerString = this.questionNum + ': ' + this.title;
     header.appendChild(document.createTextNode(headerString));
+    header.appendChild(pointsdiv);
     return header;
 };
 
@@ -123,9 +131,12 @@ function takeNewQuiz (payload) {
     for (var i = 0; i < this.questions.length; ++i) {
         /*this changes questions[i] so if we click on the quiz again it won't draw right
          should be okay because you should only be able to load a quiz once*/
-         newQuestions[i] =  new newQC(this.div, this.questions[i]);
+         newQuestions[i] =  new newQC(this.div, this.questions[i], i);
          //this.questions[i] = new newQC(this.div, this.questions[i]);
     }
+    /*Create sidebar using question list--in progress*/
+    this.navDiv = Util.div("quiz-nav-right");
+    this.sidebar = new Sidebar(payload["questions"],this.navDiv);
 }
 
 Util2.subClass(Display, takeNewQuiz);
@@ -138,7 +149,9 @@ takeNewQuiz.prototype.draw = function(div){
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
     clearElements("up3");
+    this.div.appendChild(this.navDiv);
     div.appendChild(this.div);
+    this.sidebar.draw();
     for (var i = 0; i < newQuestions.length; ++i) {
         newQuestions[i].draw();
     }
