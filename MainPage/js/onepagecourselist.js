@@ -10,7 +10,7 @@ CourseList.prototype.draw = function(content) {
   up2.appendChild(header);
 
   clearElements('up3');
-  //create a new table from a course list with a courseList class name
+  //create a new table from a quizClass list with a courseList class name
   var newTable = Util.table([], false, "courseList", "");
   for (var i = 0; i < this.payload.length; i++)
   {
@@ -24,7 +24,7 @@ CourseList.prototype.draw = function(content) {
   content.appendChild(newTable);
   clearClass("active");
   //set active to some other class
-  document.getElementById("course").className = "active";
+  document.getElementById("quizClass").className = "active";
 }
 
 courses = ["Software Engineering", "Data Structures", "C++", "Java", "Python"];

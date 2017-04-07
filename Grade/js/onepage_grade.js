@@ -22,7 +22,7 @@ Grade.prototype.draw = function(c) {
   $("#keywords").tablesorter();
   clearClass("active");
   //set active to some other class
-  document.getElementById("course").className = "active";
+  document.getElementById("quizClass").className = "active";
 }
 
 

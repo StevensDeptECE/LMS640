@@ -69,9 +69,9 @@
 
     for (var i = 0; i < data.length; i++) {
         var row = "<tr id='row-" + i + "'>";
-        row += "<td>" + data[i].publish + "</td>";
-        row += "<td>" + data[i].quizName + "</td>";
-        row += "<td>" + data[i].course + "</td>";
+        row += "<td>" + data[i].published + "</td>";
+        row += "<td>" + data[i].quizTitle + "</td>";
+        row += "<td>" + data[i].quizClass + "</td>";
         row += "<td>" + data[i].dueDate + "</td>";
         row += "<td>" + data[i].closeDate + "</td>";
         row += "<td >" + "<a class='one' href = " + data[i].stats + ">Stats</a>" + "</td>";
@@ -96,9 +96,9 @@
         $("#row-" + rowId).clone().appendTo(table);
         var bbb = {
             "id": data[rowId].id,
-            "publish": data[rowId].publish,
-            "quizName": data[rowId].quizName,
-            "course": data[rowId].course,
+            "published": data[rowId].published,
+            "quizTitle": data[rowId].quizTitle,
+            "quizClass": data[rowId].quizClass,
             "dueDate": data[rowId].dueDate,
             "closeDate": data[rowId].closeDate,
             "stats": data[rowId].stats,

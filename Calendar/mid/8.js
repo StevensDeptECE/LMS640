@@ -151,8 +151,6 @@
 				var calendarContainer = document.getElementById("calendarContainer");
         calendarContainer.innerHTML = dateString;
 
-				//var mainpagecontainer= document.getElementById("up3");
-				//mainpagecontainer.innerHTML=dateString;
     }
 
     function createwindow(n){
@@ -161,10 +159,14 @@
 		para.setAttribute("id", "divholiday");
     	var node = document.createTextNode(holiday[n].notes);
     	para.appendChild(node);
-    	document.body.appendChild(para);
+    	document.body.appendChild(para);			
     }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> ea08a74e86ea7faf2e128bf7cc9cd6f772542536
 	/*function createEventwindow(){
     	var para = document.createElement("div");
 		para.setAttribute("class","event");
@@ -180,7 +182,11 @@
 		console.log("i made a window");
     }*/
 
+<<<<<<< HEAD
+	document.onclick = function(e) {			
+=======
 	document.onclick = function(e) {
+>>>>>>> ea08a74e86ea7faf2e128bf7cc9cd6f772542536
 		if(document.getElementById("divholiday")){
 			if(e.target.id != "divholiday" && e.target.className != "createholiday") {
 			var holiday = document.getElementById("divholiday");
@@ -188,12 +194,21 @@
 			console.log("i took away the window");
 		}
 		}
+<<<<<<< HEAD
+	} 
+
+    function setCalendar() {
+=======
+=======
 	}
 
 
+>>>>>>> ea08a74e86ea7faf2e128bf7cc9cd6f772542536
 		function setCalendar() {
+>>>>>>> 1630b8f1163c9141e5f8c6748a4bf91f60c6ba32
         show(getRightNow());
-        fillDate();
+        //fillDate();
+				chooseDate();
         //changeWeekendStyle();
     }
 
@@ -230,7 +245,8 @@
     function preButton(){
         var preMonth = getPreMonth();
         show(preMonth);
-        fillDate();
+        //fillDate();
+				chooseDate();
         //changeWeekendStyle();
     }
 
@@ -238,7 +254,8 @@
     function resume(){
         tempDate = getRightNow();
         show(tempDate);
-        fillDate();
+        //fillDate();
+				chooseDate();
         //changeWeekendStyle();
     }
 
@@ -271,10 +288,19 @@
     function nextButton() {
         var nextMonth = getNextMonth();
         show(nextMonth);
-        fillDate();
+        //fillDate();
+				chooseDate();
         //changeWeekendStyle();
     }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+   /* function changeWeekendStyle(){
+=======
+/*    function changeWeekendStyle(){
+>>>>>>> 1630b8f1163c9141e5f8c6748a4bf91f60c6ba32
+=======
+>>>>>>> ea08a74e86ea7faf2e128bf7cc9cd6f772542536
 
 /*    function changeWeekendStyle(){
         $("th:gt(4)").css("color", "red");
@@ -287,34 +313,45 @@
         display.innerHTML = getTempDate().toLocaleDateString();
     }
 
-		function drawCalendarButtons() {
-		  console.log("Draw Calendar Buttons");
-		  var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
-		  document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
-		  fillDate();                                              // write current date
-		  var btn_today = Util.button("Today", resume, "", "");    // Create a <button> element
-		  var btn_right = Util.button(">", nextButton, "", "");    // Create a <button> element
-		  document.getElementById("up3").appendChild(btn_today);   // Append <button> to <body>
-		  document.getElementById("up3").appendChild(btn_right);   // Append <button> to <body>
+		var monthId=["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul",
+			"Aug", "Sep", "Oct", "Nov", "Dec"];
+		var fullMonthId=["January", "February", "March", "April", "May", "June",
+			"July", "August", "Septempber", "October", "November", "December"];
+function changeDate(){
+
+	alert("you chose a month")
+}
+
+		function chooseDate(){
+			var a= getTempDate();
+			var m= a.getMonth();
+			var y= a.getFullYear();
+			var display= fullMonthId[m];
+
+			var disp=document.getElementById("displayDate");//span
+
+			var dropdiv= Util.div("dropdown","");
+			var niceDate = Util.span(display, "dropbtn", "niceDate");
+			while(disp.firstChild){
+				disp.removeChild(disp.firstChild);
+			}
+			disp.appendChild(niceDate);
+
+			var dropdown= Util.div("dropdownMenu", "");
+			for(var i=0; i<monthId.length; i++){
+				var opt= Util.a("javascript:void(0)", monthId[i], "", monthId[i]);
+				opt.setAttribute("onclick", "changeDate()");
+				dropdown.appendChild(opt);
+			}
+			niceDate.appendChild(dropdown);
+			dropdiv.appendChild(niceDate);
+			disp.appendChild(dropdiv);
+
+			disp.appendChild(Util.text(' '+y));
+
 		}
 
-		function drawCalendar() {
-		    console.log("Draw Calendar");
-		    clearElements("up2");
 
-		    var newHeader = Util.h1("Calendar", "", "");
-		    document.getElementById("up2").appendChild(newHeader);
-
-		    clearElements("up3");
-		    show(getRightNow());
-		    //fillDate();
-		    changeWeekendStyle();
-		    drawCalendarButtons();
-		    //onclickClass("active", launch)
-		    clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
-		    document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
-		}
-		
 //makes the popup for form
 		var popup = document.getElementById("eventWindow");
 		var btn = document.getElementById("eventBtn");
@@ -380,6 +417,9 @@
 		  holiday.push(data);
 		  popup.style.display = "none";
 			show(tempDate);
+			var frm = document.getElementsByClassName("holidayForm")[0];
+   		frm.reset();  // Reset
+   		return false;
 		}
 		var form = document.getElementsByClassName("holidayForm")[0];
 		form.addEventListener('submit', handleFormSubmit);

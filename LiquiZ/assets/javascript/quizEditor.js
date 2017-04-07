@@ -20,9 +20,8 @@ quizEditor.prototype.draw= function(s){
     newDiv.appendChild(saveQuiz);
     // newDiv.appendChild(submitQuiz);
     s.appendChild(newDiv);
-    s.appendChild(newDiv);
-    clearClass("active");
-    document.getElementById("allquizzes").className = "active";
+    // clearClass("active");
+    // document.getElementById("allquizzes").className = "active";
 };
 
 function drawEditor(s,data) {
@@ -37,6 +36,8 @@ function drawEditor(s,data) {
     th1.appendChild(document.createTextNode("ID"));
     var th2 = document.createElement("th");
     th2.appendChild(document.createTextNode("Title"));
+    var th2s = document.createElement("th");
+    th2s.appendChild(document.createTextNode("Points"));
     var th3 = document.createElement("th");
     th3.appendChild(document.createTextNode("Instruction"));
     var th4 = document.createElement("th");
@@ -47,6 +48,7 @@ function drawEditor(s,data) {
     th6.appendChild(document.createTextNode("Edit"));
     tr.appendChild(th1);
     tr.appendChild(th2);
+    tr.appendChild(th2s);
     tr.appendChild(th3);
     tr.appendChild(th4);
     tr.appendChild(th5);
@@ -62,6 +64,9 @@ function drawEditor(s,data) {
         var td2 = document.createElement("td");
         td2.contentEditable = true;
         td2.appendChild(document.createTextNode(data[i].title));
+        var td2s = document.createElement("td");
+        td2s.contentEditable = true;
+        td2s.appendChild(document.createTextNode(data[i].points));
         if(data[i].comp.length == 3) {
             var td3 = document.createElement("td");
             td3.contentEditable = true;
@@ -125,6 +130,7 @@ function drawEditor(s,data) {
 
         tr.appendChild(td1);
         tr.appendChild(td2);
+        tr.appendChild(td2s);
         tr.appendChild(td3);
         tr.appendChild(td4);
         tr.appendChild(td5);
@@ -138,17 +144,17 @@ function drawEditor(s,data) {
 
 function tableToJson2(table) {
     var datas = [];
-    var headers = ["id", "title", "comp"];
+    var headers = ["id", "title", "points", "comp"];
 
     for (var i = 1; i < table.rows.length; i++) {
         var tableRow = table.rows[i];
         var rowData = {};
-        for (var j = 0; j < 2; j++) {
+        for (var j = 0; j < 3; j++) {
             rowData[headers[j]] = tableRow.cells[j].innerText;
         }
-        var instr = tableRow.cells[2].innerText.split(/,(?=[^\]]*(?:\[|$))/g);
-        var eqn = tableRow.cells[3].innerText.split(/,/g);
-        var oper = tableRow.cells[4].innerText;
+        var instr = tableRow.cells[3].innerText.split(/,(?=[^\]]*(?:\[|$))/g);
+        var eqn = tableRow.cells[4].innerText.split(/,/g);
+        var oper = tableRow.cells[5].innerText;
 
         var left = 0, right = oper.length - 1;
         while(left < right) {
@@ -165,7 +171,7 @@ function tableToJson2(table) {
         operFinal.push(operTitle);
 
         if(left != right) {
-            if (operTitle == "dragDrop") {
+            if (operTitle == "DragDrop") {
                 var operMid = oper.substring(left + 1, right);
                 var left = 0, right = operMid.length - 2;
                 while (left < right) {
@@ -234,7 +240,7 @@ function tableToJson2(table) {
         comps.push(instr);
         comps.push(eqn);
         comps.push(operFinal);
-        rowData[headers[2]] = comps;
+        rowData[headers[3]] = comps;
         datas.push(rowData);
         console.log(datas);
     }
@@ -245,16 +251,18 @@ var quizEditorPayLoad = [
     {
         id: "qc1000",
         title: "Addition",
+        points: 10,
         comp: [
-            ["Instr", "What is ", "1"],
-            ["Eqn", "2+2", "2"],
-            ["MC", [3,4,5,6], "3"]
+            ["Instr", "What is 2+2? ", "1"],
+            // ["Eqn", "2+2", "2"],
+            ["MC", [8,4,5,6], "3"]
         ]
     },
 
     {
         id: "qc1001",
-        title: "Multiple Choices",
+        title: "Select All that Apply",
+        points: 10,
         comp: [
             ["Instr", "Which sport do you like?", "1"],
             ["MCS", ["basketball","football","volleyball","baseball"], "2"]
@@ -263,26 +271,30 @@ var quizEditorPayLoad = [
 
     {
         id: "qc1002",
-        title: "Multiplication",
+        title: "Fill in",
+        points: 10,
         comp: [
-            ["Instr", "What is ","1"],
-            ["Eqn", "3*4", "2"],
-            [ "Fillin", "3"]
+            ["Instr", "What is 3*4? ","1"],
+            //  ["Eqn", "3*4", "2"],
+            [ "FillIn", "3"]
         ]
     },
 
     {
         id: "qc10022",
-        title: "Division",
+        title: "Fill in Numbers",
+        points: 10,
         comp: [
-            ["Instr", "What is ","1"],
-            ["Eqn", "10 / 3", "2"],
+            ["Instr", "What is 10/3? ","1"],
+            //  ["Eqn", "10 / 3", "2"],
             [ "Numbers", "6", "3"]
         ]
     },
+
     {
         id: "qc1003",
         title: "Cloze",
+        points: 10,
         comp: [
             ["Instr", "Complete the code below so it prints \"Hello\"","1"],
             ["Cloze",
@@ -303,19 +315,20 @@ var quizEditorPayLoad = [
 
     {
         id: "qc1004",
-        title: "Codes",
+        title: "Code",
+        points: 10,
         comp: [
             ["Instr", "Complete the code below so it prints \"Hello\"","1"],
             ["Codes", "public class A {<>  public void main(String[] args) {<>  System.<>  }<>}", "2"]
-
         ]
     },
 
     {
         id: "qc1005",
         title: "Grid",
+        points: 10,
         comp: [
-            ["Instr", "Enter 1 through 5", "1"],
+            ["Instr", "Enter the first pass of bubblesort for the array [5, 1, 3, 4, 2]","1"],
             [ "Grid", 5, "2"]
         ]
     },
@@ -323,8 +336,9 @@ var quizEditorPayLoad = [
     {
         id: "qc1006",
         title: "Survey",
+        points: 10,
         comp: [
-            ["Instr", "Enter your honest opinions. There are no right or wrong answers", "1"],
+            ["Instr", "Enter your honest opinions.  There are no right or wrong answers"],
             ["Survey", "Likert5", [
                 "I like Chinese food",
                 "I like Korean food",
@@ -337,18 +351,19 @@ var quizEditorPayLoad = [
     {
         id: "qc1007",
         title: "Matrix",
+        points: 10,
         comp: [
-            ["Instr", "Enter any 3x3 matrix", "1"],
+            ["Instr", "Enter any 3x3 magic square","1"],
             [ "Matrix", 3,3, "2"]
         ]
     },
 
     {
         id: "qc1008",
-        title: "Addition",
+        title: "Drop Down",
+        points: 10,
         comp: [
-            ["Instr", "What is ", "1"],
-            ["Eqn", "2+2", "2"],
+            ["Instr", "What is 2+2? ", "1"],
             ["MCDrop", [1,2,3,4], "3"]
         ]
     },
@@ -356,15 +371,17 @@ var quizEditorPayLoad = [
     {
         id: "qc1009",
         title: "Drag and Drop",
+        points: 10,
         comp: [
             ["Instr", "Locate the parts of the cat ",'1'],
-            ["dragDrop", "cat.jpg",["Ear","Eye","Nose","Tongue"], [ {"left":215,"top":30}, {"left":255,"top":120},{"left":285,"top":160},{"left":285,"top":220}], 7]
+            ["DragDrop", "cat.jpg",["Ear","Eye","Nose","Tongue"], [{"left":215,"top":30}, {"left":255,"top":120},{"left":285,"top":160},{"left":285,"top":220}], 7]
         ]
     },
 
     {
         id: "qc1010",
-        title: "Match",
+        title: "Matching",
+        points: 10,
         comp: [
             ["Instr", "Match the types", "1"],
             ["Match",["animal","number","food"],["ice cream", "dog", "three"], "2" ]
@@ -374,6 +391,7 @@ var quizEditorPayLoad = [
     {
         id: "qc101s",
         title: "Short Essay",
+        points: 10,
         comp: [
             ["Instr", "Please analyze the relationship between Lennie and George in Of Mice and Men", "1"],
             ["Essay", "2" ]

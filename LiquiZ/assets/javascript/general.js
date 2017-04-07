@@ -90,6 +90,9 @@ Sidebar.prototype.draw = function(){
 	}
 	pdiv.appendChild(list)
 	this.parentDiv.appendChild(pdiv);
-	
+
 }
+
+
+
 
