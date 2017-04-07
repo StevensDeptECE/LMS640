@@ -1,93 +1,14 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         </head>
 <body>
-
-<div ng-app="myApp" ng-controller="myCtrl">
-{{ firstName + " " + lastName }}
-</div>
-
-<script>
-var app = angular.module("myApp", []);
-app.controller("myCtrl", function($scope) {
-    $scope.firstName = "John";
-    $scope.lastName = "Doe";
-});
-</script>
+<form action="/../upload" method="post" enctype="multipart/form-data">
+    Select file to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
 
 </body>
-</html>-->
-
-
-<!--<!DOCTYPE html>
-<html ng-app>
-    <head>
-        <meta charset="utf-8">
-        <title>Course</title>
-         <link rel="stylesheet" media="screen" href="../css/style.css">
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-       
-     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>   
-    </head>
-   
-    <body>
-      <div id = "login">
-          <p>
-              <a href="">Hello, Yu!</a>
-          </p>
-        </div>
-      <div id = "courseDashboard">
-          <div class = "coursetitle">
-              <p>
-                  <bold>Course</bold>
-              </p>
-          </div>
-          <div class = "course" ng-app="myApp" ng-controller="myCtrl">
-              
-            <table>
-                <tr ng-repeat="x in courses">
-                  <td><img ng-src = "{{x.img}}"/></td>
-                  <td><h1>{{x.name}}</h1></td>  
-                </tr>
-            </table>
-               
- <!--             <tr>
-                  <th>
-                      <a href ="page5(Assignment-S).html">Mechine Learning</a>
-                  </th>
-              </tr>
-              <tr>
-                  <th>
-                      <a href = "page5(Assignment-S).html">Algorithm</a>
-                  </th>
-              </tr>
-              <tr>
-                  <th>
-                      
-                      <a href = "page5(Assignment-S).html">Data Programming</a>
-                  </th>
-              </tr>
-              <tr>
-                  <th>
-                      <a href = "page5(Assignment-S).html">French</a>
-                  </th>
-              </tr>
-              <tr>
-                  <th>
-                      <a href ="page5(Assignment-S).html">HTML&amp;CSS&amp;JavaScript</a>
-                  </th>
-              </tr> -->
-           
-          </div>
-        </div>
-        <div id = "createcourse">
-            <p>Create Course</p>
-        </div>
-        
-    
-
-    </body>
-    
-</html>-->
+</html>

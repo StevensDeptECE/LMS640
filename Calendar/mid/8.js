@@ -1,48 +1,46 @@
-	var holiday = [
+var holiday = [
 	{ "style":"holiday","name":"Christmas","notes":"Merry Christmas!","day":25,"month":12,"year":2017},
 	{ "style":"holiday","name":"President's Day","notes":"Have a good day!","day":20,"month":2,"year":2017},
 	{ "style":"mid","name":"EE575 mid-exam","notes":"EE575 midterm exam","day":10,"month":3,"year":2017},
 	{ "style":"quiz","name":"EE552 test2","notes":"EE552 test2","day":20,"month":3,"year":2017},
 	{ "style":"class","name":"CPE-640","notes":"CPE-640 12:00-14:30","day":24,"month":3,"year":2017}];
 
-    var tempDate;
+var tempDate;
 
-    function getRightNow() {
-        return new Date();
-    }
+function getRightNow() {
+	return new Date();
+}
 
-    function getDay(date){
-        var day = date.getDay();
-        if(0 == day){
-            day = 7;
-        }
-        return day;
-    }
+function getDay(date){
+	var day = date.getDay();
+  if(0 == day){
+  	day = 7;
+  }
+  	return day;
+}
 
-    function getDays(date) {
-        var month = date.getMonth() + 1;
-        var currentDate = date.getDate();
+function getDays(date) {
+	var month = date.getMonth() + 1;
+  var currentDate = date.getDate();
 
-        date.setMonth(month, 0);
-        var days = date.getDate();
+  date.setMonth(month, 0);
+  var days = date.getDate();
+	date.setMonth(month - 1, currentDate);
+	return days;
+}
 
-        date.setMonth(month - 1, currentDate);
+function getFirstDayOfMonth(date){
+	var currentDate = date.getDate();
+  date.setDate(1);
+  var firstDayOfMonth = getDay(date);
+  date.setDate(currentDate);
+  return firstDayOfMonth;
+}
 
-        return days;
-    }
-
-    function getFirstDayOfMonth(date){
-        var currentDate = date.getDate();
-        date.setDate(1);
-        var firstDayOfMonth = getDay(date);
-        date.setDate(currentDate);
-        return firstDayOfMonth;
-    }
-
-    function getLastDayOfMonth(date){
-        var currentDate = date.getDate();
-        var days = getDays(date);
-        date.setDate(days);
+function getLastDayOfMonth(date){
+	var currentDate = date.getDate();
+  var days = getDays(date);
+  date.setDate(days);
         var lastDayOfMonth = getDay(date);
         date.setDate(currentDate);
         return lastDayOfMonth;
@@ -120,23 +118,29 @@
         dateString += "<table><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>";
         var row = "";
         row = getEndOfPreMonth(customDate);
-        for (var i = 1; i <= days; i++) {
-            if(i == today.getDate() && customDate.getMonth() == today.getMonth() && customDate.getFullYear() == today.getFullYear()){
-                row += "<td class='today'>" + i;
-				for(var j = 0; j < holiday.length; j++){
-					if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
-					row += '\n' + "<button class='createholiday' onclick='createwindow("+j+")'>"+holiday[j].name+"</button>";
-				}
-				row += "</td>";
-            }
-            else{
-                row += "<td class='current'>" + i;
-				for(var j = 0; j < 5; j++){
-					if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
-					row += '\n'+ "<button class='createholiday' onclick='createwindow("+j+")'> " + holiday[j].name + " </button>";
-				}
-				row += "</td>";
-            }
+				console.log(holiday.length);
+				for (var i = 1; i <= days; i++) {
+						if(i == today.getDate() && customDate.getMonth() == today.getMonth() && customDate.getFullYear() == today.getFullYear()){
+								row += "<td class='today'>" + i;
+								for(var j = 0; j < holiday.length; j++){
+									if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
+										row += '\n' + "<button class='createholiday' onclick='createwindow("+j+")'>"+holiday[j].name+"</button>";
+										console.log("if made a button for " + holiday[j].name);
+									}
+
+								}
+								row += "</td>";
+						}
+						else{
+								row += "<td class='current'>" + i;
+								for(var j = 0; j < holiday.length; j++){
+									if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
+										row += '\n'+ "<button class='createholiday' onclick='createwindow("+j+")'> " + holiday[j].name + " </button>";
+										console.log("else made a button for " + holiday[j].name);
+									}
+								}
+								row += "</td>";
+						}
             if ((i + verbose) % 7 == 0) {
                 dateString += "<tr>" + row + "</tr>";
                 row = "";
@@ -159,14 +163,9 @@
 		para.setAttribute("id", "divholiday");
     	var node = document.createTextNode(holiday[n].notes);
     	para.appendChild(node);
-    	document.body.appendChild(para);			
+    	document.body.appendChild(para);
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> ea08a74e86ea7faf2e128bf7cc9cd6f772542536
 	/*function createEventwindow(){
     	var para = document.createElement("div");
 		para.setAttribute("class","event");
@@ -182,11 +181,8 @@
 		console.log("i made a window");
     }*/
 
-<<<<<<< HEAD
-	document.onclick = function(e) {			
-=======
+
 	document.onclick = function(e) {
->>>>>>> ea08a74e86ea7faf2e128bf7cc9cd6f772542536
 		if(document.getElementById("divholiday")){
 			if(e.target.id != "divholiday" && e.target.className != "createholiday") {
 			var holiday = document.getElementById("divholiday");
@@ -194,18 +190,11 @@
 			console.log("i took away the window");
 		}
 		}
-<<<<<<< HEAD
-	} 
 
-    function setCalendar() {
-=======
-=======
 	}
 
 
->>>>>>> ea08a74e86ea7faf2e128bf7cc9cd6f772542536
 		function setCalendar() {
->>>>>>> 1630b8f1163c9141e5f8c6748a4bf91f60c6ba32
         show(getRightNow());
         //fillDate();
 				chooseDate();
@@ -292,15 +281,6 @@
 				chooseDate();
         //changeWeekendStyle();
     }
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-   /* function changeWeekendStyle(){
-=======
-/*    function changeWeekendStyle(){
->>>>>>> 1630b8f1163c9141e5f8c6748a4bf91f60c6ba32
-=======
->>>>>>> ea08a74e86ea7faf2e128bf7cc9cd6f772542536
 
 /*    function changeWeekendStyle(){
         $("th:gt(4)").css("color", "red");
