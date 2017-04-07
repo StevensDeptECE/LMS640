@@ -397,11 +397,17 @@ Util = {
   },
 };
 
+//Global variable to keep track of preferences read from a
+//JavaScript object
+var prefs;
+//Global variable for last visited page
+var activeLink = "Home"; //resets on reload - store in file???
+
 /*
  *  Gets JSON from the server base on the filename given
  */
 //https://www.w3schools.com/xml/ajax_xmlhttprequest_response.asp
-function getJSONFromServer(filename) {
+function getJSONFromServer(filename, object) {
   console.log("Get JSON from server");
   var xhttp = new XMLHttpRequest();
   var obj;
@@ -409,15 +415,41 @@ function getJSONFromServer(filename) {
     if (this.readyState == 4 && this.status == 200) {
       //console.warn(xhttp.responseText);
       console.log(this.responseText);
-      obj = JSON.parse(this.responseText);
-      document.getElementById("up3").innerHTML = obj.name;
+      var obj = JSON.parse(this.responseText);
+      console.log(object);
+      var newObject = new object(obj);
+      //document.getElementById("up3").innerHTML = obj.name;
       //document.getElementById("up3").innerHTML = xhttp.responseText;
     }
   };
   xhttp.open("GET", filename, true);
   xhttp.send();
-  console.log(obj);
-  return obj;
+}
+
+/*
+ * Sends new or updated JSON (JSONObject) to the JSON
+ * file (filename) on the server. Do not include ".json"
+ * in the filename.
+ */
+ //  function post(url, payload, callback) {
+
+function sendJSONToServer(filename, JSONObject, callback) {
+  var xhttp = new XMLHttpRequest();
+  //xhttp.open("POST", filename, true);
+  //xhttp.send(JSONObject);
+
+  //payload = JSON.stringify(payload); - already stringified
+  xhttp.open("POST", location.pathname + filename, true);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.onreadystatechange = function () {
+      if (xhttp.readyState === 4 && xhttp.status !== 200) {
+          callback(false, xhttp.response);
+      } else if (xhttp.readyState === 4 && xhttp.status === 200) {
+          callback(true, xhttp.response);
+      }
+      return;
+  };
+  xhttp.send(JSONObject);
 }
 
 /*
@@ -456,6 +488,37 @@ function clearElements(elementID)
 {
     console.log("clearing '" + elementID + "'");
     document.getElementById(elementID).innerHTML = "";
+}
+
+/*
+ * Changes the CSS of the web page based on the file name and it's index
+ * "change" is a boolean that is true if the CSS is changed.
+  * "change" is false if the CSS is being set on the inital loading of the page.
+ */
+function setCSS(cssFile, cssLinkIndex, change) {
+  console.log("Set CSS to " + cssFile);
+  var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
+  var newlink = document.createElement("link");
+  newlink.setAttribute("rel", "stylesheet");
+  newlink.setAttribute("type", "text/css");
+  newlink.setAttribute("href", "css/" + cssFile + ".css");
+  document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
+  if (change)
+  {
+    prefs["css"] = cssFile;
+    var newPrefs = JSON.stringify(prefs);
+    sendJSONToServer("prefs_sample", newPrefs);
+  }
+}
+
+/*
+ * Loads the preferences for the user/page from a JSON file.
+ * Will need to be modified to take in argument to know which user
+ * and thus which prefs file to get.
+ * For now it takes in the filename.
+ */
+function loadPrefs(filename) {
+  getJSONFromServer(filename + ".json", Preferences);
 }
 
 /* Sets the class attribute of an HTML object to nothing */
@@ -505,29 +568,3 @@ function editPageHeader(innerHTML, className, id)
   var header = Util.object(innerHTML);
   up2.appendChild(header);
 }
-
-/*
- * Changes the CSS of the web page based on the file name and it's index
- */
-function setCSS(cssFile, cssLinkIndex) {
-  console.log("Change CSS to " + cssFile);
-  var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
-  var newlink = document.createElement("link");
-  newlink.setAttribute("rel", "stylesheet");
-  newlink.setAttribute("type", "text/css");
-  newlink.setAttribute("href", "css/" + cssFile + ".css");
-  document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
-}
-
-/*
- * Loads the preferences for the user/page from a JSON file.
- * Will need to be modified to take in argument to know which user
- * and thus which prefs file to get.
- * For now it takes in the filename.
- */
-function loadPrefs(filename) {
-  getJSONFromServer(filename + ".json");
-}
-
-//global variable for last visited page
-var activeLink = "Home"; //resets on reload - store in file???

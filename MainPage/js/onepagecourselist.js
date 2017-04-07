@@ -24,7 +24,7 @@ CourseList.prototype.draw = function(content) {
   content.appendChild(newTable);
   clearClass("active");
   //set active to some other class
-  document.getElementById("quizClass").className = "active";
+  document.getElementById("course").className = "active";
 }
 
 courses = ["Software Engineering", "Data Structures", "C++", "Java", "Python"];
