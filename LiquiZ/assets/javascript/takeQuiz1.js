@@ -127,7 +127,7 @@ takeQuiz.prototype.draw = function(div){
     var header = Util.h1(this.title,"h03");
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
-    timerSetter(this.time);
+    //timerSetter(this.time);
     clearElements("up3");
     this.div.appendChild(this.navDiv);
     div.appendChild(this.div);
