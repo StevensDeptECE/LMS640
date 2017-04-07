@@ -120,23 +120,29 @@
         dateString += "<table><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>";
         var row = "";
         row = getEndOfPreMonth(customDate);
-        for (var i = 1; i <= days; i++) {
-            if(i == today.getDate() && customDate.getMonth() == today.getMonth() && customDate.getFullYear() == today.getFullYear()){
-                row += "<td class='today'>" + i;
-				for(var j = 0; j < holiday.length; j++){
-					if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
-					row += '\n' + "<button class='createholiday' onclick='createwindow("+j+")'>"+holiday[j].name+"</button>";
-				}
-				row += "</td>";
-            }
-            else{
-                row += "<td class='current'>" + i;
-				for(var j = 0; j < 5; j++){
-					if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year)
-					row += '\n'+ "<button class='createholiday' onclick='createwindow("+j+")'> " + holiday[j].name + " </button>";
-				}
-				row += "</td>";
-            }
+				console.log(holiday.length);
+				for (var i = 1; i <= days; i++) {
+						if(i == today.getDate() && customDate.getMonth() == today.getMonth() && customDate.getFullYear() == today.getFullYear()){
+								row += "<td class='today'>" + i;
+								for(var j = 0; j < holiday.length; j++){
+									if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
+										row += '\n' + "<button class='createholiday' onclick='createwindow("+j+")'>"+holiday[j].name+"</button>";
+										console.log("if made a button for " + holiday[j].name);
+									}
+
+								}
+								row += "</td>";
+						}
+						else{
+								row += "<td class='current'>" + i;
+								for(var j = 0; j < holiday.length; j++){
+									if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
+										row += '\n'+ "<button class='createholiday' onclick='createwindow("+j+")'> " + holiday[j].name + " </button>";
+										console.log("else made a button for " + holiday[j].name);
+									}
+								}
+								row += "</td>";
+						}
             if ((i + verbose) % 7 == 0) {
                 dateString += "<tr>" + row + "</tr>";
                 row = "";
@@ -159,14 +165,9 @@
 		para.setAttribute("id", "divholiday");
     	var node = document.createTextNode(holiday[n].notes);
     	para.appendChild(node);
-    	document.body.appendChild(para);			
+    	document.body.appendChild(para);
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> ea08a74e86ea7faf2e128bf7cc9cd6f772542536
 	/*function createEventwindow(){
     	var para = document.createElement("div");
 		para.setAttribute("class","event");
@@ -182,11 +183,8 @@
 		console.log("i made a window");
     }*/
 
-<<<<<<< HEAD
-	document.onclick = function(e) {			
-=======
+
 	document.onclick = function(e) {
->>>>>>> ea08a74e86ea7faf2e128bf7cc9cd6f772542536
 		if(document.getElementById("divholiday")){
 			if(e.target.id != "divholiday" && e.target.className != "createholiday") {
 			var holiday = document.getElementById("divholiday");
@@ -194,18 +192,11 @@
 			console.log("i took away the window");
 		}
 		}
-<<<<<<< HEAD
-	} 
 
-    function setCalendar() {
-=======
-=======
 	}
 
 
->>>>>>> ea08a74e86ea7faf2e128bf7cc9cd6f772542536
 		function setCalendar() {
->>>>>>> 1630b8f1163c9141e5f8c6748a4bf91f60c6ba32
         show(getRightNow());
         //fillDate();
 				chooseDate();
@@ -292,15 +283,6 @@
 				chooseDate();
         //changeWeekendStyle();
     }
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-   /* function changeWeekendStyle(){
-=======
-/*    function changeWeekendStyle(){
->>>>>>> 1630b8f1163c9141e5f8c6748a4bf91f60c6ba32
-=======
->>>>>>> ea08a74e86ea7faf2e128bf7cc9cd6f772542536
 
 /*    function changeWeekendStyle(){
         $("th:gt(4)").css("color", "red");
