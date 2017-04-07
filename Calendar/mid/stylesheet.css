@@ -26,6 +26,23 @@ td.today{
 	width: 100px;
 }
 
+<<<<<<< HEAD
+        }
+<<<<<<< HEAD
+		.divholiday{
+=======
+		.holiday{
+>>>>>>> 1630b8f1163c9141e5f8c6748a4bf91f60c6ba32
+			background-color: pink;
+			position: absolute;
+			left:450px;
+			top:150px;
+			width:300px;
+			height:200px;
+			border-width: 1px;
+			border-style: solid;
+			margin: 0 auto;
+=======
 .divholiday{
   background-color: pink;
 	position: absolute;
@@ -48,6 +65,7 @@ td.today{
 	border-style: solid;
 	margin: 0 auto;
 }
+>>>>>>> ea08a74e86ea7faf2e128bf7cc9cd6f772542536
 
 .addEvent {
   display: none; /* Hidden by default */

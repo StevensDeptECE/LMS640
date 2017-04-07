@@ -397,10 +397,14 @@ Util = {
   },
 };
 
+/*
+ *  Gets JSON from the server base on the filename given
+ */
 //https://www.w3schools.com/xml/ajax_xmlhttprequest_response.asp
 function getJSONFromServer(filename) {
   console.log("Get JSON from server");
   var xhttp = new XMLHttpRequest();
+  var obj;
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       //console.warn(xhttp.responseText);
@@ -412,6 +416,8 @@ function getJSONFromServer(filename) {
   };
   xhttp.open("GET", filename, true);
   xhttp.send();
+  console.log(obj);
+  return obj;
 }
 
 /*
@@ -490,7 +496,7 @@ function onclickId(id, func)
  * id 'id'.
  */
 //TODO - maybe use make function directly
-function editPageHeader(innerHTML, object, className, id)
+function editPageHeader(innerHTML, className, id)
 {
   console.log("Edit page header");
   var up2 = document.getElementById("up2")
@@ -498,6 +504,29 @@ function editPageHeader(innerHTML, object, className, id)
   console.log("HTML ELement: " + object);
   var header = Util.object(innerHTML);
   up2.appendChild(header);
+}
+
+/*
+ * Changes the CSS of the web page based on the file name and it's index
+ */
+function setCSS(cssFile, cssLinkIndex) {
+  console.log("Change CSS to " + cssFile);
+  var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
+  var newlink = document.createElement("link");
+  newlink.setAttribute("rel", "stylesheet");
+  newlink.setAttribute("type", "text/css");
+  newlink.setAttribute("href", "css/" + cssFile + ".css");
+  document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
+}
+
+/*
+ * Loads the preferences for the user/page from a JSON file.
+ * Will need to be modified to take in argument to know which user
+ * and thus which prefs file to get.
+ * For now it takes in the filename.
+ */
+function loadPrefs(filename) {
+  getJSONFromServer(filename + ".json");
 }
 
 //global variable for last visited page
