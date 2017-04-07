@@ -151,8 +151,6 @@
 				var calendarContainer = document.getElementById("calendarContainer");
         calendarContainer.innerHTML = dateString;
 
-				//var mainpagecontainer= document.getElementById("up3");
-				//mainpagecontainer.innerHTML=dateString;
     }
 
     function createwindow(n){
@@ -295,17 +293,41 @@
 			"Aug", "Sep", "Oct", "Nov", "Dec"];
 		var fullMonthId=["January", "February", "March", "April", "May", "June",
 			"July", "August", "Septempber", "October", "November", "December"];
+function changeDate(){
+
+	alert("you chose a month")
+}
 
 		function chooseDate(){
 			var a= getTempDate();
 			var m= a.getMonth();
 			var y= a.getFullYear();
-			var display= fullMonthId[m] +' '+ y;
-			var niceDate = Util.span(display, "", "niceDate");
-			document.getElementById("up3").appendChild(niceDate);
+			var display= fullMonthId[m];
+
+			var disp=document.getElementById("displayDate");//span
+
+			var dropdiv= Util.div("dropdown","");
+			var niceDate = Util.span(display, "dropbtn", "niceDate");
+			while(disp.firstChild){
+				disp.removeChild(disp.firstChild);
+			}
+			disp.appendChild(niceDate);
+
+			var dropdown= Util.div("dropdownMenu", "");
+			for(var i=0; i<monthId.length; i++){
+				var opt= Util.a("javascript:void(0)", monthId[i], "", monthId[i]);
+				opt.setAttribute("onclick", "changeDate()");
+				dropdown.appendChild(opt);
+			}
+			niceDate.appendChild(dropdown);
+			dropdiv.appendChild(niceDate);
+			disp.appendChild(dropdiv);
+
+			disp.appendChild(Util.text(' '+y));
+
 		}
 
-	
+
 //makes the popup for form
 		var popup = document.getElementById("eventWindow");
 		var btn = document.getElementById("eventBtn");
@@ -371,6 +393,9 @@
 		  holiday.push(data);
 		  popup.style.display = "none";
 			show(tempDate);
+			var frm = document.getElementsByClassName("holidayForm")[0];
+   		frm.reset();  // Reset
+   		return false;
 		}
 		var form = document.getElementsByClassName("holidayForm")[0];
 		form.addEventListener('submit', handleFormSubmit);
