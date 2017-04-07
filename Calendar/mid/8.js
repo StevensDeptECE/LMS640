@@ -1,48 +1,46 @@
-	var holiday = [
+var holiday = [
 	{ "style":"holiday","name":"Christmas","notes":"Merry Christmas!","day":25,"month":12,"year":2017},
 	{ "style":"holiday","name":"President's Day","notes":"Have a good day!","day":20,"month":2,"year":2017},
 	{ "style":"mid","name":"EE575 mid-exam","notes":"EE575 midterm exam","day":10,"month":3,"year":2017},
 	{ "style":"quiz","name":"EE552 test2","notes":"EE552 test2","day":20,"month":3,"year":2017},
 	{ "style":"class","name":"CPE-640","notes":"CPE-640 12:00-14:30","day":24,"month":3,"year":2017}];
 
-    var tempDate;
+var tempDate;
 
-    function getRightNow() {
-        return new Date();
-    }
+function getRightNow() {
+	return new Date();
+}
 
-    function getDay(date){
-        var day = date.getDay();
-        if(0 == day){
-            day = 7;
-        }
-        return day;
-    }
+function getDay(date){
+	var day = date.getDay();
+  if(0 == day){
+  	day = 7;
+  }
+  	return day;
+}
 
-    function getDays(date) {
-        var month = date.getMonth() + 1;
-        var currentDate = date.getDate();
+function getDays(date) {
+	var month = date.getMonth() + 1;
+  var currentDate = date.getDate();
 
-        date.setMonth(month, 0);
-        var days = date.getDate();
+  date.setMonth(month, 0);
+  var days = date.getDate();
+	date.setMonth(month - 1, currentDate);
+	return days;
+}
 
-        date.setMonth(month - 1, currentDate);
+function getFirstDayOfMonth(date){
+	var currentDate = date.getDate();
+  date.setDate(1);
+  var firstDayOfMonth = getDay(date);
+  date.setDate(currentDate);
+  return firstDayOfMonth;
+}
 
-        return days;
-    }
-
-    function getFirstDayOfMonth(date){
-        var currentDate = date.getDate();
-        date.setDate(1);
-        var firstDayOfMonth = getDay(date);
-        date.setDate(currentDate);
-        return firstDayOfMonth;
-    }
-
-    function getLastDayOfMonth(date){
-        var currentDate = date.getDate();
-        var days = getDays(date);
-        date.setDate(days);
+function getLastDayOfMonth(date){
+	var currentDate = date.getDate();
+  var days = getDays(date);
+  date.setDate(days);
         var lastDayOfMonth = getDay(date);
         date.setDate(currentDate);
         return lastDayOfMonth;
