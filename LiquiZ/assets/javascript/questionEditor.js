@@ -280,7 +280,7 @@ function tableToJson3(table) {
 
         var operFinal = [];
         if(document.getElementById("type_row"+i).value == "Drag and Drop"){
-            operFinal.push("dragDrop");
+            operFinal.push("DragDrop");
             operFinal.push(document.getElementById("1cont_row"+i).value);
             var operCont2 = "[" + document.getElementById("2cont_row"+i).value + "]";
             var operCont3 = "[" + document.getElementById("3cont_row"+i).value + "]";
@@ -298,7 +298,7 @@ function tableToJson3(table) {
             operFinal.push(operCont2);
             operFinal.push(addOn);
         }else if(document.getElementById("type_row"+i).value == "Fill in"){
-            operFinal.push("Fillin");
+            operFinal.push("FillIn");
             operFinal.push(addOn);
         }else if(document.getElementById("type_row"+i).value == "Numbers"){
             operFinal.push("Numbers");

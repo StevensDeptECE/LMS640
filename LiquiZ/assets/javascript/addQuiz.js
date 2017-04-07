@@ -58,7 +58,7 @@ addQuiz.prototype.draw = function(s) {
     // td4.appendChild(document.createTextNode("Eqn, 3*4, 2"));
     var td5 = document.createElement("td");
     td5.id = "oper_row1";
-    td5.appendChild(document.createTextNode("dragDrop, cat.jpg,[Ear,Eye,Nose,Tongue], [ {left:215,top:30}, {left:255,top:120},{left:285,top:160},{left:285,top:220}], 7"));
+    td5.appendChild(document.createTextNode("DragDrop, cat.jpg,[Ear,Eye,Nose,Tongue], [ {left:215,top:30}, {left:255,top:120},{left:285,top:160},{left:285,top:220}], 7"));
     var td6 = document.createElement("td");
     var bt1 = Util.button("Edit", function () {edit_row('1')}, 'three', "edit_button1");
     var bt2 = Util.button("Save", function () {save_row('1')}, 'three', "save_button1");
@@ -230,7 +230,7 @@ function tableToJson(table) {
         operFinal.push(operTitle);
 
         if(left != right) {
-            if (operTitle == "dragDrop") {
+            if (operTitle == "DragDrop") {
                 var operMid = oper.substring(left + 1, right);
                 var left = 0, right = operMid.length - 2;
                 while (left < right) {
