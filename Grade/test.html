@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$("#button").click(function() {
+			$.get("demo.jsp", {name: $("#name").val(), grade: $("#grade").val()},
+			function(data) {
+				$("#div").html(data);
+			});
+		});
+	});
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	Name: <input type="text" name="name" value="" id="name">
+	Grade: <input type="text" name="grade" value="" id="grade">
+	<input type="button" name="button" value=" Request " id="button">
+	<div id="div"></div>
+</body>
+</html>
