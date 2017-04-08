@@ -4,6 +4,23 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http); 
 
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var port = 3000;
+
+var chatSchema = new Schema({
+    user: {
+        name: String,
+        status: String,
+        icon: String,
+        role: String
+    },
+    chat:{
+        content: String,
+        date: {type: Date, default: Date.now}
+    }
+});
 
 var port = 3000;
 

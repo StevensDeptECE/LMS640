@@ -5,7 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -18,6 +19,18 @@ var io = require('socket.io')(http);
 
 var port = 3000;
 
+var chatSchema = new Schema({
+    user: {
+        name: String,
+        status: String,
+        icon: String,
+        role: String
+    },
+    chat:{
+        content: String,
+        date: {type: Date, default: Date.now}
+    }
+});
 
 io.on('connection', function(socket){
     console.log("someone sneaks in...");

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html  ng-app="chatApp">
+<html>
 <head>
+
 </head>
-<body>
+<body ng-app="chatApp">
+    <div>
     <div ng-controller="userCreationCtrl as user">
         <input ng-model="user.username", type="text"><button ng-click="user.createUser(user.username)">Submit</button>
     </div>
@@ -17,7 +19,8 @@
         
         <input ng-model="chat.newMessage" type="text"> <button ng-click="chat.sendMessage()">Send</button>
     </div>
-    
+    </div>
+
     
 </body>
 
@@ -29,4 +32,9 @@
     <script src="app.js"></script>
     <script src="/public/javascripts/user-controller-creation.js"></script>
     <script src="/public/javascripts/chat-controller.js"></script>
+    <script src="/public/javascripts/buildUeditor.js"></script>
+    <script type="text/javascript" src="http://ueditor.baidu.com/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="http://ueditor.baidu.com/ueditor/ueditor.all.js"></script>
+    <script type="text/javascript" src="/public/javascripts/UEditor/angular-ueditor.js"></script>
+    
 </html>
