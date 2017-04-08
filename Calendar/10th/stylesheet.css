@@ -50,7 +50,18 @@
 			margin: 0 auto;
 
         }
-
+		#upcoming{
+			background-color: lightgreen;
+			position: absolute;
+			right:0px;
+			top:100px;
+			width:300px;
+			height:200px;
+			border-width: 1px;
+			border-style: solid;
+			margin: 0 auto;
+		}
+		
         .addEvent {
 display: none; /* Hidden by default */
 position: fixed; /* Stay in place */

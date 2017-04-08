@@ -149,7 +149,6 @@
         dateString += "</table>";
         var calendarContainer = document.getElementById("calendarContainer");
         calendarContainer.innerHTML = dateString;
-		upcomingevent(today);
     }
 
     function createwindow(n){
@@ -186,8 +185,10 @@
 		}
 	} 
     
-	function upcomingevent(today){
-		for(var i = 0; i < holiday.length;i++){
+	function upcomingevent(){
+		setCalendar();
+		var today = getRightNow();
+			for(var i = 0; i < holiday.length;i++){
 			if(today.getFullYear() == holiday[i].year && today.getMonth() + 1 == holiday[i].month && holiday[i].day-today.getDate() <=7 && holiday[i].day-today.getDate() > 0){
 				var para = document.createElement("li");
 				para.setAttribute("class","upcomingevent");
