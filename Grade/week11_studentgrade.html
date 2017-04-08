@@ -1,0 +1,93 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+		<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+        var gradepayload2 = [
+["Name", "ID", "Assignment", "Test", "Quiz"],
+["John", 104083, 59, 76, 98],
+["Kelly", 123456, 87, 88, 98],
+["Tom", 13579, 90, 89, 90],
+["Mike", 73826, 69, 70, 80],
+["Alex", 84625, 98, 50, 70]
+];
+//var n = gradepayload2.length;
+
+var average1 = (gradepayload2[1][2] + gradepayload2[2][2]+ gradepayload2[3][2] + gradepayload2[4][2]+ gradepayload2[5][2])/5
+var average2 = (gradepayload2[1][3] + gradepayload2[2][3]+ gradepayload2[3][3] + gradepayload2[4][3]+ gradepayload2[5][3])/5
+var average3 = (gradepayload2[1][4] + gradepayload2[2][4]+ gradepayload2[3][4] + gradepayload2[4][4]+ gradepayload2[5][4])/5
+
+
+$(function () {
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: gradepayload2[1][0] 
+        },
+        
+        xAxis: {
+            categories: [
+                gradepayload2[0][2],
+                gradepayload2[0][3],
+                gradepayload2[0][4]
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'score'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'your score',
+            data: [gradepayload2[1][2],gradepayload2[1][3],gradepayload2[1][4]]
+
+        }, {
+            name: 'average',
+            data: [average1, average2, average3]
+
+        }, {
+            name: 'lowest',
+            data: [59,50,70]
+
+        }, {
+            name: 'highest',
+            data: [98,89,98]
+
+        }]
+    });
+});
+		</script>
+	</head>
+	<body>
+<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>
