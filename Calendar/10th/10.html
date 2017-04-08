@@ -1,0 +1,67 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<html>
+<head>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <title>calendar</title>
+    <link type="text/css" charset="utf-8" rel="stylesheet" href="stylesheet.css">
+</head>
+<div align="center">
+<body onload="setCalendar()">
+
+<div>
+	<div class="btn-group" role="group">
+  <button type="button" onclick="preButton()" class="btn btn-default"><span>&nbsp; < &nbsp;</span></button>
+  <span id="displayDate" style="font-size:150%"></span></div>
+  	<div class="btn-group" role="group" display:inline>
+  <button type="button" onclick="resume()" class="btn btn-default"><span>&nbsp; Today &nbsp;</span></button>
+  <button type="button" onclick="nextButton()" class="btn btn-default"><span>&nbsp; > &nbsp;</span></button>
+  <button id="eventBtn">Add Event</button>
+  <div id="eventWindow" class="addEvent">
+      <div class="addEvent-content">
+        <span class="close">&times;</span>
+        <form class=holiday>
+          <label>Holiday Name</label>
+          <input id="name" class="holiday" name= "name" type="text"/>
+          <br>
+          <label>Date</label>
+          <select id="month" class="holiday" name="month" onload="limit()" onchange="limit()">
+            <option value="1" class="holiday" id="Jan">January</option>
+            <option value="2" class="holiday" id="Feb">February</option>
+            <option value="3" class="holiday" id="Mar">March</option>
+            <option value="4" class="holiday" id="Apr">April</option>
+            <option value="5" class="holiday" id="May">May</option>
+            <option value="6" class="holiday" id="Jun">June</option>
+            <option value="7" class="holiday" id="Jul">July</option>
+            <option value="8" class="holiday" id="Aug">August</option>
+            <option value="9" class="holiday" id="Sep">September</option>
+            <option value="10" class="holiday" id="Oct">October</option>
+            <option value="11" class="holiday" id="Nov">November</option
+            <option value="12" class="holiday" id="Dec">December</option>
+          </select>
+          <input id="day" class="holiday" name="day" type="number" min="1" max="31"> </input>
+          <input id="year" class="holiday" name="year" type="number"> </input>
+          <br>
+          <button type="submit">Add it!</button>
+        </form>
+      </div>
+    </div>
+    </div>
+	<div></div>
+    <div id="calendarContainer">ERROR</div>
+	<div id="upcoming">Nothing</div>
+
+</div>
+
+<script language="JavaScript" src="10.js"></script>
+
+</body>
+</div>
+</html>
