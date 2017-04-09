@@ -1,3 +1,4 @@
+
 var myApp = angular.module('myApp', ['ngRoute']);
   
 myApp.config(function($routeProvider) {
@@ -6,9 +7,13 @@ myApp.config(function($routeProvider) {
       templateUrl: 'project.html',
       controller: 'AppCtrl'
     })
-    .when('/info', {
+    .when('/project',{
+      templateUrl: 'project.html',
+      controller:'AppCtrl'
+    })
+    .when('/info/:projectId', {
       templateUrl: 'info.html',
-      controller: 'AppCtrl'
+      controller: 'infoCtrl'
     })
     .otherwise({
       redirectTo: '/home'
@@ -17,75 +22,85 @@ myApp.config(function($routeProvider) {
 
 
 
-myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
+
+
+/**** Controllers ****/
+
+function infoCtrl($scope, $http){
+     $scope.get = function(id) {
+        console.log(id);
+        $http.get('/projectlist/' + id).success(function(response) {
+          $scope.project = response;
+        });
+      };
+}
+
+function AppCtrl($scope, $http){
     console.log("Hello World from controller");
-    
+   
     $scope.showMe = false;
     $scope.myFunc = function() {
         $scope.showMe = !$scope.showMe;
     };
+    
+     $scope.uploadFile = function(){
+       var file = $scope.myFile;
+       
+       console.log('file is ' );
+       console.dir(file);
+       
+       var uploadUrl = "/fileUpload";
+       fileUpload.uploadFileToUrl(file, uploadUrl);
+      };
 
-    $scope.uploadFile = function(){
-               var file = $scope.myFile;
-               
-               console.log('file is ' );
-               console.dir(file);
-               
-               var uploadUrl = "/fileUpload";
-               fileUpload.uploadFileToUrl(file, uploadUrl);
-            };
+      var refresh = function() {
+        $http.get('/projectlist').success(function(response) {
+          console.log("I got the data I requested");
+          $scope.projectlist = response;
+          $scope.project = "";
+        });
+      };
 
+      refresh();
 
-var refresh = function() {
-  $http.get('/projectlist').success(function(response) {
-    console.log("I got the data I requested");
-    $scope.projectlist = response;
-    $scope.project = "";
-  });
-};
+      $scope.addproject = function() {
+        console.log($scope.project);
+        $http.post('/projectlist', $scope.project).success(function(response) {
+          console.log(response);
+          refresh();
+        });
+      };
 
-refresh();
+      $scope.remove = function(id) {
+        console.log(id);
+        $http.delete('/projectlist/' + id).success(function(response) {
+          refresh();
+        });
+      };
 
+      $scope.edit = function(id) {
+        console.log(id);
+        $http.get('/projectlist/' + id).success(function(response) {
+          $scope.project = response;
+        });
+      };
 
-$scope.addproject = function() {
-  console.log($scope.project);
-  $http.post('/projectlist', $scope.project).success(function(response) {
-    console.log(response);
-    refresh();
-  });
-};
+      $scope.get = function(id) {
+        console.log(id);
+        $http.get('/projectlist/' + id).success(function(response) {
+          $scope.project = response;
+        });
+      };
 
-$scope.remove = function(id) {
-  console.log(id);
-  $http.delete('/projectlist/' + id).success(function(response) {
-    refresh();
-  });
-};
+      $scope.update = function() {
+        console.log($scope.project._id);
+        $http.put('/projectlist/' + $scope.project._id, $scope.project).success(function(response) {
+          refresh();
+        })
+      };
 
-$scope.edit = function(id) {
-  console.log(id);
-  $http.get('/projectlist/' + id).success(function(response) {
-    $scope.project = response;
-  });
-};
-
-$scope.get = function(id) {
-  console.log(id);
-  $http.get('/projectlist/' + id).success(function(response) {
-    $scope.project = response;
-  });
-};
-
-$scope.update = function() {
-  console.log($scope.project._id);
-  $http.put('/projectlist/' + $scope.project._id, $scope.project).success(function(response) {
-    refresh();
-  })
-};
-
-$scope.deselect = function() {
-  $scope.project = "";
+      $scope.deselect = function() {
+        $scope.project = "";
+      }
 }
 
-
-}]);﻿
