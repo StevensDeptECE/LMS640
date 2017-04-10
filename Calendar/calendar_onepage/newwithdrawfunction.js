@@ -173,7 +173,6 @@ document.onclick = function(e) {
 	}
 }
 
-
 function setCalendar() {
 	show(getRightNow());
         //changeWeekendStyle();
@@ -214,14 +213,12 @@ function preButton(){
 	var preMonth = getPreMonth();
   show(preMonth);
 	drawCalendarButtons();
-        //changeWeekendStyle();
 }
 
 function resume(){
 	tempDate = getRightNow();
   show(tempDate);
 	drawCalendarButtons();
-        //changeWeekendStyle();
 }
 
 function getNextMonth() {
@@ -254,15 +251,7 @@ function nextButton() {
 	var nextMonth = getNextMonth();
   show(nextMonth);
 	drawCalendarButtons();
-        //changeWeekendStyle();
-}
-
-/*    function changeWeekendStyle(){
-        $("th:gt(4)").css("color", "red");
-        for (var i = 0; i < 6; i++) {
-            $("tr:eq(" + i + ")>td:gt(4)").css("color", "red");
-        }
-    }*/
+  }
 
 var monthId=["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul",
 	"Aug", "Sep", "Oct", "Nov", "Dec"];
