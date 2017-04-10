@@ -49,7 +49,7 @@ function getHeadOfNextMonth(date) {
 	var days = getDays(date);
   var firstDayOfMonth = getFirstDayOfMonth(date);
   var verbose = firstDayOfMonth;
-  var row = "";
+	var elements=[];
   var line = 0;
 
   for (var i = 1; i <= days; i++) {
@@ -74,50 +74,10 @@ function getHeadOfNextMonth(date) {
 
   if (line == 5 || line == 4) {
   	for (var i = 1; i <= 7 - verbose; i++) {
-    	row += "<td class='next'>"+i+"</td>";
-    }
-    row += "</tr>";
-  }
-  return row;
-}
-
-function getHeadOfNextMonthObjectMethod(date) {
-	var days = getDays(date);
-  var firstDayOfMonth = getFirstDayOfMonth(date);
-  var verbose = firstDayOfMonth;
-  //var row = "";
-	var head=Util.div("monthHead", "monthHead");
-  var line = 0;
-
-  for (var i = 1; i <= days; i++) {
-  	if ((i + verbose) % 7 == 0) {
-    	line++;
+			elements.push(Util.td(i, "next", ""));
     }
   }
-
-  var year = date.getFullYear();
-  var month = date.getMonth();
-  if (month == 11) {
-  	year += 1;
-    month = 0;
-  }
-  else {
-  	month += 1;
-  }
-
-  var nextMonth = new Date(year, month);
-  var firstDayOfNextMonth = getFirstDayOfMonth(nextMonth);
-  verbose = firstDayOfNextMonth;
-
-  if (line == 5 || line == 4) {
-  	for (var i = 1; i <= 7 - verbose; i++) {
-    	//row += "<td class='next'>"+i+"</td>";
-			var temp= Util.td(i,"next", "");
-			head.appendChild(temp);
-    }
-    //row += "</tr>";
-  }
-  return head;
+	return elements;
 }
 
 function getEndOfPreMonth(date){
@@ -134,165 +94,76 @@ function getEndOfPreMonth(date){
   var days = getDays(preMonth);
   var firstDayOfMonth = getFirstDayOfMonth(preMonth);
   var verbose = firstDayOfMonth;
-  var row = "";
-
-  for (var i = 1; i <= days; i++) {
-  	row += "<td class='pre'>" + i + "</td>";
-
-    if ((i + verbose) % 7 == 0) {
-    	row = "";
-    }
-  }
-  return row;
-}
-
-function getEndOfPreMonthObjectMethod(date){
-	var year = date.getFullYear();
-  var month = date.getMonth();
-  if (month == 0) {
-  	year -= 1;
-    month = 11;
-  }
-  else {
-  	month -= 1;
-  }
-  var preMonth = new Date(year, month);
-  var days = getDays(preMonth);
-  var firstDayOfMonth = getFirstDayOfMonth(preMonth);
-  var verbose = firstDayOfMonth;
   //var row = "";
-	var tail= Util.div("monthTail", "monthTail");
+	var elements=[];
 
   for (var i = 1; i <= days; i++) {
   	//row += "<td class='pre'>" + i + "</td>";
-		var temp= Util.td(i, "pre", "");
-		tail.appendChild(temp);
+		elements.push(Util.td(i, "pre", ""));
 
     if ((i + verbose) % 7 == 0) {
-			while(tail.firstChild){
-				tail.removeChild(tail.firstChild);
-			}
     	//row = "";
-
+			elements=[];
     }
   }
-  return tail;
+	return elements;
 }
 
 function show(customDate) {
 	var today = getRightNow();
 	var date = customDate.getDate();
-	var days = getDays(customDate);
-	var firstDayOfMonth = getFirstDayOfMonth(customDate);
-	var verbose = firstDayOfMonth;
-	var dateString = "";
-	dateString += "<table><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>";
-	var row = "";
-	row = getEndOfPreMonth(customDate);
-	//console.log(holiday.length);
-	for (var i = 1; i <= days; i++) {
-		if(i == today.getDate() && customDate.getMonth() == today.getMonth() && customDate.getFullYear() == today.getFullYear()){
-			row += "<td class='today'>" + i;
-			for(var j = 0; j < holiday.length; j++){
-				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
-					row += '\n' + "<button class='createholiday' onclick='createwindow("+j+")'>"+holiday[j].name+"</button>";
-					//console.log("if made a button for " + holiday[j].name);
-				}
-			}
-			row += "</td>";
-		}
-		else{
-			row += "<td class='current'>" + i;
-			for(var j = 0; j < holiday.length; j++){
-				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
-					row += '\n'+ "<button class='createholiday' onclick='createwindow("+j+")'> " + holiday[j].name + " </button>";
-					//console.log("else made a button for " + holiday[j].name);
-				}
-			}
-			row += "</td>";
-		}
-		if ((i + verbose) % 7 == 0) {
-			dateString += "<tr>" + row + "</tr>";
-			row = "";
-		}
-	}
-
-	var returnRow = getHeadOfNextMonth(customDate);
-
-	dateString += "<tr>" + row + returnRow;
-	dateString += "</table>";
-
-	var calendarContainer = document.getElementById("up3");
-	calendarContainer.innerHTML = dateString;
-}
-
-var dayOfWeekId=["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
-function showObjectMethod(customDate) {
-	var today = getRightNow();
-	var date = customDate.getDate();
-	var days = getDays(customDate);
-	var firstDayOfMonth = getFirstDayOfMonth(customDate);
-	var verbose = firstDayOfMonth;
-	//var dateString = "";
-	//dateString += "<table><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>";
-	var calendarTable= document.createElement("table");
+  var days = getDays(customDate);
+  var firstDayOfMonth = getFirstDayOfMonth(customDate);
+  var verbose = firstDayOfMonth;
+  var calTable= document.createElement("table");
+	var dayOfWeekId=["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+	var tr1= document.createElement("tr");
 	for(var i=0; i<dayOfWeekId.length; i++){
-		calendarTable.appendChild(Util.th(dayOfWeekId[i], "", ""));
+		tr1.appendChild(Util.th(dayOfWeekId[i], "", ""));
 	}
-
-	//var row = "";
-	var row= Util.div("row", "row");
-	//row = getEndOfPreMonthObjectMethod(customDate);
-	row.appendChild(getEndOfPreMonthObjectMethod(customDate));
-
-	//console.log(holiday.length);
+	calTable.appendChild(tr1);
+	var tags=[];
+	for(var q=0; q<getEndOfPreMonth(customDate).length; q++){
+		tags.push(getEndOfPreMonth(customDate)[q]);
+	}
 	for (var i = 1; i <= days; i++) {
 		if(i == today.getDate() && customDate.getMonth() == today.getMonth() && customDate.getFullYear() == today.getFullYear()){
-			//row += "<td class='today'>" + i;
-			row.appendChild(Util.td(i,"today", ""));
+			tags.push(Util.td(i, "today", ""));
 			for(var j = 0; j < holiday.length; j++){
 				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
-					//row += '\n' + "<button class='createholiday' onclick='createwindow("+j+")'>"+holiday[j].name+"</button>";
-					row.appendChild(Util.button(holidayName[j].name, createwindow(j), "createholiday", ""));
-					//console.log("if made a button for " + holiday[j].name);
+					tags.push(Util.button(holiday[j].name, createwindow(j), "createholiday", ""));
 				}
 			}
-			//row += "</td>";
 		}
 		else{
-			//row += "<td class='current'>" + i;
-			row.appendChild(Util.td(i, "current", ""));
+			tags.push(Util.td(i, "current", ""));
 			for(var j = 0; j < holiday.length; j++){
 				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
-					//row += '\n'+ "<button class='createholiday' onclick='createwindow("+j+")'> " + holiday[j].name + " </button>";
-					row.appendChild(Util.button(holiday[j].name, createwindown(j), "createholiday", ""));
-					//console.log("else made a button for " + holiday[j].name);
+					tags.push(Util.button(holiday[j].name, createwindow(j), "createholiday", ""));
 				}
 			}
-			//row += "</td>";
 		}
-		if ((i + verbose) % 7 == 0) {
-			//dateString += "<tr>" + row + "</tr>";
-			calendarTable.appendChild(Util.tr(row, "", ""));
-			//row = "";
-			while(row.firstChild){
-				row.removeChild(row.firstChild);
+    if ((i + verbose) % 7 == 0) {
+			var tr=document.createElement("tr");
+			for(var n=0; n<tags.length; n++){
+				tr.appendChild(tags[n]);
 			}
-		}
+			calTable.appendChild(tr);
+			tags=[];
+    }
+  }
+
+	var tr2= document.createElement("tr");
+	for(var m=0; m<tags.length; m++){
+		tr2.appendChild(tags[m]);
+	}
+	for(var p=0; p<getHeadOfNextMonth(customDate).length; p++){
+		tr2.appendChild(getHeadOfNextMonth(customDate)[p]);
 	}
 
-	//var returnRow = getHeadOfNextMonth(customDate);
-	var head= Util.div("head", "head");
-	head.appendChild(getHeadOfNextMonthObjectMethod(customDate));
-
-	//dateString += "<tr>" + row + returnRow;
-	//dateString += "</table>";
-	calendarTable.appendChild(Util.tr(row), "", "");
-	calendarTable.appendChild(Util.tr(head), "", "");
-
-	//var calendarContainer = document.getElementById("up3");
-	//calendarContainer.innerHTML = dateString;
-	document.getElementById("up3"). appendChild(calendarTable);
+	calTable.appendChild(tr2);
+	var cal=document.getElementById("up3");
+  cal.appendChild(calTable);
 }
 
 function createwindow(n){
@@ -309,15 +180,12 @@ document.onclick = function(e) {
 		if(e.target.id != "divholiday" && e.target.className != "createholiday") {
 			var holiday = document.getElementById("divholiday");
 			holiday.parentNode.removeChild(holiday);
-			//console.log("i took away the window");
 		}
 	}
 }
 
 function setCalendar() {
-	show(getRightNow());
-        //changeWeekendStyle();
-	drawCalendarButtons();
+	drawCalendar(getRightNow());
 }
 
 function getTempDate(){
@@ -352,14 +220,12 @@ function getPreMonth() {
 
 function preButton(){
 	var preMonth = getPreMonth();
-  show(preMonth);
-	drawCalendarButtons();
+	drawCalendar(preMonth);
 }
 
 function resume(){
 	tempDate = getRightNow();
-  show(tempDate);
-	drawCalendarButtons();
+	drawCalendar(tempDate);
 }
 
 function getNextMonth() {
@@ -390,8 +256,7 @@ function getNextMonth() {
 
 function nextButton() {
 	var nextMonth = getNextMonth();
-  show(nextMonth);
-	drawCalendarButtons();
+	drawCalendar(nextMonth);
   }
 
 var monthId=["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul",
@@ -403,7 +268,6 @@ function changeMonth(){
 	var elements = document.getElementsByTagName("a");
 	for(var i=0; i<elements.length; i++){
 		elements[i].onclick = function(){
-	  	//alert("you chose "+ this.innerHTML);
 			tempDate=getTempDate();
 			tempDate.setMonth(this.id);
 			show(tempDate);
@@ -417,10 +281,8 @@ function chooseDate(){
 	var m= a.getMonth();
 	var y= a.getFullYear();
 	var display= fullMonthId[m];
-	//var disp= Util.span("", "displayDate");
 	var dropdiv= Util.div("dropdown","");
 	var niceDate = Util.span(display, "dropbtn", "niceDate");
-	//disp.appendChild(niceDate);
 
 	var dropdown= Util.div("dropdownMenu", "");
 	for(var i=0; i<monthId.length; i++){
@@ -430,13 +292,18 @@ function chooseDate(){
 	}
 	niceDate.appendChild(dropdown);
 	dropdiv.appendChild(niceDate);
-	//disp.appendChild(dropdiv);
-	//disp.appendChild(Util.text(' '+y));
 	document.getElementById("up3").appendChild(dropdiv);
 	document.getElementById("up3").appendChild(Util.text(' '+y));
 }
 
-function drawCalendarButtons() {
+function drawCalendar(tdate) {
+	console.log("Draw Calendar");
+	clearElements("up2");
+
+	var newHeader = Util.h1("Calendar", "", "");
+	document.getElementById("up2").appendChild(newHeader);
+
+	clearElements("up3");
 	console.log("Draw Calendar Buttons");
 	var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
 	document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
@@ -447,25 +314,13 @@ function drawCalendarButtons() {
 	document.getElementById("up3").appendChild(btn_right);   // Append <button> to <body>
 	var btn_event= Util.button("Add Event", drawEventForm, "eventBtn", "eventBtn");
 	document.getElementById("up3").appendChild(btn_event);
-}
 
-function drawCalendar() {
-	clearElements("up2");
+	show(tdate);
 
-	var newHeader = Util.h1("Calendar", "", "");
-	document.getElementById("up2").appendChild(newHeader);
-
-	clearElements("up3");
-	show(getRightNow());
-	drawCalendarButtons();
-	console.log("Draw Calendar");
-	//showObjectMethod(getRightNow());
-		    //changeWeekendStyle();
-	//drawCalendarButtons();
-		    //onclickClass("active", launch)
 	clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
 	document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
 }
+
 function limit(){ //sets month limit for input dates
 	var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 	if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
