@@ -1,5 +1,5 @@
 (function(window, angular, undefined){
-    angular.module('chatApp', ['ng.ueditor','infinite-scroll'])
+    angular.module('chatApp', ['ng.ueditor','infinite-scroll','luegg.directives'])
 
         .controller('chatCtrl', ['$rootScope', '$scope', function($rootScope, $scope, $S){
             $scope._simpleConfig = {
@@ -15,7 +15,7 @@
                 wordCount: false
                };
                 $scope.content = 'hello world!!';
-
+            $scope.glued = true;
             var temp = undefined;
             var vm = this;
             var socket = window.io('localhost:3000/');
@@ -31,13 +31,10 @@
                     console.log("received message");
                     $scope.$apply(function(){
                         vm.messages.push(temp1);
-                        vm.myPagingFunction = function(){
-                            cosole.log("scroll does work!!");
-                        }
                     });
                     
                 });
-                            
+                
             vm.username = "admin";
             
             // send message with username and content
