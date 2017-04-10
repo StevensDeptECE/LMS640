@@ -266,7 +266,7 @@ function changeMonth(){
 			tempDate=getTempDate();
 			tempDate.setMonth(this.id);
 			show(tempDate);
-			chooseDate();
+			drawCalendarButtons();
 	 	}
 	}
 }
@@ -276,8 +276,14 @@ function chooseDate(){
 	var m= a.getMonth();
 	var y= a.getFullYear();
 	var display= fullMonthId[m];
+	var disp= Util.span("", "displayDate");
+	var dropdiv= Util.div("dropdown","");
 	var niceDate = Util.span(display, "dropbtn", "niceDate");
-	var dropdiv= Util.div("dropdown", "");
+	while(disp.firstChild){
+		disp.removeChild(disp.firstChild);
+	}
+	disp.appendChild(niceDate);
+
 	var dropdown= Util.div("dropdownMenu", "");
 	for(var i=0; i<monthId.length; i++){
 		var opt= Util.a("javascript:void(0)", monthId[i], "changeMonth", i);
@@ -286,9 +292,11 @@ function chooseDate(){
 	}
 	niceDate.appendChild(dropdown);
 	dropdiv.appendChild(niceDate);
+	disp.appendChild(dropdiv);
 
-	niceDate.appendChild(Util.text(' '+y));
-	document.getElementById("up3").appendChild(niceDate);
+	disp.appendChild(Util.text(' '+y));
+	document.getElementById("up3").appendChild(disp);
+
 }
 
 function drawCalendarButtons() {
