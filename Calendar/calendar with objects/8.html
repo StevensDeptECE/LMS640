@@ -1,0 +1,62 @@
+<html>
+<head>
+<script language="JavaScript" src="onepagelib.js"></script>'
+    <title>calendar</title>
+    <link type="text/css" charset="utf-8" rel="stylesheet" href="stylesheet.css">
+</head>
+
+<div align="center">
+<body onload="setCalendar()">
+
+<div>
+	<div class="btn-group" role="group">
+    <button type="button" onclick="preButton()" class="btn btn-default"><span>&nbsp; < &nbsp;</span></button>
+    <span id="displayDate" style="font-size:150%"></span>
+    <button type="button" onclick="resume()" class="btn btn-default"><span>&nbsp; Today &nbsp;</span></button>
+    <button type="button" onclick="nextButton()" class="btn btn-default"><span>&nbsp; > &nbsp;</span></button>
+    <button id="eventBtn" class="btn btn-default">Add Event</button>
+  </div>
+    <div id="eventWindow" class="addEvent">
+      <div class="addEvent-content">
+        <span class="close">&times;</span>
+      <form class=holidayForm>
+        <label>Holiday Name</label>
+        <input id="name" class="holidayForm" name= "name" type="text"/>
+        <br>
+        <label>Date</label>
+        <select id="month" class="holidayForm" name="month" onload="limit()" onchange="limit()">
+          <option value="1" class="holidayForm" id="Jan">January</option>
+          <option value="2" class="holidayForm" id="Feb">February</option>
+          <option value="3" class="holidayForm" id="Mar">March</option>
+          <option value="4" class="holidayForm" id="Apr">April</option>
+          <option value="5" class="holidayForm" id="May">May</option>
+          <option value="6" class="holidayForm" id="Jun">June</option>
+          <option value="7" class="holidayForm" id="Jul">July</option>
+          <option value="8" class="holidayForm" id="Aug">August</option>
+          <option value="9" class="holidayForm" id="Sep">September</option>
+          <option value="10" class="holidayForm" id="Oct">October</option>
+          <option value="11" class="holidayForm" id="Nov">November</option
+          <option value="12" class="holidayForm" id="Dec">December</option>
+        </select>
+        <input id="day" class="holidayForm" name="day" type="number" min="1" max="31"> </input>
+        <input id="year" class="holidayForm" name="year" type="number"> </input>
+        <br>
+        <label> Notes: </label>
+        <input id="notes" class="holidayForm" name="notes" type="text"></input>
+        <button type="submit">Add it!</button>
+      </form>
+      </div>
+    </div>
+</div>
+
+<div id="calendarContainer">ERROR</div>
+
+<div id= "testObjects"</div>
+
+</div>
+
+<script language="JavaScript" src="8.js"></script>
+
+</body>
+</div>
+</html>
