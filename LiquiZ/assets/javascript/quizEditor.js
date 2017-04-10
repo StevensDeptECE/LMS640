@@ -396,5 +396,15 @@ var quizEditorPayLoad = [
             ["Instr", "Please analyze the relationship between Lennie and George in Of Mice and Men", "1"],
             ["Essay", "2" ]
         ]
+    },
+
+    {
+        id: "qc1012",
+        title: "File Upload",
+        points: 10,
+        comp: [
+            ["Instr", "Please choose the file you want to upload", "1"],
+            ["fileUpload", "2" ]
+        ]
     }
 ];

@@ -112,7 +112,7 @@ function timerSetter (quizLength){
         var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-        document.getElementById("countdownTimer").innerHTML = "Time Remaining " hours + ":" + minutes + ":" + seconds;
+        document.getElementById("countdownTimer").innerHTML = "Time Remaining "+ hours + ":" + minutes + ":" + seconds;
         if (timeLeft < 0) {
             clearInterval(timer);
             //FUNCTION TO SUBMIT QUIZ GOES HERE
@@ -136,7 +136,11 @@ takeQuiz.prototype.draw = function(div){
     for (var i = 0; i < this.questions.length; ++i) {
         this.questions[i].draw();
     }
+    var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"two");
+    submitQuiz.style.position = "relative";
+    submitQuiz.style.left = "40%";
 
+    div.appendChild(submitQuiz);
 };
 
 var quest = [
@@ -288,7 +292,18 @@ var quest = [
             ["Instr", "Please analyze the relationship between Lennie and George in Of Mice and Men", "1"],
             ["Essay", "2" ]
         ]
+    },
+
+    {
+        id: "qc1012",
+        title: "File Upload",
+        points: 10,
+        comp: [
+            ["Instr", "Please choose the file you want to upload", "1"],
+            ["fileUpload", "2" ]
+        ]
     }
+
 ];
 var quiz1Payload = {
     title: "Quiz 1",

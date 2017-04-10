@@ -49,7 +49,7 @@ questionEditor.prototype.draw = function(s) {
     trow1.id = "row1";
     var td1 = document.createElement("td");
     var selectList = document.createElement("select");
-    var choices = ["Multi Choice", "Multi Choice Select", "Fill in", "Numbers", "Cloze", "Codes", "Grid", "Survey", "Matrix", "Multi Choice drop", "Drag and Drop", "Matching", "Essay"];
+    var choices = ["Multi Choice", "Multi Choice Select", "Fill in", "Numbers", "Cloze", "Codes", "Grid", "Survey", "Matrix", "Multi Choice drop", "Drag and Drop", "Matching", "Essay", "File Upload"];
     for(var i = 0; i < choices.length; i++) {
         var option = document.createElement('option');
         if(i == 10) {
@@ -235,7 +235,7 @@ function createClickHandler2(loc,no){
         cont2Instr.appendChild(document.createTextNode("Please input the first part above"));
         cont3Instr.className = "instrText";
         cont3Instr.appendChild(document.createTextNode("Please input the second part above"));
-    } else if(loc.value == "Fill in" || loc.value == "Essay") {
+    } else if(loc.value == "Fill in" || loc.value == "Essay" || loc.value == "File Upload") {
         document.getElementById('1cont_row' + no).style.display = 'none';
         document.getElementById('2cont_row' + no).style.display = 'none';
         document.getElementById('3cont_row' + no).style.display = 'none';
@@ -299,6 +299,9 @@ function tableToJson3(table) {
             operFinal.push(addOn);
         }else if(document.getElementById("type_row"+i).value == "Fill in"){
             operFinal.push("FillIn");
+            operFinal.push(addOn);
+        }else if(document.getElementById("type_row"+i).value == "File Upload"){
+            operFinal.push("fileUpload");
             operFinal.push(addOn);
         }else if(document.getElementById("type_row"+i).value == "Numbers"){
             operFinal.push("Numbers");

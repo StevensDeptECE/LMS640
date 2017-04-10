@@ -128,7 +128,7 @@ newQuiz.prototype.draw = function(s) {
     th1.className = "th5";
 
     var selectList = document.createElement("select");
-    var choices = ["-- select question type --", "Multi Choice", "Multi Choice Select", "Fill in", "Numbers", "Cloze", "Codes", "Grid", "Survey", "Matrix", "Multi Choice drop", "Drag and Drop", "Matching", "Essay"];
+    var choices = ["-- select question type --", "Multi Choice", "Multi Choice Select", "Fill in", "Numbers", "Cloze", "Codes", "Grid", "Survey", "Matrix", "Multi Choice drop", "Drag and Drop", "Matching", "Essay", "File Upload"];
     for(var i = 0; i < choices.length; i++) {
         var option = document.createElement('option');
         if(i == 0) {
@@ -363,7 +363,7 @@ function create_question() {
     th1.className = "th5";
 
     var selectList = document.createElement("select");
-    var choices = ["-- select question type --", "Multi Choice", "Multi Choice Select", "Fill in", "Numbers", "Cloze", "Codes", "Grid", "Survey", "Matrix", "Multi Choice drop", "Drag and Drop", "Matching", "Essay"];
+    var choices = ["-- select question type --", "Multi Choice", "Multi Choice Select", "Fill in", "Numbers", "Cloze", "Codes", "Grid", "Survey", "Matrix", "Multi Choice drop", "Drag and Drop", "Matching", "Essay", "File Upload"];
     for(var i = 0; i < choices.length; i++) {
         var option = document.createElement('option');
         if(i == 0) {
@@ -656,7 +656,7 @@ function createClickHandler3(loc,no){
         document.getElementById('multiSurveys' + no).style.display = 'none';
         document.getElementById('surveyChoices' + no).style.display = 'none';
 
-    } else if(loc.value == "Fill in" || loc.value == "Essay") {
+    } else if(loc.value == "Fill in" || loc.value == "Essay" || loc.value == "File Upload") {
         document.getElementById('5th' + no).style.display = 'none';
         document.getElementById('multiChoices' + no).style.display = 'none';
         document.getElementById('numbersSet' + no).style.display = 'none';
@@ -743,6 +743,9 @@ function tableToJson4(Divs) {
             operFinal.push(addOn);
         }else if(document.getElementById("type_row"+i).value == "Fill in"){
             operFinal.push("FillIn");
+            operFinal.push(addOn);
+        }else if(document.getElementById("type_row"+i).value == "File Upload"){
+            operFinal.push("fileUpload");
             operFinal.push(addOn);
         }else if(document.getElementById("type_row"+i).value == "Numbers"){
             operFinal.push("Numbers");

@@ -439,3 +439,15 @@ Numbers.prototype.draw = function(div) {
     };
     div.appendChild(inp);
 };
+
+function fileUpload(id) {
+    this.id = id;
+}
+
+fileUpload.prototype.draw = function(div) {
+    var inp = document.createElement("input");
+    inp.type = "file";
+    div.appendChild(inp);
+};
+
+
