@@ -173,7 +173,6 @@ document.onclick = function(e) {
 	}
 }
 
-
 function setCalendar() {
 	show(getRightNow());
         //changeWeekendStyle();
@@ -214,14 +213,12 @@ function preButton(){
 	var preMonth = getPreMonth();
   show(preMonth);
 	drawCalendarButtons();
-        //changeWeekendStyle();
 }
 
 function resume(){
 	tempDate = getRightNow();
   show(tempDate);
 	drawCalendarButtons();
-        //changeWeekendStyle();
 }
 
 function getNextMonth() {
@@ -254,28 +251,52 @@ function nextButton() {
 	var nextMonth = getNextMonth();
   show(nextMonth);
 	drawCalendarButtons();
-        //changeWeekendStyle();
-}
-
-/*    function changeWeekendStyle(){
-        $("th:gt(4)").css("color", "red");
-        for (var i = 0; i < 6; i++) {
-            $("tr:eq(" + i + ")>td:gt(4)").css("color", "red");
-        }
-    }*/
+  }
 
 var monthId=["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul",
 	"Aug", "Sep", "Oct", "Nov", "Dec"];
 var fullMonthId=["January", "February", "March", "April", "May", "June",
 	"July", "August", "Septempber", "October", "November", "December"];
 
+function changeMonth(){
+	var elements = document.getElementsByTagName("a");
+	for(var i=0; i<elements.length; i++){
+		elements[i].onclick = function(){
+	  	//alert("you chose "+ this.innerHTML);
+			tempDate=getTempDate();
+			tempDate.setMonth(this.id);
+			show(tempDate);
+			drawCalendarButtons();
+	 	}
+	}
+}
+
 function chooseDate(){
 	var a= getTempDate();
 	var m= a.getMonth();
 	var y= a.getFullYear();
-	var display= fullMonthId[m] +' '+ y;
-	var niceDate = Util.span(display, "", "niceDate");
-	document.getElementById("up3").appendChild(niceDate);
+	var display= fullMonthId[m];
+	var disp= Util.span("", "displayDate");
+	var dropdiv= Util.div("dropdown","");
+	var niceDate = Util.span(display, "dropbtn", "niceDate");
+	while(disp.firstChild){
+		disp.removeChild(disp.firstChild);
+	}
+	disp.appendChild(niceDate);
+
+	var dropdown= Util.div("dropdownMenu", "");
+	for(var i=0; i<monthId.length; i++){
+		var opt= Util.a("javascript:void(0)", monthId[i], "changeMonth", i);
+		opt.setAttribute("onclick", "changeMonth()");
+		dropdown.appendChild(opt);
+	}
+	niceDate.appendChild(dropdown);
+	dropdiv.appendChild(niceDate);
+	disp.appendChild(dropdiv);
+
+	disp.appendChild(Util.text(' '+y));
+	document.getElementById("up3").appendChild(disp);
+
 }
 
 function drawCalendarButtons() {
