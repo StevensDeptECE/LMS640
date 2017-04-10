@@ -258,12 +258,36 @@ var monthId=["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul",
 var fullMonthId=["January", "February", "March", "April", "May", "June",
 	"July", "August", "Septempber", "October", "November", "December"];
 
+function changeMonth(){
+	var elements = document.getElementsByTagName("a");
+	for(var i=0; i<elements.length; i++){
+		elements[i].onclick = function(){
+	  	//alert("you chose "+ this.innerHTML);
+			tempDate=getTempDate();
+			tempDate.setMonth(this.id);
+			show(tempDate);
+			chooseDate();
+	 	}
+	}
+}
+
 function chooseDate(){
 	var a= getTempDate();
 	var m= a.getMonth();
 	var y= a.getFullYear();
-	var display= fullMonthId[m] +' '+ y;
-	var niceDate = Util.span(display, "", "niceDate");
+	var display= fullMonthId[m];
+	var niceDate = Util.span(display, "dropbtn", "niceDate");
+	var dropdiv= Util.div("dropdown", "");
+	var dropdown= Util.div("dropdownMenu", "");
+	for(var i=0; i<monthId.length; i++){
+		var opt= Util.a("javascript:void(0)", monthId[i], "changeMonth", i);
+		opt.setAttribute("onclick", "changeMonth()");
+		dropdown.appendChild(opt);
+	}
+	niceDate.appendChild(dropdown);
+	dropdiv.appendChild(niceDate);
+
+	niceDate.appendChild(Util.text(' '+y));
 	document.getElementById("up3").appendChild(niceDate);
 }
 
