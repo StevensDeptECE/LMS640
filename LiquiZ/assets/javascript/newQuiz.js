@@ -304,6 +304,24 @@ newQuiz.prototype.draw = function(s) {
     surveyChoices.appendChild(surveyC3);
     surveyChoices.appendChild(surveyC4);
 
+    
+    var dragAndDrop = document.createElement("div");
+    var imgUpload = document.createElement("input");
+    imgUpload.type = "file";
+    imgUpload.accept = "image/*"
+    dragAndDrop.id = "dragDropSet" + count;
+    dragAndDrop.style.display = "none";
+    dragAndDrop.className = "multiChoice";
+    imgUpload.onchange = function() {readURL(this, count)};
+    var image = document.createElement("img");
+    image.id = "blah" + count;
+    image.src = "#";
+    image.alt = "image";
+    image.style.display = "none";
+    dragAndDrop.appendChild(imgUpload);
+    dragAndDrop.appendChild(image);
+    
+
     var bt1 = Util.button("Delete", function () {remove_question(count)}, "three");
     bt1.style.display = "block";
 
@@ -325,6 +343,7 @@ newQuiz.prototype.draw = function(s) {
     Quest.appendChild(matchRight);
     Quest.appendChild(multiSurveys);
     Quest.appendChild(surveyChoices);
+    Quest.appendChild(dragAndDrop);
 
     Quest.appendChild(bt1);
 
@@ -539,6 +558,23 @@ function create_question() {
     surveyChoices.appendChild(surveyC3);
     surveyChoices.appendChild(surveyC4);
 
+    var dragAndDrop = document.createElement("div");
+    var imgUpload = document.createElement("input");
+    imgUpload.type = "file";
+    imgUpload.accept = "image/*"
+    dragAndDrop.id = "dragDropSet" + count;
+    dragAndDrop.style.display = "none";
+    dragAndDrop.className = "multiChoice";
+    imgUpload.onchange = function() {readURL(this, count)};
+    var image = document.createElement("img");
+    image.id = "blah" + count;
+    image.src = "#";
+    image.alt = "image";
+    image.style.display = "none";
+    dragAndDrop.appendChild(imgUpload);
+    dragAndDrop.appendChild(image);
+
+
     var bt1 = Util.button("Delete", function () {remove_question(count)}, "three");
     bt1.style.display = "block";
 
@@ -560,6 +596,7 @@ function create_question() {
     Quest.appendChild(matchRight);
     Quest.appendChild(multiSurveys);
     Quest.appendChild(surveyChoices);
+    Quest.appendChild(dragAndDrop);
 
     Quest.appendChild(bt1);
 
@@ -697,6 +734,21 @@ function createClickHandler3(loc,no){
         document.getElementById('matchRight' + no).style.display = 'none';
         document.getElementById('multiSurveys' + no).style.display = 'block';
         document.getElementById('surveyChoices' + no).style.display = 'block';
+
+    }else if(loc.value == "Drag and Drop") {
+        document.getElementById('5th' + no).style.display = 'block';
+        document.getElementById('multiChoices' + no).style.display = 'none';
+        document.getElementById('numbersSet' + no).style.display = 'none';
+        document.getElementById('gridSet' + no).style.display = 'none';
+        document.getElementById('matrixRSet' + no).style.display = 'none';
+        document.getElementById('matrixCSet' + no).style.display = 'none';
+        document.getElementById('clozeSet' + no).style.display = 'none';
+        document.getElementById('codesSet' + no).style.display = 'none';
+        document.getElementById('matchLeft' + no).style.display = 'none';
+        document.getElementById('matchRight' + no).style.display = 'none';
+        document.getElementById('multiSurveys' + no).style.display = 'none';
+        document.getElementById('surveyChoices' + no).style.display = 'none';
+        document.getElementById('dragDropSet' + no).style.display = 'block';
 
     }
 }
@@ -887,6 +939,23 @@ function guid() {
     }
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
         s4() + '-' + s4() + s4() + s4();
+}
+
+/*function for displaying a preview of an image for drag and drop*/
+function readURL(input, count) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#blah' + count)
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200)
+                        .css("display", "block");
+                };
+
+                reader.readAsDataURL(input.files[0]);
+
+            }
 }
 
 
