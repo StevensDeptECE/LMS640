@@ -1,0 +1,13 @@
+table {
+        border-collapse: separate;
+}
+.tableBorder {
+    border-spacing: 50px 0 !important;
+}
+tr {
+    text-align: center;
+}
+
+td {
+    padding: 30px 0;
+}

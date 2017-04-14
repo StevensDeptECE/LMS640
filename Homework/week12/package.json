@@ -1,0 +1,37 @@
+{
+  "name": "TradeLink",
+  "version": "1.0.0",
+  "description": "640 Final Project",
+  "main": "app.js",
+  "scripts": {
+    "seed":  "node ./tasks/seed.js",
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yu Yu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com"
+  },
+  "bugs": {
+    "url": "https://github.com"
+  },
+  "homepage": "https://github.com",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.14.2",
+    "handlebars": "^4.0.6",
+    "mongodb": "^2.2.11",
+    "multer": "^1.2.0",
+    "node-uuid": "^1.4.7",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "xss": "^0.3.1"
+  }
+}

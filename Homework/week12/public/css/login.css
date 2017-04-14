@@ -1,0 +1,17 @@
+
+.login-container .middle-login {
+  width: 430px;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  margin-top: -170px;
+  margin-left: -215px;
+}
+
+.login-container .middle-login .form-group {
+  padding-bottom: 50px;
+}
+
+.strong {
+  font-weight: bold;
+}

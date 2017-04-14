@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Stevens Intitute of Technology</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link rel="stylesheet" href="/public/css/bootstrap.css">
+    <link rel="stylesheet" href="/public/css/layout.css">
+    <script src="/public/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="/public/js/tota11y.js"></script>
+    {{!--<script src="/public/js/helper.js"><script>--}}
+</head>
+
+<body>
+<div>
+    <nav class="class=navbar navbar-light" style="background-color: #a32638;margin-bottom: 20px">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Stevens Institute of Technology</a>
+            </div>
+
+            <div>
+                <ul class="nav navbar-nav navbar-right">
+                    {{#if user}}
+                        <li class="active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                               role="button" aria-haspopup="true" aria-expanded="true">{{user.firstName}}<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/sell/sellProduct">
+                                  Sell a Product<span class="screen-reader-text">on TradeLink</span>
+                                </a></li>
+                                <li><a href="/browse">
+                                  Browse Products<span class="screen-reader-text">on TradeLink</span>
+                                </a></li>
+                                <li><a href="/products">
+                                  My Products<span class="screen-reader-text">on TradeLink</span>
+                                </a></li>
+                                <li><a href="/updateProfile">
+                                  Update Profile<span class="screen-reader-text">on TradeLink</span>
+                                </a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/logout">
+                                  Logout<span class="screen-reader-text">out of TradeLink</span>
+                                </a></li>
+                            </ul>
+                        </li>
+                    {{else}}
+                        <li class="active"><a href="/login">Login</a></li>
+                    {{/if}}
+                    <li class="active">
+                        <a href="/about">
+                          About<span class="screen-reader-text">TradeLink product</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" >
+        <div class="row" >
+          {{{body}}}
+        </div>
+    </main>
+
+
+    {{> (lookup . 'partial') }}
+</div>
+</body>
+</html>

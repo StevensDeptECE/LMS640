@@ -1,0 +1,22 @@
+p {
+  font-size: 200%;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+  float: left
+}
+
+.link-content {
+  float: left;
+  padding-top: 30px;
+  padding-right: 200px;
+}
+
+.picture-content {
+  float: left;
+  padding-top: 30px;
+  width: 300px;
+  height: 300px;
+}
