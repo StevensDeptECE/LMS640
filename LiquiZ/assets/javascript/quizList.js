@@ -110,10 +110,17 @@ quizIndex.prototype.draw = function(s) {
         td7.appendChild(bt2);
             var bt3 = document.createElement("button");
             bt3.onclick = function () {launch(quizEditor, quizEditorPayLoad, 'up3')};
-            text = document.createTextNode("Edit");
+            text = document.createTextNode("Edit I");
             bt3.className = "three";
             bt3.appendChild(text);
         td7.appendChild(bt3);
+            var bt33 = document.createElement("button");
+            bt33.onclick = function () {launch(newQuizEditor, newQuizEditorPayLoad, 'up3')};
+            text = document.createTextNode("Edit II");
+            bt33.className = "three";
+            bt33.appendChild(text);
+        td7.appendChild(bt33);
+
 
         var td8 = document.createElement("td");
             var bt4 = document.createElement("button");

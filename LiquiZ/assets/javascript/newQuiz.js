@@ -14,6 +14,7 @@ newQuiz.prototype.draw = function(s) {
 
     clearElements("up2");
     var header = Util.h1("Question Editor", "h03");
+
     var details = Util.div("wrapper_rightside", "quizDetails");
 
     var quizID = document.createElement("p");
@@ -100,6 +101,8 @@ newQuiz.prototype.draw = function(s) {
     details.appendChild(questionNum);
     details.appendChild(accessCode);
 
+    var back = Util.button("Back", function () {launch(quizIndex, quizIndexPayload, 'up3')}, "three");
+    document.getElementById("up2").appendChild(back);
     document.getElementById("up2").appendChild(header);
     document.getElementById("up2").appendChild(details);
     var hide = Util.button("Hide", function () {hideDetail()}, "three");
@@ -606,7 +609,6 @@ function create_question() {
 function remove_question(no) {
     console.log(no);
     document.getElementById("row" + no).outerHTML = "";
-    
 }
 
 function createClickHandler3(loc,no){
@@ -807,6 +809,7 @@ function tableToJson4(Divs) {
         }else if(document.getElementById("type_row"+i).value == "Cloze"){
             operFinal.push("Cloze");
             var newOperCont2 = document.getElementById("clozeSet"+i).value;
+            newOperCont2 = newOperCont2.replace(/,/g, "\,");
             newOperCont2 = newOperCont2.replace(/\n/g, ",");
             newOperCont2 = newOperCont2.replace(/\s\[\]\s/g,",[],");
             operCont2 = "[" + newOperCont2 + "]";
