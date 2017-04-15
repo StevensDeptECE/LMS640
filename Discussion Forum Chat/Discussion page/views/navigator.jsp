@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<body class="menu">
+<div class="menu">
 	<div class="cont">
 	 	<div class="title">Administrator</div>
 	 	<ul class="mlist">
@@ -14,4 +14,4 @@
 	 		</li>
 	 	</ul>
 </div>
-</body>
+</div>

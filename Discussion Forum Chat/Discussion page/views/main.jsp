@@ -17,7 +17,7 @@
 				<div class="details">
 					<div class="details_operation clearfix">
 						<div class="bui_select">
-						<div><a class="mybtn" href="${pageContext.request.contextPath}/person/addPrompt"></a>
+						<div><a class="mybtn" href="${pageContext.request.contextPath}/person/addPrompt">&nbsp;&nbsp;新&nbsp;&nbsp;建&nbsp;&nbsp;</a></div>
 						</div>
 						<div class="fr">
 							<div class="text">	
@@ -25,18 +25,20 @@
 								<input type="text" value="" class="search">
 							</div>
 							</div>
+							</div>
 							
-									<table>
+			<table class="table" cellspacing="0" cellpadding="0">
 				<thead>
 					<tr>
+					<th width="100">Name</th>
 					<th width="200">ID number</th>
 					<th width="100">TEL</th>
 					<th width="300">Address</th>
 					<th></th>
 					</tr>					
 				</thead>
-				<tbody>
-				<c:forEach var="p" items="${persons}">
+				<tbody>				
+					<c:forEach var="p" items="${persons}">
 					<tr>
 						<td><input type="checkbox" id="c9" class="check"><label for="c9" class></td>					
 						<td>${p.idCard}</td>
@@ -44,12 +46,13 @@
 						<td>${p.address}</td>
 						<td align="center">
 							<a class="btn" href=updatePrompt?id=${p.id}">modify</a>
-							<a class="btn" href=deletePersonById?id=${p.id}" onclick='return'>modify</a>
+							<a class="btn" href=deletePersonById?id=${p.id}" onclick='return confirm("Are you sure")'>delete</a>
 						</td>
 					</tr>
 				</c:forEach>
 				</tbody>
 				</table>
+				
 			</div>
 		</div>
 	</div>

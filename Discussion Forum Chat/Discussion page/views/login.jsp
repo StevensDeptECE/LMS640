@@ -13,8 +13,7 @@
 <div class="headerBar">
 	<div class="logoBar login_login">
 		<div class="comWidth">
-			<div class="logo fl">
-			
+			<div class="logo fl">			
 			</div>
 			<h3 class="welcome_title">welcome login</h3>
 			</div>
@@ -23,6 +22,18 @@
 			
 			
 <div class="loginBox">
+	<div class="login_cont">
+		<ul class="login">
+			<form action="${pageContext.request.contextPath}/person/dologin" method="post">
+			<li class="l_tit">Username</li>
+			<li class="mb_10"><input type="text" name="userName" class="login_input user_icon"></li>
+			<li class="l_tit">Password</li>
+			<li><input type="submit" value="" class="login_btn"></li>
+		</form>
+		</ul>
+		</div>
+
+</div>
 
 </body>
 </html>
