@@ -195,6 +195,14 @@
 				var node = document.createTextNode(holiday[i].name + " is in " + (holiday[i].day-today.getDate())+" days");
 				para.appendChild(node);
 				document.getElementById("upcoming").appendChild(para);
+			}else{
+				if(today.getFullYear() + 1 == holiday[i].year && today.getMonth() == 11 && holiday[i].month == 1 && holiday[i].day + 31 - today.getDate() <=7){
+				var para = document.createElement("li");
+				para.setAttribute("class","upcomingevent");
+				var node = document.createTextNode(holiday[i].name + " is in " + (holiday[i].day + 31 - today.getDate())+" days");
+				para.appendChild(node);
+				document.getElementById("upcoming").appendChild(para);
+			}
 			}
 		}			
 	}
