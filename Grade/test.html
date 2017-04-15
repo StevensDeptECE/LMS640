@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="js/jquery.js"></script>
-<script type="text/javascript">
-	$(function () {
-		$("#button").click(function() {
-			$.get("demo.jsp", {name: $("#name").val(), grade: $("#grade").val()},
-			function(data) {
-				$("#div").html(data);
-			});
-		});
-	});
-</script>
+<script type="text/javascript" src="js/jquery.js"></script> 
+<script type="text/javascript" src="js/edit_table.js"></script>
+<script type="text/javascript" src="js/table.js"></script>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	Name: <input type="text" name="name" value="" id="name">
-	Grade: <input type="text" name="grade" value="" id="grade">
-	<input type="button" name="button" value=" Request " id="button">
-	<div id="div"></div>
+<button type="button" onclick="loadDoc()"> </button>
+<div id="wrapper">
+	
+</div>
+
+<script>
+$(document).ready(
+		$.ajax({
+	        type: 'GET',
+	        url: 'demo.jsp',
+	        async: false,
+	        dataType:'text',
+	        success: function (result) {
+	        	alert(result);
+	        },
+
+	        error: function (jqXHR, textStatus, errorThrown) {
+	            alert("jqXHR: " + jqXHR.status + "\ntextStatus: " + textStatus + "\nerrorThrown: " + errorThrown);
+	        }
+	    }));
+</script>
+
 </body>
 </html>
