@@ -9,6 +9,7 @@
     "angular-ui-router": "^0.4.2",
     "angularjs-scroll-glue": "^2.2.0",
     "body-parser": "~1.16.0",
+    "bootstrap": "^3.3.7",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.0",
     "ejs": "~2.5.5",
