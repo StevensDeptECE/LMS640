@@ -1,13 +1,10 @@
 <div class="container">
-	<h2> Project Name:{{projectlist.name}} </h2>
-	Search:
-	<br/>
-		<input type="text" ng-model="name" />
-	<br/>
-	<ul>
-		
-		<li >{{project.name}} , {{project.info}}</li>
-	</ul>
+	<div>
+		<legend>SecondCtrl ({{ getProjectDetails(selectedProject) }})</legend>
+		<h2 >{{project.name}} </h2>
+		<textarea name="message"  class="form-control" rows="3" cols="50">{{project.info}}</textarea> 
+	</div>
+	<br>
 	<button class="btn btn-primary" type="button" >Start Discussion</button> 
 	<a href="#/home"> Back</a>
 </div>

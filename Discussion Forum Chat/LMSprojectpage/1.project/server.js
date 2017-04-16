@@ -25,6 +25,16 @@ app.post('/projectlist', function (req, res) {
   });
 });
 
+app.post('/upload', function(req, res) {
+        upload(req,res,function(err){
+            if(err){
+                 res.json({error_code:1,err_desc:err});
+                 return;
+            }
+             res.json({error_code:0,err_desc:null});
+        })
+    });
+
 app.delete('/projectlist/:id', function (req, res) {
   var id = req.params.id;
   console.log(id);
@@ -35,7 +45,7 @@ app.delete('/projectlist/:id', function (req, res) {
 
 app.get('/projectlist/:id', function (req, res) {
   var id = req.params.id;
-  console.log(id);
+  console.log("Querying the database for record with: " + id);
   db.projectlist.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
     res.json(doc);
   });

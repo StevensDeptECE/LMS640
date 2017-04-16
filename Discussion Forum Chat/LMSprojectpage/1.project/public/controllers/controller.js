@@ -21,23 +21,42 @@ myApp.config(function($routeProvider) {
 });
 
 
-
+myApp.factory('selectedProject', function () {
+    var selectedEntry = { id: 'projectId'};
+    return {
+        entry: selectedEntry,
+        setSelectedID : function(id) { selectedEntry.id = id; },
+        getSelectedID : function () { return selectedEntry.id; }
+    };
+});
 
 
 /**** Controllers ****/
 
-function infoCtrl($scope, $http){
-     $scope.get = function(id) {
+function infoCtrl($scope, $http, selectedProject){
+  console.log("Hello World from info controller");
+      $scope.selectedProject = selectedProject.getSelectedID();
+      console.log($scope.selectedProject);
+      $scope.requestSent = false;
+      $scope.getProjectDetails = function(id) {
         console.log(id);
-        $http.get('/projectlist/' + id).success(function(response) {
-          $scope.project = response;
-        });
-      };
+        if($scope.project) {
+          return project;
+        }
+        if(!$scope.requestSent) {
+          $http.get('/projectlist/' + id).success(function(response) {
+            $scope.project = response;
+            $scope.requestSent = false;
+          });
+          $scope.requestSent = true;
+        }
+        return project;
+      };   
 }
 
-function AppCtrl($scope, $http){
+function AppCtrl($scope, $http, selectedProject){
     console.log("Hello World from controller");
-   
+    
     $scope.showMe = false;
     $scope.myFunc = function() {
         $scope.showMe = !$scope.showMe;
@@ -101,6 +120,11 @@ function AppCtrl($scope, $http){
 
       $scope.deselect = function() {
         $scope.project = "";
+      };
+
+      $scope.setSelectedProject = function(id) {
+        //console.log(id);
+        selectedProject.setSelectedID(id); 
       }
 }
 
