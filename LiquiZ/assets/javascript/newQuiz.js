@@ -86,7 +86,6 @@ newQuiz.prototype.draw = function(s) {
     accessCode.maxLength = 6;
     accessCode.id = "accessCode";
 
-
     details.appendChild(quizID);
     details.appendChild(quizTitle);
     details.appendChild(quizClass);
@@ -307,11 +306,10 @@ newQuiz.prototype.draw = function(s) {
     surveyChoices.appendChild(surveyC3);
     surveyChoices.appendChild(surveyC4);
 
-    
-    var dragAndDrop = document.createElement("div");
+    var dragAndDrop = document.createElement("span");
     var imgUpload = document.createElement("input");
     imgUpload.type = "file";
-    imgUpload.accept = "image/*"
+    imgUpload.accept = "image/*";
     dragAndDrop.id = "dragDropSet" + count;
     dragAndDrop.style.display = "none";
     dragAndDrop.className = "multiChoice";
@@ -323,7 +321,6 @@ newQuiz.prototype.draw = function(s) {
     image.style.display = "none";
     dragAndDrop.appendChild(imgUpload);
     dragAndDrop.appendChild(image);
-    
 
     var bt1 = Util.button("Delete", function () {remove_question(count)}, "three");
     bt1.style.display = "block";
@@ -349,11 +346,9 @@ newQuiz.prototype.draw = function(s) {
     Quest.appendChild(dragAndDrop);
 
     Quest.appendChild(bt1);
-
-    newDiv.append(Quest);
+    newDiv.appendChild(Quest);
 
     var bt11 = Util.button("Add Question", function () {create_question()}, "three");
-
     var save = Util.button("Save Quiz",function () {detailsToJson(quizDetails); tableToJson4(Container); window.location.reload(false);},"three");
 
     s.appendChild(newDiv);
@@ -561,7 +556,7 @@ function create_question() {
     surveyChoices.appendChild(surveyC3);
     surveyChoices.appendChild(surveyC4);
 
-    var dragAndDrop = document.createElement("div");
+    var dragAndDrop = document.createElement("span");
     var imgUpload = document.createElement("input");
     imgUpload.type = "file";
     imgUpload.accept = "image/*"
@@ -602,7 +597,6 @@ function create_question() {
     Quest.appendChild(dragAndDrop);
 
     Quest.appendChild(bt1);
-
     quests.appendChild(Quest);
 }
 
