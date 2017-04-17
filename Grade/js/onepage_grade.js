@@ -16,10 +16,10 @@ Grade.prototype.draw = function(c) {
 
   clearElements("up3");
   var newDiv = Util.div("", "wrapper");
-  var newTable = createGradeTable(this.payload, "keywords")
+  var newTable = createGradeTable(this.payload, "grades")
   newDiv.appendChild(newTable);
   c.appendChild(newDiv);
-  $("#keywords").tablesorter();
+  $("#grades").tablesorter();
   clearClass("active");
   //set active to some other class
   document.getElementById("quizClass").className = "active";
@@ -40,29 +40,39 @@ function createGradeTable(payload, id) {
   var body = document.createElement("tbody");
   var row = document.createElement("tr");
 
-  for (var i in payload[0]) {
+  for (var i = 0; i < 2; i++) {
     var data = document.createElement("th");
     var span = document.createElement("span");
     row.appendChild(data);
-    data.appendChild(span)
-    span.innerHTML=payload[0][i];
+    data.appendChild(span);
+    span.setAttribute("onclick", "sortTable("+i+")");
+    span.innerHTML=payload.head[i];
+}
+  for (var i = 2; i < payload.head.length; i++) {
+	var data = document.createElement("th");
+	var span = document.createElement("span");
+	row.appendChild(data);
+	data.appendChild(span)
+	data.setAttribute("edittype", "TextBox");
+	span.setAttribute("onclick", "sortTable("+i+")");
+    span.innerHTML=payload.head[i];
 }
 
-for (var i = 1; i < payload.length; ++i) {
-  var data_row = document.createElement("tr");
-  data_row.setAttribute("class","lalign");
+for (var i = 1; i < payload.names.length; ++i) {
+    var data_row = document.createElement("tr");
+    data_row.setAttribute("class","lalign");
     body.appendChild(data_row);
     var name = document.createElement("td");
     var id = document.createElement("td");
     data_row.appendChild(name);
     data_row.appendChild(id);
-    name.innerHTML=payload[i][0];
-    id.innerHTML=payload[i][1];
+    name.innerHTML=payload.names[i];
+    id.innerHTML=payload.ID[i];
 
-    for (var j = 2; j < payload[i].length; ++j) {
+    for (var j = 0; j < payload.head.length - 2; ++j) {
       var score = document.createElement("td");
       data_row.appendChild(score);
-      score.innerHTML = payload[i][j];
+      score.innerHTML = payload.grades[i][j];
     }
 }
 

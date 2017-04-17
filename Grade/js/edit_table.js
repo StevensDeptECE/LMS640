@@ -24,7 +24,7 @@ function CreateTextBox(element, value) {
 	if (editState != "true") {
 		var textBox = document.createElement("INPUT");
 		textBox.type = "text";
-		textBox.className = "lalign";
+
 
 		if (!value) {
 			value = element.getAttribute("Value");

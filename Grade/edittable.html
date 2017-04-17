@@ -1,67 +1,32 @@
 <html>
 <style>
-.arrow-down {
-  width: 0; 
-  height: 0; 
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 10px solid blue;
-}
-.dropbtn {
-    cursor: pointer;
-    background-image: url("/image/trangle.jpg")
-}
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-.show {display:block;}
-.dropdown-content a:hover {background-color: #f1f1f1}
 </style>
 <body>
-<div class="drop-down">
-<div onclick="clickDropDown()" class="arrow-down dropbtn"></div>
-<div id="myDropdown" class="dropdown-content">
-	<a href="#">Graph</a>
-	<a href="#">Quick Gradeing</a>
-	<a href="#">Setting</a>
-</div>
-</div>
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function clickDropDown() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+ <div>
+        <input type="text" onblur="limitInput(this);">
+        <script type="text/javascript">
+            function limitInput(o){
+                var value=o.value;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                  if (this.readyState == 4 && this.status == 200) {
+                	  var limit = JSON.parse(this.responseText);
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
+                      var min=limit.min;
 
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
+                      var max=limit.max;
+                      if(parseFloat(value)<min||parseFloat(value)>max){
+                          alert(' ‰»Î¥ÌŒÛ');
+                          o.value='';
+                      }
+                  }
+                };
+                xhttp.open("GET", "jsp.jsp", true);
+                xhttp.send();
+            }
+            
+            
+        </script>
+    </div>
 </body>
 </html>
