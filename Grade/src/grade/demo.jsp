@@ -31,7 +31,7 @@ public Grade() {
 	if (query.equals("get_grade"));
 	{
 		System.out.print("sucess!!!");
-	}
+	
 	Grade gradebook = new Grade();
 
 	Class.forName("com.mysql.jdbc.Driver");
@@ -66,4 +66,5 @@ public Grade() {
     Gson gson = new Gson();
     String json = gson.toJson(gradebook);
     response.getWriter().write(json);
+	}
 %>
