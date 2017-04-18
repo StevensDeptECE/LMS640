@@ -270,8 +270,7 @@ function changeMonth(){
 		elements[i].onclick = function(){
 			tempDate=getTempDate();
 			tempDate.setMonth(this.id);
-			show(tempDate);
-			drawCalendarButtons();
+			drawCalendar(tempDate);
 	 	}
 	}
 }
@@ -296,7 +295,7 @@ function chooseDate(){
 	document.getElementById("up3").appendChild(Util.text(' '+y));
 }
 
-function drawCalendar(tdate) {
+function drawCalendar(date) {
 	console.log("Draw Calendar");
 	clearElements("up2");
 
@@ -304,7 +303,6 @@ function drawCalendar(tdate) {
 	document.getElementById("up2").appendChild(newHeader);
 
 	clearElements("up3");
-	console.log("Draw Calendar Buttons");
 	var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
 	document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
 	chooseDate();                                             // write current date
@@ -315,7 +313,7 @@ function drawCalendar(tdate) {
 	var btn_event= Util.button("Add Event", drawEventForm, "eventBtn", "eventBtn");
 	document.getElementById("up3").appendChild(btn_event);
 
-	show(tdate);
+	show(date);
 
 	clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
 	document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
@@ -456,8 +454,7 @@ function drawEventForm() {
 			var data = formToJSON(form.elements);
 			holiday.push(data);
 			popup.style.display = "none";
-			show(tempDate);
-			drawCalendarButtons();
+			drawCalendar(tempDate);
 			//var frm = document.getElementsByClassName("holidayForm")[0];
    		//frm.reset();  // Reset
 		}
