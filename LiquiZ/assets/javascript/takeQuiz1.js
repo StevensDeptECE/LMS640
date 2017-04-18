@@ -90,7 +90,8 @@ function takeQuiz (payload) {
 	/*will need to add this once we apply policy stuff*/
     //this.policy = prefs.getPolicy(json);
 	/*Create the objects for each question*/
-    this.div= Util.div("wrapper_rightside");
+    this.div = Util.form("javascript:launch(submitQuizButton,submissionInfo,'up3')", "", "wrapper_rightside");
+   
     for (var i = 0; i < this.questions.length; ++i) {
 		/*this changes questions[i] so if we click on the quiz again it won't draw right
 		 should be okay because you should only be able to load a quiz once*/
@@ -136,11 +137,11 @@ takeQuiz.prototype.draw = function(div){
     for (var i = 0; i < this.questions.length; ++i) {
         this.questions[i].draw();
     }
-    var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"two");
-    submitQuiz.style.position = "relative";
-    submitQuiz.style.left = "40%";
-
-    div.appendChild(submitQuiz);
+    var submitQuiz = document.createElement("button");
+    submitQuiz.type = "submit";
+    submitQuiz.innerHTML ="Submit Quiz";
+    submitQuiz.className = "two";
+    this.div.appendChild(submitQuiz);
 };
 
 var quest = [
