@@ -10,16 +10,166 @@ newQuizEditor.prototype.draw= function(s){
     var header = Util.h1("Quiz Editor","h03");
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
+
+    var details = Util.div("wrapper_rightside", "quizDetails");
+    newDrawDetails(details,quizDetailPayLoad);
+
     clearElements("up3");
-    var newDiv = Util.div("wrapper_rightside","quizEditor");
+    var mainEditor = Util.div("wrapper_rightside","quizEditor");
+    var newDiv = Util.div("wrapper_rightside","Container");
     newDrawEditor(newDiv,newQuizEditorPayLoad);
 
-    // var saveQuiz = Util.button("Save Quiz",function () {tableToJson2(edit_table); window.location.reload(false);},"three");
-    // newDiv.appendChild(saveQuiz);
+    var bt11 = Util.button("Add Question", function () {create_question()}, "three");
+    var save = Util.button("Save Quiz",function () {detailsToJson1(quizDetails); tableToJson4(Container); window.location.reload(false);},"three");
 
-    s.appendChild(newDiv);
+    mainEditor.appendChild(newDiv);
+    mainEditor.appendChild(bt11);
+    mainEditor.appendChild(save);
+
+    s.appendChild(mainEditor);
 
 };
+
+function newDrawDetails(details,data) {
+
+    var quizID = document.createElement("p");
+    quizID.className = "th5";
+    var newQuizID = data[0].quizID;
+    quizID.value = newQuizID;
+    quizID.appendChild(document.createTextNode("Quiz ID: " + newQuizID));
+    // quizID.placeholder = "Please input the ID of the quiz";
+    quizID.id = "quizID";
+
+    var editInstrTitle = document.createElement("p");
+    editInstrTitle.className = "th5";
+    editInstrTitle.appendChild(document.createTextNode("You could modify quiz title here"));
+
+    var quizTitle = document.createElement("textarea");
+    quizTitle.className = "questionTitle";
+    quizTitle.value = data[0].quizTitle;
+    quizTitle.id = "quizTitle";
+
+    var editInstrClass = document.createElement("p");
+    editInstrClass.className = "th5";
+    editInstrClass.appendChild(document.createTextNode("You could modify quiz class here"));
+    var quizClass = document.createElement("textarea");
+    quizClass.className = "questionTitle";
+    quizClass.value = data[0].quizClass;
+    quizClass.id = "quizClass";
+
+    var editInstrPublish = document.createElement("p");
+    editInstrPublish.className = "th5";
+    editInstrPublish.appendChild(document.createTextNode("You could modify if publish the quiz here"));
+    var published = document.createElement("textarea");
+    published.className = "questionTitle";
+    published.value = data[0].published;
+    published.id = "published";
+
+    var editInstrOpenDate = document.createElement("p");
+    editInstrOpenDate.className = "th5";
+    editInstrOpenDate.appendChild(document.createTextNode("You could modify quiz open date here"));
+    var openDate = document.createElement("textarea");
+    openDate.className = "questionTitle";
+    openDate.value = data[0].openDate;
+    openDate.id = "openDate";
+
+    var editInstrDueDate = document.createElement("p");
+    editInstrDueDate.className = "th5";
+    editInstrDueDate.appendChild(document.createTextNode("You could modify quiz due date here"));
+    var dueDate = document.createElement("textarea");
+    dueDate.className = "questionTitle";
+    dueDate.value = data[0].dueDate;
+    dueDate.id = "dueDate";
+
+    var editInstrCloseDate = document.createElement("p");
+    editInstrCloseDate.className = "th5";
+    editInstrCloseDate.appendChild(document.createTextNode("You could modify quiz close date here"));
+    var closeDate = document.createElement("textarea");
+    closeDate.className = "questionTitle";
+    closeDate.value = data[0].closeDate;
+    closeDate.id = "closeDate";
+
+    var editInstrTime = document.createElement("p");
+    editInstrTime.className = "th5";
+    editInstrTime.appendChild(document.createTextNode("You could modify quiz time here"));
+    var quizTime = document.createElement("textarea");
+    quizTime.className = "questionTitle";
+    quizTime.value = data[0].quizTime;
+    quizTime.id = "quizTime";
+
+    var editInstrTry = document.createElement("p");
+    editInstrTry.className = "th5";
+    editInstrTry.appendChild(document.createTextNode("You could modify quiz try times here"));
+    var tryTimes = document.createElement("textarea");
+    tryTimes.className = "questionTitle";
+    tryTimes.value = data[0].tryTimes;
+    tryTimes.id = "tryTimes";
+
+    var editInstrAnswer = document.createElement("p");
+    editInstrAnswer.className = "th5";
+    editInstrAnswer.appendChild(document.createTextNode("You could modify if shuffle your answers here"));
+    var shuffleAnswers = document.createElement("textarea");
+    shuffleAnswers.className = "questionTitle";
+    shuffleAnswers.value = data[0].shuffleAnswers;
+    shuffleAnswers.id = "shuffleAnswers";
+
+    var editInstrQuestion = document.createElement("p");
+    editInstrQuestion.className = "th5";
+    editInstrQuestion.appendChild(document.createTextNode("You could modify if shuffle your questions here"));
+    var shuffleQuestions = document.createElement("textarea");
+    shuffleQuestions.className = "questionTitle";
+    shuffleQuestions.value = data[0].shuffleQuestions;
+    shuffleQuestions.id = "shuffleQuestions";
+
+    var editInstrNum = document.createElement("p");
+    editInstrNum.className = "th5";
+    editInstrNum.appendChild(document.createTextNode("You could modify if only one subproblem in one question here"));
+    var questionNum = document.createElement("textarea");
+    questionNum.className = "questionTitle";
+    questionNum.value = data[0].questionNum;
+    questionNum.id = "questionNum";
+
+    var editInstrCode = document.createElement("p");
+    editInstrCode.className = "th5";
+    editInstrCode.appendChild(document.createTextNode("You could modify the access code here"));
+    var accessCode = document.createElement("textarea");
+    accessCode.className = "questionTitle";
+    accessCode.value = data[0].accessCode;
+    accessCode.maxLength = 6;
+    accessCode.id = "accessCode";
+
+    details.appendChild(quizID);
+    details.appendChild(editInstrTitle);
+    details.appendChild(quizTitle);
+    details.appendChild(editInstrClass);
+    details.appendChild(quizClass);
+    details.appendChild(editInstrPublish);
+    details.appendChild(published);
+    details.appendChild(editInstrOpenDate);
+    details.appendChild(openDate);
+    details.appendChild(editInstrDueDate);
+    details.appendChild(dueDate);
+    details.appendChild(editInstrCloseDate);
+    details.appendChild(closeDate);
+    details.appendChild(editInstrTime);
+    details.appendChild(quizTime);
+    details.appendChild(editInstrTry);
+    details.appendChild(tryTimes);
+    details.appendChild(editInstrAnswer);
+    details.appendChild(shuffleAnswers);
+    details.appendChild(editInstrQuestion);
+    details.appendChild(shuffleQuestions);
+    details.appendChild(editInstrNum);
+    details.appendChild(questionNum);
+    details.appendChild(editInstrCode);
+    details.appendChild(accessCode);
+
+    var back = Util.button("Back", function () {launch(quizIndex, quizDetailPayLoad, 'up3')}, "three");
+    document.getElementById("up2").appendChild(back);
+    document.getElementById("up2").appendChild(details);
+    var hide = Util.button("Hide", function () {hideDetail()}, "three");
+    document.getElementById("up2").appendChild(hide);
+}
 
 var countList = [];
 function newDrawEditor(s,data) {
@@ -344,7 +494,15 @@ function newDrawEditor(s,data) {
             surveyChoices.style.display = "none";
         }
 
-        var bt1 = Util.button("Delete", function() {return function () {var row = this.parentNode; row.parentNode.removeChild(row);}}(i), "three");
+        var bt1 = Util.button("Delete", function() {return function () {var row = this.parentNode; row.parentNode.removeChild(row);
+            var object = row.id;
+            var no = object.substring(3,object.length);
+            var index = countList.indexOf(no);
+            if (index > -1) {
+                countList.splice(index, 1);
+            }}}(j), "three");
+
+        // var bt1 = Util.button("Delete", function() {return function () {var row = this.parentNode; row.parentNode.removeChild(row);}}(i), "three");
 
         bt1.style.display = "block";
 
@@ -373,7 +531,28 @@ function newDrawEditor(s,data) {
     }
 }
 
-
+function detailsToJson1(Divs) {
+    // var datas = []; // first row needs to be headers\
+    var headers = ["quizID", "quizTitle", "quizClass", "published", "openDate", "dueDate", "closeDate", "quizTime", "tryTimes", "shuffleAnswers", "shuffleQuestions", "questionNum", "accessCode"];
+    console.log(Divs.getElementsByTagName('textarea').length);
+    for (var j = 1; j <= Divs.getElementsByTagName('textarea').length; j++) {
+        var newDetailData = {};
+        newDetailData[headers[0]] = document.getElementById("quizID").value;
+        newDetailData[headers[1]] = document.getElementById("quizTitle").value;
+        newDetailData[headers[2]] = document.getElementById("quizClass").value;
+        newDetailData[headers[3]] = document.getElementById("published").value;
+        newDetailData[headers[4]] = document.getElementById("openDate").value;
+        newDetailData[headers[5]] = document.getElementById("dueDate").value;
+        newDetailData[headers[6]] = document.getElementById("closeDate").value;
+        newDetailData[headers[7]] = document.getElementById("quizTime").value;
+        newDetailData[headers[8]] = document.getElementById("tryTimes").value;
+        newDetailData[headers[9]] = document.getElementById("shuffleAnswers").value;
+        newDetailData[headers[10]] = document.getElementById("shuffleQuestions").value;
+        newDetailData[headers[11]] = document.getElementById("questionNum").value;
+        newDetailData[headers[12]] = document.getElementById("accessCode").value;
+    }
+    sessionStorage.setItem("newQuizDetails", JSON.stringify(newDetailData));
+}
 
 var newQuizEditorPayLoad = [
     {
@@ -551,3 +730,60 @@ var newQuizEditorPayLoad = [
         ]
     }
 ];
+
+
+var quizDetailPayLoad = [
+    {
+        quizID: "1ddd2d96-42ad-0181-5de7-f768fa6c992b",
+        quizTitle: "Quiz1",
+        quizClass: "CPE640",
+        published: "yes",
+        openDate: "1/1/2017",
+        dueDate: "1/15/2017",
+        closeDate: "1/31/2017",
+        quizTime: "60",
+        tryTimes: "3",
+        shuffleAnswers: "no",
+        shuffleQuestions: "no",
+        questionNum: "yes",
+        accessCode: "123456"
+    },
+    {
+        quizID: "0bee1db8-bbe4-4769-6131-f6492e9050ab",
+        quizTitle: "Quiz2",
+        quizClass: "CPE593",
+        published: "no",
+        openDate: "6/1/2017",
+        dueDate: "6/15/2017",
+        closeDate: "6/31/2017",
+        quizTime: "60",
+        tryTimes: "4",
+        shuffleAnswers: "no",
+        shuffleQuestions: "no",
+        questionNum: "yes",
+        accessCode: "111111"
+    },
+    {
+        quizID: "c5aa2801-139e-b3a7-13c2-8d94c184a87a",
+        quizTitle: "Quiz3",
+        quizClass: "CPE810",
+        published: "yes",
+        openDate: "12/1/2017",
+        dueDate: "12/15/2017",
+        closeDate: "12/31/2017",
+        quizTime: "60",
+        tryTimes: "5",
+        shuffleAnswers: "no",
+        shuffleQuestions: "no",
+        questionNum: "yes",
+        accessCode: "000000"
+    }
+];
+
+quizDetailPayLoad.push(JSON.parse(sessionStorage.getItem("quizDetails")));
+if(sessionStorage.getItem("newQuizDetails") != null) {
+    quizDetailPayLoad = [];
+    quizDetailPayLoad.push(JSON.parse(sessionStorage.getItem("newQuizDetails")));
+}
+
+

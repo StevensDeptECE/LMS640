@@ -100,7 +100,7 @@ newQuiz.prototype.draw = function(s) {
     details.appendChild(questionNum);
     details.appendChild(accessCode);
 
-    var back = Util.button("Back", function () {launch(quizIndex, quizIndexPayload, 'up3')}, "three");
+    var back = Util.button("Back", function () {launch(quizIndex, quizDetailPayLoad, 'up3')}, "three");
     document.getElementById("up2").appendChild(back);
     document.getElementById("up2").appendChild(header);
     document.getElementById("up2").appendChild(details);
@@ -559,7 +559,7 @@ function create_question() {
     var dragAndDrop = document.createElement("span");
     var imgUpload = document.createElement("input");
     imgUpload.type = "file";
-    imgUpload.accept = "image/*"
+    imgUpload.accept = "image/*";
     dragAndDrop.id = "dragDropSet" + count;
     dragAndDrop.style.display = "none";
     dragAndDrop.className = "multiChoice";
@@ -603,6 +603,10 @@ function create_question() {
 function remove_question(no) {
     console.log(no);
     document.getElementById("row" + no).outerHTML = "";
+    var index = countList.indexOf(no);
+    if (index > -1) {
+        countList.splice(index, 1);
+    }
 }
 
 function createClickHandler3(loc,no){
@@ -903,8 +907,6 @@ function detailsToJson(Divs) {
         detailData[headers[11]] = document.getElementById("questionNum").value;
         detailData[headers[12]] = document.getElementById("accessCode").value;
     }
-    // datas.push(detailData);
-
     sessionStorage.setItem("quizDetails", JSON.stringify(detailData));
 }
 
