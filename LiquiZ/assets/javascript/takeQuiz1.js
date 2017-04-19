@@ -90,7 +90,7 @@ function takeQuiz (payload) {
 	/*will need to add this once we apply policy stuff*/
     //this.policy = prefs.getPolicy(json);
 	/*Create the objects for each question*/
-    this.div = Util.form("javascript:launch(submitQuizButton,submissionInfo,'up3')", "", "wrapper_rightside");
+    this.div = Util.form("javascript:launch(submitQuizButton,submissionInfo,'up3')", "", "wrapper_rightside","quizID1");
    
     for (var i = 0; i < this.questions.length; ++i) {
 		/*this changes questions[i] so if we click on the quiz again it won't draw right

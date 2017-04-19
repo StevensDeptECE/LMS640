@@ -23,21 +23,6 @@ MC.prototype.draw = function(div) {
 	}
 };
 
-// MC.prototype.draw = function(div) {
-//     for (var i = 0; i < this.choices.length; i++) {
-//         var x = document.createElement('div');
-//         var label = document.createElement('label');
-//         var xbutton = document.createElement('INPUT');
-//         xbutton.type = 'Radio';
-//         xbutton.name = "choice";
-//         xbutton.label = this.choices[i];
-//         label.appendChild(xbutton);
-//         label.appendChild(document.createTextNode(this.choices[i]));
-//         x.appendChild(label);
-//         div.appendChild(x);
-//     }
-// }
-
 /*A multiple choice question where options are in a dropdown menu*/
 function MCDrop(choices, id) {
 	this.id = id;
@@ -49,6 +34,7 @@ MCDrop.prototype.draw = function(div) {
 	var x = document.createElement('div');
     var selectList = document.createElement("select");
     selectList.className = "newSelect";
+    selectList.name = "dropDown";
 	for (var i = 0; i < this.choices.length; i++) {
         var option = document.createElement('option');
 		option.value = this.choices[i];
@@ -74,6 +60,7 @@ Matrix.prototype.draw = function(div) {
 			var inp = document.createElement('input');
 			inp.type = 'text';
 			inp.className = "Matrix";
+            inp.name = "matrix";
 			row.appendChild(inp);
 		}
 		div.appendChild(row);
@@ -90,6 +77,7 @@ Grid.prototype.draw = function(div) {
 		var inp = document.createElement('input');
 		inp.type = 'text';
 		inp.className = "Matrix";
+        inp.name = "grid";
 		div.appendChild(inp);
 	}
 };
@@ -104,6 +92,7 @@ FillIn.prototype.draw = function(div) {
 	inp.type = "text";
 	inp.style.textAlign = 'center';
     inp.className = 'fillIn';
+    inp.name = 'fillIn';
 	div.appendChild(inp);
 };
 
@@ -117,6 +106,7 @@ Essay.prototype.draw = function(div) {
 	inp.type = "text";
     inp.className = "Essay";
 	inp.style.textAlign = 'left';
+    inp.name = "essay";
 	div.appendChild(inp);
 };
 
@@ -238,6 +228,7 @@ DragDrop.prototype.draw = function(div) {
         var coord = "left:" + this.locations[i]["left"] + "px; top:"+ this.locations[i]["top"] + "px;";
         var answerDiv = document.createElement('div');
         answerDiv.className += "dragdropLocation";
+        answerDiv.name = "dragDrop";
         answerDiv.setAttribute("ondrop","drop(event)");
         answerDiv.setAttribute("ondragover","allowDrop(event)");
         answerDiv.setAttribute("style","position:absolute; "+ coord);
@@ -279,6 +270,7 @@ Match.prototype.draw = function(div) {
     for (var j = 0; j < this.types.length; j++) {
     var selectList = document.createElement("select");
         selectList.className = "newSelect";
+        selectList.name = "matching";
     for (var i = 0; i < this.choices.length; i++) {
         var option = document.createElement('option');
         option.value = this.choices[i];
@@ -315,6 +307,7 @@ MCS.prototype.draw = function(div) {
         label.className = "control control--checkbox";
         var xbutton = document.createElement('input');
         xbutton.type = 'checkbox';
+        xbutton.name = "mcs";
         var diva = document.createElement("div");
         diva.className = "control__indicator";
         label.appendChild(xbutton);
@@ -336,6 +329,7 @@ Codes.prototype.draw = function(div) {
     var inp = document.createElement("textarea");
     var newCodes = this.code.replace(/<>/g,"\n");
     inp.className = "inputCode";
+    inp.name = "code";
     var myCode = document.createTextNode(newCodes);
     inp.append(myCode);
     inp.addEventListener('keydown', autosize);
@@ -410,6 +404,7 @@ Cloze.prototype.draw = function(div) {
             x = document.createElement("div");
             var inp = document.createElement("input");
             inp.className = 'inputCloze';
+            inp.name = "cloze";
             inp.type = "text";
             inp.maxlength="10";
             x.appendChild(inp);
@@ -428,6 +423,7 @@ function Numbers(len,id) { //parent) {
 Numbers.prototype.draw = function(div) {
     var inp = document.createElement("input");
     inp.className = 'inputNumber';
+    inp.name = "number";
     inp.type = "text";
     inp.maxLength = this.len;
     inp.style.textAlign = 'center';
@@ -447,6 +443,7 @@ function fileUpload(id) {
 fileUpload.prototype.draw = function(div) {
     var inp = document.createElement("input");
     inp.type = "file";
+    inp.name = "fileUpload";
     div.appendChild(inp);
 };
 
