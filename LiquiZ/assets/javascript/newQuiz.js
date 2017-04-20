@@ -947,12 +947,18 @@ function readURL(input, count) {
                         .attr('src', e.target.result)
                         .width(150)
                         .height(200)
-                        .css("display", "block");
+                        .css("display", "block")
+                        .click("addDragSpot");
                 };
 
                 reader.readAsDataURL(input.files[0]);
-
+                var clickImage = Util.div("dragDropInstruction");
+                clickImage.appendChild(Util.p("Now click the image where you want to add a box."));
+                $('#dragDropSet' + count).append(clickImage);
             }
+}
+function addDragSpot(){
+    console.log("put a spot here!");
 }
 
 
