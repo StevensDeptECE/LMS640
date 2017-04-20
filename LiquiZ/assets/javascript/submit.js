@@ -3,4 +3,5 @@
  */
 function SubmitQuiz(){
     console.log("Submit Success!");
+    alert("Submitted !")
 }
