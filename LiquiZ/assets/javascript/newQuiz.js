@@ -950,17 +950,21 @@ function readURL(input, count) {
                         .width(150)
                         .height(200)
                         .css("display", "block")
-                        .click("addDragSpot");
+                        .click(function(ev){getClickPosition(ev.target,ev);});
                 };
-
                 reader.readAsDataURL(input.files[0]);
                 var clickImage = Util.div("dragDropInstruction");
                 clickImage.appendChild(Util.p("Now click the image where you want to add a box."));
                 $('#dragDropSet' + count).append(clickImage);
             }
 }
-function addDragSpot(){
-    console.log("put a spot here!");
+
+/*function for drag and drop editor that gets the x and y coordinates of a click on an image*/
+function getClickPosition(canvas, event) {
+    var rect = canvas.getBoundingClientRect();
+    var x = event.clientX - rect.left;
+    var y = event.clientY - rect.top;
+    console.log("x: " + x + " y: " + y);
 }
 
 
