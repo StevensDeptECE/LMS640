@@ -275,13 +275,33 @@ function changeMonth(){
 	}
 }
 
+function changeYear(){
+	var yearView= document.getElementById("changeYear");
+	yearView.style.display= "none";
+	var tempYear= yearView.innerHTML;
+	var inputYear= document.createElement("input");
+	inputYear.setAttribute("type", "number");
+	tempDate=getTempDate();
+	var tempYear=tempDate.getFullYear();
+	inputYear.setAttribute("value", tempYear);
+	yearView.parentNode.insertBefore(inputYear, yearView);
+	inputYear.onblur= function(){
+		tempYear=inputYear.value;
+		yearView.innerHTML=tempYear;
+		yearView.parentNode.removeChild(inputYear);
+		yearView.style.display = "";
+		tempDate.setFullYear(tempYear);
+		drawCalendar(tempDate);
+	};
+}
+
 function chooseDate(){
 	var a= getTempDate();
 	var m= a.getMonth();
 	var y= a.getFullYear();
-	var display= fullMonthId[m];
+	var mName= fullMonthId[m];
 	var dropdiv= Util.div("dropdown","");
-	var niceDate = Util.span(display, "dropbtn", "niceDate");
+	var niceDate = Util.span(mName, "dropbtn", "niceDate");
 
 	var dropdown= Util.div("dropdownMenu", "");
 	for(var i=0; i<monthId.length; i++){
@@ -291,8 +311,12 @@ function chooseDate(){
 	}
 	niceDate.appendChild(dropdown);
 	dropdiv.appendChild(niceDate);
+
+	var editYear=Util.span(' '+y, "changeYear", "changeYear");
+	editYear.setAttribute("onclick", "changeYear()");
+
 	document.getElementById("up3").appendChild(dropdiv);
-	document.getElementById("up3").appendChild(Util.text(' '+y));
+	document.getElementById("up3").appendChild(editYear);
 }
 
 function drawCalendar(date) {
@@ -329,6 +353,7 @@ function limit(){ //sets month limit for input dates
 	var cday=document.getElementById("day");
 	cday.max=maxday;
 }
+
 function drawEventForm() {
 	console.log("Draw Form");
 	var windo = Util.div("addEvent","eventWindow");
