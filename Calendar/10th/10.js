@@ -3,7 +3,7 @@
 	{ "style":"holiday","name":"President's Day","notes":"Have a good day!","day":20,"month":2,"year":2017},
 	{ "style":"mid","name":"EE575 mid-exam","notes":"EE575 midterm exam","day":10,"month":3,"year":2017},
 	{ "style":"quiz","name":"EE552 test2","notes":"EE552 test2","day":20,"month":3,"year":2017},
-	{ "style":"class","name":"CPE-640","notes":"CPE-640 12:00-14:30","day":13,"month":4,"year":2017}];
+	{ "style":"class","name":"CPE-640","notes":"CPE-640 12:00-14:30","day":23,"month":4,"year":2017}];
 
     var tempDate;
 
@@ -188,8 +188,20 @@
 	function upcomingevent(){
 		setCalendar();
 		var today = getRightNow();
-			for(var i = 0; i < holiday.length;i++){
-			if(today.getFullYear() == holiday[i].year && today.getMonth() + 1 == holiday[i].month && holiday[i].day-today.getDate() <=7 && holiday[i].day-today.getDate() > 0){
+		var allclear = document.getElementById("upcoming");
+        allclear.innerHTML = "Upcoming!";
+			for(var i = 0; i < holiday.length; i++){
+				var myDate = new Date();
+				myDate.setFullYear(holiday[i].year,holiday[i].month - 1,holiday[i].day);
+				console.log(parseInt((myDate-today) / (24*3600*1000)));
+				if(parseInt((myDate-today) / (24*3600*1000)) <=7 && parseInt((myDate-today) / (24*3600*1000)) >= 0){
+					var para = document.createElement("li");
+				para.setAttribute("class","upcomingevent");
+				var node = document.createTextNode(holiday[i].name + " is in " + parseInt((myDate-today) / (24*3600*1000))+" days");
+				para.appendChild(node);
+				document.getElementById("upcoming").appendChild(para);
+				}
+			/*if(today.getFullYear() == holiday[i].year && today.getMonth() + 1 == holiday[i].month && holiday[i].day-today.getDate() <=7 && holiday[i].day-today.getDate() > 0){
 				var para = document.createElement("li");
 				para.setAttribute("class","upcomingevent");
 				var node = document.createTextNode(holiday[i].name + " is in " + (holiday[i].day-today.getDate())+" days");
@@ -203,7 +215,7 @@
 				para.appendChild(node);
 				document.getElementById("upcoming").appendChild(para);
 			}
-			}
+			}*/
 		}			
 	}
 	
