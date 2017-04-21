@@ -188,11 +188,12 @@ Util = {
       });
   },
 
-  p: function (innerHTML, className, id) {
+  p: function (innerHTML, className, id, onClick) {
       return Util.make("p", {
           innerHTML: innerHTML,
           className: className,
           id: id,
+          onclick: onClick,
       });
   },
 
@@ -460,6 +461,9 @@ function sendJSONToServer(filename, JSONObject, callback) {
   * element with the id that is passed. If you need to draw in more than one div, do it
   * in the objects corresponding draw function.
 */
+//global variable to keep track of the visited pages
+//each elements should be as follows: [object name, payload]
+var visitedPages = [];
 var topLoginDrawn = false; //keeps track of whether or not the top login box is on the screen
 function launch(object, payload, id) {
   console.log("Calling Launch");
@@ -470,6 +474,9 @@ function launch(object, payload, id) {
   var newObject = new object(payload); // grade object
   var content = document.getElementById(id);
   newObject.draw(content);
+
+  //add to visitedPages variable as the last element
+  visitedPages.push([object, payload]);
 
   //check what 'object' is. If it's the initial load, then no
   //LoginTop object should be drawn
