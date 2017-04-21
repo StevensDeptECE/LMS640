@@ -1,3 +1,4 @@
+<html ng-app="myApp">
 <div class="container">
 	<div>
 		<legend>SecondCtrl ({{ getProjectDetails(selectedProject) }})</legend>
@@ -5,6 +6,11 @@
 		<textarea name="message"  class="form-control" rows="3" cols="50">{{project.info}}</textarea> 
 	</div>
 	<br>
+    <div ng-controller = "myCtrl">
+   <input type = "file" file-model = "myFile"/>
+   <button ng-click = "uploadFile()">Upload File</button>
+    </div>
 	<button class="btn btn-primary" type="button" >Start Discussion</button> 
 	<a href="#/home"> Back</a>
 </div>
+</html>

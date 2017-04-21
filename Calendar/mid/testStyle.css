@@ -1,48 +1,53 @@
 @CHARSET "UTF-8";
+#testObjects{
+  float:left;
+  width: 100%;
+}
+
 table {
-  width: 700px;
-  height: 300px;
+  width: 77%;
+  height: 92%;
   border-collapse: collapse;
 }
-table, td, th {
+table, td {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #a9c6c9;
+  vertical-align: top;
+}
+th.dayOfWeek{
+  height: 8%;
+  width: inherit;
   border-width: 1px;
   border-style: solid;
   border-color: #a9c6c9;
 }
 td.pre{
   background-color: gainsboro;
-	width: 100px;
+  width: 11%;
+  height: 14%;
 }
 td.current{
   background-color: #c3dde0;
-	width: 100px;
+	/*width: 100px;*/
+  width: 11%;
+  height: 14%;
 }
 td.next{
   background-color: lightgreen;
-	width: 100px;
+	width: 11%;
+  height: 14%;
 }
+/*td.dayOfWeek{
+  background-color: lightblue;
+  height: 10%;
+}*/
 td.today{
   background-color: #87ceeb;
-	width: 100px;
+	width: 11%;
+  height: 14%;
 }
 
-<<<<<<< HEAD
-        }
-<<<<<<< HEAD
-		.divholiday{
-=======
-		.holiday{
->>>>>>> 1630b8f1163c9141e5f8c6748a4bf91f60c6ba32
-			background-color: pink;
-			position: absolute;
-			left:450px;
-			top:150px;
-			width:300px;
-			height:200px;
-			border-width: 1px;
-			border-style: solid;
-			margin: 0 auto;
-=======
 .divholiday{
   background-color: pink;
 	position: absolute;
@@ -54,18 +59,6 @@ td.today{
 	border-style: solid;
 	margin: 0 auto;
 }
-.event{
-  background-color: green;
-	position: absolute;
-	left:400px;
-	top:100px;
-	width:600px;
-	height:400px;
-	border-width: 1px;
-	border-style: solid;
-	margin: 0 auto;
-}
->>>>>>> ea08a74e86ea7faf2e128bf7cc9cd6f772542536
 
 .addEvent {
   display: none; /* Hidden by default */
@@ -97,16 +90,6 @@ td.today{
   text-decoration: none;
   cursor: pointer;
 }
-
-/* Dropdown Button */
-/*.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}*/
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
@@ -142,5 +125,21 @@ td.today{
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+    background-color: lightblue;
+}
+
+.changeYear:hover{
+  background-color: lightblue;
+}
+
+#upcoming{
+  background-color: lightgreen;
+  position: absolute;
+  right:0px;
+  top:100px;
+  width:20%;
+  height:200px;
+  border-width: 1px;
+  border-style: solid;
+  margin: 0 auto;
 }
