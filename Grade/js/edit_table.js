@@ -24,15 +24,11 @@ function CreateTextBox(element, value) {
 	if (editState != "true") {
 		var textBox = document.createElement("INPUT");
 		textBox.type = "text";
-		textBox.className = "lalign";
 
-		if (!value) {
-			value = element.getAttribute("Value");
-		}
 		textBox.value = value;
 
 		textBox.onblur = function () {
-			CancelEditCell(this.parentNode, this.value);
+			CancelEditCell(this.parentNode, this.value, value);
 		}
 
 		ClearChild(element);
@@ -50,11 +46,30 @@ function ClearChild(element) {
 }
 
 function CancelEditCell(element, value, text) {
-	element.setAttribute("Value", value);
-	if (text) {
-		element.innerHTML = text;
+	if (value) {
+	    var xhttp = new XMLHttpRequest();
+	    xhttp.onreadystatechange = function() {
+	      if (this.readyState == 4 && this.status == 200) {
+	    	  var limit = JSON.parse(this.responseText);
+	          var min=limit.min;
+	          var max=limit.max;
+	          if(parseFloat(value)<min||parseFloat(value)>max){
+	              alert('Input Error');
+	              element.innerHTML = text;
+	          } else {
+	        	  element.innerHTML = value;
+	          }
+	      }
+	    };
+	    var i = element.parentNode.rowIndex;
+	    var j = element.cellIndex;
+	    var td = document.getElementById("grades").rows[0].cells[j];
+	    var course = td.getElementsByTagName("SPAN");
+	    var id = document.getElementById("grades").rows[i].cells[1];
+	    xhttp.open("GET", "jsp.jsp?value="+value+"&name="+course[0].innerHTML+"&id="+id.innerHTML+"", true);
+	    xhttp.send();
 	} else {
-		element.innerHTML = value;
+		element.innerHTML = text;
 	}
 	element.setAttribute("EditState", "false");
 }

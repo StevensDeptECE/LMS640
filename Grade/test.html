@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="css/style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery.js"></script> 
 <script type="text/javascript" src="js/edit_table.js"></script>
 <script type="text/javascript" src="js/table.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script> 
+<script type="text/javascript" src="js/edit_table.js"></script>
+<script type="text/javascript" src="js/onepage_grade.js"></script>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -20,15 +25,21 @@ $(document).ready(
 	        type: 'GET',
 	        url: 'demo.jsp',
 	        async: false,
+	        data: "query=get_grade",
 	        dataType:'text',
 	        success: function (result) {
-	        	alert(result);
+	        	var payload = JSON.parse(result);
+	        	var newTable = createGradeTable(payload, "grades")
+	        	document.getElementById("wrapper").append(newTable);
 	        },
 
 	        error: function (jqXHR, textStatus, errorThrown) {
 	            alert("jqXHR: " + jqXHR.status + "\ntextStatus: " + textStatus + "\nerrorThrown: " + errorThrown);
 	        }
 	    }));
+
+var table = document.getElementById("grades");
+SetTableCanEdit(table);
 </script>
 
 </body>

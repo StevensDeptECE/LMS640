@@ -131,7 +131,13 @@ function show(customDate) {
 			tags.push(Util.td(i, "today", ""));
 			for(var j = 0; j < holiday.length; j++){
 				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
-					tags.push(Util.button(holiday[j].name, createwindow(j), "createholiday", ""));
+					var temp=tags.pop();
+					var thing= document.createElement("button");
+					thing.setAttribute("onclick", "createwindow("+j+")");
+					thing.setAttribute("class", "createholiday");
+					thing.innerHTML= holiday[j].name;
+					temp.appendChild(thing);
+					tags.push(temp);
 				}
 			}
 		}
@@ -139,7 +145,13 @@ function show(customDate) {
 			tags.push(Util.td(i, "current", ""));
 			for(var j = 0; j < holiday.length; j++){
 				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
-					tags.push(Util.button(holiday[j].name, createwindow(j), "createholiday", ""));
+					var temp=tags.pop();
+					var thing= document.createElement("button");
+					thing.setAttribute("onclick", "createwindow("+j+")");
+					thing.setAttribute("class", "createholiday");
+					thing.innerHTML= holiday[j].name;
+					temp.appendChild(thing);
+					tags.push(temp);
 				}
 			}
 		}
@@ -270,19 +282,38 @@ function changeMonth(){
 		elements[i].onclick = function(){
 			tempDate=getTempDate();
 			tempDate.setMonth(this.id);
-			show(tempDate);
-			drawCalendarButtons();
+			drawCalendar(tempDate);
 	 	}
 	}
+}
+
+function changeYear(){
+	var yearView= document.getElementById("changeYear");
+	yearView.style.display= "none";
+	var tempYear= yearView.innerHTML;
+	var inputYear= document.createElement("input");
+	inputYear.setAttribute("type", "number");
+	tempDate=getTempDate();
+	var tempYear=tempDate.getFullYear();
+	inputYear.setAttribute("value", tempYear);
+	yearView.parentNode.insertBefore(inputYear, yearView);
+	inputYear.onblur= function(){
+		tempYear=inputYear.value;
+		yearView.innerHTML=tempYear;
+		yearView.parentNode.removeChild(inputYear);
+		yearView.style.display = "";
+		tempDate.setFullYear(tempYear);
+		drawCalendar(tempDate);
+	};
 }
 
 function chooseDate(){
 	var a= getTempDate();
 	var m= a.getMonth();
 	var y= a.getFullYear();
-	var display= fullMonthId[m];
+	var mName= fullMonthId[m];
 	var dropdiv= Util.div("dropdown","");
-	var niceDate = Util.span(display, "dropbtn", "niceDate");
+	var niceDate = Util.span(mName, "dropbtn", "niceDate");
 
 	var dropdown= Util.div("dropdownMenu", "");
 	for(var i=0; i<monthId.length; i++){
@@ -292,11 +323,15 @@ function chooseDate(){
 	}
 	niceDate.appendChild(dropdown);
 	dropdiv.appendChild(niceDate);
+
+	var editYear=Util.span(' '+y, "changeYear", "changeYear");
+	editYear.setAttribute("onclick", "changeYear()");
+
 	document.getElementById("up3").appendChild(dropdiv);
-	document.getElementById("up3").appendChild(Util.text(' '+y));
+	document.getElementById("up3").appendChild(editYear);
 }
 
-function drawCalendar(tdate) {
+function drawCalendar(date) {
 	console.log("Draw Calendar");
 	clearElements("up2");
 
@@ -304,7 +339,6 @@ function drawCalendar(tdate) {
 	document.getElementById("up2").appendChild(newHeader);
 
 	clearElements("up3");
-	console.log("Draw Calendar Buttons");
 	var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
 	document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
 	chooseDate();                                             // write current date
@@ -315,7 +349,7 @@ function drawCalendar(tdate) {
 	var btn_event= Util.button("Add Event", drawEventForm, "eventBtn", "eventBtn");
 	document.getElementById("up3").appendChild(btn_event);
 
-	show(tdate);
+	show(date);
 
 	clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
 	document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
@@ -331,6 +365,7 @@ function limit(){ //sets month limit for input dates
 	var cday=document.getElementById("day");
 	cday.max=maxday;
 }
+
 function drawEventForm() {
 	console.log("Draw Form");
 	var windo = Util.div("addEvent","eventWindow");
@@ -456,8 +491,7 @@ function drawEventForm() {
 			var data = formToJSON(form.elements);
 			holiday.push(data);
 			popup.style.display = "none";
-			show(tempDate);
-			drawCalendarButtons();
+			drawCalendar(tempDate);
 			//var frm = document.getElementsByClassName("holidayForm")[0];
    		//frm.reset();  // Reset
 		}

@@ -86,7 +86,6 @@ newQuiz.prototype.draw = function(s) {
     accessCode.maxLength = 6;
     accessCode.id = "accessCode";
 
-
     details.appendChild(quizID);
     details.appendChild(quizTitle);
     details.appendChild(quizClass);
@@ -101,7 +100,7 @@ newQuiz.prototype.draw = function(s) {
     details.appendChild(questionNum);
     details.appendChild(accessCode);
 
-    var back = Util.button("Back", function () {launch(quizIndex, quizIndexPayload, 'up3')}, "three");
+    var back = Util.button("Back", function () {launch(quizIndex, quizDetailPayLoad, 'up3')}, "three");
     document.getElementById("up2").appendChild(back);
     document.getElementById("up2").appendChild(header);
     document.getElementById("up2").appendChild(details);
@@ -307,11 +306,10 @@ newQuiz.prototype.draw = function(s) {
     surveyChoices.appendChild(surveyC3);
     surveyChoices.appendChild(surveyC4);
 
-    
-    var dragAndDrop = document.createElement("div");
+    var dragAndDrop = document.createElement("span");
     var imgUpload = document.createElement("input");
     imgUpload.type = "file";
-    imgUpload.accept = "image/*"
+    imgUpload.accept = "image/*";
     dragAndDrop.id = "dragDropSet" + count;
     dragAndDrop.style.display = "none";
     dragAndDrop.className = "multiChoice";
@@ -323,7 +321,6 @@ newQuiz.prototype.draw = function(s) {
     image.style.display = "none";
     dragAndDrop.appendChild(imgUpload);
     dragAndDrop.appendChild(image);
-    
 
     var bt1 = Util.button("Delete", function () {remove_question(count)}, "three");
     bt1.style.display = "block";
@@ -349,11 +346,9 @@ newQuiz.prototype.draw = function(s) {
     Quest.appendChild(dragAndDrop);
 
     Quest.appendChild(bt1);
-
-    newDiv.append(Quest);
+    newDiv.appendChild(Quest);
 
     var bt11 = Util.button("Add Question", function () {create_question()}, "three");
-
     var save = Util.button("Save Quiz",function () {detailsToJson(quizDetails); tableToJson4(Container); window.location.reload(false);},"three");
 
     s.appendChild(newDiv);
@@ -561,10 +556,10 @@ function create_question() {
     surveyChoices.appendChild(surveyC3);
     surveyChoices.appendChild(surveyC4);
 
-    var dragAndDrop = document.createElement("div");
+    var dragAndDrop = document.createElement("span");
     var imgUpload = document.createElement("input");
     imgUpload.type = "file";
-    imgUpload.accept = "image/*"
+    imgUpload.accept = "image/*";
     dragAndDrop.id = "dragDropSet" + count;
     dragAndDrop.style.display = "none";
     dragAndDrop.className = "multiChoice";
@@ -602,13 +597,16 @@ function create_question() {
     Quest.appendChild(dragAndDrop);
 
     Quest.appendChild(bt1);
-
     quests.appendChild(Quest);
 }
 
 function remove_question(no) {
     console.log(no);
     document.getElementById("row" + no).outerHTML = "";
+    var index = countList.indexOf(no);
+    if (index > -1) {
+        countList.splice(index, 1);
+    }
 }
 
 function createClickHandler3(loc,no){
@@ -909,8 +907,6 @@ function detailsToJson(Divs) {
         detailData[headers[11]] = document.getElementById("questionNum").value;
         detailData[headers[12]] = document.getElementById("accessCode").value;
     }
-    // datas.push(detailData);
-
     sessionStorage.setItem("quizDetails", JSON.stringify(detailData));
 }
 
@@ -953,12 +949,22 @@ function readURL(input, count) {
                         .attr('src', e.target.result)
                         .width(150)
                         .height(200)
-                        .css("display", "block");
+                        .css("display", "block")
+                        .click(function(ev){getClickPosition(ev.target,ev);});
                 };
-
                 reader.readAsDataURL(input.files[0]);
-
+                var clickImage = Util.div("dragDropInstruction");
+                clickImage.appendChild(Util.p("Now click the image where you want to add a box."));
+                $('#dragDropSet' + count).append(clickImage);
             }
+}
+
+/*function for drag and drop editor that gets the x and y coordinates of a click on an image*/
+function getClickPosition(canvas, event) {
+    var rect = canvas.getBoundingClientRect();
+    var x = event.clientX - rect.left;
+    var y = event.clientY - rect.top;
+    console.log("x: " + x + " y: " + y);
 }
 
 

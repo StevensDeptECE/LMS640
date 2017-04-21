@@ -93,6 +93,12 @@ Sidebar.prototype.draw = function(){
 
 }
 
+function submitQuizButton(payload){
+	this.payload = payload;
+}
 
+submitQuizButton.prototype.draw = function(){
+    alert("Are you sure you want to submit?");
+}
 
-
+var submissionInfo = "";
