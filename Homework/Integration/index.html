@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+ <link href="../Calendar/calendar_onepage/calendarstyle.css" rel="stylesheet" type="text/css">
+  <link href="../LiquiZ/assets/css/quizList.css" rel="stylesheet" type="text/css">
+  <link href="../Homewrk/Integration/style.css" rel="stylesheet" type="text/css">
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery.tablesorter.js"></script> 
+  <script src="js/onepage.js"></script> 
+  <script src="js/onepagelib.js"></script>
+ <script src="js/account.js"></script>
+  
+ <!-- <script src="../Calendar/mid/8.js"></script>
+  <script src="js/onepagecalendar.js"></script> 
+  <script src="../Grade/js/onepage_grade.js"></script>
+
+  <script src="../LiquiZ/assets/javascript/quizList.js"></script>
+  <script src="../LiquiZ/assets/javascript/takeQuiz1.js"></script>
+  <script src="../LiquiZ/assets/javascript/general.js"></script>
+  <script src="../LiquiZ/assets/javascript/multimedia.js"></script>
+  <script src="../LiquiZ/assets/javascript/questions.js"></script>
+  <script src="../MainPage/js/onepagelib.js"></script>
+  <script src="../LiquiZ/assets/javascript/quizStats.js"></script>
+  <script src="../LiquiZ/assets/javascript/quizAllStats.js"></script>
+  <script src="../LiquiZ/assets/javascript/quizEditor.js"></script>
+  <script src="../LiquiZ/assets/javascript/addQuiz.js"></script>
+  <script src="../LiquiZ/assets/javascript/takeNewQuiz.js"></script>
+  <script src="../LiquiZ/assets/javascript/Settings.js"></script>
+  <script src="../LiquiZ/assets/javascript/questionEditor.js"></script>
+  <script src="../LiquiZ/assets/javascript/newQuiz.js"></script>
+  <script src="../Calendar/2nd week/2.js"></script> -->
+  <script src="js/onepagelogin.js"></script>
+  <script src="js/onepagelogintop.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.tablesorter.js"></script> -->
+  <script src="js/hwonepageArray.js"></script>
+  <script src="js/onepagecourselist.js"></script>
+  
+  <style>
+  table{
+  border: 2px solid black;
+  border-collapse:collapse;
+  }
+  
+  td,tr,tbody,thead{
+  border: 1px solid black;
+  padding: 20px;
+  }
+  
+  tr:nth-child(even){background-color: #f2f2f2}
+  a:link {
+    text-decoration: none;
+	color: black;
+	}
+  
+  tr:hover,a:hover{background-color: #555;
+  color: white;
+	  text-decoration: underline;
+  }
+ 
+  </style>
+</head>
+
+<body onload="launch(Login, '', 'up3')">
+  <!--
+  <div class="loginformabs_top">
+    <form action="/action_page.php">
+      <div class="container_top">
+        <input type="text" placeholder="Username" name="uname" required>
+        <input type="password" placeholder="Password" name="psw" required>
+        <button type="submit">Login</button>
+        <input type="checkbox" checked="checked"><label>Remember me</label>
+      </div>
+      <div class="container_top">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
+-->
+  <div id="loginformabs_top">
+  </div>
+
+  <ul class="navigation">
+    <!-- x`<li><a id="account" class="active"  onclick="launch(Account, accountpayload, 'up3')"href="#">Account</a></li> -->
+    <li><a id="account" class="active"  onclick="launch(Login, '', 'up3')" href="#">Account</a></li>
+    <li><a id="dashboard" href="#">Dashboard</a></li>
+    <!-- <li><a id="course" href="#" onclick="launch(Grade, gradepayload2, 'up3')">Course</a></li> -->
+    <li><a id="course" href="#" onclick="launch(CourseList, courses, 'up3')">Course</a></li>
+    <li><a id="groups" href="#" onclick="launch(HomeworkMain, '', 'up3')">Groups</a></li>
+    <li><a id="calendar" href="#" onclick="drawCalendar()">Calendar</a></li>
+    <li><a id="inbox" href="#">Inbox</a></li>
+    <li><a id="commons" href="#">Commons</a></li>
+    <li><a id="help" href="#" onclick="getJSONFromServer('../grade1.json')">Help</a></li>
+  </ul>
+
+  <div id="content">
+  <div class="up1">
+  <div class="dropdown" style="z-index:2; position:relative">
+  <button class="menu"><span>Menu</span></button>
+    <div class="dropdown-menu" style="left:0;">
+      <a href="#">Home</a>
+      <a href="#">Announcements</a>
+      <a href="#">Assignments</a>
+      <a href="#">Discussions</a>
+      <a href="#" onclick="launch(Grade, gradepayload2, 'up3')">Grades</a>
+      <a href="#">People</a>
+      <a href="#">Pages</a>
+      <a href="#">Files</a>
+      <a href="#">Syllabus</a>
+      <a href="#">Outcomes</a>
+      <a href="#" onclick="launch(quizIndex, quizIndexPayload, 'up3')">Quizzes</a>
+      <a href="#">Modules</a>
+      <a href="#">Conferences</a>
+      <a href="#">Collaborations</a>
+      <a href="#">Blackboard</a>
+      <a href="#">Chat</a>
+    </div>
+  </div>
+  <div  class="nav-top">
+  <nav>
+  <ul>
+  <li><span><a href="#">DOV DEV</a></span></li>
+  <span> > </span>
+  <li><span class="nav-grade"><a href="#">Grade</a></span></li>
+  </ul>
+  </nav>
+  </div>
+  </div>
+  <hr style="clear:left; margin-top:4em;">
+
+  <div id="up2">
+    <!--
+  <button class="aggreate" style="margin-left:10px;">Grade</button>
+  <button class="aggreate" onclick="window.location.href='grades distribution.html'" formtarget="_blank">Graph</button>
+  <button class="button" style="float:right;">Individual View</button>
+  <button class="button" style="float:right;">Showing All Section</button>
+-->
+  <h1>Welcome to LMS</h1>
+  </div>
+
+  <hr style="clear:left; margin-top:4em;">
+
+  <div id="up3">
+      <h2>This is the main page.</h2>
+<!--
+  <div class="filter">
+  <form>
+  <br>
+  <input type="text" name="filter_student" placeholder="Filter by student" style="margin-left:10px; padding:10px;">
+  <input type="text" name="filter_assignment" placeholder="Filter by assignment" style=" padding:10px;">
+  </form>
+  </div>
+
+  <button class="in-ex" style="float:right">export</button>
+  <button class="in-ex" style="float:right">import</button>
+  <br>
+  </div>
+
+  <div id="wrapper">
+  <table id="keywords">
+      <thead>
+        <tr>
+          <th><span>Name</span></th>
+          <th><span>ID</span></th>
+          <th><span>Assignment</span></th>
+          <th><span>Test</span></th>
+          <th><span>Quiz</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="lalign">John</td>
+          <td>104083</td>
+          <td>66</td>
+          <td>76</td>
+          <td>98</td>
+        </tr>
+        <tr>
+          <td class="lalign">Kelly</td>
+          <td>123456</td>
+          <td>87</td>
+          <td>88</td>
+          <td>98</td>
+        </tr>
+        <tr>
+          <td class="lalign">Adam</td>
+          <td>987654</td>
+          <td>87</td>
+          <td>98</td>
+          <td>55</td>
+        </tr>
+        <tr>
+          <td class="lalign">Arthas</td>
+          <td>543234</td>
+          <td>86</td>
+          <td>76</td>
+          <td>65</td>
+        </tr>
+        <tr>
+          <td class="lalign">Uther</td>
+          <td>123789</td>
+          <td>65</td>
+          <td>37</td>
+          <td>87</td>
+        </tr>
+        <tr>
+          <td class="lalign">Lich King</td>
+          <td>412643</td>
+          <td>98</td>
+          <td>77</td>
+          <td>88</td>
+        </tr>
+      </tbody>
+    </table>
+   </div>
+
+  </div>
+-->
+  <script type="text/javascript">
+  $(document).ready(function() {
+      $("#keywords").tablesorter();
+  });
+  </script>
+
+</body>
+</html>

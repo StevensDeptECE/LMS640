@@ -141,7 +141,7 @@ takeQuiz.prototype.draw = function(div){
     submitQuiz.type = "submit";
     submitQuiz.innerHTML ="Submit Quiz";
     submitQuiz.className = "two";
-    submitQuiz.onclick = SubmitQuiz();
+   // submitQuiz.onclick = SubmitQuiz();
     this.div.appendChild(submitQuiz);
 };
 
