@@ -1,12 +1,14 @@
 
 function HomeworkCourse(payload) {
-  this.payload = payload;
+  this.courseName = payload;
+  //this.payload = payload;
 }
 
 HomeworkCourse.prototype.draw = function(content) {
   clearElements('up2');
   var up2 = document.getElementById('up2');
-  var newHeader = Util.h1("Course", "", "");
+  console.log("course name: " + this.courseName);
+  var newHeader = Util.h1(this.courseName, "", "");
   up2.appendChild(newHeader);
   clearElements('up3');
 
@@ -34,7 +36,7 @@ HomeworkCourse.prototype.draw = function(content) {
       divCourse1.appendChild(pComing);
       divCourse1.appendChild(hwTable1); */
       var hwcoming = ["Homework1", "Homework2" , "Homework3"];
-      
+
           var newTable1 = Util.table([], false, "table table-hober", "");
           for (var i = 0; i < hwcoming.length; i++) {
             var newTr1 = Util.tr([]);
@@ -47,7 +49,7 @@ HomeworkCourse.prototype.draw = function(content) {
       }
       divCourse1.appendChild(pComing);
       divCourse1.appendChild(newTable1);
-    
+
     var divNextweekHw = Util.div("NextweekHw", "");
       var pNextweek = Util.p("Next Week", "", "");
         /** var hwTable2 = Util.table([], false, "table table-hover", "");
@@ -64,7 +66,7 @@ HomeworkCourse.prototype.draw = function(content) {
         hwTable2.appendChild(tr2_1);
         hwTable2.appendChild(tr2_2);  */
         var hwnextweek = ["Homework4", "Homework5" , "Homework6"];
-      
+
           var newTable2 = Util.table([], false, "table table-hober", "");
           for (var i = 0; i < hwnextweek.length; i++) {
             var newTr2 = Util.tr([]);
@@ -75,15 +77,15 @@ HomeworkCourse.prototype.draw = function(content) {
             newTr2.appendChild(newTh2);
             newTable2.appendChild(newTr2);
       }
-      
+
       divCourse1.appendChild(pNextweek);
-      divCourse1.appendChild(newTable2); 
-    
+      divCourse1.appendChild(newTable2);
+
 
     var divSubmittedHw = Util.div("SubmittedHw", "");
         var pSubmitted = Util.p("Submitted", "", "");
         var hwsubmitted = ["Homework7", "Homework8"];
-      
+
           var newTable3 = Util.table([], false, "table table-hober", "");
           for (var i = 0; i < hwsubmitted.length; i++) {
             var newTr3 = Util.tr([]);
@@ -99,7 +101,7 @@ HomeworkCourse.prototype.draw = function(content) {
     var divOverdueHw = Util.div("OverdueHw", "");
       var pOverdue = Util.p("OverDue", "", "");
       var hwoverdue = ["Homework9", "Homework10","Homework11"];
-      
+
           var newTable4 = Util.table([], false, "table table-hober", "");
           for (var i = 0; i < hwoverdue.length; i++) {
             var newTr4 = Util.tr([]);
@@ -126,7 +128,7 @@ HomeworkCourse.prototype.draw = function(content) {
   HomeworkAssignment.prototype.draw = function(content) {
     clearElements('up2');
     var up2 = document.getElementById('up2');
-  
+
     //innerHTML should be dynamic - not hardcoded to "Homework A"
     //may need a parameter for which assignment it is
     var newHeader = Util.h1("Homework A", "", "");

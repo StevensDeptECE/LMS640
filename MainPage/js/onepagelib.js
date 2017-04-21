@@ -480,6 +480,7 @@ function launch(object, payload, id) {
 
   //check what 'object' is. If it's the initial load, then no
   //LoginTop object should be drawn
+  /*
   if (topLoginDrawn == false)
   {
     var content2 = document.getElementById('loginformabs_top');
@@ -487,6 +488,7 @@ function launch(object, payload, id) {
     loginTop.draw(content2);
     topLoginDrawn = true;
   }
+  */
   activeLink = "grade";
 }
 
