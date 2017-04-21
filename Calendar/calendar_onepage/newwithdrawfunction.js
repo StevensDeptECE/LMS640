@@ -131,7 +131,13 @@ function show(customDate) {
 			tags.push(Util.td(i, "today", ""));
 			for(var j = 0; j < holiday.length; j++){
 				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
-					tags.push(Util.button(holiday[j].name, createwindow(j), "createholiday", ""));
+					var temp=tags.pop();
+					var thing= document.createElement("button");
+					thing.setAttribute("onclick", "createwindow("+j+")");
+					thing.setAttribute("class", "createholiday");
+					thing.innerHTML= holiday[j].name;
+					temp.appendChild(thing);
+					tags.push(temp);
 				}
 			}
 		}
@@ -139,7 +145,13 @@ function show(customDate) {
 			tags.push(Util.td(i, "current", ""));
 			for(var j = 0; j < holiday.length; j++){
 				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
-					tags.push(Util.button(holiday[j].name, createwindow(j), "createholiday", ""));
+					var temp=tags.pop();
+					var thing= document.createElement("button");
+					thing.setAttribute("onclick", "createwindow("+j+")");
+					thing.setAttribute("class", "createholiday");
+					thing.innerHTML= holiday[j].name;
+					temp.appendChild(thing);
+					tags.push(temp);
 				}
 			}
 		}
