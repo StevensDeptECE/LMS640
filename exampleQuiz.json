@@ -11,7 +11,7 @@
         tryTimes: “1”,		
         shuffleAnswers: True,		
         shuffleQuestions: True.
-        questionNum: False,
+        oneAtATime: False,
         accessCode: “password5”
     },
     questions: {
@@ -168,6 +168,18 @@
         comp: [
             ["Instr", "Please choose the file you want to upload", "1"],
             ["fileUpload", "2" ]
+        ]
+    },
+
+    {
+        id: "qc1014",
+        title: "Media Questions",
+        points: 10,
+        comp: [
+            ["Instr", "Please take a look at the media below", "1"],
+            ["Aud", "song.mp3", "2" ],
+            ["Img", "cat.jpg", "3" ],
+            ["Vid", "videoFile.wmv", "4" ]
         ]
     }
 
