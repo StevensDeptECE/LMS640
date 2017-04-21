@@ -8,7 +8,7 @@
                 autoFloatEnabled:true,
                 elementPathEnabled:false,
                 enableContextMenu:false,
-                initialFrameHeight:200,
+                initialFrameHeight:150,
                 enableAutoSave:false,
                 autoClearinitialContent: true,
                 focus:true,
