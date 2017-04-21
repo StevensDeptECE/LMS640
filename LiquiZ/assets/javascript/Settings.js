@@ -22,6 +22,7 @@ settings.prototype.draw = function(s) {
 var settingsPayload = {
     title: "Settings",
     class: "L-quiz",
+    time: null,
     questions: 
     [
         {
@@ -38,9 +39,9 @@ var settingsPayload = {
             title: "Quiz Defaults",
             comp: [
                 ["Instr", "What is the standard time limit?", "1"],
-                [ "Fillin", "2"],
+                [ "FillIn", "2"],
                 ["Instr", "How many tries does a student get?", "1"],
-                [ "Fillin", "2"]
+                [ "FillIn", "2"]
             ]
         }
     ]
