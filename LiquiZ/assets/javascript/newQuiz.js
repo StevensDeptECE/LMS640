@@ -314,13 +314,17 @@ newQuiz.prototype.draw = function(s) {
     dragAndDrop.style.display = "none";
     dragAndDrop.className = "multiChoice";
     imgUpload.onchange = function() {readURL(this, count)};
+    var imgDiv = document.createElement('span');
+	imgDiv.className += 'imgDiv';
+    imgDiv.id = "img" + count;
     var image = document.createElement("img");
     image.id = "blah" + count;
     image.src = "#";
     image.alt = "image";
     image.style.display = "none";
+	imgDiv.appendChild(image);
     dragAndDrop.appendChild(imgUpload);
-    dragAndDrop.appendChild(image);
+    dragAndDrop.appendChild(imgDiv);
 
     var bt1 = Util.button("Delete", function () {remove_question(count)}, "three");
     bt1.style.display = "block";
@@ -563,14 +567,19 @@ function create_question() {
     dragAndDrop.id = "dragDropSet" + count;
     dragAndDrop.style.display = "none";
     dragAndDrop.className = "multiChoice";
+    /*add function to display preview of image*/
     imgUpload.onchange = function() {readURL(this, count)};
+    var imgDiv = document.createElement('span');
+	imgDiv.className += 'imgDiv';
+    imgDiv.id = "img" + count;
     var image = document.createElement("img");
     image.id = "blah" + count;
     image.src = "#";
     image.alt = "image";
     image.style.display = "none";
+	imgDiv.appendChild(image);
     dragAndDrop.appendChild(imgUpload);
-    dragAndDrop.appendChild(image);
+    dragAndDrop.appendChild(imgDiv);
 
 
     var bt1 = Util.button("Delete", function () {remove_question(count)}, "three");
@@ -777,9 +786,28 @@ function tableToJson4(Divs) {
         var operFinal = [];
         if(document.getElementById("type_row"+i).value == "Drag and Drop"){
             operFinal.push("DragDrop");
-            operFinal.push(document.getElementById("1cont_row"+i).value);
-            var operCont2 = "[" + document.getElementById("2cont_row"+i).value + "]";
-            var operCont3 = "[" + document.getElementById("3cont_row"+i).value + "]";
+            /*get file name*/
+            var filename = document.getElementById("dragDropSet"+i).firstChild.value;
+            filename = "imgData";
+            operFinal.push(filename);
+            /*get text options*/
+            var dragDropOptions = document.getElementsByClassName("dragDropOption");
+            var optionArray = "[";    
+            for(var i = 0; i < dragDropOptions.length; i++){
+                optionArray += dragDropOptions[i].innerHTML + ",";
+            }
+            var operCont2 = optionArray.substring(0, optionArray.length-1);
+            operCont2 += "]";
+            /*get drop locations*/
+            var locations = document.getElementsByClassName("dragdropLocation");
+            var locationArray = "[{";
+            for(var i = 0; i < locations.length; i++){
+                var left = locations[i].style.left;
+                var top = locations[i].style.top;
+               locationArray += "left:" + left.substring(0,left.indexOf("p")) + ",top:" + top.substring(0,top.indexOf("p")) + "},";
+            }
+            var operCont3 = locationArray.substring(0,locationArray.length-1);
+            operCont3 += "]";
             operFinal.push(operCont2);
             operFinal.push(operCont3);
             operFinal.push(addOn);
@@ -950,21 +978,47 @@ function readURL(input, count) {
                         .width(150)
                         .height(200)
                         .css("display", "block")
-                        .click(function(ev){getClickPosition(ev.target,ev);});
+                        .click(function(ev){getClickPosition(ev.target, ev, count);});
+                    sessionStorage.setItem("imgData", reader.result);
                 };
                 reader.readAsDataURL(input.files[0]);
-                var clickImage = Util.div("dragDropInstruction");
-                clickImage.appendChild(Util.p("Now click the image where you want to add a box."));
+                var clickImage = Util.span("Now click the image where you want to add a box.","dragDropInstruction");
                 $('#dragDropSet' + count).append(clickImage);
             }
 }
 
 /*function for drag and drop editor that gets the x and y coordinates of a click on an image*/
-function getClickPosition(canvas, event) {
+function getClickPosition(canvas, event, count) {
     var rect = canvas.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
-    console.log("x: " + x + " y: " + y);
+    createDropLocation(x, y, event.target, count);
+}
+
+function createDropLocation(xpos, ypos, div, count){
+    /*ask user to iput what they clicked on*/
+    var dragDropAnswer = prompt("Answer:");
+    /*if user enters something and hits okay build location and answer, otherwise do nothing*/
+    if (dragDropAnswer != null && dragDropAnswer != "") {
+        var parent = document.getElementById("img" + count);
+        /*create location on image to drop*/
+        var coord = "left:" + (xpos-10) + "px; top:"+ (ypos-10) + "px;";
+        var dropLocation = document.createElement('span');
+        dropLocation.className += "dragdropLocation";
+        dropLocation.name = "dragDrop";
+        dropLocation.id = guid();
+        dropLocation.setAttribute("ondrop","drop(event)");
+        dropLocation.setAttribute("ondragover","allowDrop(event)");
+        dropLocation.setAttribute("style","position:absolute; "+ coord);
+        /*create draggable option*/
+        var termBox = document.createElement('text');
+        termBox.className += "dragDropOption";
+        termBox.id = guid();
+        termBox.appendChild(document.createTextNode(dragDropAnswer));
+  //      parent.appendChild(dropLocation);
+        parent.appendChild(termBox);
+    }
+
 }
 
 
