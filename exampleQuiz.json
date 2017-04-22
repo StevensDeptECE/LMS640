@@ -1,0 +1,188 @@
+{
+    "quizID": 423432,
+    "quizTitle": "Quiz1",
+    "quizClass": "LMS640",
+    "published": true,
+    "preferences": {
+        "openDate": "2017-03-25T12:00:00",
+        "dueDate": "2017-03-15T12:00:00",
+        "closeDate": null,				
+        "quizTime": 60,   	
+        "tryTimes": 1,		
+        "shuffleAnswers": true,		
+        "shuffleQuestions": true,
+        "oneAtATime": false,
+        "accessCode": "password5"
+    },
+    "questions": [
+        {
+            "id": "qc1000",
+            "title": "Addition",
+            "points": 10,
+            "comp": [
+                ["Instr", "What is 2+2? ", "1"],
+                ["MC", [8,4,5,6], "3"]
+            ]
+        },
+
+        {
+            "id": "qc1001",
+            "title": "Select All that Apply",
+            "points": 10,
+            "comp": [
+                ["Instr", "Which sport do you like?", "1"],
+                ["MCS", ["basketball","football","volleyball","baseball"], "2"]
+            ]
+        },
+
+        {
+            "id": "qc1002",
+            "title": "Fill in",
+            "points": 10,
+            "comp": [
+                ["Instr", "What is 3*4? ","1"],
+                [ "FillIn", "3"]
+            ]
+        },
+
+        {
+            "id": "qc1003",
+            "title": "Fill in Numbers",
+            "points": 10,
+            "comp": [
+                ["Instr", "What is 10/3? ","1"],
+                ["Numbers", "6", "3"]
+            ]
+        },
+
+        {
+            "id": "qc1004",
+            "title": "Cloze",
+            "points": 10,
+            "comp": [
+                ["Instr", "Complete the code below so it prints \"Hello\"","1"],
+                ["Cloze",
+                    [
+                        "public class A {",
+                        "public static",
+                        "[]",
+                        "main(String[] args) {",
+                        "System.",
+                        "[]",
+                        "}",
+                        "}"
+                    ],
+                    "1"
+                ]
+            ]
+        },
+
+        {
+            "id": "qc1005",
+            "title": "Code",
+            "points": 10,
+            "comp": [
+                ["Instr", "Complete the code below so it prints \"Hello\"","1"],
+                ["Codes", "public class A {<>  public void main(String[] args) {<>  System.<>  }<>}", "2"]
+            ]
+        },
+
+        {
+            "id": "qc1006",
+            "title": "Grid",
+            "points": 10,
+            "comp": [
+                ["Instr", "Enter the first pass of bubblesort for the array [5, 1, 3, 4, 2]","1"],
+                [ "Grid", 5, "2"]
+            ]
+        },
+
+        {
+            "id": "qc1007",
+            "title": "Survey",
+            "points": 10,
+            "comp": [
+                ["Instr", "Enter your honest opinions.  There are no right or wrong answers"],
+                ["Survey", "Likert5", [
+                    "I like Chinese food",
+                    "I like Korean food",
+                    "I like Indian food",
+                    "I got sick on sushi"
+                ], "1"]
+            ]
+        },
+
+        {
+            "id": "qc1008",
+            "title": "Matrix",
+            "points": 10,
+            "comp": [
+                ["Instr", "Enter any 3x3 magic square","1"],
+                [ "Matrix", 3,3, "2"]
+            ]
+        },
+
+        {
+            "id": "qc1009",
+            "title": "Drop Down",
+            "points": 10,
+            "comp": [
+                ["Instr", "What is 2+2? ", "1"],
+                ["MCDrop", [1,2,3,4], "3"]
+            ]
+        },
+
+        {
+            "id": "qc1010",
+            "title": "Drag and Drop",
+            "points": 10,
+            "comp": [
+                ["Instr", "Locate the parts of the cat ","1"],
+                ["DragDrop", "cat.jpg",["Ear","Eye","Nose","Tongue"], [ {"left":215,"top":30}, {"left":255,"top":120},{"left":285,"top":160},{"left":285,"top":220}], 7]
+            ]
+        },
+
+        {
+            "id": "qc1011",
+            "title": "Matching",
+            "points": 10,
+            "comp": [
+                ["Instr", "Match the types", "1"],
+                ["Match",["animal","number","food"],["ice cream", "dog", "three"], "2" ]
+            ]
+        },
+
+        {
+            "id": "qc1012",
+            "title": "Short Essay",
+            "points": 10,
+            "comp": [
+                ["Instr", "Please analyze the relationship between Lennie and George in Of Mice and Men", "1"],
+                ["Essay", "2" ]
+            ]
+        },
+
+        {
+            "id": "qc1013",
+            "title": "File Upload",
+            "points": 10,
+            "comp": [
+                ["Instr", "Please choose the file you want to upload", "1"],
+                ["fileUpload", "2" ]
+            ]
+        },
+
+        {
+            "id": "qc1014",
+            "title": "Media Questions",
+            "points": 10,
+            "comp": [
+                ["Instr", "Please take a look at the media below", "1"],
+                ["Aud", "song.mp3", "2" ],
+                ["Img", "cat.jpg", "3" ],
+                ["Vid", "videoFile.wmv", "4" ]
+            ]
+        }
+    ]
+
+}

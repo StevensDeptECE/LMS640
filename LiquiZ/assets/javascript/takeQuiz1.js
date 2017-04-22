@@ -116,7 +116,7 @@ function timerSetter (quizLength){
         document.getElementById("countdownTimer").innerHTML = "Time Remaining "+ hours + ":" + minutes + ":" + seconds;
         if (timeLeft < 0) {
             clearInterval(timer);
-            //FUNCTION TO SUBMIT QUIZ GOES HERE
+            SubmitQuiz();
         }
     },1000);
 }
@@ -128,7 +128,9 @@ takeQuiz.prototype.draw = function(div){
     var header = Util.h1(this.title,"h03");
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
-    //timerSetter(this.time);
+    if(this.time !== null){
+        timerSetter(this.time);
+    }
     clearElements("up3");
     this.div.appendChild(this.navDiv);
     div.appendChild(this.div);
@@ -141,6 +143,7 @@ takeQuiz.prototype.draw = function(div){
     submitQuiz.type = "submit";
     submitQuiz.innerHTML ="Submit Quiz";
     submitQuiz.className = "two";
+   // submitQuiz.onclick = SubmitQuiz();
     this.div.appendChild(submitQuiz);
 };
 

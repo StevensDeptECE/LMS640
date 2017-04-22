@@ -3,14 +3,23 @@ var holiday = [
 	{ "style":"holiday","name":"President's Day","notes":"Have a good day!","day":20,"month":2,"year":2017},
 	{ "style":"mid","name":"EE575 mid-exam","notes":"EE575 midterm exam","day":10,"month":3,"year":2017},
 	{ "style":"quiz","name":"EE552 test2","notes":"EE552 test2","day":20,"month":3,"year":2017},
-	{ "style":"class","name":"CPE-640","notes":"CPE-640 12:00-14:30","day":24,"month":3,"year":2017}];
+	{ "style":"class","name":"CPE-640","notes":"CPE-640 12:00-14:30","day":24,"month":4,"year":2017}
+];
+var adminEvents = [
 
+];
+var profEvents = [
+
+];
+var studEvents = [
+
+];
 var tempDate;
-
+//get current date object
 function getRightNow() {
 	return new Date();
 }
-
+//get day of week
 function getDay(date){
 	var day = date.getDay();
   if(0 == day){
@@ -18,7 +27,7 @@ function getDay(date){
   }
   return day;
 }
-
+//get day in month
 function getDays(date) {
 	var month = date.getMonth() + 1;
   var currentDate = date.getDate();
@@ -27,7 +36,7 @@ function getDays(date) {
   date.setMonth(month - 1, currentDate);
   return days;
 }
-
+//get day of week of first day of the month
 function getFirstDayOfMonth(date){
 	var currentDate = date.getDate();
   date.setDate(1);
@@ -35,7 +44,7 @@ function getFirstDayOfMonth(date){
   date.setDate(currentDate);
   return firstDayOfMonth;
 }
-
+//get day of week of last day of the month
 function getLastDayOfMonth(date){
 	var currentDate = date.getDate();
   var days = getDays(date);
@@ -44,7 +53,7 @@ function getLastDayOfMonth(date){
   date.setDate(currentDate);
   return lastDayOfMonth;
 }
-
+//get day objects to fill in end of calendar
 function getHeadOfNextMonth(date) {
 	var days = getDays(date);
   var firstDayOfMonth = getFirstDayOfMonth(date);
@@ -79,7 +88,7 @@ function getHeadOfNextMonth(date) {
   }
 	return elements;
 }
-
+//get day objects to fill in beginning of month
 function getEndOfPreMonth(date){
 	var year = date.getFullYear();
   var month = date.getMonth();
@@ -108,7 +117,7 @@ function getEndOfPreMonth(date){
   }
 	return elements;
 }
-
+//create calendar object
 function show(customDate) {
 	var today = getRightNow();
 	var date = customDate.getDate();
@@ -119,7 +128,7 @@ function show(customDate) {
 	var dayOfWeekId=["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 	var tr1= document.createElement("tr");
 	for(var i=0; i<dayOfWeekId.length; i++){
-		tr1.appendChild(Util.th(dayOfWeekId[i], "", ""));
+		tr1.appendChild(Util.th(dayOfWeekId[i], "dayOfWeek", ""));
 	}
 	calTable.appendChild(tr1);
 	var tags=[];
@@ -128,9 +137,9 @@ function show(customDate) {
 	}
 	for (var i = 1; i <= days; i++) {
 		if(i == today.getDate() && customDate.getMonth() == today.getMonth() && customDate.getFullYear() == today.getFullYear()){
-			tags.push(Util.td(i, "today", ""));
+			tags.push(Util.td(i, "today", i));
 			for(var j = 0; j < holiday.length; j++){
-				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
+				if( i == holiday[j].day && customDate.getMonth()+1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
 					var temp=tags.pop();
 					var thing= document.createElement("button");
 					thing.setAttribute("onclick", "createwindow("+j+")");
@@ -142,7 +151,7 @@ function show(customDate) {
 			}
 		}
 		else{
-			tags.push(Util.td(i, "current", ""));
+			tags.push(Util.td(i, "current", i));
 			for(var j = 0; j < holiday.length; j++){
 				if( i == holiday[j].day && customDate.getMonth() + 1 == holiday[j].month && customDate.getFullYear() == holiday[j].year){
 					var temp=tags.pop();
@@ -174,10 +183,10 @@ function show(customDate) {
 	}
 
 	calTable.appendChild(tr2);
-	var cal=document.getElementById("up3");
+	var cal=document.getElementById("testObjects");
   cal.appendChild(calTable);
 }
-
+//create window to show holiday notes
 function createwindow(n){
 	var para = document.createElement("div");
 	para.setAttribute("class","divholiday");
@@ -186,7 +195,7 @@ function createwindow(n){
   para.appendChild(node);
   document.body.appendChild(para);
 }
-
+//click anywhere to close window
 document.onclick = function(e) {
 	if(document.getElementById("divholiday")){
 		if(e.target.id != "divholiday" && e.target.className != "createholiday") {
@@ -195,18 +204,21 @@ document.onclick = function(e) {
 		}
 	}
 }
-
+//onload function to set current calendar
 function setCalendar() {
+	title();
 	drawCalendar(getRightNow());
+	upcomingevent();
+	//sidebar();
 }
-
+//get current date object being used
 function getTempDate(){
 	if(tempDate == undefined) {
   	tempDate = getRightNow();
   }
   return tempDate;
 }
-
+//set tempDate to info for previous month
 function getPreMonth() {
 	tempDate = getTempDate();
 
@@ -229,17 +241,17 @@ function getPreMonth() {
   tempDate.setDate(date);
   return tempDate;
 }
-
+//drawCalendar for previous month
 function preButton(){
 	var preMonth = getPreMonth();
 	drawCalendar(preMonth);
 }
-
+//draw calendar for current month
 function resume(){
 	tempDate = getRightNow();
 	drawCalendar(tempDate);
 }
-
+//set tempDate to info for next month
 function getNextMonth() {
 	tempDate = getTempDate();
 
@@ -265,7 +277,7 @@ function getNextMonth() {
 
   return tempDate;
 }
-
+//drawCalendar for next month
 function nextButton() {
 	var nextMonth = getNextMonth();
 	drawCalendar(nextMonth);
@@ -275,9 +287,9 @@ var monthId=["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul",
 	"Aug", "Sep", "Oct", "Nov", "Dec"];
 var fullMonthId=["January", "February", "March", "April", "May", "June",
 	"July", "August", "Septempber", "October", "November", "December"];
-
+//ability to choose what month to look at
 function changeMonth(){
-	var elements = document.getElementsByTagName("a");
+	var elements = document.getElementsByClassName("changeMonth");
 	for(var i=0; i<elements.length; i++){
 		elements[i].onclick = function(){
 			tempDate=getTempDate();
@@ -286,7 +298,7 @@ function changeMonth(){
 	 	}
 	}
 }
-
+//ability to choose what year to look at
 function changeYear(){
 	var yearView= document.getElementById("changeYear");
 	yearView.style.display= "none";
@@ -306,7 +318,7 @@ function changeYear(){
 		drawCalendar(tempDate);
 	};
 }
-
+//displays date nicely with dropdown
 function chooseDate(){
 	var a= getTempDate();
 	var m= a.getMonth();
@@ -327,34 +339,25 @@ function chooseDate(){
 	var editYear=Util.span(' '+y, "changeYear", "changeYear");
 	editYear.setAttribute("onclick", "changeYear()");
 
-	document.getElementById("up3").appendChild(dropdiv);
-	document.getElementById("up3").appendChild(editYear);
+	document.getElementById("testObjects").appendChild(dropdiv);
+	document.getElementById("testObjects").appendChild(editYear);
 }
-
+//draws calendar and buttons
 function drawCalendar(date) {
 	console.log("Draw Calendar");
-	clearElements("up2");
-
-	var newHeader = Util.h1("Calendar", "", "");
-	document.getElementById("up2").appendChild(newHeader);
-
-	clearElements("up3");
+	clearElements("testObjects");
 	var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
-	document.getElementById("up3").appendChild(btn_left);    // Append <button> to <body>
+	document.getElementById("testObjects").appendChild(btn_left);    // Append <button> to <body>
 	chooseDate();                                             // write current date
 	var btn_today = Util.button("Today", resume, "", "");    // Create a <button> element
 	var btn_right = Util.button(">", nextButton, "", "");    // Create a <button> element
-	document.getElementById("up3").appendChild(btn_today);   // Append <button> to <body>
-	document.getElementById("up3").appendChild(btn_right);   // Append <button> to <body>
+	document.getElementById("testObjects").appendChild(btn_today);   // Append <button> to <body>
+	document.getElementById("testObjects").appendChild(btn_right);   // Append <button> to <body>
 	var btn_event= Util.button("Add Event", drawEventForm, "eventBtn", "eventBtn");
-	document.getElementById("up3").appendChild(btn_event);
-
+	document.getElementById("testObjects").appendChild(btn_event);
 	show(date);
-
-	clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
-	document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
 }
-
+//finds max days to use on form to not input a faulty date
 function limit(){ //sets month limit for input dates
 	var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 	if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
@@ -365,11 +368,11 @@ function limit(){ //sets month limit for input dates
 	var cday=document.getElementById("day");
 	cday.max=maxday;
 }
-
+//draws form to add events
 function drawEventForm() {
 	console.log("Draw Form");
 	var windo = Util.div("addEvent","eventWindow");
-	document.getElementById("up3").appendChild(windo);
+	document.getElementById("testObjects").appendChild(windo);
 		var div= Util.div("addEvent-content","");
 		windo.appendChild(div);
 		var close= Util.span("&times;", "close", "");
@@ -377,17 +380,21 @@ function drawEventForm() {
 			var form= document.createElement("form");
 			form.setAttribute("class", "holidayForm");
 
-			var holidayName= document.createElement("label");
-			holidayName.appendChild(Util.text("Holiday Name: "))
-			form.appendChild(holidayName);
+			var header = Util.h1("Add an event", "", "");
+			form.appendChild(header);
+
+			var name= document.createElement("label");
+			name.appendChild(Util.text("Name: "))
+			form.appendChild(name);
 			var nameInput= document.createElement("input");
 			nameInput.setAttribute("id","name");
 			nameInput.setAttribute("class","holidayForm");
 			nameInput.setAttribute("name","name");
 			nameInput.setAttribute("type","text");
 			form.appendChild(nameInput);
-			var br=document.createElement("br");
-			form.appendChild(br);
+
+			var br1=document.createElement("br");
+			form.appendChild(br1);
 
 			var dateInLabel= document.createElement("label");
 			dateInLabel.appendChild(Util.text("Date: "));
@@ -421,8 +428,8 @@ function drawEventForm() {
 			yearInput.setAttribute("name", "year");
 			yearInput.setAttribute("type", "number");
 			form.appendChild(yearInput);
-			var enter= document.createElement("br");
-			form.appendChild(enter);
+			var br2= document.createElement("br");
+			form.appendChild(br2);
 
 			var notesLabel= document.createElement("label");
 			notesLabel.appendChild(Util.text("Notes: "));
@@ -433,7 +440,8 @@ function drawEventForm() {
 			notesInput.setAttribute("name", "notes");
 			notesInput.setAttribute("type", "text");
 			form.appendChild(notesInput);
-			form.appendChild(br);
+			var br3= document.createElement("br");
+			form.appendChild(br3);
 
 			var submit=document.createElement("button");
 			submit.setAttribute("type", "submit");
@@ -457,10 +465,10 @@ function drawEventForm() {
 			}
 		}
 
-		var today= new Date();
-		var year= today.getFullYear();
-		var month= today.getMonth();
-		var day= today.getDate();
+		tempDate=getTempDate();
+		var year= tempDate.getFullYear();
+		var month= tempDate.getMonth();
+		var day= tempDate.getDate();
 
 		document.getElementById(monthId[month]).setAttribute("selected", "select");
 		document.getElementById("day").setAttribute("value", day);
@@ -492,9 +500,62 @@ function drawEventForm() {
 			holiday.push(data);
 			popup.style.display = "none";
 			drawCalendar(tempDate);
-			//var frm = document.getElementsByClassName("holidayForm")[0];
-   		//frm.reset();  // Reset
+			upcomingevent();
 		}
 		var form = document.getElementsByClassName("holidayForm")[0];
 		form.addEventListener('submit', handleFormSubmit);
+}
+//make sidebar for upcoming holidays
+/*function sidebar(){
+	var sidebar=Util.div("", "sidebar");
+	sidebar.innerHTML= "1";
+	document.getElementById("main_wrap").appendChild(sidebar);
+}*/
+//choose type of calendar
+function title(){
+	var heading= Util.h1("", "", "");
+	var calOwner= Util.div("dropdown","");
+	var calUser = Util.span("User", "dropbtn", "User");
+	var dropdown= Util.div("dropdownMenu", "");
+	var user1= Util.a("javascript:void(0)", "Administrator ", "", "");
+	user1.setAttribute("onclick", "calLevel()");
+	dropdown.appendChild(user1);
+	var user2= Util.a("javascript:void(0)", "Teacher ", "", "");
+	user2.setAttribute("onclick", "calLevel()");
+	dropdown.appendChild(user2);
+	var user3= Util.a("javascript:void(0)", "Student ", "", "");
+	user3.setAttribute("onclick", "calLevel()");
+	dropdown.appendChild(user3);
+
+	calUser.appendChild(dropdown);
+	calOwner.appendChild(calUser);
+
+	heading.appendChild(calOwner);
+	heading.appendChild(Util.text(' '+ "Calendar"));
+	//calOwner.appendChild(heading);
+	document.getElementById("header").appendChild(heading);
+}
+//change who's accessing the Calendar
+function calLevel(){
+	var elements = document.getElementsByTagName("a");
+	for(var i=0; i<elements.length; i++){
+		elements[i].onclick = function(){
+			tempDate=getTempDate();
+			drawCalendar(tempDate);
+	 	}
+	}
+}
+//make sidebar to show upcoming events (7 days)
+function upcomingevent(){
+	var today = getRightNow();
+	clearElements("upcoming");
+	for(var i = 0; i < holiday.length;i++){
+		if(today.getFullYear() == holiday[i].year && today.getMonth() + 1 == holiday[i].month && holiday[i].day-today.getDate() <=7 && holiday[i].day-today.getDate() > 0){
+			var para = document.createElement("li");
+			para.setAttribute("class","upcomingevent");
+			var node = document.createTextNode(holiday[i].name + " is in " + (holiday[i].day-today.getDate())+" days");
+			para.appendChild(node);
+			document.getElementById("upcoming").appendChild(para);
+		}
+	}
 }

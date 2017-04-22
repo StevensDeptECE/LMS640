@@ -30,15 +30,41 @@
   <script src="../LiquiZ/assets/javascript/Settings.js"></script>
   <script src="../LiquiZ/assets/javascript/questionEditor.js"></script>
   <script src="../LiquiZ/assets/javascript/newQuiz.js"></script>
+  <script src="../LiquiZ/assets/javascript/submit.js"></script>
   <!--<script src="../Calendar/2nd week/2.js"></script>-->
   <script src="js/onepagelogin.js"></script>
   <script src="js/onepagelogintop.js"></script>
   <script src="js/jquery.js"></script>
   <script src="js/jquery.tablesorter.js"></script>
   <script src="../Homework/Canvas-Homework/js/hwonepage.js"></script>
+  <script src="js/hwonepageArray.js"></script>
   <script src="js/onepagecourselist.js"></script>
   <script src="js/preferences.js"></script>
   <script src="js/prefeditor.js"></script>
+  <script src="js/backbutton.js"></script>
+  <style>
+  table{
+  border: 2px solid black;
+  border-collapse:collapse;
+  }
+
+  td,tr,tbody,thead{
+  border: 1px solid black;
+  padding: 20px;
+  }
+
+  tr:nth-child(even){background-color: #f2f2f2}
+  a:link {
+    text-decoration: none;
+	color: black;
+	}
+
+  tr:hover,a:hover{background-color: #555;
+  color: white;
+	  text-decoration: underline;
+  }
+
+  </style>
 </head>
 
 <body onload="loadPrefs('prefs_sample'), launch(Login, '', 'up3')">
