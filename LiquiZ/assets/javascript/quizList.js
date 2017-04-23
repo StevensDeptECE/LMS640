@@ -105,7 +105,10 @@ quizIndex.prototype.draw = function(s) {
 
         var td7 = document.createElement("td");
             var bt2 = document.createElement("button");
-            bt2.onclick=function () {launch(takeQuiz, quiz1Payload, 'up3')};
+            if(this.payload[i].quizClass == "CPE593")
+                bt2.onclick=function () {launch(takeQuiz, CPE593Quiz , 'up3')};
+            else
+                bt2.onclick=function () {launch(takeQuiz, quiz1Payload, 'up3')};
             text = document.createTextNode("Take");
             bt2.className = "three";
             bt2.appendChild(text);

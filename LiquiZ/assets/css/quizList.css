@@ -407,12 +407,12 @@ div.header {
 	font-size: 28px;
     color: green;
 	border-bottom: 2px solid #ddd;
-    margin-bottom: 20px;
 }
 div.instrFont {
     font-family: Times, serif;
     font-size: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    margin-top: 15px;
 }
 .qcPoints {
     font-style: italic;
@@ -483,6 +483,7 @@ input.Matrix{
     display : inline-block;
     font-size: 20px;
     margin: 0;
+    padding:0;
 }
 .matchStyle {
     width: auto;
@@ -514,23 +515,30 @@ input.Matrix{
 
 .dragDropOption {
 	background-color: white;
-	font-size: 18px;
-	padding: 5px;
+	font-size: 16px;
+	padding-top: 2px;
+    padding-right: 2px;
+    padding-left: 2px;
 	cursor:move;
 	position:relative; /* important (all position that's not `static`) */
 	border-radius: 3px;
 	border: 1px solid black;
+    height: 20px;
+    min-width: 18px;
+    text-align: center;
 }
 .qc .container {
 	display: flex;
 }
+
 .container .dragDropOption {
-	margin-right: 5px;
+    margin-right: 5px;
 }
+
 .dragdropLocation {
 	background-color: white;
-	min-width:20px;
-	min-height:20px;
+	min-width:22px;
+	min-height:22px;
 	border-radius: 3px;
 	border: 1px solid black;
 }
