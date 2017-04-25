@@ -1,4 +1,8 @@
 /*For table framework*/
+.wrapper_rightside {
+    padding-right: 1.5em;
+    position: relative;
+}
 .h01 {
     font-size: 40px;
     text-align: center;
@@ -34,7 +38,7 @@
     -o-transition: text-shadow 500ms cubic-bezier(0.42, 0, 0.58, 1);
     transition: text-shadow 500ms cubic-bezier(0.42, 0, 0.58, 1);
     position: relative;
-    top: 30px;
+    /*top: 30px;*/
 }
 
 .h03:hover {
@@ -238,10 +242,9 @@
 
 /*For select*/
 .newSelect{
-    font: 400 12px/1.3 "Helvetica Neue", sans-serif;
+    font: 400 15px "Helvetica Neue", sans-serif;
     -webkit-appearance: none;
     border: 1px solid #4CAF50;
-    line-height: 1;
     outline: 0;
     color: #4CAF50;
     padding: 0.65em 2.5em 0.55em 0.75em;
@@ -255,6 +258,7 @@
     background-size: 1px 100%, 20px 20px, 20px 20px, 20px 60%;
     background-position: right 20px center, right bottom, right bottom, right bottom;
 }
+
 
 /*For radio and checkbox inside quiz*/
 .control {
@@ -342,7 +346,6 @@
     border: 0;
     background-color: #eee;
 }
-
 .t02 td.instrText {
     font-family: "courier", serif;
     font-size: 14px;
@@ -354,10 +357,58 @@
     font-size: 15px;
     height: auto;
 }
-.wrapper_rightside {
-     padding-right: 1em;
-     position: relative;
- }
+
+/*For newQuiz.js*/
+.questionTitle{
+    overflow: hidden;
+    padding: 10px;
+    width: 500px;
+    font-size: 20px;
+    margin: 20px auto 20px 0;
+    display: block;
+    border-radius: 10px;
+    border: 1px solid green;
+    height: 1em;
+    outline: none;
+    box-shadow: inset 2px 2px 0px 1px #888888;
+}
+.multiChoice{
+    overflow:hidden;
+    padding:10px;
+    width: 500px;
+    font-size:15px;
+    margin:10px auto 10px 0;
+    display:block;
+    border-radius:10px;
+    border:1px solid green;
+    height: 1.2em;
+    outline: none;
+    box-shadow: inset 1px 1px 0px 1px #888888;
+}
+.matchChoice{
+    overflow:hidden;
+    padding:10px;
+    width: 500px;
+    font-size:15px;
+    margin:10px auto 10px 0;
+    display:block;
+    border-radius:10px;
+    border:1px solid green;
+    height: 2.4em;
+    outline: none;
+    box-shadow: inset 1px 1px 0px 1px #888888;
+}
+.th5 {
+    color: green;
+    font-size:16px;
+    margin: 30px 0 10px 0;
+}
+.SurveyChoice {
+    margin-top: 30px;
+}
+
+
+
 
 /*For takeQuiz page*/
 /*---------quiz question navbar ---------*/
@@ -409,25 +460,26 @@
 /*---------------------------------------*/
 /*-----Question containers---------------*/
 .qc {
-	border: 1px solid #ddd;
+    border: 1px solid #ddd;
     padding: 20px;
     margin: 20px;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 1px 1px 1px #888888;
+    /*box-shadow: 1px 1px 1px #888888;*/
+    box-shadow: 5px 5px 0px 3px #888888;
 
 }
 div.header {
     font-family: Times, serif;
-	font-size: 28px;
+    font-size: 28px;
     color: green;
-	border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
 }
 div.instrFont {
     font-family: Times, serif;
     font-size: 20px;
-    margin-bottom: 10px;
-    margin-top: 15px;
+    margin-bottom: 15px;
 }
 .qcPoints {
     font-style: italic;
@@ -441,6 +493,7 @@ div.instrFont {
     text-align: center;
     position: relative;
     left: 10px;
+    outline: none;
 }
 .inputNumber{
     width: 200px !important;
@@ -449,16 +502,21 @@ div.instrFont {
     text-align: center;
     position: relative;
     left: 10px;
+    outline: none;
 }
 .inputCode {
-    height: 300px;
-    width: 90%;
+    height: 200px;
+    max-height: 400px;
+    width: 50%;
     font-family: "courier", serif;
     color: lawngreen;
     background: black;
     font-size: 16px;
     padding: 20px;
     resize: vertical;
+    outline: none;
+    border-radius:10px;
+    border-width: 0;
 }
 .mainText {
     font-size: 20px;
@@ -467,18 +525,19 @@ div.instrFont {
 .containerStyle{
     margin: 20px 20px;
 }
-.inputCloze{
-    color: lawngreen;
-    background: black;
-    width: 250px !important;
-    height: 28px !important;
-    font-size: 14px !important;
+input.inputCloze{
+    /*color: lawngreen;*/
+    /*background: black;*/
+    width: 250px;
+    height: 28px;
+    font-size: 20px;
     font-family: "courier", serif;
     text-align: center;
     position: relative;
     top: 10px;
     float: left;
-    margin: 3px;
+    margin: 8px;
+    outline: none;
 }
 .textBeforeCloze{
     font-size: 20px;
@@ -498,7 +557,8 @@ input.Matrix{
     display : inline-block;
     font-size: 20px;
     margin: 0;
-    padding:0;
+    outline: none;
+    padding: 0;
 }
 .matchStyle{
     width: auto;
@@ -527,28 +587,30 @@ input.Matrix{
     display: block;
     padding: 10px;
     resize: vertical;
-    font-size: 14px; 
+    font-size: 14px;
+    outline: none;
+    border-radius:10px;
 }
 .imgDiv {
-	position: relative;
+    position: relative;
 }
 
 .dragDropOption {
-	background-color: white;
-	font-size: 16px;
-	padding-top: 2px;
+    background-color: white;
+    font-size: 16px;
+    padding-top: 2px;
     padding-right: 2px;
     padding-left: 2px;
-	cursor:move;
-	position:relative; /* important (all position that's not `static`) */
-	border-radius: 3px;
-	border: 1px solid black;
+    cursor:move;
+    position:relative; /* important (all position that's not `static`) */
+    border-radius: 3px;
+    border: 1px solid black;
     height: 20px;
     min-width: 18px;
     text-align: center;
 }
 .qc .container {
-	display: flex;
+    display: flex;
 }
 
 .container .dragDropOption {
@@ -556,16 +618,18 @@ input.Matrix{
 }
 
 .dragdropLocation {
-	background-color: white;
-	min-width:22px;
-	min-height:22px;
-	border-radius: 3px;
-	border: 1px solid black;
+    background-color: white;
+    min-width:22px;
+    min-height:22px;
+    border-radius: 3px;
+    border: 1px solid black;
 }
 .SurveyContainer {
     font-size: 20px;
+    font-family: "courier", serif;
     padding-top: 10px;
     clear: both;
     margin: 20px;
 }
+
 /*-----end question styling------*/
