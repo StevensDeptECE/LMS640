@@ -79,6 +79,11 @@
 .t01 tr:nth-child(even) {
     background-color:#fff;
 }
+.t01 tr:hover {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+}
 
 .t02 {
     position: relative;
@@ -495,20 +500,25 @@ input.Matrix{
     margin: 0;
     padding:0;
 }
-.matchStyle {
+.matchStyle{
     width: auto;
     border: none;
     border-collapse: collapse;
     font-family: Arial, serif;
     height: auto;
 }
-.matchStyle td {
+.matchStyle td, tr {
     text-align: center;
     border: none;
     border-collapse: collapse;
     font-size: 20px;
     height: auto;
     padding: 10px;
+}
+.matchStyle td, tr:hover {
+    background-color: white;
+    color: black;
+    text-decoration: none;
 }
 .Essay{
     width: 90%;
