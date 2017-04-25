@@ -9,15 +9,27 @@ quizIndex.prototype.draw = function(s) {
     login.style.display ="none";
     var header = Util.h1("Quiz List","h03");
     clearElements("up3");
-    var createQuiz = Util.button("Create Quiz I",function () {launch(addQuiz, "", 'up3')},"two");
+
+    // this function could use one button to enter two kinds of quiz builder;
+    // var createQuiz = Util.button("Create Quiz", function(){myFunction()}, "two");
+    // header.appendChild(createQuiz);
+
+    var createQuiz = Util.button("Create Quiz I", function () {
+        launch(addQuiz, "", 'up3')
+    }, "two");
     header.appendChild(createQuiz);
-    var createQuestion = Util.button("Create Quiz II",function () {launch(questionEditor, "", 'up3')},"two");
-    header.appendChild(createQuestion);
-    var aa = Util.button("Create Quiz III",function () {launch(newQuiz, "", 'up3')},"two");
+
+    // var createQuestion = Util.button("Create Quiz II",function () {launch(questionEditor, "", 'up3')},"two");
+    // header.appendChild(createQuestion);
+
+    var aa = Util.button("Create Quiz III", function () {
+        launch(newQuiz, "", 'up3')
+    }, "two");
     header.appendChild(aa);
+
     var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"two");
     header.appendChild(submitQuiz);
-    var clearButton = Util.button("Clear localStorage",function () {sessionStorage.clear(); window.location.reload(false);}, "two");
+    var clearButton = Util.button("Clear localStorage",function () {sessionStorage.clear(); window.location.reload(false)}, "two");
     header.appendChild(clearButton);
     var editSettings = Util.button("Settings",function () {launch(settings, settingsPayload, 'up3')},"two");
     header.appendChild(editSettings);
@@ -260,3 +272,12 @@ if(sessionStorage.getItem("newQuizDetails") != null) {
     quizDetailPayLoad = [];
     quizDetailPayLoad.push(JSON.parse(sessionStorage.getItem("newQuizDetails")));
 }
+
+// function myFunction() {
+//     var r = confirm("Press 'OK' to enter a normal version / Press 'Cancel' to enter a git version");
+//     if (r == true) {
+//         launch(newQuiz, '', 'up3');
+//     } else {
+//         launch(addQuiz, '', 'up3');
+//     }
+// }

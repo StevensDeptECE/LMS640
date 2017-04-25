@@ -111,246 +111,246 @@ newQuiz.prototype.draw = function(s) {
     var newDiv = Util.div("wrapper_rightside", "Container");
     // var count = Math.floor((Math.random() * 10000) + 1);
 
-    var count = guid();
-    countList.push(count);
-    console.log(countList);
-
-    var Quest= Util.div("wrapper_rightside");
-    Quest.id = "row" + count;
-    Quest.className = 'qc';
-
-    var QuestionID = document.createElement("p");
-    QuestionID.appendChild(document.createTextNode("Question ID: " + count));
-    QuestionID.value = "NO." + count;
-    QuestionID.id = "QuestionID" + count;
-    QuestionID.className = "th5";
-
-    var th1 = document.createElement("p");
-    th1.appendChild(document.createTextNode("Please select the type of the question below"));
-    th1.className = "th5";
-
-    var selectList = document.createElement("select");
-    var choices = ["-- select question type --", "Multi Choice", "Multi Choice Select", "Fill in", "Numbers", "Cloze", "Codes", "Grid", "Survey", "Matrix", "Multi Choice drop", "Drag and Drop", "Matching", "Essay", "File Upload"];
-    for(var i = 0; i < choices.length; i++) {
-        var option = document.createElement('option');
-        if(i == 0) {
-            option.selected = true;
-            option.disabled = true;
-        }
-        option.value = choices[i];
-        option.text = choices[i];
-        selectList.appendChild(option);
-    }
-    selectList.onchange = function() {createClickHandler3(this,count)};
-    selectList.id = "type_row" + count;
-    selectList.className = "newSelect";
-
-    var questionTitle = document.createElement("textarea");
-    questionTitle.className = "questionTitle";
-    questionTitle.placeholder = "Please input the title of the question";
-    questionTitle.id = "title_row" + count;
-
-    var questionPoints = document.createElement("textarea");
-    questionPoints.className = "questionTitle";
-    questionPoints.placeholder = "Please input the point of the question";
-    questionPoints.id = "points_row" + count;
-
-    var questionInstr = document.createElement("textarea");
-    questionInstr.className = "questionTitle";
-    questionInstr.placeholder = "Please input the instruction of the question";
-    questionInstr.id = "instr_row" + count;
-    questionInstr.addEventListener('keydown', autosize);
-
-    var th5 = document.createElement("p");
-    th5.id = "5th" + count;
-    th5.appendChild(document.createTextNode("Please input the content of this question"));
-    th5.style.display = "none";
-    th5.className = "th5";
-
-    var multiChoices = Util.span("", "", "multiChoices" + count);
-    console.log(multiChoices.id);
-    multiChoices.style.display = "none";
-
-    var questionCont1 = document.createElement("textarea");
-    questionCont1.placeholder = "First Choice";
-    questionCont1.id = "1cont_row" + count;
-    questionCont1.className = "multiChoice";
-
-    var questionCont2 = document.createElement("textarea");
-    questionCont2.placeholder = "Second Choice";
-    questionCont2.id = "2cont_row" + count;
-    questionCont2.className = "multiChoice";
-
-    var questionCont3 = document.createElement("textarea");
-    questionCont3.placeholder = "Third Choice";
-    questionCont3.id = "3cont_row" + count;
-    questionCont3.className = "multiChoice";
-
-    var questionCont4 = document.createElement("textarea");
-    questionCont4.placeholder = "Forth Choice";
-    questionCont4.id = "4cont_row" + count;
-    questionCont4.className = "multiChoice";
-
-    multiChoices.appendChild(questionCont1);
-    multiChoices.appendChild(questionCont2);
-    multiChoices.appendChild(questionCont3);
-    multiChoices.appendChild(questionCont4);
-
-    var numbersSet = document.createElement("textarea");
-    numbersSet.placeholder = "Please input the number of places";
-    numbersSet.id = "numbersSet" + count;
-    numbersSet.style.display = "none";
-    numbersSet.className = "multiChoice";
-
-    var gridSet = document.createElement("textarea");
-    gridSet.placeholder = "Please input the number of grids";
-    gridSet.id = "gridSet" + count;
-    gridSet.style.display = "none";
-    gridSet.className = "multiChoice";
-
-    var matrixRSet = document.createElement("textarea");
-    matrixRSet.placeholder = "Please input how many rows are there in the matrix";
-    matrixRSet.id = "matrixRSet" + count;
-    matrixRSet.style.display = "none";
-    matrixRSet.className = "multiChoice";
-    var matrixCSet = document.createElement("textarea");
-    matrixCSet.placeholder = "Please input how many columns are there in the matrix";
-    matrixCSet.id = "matrixCSet" + count;
-    matrixCSet.style.display = "none";
-    matrixCSet.className = "multiChoice";
-
-    var clozeSet = document.createElement("textarea");
-    clozeSet.placeholder = "Please input the codes, use ' [] ' to represent the black you want students to fill in";
-    clozeSet.id = "clozeSet" + count;
-    clozeSet.style.display = "none";
-    clozeSet.className = "inputCode";
-    clozeSet.addEventListener('keydown', autosize);
-
-    var codesSet = document.createElement("textarea");
-    codesSet.placeholder = "Please input the codes";
-    codesSet.id = "codesSet" + count;
-    codesSet.style.display = "none";
-    codesSet.className = "inputCode";
-    codesSet.addEventListener('keydown', autosize);
-
-    var matchLeft = document.createElement("textarea");
-    matchLeft.placeholder = "Please input the elements you want to be shown on the left of matching, using ',' to separate different elements";
-    matchLeft.id = "matchLeft" + count;
-    matchLeft.style.display = "none";
-    matchLeft.className = "matchChoice";
-    matchLeft.addEventListener('keydown', autosize);
-
-    var matchRight = document.createElement("textarea");
-    matchRight.placeholder = "Please input the elements you want to be shown on the right of matching, using ',' to separate different elements";
-    matchRight.id = "matchRight" + count;
-    matchRight.style.display = "none";
-    matchRight.className = "matchChoice";
-    matchRight.addEventListener('keydown', autosize);
-
-    var multiSurveys = Util.span("", "", "multiSurveys" + count);
-    console.log(multiChoices.id);
-    multiSurveys.style.display = "none";
-
-    var surveyCont1 = document.createElement("textarea");
-    surveyCont1.placeholder = "Please input the content of the first survey";
-    surveyCont1.id = "1surveyCont" + count;
-    surveyCont1.className = "multiChoice";
-
-    var surveyCont2 = document.createElement("textarea");
-    surveyCont2.placeholder = "Please input the content of the second survey";
-    surveyCont2.id = "2surveyCont" + count;
-    surveyCont2.className = "multiChoice";
-
-    var surveyCont3 = document.createElement("textarea");
-    surveyCont3.placeholder = "Please input the content of the third survey";
-    surveyCont3.id = "3surveyCont" + count;
-    surveyCont3.className = "multiChoice";
-
-    var surveyCont4 = document.createElement("textarea");
-    surveyCont4.placeholder = "Please input the content of the forth survey";
-    surveyCont4.id = "4surveyCont" + count;
-    surveyCont4.className = "multiChoice";
-
-    multiSurveys.appendChild(surveyCont1);
-    multiSurveys.appendChild(surveyCont2);
-    multiSurveys.appendChild(surveyCont3);
-    multiSurveys.appendChild(surveyCont4);
-
-    var surveyChoices = Util.span("", "", "surveyChoices" + count);
-    console.log(multiChoices.id);
-    surveyChoices.style.display = "none";
-    surveyChoices.className = "SurveyChoice";
-
-    var surveyC1 = document.createElement("textarea");
-    surveyC1.placeholder = "Please input the First choice of your surveys";
-    surveyC1.id = "1surveyC" + count;
-    surveyC1.className = "multiChoice";
-
-    var surveyC2 = document.createElement("textarea");
-    surveyC2.placeholder = "Please input the second choice of your surveys";
-    surveyC2.id = "2surveyC" + count;
-    surveyC2.className = "multiChoice";
-
-    var surveyC3 = document.createElement("textarea");
-    surveyC3.placeholder = "Please input the third choice of your surveys";
-    surveyC3.id = "3surveyC" + count;
-    surveyC3.className = "multiChoice";
-
-    var surveyC4 = document.createElement("textarea");
-    surveyC4.placeholder = "Please input the forth choice of your surveys";
-    surveyC4.id = "4surveyC" + count;
-    surveyC4.className = "multiChoice";
-
-    surveyChoices.appendChild(surveyC1);
-    surveyChoices.appendChild(surveyC2);
-    surveyChoices.appendChild(surveyC3);
-    surveyChoices.appendChild(surveyC4);
-
-    var dragAndDrop = document.createElement("span");
-    var imgUpload = document.createElement("input");
-    imgUpload.type = "file";
-    imgUpload.accept = "image/*";
-    dragAndDrop.id = "dragDropSet" + count;
-    dragAndDrop.style.display = "none";
-    dragAndDrop.className = "multiChoice";
-    imgUpload.onchange = function() {readURL(this, count)};
-    var imgDiv = document.createElement('span');
-	imgDiv.className += 'imgDiv';
-    imgDiv.id = "img" + count;
-    var image = document.createElement("img");
-    image.id = "blah" + count;
-    image.src = "#";
-    image.alt = "image";
-    image.style.display = "none";
-	imgDiv.appendChild(image);
-    dragAndDrop.appendChild(imgUpload);
-    dragAndDrop.appendChild(imgDiv);
-
-    var bt1 = Util.button("Delete", function () {remove_question(count)}, "three");
-    bt1.style.display = "block";
-
-    Quest.appendChild(QuestionID);
-    Quest.appendChild(questionTitle);
-    Quest.appendChild(questionPoints);
-    Quest.appendChild(questionInstr);
-    Quest.appendChild(th1);
-    Quest.appendChild(selectList);
-    Quest.appendChild(th5);
-    Quest.appendChild(multiChoices);
-    Quest.appendChild(numbersSet);
-    Quest.appendChild(gridSet);
-    Quest.appendChild(matrixRSet);
-    Quest.appendChild(matrixCSet);
-    Quest.appendChild(clozeSet);
-    Quest.appendChild(codesSet);
-    Quest.appendChild(matchLeft);
-    Quest.appendChild(matchRight);
-    Quest.appendChild(multiSurveys);
-    Quest.appendChild(surveyChoices);
-    Quest.appendChild(dragAndDrop);
-
-    Quest.appendChild(bt1);
-    newDiv.appendChild(Quest);
+    // var count = guid();
+    // countList.push(count);
+    // console.log(countList);
+    //
+    // var Quest= Util.div("wrapper_rightside");
+    // Quest.id = "row" + count;
+    // Quest.className = 'qc';
+    //
+    // var QuestionID = document.createElement("p");
+    // QuestionID.appendChild(document.createTextNode("Question ID: " + count));
+    // QuestionID.value = "NO." + count;
+    // QuestionID.id = "QuestionID" + count;
+    // QuestionID.className = "th5";
+    //
+    // var th1 = document.createElement("p");
+    // th1.appendChild(document.createTextNode("Please select the type of the question below"));
+    // th1.className = "th5";
+    //
+    // var selectList = document.createElement("select");
+    // var choices = ["-- select question type --", "Multi Choice", "Multi Choice Select", "Fill in", "Numbers", "Cloze", "Codes", "Grid", "Survey", "Matrix", "Multi Choice drop", "Drag and Drop", "Matching", "Essay", "File Upload"];
+    // for(var i = 0; i < choices.length; i++) {
+    //     var option = document.createElement('option');
+    //     if(i == 0) {
+    //         option.selected = true;
+    //         option.disabled = true;
+    //     }
+    //     option.value = choices[i];
+    //     option.text = choices[i];
+    //     selectList.appendChild(option);
+    // }
+    // selectList.onchange = function() {createClickHandler3(this,count)};
+    // selectList.id = "type_row" + count;
+    // selectList.className = "newSelect";
+    //
+    // var questionTitle = document.createElement("textarea");
+    // questionTitle.className = "questionTitle";
+    // questionTitle.placeholder = "Please input the title of the question";
+    // questionTitle.id = "title_row" + count;
+    //
+    // var questionPoints = document.createElement("textarea");
+    // questionPoints.className = "questionTitle";
+    // questionPoints.placeholder = "Please input the point of the question";
+    // questionPoints.id = "points_row" + count;
+    //
+    // var questionInstr = document.createElement("textarea");
+    // questionInstr.className = "questionTitle";
+    // questionInstr.placeholder = "Please input the instruction of the question";
+    // questionInstr.id = "instr_row" + count;
+    // questionInstr.addEventListener('keydown', autosize);
+    //
+    // var th5 = document.createElement("p");
+    // th5.id = "5th" + count;
+    // th5.appendChild(document.createTextNode("Please input the content of this question"));
+    // th5.style.display = "none";
+    // th5.className = "th5";
+    //
+    // var multiChoices = Util.span("", "", "multiChoices" + count);
+    // console.log(multiChoices.id);
+    // multiChoices.style.display = "none";
+    //
+    // var questionCont1 = document.createElement("textarea");
+    // questionCont1.placeholder = "First Choice";
+    // questionCont1.id = "1cont_row" + count;
+    // questionCont1.className = "multiChoice";
+    //
+    // var questionCont2 = document.createElement("textarea");
+    // questionCont2.placeholder = "Second Choice";
+    // questionCont2.id = "2cont_row" + count;
+    // questionCont2.className = "multiChoice";
+    //
+    // var questionCont3 = document.createElement("textarea");
+    // questionCont3.placeholder = "Third Choice";
+    // questionCont3.id = "3cont_row" + count;
+    // questionCont3.className = "multiChoice";
+    //
+    // var questionCont4 = document.createElement("textarea");
+    // questionCont4.placeholder = "Forth Choice";
+    // questionCont4.id = "4cont_row" + count;
+    // questionCont4.className = "multiChoice";
+    //
+    // multiChoices.appendChild(questionCont1);
+    // multiChoices.appendChild(questionCont2);
+    // multiChoices.appendChild(questionCont3);
+    // multiChoices.appendChild(questionCont4);
+    //
+    // var numbersSet = document.createElement("textarea");
+    // numbersSet.placeholder = "Please input the number of places";
+    // numbersSet.id = "numbersSet" + count;
+    // numbersSet.style.display = "none";
+    // numbersSet.className = "multiChoice";
+    //
+    // var gridSet = document.createElement("textarea");
+    // gridSet.placeholder = "Please input the number of grids";
+    // gridSet.id = "gridSet" + count;
+    // gridSet.style.display = "none";
+    // gridSet.className = "multiChoice";
+    //
+    // var matrixRSet = document.createElement("textarea");
+    // matrixRSet.placeholder = "Please input how many rows are there in the matrix";
+    // matrixRSet.id = "matrixRSet" + count;
+    // matrixRSet.style.display = "none";
+    // matrixRSet.className = "multiChoice";
+    // var matrixCSet = document.createElement("textarea");
+    // matrixCSet.placeholder = "Please input how many columns are there in the matrix";
+    // matrixCSet.id = "matrixCSet" + count;
+    // matrixCSet.style.display = "none";
+    // matrixCSet.className = "multiChoice";
+    //
+    // var clozeSet = document.createElement("textarea");
+    // clozeSet.placeholder = "Please input the codes, use ' [] ' to represent the black you want students to fill in";
+    // clozeSet.id = "clozeSet" + count;
+    // clozeSet.style.display = "none";
+    // clozeSet.className = "inputCode";
+    // clozeSet.addEventListener('keydown', autosize);
+    //
+    // var codesSet = document.createElement("textarea");
+    // codesSet.placeholder = "Please input the codes";
+    // codesSet.id = "codesSet" + count;
+    // codesSet.style.display = "none";
+    // codesSet.className = "inputCode";
+    // codesSet.addEventListener('keydown', autosize);
+    //
+    // var matchLeft = document.createElement("textarea");
+    // matchLeft.placeholder = "Please input the elements you want to be shown on the left of matching, using ',' to separate different elements";
+    // matchLeft.id = "matchLeft" + count;
+    // matchLeft.style.display = "none";
+    // matchLeft.className = "matchChoice";
+    // matchLeft.addEventListener('keydown', autosize);
+    //
+    // var matchRight = document.createElement("textarea");
+    // matchRight.placeholder = "Please input the elements you want to be shown on the right of matching, using ',' to separate different elements";
+    // matchRight.id = "matchRight" + count;
+    // matchRight.style.display = "none";
+    // matchRight.className = "matchChoice";
+    // matchRight.addEventListener('keydown', autosize);
+    //
+    // var multiSurveys = Util.span("", "", "multiSurveys" + count);
+    // console.log(multiChoices.id);
+    // multiSurveys.style.display = "none";
+    //
+    // var surveyCont1 = document.createElement("textarea");
+    // surveyCont1.placeholder = "Please input the content of the first survey";
+    // surveyCont1.id = "1surveyCont" + count;
+    // surveyCont1.className = "multiChoice";
+    //
+    // var surveyCont2 = document.createElement("textarea");
+    // surveyCont2.placeholder = "Please input the content of the second survey";
+    // surveyCont2.id = "2surveyCont" + count;
+    // surveyCont2.className = "multiChoice";
+    //
+    // var surveyCont3 = document.createElement("textarea");
+    // surveyCont3.placeholder = "Please input the content of the third survey";
+    // surveyCont3.id = "3surveyCont" + count;
+    // surveyCont3.className = "multiChoice";
+    //
+    // var surveyCont4 = document.createElement("textarea");
+    // surveyCont4.placeholder = "Please input the content of the forth survey";
+    // surveyCont4.id = "4surveyCont" + count;
+    // surveyCont4.className = "multiChoice";
+    //
+    // multiSurveys.appendChild(surveyCont1);
+    // multiSurveys.appendChild(surveyCont2);
+    // multiSurveys.appendChild(surveyCont3);
+    // multiSurveys.appendChild(surveyCont4);
+    //
+    // var surveyChoices = Util.span("", "", "surveyChoices" + count);
+    // console.log(multiChoices.id);
+    // surveyChoices.style.display = "none";
+    // surveyChoices.className = "SurveyChoice";
+    //
+    // var surveyC1 = document.createElement("textarea");
+    // surveyC1.placeholder = "Please input the First choice of your surveys";
+    // surveyC1.id = "1surveyC" + count;
+    // surveyC1.className = "multiChoice";
+    //
+    // var surveyC2 = document.createElement("textarea");
+    // surveyC2.placeholder = "Please input the second choice of your surveys";
+    // surveyC2.id = "2surveyC" + count;
+    // surveyC2.className = "multiChoice";
+    //
+    // var surveyC3 = document.createElement("textarea");
+    // surveyC3.placeholder = "Please input the third choice of your surveys";
+    // surveyC3.id = "3surveyC" + count;
+    // surveyC3.className = "multiChoice";
+    //
+    // var surveyC4 = document.createElement("textarea");
+    // surveyC4.placeholder = "Please input the forth choice of your surveys";
+    // surveyC4.id = "4surveyC" + count;
+    // surveyC4.className = "multiChoice";
+    //
+    // surveyChoices.appendChild(surveyC1);
+    // surveyChoices.appendChild(surveyC2);
+    // surveyChoices.appendChild(surveyC3);
+    // surveyChoices.appendChild(surveyC4);
+    //
+    // var dragAndDrop = document.createElement("span");
+    // var imgUpload = document.createElement("input");
+    // imgUpload.type = "file";
+    // imgUpload.accept = "image/*";
+    // dragAndDrop.id = "dragDropSet" + count;
+    // dragAndDrop.style.display = "none";
+    // dragAndDrop.className = "multiChoice";
+    // imgUpload.onchange = function() {readURL(this, count)};
+    // var imgDiv = document.createElement('span');
+    // imgDiv.className += 'imgDiv';
+    // imgDiv.id = "img" + count;
+    // var image = document.createElement("img");
+    // image.id = "blah" + count;
+    // image.src = "#";
+    // image.alt = "image";
+    // image.style.display = "none";
+    // imgDiv.appendChild(image);
+    // dragAndDrop.appendChild(imgUpload);
+    // dragAndDrop.appendChild(image);
+    //
+    // var bt1 = Util.button("Delete", function () {remove_question(count)}, "three");
+    // bt1.style.display = "block";
+    //
+    // Quest.appendChild(QuestionID);
+    // Quest.appendChild(questionTitle);
+    // Quest.appendChild(questionPoints);
+    // Quest.appendChild(questionInstr);
+    // Quest.appendChild(th1);
+    // Quest.appendChild(selectList);
+    // Quest.appendChild(th5);
+    // Quest.appendChild(multiChoices);
+    // Quest.appendChild(numbersSet);
+    // Quest.appendChild(gridSet);
+    // Quest.appendChild(matrixRSet);
+    // Quest.appendChild(matrixCSet);
+    // Quest.appendChild(clozeSet);
+    // Quest.appendChild(codesSet);
+    // Quest.appendChild(matchLeft);
+    // Quest.appendChild(matchRight);
+    // Quest.appendChild(multiSurveys);
+    // Quest.appendChild(surveyChoices);
+    // Quest.appendChild(dragAndDrop);
+    //
+    // Quest.appendChild(bt1);
+    // newDiv.appendChild(Quest);
 
     var bt11 = Util.button("Add Question", function () {create_question()}, "three");
     var save = Util.button("Save Quiz",function () {detailsToJson(quizDetails); tableToJson4(Container); window.location.reload(false);},"three");
@@ -792,7 +792,7 @@ function tableToJson4(Divs) {
             operFinal.push(filename);
             /*get text options*/
             var dragDropOptions = document.getElementsByClassName("dragDropOption");
-            var optionArray = "[";    
+            var optionArray = "[";
             for(var i = 0; i < dragDropOptions.length; i++){
                 optionArray += dragDropOptions[i].innerHTML + ",";
             }
