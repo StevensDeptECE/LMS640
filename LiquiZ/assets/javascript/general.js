@@ -71,7 +71,9 @@ function Sidebar (questions, parentDiv){
 Sidebar.prototype.draw = function(){
 	var pdiv = document.createElement('div');
 	pdiv.className = "quiz-nav-right-child";
+	pdiv.appendChild(Util.h3("Questions"));
 	var list = document.createElement('ul');
+	list.className = "quiz-nav-list";
 	for (var i = 0; i < this.questions.length; i++){
 		var item = document.createElement('li');
 		item.id = this.questions[i];

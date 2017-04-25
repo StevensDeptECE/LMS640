@@ -367,27 +367,37 @@
     position:fixed;
     top: 0px;
     right: 0px;
-    width: 250px;
-    font-size: 18px;
+    padding: 0px 0px 10px 20px;
+    width: 175px;
+    max-height: 250px;
+    font-size: 16px;
     border: 1px solid #ddd;
     background-color: white;
     border-radius: 10px;
     box-shadow: 1px 1px 1px #888888;
 }
 .quiz-nav-right-child a{
-    color: black;
+    color: #2e73d6;
     text-decoration: none;
 }
 .quiz-nav-right-child a:hover{
-    text-decoration: underline;
-    font-size: larger;
+    color: #2e73d6;
+    text-decoration: none;
     font-weight: bold;
+    background-color:white;
 }
 .quiz-nav-points {
     margin: 0px;
     font-style: italic;
-    font-size: 14px;
+    font-size: 13px;
     color: gray
+}
+
+.quiz-nav-list{
+    padding-left:10px;
+    list-style: none;
+    max-height: 190px;
+    overflow: auto;
 }
 
 
