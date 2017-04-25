@@ -100,8 +100,8 @@ newQuiz.prototype.draw = function(s) {
     details.appendChild(questionNum);
     details.appendChild(accessCode);
 
-    var back = Util.button("Back", function () {launch(quizIndex, quizDetailPayLoad, 'up3')}, "three");
-    document.getElementById("up2").appendChild(back);
+    // var back = Util.button("Back", function () {launch(quizIndex, quizDetailPayLoad, 'up3')}, "three");
+    // document.getElementById("up2").appendChild(back);
     document.getElementById("up2").appendChild(header);
     document.getElementById("up2").appendChild(details);
     var hide = Util.button("Hide", function () {hideDetail()}, "three");
