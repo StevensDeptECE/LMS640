@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<root>
+<!DOCTYPE quiz SYSTEM "exampleQuizDTD.dtd">
+<quiz>
   <quizID>423432</quizID>
   <quizTitle>Quiz1</quizTitle>
   <quizClass>LMS640</quizClass>
@@ -310,4 +311,4 @@
       <row>4</row>
     </comp>
   </questions>
-</root>
+</quiz>

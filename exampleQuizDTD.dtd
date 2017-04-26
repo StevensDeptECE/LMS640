@@ -1,0 +1,24 @@
+<!ELEMENT quiz (quizID, quizTitle?, quizClass?, published, preferences, questions+)>
+<!ELEMENT quizID (#PCDATA)>
+<!ELEMENT quizTitle (#PCDATA)>
+<!ELEMENT quizClass (#PCDATA)>
+<!ELEMENT published (#PCDATA)>
+<!ELEMENT preferences (openDate?, dueDate?, closeDate?, quizTime?, tryTimes?, shuffleAnswers, shuffleQuestions, oneAtATime, accessCode?)>
+<!ELEMENT openDate (#PCDATA)>
+<!ELEMENT dueDate (#PCDATA)>
+<!ELEMENT closeDate (#PCDATA)>
+<!ELEMENT quizTime (#PCDATA)>
+<!ELEMENT tryTimes (#PCDATA)>
+<!ELEMENT shuffleAnswers (#PCDATA)>
+<!ELEMENT shuffleQuestions (#PCDATA)>
+<!ELEMENT oneAtATime (#PCDATA)>
+<!ELEMENT accessCode (#PCDATA)>
+<!ELEMENT questions (id, title?, points, comp+)>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT points (#PCDATA)>
+<!ELEMENT comp (row+)>
+<!ELEMENT row (#PCDATA | entry)*>
+<!ELEMENT entry (#PCDATA | left | top)*>
+<!ELEMENT left (#PCDATA)>
+<!ELEMENT top (#PCDATA)>
