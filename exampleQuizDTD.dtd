@@ -1,3 +1,5 @@
+<!DOCTYPE quiz
+[
 <!ELEMENT quiz (quizID, quizTitle?, quizClass?, published, preferences, questions+)>
 <!ELEMENT quizID (#PCDATA)>
 <!ELEMENT quizTitle (#PCDATA)>
@@ -17,8 +19,12 @@
 <!ELEMENT id (#PCDATA)>
 <!ELEMENT title (#PCDATA)>
 <!ELEMENT points (#PCDATA)>
-<!ELEMENT comp (row+)>
-<!ELEMENT row (#PCDATA | entry)*>
-<!ELEMENT entry (#PCDATA | left | top)*>
+<!ELEMENT comp (dragDrop*, Aud*)>
+<!ELEMENT dragDrop (imgFile, answerOption+, answerLocation+, dragDropid)>
+<!ELEMENT imgFile (#PCDATA)>
+<!ELEMENT answerOption (#PCDATA)>
+<!ELEMENT answerLocation (left, top)>
 <!ELEMENT left (#PCDATA)>
 <!ELEMENT top (#PCDATA)>
+<!ELEMENT dragDropid (#PCDATA)>
+]>

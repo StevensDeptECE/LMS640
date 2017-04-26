@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE quiz SYSTEM "exampleQuizDTD.dtd">
 <quiz>
   <quizID>423432</quizID>
   <quizTitle>Quiz1</quizTitle>
@@ -205,33 +204,31 @@
       <row>1</row>
     </comp>
     <comp>
-      <row>DragDrop</row>
-      <row>cat.jpg</row>
-      <row>
-        <entry>Ear</entry>
-        <entry>Eye</entry>
-        <entry>Nose</entry>
-        <entry>Tongue</entry>
-      </row>
-      <row>
-        <entry>
+    <!---Drag and Drop done by Carly-->
+      <dragDrop>
+        <imgFile>cat.jpg</imgFile>
+        <answerOption>Ear</answerOption>
+        <answerOption>Eye</answerOption>
+        <answerOption>Nose</answerOption>
+        <answerOption>Tongue</answerOption>
+        <answerLocation>
           <left>215</left>
           <top>30</top>
-        </entry>
-        <entry>
+        </answerLocation>
+        <answerLocation>
           <left>255</left>
           <top>120</top>
-        </entry>
-        <entry>
+        </answerLocation>
+        <answerLocation>
           <left>285</left>
           <top>160</top>
-        </entry>
-        <entry>
+        </answerLocation>
+        <answerLocation>
           <left>285</left>
           <top>220</top>
-        </entry>
-      </row>
-      <row>7</row>
+        </answerLocation>
+        <id>7</id>
+      </dragDrop>
     </comp>
   </questions>
   <questions>
@@ -296,9 +293,11 @@
       <row>1</row>
     </comp>
     <comp>
-      <row>Aud</row>
-      <row>song.mp3</row>
-      <row>2</row>
+    <!---Audio done by Carly-->
+      <Aud>
+        <audFile>song.mp3</audFile>
+        <id>2</id>
+      </Aud>  
     </comp>
     <comp>
       <row>Img</row>
