@@ -227,7 +227,7 @@
           <left>285</left>
           <top>220</top>
         </answerLocation>
-        <id>7</id>
+        <dragDropID>7</dragDropID>
       </dragDrop>
     </comp>
   </questions>
@@ -296,7 +296,7 @@
     <!---Audio done by Carly-->
       <Aud>
         <audFile>song.mp3</audFile>
-        <id>2</id>
+        <audID>2</audID>
       </Aud>  
     </comp>
     <comp>

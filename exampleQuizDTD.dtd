@@ -19,12 +19,17 @@
 <!ELEMENT id (#PCDATA)>
 <!ELEMENT title (#PCDATA)>
 <!ELEMENT points (#PCDATA)>
-<!ELEMENT comp (dragDrop*, Aud*)>
-<!ELEMENT dragDrop (imgFile, answerOption+, answerLocation+, dragDropid)>
+<!ELEMENT comp (row*, dragDrop*, Aud*)>
+<!ELEMENT row (#PCDATA | entry)*>
+<!ELEMENT entry (#PCDATA)>
+<!ELEMENT dragDrop (imgFile, answerOption+, answerLocation+, dragDropID)>
 <!ELEMENT imgFile (#PCDATA)>
 <!ELEMENT answerOption (#PCDATA)>
 <!ELEMENT answerLocation (left, top)>
 <!ELEMENT left (#PCDATA)>
 <!ELEMENT top (#PCDATA)>
-<!ELEMENT dragDropid (#PCDATA)>
+<!ELEMENT dragDropID (#PCDATA)>
+<!ELEMENT Aud (audFile, audID)>
+<!ELEMENT audFile (#PCDATA)>
+<!ELEMENT audID (#PCDATA)>
 ]>
