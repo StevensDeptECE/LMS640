@@ -4,6 +4,13 @@
 
 // This is the implementation of drawing a new quiz after we create it with "Create New Quiz" page
 
+// var newQuest = JSON.parse(sessionStorage.getItem("mytext"));
+// var newQuizPayload = {
+//     title: "Quiz 1",
+//     class: "L-quiz",
+//     questions: newQuest
+// };
+
 /*utility function to create inheritance*/
 Util2 = {
     subClass: function (superclass, subclass) {
@@ -158,9 +165,3 @@ takeNewQuiz.prototype.draw = function(div){
 
 };
 
-var newQuest = JSON.parse(sessionStorage.getItem("mytext"));
-var newQuizPayload = {
-    title: "Quiz 1",
-    class: "L-quiz",
-    questions: newQuest
-};

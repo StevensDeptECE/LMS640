@@ -22,13 +22,19 @@ quizIndex.prototype.draw = function(s) {
     // var createQuestion = Util.button("Create Quiz II",function () {launch(questionEditor, "", 'up3')},"two");
     // header.appendChild(createQuestion);
 
-    var aa = Util.button("Create Quiz III", function () {
-        launch(newQuiz, '', 'up3')
-    }, "two");
+    var aa = Util.button("Create Quiz III", function () {launch(newQuiz, '', 'up3')}, "two");
     header.appendChild(aa);
 
-    var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"two");
-    header.appendChild(submitQuiz);
+    if(sessionStorage.getItem("mytext") != null) {
+        var newQuest = JSON.parse(sessionStorage.getItem("mytext"));
+        var newQuizPayload = {
+            title: "Quiz 1",
+            class: "L-quiz",
+            questions: newQuest
+        };
+        var submitQuiz = Util.button("Show Quiz", function () {launch(takeNewQuiz, newQuizPayload, 'up3')}, "two");
+        header.appendChild(submitQuiz);
+    }
     var clearButton = Util.button("Clear localStorage",function () {sessionStorage.clear(); window.location.reload(false)}, "two");
     header.appendChild(clearButton);
     var editSettings = Util.button("Settings",function () {launch(settings, settingsPayload, 'up3')},"two");
@@ -36,8 +42,9 @@ quizIndex.prototype.draw = function(s) {
 
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
+
     clearElements("up3");
-    var newDiv = Util.div("wrapper_rightside","quizIndex");
+    var newDiv = Util.div("table_location","quizIndex");
     var t = document.createElement("table");
     t.className = "t01";
     var thead = document.createElement("thead");
@@ -69,16 +76,6 @@ quizIndex.prototype.draw = function(s) {
     thead.appendChild(tr);
 
     var tbody = document.createElement("tbody");
-/*
-    var createClickHandler = function(arg) {
-        return function () {
-            var row = this.parentNode.parentNode;
-            this.payload.splice(arg,1);
-            row.parentNode.removeChild(row);
-            console.log(this.payload);
-        }
-    };
-*/
 
     for (var i = 0; i < this.payload.length; i++) {
         if(this.payload[i] == null) {
@@ -155,6 +152,7 @@ quizIndex.prototype.draw = function(s) {
             bt4.appendChild(text);
         td8.appendChild(bt4);
 
+        // duplicate function, not realize right now.
         // var bt5 = document.createElement("button");
         //     text = document.createTextNode("Dup");
         //     bt5.appendChild(text);
@@ -186,6 +184,16 @@ quizIndex.prototype.createClickHandler1 = function(arg, data){
     }
 };
 
+/*
+ var createClickHandler = function(arg) {
+     return function () {
+         var row = this.parentNode.parentNode;
+         this.payload.splice(arg,1);
+         row.parentNode.removeChild(row);
+    }
+ };
+ */
+
 
 // var quizIndexPayload = [
 //     {
@@ -215,15 +223,15 @@ quizIndex.prototype.createClickHandler1 = function(arg, data){
 // ];
 // quizIndexPayload.push(JSON.parse(sessionStorage.getItem("quizDetails")));
 
- var quizDetailPayLoad = [
+var quizDetailPayLoad = [
     {
         quizID: "1ddd2d96-42ad-0181-5de7-f768fa6c992b",
         quizTitle: "Quiz1",
         quizClass: "CPE640",
         published: "yes",
         openDate: "1/1/2017",
-        dueDate: "1/15/2017",
-        closeDate: "1/31/2017",
+        dueDate: "1/7/2017",
+        closeDate: "1/14/2017",
         quizTime: "60",
         tryTimes: "3",
         shuffleAnswers: "no",
@@ -236,42 +244,63 @@ quizIndex.prototype.createClickHandler1 = function(arg, data){
         quizTitle: "Quiz2",
         quizClass: "CPE593",
         published: "no",
-        openDate: "6/1/2017",
-        dueDate: "6/15/2017",
-        closeDate: "6/31/2017",
+        openDate: "3/1/2017",
+        dueDate: "3/7/2017",
+        closeDate: "3/14/2017",
         quizTime: "60",
         tryTimes: "4",
         shuffleAnswers: "no",
         shuffleQuestions: "no",
         questionNum: "yes",
-        accessCode: "111111"
+        accessCode: "000000"
     },
     {
         quizID: "c5aa2801-139e-b3a7-13c2-8d94c184a87a",
         quizTitle: "Quiz3",
         quizClass: "CPE810",
         published: "yes",
-        openDate: "12/1/2017",
-        dueDate: "12/15/2017",
-        closeDate: "12/31/2017",
+        openDate: "6/1/2017",
+        dueDate: "6/7/2017",
+        closeDate: "6/14/2017",
         quizTime: "60",
         tryTimes: "5",
         shuffleAnswers: "no",
         shuffleQuestions: "no",
         questionNum: "yes",
-        accessCode: "000000"
+        accessCode: "111111"
+    },
+    {
+        quizID: "8680dbe0-55d1-49d3-912d-8df5c2f0b83d",
+        quizTitle: "Quiz4",
+        quizClass: "CS561",
+        published: "no",
+        openDate: "9/1/2017",
+        dueDate: "9/7/2017",
+        closeDate: "9/14/2017",
+        quizTime: "60",
+        tryTimes: "4",
+        shuffleAnswers: "no",
+        shuffleQuestions: "no",
+        questionNum: "yes",
+        accessCode: "222222"
+    },
+    {
+        quizID: "6942725a-1576-984e-7571-0e2ce41fe2ed",
+        quizTitle: "Quiz5",
+        quizClass: "CS546",
+        published: "yes",
+        openDate: "12/1/2017",
+        dueDate: "12/7/2017",
+        closeDate: "12/14/2017",
+        quizTime: "60",
+        tryTimes: "4",
+        shuffleAnswers: "no",
+        shuffleQuestions: "no",
+        questionNum: "yes",
+        accessCode: "333333"
     }
- ];
+];
 
-quizDetailPayLoad.push(JSON.parse(sessionStorage.getItem("quizDetails")));
-// sessionStorage.setItem("store", quizDetailPayLoad);
-// quizDetailPayLoad = sessionStorage.getItem("store");
-
-
-if(sessionStorage.getItem("newQuizDetails") != null) {
-    quizDetailPayLoad = [];
-    quizDetailPayLoad.push(JSON.parse(sessionStorage.getItem("newQuizDetails")));
-}
 
 // function myFunction() {
 //     var r = confirm("Press 'OK' to enter a normal version / Press 'Cancel' to enter a git version");
