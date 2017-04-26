@@ -15,7 +15,7 @@ quizIndex.prototype.draw = function(s) {
     // header.appendChild(createQuiz);
 
     var createQuiz = Util.button("Create Quiz I", function () {
-        launch(addQuiz, "", 'up3')
+        launch(addQuiz, '', 'up3')
     }, "two");
     header.appendChild(createQuiz);
 
@@ -23,7 +23,7 @@ quizIndex.prototype.draw = function(s) {
     // header.appendChild(createQuestion);
 
     var aa = Util.button("Create Quiz III", function () {
-        launch(newQuiz, "", 'up3')
+        launch(newQuiz, '', 'up3')
     }, "two");
     header.appendChild(aa);
 

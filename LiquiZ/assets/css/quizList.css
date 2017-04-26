@@ -569,7 +569,7 @@ input.Matrix{
 }
 .matchStyle td, tr {
     text-align: center;
-    border: none;
+    border: none !IMPORTANT;
     border-collapse: collapse;
     font-size: 20px;
     height: auto;

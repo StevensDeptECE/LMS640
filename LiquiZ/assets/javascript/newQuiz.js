@@ -25,79 +25,183 @@ newQuiz.prototype.draw = function(s) {
     // quizID.placeholder = "Please input the ID of the quiz";
     quizID.id = "quizID";
 
+    var editInstrTitle = document.createElement("p");
+    editInstrTitle.className = "th5";
+    editInstrTitle.appendChild(document.createTextNode("You could input quiz title here"));
     var quizTitle = document.createElement("textarea");
     quizTitle.className = "questionTitle";
     quizTitle.placeholder = "Please input the title of the quiz";
     quizTitle.id = "quizTitle";
 
+    var editInstrClass = document.createElement("p");
+    editInstrClass.className = "th5";
+    editInstrClass.appendChild(document.createTextNode("You could input quiz class here"));
     var quizClass = document.createElement("textarea");
     quizClass.className = "questionTitle";
     quizClass.placeholder = "Which class is this quiz for";
     quizClass.id = "quizClass";
 
+    var editInstrPublish = document.createElement("p");
+    editInstrPublish.className = "th5";
+    editInstrPublish.appendChild(document.createTextNode("You could modify if publish the quiz here"));
     var published = document.createElement("textarea");
     published.className = "questionTitle";
     published.placeholder = "Do you want to published this quiz (yes / no)";
+    published.value = quizPreferencePayload.defaults.std.published;
     published.id = "published";
 
+    var today = new Date();
+    var due = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
+    var close = new Date(due.getFullYear(), due.getMonth(), due.getDate()+7);
+
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd='0'+dd
+    }
+
+    if(mm<10) {
+        mm='0'+mm
+    }
+
+    today = mm+'/'+dd+'/'+yyyy;
+
+    var duedd = due.getDate();
+    var duemm = due.getMonth()+1; //January is 0!
+    var dueyyyy = due.getFullYear();
+
+    if(duedd<10) {
+        duedd='0'+duedd
+    }
+
+    if(duemm<10) {
+        duemm='0'+duemm
+    }
+
+    due = duemm+'/'+duedd+'/'+dueyyyy;
+
+    var closedd = close.getDate();
+    var closemm = close.getMonth()+1; //January is 0!
+    var closeyyyy = close.getFullYear();
+
+    if(closedd<10) {
+        closedd='0'+closedd
+    }
+
+    if(closemm<10) {
+        closemm='0'+closemm
+    }
+
+    close = closemm+'/'+closedd+'/'+closeyyyy;
+
+    var editInstrOpenDate = document.createElement("p");
+    editInstrOpenDate.className = "th5";
+    editInstrOpenDate.appendChild(document.createTextNode("You could modify quiz open date here"));
     var openDate = document.createElement("textarea");
     openDate.className = "questionTitle";
     openDate.placeholder = "Please input the open date of this quiz (mm/dd/yy)";
+    openDate.value = today;
     openDate.id = "openDate";
 
+    var editInstrDueDate = document.createElement("p");
+    editInstrDueDate.className = "th5";
+    editInstrDueDate.appendChild(document.createTextNode("You could modify quiz due date here"));
     var dueDate = document.createElement("textarea");
     dueDate.className = "questionTitle";
     dueDate.placeholder = "Please input the due date of this quiz (mm/dd/yy)";
+    dueDate.value = due;
     dueDate.id = "dueDate";
 
+    var editInstrCloseDate = document.createElement("p");
+    editInstrCloseDate.className = "th5";
+    editInstrCloseDate.appendChild(document.createTextNode("You could modify quiz close date here"));
     var closeDate = document.createElement("textarea");
     closeDate.className = "questionTitle";
     closeDate.placeholder = "Please input the close date of this quiz (mm/dd/yy)";
+    closeDate.value = close;
     closeDate.id = "closeDate";
 
+    var editInstrTime = document.createElement("p");
+    editInstrTime.className = "th5";
+    editInstrTime.appendChild(document.createTextNode("You could modify quiz time here"));
     var quizTime = document.createElement("textarea");
     quizTime.className = "questionTitle";
     quizTime.placeholder = "Please input the time limit of this quiz (in minutes)";
+    quizTime.value = quizPreferencePayload.quiz.quizTime;
     quizTime.id = "quizTime";
 
+    var editInstrTry = document.createElement("p");
+    editInstrTry.className = "th5";
+    editInstrTry.appendChild(document.createTextNode("You could modify quiz try times here"));
     var tryTimes = document.createElement("textarea");
     tryTimes.className = "questionTitle";
     tryTimes.placeholder = "Please input the number of tries of this quiz (1 - 5)";
+    tryTimes.value = quizPreferencePayload.quiz.tryTimes;
     tryTimes.id = "tryTimes";
 
+    var editInstrAnswer = document.createElement("p");
+    editInstrAnswer.className = "th5";
+    editInstrAnswer.appendChild(document.createTextNode("You could modify if shuffle your answers here"));
     var shuffleAnswers = document.createElement("textarea");
     shuffleAnswers.className = "questionTitle";
     shuffleAnswers.placeholder = "Do you want to shuffle the order of answers (yes / no)";
+    shuffleAnswers.value = quizPreferencePayload.quiz.shuffleAnswers;
     shuffleAnswers.id = "shuffleAnswers";
 
+    var editInstrQuestion = document.createElement("p");
+    editInstrQuestion.className = "th5";
+    editInstrQuestion.appendChild(document.createTextNode("You could modify if shuffle your questions here"));
     var shuffleQuestions = document.createElement("textarea");
     shuffleQuestions.className = "questionTitle";
     shuffleQuestions.placeholder = "Do you want to shuffle the order of questions (yes / no)";
+    shuffleQuestions.value = quizPreferencePayload.quiz.shuffleQuestions;
     shuffleQuestions.id = "shuffleQuestions";
 
+    var editInstrNum = document.createElement("p");
+    editInstrNum.className = "th5";
+    editInstrNum.appendChild(document.createTextNode("You could modify if only one subproblem in one question here"));
     var questionNum = document.createElement("textarea");
     questionNum.className = "questionTitle";
     questionNum.placeholder = "Do you want to add one questions for one time (yes / no)";
+    questionNum.value = quizPreferencePayload.quiz.questionNum;
     questionNum.id = "questionNum";
 
+    var editInstrCode = document.createElement("p");
+    editInstrCode.className = "th5";
+    editInstrCode.appendChild(document.createTextNode("You could modify the access code here"));
     var accessCode = document.createElement("textarea");
     accessCode.className = "questionTitle";
     accessCode.placeholder = "Please input the access code of this quiz (6 digits)";
+    accessCode.value = quizPreferencePayload.quiz.accessCode;
     accessCode.maxLength = 6;
     accessCode.id = "accessCode";
 
     details.appendChild(quizID);
+    details.appendChild(editInstrTitle);
     details.appendChild(quizTitle);
+    details.appendChild(editInstrClass);
     details.appendChild(quizClass);
+    details.appendChild(editInstrPublish);
     details.appendChild(published);
+    details.appendChild(editInstrOpenDate);
     details.appendChild(openDate);
+    details.appendChild(editInstrDueDate);
     details.appendChild(dueDate);
+    details.appendChild(editInstrCloseDate);
     details.appendChild(closeDate);
+    details.appendChild(editInstrTime);
     details.appendChild(quizTime);
+    details.appendChild(editInstrTry);
     details.appendChild(tryTimes);
+    details.appendChild(editInstrAnswer);
     details.appendChild(shuffleAnswers);
+    details.appendChild(editInstrQuestion);
     details.appendChild(shuffleQuestions);
+    details.appendChild(editInstrNum);
     details.appendChild(questionNum);
+    details.appendChild(editInstrCode);
     details.appendChild(accessCode);
 
     // var back = Util.button("Back", function () {launch(quizIndex, quizDetailPayLoad, 'up3')}, "three");
@@ -352,7 +456,7 @@ newQuiz.prototype.draw = function(s) {
     // Quest.appendChild(bt1);
     // newDiv.appendChild(Quest);
 
-    var bt11 = Util.button("Add Question", function () {create_question()}, "three");
+    var bt11 = Util.button("Add Question", function () {create_question(quizPreferencePayload)}, "three");
     var save = Util.button("Save Quiz",function () {detailsToJson(quizDetails); tableToJson4(Container); window.location.reload(false);},"three");
 
     s.appendChild(newDiv);
@@ -361,7 +465,7 @@ newQuiz.prototype.draw = function(s) {
 };
 
 
-function create_question() {
+function create_question(preference) {
     var quests = document.getElementById("Container");
     // var count = Math.floor((Math.random() * 10000) + 1);
 
@@ -407,6 +511,7 @@ function create_question() {
     var questionPoints = document.createElement("textarea");
     questionPoints.className = "questionTitle";
     questionPoints.placeholder = "Please input the point of the question";
+    questionPoints.value = preference.defaults.std.points;
     questionPoints.id = "points_row" + count;
 
     var questionInstr = document.createElement("textarea");
@@ -1022,4 +1127,137 @@ function createDropLocation(xpos, ypos, div, count){
 }
 
 
+var quizPreferencePayload =
+        {
+            "css": "default",
+            "regex": { // regex is indexed by category
+                "physics": {
+                    "3sig": {
+                        "regex": "\\d{3}|\\d\\.\\d{2}|\\.\\d{3}",
+                        "postest": ["132", "1.23", "12.3", ".123"],
+                        "negtest": ["1234", "12.45", ".9919"],
+                    },
+                    "mass": {
+                        "regex": "kg|kilo|kilogram",
+                        "postest": ["kg", "kilo", "kilos"],
+                        "negtest": ["f", "kilog"]
+                    },
+                    "massqty": "[:3sig:][:mass:]"
+                },
+                "programming": {
+                    "cident": "[A-Za-z_][A-Za-z0-9_]*",
+                }
+            },
+            "vars": { // random vars
+                "gen": {
+                    "r1": "1:10",
+                    "r2": "0:10",
+                    "r3": "10:10:100",
+                    "name": ["Fred", "Mary", "Alice", "Bob", "Rashid", "Anna", "Sarah", "David"],
+                },
+                "C++": { // $shortvar$
+                    "shortvar": ["i", "j", "k"],
+                    "longvar": ["count", "munge", "foo", "bar", "baz", "barf"],
+                    "intop": ["+", "-", "*", "/", "%"],
+                    "cmpop": ["<", "<=", ">", ">=", "==", "!="],
+                    "bitop": ["<<", ">>", "&", "|", "^"],
+                    "funcs": ["sin", "cos", "tan", "atan", "atan2", "sqrt"],
+                },
+                "circuits": {
+                    "I": ".1:.1:10",
+                    "I": "rand(.1,.1,10)",
+                    "R": "10:10:1000", // how to do 10,20,30,...100,200,300,400... nice numbers at each decade?
+                    "R": "sigfigs(2, 0, 2)", // anywhere from 12 x 10^0 to 99 x 10^2???
+                    "V": "=I*R",
+                }
+            },
+            "stdchoice": {
+                "Likert5": [
+                    "Strongly Agree",
+                    "Agree",
+                    "Neutral",
+                    "Disagree",
+                    "Strongly Disagree"],
+                "Likert7": [
+                    "Exceptional",
+                    "Excellent",
+                    "Very Good",
+                    "Good",
+                    "Fair",
+                    "Poor",
+                    "Very Poor"],
+                "Yesno": ["Yes", "No"],
+                "Boolean": ["true", "false"]
 
+            },
+            "policies": {
+                "mastery": {
+                    "submissioncount": 0, //unlimited submissions, keep trying until right
+                    "due": "+7 11:59pm",   // due next week
+                    "close": "due+7"		// close date is one week after due
+
+                },
+                "assess": {
+                    "submissioncount": 1,	// only 1 try for tests
+                    "due": "now+01:00:00",	// need better notation, 1 hour test time?
+                    "close": "=due"		// for a test due and close are the same
+                }
+            },
+            "hw": {
+                "default": {
+                    "submission": ".cc",    // or .zip, .java, or github....
+                    "due": "+7 11:59pm",   // due next week
+                    "close": "due+7"		// close date is one week after due
+                }
+
+
+
+            },
+            "quiz": {
+                "openDate": "",
+                "dueDate": "",
+                "closeDate": "",				//can be null, then due date = close date
+                "quizTime": "60", 				//in minutes, can be null
+                "tryTimes": "4",
+                "shuffleAnswers": "no",			//for multiple choice questions (applies to all)
+                "shuffleQuestions": "no",
+                "questionNum": "yes",
+                "accessCode": "123456"		//can be null
+            },
+
+            "responses": {
+                "right": ["randomresponse", "exp", "correct", "right", "excellent", "yes"],
+                "wrong": ["randomresponse", "exp", "incorrect", "wrong", "no", "not quite"],
+                "audright": ["randaudresponse", "exp", "mp3", "right", "yes", "excellent", "great"],
+                "audwrong": ["randaudresponse", "exp", "mp3", "incorrect", "wrong", "no", "not quite"]
+            },
+            "defaults": {
+                "std": {
+                    "points": 1,
+                    "published": "yes",
+                    "level": 1,
+                    "rightResponse": "right",
+                    "wrongResponse": "wrong"
+                },
+                "lev2": ["std", {"level": 2}] // inherit from std but override level to 2
+
+            },
+            "licenses": {
+            "free": ["No license, do whatever you like", null],
+                "cc-by": ["Creative Commons with attribution",
+                "https://en.wikipedia.org/wiki/Creative_Commons_license#Types_of_licenses",
+                "https://creativecommons.org/licenses"
+            ],
+                "cc-sa": ["Creative Commons Share Alike", null, "https://creativecommons.org/licenses"],
+                "NC": ["Non-commercial only", null, null],
+                "ND": ["No Derivative Works (use verbatim only)", null, null],
+                "LGPL3": ["GNU Lesser General Public License", "https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License", "https://opensource.org/licenses/lgpl-3.0.html"],
+                "GPL": ["GNU Lesser General Public License", "https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License", null],
+            },
+            "rights": {
+                // who gets to share my stuff by default?
+                "copy": "Copyright ($year$) Dov Kruger, all rights reserved",
+                    "default": "GPL", // if I don't explicitly tag it, everyone can use under GPL
+            }
+
+        };

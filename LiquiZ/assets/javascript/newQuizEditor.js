@@ -52,6 +52,7 @@ function newDrawDetails(details,data) {
     var editInstrClass = document.createElement("p");
     editInstrClass.className = "th5";
     editInstrClass.appendChild(document.createTextNode("You could modify quiz class here"));
+
     var quizClass = document.createElement("textarea");
     quizClass.className = "questionTitle";
     quizClass.value = data[0].quizClass;
@@ -206,7 +207,7 @@ function newDrawEditor(s,data) {
                 option.selected = true;
             } else if(data[i].comp[1][0] == "Cloze" && j== 4) {
                 option.selected = true;
-            } else if(data[i].comp[1][0] == "Code" && j== 5) {
+            } else if(data[i].comp[1][0] == "Codes" && j== 5) {
                 option.selected = true;
             } else if(data[i].comp[1][0] == "Grid" && j== 6) {
                 option.selected = true;
@@ -661,7 +662,7 @@ var newQuizEditorPayLoad = [
         points: 10,
         comp: [
             ["Instr", "Enter your honest opinions.  There are no right or wrong answers"],
-            ["Survey", ["Agree", "Neutral", "Disagree"], [
+            ["Survey", ["Agree", "Neutral", "Disagree", "None of above"], [
                 "I like Chinese food",
                 "I like Korean food",
                 "I like Indian food",
