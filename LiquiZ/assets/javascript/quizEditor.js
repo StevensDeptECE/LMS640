@@ -16,6 +16,7 @@ quizEditor.prototype.draw= function(s){
     var newDiv = Util.div("wrapper_rightside","quizEditor");
     drawEditor(newDiv,quizEditorPayLoad);
     var saveQuiz = Util.button("Save Quiz",function () {tableToJson2(edit_table); window.location.reload(false);},"three");
+    saveQuiz.style.marginLeft = "40px";
     // var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"three");
     newDiv.appendChild(saveQuiz);
     // newDiv.appendChild(submitQuiz);

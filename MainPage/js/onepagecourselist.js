@@ -14,9 +14,13 @@ CourseList.prototype.draw = function(content) {
   var newTable = Util.table([], false, "courseList", "");
   for (var i = 0; i < this.payload.length; i++)
   {
+    console.log("i: " + i);
     var row = Util.tr([]);
       var element = Util.td("");
-        var link = Util.a("javascript:launch(HomeworkCourse, [], 'up3')", this.payload[i], "", "");
+        var link = Util.a("javascript:launch(HomeworkCourse, this.payload[i], 'up3')", this.payload[i], "", "");
+        //var currentCourse = this.payload[i];
+        //var link = Util.button(this.payload[i], function() {launch(HomeworkCourse, currentCourse, 'up3')},  "", "course" + i);
+        //link.onclick = function() {launch(HomeworkCourse, currentCourse, 'up3')}
         element.appendChild(link);
       row.appendChild(element);
     newTable.appendChild(row);
@@ -25,6 +29,14 @@ CourseList.prototype.draw = function(content) {
   clearClass("active");
   //set active to some other class
   document.getElementById("course").className = "active";
+
+/*
+  for (var i = 0; i < this.payload.length; i++)
+  {
+    document.getElementById("course" + i).onclick = function() {launch(HomeworkCourse, this.payload[i], 'up3')}
+  }
+  */
 }
+
 
 courses = ["Software Engineering", "Data Structures", "C++", "Java", "Python"];

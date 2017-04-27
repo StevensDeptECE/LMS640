@@ -78,3 +78,32 @@ function nameFilter() {
 	  }
 	}
 
+function setLimit(e) {
+	var parent = e.parentNode.parentNode.parentNode;
+	var content = parent.childNodes[0].innerHTML;
+	alert(content);
+	document.getElementById("gradeName").setAttribute("value", content);
+}
+
+
+
+
+function updateLimit() {
+	$.ajax({
+		type:"GET",
+		url:"jsp.jsp",
+		data:$('#limit').serialize(),
+		async: false,
+		error: function(request) {  
+            alert("Connection error:"+request.error);  
+        },
+        success: function(data) {
+        	alert(data);
+        }
+	});
+	return false;
+}
+
+function clickDropDown(i) {
+    document.getElementById("myDropdown" + i).classList.toggle("show");
+}

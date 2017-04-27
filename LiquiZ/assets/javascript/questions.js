@@ -324,8 +324,6 @@ function Codes(code, id) { //parent) {
 }
 
 Codes.prototype.draw = function(div) {
-    var br = document.createElement("br");
-    div.appendChild(br);
     var inp = document.createElement("textarea");
     var newCodes = this.code.replace(/<>/g,"\n");
     inp.className = "inputCode";
