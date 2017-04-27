@@ -1,0 +1,228 @@
+div {
+    display: block;
+    box-sizing: border-box;
+}
+
+a {
+    color: #07C;
+    text-decoration: none;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.post-text > p {
+    min-width: 690px;
+}
+
+/*position of number for votes*/
+.vote {
+    text-align: center;
+}
+
+.votecell {
+    vertical-align: top;
+    padding-right: 15px;
+} 
+
+/*change the cursor*/
+.vote-up-off, .vote-down-off, .vote-accepted-off, .star-off, .comment-up-off, .flag-off {
+    cursor: pointer;
+}
+
+/*change the cursor*/
+.vote-up-on, .vote-down-on {
+    cursor: pointer;
+}
+
+/*height of the image*/
+.vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .star-on, .star-off {
+    height: 30px;
+}
+
+/*adjust the size of image*/
+.vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .star-on, .star-off, .vote-accepted-off, .vote-accepted-on {
+    display: block;
+    margin: 0 auto;
+    width: 40px;
+    margin-bottom: 2px;
+}
+
+/*icons*/
+.envelope-on, .envelope-off, .vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .star-on, .star-off, .comment-up-off, .comment-up-on, .comment-flag, .edited-yes, .feed-icon, .vote-accepted-off, .vote-accepted-on, .vote-accepted-bounty, .badge-earned-check, .delete-tag, .grippie, .expander-arrow-hide, .expander-arrow-show, .expander-arrow-small-hide, .expander-arrow-small-show, .anonymous-gravatar, .badge1, .badge2, .badge3 {
+    /*background-image: url(img/sprites.png?v=10a9e8743fb0);*/
+    background-image: url(http://cdn.sstatic.net/Sites/stackoverflow/img/sprites.svg?v=8c1c8cba242e),none;
+    background-size: initial;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/*adjust the position of background image*/
+.vote-up-off {
+    background-position: 0 -170px;
+}
+
+.vote-down-off {
+	background-position: 0 -220px;
+}
+
+.vote-up-on {
+    background-position: -40px -170px;
+}
+
+.vote-down-on {
+    background-position: -40px -220px;
+}
+
+/*make <a> tag text invisible*/
+.vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .star-on, .star-off, .comment-up-off, .comment-up-on, .comment-flag, .flag-off, .vote-accepted-off, .vote-accepted-on {
+    text-indent: -9999em;
+    font-size: 1px;
+}
+
+.votecell .vote-count-post {
+    margin: 8px 0;
+}
+
+.vote span {
+    display: block;
+    color: #6a737c;
+}
+
+.vote-count-post {
+    font-size: 20px;
+    border: 0;
+    margin: 0 !important;
+}
+
+.post-text {
+    /*width: 710px;*/
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    font-size: 15px;
+    line-height: 1.3;
+}
+
+img {
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.img-circle {
+    max-width: 200px;
+    max-height: 200px;
+}
+.userInfo-box {
+    padding: 15px 5px 15px 5px;
+    background-color: #E0E0E0;
+    width: 200px; 
+    height: 70px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    -webkit-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-out;
+}
+
+.userInfo-box:hover {
+    background-color: #EEEEEE;
+    cursor: pointer;
+}
+
+.share-and-userInfo {
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+.share-box {
+    width: 200px; 
+    height: 70px; 
+    box-sizing: border-box;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+}
+
+.question, .answer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E0E0E0  ;
+
+}
+
+.question-header {
+    border-bottom: 1px solid #E0E0E0;
+    text-decoration: none;
+    text-align: left;
+}
+
+.sidebar {
+    margin-top: 20px;
+    height: 100px;
+    border-left: 1px solid #E0E0E0;
+    box-sizing: border-box;
+}
+
+.comment {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    border-top: 1px solid #EEEEEE;
+    /*border-bottom: 1px solid black;*/
+}
+
+.add-comment {
+    padding-left:0;
+}
+
+#postForm{
+    margin-bottom: 30px;
+}
+
+.accept-btn-box {
+    margin-top: 10px;
+}
+
+.accepted-label {
+    padding-top: 10px;
+    border: 1px solid #4cae4c;
+    border-radius: 5px;
+    background-color: #5cb85c;
+    margin-top: 5px;
+    width: 160px;
+    text-align: center;
+    color: white;
+    text-decoration: bold;
+}
+/*.separator {*/
+    /*border-width: 1px;*/
+    /*border-color: black;*/
+    /*border-style: solid;*/
+    /*height: 0;*/
+    /*width: 500px;*/
+
+    /*border-top: 1px solid rgba(0, 0, 0, 0.1);*/
+    /*border-bottom: 1px solid rgba(255, 255, 255, 0.3);*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,5 +7,10 @@
 
  <%
  	Limit limit = new Limit(0, 0);
+ 	String flag = request.getParameter("id");
+ 	if (flag == null) {
+ 		limit.updateLimit(request, response);
+ 		return;
+ 	}
  	limit.update(request, response);
  %>

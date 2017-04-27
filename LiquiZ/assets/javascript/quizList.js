@@ -6,7 +6,9 @@ function quizIndex(payload){
 
 quizIndex.prototype.draw = function(s) {
     var login = document.getElementById("loginformabs_top");
-    login.style.display ="none";
+    if(login){
+        login.style.display ="none";
+    }
     var header = Util.h1("Quiz List","h03");
     clearElements("up3");
 

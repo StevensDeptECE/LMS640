@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="utf-8">
+    <title>AngularJS Routing</title>
+  
+  
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<title>sample project</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-route.js"></script>
+    <script src="controllers/controller.js"></script>
+
+  </head>
+
+  <body>
+  <script src="jquery-3.1.1.js"></script>
+<script>
+$.getJSON( "project2.json", function( data ) {
+  $.each(data,function(a,b)
+  {
+         var test = document.createElement(b[0]);
+        $(test).addClass(b[1]);
+        $(test).attr("id",a);
+        $(test).appendTo(b[2]);
+        if(typeof b[3] == 'object')
+        {
+            for(var i=3;i<b.length;i++)
+            {
+            //alert("it is an object");
+            var obj = b[i]
+            for(var cont in obj)
+                //alert(cont);
+                {
+                    if(cont == "content")
+                        {
+                             $(test).append(obj[cont]);
+                        }
+                      
+                    else
+                        {
+                            $(test).attr(cont,obj[cont]);
+                        }
+                        
+                }
+            }
+        }
+     });
+    
+ });
+</script>
+    
+   
+
+  </body>
+</html>
