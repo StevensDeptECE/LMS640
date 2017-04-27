@@ -1,7 +1,6 @@
 /*For table framework*/
 .table_location {
     padding-right: 1em;
-    padding-top: 3em;
     position: relative;
 }
 .h01 {
@@ -51,12 +50,14 @@
 }
 
 .t01 {
-    width: 90%;
+    width: 95%;
     border: 1px solid grey;
     border-collapse: collapse;
     font-family: Arial, serif;
     height: auto;
-    margin:auto;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 3em;
 }
 .t01 th{
     text-align: center;

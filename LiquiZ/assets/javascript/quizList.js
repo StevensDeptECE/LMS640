@@ -35,7 +35,7 @@ quizIndex.prototype.draw = function(s) {
         var submitQuiz = Util.button("Show Quiz", function () {launch(takeNewQuiz, newQuizPayload, 'up3')}, "two");
         header.appendChild(submitQuiz);
     }
-    var clearButton = Util.button("Clear localStorage",function () {sessionStorage.clear(); window.location.reload(false)}, "two");
+    var clearButton = Util.button("Clear localStorage",function () {sessionStorage.clear(); launch(quizIndex, quizDetailPayLoad, 'up3')}, "two");
     header.appendChild(clearButton);
     var editSettings = Util.button("Settings",function () {launch(settings, settingsPayload, 'up3')},"two");
     header.appendChild(editSettings);

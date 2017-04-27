@@ -35,7 +35,6 @@ newQuizEditor.prototype.draw= function(s){
     mainEditor.appendChild(save);
 
     s.appendChild(mainEditor);
-
 };
 
 function newDrawDetails(details,data) {

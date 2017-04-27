@@ -122,6 +122,7 @@ addQuiz.prototype.draw = function(s) {
     t.appendChild(tr3);
     newDiv.appendChild(t);
     var saveQuiz = Util.button("Save Quiz",function () {tableToJson(data_table); location.reload(); launch(quizIndex, quizIndexPayload, "up3"); },"three");
+    saveQuiz.style.marginLeft = "40px";
     // var submitQuiz = Util.button("Show Quiz",function () {launch(takeNewQuiz, newQuizPayload, 'up3')},"three");
     newDiv.appendChild(saveQuiz);
     // newDiv.appendChild(submitQuiz);
