@@ -25,14 +25,6 @@ Grade.prototype.draw = function(c) {
   document.getElementById("quizClass").className = "active";
 }
 
-
-
-var gradepayload2 = [
-["Name", "ID", "Assignment", "Test", "Quiz"],
-["John", 104083, 66, 76, 98],
-["Kelly", 123456, 87, 88, 98],
-];
-
 function createGradeTable(payload, id) {
   var table = document.createElement("table");
   table.setAttribute("id",id);
@@ -49,13 +41,34 @@ function createGradeTable(payload, id) {
     span.innerHTML=payload.head[i];
 }
   for (var i = 2; i < payload.head.length; i++) {
-	var data = document.createElement("th");
-	var span = document.createElement("span");
-	row.appendChild(data);
-	data.appendChild(span)
-	data.setAttribute("edittype", "TextBox");
-	span.setAttribute("onclick", "sortTable("+i+")");
+  var data = document.createElement("th");
+  var span = document.createElement("span");
+  row.appendChild(data);
+  data.appendChild(span)
+  data.setAttribute("edittype", "TextBox");
+  span.setAttribute("onclick", "sortTable("+i+")");
     span.innerHTML=payload.head[i];
+    
+    var div1 = document.createElement("div");
+    data.append(div1);
+    div1.setAttribute("class", "drop-down");
+    var div2 = document.createElement("div");
+    div1.append(div2);
+    div2.setAttribute("class", "arrow-down dropbtn");
+    div2.setAttribute("onclick", "clickDropDown("+(i-1)+")");
+    var div3 = document.createElement("div");
+    div1.append(div3);
+    div3.setAttribute("id", "myDropdown"+(i-1));
+    div3.setAttribute("class", "dropdown-content");
+    var a = document.createElement("a");
+    div3.append(a);
+    a.innerHTML = "Graph";
+    a = document.createElement("a");
+    div3.append(a);
+    a.innerHTML = "Setting";
+    a = document.createElement("a");
+    div3.append(a);
+    a.innerHTML = "Speed grade";
 }
 
 for (var i = 1; i < payload.names.length; ++i) {
