@@ -4,6 +4,13 @@
 
 // This is the implementation of drawing a new quiz after we create it with "Create New Quiz" page
 
+// var newQuest = JSON.parse(sessionStorage.getItem("mytext"));
+// var newQuizPayload = {
+//     title: "Quiz 1",
+//     class: "L-quiz",
+//     questions: newQuest
+// };
+
 /*utility function to create inheritance*/
 Util2 = {
     subClass: function (superclass, subclass) {
@@ -144,7 +151,7 @@ Util2.subClass(Display, takeNewQuiz);
 /*draw method for takeNewQuiz object*/
 takeNewQuiz.prototype.draw = function(div){
     var header = Util.h1(this.title, "h03");
-    var clearButton = Util.button("Clear localStorage",function () {sessionStorage.clear(); window.location.reload(false);}, "three");
+    var clearButton = Util.button("Clear localStorage",function () {sessionStorage.clear(); launch(quizIndex, quizDetailPayLoad, 'up3')}, "three");
     header.appendChild(clearButton);
     clearElements("up2");
     document.getElementById("up2").appendChild(header);
@@ -158,9 +165,3 @@ takeNewQuiz.prototype.draw = function(div){
 
 };
 
-var newQuest = JSON.parse(sessionStorage.getItem("mytext"));
-var newQuizPayload = {
-    title: "Quiz 1",
-    class: "L-quiz",
-    questions: newQuest
-};

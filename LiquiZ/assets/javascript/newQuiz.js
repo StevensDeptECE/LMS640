@@ -457,7 +457,14 @@ newQuiz.prototype.draw = function(s) {
     // newDiv.appendChild(Quest);
 
     var bt11 = Util.button("Add Question", function () {create_question(quizPreferencePayload)}, "three");
-    var save = Util.button("Save Quiz",function () {detailsToJson(quizDetails); tableToJson4(Container); window.location.reload(false);},"three");
+    var save = Util.button("Save Quiz",
+        function () {
+            detailsToJson(quizDetails); tableToJson4(Container);
+            if(sessionStorage.getItem('quizDetails') != null) {
+                quizDetailPayLoad.push(JSON.parse(sessionStorage.getItem('quizDetails')));
+            }
+            launch(quizIndex, quizDetailPayLoad, 'up3')
+        },"three");
 
     s.appendChild(newDiv);
     s.appendChild(bt11);
@@ -1018,6 +1025,7 @@ function tableToJson4(Divs) {
         console.log(datas);
     }
     sessionStorage.setItem("mytext", JSON.stringify(datas));
+
 }
 
 function detailsToJson(Divs) {
@@ -1128,136 +1136,132 @@ function createDropLocation(xpos, ypos, div, count){
 
 
 var quizPreferencePayload =
-        {
-            "css": "default",
-            "regex": { // regex is indexed by category
-                "physics": {
-                    "3sig": {
-                        "regex": "\\d{3}|\\d\\.\\d{2}|\\.\\d{3}",
-                        "postest": ["132", "1.23", "12.3", ".123"],
-                        "negtest": ["1234", "12.45", ".9919"],
-                    },
-                    "mass": {
-                        "regex": "kg|kilo|kilogram",
-                        "postest": ["kg", "kilo", "kilos"],
-                        "negtest": ["f", "kilog"]
-                    },
-                    "massqty": "[:3sig:][:mass:]"
+    {
+        "css": "default",
+        "regex": { // regex is indexed by category
+            "physics": {
+                "3sig": {
+                    "regex": "\\d{3}|\\d\\.\\d{2}|\\.\\d{3}",
+                    "postest": ["132", "1.23", "12.3", ".123"],
+                    "negtest": ["1234", "12.45", ".9919"],
                 },
-                "programming": {
-                    "cident": "[A-Za-z_][A-Za-z0-9_]*",
-                }
-            },
-            "vars": { // random vars
-                "gen": {
-                    "r1": "1:10",
-                    "r2": "0:10",
-                    "r3": "10:10:100",
-                    "name": ["Fred", "Mary", "Alice", "Bob", "Rashid", "Anna", "Sarah", "David"],
+                "mass": {
+                    "regex": "kg|kilo|kilogram",
+                    "postest": ["kg", "kilo", "kilos"],
+                    "negtest": ["f", "kilog"]
                 },
-                "C++": { // $shortvar$
-                    "shortvar": ["i", "j", "k"],
-                    "longvar": ["count", "munge", "foo", "bar", "baz", "barf"],
-                    "intop": ["+", "-", "*", "/", "%"],
-                    "cmpop": ["<", "<=", ">", ">=", "==", "!="],
-                    "bitop": ["<<", ">>", "&", "|", "^"],
-                    "funcs": ["sin", "cos", "tan", "atan", "atan2", "sqrt"],
-                },
-                "circuits": {
-                    "I": ".1:.1:10",
-                    "I": "rand(.1,.1,10)",
-                    "R": "10:10:1000", // how to do 10,20,30,...100,200,300,400... nice numbers at each decade?
-                    "R": "sigfigs(2, 0, 2)", // anywhere from 12 x 10^0 to 99 x 10^2???
-                    "V": "=I*R",
-                }
+                "massqty": "[:3sig:][:mass:]"
             },
-            "stdchoice": {
-                "Likert5": [
-                    "Strongly Agree",
-                    "Agree",
-                    "Neutral",
-                    "Disagree",
-                    "Strongly Disagree"],
-                "Likert7": [
-                    "Exceptional",
-                    "Excellent",
-                    "Very Good",
-                    "Good",
-                    "Fair",
-                    "Poor",
-                    "Very Poor"],
-                "Yesno": ["Yes", "No"],
-                "Boolean": ["true", "false"]
-
-            },
-            "policies": {
-                "mastery": {
-                    "submissioncount": 0, //unlimited submissions, keep trying until right
-                    "due": "+7 11:59pm",   // due next week
-                    "close": "due+7"		// close date is one week after due
-
-                },
-                "assess": {
-                    "submissioncount": 1,	// only 1 try for tests
-                    "due": "now+01:00:00",	// need better notation, 1 hour test time?
-                    "close": "=due"		// for a test due and close are the same
-                }
-            },
-            "hw": {
-                "default": {
-                    "submission": ".cc",    // or .zip, .java, or github....
-                    "due": "+7 11:59pm",   // due next week
-                    "close": "due+7"		// close date is one week after due
-                }
-
-
-
-            },
-            "quiz": {
-                "openDate": "",
-                "dueDate": "",
-                "closeDate": "",				//can be null, then due date = close date
-                "quizTime": "60", 				//in minutes, can be null
-                "tryTimes": "4",
-                "shuffleAnswers": "no",			//for multiple choice questions (applies to all)
-                "shuffleQuestions": "no",
-                "questionNum": "yes",
-                "accessCode": "123456"		//can be null
-            },
-
-            "responses": {
-                "right": ["randomresponse", "exp", "correct", "right", "excellent", "yes"],
-                "wrong": ["randomresponse", "exp", "incorrect", "wrong", "no", "not quite"],
-                "audright": ["randaudresponse", "exp", "mp3", "right", "yes", "excellent", "great"],
-                "audwrong": ["randaudresponse", "exp", "mp3", "incorrect", "wrong", "no", "not quite"]
-            },
-            "defaults": {
-                "std": {
-                    "points": 1,
-                    "published": "yes",
-                    "level": 1,
-                    "rightResponse": "right",
-                    "wrongResponse": "wrong"
-                },
-                "lev2": ["std", {"level": 2}] // inherit from std but override level to 2
-
-            },
-            "licenses": {
-            "free": ["No license, do whatever you like", null],
-                "cc-by": ["Creative Commons with attribution",
-                "https://en.wikipedia.org/wiki/Creative_Commons_license#Types_of_licenses",
-                "https://creativecommons.org/licenses"
-            ],
-                "cc-sa": ["Creative Commons Share Alike", null, "https://creativecommons.org/licenses"],
-                "NC": ["Non-commercial only", null, null],
-                "ND": ["No Derivative Works (use verbatim only)", null, null],
-                "LGPL3": ["GNU Lesser General Public License", "https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License", "https://opensource.org/licenses/lgpl-3.0.html"],
-                "GPL": ["GNU Lesser General Public License", "https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License", null],
-            },
-            "rights": {
-                // who gets to share my stuff by default?
-                "copy": "Copyright ($year$) Dov Kruger, all rights reserved",
-                    "default": "GPL", // if I don't explicitly tag it, everyone can use under GPL
+            "programming": {
+                "cident": "[A-Za-z_][A-Za-z0-9_]*",
             }
+        },
+        "vars": { // random vars
+            "gen": {
+                "r1": "1:10",
+                "r2": "0:10",
+                "r3": "10:10:100",
+                "name": ["Fred", "Mary", "Alice", "Bob", "Rashid", "Anna", "Sarah", "David"],
+            },
+            "C++": { // $shortvar$
+                "shortvar": ["i", "j", "k"],
+                "longvar": ["count", "munge", "foo", "bar", "baz", "barf"],
+                "intop": ["+", "-", "*", "/", "%"],
+                "cmpop": ["<", "<=", ">", ">=", "==", "!="],
+                "bitop": ["<<", ">>", "&", "|", "^"],
+                "funcs": ["sin", "cos", "tan", "atan", "atan2", "sqrt"],
+            },
+            "circuits": {
+                "I": ".1:.1:10",
+                "I": "rand(.1,.1,10)",
+                "R": "10:10:1000", // how to do 10,20,30,...100,200,300,400... nice numbers at each decade?
+                "R": "sigfigs(2, 0, 2)", // anywhere from 12 x 10^0 to 99 x 10^2???
+                "V": "=I*R",
+            }
+        },
+        "stdchoice": {
+            "Likert5": [
+                "Strongly Agree",
+                "Agree",
+                "Neutral",
+                "Disagree",
+                "Strongly Disagree"],
+            "Likert7": [
+                "Exceptional",
+                "Excellent",
+                "Very Good",
+                "Good",
+                "Fair",
+                "Poor",
+                "Very Poor"],
+            "Yesno": ["Yes", "No"],
+            "Boolean": ["true", "false"]
 
-        };
+        },
+        "policies": {
+            "mastery": {
+                "submissioncount": 0, //unlimited submissions, keep trying until right
+                "due": "+7 11:59pm",   // due next week
+                "close": "due+7"		// close date is one week after due
+
+            },
+            "assess": {
+                "submissioncount": 1,	// only 1 try for tests
+                "due": "now+01:00:00",	// need better notation, 1 hour test time?
+                "close": "=due"		// for a test due and close are the same
+            }
+        },
+        "hw": {
+            "default": {
+                "submission": ".cc",    // or .zip, .java, or github....
+                "due": "+7 11:59pm",   // due next week
+                "close": "due+7"		// close date is one week after due
+            }
+        },
+        "quiz": {
+            "openDate": "",
+            "dueDate": "",
+            "closeDate": "",				//can be null, then due date = close date
+            "quizTime": "60", 				//in minutes, can be null
+            "tryTimes": "4",
+            "shuffleAnswers": "no",			//for multiple choice questions (applies to all)
+            "shuffleQuestions": "no",
+            "questionNum": "yes",
+            "accessCode": "123456"		//can be null
+        },
+        "responses": {
+            "right": ["randomresponse", "exp", "correct", "right", "excellent", "yes"],
+            "wrong": ["randomresponse", "exp", "incorrect", "wrong", "no", "not quite"],
+            "audright": ["randaudresponse", "exp", "mp3", "right", "yes", "excellent", "great"],
+            "audwrong": ["randaudresponse", "exp", "mp3", "incorrect", "wrong", "no", "not quite"]
+        },
+        "defaults": {
+            "std": {
+                "points": 1,
+                "published": "yes",
+                "level": 1,
+                "rightResponse": "right",
+                "wrongResponse": "wrong"
+            },
+            "lev2": ["std", {"level": 2}] // inherit from std but override level to 2
+
+        },
+        "licenses": {
+        "free": ["No license, do whatever you like", null],
+            "cc-by": ["Creative Commons with attribution",
+            "https://en.wikipedia.org/wiki/Creative_Commons_license#Types_of_licenses",
+            "https://creativecommons.org/licenses"
+        ],
+            "cc-sa": ["Creative Commons Share Alike", null, "https://creativecommons.org/licenses"],
+            "NC": ["Non-commercial only", null, null],
+            "ND": ["No Derivative Works (use verbatim only)", null, null],
+            "LGPL3": ["GNU Lesser General Public License", "https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License", "https://opensource.org/licenses/lgpl-3.0.html"],
+            "GPL": ["GNU Lesser General Public License", "https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License", null],
+        },
+        "rights": {
+            // who gets to share my stuff by default?
+            "copy": "Copyright ($year$) Dov Kruger, all rights reserved",
+                "default": "GPL", // if I don't explicitly tag it, everyone can use under GPL
+        }
+
+    };

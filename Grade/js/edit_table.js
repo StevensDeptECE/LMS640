@@ -54,7 +54,7 @@ function CancelEditCell(element, value, text) {
 	          var min=limit.min;
 	          var max=limit.max;
 	          if(parseFloat(value)<min||parseFloat(value)>max){
-	              alert('Input Error');
+	              alert('Input range shoule be > ' + min + " and < " + max);
 	              element.innerHTML = text;
 	          } else {
 	        	  element.innerHTML = value;

@@ -20,14 +20,21 @@ newQuizEditor.prototype.draw= function(s){
     newDrawEditor(newDiv,newQuizEditorPayLoad);
 
     var bt11 = Util.button("Add Question", function () {create_question()}, "three");
-    var save = Util.button("Save Quiz",function () {detailsToJson1(quizDetails); tableToJson4(Container); window.location.reload(false);},"three");
+    var save = Util.button("Save Quiz",
+        function () {
+            detailsToJson1(quizDetails); tableToJson4(Container);
+            if(sessionStorage.getItem("newQuizDetails") != null) {
+                quizDetailPayLoad.shift();
+                quizDetailPayLoad.push(JSON.parse(sessionStorage.getItem("newQuizDetails")));
+            }
+            launch(quizIndex, quizDetailPayLoad, 'up3')
+        },"three");
 
     mainEditor.appendChild(newDiv);
     mainEditor.appendChild(bt11);
     mainEditor.appendChild(save);
 
     s.appendChild(mainEditor);
-
 };
 
 function newDrawDetails(details,data) {
@@ -731,60 +738,3 @@ var newQuizEditorPayLoad = [
         ]
     }
 ];
-
-
-var quizDetailPayLoad = [
-    {
-        quizID: "1ddd2d96-42ad-0181-5de7-f768fa6c992b",
-        quizTitle: "Quiz1",
-        quizClass: "CPE640",
-        published: "yes",
-        openDate: "1/1/2017",
-        dueDate: "1/15/2017",
-        closeDate: "1/31/2017",
-        quizTime: "60",
-        tryTimes: "3",
-        shuffleAnswers: "no",
-        shuffleQuestions: "no",
-        questionNum: "yes",
-        accessCode: "123456"
-    },
-    {
-        quizID: "0bee1db8-bbe4-4769-6131-f6492e9050ab",
-        quizTitle: "Quiz2",
-        quizClass: "CPE593",
-        published: "no",
-        openDate: "6/1/2017",
-        dueDate: "6/15/2017",
-        closeDate: "6/31/2017",
-        quizTime: "60",
-        tryTimes: "4",
-        shuffleAnswers: "no",
-        shuffleQuestions: "no",
-        questionNum: "yes",
-        accessCode: "111111"
-    },
-    {
-        quizID: "c5aa2801-139e-b3a7-13c2-8d94c184a87a",
-        quizTitle: "Quiz3",
-        quizClass: "CPE810",
-        published: "yes",
-        openDate: "12/1/2017",
-        dueDate: "12/15/2017",
-        closeDate: "12/31/2017",
-        quizTime: "60",
-        tryTimes: "5",
-        shuffleAnswers: "no",
-        shuffleQuestions: "no",
-        questionNum: "yes",
-        accessCode: "000000"
-    }
-];
-
-quizDetailPayLoad.push(JSON.parse(sessionStorage.getItem("quizDetails")));
-if(sessionStorage.getItem("newQuizDetails") != null) {
-    quizDetailPayLoad = [];
-    quizDetailPayLoad.push(JSON.parse(sessionStorage.getItem("newQuizDetails")));
-}
-
-
