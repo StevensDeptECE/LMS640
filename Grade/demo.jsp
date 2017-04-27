@@ -28,7 +28,7 @@ public Grade() {
 %>
 <%
 	String query = request.getParameter("query");
-	if (query.equals("get_grade"));
+	if (query.equals("get_grade"))
 	{
 		System.out.print("sucess!!!");
 	

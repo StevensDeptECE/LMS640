@@ -4,17 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery.js"></script> 
-<script type="text/javascript" src="js/edit_table.js"></script>
+<script type="text/javascript" src="js/edit_table.js?ver=3"></script>
 <script type="text/javascript" src="js/table.js"></script>
-<script type="text/javascript" src="js/jquery.js"></script> 
-<script type="text/javascript" src="js/edit_table.js"></script>
-<script type="text/javascript" src="js/onepage_grade.js"></script>
+<script type="text/javascript" src="js/onepage_grade.js?ver=3"></script>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<button type="button" onclick="loadDoc()"> </button>
 <div id="wrapper">
 	
 </div>
@@ -29,7 +26,13 @@ $(document).ready(
 	        dataType:'text',
 	        success: function (result) {
 	        	var payload = JSON.parse(result);
-	        	var newTable = createGradeTable(payload, "grades")
+	        	var newTable = createGradeTable(payload, "grades");
+	        	var input = createFilter();
+	        	var overlay = createOverlay();
+	        	var button = createExport();
+	        	document.getElementById("wrapper").append(overlay);
+	        	document.getElementById("wrapper").append(input);
+	        	document.getElementById("wrapper").append(button);
 	        	document.getElementById("wrapper").append(newTable);
 	        },
 
@@ -40,6 +43,83 @@ $(document).ready(
 
 var table = document.getElementById("grades");
 SetTableCanEdit(table);
+
+function clickDropDown(i) {
+    document.getElementById("myDropdown" + i).classList.toggle("show");
+}
+
+window.onclick = function(event) {
+	  if (!event.target.matches('.dropbtn')) {
+
+	    var dropdowns = document.getElementsByClassName("dropdown-content");
+	    var i;
+	    for (i = 0; i < dropdowns.length; i++) {
+	      var openDropdown = dropdowns[i];
+	      if (openDropdown.classList.contains('show')) {
+	        openDropdown.classList.remove('show');
+	      }
+	    }
+	  }
+	}
+
+$(document).ready(function() {
+    $(".close").click(function(){
+        $(".overlay").fadeToggle("fast");
+    });
+});
+
+function setLimit(e) {
+	var parent = e.parentNode.parentNode.parentNode;
+	var content = parent.childNodes[0].innerHTML;
+	alert(content);
+	document.getElementById("gradeName").setAttribute("value", content);
+}
+
+$(document).ready(function() {
+    $(document).keyup(function(e) {
+        if(e.keyCode == 27 && $(".overlay").css("display") != "none" ) { 
+            $(".overlay").fadeToggle("fast");
+        }
+    });
+});
+
+$(document).ready(function() {
+	$(".set-grade").click(function(event){
+		$(".overlay").fadeToggle("fast");
+      });
+});
+
+function updateLimit() {
+	$.ajax({
+		type:"GET",
+		url:"jsp.jsp",
+		data:$('#limit').serialize(),
+		async: false,
+		error: function(request) {  
+            alert("Connection error:"+request.error);  
+        },
+        success: function(data) {
+        	alert(data);
+        }
+	});
+	return false;
+}
+
+$(document).ready(function() {
+	  $("#export").click(function(e) {
+	    e.preventDefault();
+
+	    //getting data from our table
+	    var data_type = 'data:application/vnd.ms-excel';
+	    var table_div = document.getElementById('wrapper');
+	    var table_html = table_div.outerHTML.replace(/ /g, '%20');
+
+	    var a = document.createElement('a');
+	    a.href = data_type + ', ' + table_html;
+	    a.download = 'grade' + '.xls';
+	    a.click();
+	  });
+	});
 </script>
 
 </body>

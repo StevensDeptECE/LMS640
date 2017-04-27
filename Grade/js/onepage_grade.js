@@ -1,4 +1,3 @@
-/* Grade payload construcotr. The payload is a 2D array. */
 function Grade(payload) {
   this.payload = payload;
 }
@@ -66,6 +65,8 @@ function createGradeTable(payload, id) {
     a = document.createElement("a");
     div3.append(a);
     a.innerHTML = "Setting";
+    a.setAttribute("class", "set-grade");
+    a.setAttribute("onclick", "setLimit(this)");
     a = document.createElement("a");
     div3.append(a);
     a.innerHTML = "Speed grade";
@@ -93,4 +94,81 @@ for (var i = 1; i < payload.names.length; ++i) {
   table.appendChild(body);
   header.appendChild(row);
   return table;
+}
+
+
+function createFilter() {
+	var div = document.createElement("div");
+	var input = document.createElement("input");
+	div.append(input);
+	input.setAttribute("onkeyup", "nameFilter()");
+	input.setAttribute("id", "name");
+	input.setAttribute("name", "filter_student");
+	input.setAttribute("placeholder", "Filter by name");
+	input.style.padding = "5px";
+	input.style.margin = "10px";
+	return div;
+	
+}
+
+function createOverlay () {
+	var div = document.createElement("div");
+	div.setAttribute("id", "overlay");
+	div.setAttribute("class", "overlay");
+	div.style.display="none";
+	var div1 = document.createElement("div");
+	div.append(div1);
+	div1.setAttribute("class","set-wrapper");
+	var div2 = document.createElement("div");
+	div1.append(div2);
+	div2.setAttribute("class", "set-content");
+	var a = document.createElement("a");
+	a.innerHTML="x";
+	div2.append(a);
+	a.setAttribute("class", "close");
+	var h1 = document.createElement("h1");
+	div2.append(h1);
+	h1.innerHTML="Grade Setting";
+	var form = document.createElement("form");
+	div2.append(form);
+	form.setAttribute("method", "get");
+	form.setAttribute("id", "limit");
+	form.setAttribute("action", "jsp.jsp");
+	form.setAttribute("onsubmit", "return updateLimit()");
+	var hidden = document.createElement("input");
+	form.append(hidden);
+	hidden.setAttribute("type", "hidden");
+	hidden.setAttribute("name", "object");
+	hidden.setAttribute("id", "gradeName");
+	var lable1 = document.createElement("lable");
+	form.append(lable1);
+	lable1.innerHTML = "max-grade";
+	var max = document.createElement("input");
+	lable1.append(max);
+	max.setAttribute("name", "max");
+	var br = document.createElement("br");
+	form.append(br);
+	var lable2 = document.createElement("lable");
+	form.append(lable2);
+	lable2.innerHTML = "min-grade";
+	var min = document.createElement("input");
+	lable2.append(min);
+	min.setAttribute("name", "min");
+	var br1 = document.createElement("br");
+	form.append(br1);
+	var button = document.createElement("button");
+	form.append(button);
+	button.setAttribute("type", "submit");
+	button.style.margin="20px";
+	button.innerHTML = "Save";
+	return div;
+}
+
+function createExport() {
+	var button = document.createElement("button");
+	button.setAttribute("id", "export");
+	button.setAttribute("class", "in-ex");
+	button.style.float="right";
+	button.innerHTML="export";
+	return button;
 }
