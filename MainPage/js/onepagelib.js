@@ -459,13 +459,14 @@ function sendJSONToServer(filename, JSONObject, callback) {
   * For example if you need a list to construct a certain object, paylod should be a
   * list. It then calls the draw function for the object, and draws it in the HTML
   * element with the id that is passed. If you need to draw in more than one div, do it
-  * in the objects corresponding draw function.
+  * in the objects corresponding draw function. Refresh is a boolean value that
+  * is true when lauch is called because a user clikced the Refresh button. False otherwise.
 */
 //global variable to keep track of the visited pages
 //each elements should be as follows: [object name, payload]
 var visitedPages = [];
 var topLoginDrawn = false; //keeps track of whether or not the top login box is on the screen
-function launch(object, payload, id) {
+function launch(object, payload, id, refresh) {
   console.log("Calling Launch");
   console.log("Object: " + object);
   console.log(payload);
@@ -475,8 +476,13 @@ function launch(object, payload, id) {
   var content = document.getElementById(id);
   newObject.draw(content);
 
+  this.refresh = refresh !== false; //refresh is false by default
   //add to visitedPages variable as the last element
-  visitedPages.push([object, payload]);
+  //if the refresh button wasn't clicked
+  if (this.refresh == false) {
+    visitedPages.push([object, payload]);
+    console.log(visitedPages);
+  }
 
   //check what 'object' is. If it's the initial load, then no
   //LoginTop object should be drawn
@@ -576,4 +582,31 @@ function editPageHeader(innerHTML, className, id)
   console.log("HTML ELement: " + object);
   var header = Util.object(innerHTML);
   up2.appendChild(header);
+}
+
+window.onload = function () {
+    if (typeof history.pushState === "function") {
+        history.pushState("jibberish", null, null);
+        window.onpopstate = function () {
+            history.pushState('newjibberish', null, null);
+            // Handle the back (or forward) buttons here
+            // Will NOT handle refresh, use onbeforeunload for this.
+        };
+    }
+    else {
+        var ignoreHashChange = true;
+        window.onhashchange = function () {
+            if (!ignoreHashChange) {
+                ignoreHashChange = true;
+                window.location.hash = Math.random();
+                // Detect and redirect change here
+                // Works in older FF and IE9
+                // * it does mess with your hash symbol (anchor?) pound sign
+                // delimiter on the end of the URL
+            }
+            else {
+                ignoreHashChange = false;
+            }
+        };
+    }
 }

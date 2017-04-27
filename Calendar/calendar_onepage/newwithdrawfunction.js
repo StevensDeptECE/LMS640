@@ -197,6 +197,8 @@ document.onclick = function(e) {
 }
 
 function setCalendar() {
+	//console.log('push calendar');
+	visitedPages.push(['calendar', setCalendar]);
 	drawCalendar(getRightNow());
 }
 
