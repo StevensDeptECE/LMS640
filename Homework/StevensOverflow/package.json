@@ -1,0 +1,32 @@
+{
+  "name": "local546project",
+  "version": "1.0.0",
+  "description": "for route test",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "connect-busboy": "0.0.2",
+    "connect-ensure-login": "^0.1.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-fileupload": "^0.1.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.11.3",
+    "handlebars": "^4.0.5",
+    "mongodb": "^2.1.18",
+    "mongoose": "^4.7.2",
+    "node-uuid": "^1.4.7",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "xss": "^0.2.18"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
