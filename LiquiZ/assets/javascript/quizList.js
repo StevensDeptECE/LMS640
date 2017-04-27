@@ -9,6 +9,8 @@ quizIndex.prototype.draw = function(s) {
     if(login){
         login.style.display ="none";
     }
+    console.log("Printing Util");
+    console.log(Util);
     var header = Util.h1("Quiz List","h03");
     clearElements("up3");
 
