@@ -4,7 +4,7 @@ table {
   height: 300px;
   border-collapse: collapse;
 }
-table, td, th {
+table, td, th .calTable{
   border-width: 1px;
   border-style: solid;
   border-color: #a9c6c9;

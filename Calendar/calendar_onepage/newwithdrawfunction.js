@@ -6,11 +6,11 @@ var holiday = [
 	{ "style":"class","name":"CPE-640","notes":"CPE-640 12:00-14:30","day":24,"month":3,"year":2017}];
 
 var tempDate;
-
+//get current date object
 function getRightNow() {
 	return new Date();
 }
-
+//get day of week
 function getDay(date){
 	var day = date.getDay();
   if(0 == day){
@@ -18,7 +18,7 @@ function getDay(date){
   }
   return day;
 }
-
+//get day in month
 function getDays(date) {
 	var month = date.getMonth() + 1;
   var currentDate = date.getDate();
@@ -27,7 +27,7 @@ function getDays(date) {
   date.setMonth(month - 1, currentDate);
   return days;
 }
-
+//get day of week of first day of the month
 function getFirstDayOfMonth(date){
 	var currentDate = date.getDate();
   date.setDate(1);
@@ -35,7 +35,7 @@ function getFirstDayOfMonth(date){
   date.setDate(currentDate);
   return firstDayOfMonth;
 }
-
+//get day of week of last day of the month
 function getLastDayOfMonth(date){
 	var currentDate = date.getDate();
   var days = getDays(date);
@@ -44,7 +44,7 @@ function getLastDayOfMonth(date){
   date.setDate(currentDate);
   return lastDayOfMonth;
 }
-
+//get day objects to fill in end of calendar
 function getHeadOfNextMonth(date) {
 	var days = getDays(date);
   var firstDayOfMonth = getFirstDayOfMonth(date);
@@ -79,7 +79,7 @@ function getHeadOfNextMonth(date) {
   }
 	return elements;
 }
-
+//get day objects to fill in beginning of calendar
 function getEndOfPreMonth(date){
 	var year = date.getFullYear();
   var month = date.getMonth();
@@ -108,7 +108,7 @@ function getEndOfPreMonth(date){
   }
 	return elements;
 }
-
+//create calendar object
 function show(customDate) {
 	var today = getRightNow();
 	var date = customDate.getDate();
@@ -116,6 +116,7 @@ function show(customDate) {
   var firstDayOfMonth = getFirstDayOfMonth(customDate);
   var verbose = firstDayOfMonth;
   var calTable= document.createElement("table");
+	calTable.setAttribute("class", "calTable");
 	var dayOfWeekId=["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 	var tr1= document.createElement("tr");
 	for(var i=0; i<dayOfWeekId.length; i++){
