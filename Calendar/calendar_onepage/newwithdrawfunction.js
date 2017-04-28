@@ -353,23 +353,45 @@ function drawCalendar(date) {
 	document.getElementById("up3").appendChild(btn_event);
 
 	show(date);
+	var upcoming=Util.div("","upcoming");
+	document.getElementById("up3").appendChild(upcoming);
 
 	clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
 	document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
 }
-//finds max days to use on form to not input faulty date
-function limit(){
-	var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-	if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
-		monthLength[2]=29;
-	}
-	var cmonth=document.getElementById("month").value; //cmonth= chosen month
-	var maxday=monthLength[cmonth-1];
-	var cday=document.getElementById("day");
-	cday.max=maxday;
-}
 //draws form to add events
 function drawEventForm() {
+	//finds max days to use on form to not input a faulty date
+	function limit(){
+		var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+		if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
+			monthLength[2]=29;
+		}
+		var cmonth=document.getElementById("month").value; //cmonth= chosen month
+		var maxday=monthLength[cmonth-1];
+		var cday=document.getElementById("day");
+		cday.max=maxday;
+	}
+	//sort holidays by date
+	function sortByDate(){
+		 holiday.sort(function(a,b){
+	      if( parseInt(a["month"],10) > parseInt(b["month"],10)){
+	          return 1;
+	      }
+				else if( parseInt(a["month"],10) < parseInt(b["month"],10) ){
+	          return -1;
+	      }
+				else if( parseInt(a["month"],10) == parseInt(b["month"],10)){
+						if( parseInt(a["day"],10) > parseInt(b["day"],10)){
+							return 1;
+						}
+						else if( parseInt(a["day"],10) < parseInt(b["day"],10) ){
+							return -1;
+						}
+				}
+	      return 0;
+	   });
+	}
 	console.log("Draw Form");
 	var windo = Util.div("addEvent","eventWindow");
 	document.getElementById("up3").appendChild(windo);
@@ -493,6 +515,7 @@ function drawEventForm() {
 			event.preventDefault();
 			var data = formToJSON(form.elements);
 			holiday.push(data);
+			sortByDate
 			popup.style.display = "none";
 			drawCalendar(tempDate);
 			//var frm = document.getElementsByClassName("holidayForm")[0];
@@ -500,4 +523,18 @@ function drawEventForm() {
 		}
 		var form = document.getElementsByClassName("holidayForm")[0];
 		form.addEventListener('submit', handleFormSubmit);
+}
+//displays upcoming events (7 days)
+function upcomingevent(){
+	var today = getRightNow();
+	clearElements("upcoming");
+	for(var i = 0; i < holiday.length;i++){
+		if(today.getFullYear() == holiday[i].year && today.getMonth() + 1 == holiday[i].month && holiday[i].day-today.getDate() <=7 && holiday[i].day-today.getDate() > 0){
+			var para = document.createElement("li");
+			para.setAttribute("class","upcomingevent");
+			var node = document.createTextNode(holiday[i].name + " is in " + (holiday[i].day-today.getDate())+" days");
+			para.appendChild(node);
+			document.getElementById("upcoming").appendChild(para);
+		}
+	}
 }
