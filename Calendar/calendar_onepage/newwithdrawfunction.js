@@ -6,11 +6,11 @@ var holiday = [
 	{ "style":"class","name":"CPE-640","notes":"CPE-640 12:00-14:30","day":24,"month":3,"year":2017}];
 
 var tempDate;
-
+//get current date object
 function getRightNow() {
 	return new Date();
 }
-
+//get day of week
 function getDay(date){
 	var day = date.getDay();
   if(0 == day){
@@ -18,7 +18,7 @@ function getDay(date){
   }
   return day;
 }
-
+//get day in month
 function getDays(date) {
 	var month = date.getMonth() + 1;
   var currentDate = date.getDate();
@@ -27,7 +27,7 @@ function getDays(date) {
   date.setMonth(month - 1, currentDate);
   return days;
 }
-
+//get day of week of first day of the month
 function getFirstDayOfMonth(date){
 	var currentDate = date.getDate();
   date.setDate(1);
@@ -35,7 +35,7 @@ function getFirstDayOfMonth(date){
   date.setDate(currentDate);
   return firstDayOfMonth;
 }
-
+//get day of week of last day of the month
 function getLastDayOfMonth(date){
 	var currentDate = date.getDate();
   var days = getDays(date);
@@ -44,7 +44,7 @@ function getLastDayOfMonth(date){
   date.setDate(currentDate);
   return lastDayOfMonth;
 }
-
+//get day objects to fill in end of calendar
 function getHeadOfNextMonth(date) {
 	var days = getDays(date);
   var firstDayOfMonth = getFirstDayOfMonth(date);
@@ -79,7 +79,7 @@ function getHeadOfNextMonth(date) {
   }
 	return elements;
 }
-
+//get day objects to fill in beginning of calendar
 function getEndOfPreMonth(date){
 	var year = date.getFullYear();
   var month = date.getMonth();
@@ -108,7 +108,7 @@ function getEndOfPreMonth(date){
   }
 	return elements;
 }
-
+//create calendar object
 function show(customDate) {
 	var today = getRightNow();
 	var date = customDate.getDate();
@@ -116,6 +116,7 @@ function show(customDate) {
   var firstDayOfMonth = getFirstDayOfMonth(customDate);
   var verbose = firstDayOfMonth;
   var calTable= document.createElement("table");
+	calTable.setAttribute("class", "calTable");
 	var dayOfWeekId=["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 	var tr1= document.createElement("tr");
 	for(var i=0; i<dayOfWeekId.length; i++){
@@ -177,7 +178,7 @@ function show(customDate) {
 	var cal=document.getElementById("up3");
   cal.appendChild(calTable);
 }
-
+//create window to show holiday notes
 function createwindow(n){
 	var para = document.createElement("div");
 	para.setAttribute("class","divholiday");
@@ -186,7 +187,7 @@ function createwindow(n){
   para.appendChild(node);
   document.body.appendChild(para);
 }
-
+//click anywhere to close window^
 document.onclick = function(e) {
 	if(document.getElementById("divholiday")){
 		if(e.target.id != "divholiday" && e.target.className != "createholiday") {
@@ -195,20 +196,20 @@ document.onclick = function(e) {
 		}
 	}
 }
-
+//onload function to set current calendar
 function setCalendar() {
 	//console.log('push calendar');
 	visitedPages.push(['calendar', setCalendar]);
 	drawCalendar(getRightNow());
 }
-
+//get current date object
 function getTempDate(){
 	if(tempDate == undefined) {
   	tempDate = getRightNow();
   }
   return tempDate;
 }
-
+//set tempDate to info for previous month
 function getPreMonth() {
 	tempDate = getTempDate();
 
@@ -231,17 +232,17 @@ function getPreMonth() {
   tempDate.setDate(date);
   return tempDate;
 }
-
+//draw calendar for previous month
 function preButton(){
 	var preMonth = getPreMonth();
 	drawCalendar(preMonth);
 }
-
+//draw calendar for current month
 function resume(){
 	tempDate = getRightNow();
 	drawCalendar(tempDate);
 }
-
+//set tempDateto info for next month
 function getNextMonth() {
 	tempDate = getTempDate();
 
@@ -267,7 +268,7 @@ function getNextMonth() {
 
   return tempDate;
 }
-
+//draw calendar for next month
 function nextButton() {
 	var nextMonth = getNextMonth();
 	drawCalendar(nextMonth);
@@ -277,7 +278,7 @@ var monthId=["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul",
 	"Aug", "Sep", "Oct", "Nov", "Dec"];
 var fullMonthId=["January", "February", "March", "April", "May", "June",
 	"July", "August", "Septempber", "October", "November", "December"];
-
+//choose what month to look at
 function changeMonth(){
 	var elements = document.getElementsByTagName("a");
 	for(var i=0; i<elements.length; i++){
@@ -288,7 +289,7 @@ function changeMonth(){
 	 	}
 	}
 }
-
+//choose what year to look at
 function changeYear(){
 	var yearView= document.getElementById("changeYear");
 	yearView.style.display= "none";
@@ -308,7 +309,7 @@ function changeYear(){
 		drawCalendar(tempDate);
 	};
 }
-
+//displays date nicely with dropdown
 function chooseDate(){
 	var a= getTempDate();
 	var m= a.getMonth();
@@ -332,7 +333,7 @@ function chooseDate(){
 	document.getElementById("up3").appendChild(dropdiv);
 	document.getElementById("up3").appendChild(editYear);
 }
-
+//draw calendar and button objects
 function drawCalendar(date) {
 	console.log("Draw Calendar");
 	clearElements("up2");
@@ -352,23 +353,45 @@ function drawCalendar(date) {
 	document.getElementById("up3").appendChild(btn_event);
 
 	show(date);
+	var upcoming=Util.div("","upcoming");
+	document.getElementById("up3").appendChild(upcoming);
 
 	clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
 	document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
 }
-
-function limit(){ //sets month limit for input dates
-	var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-	if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
-		monthLength[2]=29;
-	}
-	var cmonth=document.getElementById("month").value; //cmonth= chosen month
-	var maxday=monthLength[cmonth-1];
-	var cday=document.getElementById("day");
-	cday.max=maxday;
-}
-
+//draws form to add events
 function drawEventForm() {
+	//finds max days to use on form to not input a faulty date
+	function limit(){
+		var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+		if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
+			monthLength[2]=29;
+		}
+		var cmonth=document.getElementById("month").value; //cmonth= chosen month
+		var maxday=monthLength[cmonth-1];
+		var cday=document.getElementById("day");
+		cday.max=maxday;
+	}
+	//sort holidays by date
+	function sortByDate(){
+		 holiday.sort(function(a,b){
+	      if( parseInt(a["month"],10) > parseInt(b["month"],10)){
+	          return 1;
+	      }
+				else if( parseInt(a["month"],10) < parseInt(b["month"],10) ){
+	          return -1;
+	      }
+				else if( parseInt(a["month"],10) == parseInt(b["month"],10)){
+						if( parseInt(a["day"],10) > parseInt(b["day"],10)){
+							return 1;
+						}
+						else if( parseInt(a["day"],10) < parseInt(b["day"],10) ){
+							return -1;
+						}
+				}
+	      return 0;
+	   });
+	}
 	console.log("Draw Form");
 	var windo = Util.div("addEvent","eventWindow");
 	document.getElementById("up3").appendChild(windo);
@@ -492,6 +515,7 @@ function drawEventForm() {
 			event.preventDefault();
 			var data = formToJSON(form.elements);
 			holiday.push(data);
+			sortByDate
 			popup.style.display = "none";
 			drawCalendar(tempDate);
 			//var frm = document.getElementsByClassName("holidayForm")[0];
@@ -499,4 +523,18 @@ function drawEventForm() {
 		}
 		var form = document.getElementsByClassName("holidayForm")[0];
 		form.addEventListener('submit', handleFormSubmit);
+}
+//displays upcoming events (7 days)
+function upcomingevent(){
+	var today = getRightNow();
+	clearElements("upcoming");
+	for(var i = 0; i < holiday.length;i++){
+		if(today.getFullYear() == holiday[i].year && today.getMonth() + 1 == holiday[i].month && holiday[i].day-today.getDate() <=7 && holiday[i].day-today.getDate() > 0){
+			var para = document.createElement("li");
+			para.setAttribute("class","upcomingevent");
+			var node = document.createTextNode(holiday[i].name + " is in " + (holiday[i].day-today.getDate())+" days");
+			para.appendChild(node);
+			document.getElementById("upcoming").appendChild(para);
+		}
+	}
 }

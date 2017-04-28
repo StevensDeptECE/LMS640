@@ -10,7 +10,6 @@
   <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
   <!-- <script src="js/onepage.js"></script> -->
   <script src="js/account.js"></script>
-  <script src="js/onepagelib.js"></script>
   <script src="../Calendar/calendar_onepage/newwithdrawfunction.js"></script>
   <!-- <script src="js/onepagecalendar.js"></script> -->
   <script src="../Grade/js/onepage_grade.js"></script>
@@ -31,6 +30,7 @@
   <script src="../LiquiZ/assets/javascript/newQuiz.js"></script>
   <script src="../LiquiZ/assets/javascript/submit.js"></script>
   <!--<script src="../Calendar/2nd week/2.js"></script>-->
+  <script src="js/onepagelib.js"></script>
   <script src="js/onepagelogin.js"></script>
   <script src="js/onepagelogintop.js"></script>
   <script src="js/jquery.js"></script>
@@ -38,6 +38,7 @@
   <script src="../Homework/Canvas-Homework/js/hwonepage.js"></script>
   <script src="js/hwonepageArray.js"></script>
   <script src="js/onepagecourselist.js"></script>
+  <script src="js/onepagecourse.js"></script>
   <script src="js/preferences.js"></script>
   <script src="js/prefeditor.js"></script>
   <script src="js/backbutton.js"></script>
@@ -85,13 +86,13 @@
     </form>
   </div>
 -->
-  <div id="loginformabs_top">
-  </div>
+<!--  <div id="loginformabs_top">
+</div> -->
 
   <ul class="navigation">
     <!-- x`<li><a id="account" class="active"  onclick="launch(Account, accountpayload, 'up3')"href="#">Account</a></li> -->
     <li><a id="account" class="active"  onclick="launch(Login, '', 'up3')" href="#">Account</a></li>
-    <li><a id="dashboard" href="#">Dashboard</a></li>
+    <li><a id="dashboard" onclick="launch(Dashboard, courseList2, 'up3')" href="#">Dashboard</a></li>
     <!-- <li><a quizClassurse" href="#" onclick="launch(Grade, gradepayload2, 'up3')">Course</a></li> -->
     <li><a id="course" href="#" onclick="launch(CourseList, courses, 'up3')">Course</a></li>
     <li><a id="groups" href="#" onclick="launch(HomeworkMain, '', 'up3')">Groups</a></li>

@@ -36,6 +36,54 @@
                 </xs:sequence>
             </xs:complexType>
         </xs:element>
+        <xs:element name="MC">
+            <xs:complexType>
+                <xs:element name="MCAnswers">
+                    <xs:complexType>
+                        <xs:element name="row" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="MCID">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                            <xs:minInclusive value="1"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:complexType>
+        </xs:element>
+        <xs:element name="MCDROP">
+            <xs:complexType>
+                <xs:element name="mcdropanswers">
+                    <xs:complexType>
+                        <xs:element name="row" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="MCdropID">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                            <xs:minInclusive value="1"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:complexType>
+        </xs:element>
+        <xs:element name="MCS">
+            <xs:complexType>
+                <xs:element name="mcsanswers">
+                    <xs:complexType>
+                        <xs:element name="row" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="MCdropID">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                            <xs:minInclusive value="1"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:complexType>
+        </xs:element>
       </xs:complexType>
     </xs:element>
   </xs:complexType>

@@ -9,9 +9,12 @@ import javax.servlet.http.*;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.FilenameUtils;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
+import com.mongodb.Mongo;
 
-import com.google.gson.JsonObject;
 public class uploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -57,14 +60,33 @@ public class uploadServlet extends HttpServlet {
 				if(!isFieldForm){
 					if(fieldName != null && !"".equals(fieldName)){
 						String uploadPath = request.getSession().getServletContext().getRealPath("/upload");
-						String path = "work.json";
-						JsonObject JO = d.getJsonO(path);
-						String AssignmentId = d.get(JO, "Assignment","assignmentId");
-						String StudentId = d.get(JO, "Assignment","studentId");
-						String actualName = AssignmentId+"_"+StudentId+"_"+origFileName;
 						
-						//create a file
-						File file = new File(uploadPath, origFileName);
+						String name =(String) request.getSession().getAttribute("person"); 
+						String assignment = (String) request.getSession().getAttribute("assignment");
+						System.out.println(assignment);
+						String course = (String) request.getSession().getAttribute("course"); 
+						
+						
+						
+						Mongo mg = new Mongo("Localhost",27017);
+						DB db = mg.getDB("person");
+						DBCollection coll = db.getCollection("person");
+					 	BasicDBObject eObj = new BasicDBObject("name",name);//email
+					 	DBObject eobj = coll.findOne(eObj);
+					 	int sid = (int)eobj.get("cwid");
+					 	String StudentId = String.valueOf(sid);
+					 	
+					 	DB dbC = mg.getDB(course);
+					 	DBCollection collc = dbC.getCollection("assigment");
+					 	BasicDBObject cObj = new BasicDBObject("name",assignment);//_id
+					 	DBObject cobj = collc.findOne(cObj);
+					 	String AssignmentId = (String)cobj.get("name");
+					 	String actualName = course +"_"+AssignmentId+"_"+StudentId+"_"+origFileName;
+						System.out.println(actualName);
+					 	//create a file
+						File file = new File(uploadPath, actualName);//origFileName
+						
+						
 						//System.out.println(file.getAbsolutePath());
 						
 						//String fileName = FilenameUtils.getName(fi.getName());
@@ -84,6 +106,24 @@ public class uploadServlet extends HttpServlet {
 						//put file on the server
 						System.out.println("File successfully saved as " + file.getAbsolutePath());
 						
+					 	DBCollection uplo = dbC.getCollection(assignment);
+			
+					 	BasicDBObject doc = new BasicDBObject();
+					 	
+					 		doc.append("name",name);
+					 	 	doc.append("assignment",assignment);
+					 	 	doc.append("filename",actualName);
+					 	 	doc.append("origname",origFileName);
+					 	 	
+					 	 	Date createAt = new Date();
+					 	 	doc.append("createAt",createAt);
+					 	 	doc.append("courseId",course);
+					 	 	doc.append("path",file.getAbsolutePath());
+					 	 	uplo.insert(doc);
+					 	 	String str= "assignmentList.jsp?id="+course;
+					 	 	response.sendRedirect(str);
+								 	
+					 	mg.close();
 						response.getWriter().print("Success!");
 					}
 				}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<quiz>
+<quiz xsi:schemaLocation= "/exampleQuizSchema.xsd">
   <quizID>423432</quizID>
   <quizTitle>Quiz1</quizTitle>
   <quizClass>LMS640</quizClass>
