@@ -1,10 +1,10 @@
 @CHARSET "UTF-8";
-table {
+table.calTable {
   width: 700px;
   height: 300px;
   border-collapse: collapse;
 }
-table, td, th .calTable{
+table.calTable, td, th {
   border-width: 1px;
   border-style: solid;
   border-color: #a9c6c9;
@@ -12,18 +12,35 @@ table, td, th .calTable{
 td.pre{
   background-color: gainsboro;
 	width: 100px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #a9c6c9;
+  text-align: left;
+  vertical-align: top;
 }
 td.current{
   background-color: #c3dde0;
 	width: 100px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #a9c6c9;
+  text-align: left;
 }
 td.next{
   background-color: lightgreen;
 	width: 100px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #a9c6c9;
+  text-align: left;
 }
 td.today{
   background-color: #87ceeb;
 	width: 100px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #a9c6c9;
+  text-align: left;
 }
 
 .divholiday{
@@ -80,16 +97,6 @@ td.today{
   text-decoration: none;
   cursor: pointer;
 }
-
-/* Dropdown Button */
-/*.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}*/
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {

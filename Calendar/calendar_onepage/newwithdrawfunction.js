@@ -178,7 +178,7 @@ function show(customDate) {
 	var cal=document.getElementById("up3");
   cal.appendChild(calTable);
 }
-
+//create window to show holiday notes
 function createwindow(n){
 	var para = document.createElement("div");
 	para.setAttribute("class","divholiday");
@@ -187,7 +187,7 @@ function createwindow(n){
   para.appendChild(node);
   document.body.appendChild(para);
 }
-
+//click anywhere to close window^
 document.onclick = function(e) {
 	if(document.getElementById("divholiday")){
 		if(e.target.id != "divholiday" && e.target.className != "createholiday") {
@@ -196,20 +196,20 @@ document.onclick = function(e) {
 		}
 	}
 }
-
+//onload function to set current calendar
 function setCalendar() {
 	//console.log('push calendar');
 	visitedPages.push(['calendar', setCalendar]);
 	drawCalendar(getRightNow());
 }
-
+//get current date object
 function getTempDate(){
 	if(tempDate == undefined) {
   	tempDate = getRightNow();
   }
   return tempDate;
 }
-
+//set tempDate to info for previous month
 function getPreMonth() {
 	tempDate = getTempDate();
 
@@ -232,17 +232,17 @@ function getPreMonth() {
   tempDate.setDate(date);
   return tempDate;
 }
-
+//draw calendar for previous month
 function preButton(){
 	var preMonth = getPreMonth();
 	drawCalendar(preMonth);
 }
-
+//draw calendar for current month
 function resume(){
 	tempDate = getRightNow();
 	drawCalendar(tempDate);
 }
-
+//set tempDateto info for next month
 function getNextMonth() {
 	tempDate = getTempDate();
 
@@ -268,7 +268,7 @@ function getNextMonth() {
 
   return tempDate;
 }
-
+//draw calendar for next month
 function nextButton() {
 	var nextMonth = getNextMonth();
 	drawCalendar(nextMonth);
@@ -278,7 +278,7 @@ var monthId=["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul",
 	"Aug", "Sep", "Oct", "Nov", "Dec"];
 var fullMonthId=["January", "February", "March", "April", "May", "June",
 	"July", "August", "Septempber", "October", "November", "December"];
-
+//choose what month to look at
 function changeMonth(){
 	var elements = document.getElementsByTagName("a");
 	for(var i=0; i<elements.length; i++){
@@ -289,7 +289,7 @@ function changeMonth(){
 	 	}
 	}
 }
-
+//choose what year to look at
 function changeYear(){
 	var yearView= document.getElementById("changeYear");
 	yearView.style.display= "none";
@@ -309,7 +309,7 @@ function changeYear(){
 		drawCalendar(tempDate);
 	};
 }
-
+//displays date nicely with dropdown
 function chooseDate(){
 	var a= getTempDate();
 	var m= a.getMonth();
@@ -333,7 +333,7 @@ function chooseDate(){
 	document.getElementById("up3").appendChild(dropdiv);
 	document.getElementById("up3").appendChild(editYear);
 }
-
+//draw calendar and button objects
 function drawCalendar(date) {
 	console.log("Draw Calendar");
 	clearElements("up2");
@@ -357,8 +357,8 @@ function drawCalendar(date) {
 	clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
 	document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
 }
-
-function limit(){ //sets month limit for input dates
+//finds max days to use on form to not input faulty date
+function limit(){
 	var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 	if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
 		monthLength[2]=29;
@@ -368,7 +368,7 @@ function limit(){ //sets month limit for input dates
 	var cday=document.getElementById("day");
 	cday.max=maxday;
 }
-
+//draws form to add events
 function drawEventForm() {
 	console.log("Draw Form");
 	var windo = Util.div("addEvent","eventWindow");
