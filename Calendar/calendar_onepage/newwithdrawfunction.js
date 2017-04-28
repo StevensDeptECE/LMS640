@@ -537,3 +537,36 @@ function upcomingevent(){
 		}
 	}
 }
+
+
+//trying payload stuff for zac
+//constructor
+function calendarMain(payload) {
+  this.payload = payload;
+}
+
+calendarMain.prototype.draw = function(content) {
+	console.log("Draw Calendar");
+	clearElements("up2");
+
+	var newHeader = Util.h1("Calendar", "", "");
+	document.getElementById("up2").appendChild(newHeader);
+
+	clearElements("up3");
+	var btn_left = Util.button("<", preButton, "", "");      // Create a <button> element
+	content.appendChild(btn_left);    // Append <button> to <body>
+	chooseDate();                                             // write current date
+	var btn_today = Util.button("Today", resume, "", "");    // Create a <button> element
+	var btn_right = Util.button(">", nextButton, "", "");    // Create a <button> element
+	content.appendChild(btn_today);   // Append <button> to <body>
+	content.appendChild(btn_right);   // Append <button> to <body>
+	var btn_event= Util.button("Add Event", drawEventForm, "eventBtn", "eventBtn");
+	content.appendChild(btn_event);
+
+	show(date);
+	var upcoming=Util.div("","upcoming");
+	content.appendChild(upcoming);
+
+	clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
+	document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
+}
