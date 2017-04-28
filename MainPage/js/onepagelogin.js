@@ -19,7 +19,7 @@ Login.prototype.draw = function(content) {
 
   var up2 = document.getElementById("up2")
   clearElements("up2");
-  var header = Util.h1("Welcome to LMS.");
+  var header = Util.h2("Welcome to LMS.", "", "");
   up2.appendChild(header);
 
   //editPageHeader("Welcome to LMS.", h1, "", "");

@@ -11,7 +11,7 @@ PrefEditor.prototype.draw = function(content) {
   clearElements('up3');
   var p = Util.p("Current CSS: " + prefs["css"]);
   content.appendChild(p);
-  var css_box1 = Util.button("CSS 1", function(){setCSS('style', 0, true)});
+  var css_box1 = Util.button("CSS 1", function(){setCSS('style1', 0, true)});
   var css_box2 = Util.button("CSS 2", function(){setCSS('style2', 0, true)});
   var css_box3 = Util.button("CSS 3", function(){setCSS('style3', 0, true)});
   content.appendChild(css_box1);

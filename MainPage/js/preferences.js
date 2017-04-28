@@ -1,7 +1,3 @@
-/*
- * This object will serve as a preferences editor for users
- */
-
 function Preferences(payload) {
   var css = payload["css"];
   console.log("CSS prefs: " + payload["css"]);
