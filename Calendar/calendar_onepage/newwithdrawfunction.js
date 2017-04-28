@@ -359,20 +359,20 @@ function drawCalendar(date) {
 	clearClass("active"); //previously highlighed field in left meny bar is no longer highlighted
 	document.getElementById("calendar").className = "active"; //highlighs calendar field in left menu bar
 }
+//finds max days to use on form to not input a faulty date
+function limit(){
+	var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
+		monthLength[2]=29;
+	}
+	var cmonth=document.getElementById("month").value; //cmonth= chosen month
+	var maxday=monthLength[cmonth-1];
+	var cday=document.getElementById("day");
+	cday.max=maxday;
+}
 //draws form to add events
 function drawEventForm() {
-	//finds max days to use on form to not input a faulty date
-	function limit(){
-		var monthLength=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-		if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0)){ //checks feb for leap year
-			monthLength[2]=29;
-		}
-		var cmonth=document.getElementById("month").value; //cmonth= chosen month
-		var maxday=monthLength[cmonth-1];
-		var cday=document.getElementById("day");
-		cday.max=maxday;
-	}
-	//sort holidays by date
+		//sort holidays by date
 	function sortByDate(){
 		 holiday.sort(function(a,b){
 	      if( parseInt(a["month"],10) > parseInt(b["month"],10)){
@@ -515,11 +515,10 @@ function drawEventForm() {
 			event.preventDefault();
 			var data = formToJSON(form.elements);
 			holiday.push(data);
-			sortByDate
+			sortByDate();
 			popup.style.display = "none";
 			drawCalendar(tempDate);
-			//var frm = document.getElementsByClassName("holidayForm")[0];
-   		//frm.reset();  // Reset
+			upcomingevent();
 		}
 		var form = document.getElementsByClassName("holidayForm")[0];
 		form.addEventListener('submit', handleFormSubmit);
