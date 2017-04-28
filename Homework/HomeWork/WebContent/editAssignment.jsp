@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="com.mongodb.BasicDBObject"
-	import="com.mongodb.DB"
+	import="com.mongodb.*"
 	import="com.mongodb.DBCollection"
 	import="com.mongodb.DBCursor"
 	import="com.mongodb.MongoClient"
@@ -36,20 +36,31 @@
 <%
 	String email =(String)(session.getAttribute("email"));
 	String course = (String)(session.getAttribute("course"));
+	String assignment = request.getParameter("id");
 	Mongo mg = new Mongo("Localhost",27017);
 	DB db = mg.getDB("person");
 	DBCollection coll = db.getCollection("person");
  	BasicDBObject eObj = new BasicDBObject("email",email);//email
  	DBObject eobj = coll.findOne(eObj);
- 	BasicDBObject cObj = new BasicDBObject("courseId",course);
+ 	BasicDBObject cObj = new BasicDBObject("courseId",course);//course
  	DB dbCourse = mg.getDB("course");
  	DBCollection coursecoll = dbCourse.getCollection("course");
  	DBObject ccobj = coursecoll.findOne(cObj);
  	
- 	DB dbC = mg.getDB(course);
- 	DBCollection collc = dbC.getCollection("assigment");
- 	DBObject cobj = collc.findOne(eObj);
-
+ 	DB ass = mg.getDB(course);
+ 	DBCollection asscour = ass.getCollection("assigment");
+ 	BasicDBObject assObj = new BasicDBObject("name",assignment);//email
+ 	DBObject assobj = asscour.findOne(assObj);
+	BasicDBObject query = new BasicDBObject();
+	query.put("name",assignment);
+	
+	String name = (String)assobj.get("name");
+	String hint = (String)assobj.get("hint");
+	String point = (String)assobj.get("point");
+	Date ddline = (Date)assobj.get("ddl");
+	Date dued = (Date)assobj.get("due");
+	
+	
  	BasicDBObject doc = new BasicDBObject();
  	if(request.getParameter("point")!=null&&request.getParameter("title")!=null&&request.getParameter("hint")!=null){
  		doc.append("name",request.getParameter("title"));
@@ -71,8 +82,10 @@
  	 	doc.append("due",due);
  	 	doc.append("number",ccobj.get("studentCapacity"));
  	 	doc.append("TA",ccobj.get("TA"));
- 	 	collc.insert(doc);
- 	 	String str= "assignmentList.jsp?id="+course;
+ 	 	BasicDBObject updateObj = new BasicDBObject();
+ 	 	updateObj.put("$set",doc);
+ 	 	asscour.update(query,updateObj,false,true);
+ 	 	String str= "assignment.jsp?id="+assignment;
  	 	response.sendRedirect(str);
  	}
  	
@@ -94,30 +107,32 @@
                   <bold><% out.println(course);%></bold>
               </p>
     </div>
-    <form action="createAssignment.jsp" method="post" name = "form1">  
+    <form action="editAssignment.jsp" method="post" name = "form1" command="userModel">  
 	    <label >Assignment Name</label>
 	            <div class="textarea">
-	                <input name="title" maxlength="50" type="text" placeholder="AssignmentName">
+	                <input name="title" maxlength="50" type="text" value="<%out.println(name); %>">
 	            </div><br>
 	    <label >Hint</label> 
 	    <div class="textarea">
-	                <textarea name="hint" rows="10" placeholder="Hint"></textarea>
+	                <textarea name="hint" rows="10" ><%out.print(hint); %></textarea>
 	    </div>
 	    <br>
 	            <div class="textarea">
-	        Points:<input name="point" maxlength="50" type="text" placeholder="100">
+	        Points:<input name="point" maxlength="50" type="text" value="<%out.println(point); %>">
 	            </div><br>
 	     <div>
-	        Available:<input type="text" name="due" value="05/12/2017" />
-	        </div>
+	        Available:<input type="text" name="due" value="<%
+	        out.println(((int)dued.getMonth()+1)+"/"+dued.getDate()+"/"+((int)dued.getYear()+1900)); %>" />
+	     </div>
 		<br>
 		<div>
-			Deadline:<input type="text" name="ddl" value="05/28/2017" />
+			Deadline:<input type="text" name="ddl" value="<%
+			out.println(((int)ddline.getMonth()+1)+"/"+ddline.getDate()+"/"+((int)ddline.getYear()+1900)); %>" />
 		</div>
 		<br>
 		<div class="button">
-	                <a href="assignmentList.jsp?id=<%out.println(course);%>"><button type="submit" ">SAVE</button></a>
-	                <a href="assignmentList.jsp?id=<%out.println(course);%>">CANCEL</a>
+	                <a href="assignment.jsp?id=<%out.println(assignment);%>"><button type="submit" ">SAVE</button></a>
+	                <a href="assignment.jsp?id=<%out.println(assignment);%>">CANCEL</a>
 	    </div>
  	</form>
 	
