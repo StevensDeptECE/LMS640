@@ -1,0 +1,28 @@
+    <div class="container" ng-controller="AppCtrl">
+     <h1>&nbsp;&nbsp;&nbsp;Text your discussion underneath</h1>
+
+       <div class="col-xs-12 col-sm-9">
+           <div class="jumbotron">              
+                  <h4>Quick Discuss</h4>
+                  <div class="form-group">                    
+                    <input type="text" class="form-control" id="InputSubject" placeholder="Subject" ng-model="discussion.subject">
+                  </div>
+                  <div class="form-group">                  
+                	<textarea type="text" class="form-control" id="InputContent" ng-model="discussion.content" rows="3">
+                	</textarea> 
+                  </div>
+                  <button id="post"  class="btn btn-primary btn-sm" ng-click="addPost()">Post</button> 
+ 			 </div>
+                 <div class="jumbotron" ng-repeat="discussion in discussionlist">                     
+                    <h3>{{discussion.subject}}</h3>
+                	<h4>{{discussion.content}}</h4>  
+                 <button class="btn btn-danger btn-sm" ng-click="remove(discussion._id) ">Remove</button>  
+                 <hr>
+                 	 <textarea type="text" class="form-control" placeholder="Comment" ng-model="discussion.reply" rows="2">
+                 	 </textarea>
+                 	 <br>
+                 	 <button class="btn btn-warning btn-sm" ng-click="reply(discussion._id) ">Reply</button> 
+                 </div>                
+         	
+              </div>     
+     </div>          
