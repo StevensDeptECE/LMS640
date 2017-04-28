@@ -1,6 +1,45 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="https://github.com/StevensDeptECE/LMS640">
+<xs:element name="quiz">
+  <xs:complexType>
 
+  <xs:element name="comp">
+    <xs:complexType>
+        <xs:element name="Aud">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="audFile" type="xs:string"/>
+                    <xs:element name="audID" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+      </xs:complexType>
+    </xs:element>
+  </xs:complexType>
+</xs:element>
+
+  <xs:element name="comp">
+    <xs:complexType>
+        <xs:element name="dragDrop">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="imgFile" type="xs:string"/>
+                    <xs:element name="answerOption" type="xs:string"/>
+                    <xs:element name="answerLocation">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="left" type="xs:string"/>
+                                <xs:element name="top" type="xs:string"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    <xs:element name="dragDropID" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+      </xs:complexType>
+    </xs:element>
+  </xs:complexType>
+</xs:element>
 
 
 </xs:schema>
