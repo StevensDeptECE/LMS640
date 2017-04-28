@@ -3,7 +3,8 @@
 
 
 /*utility function to create inheritance*/
-Util = {
+console.log("Creating Util in takeQuiz1");
+UtilTakeQuiz1 = {
     subClass: function (superclass, subclass) {
         subclass.prototype = Object.create(superclass.prototype);
         subclass.prototype.constructor = subclass;
@@ -59,7 +60,7 @@ function QC(parent, json, index) {
     }
 }
 
-Util.subClass(Display, QC);
+UtilTakeQuiz1.subClass(Display, QC);
 
 
 QC.prototype.buildHeader = function() {
@@ -121,7 +122,7 @@ function timerSetter (quizLength){
     },1000);
 }
 
-Util.subClass(Display, takeQuiz);
+UtilTakeQuiz1.subClass(Display, takeQuiz);
 
 /*draw method for takeQuiz object*/
 takeQuiz.prototype.draw = function(div){

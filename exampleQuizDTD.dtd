@@ -19,7 +19,7 @@
 <!ELEMENT id (#PCDATA)>
 <!ELEMENT title (#PCDATA)>
 <!ELEMENT points (#PCDATA)>
-<!ELEMENT comp (row*, dragDrop*, Aud*)>
+<!ELEMENT comp (row*, dragDrop*, Aud*, MC*, MCDROP*, MCS*)>
 <!ELEMENT row (#PCDATA | entry)*>
 <!ELEMENT entry (#PCDATA)>
 <!ELEMENT dragDrop (imgFile, answerOption+, answerLocation+, dragDropID)>
@@ -32,4 +32,16 @@
 <!ELEMENT Aud (audFile, audID)>
 <!ELEMENT audFile (#PCDATA)>
 <!ELEMENT audID (#PCDATA)>
+<!ELEMENT MC (mcanswers, mcID)>
+<!ELEMENT mcanswers (row)>
+<!ELEMENT row (#PCDATA)>
+<!ELEMENT mcID (#PCDATA)>
+<!ELEMENT MCDROP (mdropanswers, mcdropID)>
+<!ELEMENT mcdropanswers (row)>
+<!ELEMENT row (#PCDATA)>
+<!ELEMENT mcdropID (#PCDATA)>
+<!ELEMENT MCS (mcsanswers, mcsID)>
+<!ELEMENT mcsanswers (row)>
+<!ELEMENT row (#PCDATA)>
+<!ELEMENT mcsID (#PCDATA)>
 ]>

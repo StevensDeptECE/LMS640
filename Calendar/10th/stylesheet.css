@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
         table {
             width: 700px;
-            height: 300px;
+            height: 450px;
             border-collapse: collapse;
         }
         table, td, th {
@@ -51,15 +51,16 @@
 
         }
 		#upcoming{
-			background-color: lightgreen;
+			background-color: lightyellow;
 			position: absolute;
-			right:0px;
+			right:10px;
 			top:100px;
 			width:300px;
 			height:200px;
 			border-width: 1px;
 			border-style: solid;
 			margin: 0 auto;
+			font-size:16px;
 		}
 		
         .addEvent {
