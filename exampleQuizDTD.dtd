@@ -33,12 +33,15 @@
 <!ELEMENT audFile (#PCDATA)>
 <!ELEMENT audID (#PCDATA)>
 <!ELEMENT MC (mcanswers, mcID)>
-<!ELEMENT mcanswers (#PCDATA)>
+<!ELEMENT mcanswers (row)>
+<!ELEMENT row (#PCDATA)>
 <!ELEMENT mcID (#PCDATA)>
 <!ELEMENT MCDROP (mdropanswers, mcdropID)>
-<!ELEMENT mcdropanswers (#PCDATA)>
+<!ELEMENT mcdropanswers (row)>
+<!ELEMENT row (#PCDATA)>
 <!ELEMENT mcdropID (#PCDATA)>
 <!ELEMENT MCS (mcsanswers, mcsID)>
-<!ELEMENT mcsanswers (#PCDATA)>
+<!ELEMENT mcsanswers (row)>
+<!ELEMENT row (#PCDATA)>
 <!ELEMENT mcsID (#PCDATA)>
 ]>
