@@ -1,91 +1,157 @@
 // MEAN Stack RESTful API Tutorial - project List App
 
 var express = require('express');
+var port = 8000;
+var morgan = require('morgan');
 var app = express();
-var mongojs = require('mongojs');
-var db = mongojs('projectlist', ['projectlist']);
-var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');  
 var path = require('path');
 var http = require('http');
 var multer  = require('multer');
+var Project = require('./app/models/project');
+var Discussion = require('./app/models/discussion');
 
-var storage = multer.diskStorage({
-  destination: './uploads/',
-  filename: function (req, file, cb) {
-    cb(null, file.originalname.replace(path.extname(file.originalname), "") + '-' + Date.now() + path.extname(file.originalname))
-  }
-})
+mongoose.Promise = require('bluebird');
 
-var upload = multer({ storage: storage })
-
+app.use(morgan('dev'));
+app.use(bodyParser.json()); //for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true})); //for parsing application/x-www-form/urlencoded
 app.use(express.static(__dirname + '/public'));
-app.set('port', process.env.PORT || 3000);
 
-
-app.post('/savedata', upload.single('file'), function(req,res,next){
-    console.log('Uploade Successful ', req.file, req.body);
+mongoose.connect('mongodb://localhost:27017/project', function(err) {  //27017 is the mongodb port
+  if(err) {
+    console.log('Not connected to the database: ' + err);
+  } else {
+    console.log('Successfully connected to MongoDB');
+  }
 });
 
-
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+app.get('/', function (req, res) {
+  res.send('I Love Bhavi <3');
 });
-
-app.use(bodyParser.json());
 
 app.get('/projectlist', function (req, res) {
   console.log('I received a GET request');
-
-  db.projectlist.find(function (err, docs) {
-    console.log(docs);
-    res.json(docs);
+  Project.find({}, function(err, docs) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(docs);
+    }  
+  });
+});
+ 
+app.get('/projectlist/:id', function (req, res) {
+  var id = req.params.id;
+  console.log("Querying the database for record with: " + id);
+  console.log('I received a GET request');
+  Project.findOne({_id: id}, function(err, docs) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(docs);
+    }  
   });
 });
 
 app.post('/projectlist', function (req, res) {
-  console.log(req.body);
-  db.projectlist.insert(req.body, function(err, doc) {
-    res.json(doc);
+  console.log('inserting project');
+  var project = new Project();
+  project.name = req.body.name;
+  project.info = req.body.info;
+  project.team = req.body.team;
+  project.courseId = req.body.courseId;
+  //project.save();
+  project.save(function (err, project) {
+  if (err) {
+    res.send(err);
+  } else {
+    res.send('project created');
+  }
+  //project.speak();
   });
 });
 
-app.post('/upload', function(req, res) {
-        upload(req,res,function(err){
-            if(err){
-                 res.json({error_code:1,err_desc:err});
-                 return;
-            }
-             res.json({error_code:0,err_desc:null});
-        })
-    });
-
-app.delete('/projectlist/:id', function (req, res) {
-  var id = req.params.id;
+app.delete('/projectlist/:id', function (req, res){
+  var id =req.params.id;
   console.log(id);
-  db.projectlist.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
+  Project.remove({ _id: id },function(err,doc){
     res.json(doc);
   });
 });
 
-app.get('/projectlist/:id', function (req, res) {
+app.put('/projectlist/:id',function(req, res){
   var id = req.params.id;
-  console.log("Querying the database for record with: " + id);
-  db.projectlist.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
-    res.json(doc);
-  });
-});
-
-app.put('/projectlist/:id', function (req, res) {
-  var id = req.params.id;
-  console.log(req.body.name);
-  db.projectlist.findAndModify({
-    query: {_id: mongojs.ObjectId(id)},
-    update: {$set: {name: req.body.name, info: req.body.info}},
-    new: true}, function (err, doc) {
+  var query = id;
+  console.log(id);
+  Project.findOneAndUpdate({name: "test"}, {$set:{name: req.body.name, info: req.body.info, team: req.body.team ,courseId: req.body.courseId}}, {new: true}, function(err, doc){
+    if(err){
+        console.log("Something wrong when updating data!");
+    } else {
       res.json(doc);
     }
-  );
+  });
 });
 
-//app.listen(3000);
-console.log("Server running on port 3000");
+app.get('/discussionlist', function (req, res) {
+  console.log('I received a GET request');
+  Discussion.find({}, function(err, docs) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(docs);
+    }  
+  });  
+});
+
+app.get('/discussionlist/:id', function (req, res) {
+  var id = req.params.id;
+  console.log("Querying the database for record with: " + id);
+  console.log('I received a GET request');
+  Discussion.findOne({_id: id}, function(err, docs) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(docs);
+    }  
+  });
+});
+
+app.post('/discussionlist', function (req, res) {
+  console.log('inserting discussion into database');
+  var discussion = new Discussion();
+  discussion.subject = req.body.subject;
+  discussion.content = req.body.content;
+  discussion.save(function (err, discussion) {
+  if (err) {
+    res.send(err);
+  } else {
+    res.send('discussion created');
+  }
+  });
+});
+
+app.delete('/discussionlist/:id', function (req, res){
+  var id =req.params.id;
+  console.log(id);
+  Discussion.remove({ _id: id },function(err,doc){
+    res.json(doc);
+  });
+});
+
+app.put('/discussionlist/:id',function(req, res){
+  var id = req.params.id;
+  var query = id;
+  console.log(id);
+  Discussion.findOneAndUpdate({name: "test"}, {$set:{subject: req.body.subject, content: req.body.content}}, {new: true}, function(err, doc){
+    if(err){
+        console.log("Something wrong when updating data!");
+    } else {
+      res.json(doc);
+    }
+  });
+});
+
+app.listen(port);
+console.log("Server running on port " + port);
