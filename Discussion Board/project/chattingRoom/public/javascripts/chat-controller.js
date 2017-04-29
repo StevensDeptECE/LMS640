@@ -3,7 +3,7 @@
 
         .controller('chatCtrl', ['$rootScope', '$scope', function($rootScope, $scope, $S){
             $scope._simpleConfig = {
-                toolbars: [['Undo', 'Redo', 'Bold', 'emotion']],
+                toolbars: [['Undo', 'Redo', 'Bold', 'emotion', 'fontsize']],
                 autoHeightEnabled:false,
                 autoFloatEnabled:true,
                 elementPathEnabled:false,
