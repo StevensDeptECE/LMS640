@@ -1,16 +1,17 @@
-<html ng-app="myApp">
-<div class="container">
-	<div>
-		<legend>SecondCtrl ({{ getProjectDetails(selectedProject) }})</legend>
+<div  class=col-sm-9>
+	<div class=col-lg-1></div>
+	<div class=col-lg-8>
+		<legend>({{ getProjectDetails(selectedProject) }})</legend>
 		<h2 >{{project.name}} </h2>
-		<textarea name="message"  class="form-control" rows="3" cols="50">{{project.info}}</textarea> 
-	</div>
-	<br>
-    <div ng-controller = "myCtrl">
-   <input type = "file" file-model = "myFile"/>
-   <button ng-click = "uploadFile()">Upload File</button>
-    </div>
+		<div class="btn-group pull-right">
+		<button class="btn btn-warning" ng-click="edit(project._id)">Edit</button>
+		</div>
+		<textarea name="message"  class="form-control" rows="3" cols="50" >{{project.info}}</textarea> 
+		&nbsp;
+		<br>
 	<button class="btn btn-primary" type="button" >Start Discussion</button> 
+	<button class="btn btn-danger" ng-click="update(project._id)">Update</button>
 	<a href="#/home"> Back</a>
+	</div>
+	
 </div>
-</html>
