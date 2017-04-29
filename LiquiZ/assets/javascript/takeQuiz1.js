@@ -3,7 +3,8 @@
 
 
 /*utility function to create inheritance*/
-Util = {
+console.log("Creating Util in takeQuiz1");
+UtilTakeQuiz1 = {
     subClass: function (superclass, subclass) {
         subclass.prototype = Object.create(superclass.prototype);
         subclass.prototype.constructor = subclass;
@@ -59,7 +60,7 @@ function QC(parent, json, index) {
     }
 }
 
-Util.subClass(Display, QC);
+UtilTakeQuiz1.subClass(Display, QC);
 
 
 QC.prototype.buildHeader = function() {
@@ -121,7 +122,7 @@ function timerSetter (quizLength){
     },1000);
 }
 
-Util.subClass(Display, takeQuiz);
+UtilTakeQuiz1.subClass(Display, takeQuiz);
 
 /*draw method for takeQuiz object*/
 takeQuiz.prototype.draw = function(div){
@@ -314,4 +315,37 @@ var quiz1Payload = {
     class: "L-quiz",
     time: "60",
     questions: quest
+};
+
+var CPE593Quest = [
+    {
+        id: "qc1000",
+        title: "Bubblesort",
+        points: 10,
+        comp: [
+            ["Instr", "Show the first pass of bubblesort for the array [5,1,3,4,2]", "1"],
+            ["Grid", 5 , "3"]
+        ]
+    },
+
+    {
+        id: "qc1001",
+        title: "Tree Traversal",
+        points: 10,
+        comp: [
+            ["Instr", "Fill in the binary tree which results in the preorder traversal: 5,7,2,9,1", "1"],
+            ["DragDrop", "BinaryTree.png",["5","7","2","9","1"], [ {"left":120,"top":29}, {"left":78,"top":86},{"left":163,"top":86},{"left":36,"top":144},{"left":120,"top":144}], 7],
+            ["Instr", "Write the code for pre-order traversal","1"],
+            ["Codes", "void preorder(){<>//INSERT YOUR CODE HERE<>}", "2"],
+            ["Instr", "What is the complexity of your pre-order traversal?","1"],
+            [ "FillIn", "3"]
+        ]
+    }
+
+];
+var CPE593Quiz = {
+    title: "Quiz 1",
+    class: "CPE593",
+    time: "60",
+    questions: CPE593Quest
 };

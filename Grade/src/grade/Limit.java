@@ -81,4 +81,40 @@ public class Limit {
 	 	}
 	}
 	
+	public void updateLimit(HttpServletRequest request, HttpServletResponse response) {
+		Gson json = new Gson();
+		double max = Double.parseDouble(request.getParameter("max"));
+		double min = Double.parseDouble(request.getParameter("min"));
+		this.max = max;
+		this.min = min;
+		String name = request.getParameter("object");
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String url = "jdbc:mysql://localhost:3306/grade";
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(url, "root", "123qwe");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		PreparedStatement stmt = null;
+		try {
+			String sql = "update grade_limit set " + "max" + "=" + max + ", " + "min=" + min + " where names =" + "\"" + name + "\"";
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+			int i = stmt.executeUpdate();
+			System.out.println(i);
+			if (i == 1) {
+				response.getWriter().write("sucess");
+			}
+ 			stmt.close();
+ 			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
