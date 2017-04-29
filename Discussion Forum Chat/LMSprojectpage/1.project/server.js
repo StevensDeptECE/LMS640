@@ -11,13 +11,41 @@ var http = require('http');
 var multer  = require('multer');
 var Project = require('./app/models/project');
 var Discussion = require('./app/models/discussion');
+var path = require('path');
+var http = require('http');
+var multer  = require('multer');
 
 mongoose.Promise = require('bluebird');
+
+var storage = multer.diskStorage({
+  destination: './uploads/',
+  filename: function (req, file, cb) {
+    cb(null, file.originalname.replace(path.extname(file.originalname), "") + '-' + Date.now() + path.extname(file.originalname))
+  }
+})
+
+var upload = multer({ storage: storage })
+app.set('port', process.env.PORT || 8000);
 
 app.use(morgan('dev'));
 app.use(bodyParser.json()); //for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true})); //for parsing application/x-www-form/urlencoded
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// upload file server side code
+app.post('/savedata', upload.single('file'), function(req,res,next){
+    console.log('Upload Successful ', req.file, req.body);
+  });
+
+app.post('/savedata', upload.single('file'), function(req,res,next){
+     console.log('Uploade Successful ', req.file, req.body);
+ });
+ http.createServer(app).listen(app.get('port'), function(){
+   console.log('Express server listening on port ' + app.get('port'));
+ });
+
+
 
 mongoose.connect('mongodb://localhost:27017/project', function(err) {  //27017 is the mongodb port
   if(err) {
@@ -28,7 +56,7 @@ mongoose.connect('mongodb://localhost:27017/project', function(err) {  //27017 i
 });
 
 app.get('/', function (req, res) {
-  res.send('I Love Bhavi <3');
+  res.send('get request');
 });
 
 app.get('/projectlist', function (req, res) {
@@ -153,5 +181,5 @@ app.put('/discussionlist/:id',function(req, res){
   });
 });
 
-app.listen(port);
+// app.listen(port);
 console.log("Server running on port " + port);

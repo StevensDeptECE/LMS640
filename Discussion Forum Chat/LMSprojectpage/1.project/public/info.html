@@ -1,3 +1,4 @@
+<html ng-app="myApp">
 <div  class=col-sm-9>
 	<div class=col-lg-1></div>
 	<div class=col-lg-8>
@@ -9,9 +10,14 @@
 		<textarea name="message"  class="form-control" rows="3" cols="50" >{{project.info}}</textarea> 
 		&nbsp;
 		<br>
+	<div ng-controller = "myCtrl">
+   		<input type = "file" file-model = "myFile"/>
+		<button ng-click = "uploadFile()">Upload File</button>
+    </div>
 	<button class="btn btn-primary" type="button" >Start Discussion</button> 
 	<button class="btn btn-danger" ng-click="update(project._id)">Update</button>
 	<a href="#/home"> Back</a>
 	</div>
 	
 </div>
+</html>
