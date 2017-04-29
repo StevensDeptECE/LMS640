@@ -1,0 +1,26 @@
+XML for matrix
+
+
+<comp>
+<row>matrix</row>
+<row>3<row>
+<row>3</row>
+<cols>123</cols>
+</comp>
+
+XSD for Matrix
+
+ <xs:element name="comp">
+    <xs:complexType>
+        <xs:element name="Matrix">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="row" value="3"/>
+                    <xs:element name="cols" value="3"/>
+					<xs:element name="id" value="123"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+      </xs:complexType>
+    </xs:element>
+  
