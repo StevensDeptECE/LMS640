@@ -15,6 +15,10 @@ myApp.config(function($routeProvider) {
       templateUrl: 'info.html',
       controller: 'infoCtrl'
     })
+    .when('/discussion',{
+      templateUrl: 'discussion.html',
+      controller: 'discussionCtrl'
+    })
     .otherwise({
       redirectTo: '/home'
     });
@@ -30,46 +34,48 @@ myApp.factory('selectedProject', function () {
     };
 });
 
-     myApp.directive('fileModel', ['$parse', function ($parse) {
-        return {
-           restrict: 'A',
-           link: function(scope, element, attrs) {
-              var model = $parse(attrs.fileModel);
-              var modelSetter = model.assign;
-              element.bind('change', function(){
-                 scope.$apply(function(){
-                    modelSetter(scope, element[0].files[0]);
-                 });
-              });
-           }
-        };
-     }]);
-     myApp.service('fileUpload', ['$http', function ($http) {
-        this.uploadFileToUrl = function(file, uploadUrl){
-           var fd = new FormData();
-           fd.append('file', file);
-           $http.post(uploadUrl, fd, {
-              transformRequest: angular.identity,
-              headers: {'Content-Type': undefined}
-           })
-           .success(function(){
-            //popup.windowPopup(500,500,"Upload Successful")
-            //console.log("Upload Successful")
-           })
-           .error(function(){
-            //window.alert("Ohh, Upload failed!")
-           });
-        }
-     }]);
-     myApp.controller('myCtrl', ['$scope', 'fileUpload', function($scope, fileUpload){
-        $scope.uploadFile = function(){
-           var file = $scope.myFile;
-           var uploadUrl = "/savedata";
-           fileUpload.uploadFileToUrl(file, uploadUrl);
-        };
-     }]);  
 
 /**** Controllers ****/
+
+function discussionCtrl($scope,$http) {
+
+console.log("Hello World from controller");   
+var refresh= function(){
+  $http.get('/discussionlist').success(function(response){
+      console.log("I got the data I requested");
+      $scope.discussionlist=response;
+      $scope.discussion = "";
+    }); 
+};
+
+
+refresh();
+
+$scope.addPost = function(){
+  console.log($scope.discussion);
+  $http.post('/discussionlist',$scope.discussion).success(function(response){
+    console.log(response);
+    refresh();
+  });
+};
+
+$scope.reply = function(id){
+  console.log(id);
+  $http.post('/discussionlist' ,$scope.discussion).success(function(response){
+    console.log(response);
+    refresh();
+  });
+};
+
+
+$scope.remove = function(id){
+  console.log(id);
+  $http.delete('/discussionlist/'+id).success(function(response){
+    refresh();
+  });
+};
+
+}
 
 function infoCtrl($scope, $http, selectedProject){
   console.log("Hello World from info controller");
@@ -89,18 +95,36 @@ function infoCtrl($scope, $http, selectedProject){
           $scope.requestSent = true;
         }
         return project;
-      }; 
+      };
 
+      $scope.edit = function() {
+        console.log(id);
+        $http.get('/projectlist/' + id).success(function(response) {
+          $scope.project = response;
+        });
+      };
 
+      var refresh = function() {
+        $http.get('/projectlist').success(function(response) {
+          console.log("I got the data I requested");
+          $scope.projectlist = response;
+          $scope.project = "";
+        });
+      };
+
+      refresh();
+
+      $scope.update = function() {
+        console.log($scope.project._id);
+        $http.put('/projectlist/' + $scope.project._id, $scope.project).success(function(response) {
+          refresh();
+        })
+      };
 }
 
 function AppCtrl($scope, $http, selectedProject){
     console.log("Hello World from controller");
     
-    $scope.showMe = false;
-    $scope.myFunc = function() {
-        $scope.showMe = !$scope.showMe;
-    };
     
      $scope.uploadFile = function(){
        var file = $scope.myFile;

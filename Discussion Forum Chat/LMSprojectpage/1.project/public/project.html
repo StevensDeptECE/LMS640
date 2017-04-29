@@ -1,10 +1,6 @@
 <!DOCTYPE>
 <html>
 
-
-
-
-
 <div class="row row-offcanvas row-offcanvas-left" >
   <div class=col-sm-9 ng-controller="AppCtrl">     
     <div class="col-lg-1"></div>
@@ -23,13 +19,14 @@
                   <label for="Description"></label>
                   <textarea name="message" ng-model="project.info" class="form-control" rows="3" cols="50" placeholder="Description"></textarea>
                   <label for="courseId"></label>
-                  <div><input type="number" class="form-control" ng-model="project.team" placeholder="size of team">
-                  <input type="text" class="form-control" ng-model="project.courseId" placeholder="courseId"></div>
+                  <input type="number" class="form-control" ng-model="project.team" placeholder="size of team">
+                  <input type="text" class="form-control" ng-model="project.courseId" placeholder="courseId">
                   <br></br>
                    <input type = "file" file-model = "myFile"/>
                    <button ng-click = "uploadFile()">upload</button>
                    <div class="btn-group pull-right">
-      					<button class="btn btn-primary" type="button" ng-click="myFunc()"> Add Members</button>          
+                   <button class="btn btn-primary" ng-click="update(project._id)">update</button><br></br>
+      					   <button class="btn btn-primary" type="button" ng-click="myFunc()"> Add Members</button>          
     				</div>
       
                   
@@ -42,7 +39,7 @@
             <table class="table">
                 <thead>
                   <tr class="cob-popover-container">
-                  	<th><input type="checkbox" ng-model="selectedAll" ng-click="checkAll()" /></th>
+                  	<th><input type="checkbox"  ng-repeat="item in products" ng-click="checkAll()" /></th>
                     <th>Name</th>
                     <th>Info</th>
                     <th class=col-sm-1>Size</th>
@@ -62,7 +59,8 @@
                     <td>{{project.courseId}}</td>
 
                     <!--<td>{{project.team}}</td>-->
-                    <td><button class="btn btn-danger" ng-click="remove(project._id)">Remove</button></td>
+                <td><button class="btn btn-danger" ng-click="remove(project._id)">Remove</button></td>
+                <!-- <td><button class="btn btn-primary" ng-click="update(project._id)">update</button></td> -->
             		<td><button class="btn btn-warning" ng-click="edit(project._id)">Edit</button></td>
                   </tr>
                 </tbody>
