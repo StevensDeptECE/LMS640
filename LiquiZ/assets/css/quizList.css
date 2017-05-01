@@ -631,3 +631,29 @@ input.Matrix{
 }
 
 /*-----end question styling------*/
+
+.Logo{
+    display: block;
+    margin: 0 auto;
+    width:250px;
+}
+
+.loginWindow{
+    width: 250px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 15px;    
+}
+.signupbutton{
+    float: left;
+    width: 125px;
+}
+.loginbutton{
+    float: right;
+    width: 125px;
+}
+
+.LiquizName{
+    color: white;
+    text-align: center;
+}
