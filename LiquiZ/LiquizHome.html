@@ -27,10 +27,18 @@
 
     
 </head>
-<body onload="loadPrefs('prefs_sample'), launch(Login, '', 'up3')">
-    <a href="#" onclick="launch(quizIndex, quizDetailPayLoad, 'up3')">Quizzes</a>
+<body onload="loadPrefs('prefs_sample'), launch(Login, '', 'up3')" style="background-color: #4285F4;">
+    
     <div class="up1"></div>
     <div id="up2"></div>
-    <div id="up3"></div>
+    <div id="up3"> <img src="assets/images/LiquizLogo2.png" class="Logo">
+        <div class="loginWindow">
+            <h1 class="LiquizName">LiquiZ</h1>
+            <input type="text" class="username" placeholder="username">
+            <input type="password" class="password" placeholder="password">
+            <input type="button" class="signupbutton" value="sign up" onclick="launch(quizIndex, quizDetailPayLoad, 'up3')">
+            <input type="button" value="login" class="loginbutton" onclick="launch(quizIndex, quizDetailPayLoad, 'up3')" >
+        </div>
+    </div>
 </body> 
 </html>
