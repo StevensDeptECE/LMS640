@@ -1,3 +1,15 @@
+.body-login {
+    margin: 0px;
+    background: #4285F4;
+}
+.body-main {
+    margin: 0px;
+    background: white;
+}
+.navbar {
+    height: 35px;
+    background: white;
+}
 /*For table framework*/
 .table_location {
     padding-right: 1em;
@@ -635,7 +647,7 @@ input.Matrix{
 .Logo{
     display: block;
     margin: 0 auto;
-    width:250px;
+    width:200px;
 }
 
 .loginWindow{
@@ -656,4 +668,8 @@ input.Matrix{
 .LiquizName{
     color: white;
     text-align: center;
+    font-family: Helvetica, sans-serif;
+    font-size: 50px;
+    margin: 10px;
 }
+

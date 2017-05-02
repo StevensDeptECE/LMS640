@@ -3,6 +3,8 @@ function quizIndex(payload){
 }
 
 quizIndex.prototype.draw = function(s) {
+    clearClass("body-login");
+    document.getElementsByTagName("body").class = "body-main";
     /*if we have a login form (from main page) erase it*/
     var login = document.getElementById("loginformabs_top");
     if(login){

@@ -104,3 +104,7 @@ submitQuizButton.prototype.draw = function(){
 }
 
 var submissionInfo = "";
+
+function hideNav() {
+  getJSONFromServer(filename + ".json", Preferences);
+}
