@@ -3,7 +3,6 @@
 
 
 /*utility function to create inheritance*/
-console.log("Creating Util in takeQuiz1");
 UtilTakeQuiz1 = {
     subClass: function (superclass, subclass) {
         subclass.prototype = Object.create(superclass.prototype);

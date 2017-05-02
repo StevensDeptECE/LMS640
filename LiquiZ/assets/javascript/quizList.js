@@ -1,34 +1,18 @@
 function quizIndex(payload){
     this.payload = payload;
-    //s=document.getElementById("quizList");
-    //drawTable(s,data);
 }
 
 quizIndex.prototype.draw = function(s) {
+    /*if we have a login form (from main page) erase it*/
     var login = document.getElementById("loginformabs_top");
     if(login){
         login.style.display ="none";
     }
-    console.log("Printing Util");
-    console.log(Util);
-    var header = Util.h1("Quiz List","h03");
-    clearElements("up3");
-
-    // this function could use one button to enter two kinds of quiz builder;
-    // var createQuiz = Util.button("Create Quiz", function(){myFunction()}, "two");
-    // header.appendChild(createQuiz);
-
-    var createQuiz = Util.button("Create Quiz I", function () {
-        launch(addQuiz, '', 'up3')
-    }, "two");
+    var header = Util.h1("Quizzes","h03");
+    var createQuiz = Util.button("+ New Quiz", function () {launch(newQuiz, '', 'up3')}, "two");
     header.appendChild(createQuiz);
 
-    // var createQuestion = Util.button("Create Quiz II",function () {launch(questionEditor, "", 'up3')},"two");
-    // header.appendChild(createQuestion);
-
-    var aa = Util.button("Create Quiz III", function () {launch(newQuiz, '', 'up3')}, "two");
-    header.appendChild(aa);
-
+    /*if we have a quiz stored in session storage, get the JSON and add the show quiz button*/
     if(sessionStorage.getItem("mytext") != null) {
         var newQuest = JSON.parse(sessionStorage.getItem("mytext"));
         var newQuizPayload = {
@@ -39,8 +23,11 @@ quizIndex.prototype.draw = function(s) {
         var submitQuiz = Util.button("Show Quiz", function () {launch(takeNewQuiz, newQuizPayload, 'up3')}, "two");
         header.appendChild(submitQuiz);
     }
+    /*button to clear a quiz saved locally, commentiing out for now*/
+    /*
     var clearButton = Util.button("Clear localStorage",function () {sessionStorage.clear(); launch(quizIndex, quizDetailPayLoad, 'up3')}, "two");
     header.appendChild(clearButton);
+    */
     var editSettings = Util.button("Settings",function () {launch(settings, settingsPayload, 'up3')},"two");
     header.appendChild(editSettings);
 
@@ -56,15 +43,15 @@ quizIndex.prototype.draw = function(s) {
     var th1 = document.createElement("th");
     th1.appendChild(document.createTextNode("Publish"));
     var th2 = document.createElement("th");
-    th2.appendChild(document.createTextNode("Quiz Name"));
+    th2.appendChild(document.createTextNode("Quiz Title"));
     var th3 = document.createElement("th");
-    th3.appendChild(document.createTextNode("Course Name"));
+    th3.appendChild(document.createTextNode("Course"));
     var th4 = document.createElement("th");
     th4.appendChild(document.createTextNode("Due Date"));
     var th5 = document.createElement("th");
     th5.appendChild(document.createTextNode("Close Date"));
     var th6 = document.createElement("th");
-    th6.appendChild(document.createTextNode("Show Statistic"));
+    th6.appendChild(document.createTextNode("Statistics"));
     var th7 = document.createElement("th");
     th7.appendChild(document.createTextNode("Take & Edit"));
     var th8 = document.createElement("th");
@@ -126,42 +113,29 @@ quizIndex.prototype.draw = function(s) {
             bt2.className = "three";
             bt2.appendChild(text);
         td7.appendChild(bt2);
+       /*more complicated quiz editor. commenting out for now*/
+        /*
             var bt3 = document.createElement("button");
             bt3.onclick = function () {launch(quizEditor, quizEditorPayLoad, 'up3')};
             text = document.createTextNode("Edit I");
             bt3.className = "three";
             bt3.appendChild(text);
         td7.appendChild(bt3);
+        */
             var bt33 = document.createElement("button");
             bt33.onclick = function () {launch(newQuizEditor, newQuizEditorPayLoad, 'up3')};
-            text = document.createTextNode("Edit II");
+            text = document.createTextNode("Edit");
             bt33.className = "three";
             bt33.appendChild(text);
         td7.appendChild(bt33);
 
-
         var td8 = document.createElement("td");
             var bt4 = document.createElement("button");
             bt4.onclick = this.createClickHandler1(i, this.payload);
-            // bt4.onclick = function(arg) {
-            //     return function () {
-            //         var row = this.parentNode.parentNode;
-            //         data.splice(arg,1);
-            //         row.parentNode.removeChild(row);
-            //         console.log(data);
-            //     }
-            // }(i);
-            text = document.createTextNode("Del");
+            text = document.createTextNode("Delete");
             bt4.className = "three";
             bt4.appendChild(text);
         td8.appendChild(bt4);
-
-        // duplicate function, not realize right now.
-        // var bt5 = document.createElement("button");
-        //     text = document.createTextNode("Dup");
-        //     bt5.appendChild(text);
-        // td8.appendChild(bt5);
-
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
@@ -176,8 +150,6 @@ quizIndex.prototype.draw = function(s) {
     t.appendChild(tbody);
     newDiv.appendChild(t);
     s.appendChild(newDiv);
-    // clearClass("active");
-    // document.getElementById("allquizzes").className = "active";
 };
 
 quizIndex.prototype.createClickHandler1 = function(arg, data){
@@ -187,45 +159,6 @@ quizIndex.prototype.createClickHandler1 = function(arg, data){
         row.parentNode.removeChild(row);
     }
 };
-
-/*
- var createClickHandler = function(arg) {
-     return function () {
-         var row = this.parentNode.parentNode;
-         this.payload.splice(arg,1);
-         row.parentNode.removeChild(row);
-    }
- };
- */
-
-
-// var quizIndexPayload = [
-//     {
-//         "quizID": "qc1111",
-//         "published": "yes",
-//         "quizTitle": "Quiz1",
-//         "quizClass": "CPE-593",
-//         "dueDate": "1/1/2017",
-//         "closeDate": "2/2/2017"
-//     },
-//     {
-//         "quizID": "qc2222",
-//         "published": "yes",
-//         "quizTitle": "Quiz2",
-//         "quizClass": "CPE-593",
-//         "dueDate": "2/2/2017",
-//         "closeDate": "3/3/2017"
-//     },
-//     {
-//         "quizID": "qc3333",
-//         "published": "no",
-//         "quizTitle": "Quiz1",
-//         "quizClass": "CPE-810",
-//         "dueDate": "3/3/2017",
-//         "closeDate": "4/4/2017"
-//     }
-// ];
-// quizIndexPayload.push(JSON.parse(sessionStorage.getItem("quizDetails")));
 
 var quizDetailPayLoad = [
     {
@@ -304,13 +237,3 @@ var quizDetailPayLoad = [
         accessCode: "333333"
     }
 ];
-
-
-// function myFunction() {
-//     var r = confirm("Press 'OK' to enter a normal version / Press 'Cancel' to enter a git version");
-//     if (r == true) {
-//         launch(newQuiz, '', 'up3');
-//     } else {
-//         launch(addQuiz, '', 'up3');
-//     }
-// }

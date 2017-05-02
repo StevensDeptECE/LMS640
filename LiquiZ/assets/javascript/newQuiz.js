@@ -678,7 +678,7 @@ function create_question(preference) {
     imgUpload.accept = "image/*";
     dragAndDrop.id = "dragDropSet" + count;
     dragAndDrop.style.display = "none";
-    dragAndDrop.className = "multiChoice";
+    dragAndDrop.className = "dragDrop";
     /*add function to display preview of image*/
     imgUpload.onchange = function() {readURL(this, count)};
     var imgDiv = document.createElement('span');
