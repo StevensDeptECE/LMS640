@@ -27,7 +27,7 @@ newQuiz.prototype.draw = function(s) {
 
     var editInstrTitle = document.createElement("p");
     editInstrTitle.className = "th5";
-    editInstrTitle.appendChild(document.createTextNode("You could input quiz title here"));
+    editInstrTitle.appendChild(document.createTextNode("Quiz Title"));
     var quizTitle = document.createElement("textarea");
     quizTitle.className = "questionTitle";
     quizTitle.placeholder = "Please input the title of the quiz";
@@ -35,15 +35,15 @@ newQuiz.prototype.draw = function(s) {
 
     var editInstrClass = document.createElement("p");
     editInstrClass.className = "th5";
-    editInstrClass.appendChild(document.createTextNode("You could input quiz class here"));
+    editInstrClass.appendChild(document.createTextNode("Course Name/Number"));
     var quizClass = document.createElement("textarea");
     quizClass.className = "questionTitle";
-    quizClass.placeholder = "Which class is this quiz for";
+    quizClass.placeholder = "Please input the class this quiz is for";
     quizClass.id = "quizClass";
 
     var editInstrPublish = document.createElement("p");
     editInstrPublish.className = "th5";
-    editInstrPublish.appendChild(document.createTextNode("You could modify if publish the quiz here"));
+    editInstrPublish.appendChild(document.createTextNode("Publish (yes/no)"));
     var published = document.createElement("textarea");
     published.className = "questionTitle";
     published.placeholder = "Do you want to published this quiz (yes / no)";
@@ -98,7 +98,7 @@ newQuiz.prototype.draw = function(s) {
 
     var editInstrOpenDate = document.createElement("p");
     editInstrOpenDate.className = "th5";
-    editInstrOpenDate.appendChild(document.createTextNode("You could modify quiz open date here"));
+    editInstrOpenDate.appendChild(document.createTextNode("Quiz Open Date"));
     var openDate = document.createElement("textarea");
     openDate.className = "questionTitle";
     openDate.placeholder = "Please input the open date of this quiz (mm/dd/yy)";
@@ -107,7 +107,7 @@ newQuiz.prototype.draw = function(s) {
 
     var editInstrDueDate = document.createElement("p");
     editInstrDueDate.className = "th5";
-    editInstrDueDate.appendChild(document.createTextNode("You could modify quiz due date here"));
+    editInstrDueDate.appendChild(document.createTextNode("Due Date"));
     var dueDate = document.createElement("textarea");
     dueDate.className = "questionTitle";
     dueDate.placeholder = "Please input the due date of this quiz (mm/dd/yy)";
@@ -116,7 +116,7 @@ newQuiz.prototype.draw = function(s) {
 
     var editInstrCloseDate = document.createElement("p");
     editInstrCloseDate.className = "th5";
-    editInstrCloseDate.appendChild(document.createTextNode("You could modify quiz close date here"));
+    editInstrCloseDate.appendChild(document.createTextNode("Close Date"));
     var closeDate = document.createElement("textarea");
     closeDate.className = "questionTitle";
     closeDate.placeholder = "Please input the close date of this quiz (mm/dd/yy)";
@@ -125,7 +125,7 @@ newQuiz.prototype.draw = function(s) {
 
     var editInstrTime = document.createElement("p");
     editInstrTime.className = "th5";
-    editInstrTime.appendChild(document.createTextNode("You could modify quiz time here"));
+    editInstrTime.appendChild(document.createTextNode("Quiz Time (min)"));
     var quizTime = document.createElement("textarea");
     quizTime.className = "questionTitle";
     quizTime.placeholder = "Please input the time limit of this quiz (in minutes)";
@@ -134,7 +134,7 @@ newQuiz.prototype.draw = function(s) {
 
     var editInstrTry = document.createElement("p");
     editInstrTry.className = "th5";
-    editInstrTry.appendChild(document.createTextNode("You could modify quiz try times here"));
+    editInstrTry.appendChild(document.createTextNode("Allowed Attempts"));
     var tryTimes = document.createElement("textarea");
     tryTimes.className = "questionTitle";
     tryTimes.placeholder = "Please input the number of tries of this quiz (1 - 5)";
@@ -143,7 +143,7 @@ newQuiz.prototype.draw = function(s) {
 
     var editInstrAnswer = document.createElement("p");
     editInstrAnswer.className = "th5";
-    editInstrAnswer.appendChild(document.createTextNode("You could modify if shuffle your answers here"));
+    editInstrAnswer.appendChild(document.createTextNode("Suffled Answers"));
     var shuffleAnswers = document.createElement("textarea");
     shuffleAnswers.className = "questionTitle";
     shuffleAnswers.placeholder = "Do you want to shuffle the order of answers (yes / no)";
@@ -152,7 +152,7 @@ newQuiz.prototype.draw = function(s) {
 
     var editInstrQuestion = document.createElement("p");
     editInstrQuestion.className = "th5";
-    editInstrQuestion.appendChild(document.createTextNode("You could modify if shuffle your questions here"));
+    editInstrQuestion.appendChild(document.createTextNode("Shuffled Answers"));
     var shuffleQuestions = document.createElement("textarea");
     shuffleQuestions.className = "questionTitle";
     shuffleQuestions.placeholder = "Do you want to shuffle the order of questions (yes / no)";
@@ -161,7 +161,7 @@ newQuiz.prototype.draw = function(s) {
 
     var editInstrNum = document.createElement("p");
     editInstrNum.className = "th5";
-    editInstrNum.appendChild(document.createTextNode("You could modify if only one subproblem in one question here"));
+    editInstrNum.appendChild(document.createTextNode("Subproblems (yes/no)"));
     var questionNum = document.createElement("textarea");
     questionNum.className = "questionTitle";
     questionNum.placeholder = "Do you want to add one questions for one time (yes / no)";
@@ -170,7 +170,7 @@ newQuiz.prototype.draw = function(s) {
 
     var editInstrCode = document.createElement("p");
     editInstrCode.className = "th5";
-    editInstrCode.appendChild(document.createTextNode("You could modify the access code here"));
+    editInstrCode.appendChild(document.createTextNode("Access Code"));
     var accessCode = document.createElement("textarea");
     accessCode.className = "questionTitle";
     accessCode.placeholder = "Please input the access code of this quiz (6 digits)";

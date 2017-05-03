@@ -49,7 +49,7 @@ function newDrawDetails(details,data) {
 
     var editInstrTitle = document.createElement("p");
     editInstrTitle.className = "th5";
-    editInstrTitle.appendChild(document.createTextNode("You could modify quiz title here"));
+    editInstrTitle.appendChild(document.createTextNode("Quiz Title"));
 
     var quizTitle = document.createElement("textarea");
     quizTitle.className = "questionTitle";
@@ -58,7 +58,7 @@ function newDrawDetails(details,data) {
 
     var editInstrClass = document.createElement("p");
     editInstrClass.className = "th5";
-    editInstrClass.appendChild(document.createTextNode("You could modify quiz class here"));
+    editInstrClass.appendChild(document.createTextNode("Course Name/Number"));
 
     var quizClass = document.createElement("textarea");
     quizClass.className = "questionTitle";
@@ -67,7 +67,7 @@ function newDrawDetails(details,data) {
 
     var editInstrPublish = document.createElement("p");
     editInstrPublish.className = "th5";
-    editInstrPublish.appendChild(document.createTextNode("You could modify if publish the quiz here"));
+    editInstrPublish.appendChild(document.createTextNode("Publish (yes/no)"));
     var published = document.createElement("textarea");
     published.className = "questionTitle";
     published.value = data[0].published;
@@ -75,7 +75,7 @@ function newDrawDetails(details,data) {
 
     var editInstrOpenDate = document.createElement("p");
     editInstrOpenDate.className = "th5";
-    editInstrOpenDate.appendChild(document.createTextNode("You could modify quiz open date here"));
+    editInstrOpenDate.appendChild(document.createTextNode("Quiz Open Date"));
     var openDate = document.createElement("textarea");
     openDate.className = "questionTitle";
     openDate.value = data[0].openDate;
@@ -83,7 +83,7 @@ function newDrawDetails(details,data) {
 
     var editInstrDueDate = document.createElement("p");
     editInstrDueDate.className = "th5";
-    editInstrDueDate.appendChild(document.createTextNode("You could modify quiz due date here"));
+    editInstrDueDate.appendChild(document.createTextNode("Due Date"));
     var dueDate = document.createElement("textarea");
     dueDate.className = "questionTitle";
     dueDate.value = data[0].dueDate;
@@ -91,7 +91,7 @@ function newDrawDetails(details,data) {
 
     var editInstrCloseDate = document.createElement("p");
     editInstrCloseDate.className = "th5";
-    editInstrCloseDate.appendChild(document.createTextNode("You could modify quiz close date here"));
+    editInstrCloseDate.appendChild(document.createTextNode("Close Date"));
     var closeDate = document.createElement("textarea");
     closeDate.className = "questionTitle";
     closeDate.value = data[0].closeDate;
@@ -99,7 +99,7 @@ function newDrawDetails(details,data) {
 
     var editInstrTime = document.createElement("p");
     editInstrTime.className = "th5";
-    editInstrTime.appendChild(document.createTextNode("You could modify quiz time here"));
+    editInstrTime.appendChild(document.createTextNode("Quiz Time (min)"));
     var quizTime = document.createElement("textarea");
     quizTime.className = "questionTitle";
     quizTime.value = data[0].quizTime;
@@ -107,7 +107,7 @@ function newDrawDetails(details,data) {
 
     var editInstrTry = document.createElement("p");
     editInstrTry.className = "th5";
-    editInstrTry.appendChild(document.createTextNode("You could modify quiz try times here"));
+    editInstrTry.appendChild(document.createTextNode("Allowed Attempts"));
     var tryTimes = document.createElement("textarea");
     tryTimes.className = "questionTitle";
     tryTimes.value = data[0].tryTimes;
@@ -115,7 +115,7 @@ function newDrawDetails(details,data) {
 
     var editInstrAnswer = document.createElement("p");
     editInstrAnswer.className = "th5";
-    editInstrAnswer.appendChild(document.createTextNode("You could modify if shuffle your answers here"));
+    editInstrAnswer.appendChild(document.createTextNode("Shuffled Answers (yes/no)"));
     var shuffleAnswers = document.createElement("textarea");
     shuffleAnswers.className = "questionTitle";
     shuffleAnswers.value = data[0].shuffleAnswers;
@@ -123,7 +123,7 @@ function newDrawDetails(details,data) {
 
     var editInstrQuestion = document.createElement("p");
     editInstrQuestion.className = "th5";
-    editInstrQuestion.appendChild(document.createTextNode("You could modify if shuffle your questions here"));
+    editInstrQuestion.appendChild(document.createTextNode("Shuffled Answers (yes/no)"));
     var shuffleQuestions = document.createElement("textarea");
     shuffleQuestions.className = "questionTitle";
     shuffleQuestions.value = data[0].shuffleQuestions;
@@ -131,7 +131,7 @@ function newDrawDetails(details,data) {
 
     var editInstrNum = document.createElement("p");
     editInstrNum.className = "th5";
-    editInstrNum.appendChild(document.createTextNode("You could modify if only one subproblem in one question here"));
+    editInstrNum.appendChild(document.createTextNode("Subproblems (yes/no)"));
     var questionNum = document.createElement("textarea");
     questionNum.className = "questionTitle";
     questionNum.value = data[0].questionNum;
@@ -139,7 +139,7 @@ function newDrawDetails(details,data) {
 
     var editInstrCode = document.createElement("p");
     editInstrCode.className = "th5";
-    editInstrCode.appendChild(document.createTextNode("You could modify the access code here"));
+    editInstrCode.appendChild(document.createTextNode("Access Code"));
     var accessCode = document.createElement("textarea");
     accessCode.className = "questionTitle";
     accessCode.value = data[0].accessCode;
