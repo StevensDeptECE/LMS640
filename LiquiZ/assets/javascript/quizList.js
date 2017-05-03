@@ -3,8 +3,12 @@ function quizIndex(payload){
 }
 
 quizIndex.prototype.draw = function(s) {
+    /*change background to white*/
     clearClass("body-login");
     document.getElementsByTagName("body").class = "body-main";
+    /*add navBar*/
+    document.getElementsByClassName("navbar")[0].style.display = "block";
+    
     /*if we have a login form (from main page) erase it*/
     var login = document.getElementById("loginformabs_top");
     if(login){

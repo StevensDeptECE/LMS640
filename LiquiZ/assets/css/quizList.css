@@ -7,8 +7,35 @@
     background: white;
 }
 .navbar {
-    height: 35px;
-    background: white;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.25);
+    height: 49px;
+    background: #eee;
+    margin: -8px;
+    border-radius: 3px;
+}
+
+.nav-home{
+    text-decoration: none;
+    color: grey;
+    position: relative;
+    left: 26px;
+    top: 14px;
+    font-family: Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.nav-logout {
+    text-decoration: none;
+    color: grey;
+    position: relative;
+    float: right;
+    right: 26px;
+    top: 14px;
+    font-family: Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
 }
 /*For table framework*/
 .table_location {
@@ -18,7 +45,7 @@
 .h01 {
     font-size: 40px;
     text-align: center;
-    text-shadow: 0 0 3px green;
+    text-shadow: 0 0 3px #4285F4;
 }
 .h02 {
     font-size: 50px;
@@ -32,7 +59,6 @@
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
-    cursor: pointer;
     border: 2px;
     line-height: normal;
     font-weight: bold;
@@ -44,17 +70,19 @@
     text-align: left;
     -o-text-overflow: clip;
     text-overflow: clip;
-    text-shadow: 1px 1px 0 #2ecc71 , -1px -1px 0 #2ecc71 , 1px -1px 0 #2ecc71 , -1px 1px 0 #2ecc71 ;
+    text-shadow: 1px 1px 0 #4285F4 , -1px -1px 0 #4285F4 , 1px -1px 0 #4285F4 , -1px 1px 0 #4285F4 ;
     -webkit-transition: text-shadow 500ms cubic-bezier(0.42, 0, 0.58, 1);
     -moz-transition: text-shadow 500ms cubic-bezier(0.42, 0, 0.58, 1);
     -o-transition: text-shadow 500ms cubic-bezier(0.42, 0, 0.58, 1);
     transition: text-shadow 500ms cubic-bezier(0.42, 0, 0.58, 1);
     position: relative;
+    margin-bottom: 10px;
+    margin-top: 30px;
     /*top: 30px;*/
 }
 
 .h03:hover {
-    text-shadow: 1px 1px 8px rgba(46,204,113,0.5) , -1px -1px 8px rgba(46,204,113,0.5) , 1px -1px 8px rgba(46,204,113,0.5) , -1px 1px 8px rgba(46,204,113,0.5) ;
+    text-shadow: 1px 1px 8px #4285F4 , -1px -1px 8px #4285F4 , 1px -1px 8px #4285F4 , -1px 1px 8px #4285F4;
     -webkit-transition: text-shadow 250ms cubic-bezier(0.42, 0, 0.58, 1);
     -moz-transition: text-shadow 250ms cubic-bezier(0.42, 0, 0.58, 1);
     -o-transition: text-shadow 250ms cubic-bezier(0.42, 0, 0.58, 1);
@@ -69,13 +97,12 @@
     height: auto;
     margin-left:auto;
     margin-right:auto;
-    margin-top: 3em;
 }
 .t01 th{
     text-align: center;
     border: 1px solid grey;
     border-collapse: collapse;
-    background-color: #4CAF50;
+    background-color: #4285F4;
     color: white;
     font-size: 20px;
     padding: 5px;
@@ -121,7 +148,7 @@
     text-align: center;
     border: 1px solid grey;
     border-collapse: collapse;
-    background-color: #4CAF50;
+    background-color: #4285F4;
     color: white;
     font-size: 20px;
     padding: 5px;
@@ -146,15 +173,15 @@
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #4CAF50;
+    background-color: #4285F4;
     border: none;
     border-radius: 5px;
     box-shadow: 0 8px #999;
     margin: 15px 15px;
 }
-.one:hover {background-color: #3e8e41}
+.one:hover {background-color: #4285F4}
 .one:active {
-    background-color: #3e8e41;
+    background-color: #4285F4;
     box-shadow: 0 3px #666;
     transform: translateY(2px);
 }
@@ -166,7 +193,7 @@
     cursor: pointer;
     outline: none;
     color: #fff;
-    background-color: #4CAF50;
+    background-color: #4285F4;
     border: none;
     border-radius: 5px;
     box-shadow: 0 8px #999;
@@ -177,9 +204,9 @@
     float: inherit;
 
 }
-.two:hover {background-color: #3e8e41}
+.two:hover {background-color: #4285F4}
 .two:active {
-    background-color: #3e8e41;
+    background-color: #4285F4;
     box-shadow: 0 3px #666;
     transform: translateY(2px);
 }
@@ -191,15 +218,15 @@
     cursor: pointer;
     outline: none;
     color: #fff;
-    background-color: #4CAF50;
+    background-color: #4285F4;
     border: none;
     border-radius: 5px;
     box-shadow: 0 8px #999;
     margin: 15px 15px;
 }
-.three:hover {background-color: #3e8e41}
+.three:hover {background-color: #4285F4}
 .three:active {
-    background-color: #3e8e41;
+    background-color: #4285F4;
     box-shadow: 0 3px #666;
     transform: translateY(2px);
 }
@@ -226,7 +253,7 @@
 }
 .newCheckbox:before {
     content: 'ON';
-    color: #4CAF50;
+    color: #4285F4;
     position: absolute;
     left: 10px;
     z-index: 0;
@@ -261,16 +288,16 @@
 .newSelect{
     font: 400 15px "Helvetica Neue", sans-serif;
     -webkit-appearance: none;
-    border: 1px solid #4CAF50;
+    border: 1px solid #4285F4;
     outline: 0;
-    color: #4CAF50;
+    color: #4285F4;
     padding: 0.65em 2.5em 0.55em 0.75em;
     border-radius: 3px;
     background:
-            linear-gradient(#4CAF50, #4CAF50) no-repeat,
+            linear-gradient(#4285F4, #4285F4) no-repeat,
             linear-gradient(-135deg, rgba(255,255,255,0) 50%, white 50%) no-repeat,
             linear-gradient(-225deg, rgba(255,255,255,0) 50%, white 50%) no-repeat,
-            linear-gradient(#4CAF50, #4CAF50) no-repeat;
+            linear-gradient(#4285F4, #4285F4) no-repeat;
     background-color: white;
     background-size: 1px 100%, 20px 20px, 20px 20px, 20px 60%;
     background-position: right 20px center, right bottom, right bottom, right bottom;
@@ -312,7 +339,7 @@
 }
 .control:hover input:not([disabled]):checked ~ .control__indicator,
 .control input:checked:focus ~ .control__indicator {
-    background: green;
+    background: #4285F4;
 }
 .control input:disabled ~ .control__indicator {
     background: white;
@@ -384,7 +411,7 @@
     margin: 20px auto 20px 0;
     display: block;
     border-radius: 10px;
-    border: 1px solid green;
+    border: 1px solid #4285F4;
     height: 1em;
     outline: none;
     box-shadow: inset 2px 2px 0px 1px #888888;
@@ -397,7 +424,7 @@
     margin:10px auto 10px 0;
     display:block;
     border-radius:10px;
-    border:1px solid green;
+    border:1px solid #4285F4;
     height: 1.2em;
     outline: none;
     box-shadow: inset 1px 1px 0px 1px #888888;
@@ -410,13 +437,13 @@
     margin:10px auto 10px 0;
     display:block;
     border-radius:10px;
-    border:1px solid green;
+    border:1px solid #4285F4;
     height: 2.4em;
     outline: none;
     box-shadow: inset 1px 1px 0px 1px #888888;
 }
 .th5 {
-    color: green;
+    color: #4285F4;
     font-size:16px;
     margin: 30px 0 10px 0;
 }
@@ -477,12 +504,12 @@
     margin: 20px 40px 20px 20px;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 5px 5px 0px 3px #888888;
+    box-shadow: 1px 1px 1px 1px #888888;
 }
 div.header {
     font-family: Times, serif;
     font-size: 28px;
-    color: green;
+    color: #4285F4;
     border-bottom: 2px solid #ddd;
     margin-bottom: 20px;
 }

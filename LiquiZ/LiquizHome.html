@@ -7,6 +7,8 @@
   <link href="assets/css/quizList.css" rel="stylesheet" type="text/css">
   <script src="../MainPage/js/onepagelib.js"></script>
   <script src="../lib.js"></script>
+  <script src="assets/javascript/jquery.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!--*********** scripts for LiquiZ **********-->
   <script src="assets/javascript/quizList.js"></script>
@@ -24,11 +26,12 @@
   <script src="assets/javascript/questionEditor.js"></script>
   <script src="assets/javascript/newQuiz.js"></script>
   <script src="assets/javascript/submit.js"></script>
+  <script src="../MainPage/js/onepagelib.js"></script>
 
     
 </head>
-<body class="body-login" onload="loadPrefs('prefs_sample'), launch(Login, '', 'up3')">
-    <div class="navbar" style="display:none"></div>
+<body class="body-login" onload="loadPrefs('prefs_sample'), launch(Login, '', 'up3'), hideNav()">
+    <div class="navbar" style="display:none"><a class="nav-home" href="#" onclick="launch(quizIndex,quizDetailPayLoad, 'up3')"><i class="fa fa-home"></i>Home</a><a class="nav-logout" href="./LiquizHome.html">Logout</a></div>
     <div class="up1"></div>
     <div id="up2"></div>
     <div id="up3"> <img src="assets/images/LiquizLogo.png" class="Logo">
