@@ -527,6 +527,14 @@ function create_question(preference) {
     questionInstr.id = "instr_row" + count;
     questionInstr.addEventListener('keydown', autosize);
 
+
+
+
+
+
+
+
+
     var th5 = document.createElement("p");
     th5.id = "5th" + count;
     th5.appendChild(document.createTextNode("Please input the content of this question"));
@@ -557,10 +565,22 @@ function create_question(preference) {
     questionCont4.id = "4cont_row" + count;
     questionCont4.className = "multiChoice";
 
+    var addChoice = Util.button("Add Choice", function () {add_Choice("multiChoices" + count)}, "three");
+
     multiChoices.appendChild(questionCont1);
     multiChoices.appendChild(questionCont2);
     multiChoices.appendChild(questionCont3);
     multiChoices.appendChild(questionCont4);
+    multiChoices.appendChild(addChoice);
+
+
+
+
+
+
+
+
+
 
     var numbersSet = document.createElement("textarea");
     numbersSet.placeholder = "Please input the number of places";
@@ -693,7 +713,6 @@ function create_question(preference) {
     dragAndDrop.appendChild(imgUpload);
     dragAndDrop.appendChild(imgDiv);
 
-
     var bt1 = Util.button("Delete", function () {remove_question(count)}, "three");
     bt1.style.display = "block";
 
@@ -719,6 +738,18 @@ function create_question(preference) {
 
     Quest.appendChild(bt1);
     quests.appendChild(Quest);
+}
+
+var index = 5;
+function add_Choice(no) {
+    var newChoices = document.getElementById(no);
+    var newNo = no.substring(12);
+    var questionContNew = document.createElement("textarea");
+    questionContNew.placeholder = "First Choice";
+    questionContNew.id = index + "cont_row" + newNo;
+    questionContNew.className = "multiChoice";
+    newChoices.appendChild(questionContNew);
+    index++;
 }
 
 function remove_question(no) {
@@ -1024,6 +1055,7 @@ function tableToJson4(Divs) {
         datas.push(rowData);
         console.log(datas);
     }
+    countList = [];
     sessionStorage.setItem("mytext", JSON.stringify(datas));
 
 }
