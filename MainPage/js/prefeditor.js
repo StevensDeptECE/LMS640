@@ -17,6 +17,10 @@ PrefEditor.prototype.draw = function(content) {
   content.appendChild(css_box1);
   content.appendChild(css_box2);
   content.appendChild(css_box3);
+
+  clearClass("active");
+  //set active to some other class
+  document.getElementById("help").className = "active";
 }
 
 /*
