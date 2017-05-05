@@ -17,7 +17,7 @@ CourseList.prototype.draw = function(content) {
   var newTable = Util.table([], false, "courseList", "");
   for (var i = 0; i < this.payload.length; i++)
   {
-    console.log("i: " + i);
+    //console.log("i: " + i);
     var row = Util.tr([]);
       var element = Util.td("");
         //var link = Util.a("javascript:launch(HomeworkCourse, this.payload[i], 'up3')", this.payload[i], "", "");
@@ -25,6 +25,10 @@ CourseList.prototype.draw = function(content) {
         let funcCurrentCourse = function() {launch(HomeworkCourse, courses[i], 'up3')}.bind(courses[i]);
         var link = Util.button(courses[i], funcCurrentCourse,  "", "course" + i);
         //link.onclick = function() {launch(HomeworkCourse, "Course", 'up3')}
+        var link = Util.a("javascript:launch(HomeworkCourse, [] , 'up3')", this.payload[i], "", "");
+        //var currentCourse = this.payload[i];
+        //var link = Util.button(this.payload[i], function() {launch(HomeworkCourse, currentCourse, 'up3')},  "", "course" + i);
+        //link.onclick = function() {launch(HomeworkCourse, currentCourse, 'up3')}
         element.appendChild(link);
       row.appendChild(element);
     newTable.appendChild(row);

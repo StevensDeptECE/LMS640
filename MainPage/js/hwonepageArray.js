@@ -130,9 +130,21 @@ HomeworkCourse.prototype.draw = function(content) {
 
     //innerHTML should be dynamic - not hardcoded to "Homework A"
     //may need a parameter for which assignment it is
-    var newHeader = Util.h1("Homework A", "", "");
+    var newHeader = Util.h1("Submission", "", "");
     up2.appendChild(newHeader);
 
     clearElements('up3');
     //create submission button and everything else needed
+    var divCourse3 = Util.div("Requirements", "Questions");
+    var p3 = Util.p("Implement atoi to convert a string to an integer.\n Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.\n Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.", "Assignment", "", "" );
+    up3.appendChild(divCourse3);
+    up3.appendChild(p3);
+
+    var input1 = Util.input("file","", "", "", "","");
+    var button1 = Util.button("Submit", "Submit", "", "");
+    up3.appendChild(input1);
+    up3.appendChild(button1);
+
   }
+
+
