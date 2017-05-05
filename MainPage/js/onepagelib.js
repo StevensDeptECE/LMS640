@@ -523,7 +523,7 @@ function setCSS(cssFile, cssLinkIndex, change) {
     console.log("change CSS to " + cssFile);
     prefs["css"] = cssFile;
     var newPrefs = JSON.stringify(prefs);
-    //sendJSONToServer("prefs_sample", newPrefs); TODO
+    sendJSONToServer("prefs_sample", newPrefs); //TODO
     launch(PrefEditor, [], 'up3');
   }
 }

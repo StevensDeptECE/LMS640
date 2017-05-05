@@ -134,6 +134,7 @@ margin-left: 120px;
 
 #up2 {
   margin-left:1em;
+  height: 2px;
 }
 
 #up3 {
@@ -372,6 +373,20 @@ input[type=text], input[type=password] {
 .loginformabs span.psw {
     float: right;
     padding-top: 16px;
+}
+
+div .dashboard {
+  border-radius: 2px;
+  border: black;
+  background-color: #4CAF50;
+  width: 12%;
+  margin: 5px;
+  padding: 3px;
+  display: inline-block;
+}
+
+.dashboard {
+  color: white;
 }
 
 </style>

@@ -1,20 +1,23 @@
 function Course(payload) {
-  var courseID = payload["courseID"];
-  var courseName = payload["courseName"];
+  console.log("course payload: " + payload["courseID"] + ", " + payload["courseName"]);
+  this.courseID = payload["courseID"];
+  this.courseName = payload["courseName"];
 }
 
 Course.prototype.draw = function(content) {
   //create div box for a course
-  var newDiv = Util.div(); //TODO
-  var courseName = Util.p(this.coureName); //TODO
-  var semester = Util.p("Sprint 2017");
+  var newDiv = Util.div("dashboard"); //TODO
+  var courseName = Util.p(this.courseName); //TODO
+  var semester = Util.p("Spring 2017");
   newDiv.appendChild(courseName);
   newDiv.appendChild(semester);
   content.appendChild(newDiv);
 }
 
 function Dashboard(payload) {
+  //for each course, draw the course
   this.payload = payload;
+  console.log(this.payload);
 }
 
 Dashboard.prototype.draw = function(content) {
@@ -34,15 +37,19 @@ Dashboard.prototype.draw = function(content) {
   content.appendChild(p1);
 
   var newObject;
-  for (int i = 0; i < this.payload.length; i++) {
+  for (var i = 0; i < this.payload.length; i++) {
     newObject = new Course(this.payload[i]); // grade object
     newObject.draw(content);
   }
+
+  clearClass("active");
+  //set active to some other class
+  document.getElementById("dashboard").className = "active";
 }
 
 
 var courseList2 = [{"courseID":1, "courseName":"Software Engineering 1"},
-                   {"courseID":2, "courseName":"Data Structures"}
-                   {"courseID":3, "courseName":"C++"}
-                   {"courseID":4, "courseName":"Java"}
+                   {"courseID":2, "courseName":"Data Structures"},
+                   {"courseID":3, "courseName":"C++"},
+                   {"courseID":4, "courseName":"Java"},
                    {"courseID":5, "courseName":"Python"}];

@@ -1,4 +1,3 @@
-
 function HomeworkCourse(payload) {
   this.courseName = payload;
   //this.payload = payload;

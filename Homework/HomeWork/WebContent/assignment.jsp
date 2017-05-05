@@ -2,6 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <%@ page language="Java" import="java.lang.*" import="java.util.Scanner"
+	import="com.mongodb.Mongo"
 	import="java.io.FileReader" 
 	import="java.net.*" 
 	import="com.mongodb.BasicDBObject"
@@ -12,7 +13,6 @@
 	import="java.net.UnknownHostException"
 	import="com.sun.org.apache.bcel.internal.generic.NEW"
 	import="com.mongodb.DBObject"
-	import="com.mongodb.Mongo"
 	import="java.util.*"
 	import="com.rl.controller.mgdbConnect"%>
 
