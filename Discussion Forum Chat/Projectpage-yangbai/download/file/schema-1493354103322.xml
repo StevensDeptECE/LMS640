@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name='questions'>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name='question' type='questionType' minOccurs='0' maxOccurs='unbounded' />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="questionType">
+		<xs:sequence>
+			<xs:element name="questionId" type="xs:positiveInteger" />
+			<xs:element name="questionTitle" type="xs:string" />
+			<xs:element name='component' type='componentType' minOccurs='0' maxOccurs='unbounded' />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="componentType">
+		<xs:sequence>
+			<xs:element name="Instruction" type="xs:string" />
+			<xs:element name="Eqn" type="xs:string" />
+			<xs:element name='MC' type='MCtype' minOccurs='0' maxOccurs='unbounded' />
+		</xs:sequence>
+		</xs:complexType>
+
+		<xs:complexType name="MCtype">
+			<xs:sequence>
+				<xs:element name="Id" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+
+
+
+</xs:schema>
