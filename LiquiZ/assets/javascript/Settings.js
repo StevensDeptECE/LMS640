@@ -30,7 +30,9 @@ var settingsPayload = {
             title: "Visual Preferences",
             comp: [
                 ["Instr", "Do you prefer a light or dark theme? ", "1"],
-                ["MCDrop", ["Light","Dark"], "2"]
+                ["MCDrop", ["Light","Dark"], "2"],
+                ["Instr", "What size font do you prefer? ", "1"],
+                ["MCDrop", ["Small","Medium", "Large"], "2"]
             ]
         },
 
@@ -40,7 +42,19 @@ var settingsPayload = {
             comp: [
                 ["Instr", "What is the standard time limit?", "1"],
                 [ "FillIn", "2"],
-                ["Instr", "How many tries does a student get?", "1"],
+                ["Instr", "How many attempts does a student get?", "1"],
+                [ "FillIn", "2"],
+                ["Instr", "What is the standard point value for a question?", "1"],
+                [ "FillIn", "2"],
+                ["Instr", "Should questions appear one at a time or all at once?", "1"],
+                [ "MCDrop",["One at a time", "All at once"], "2"],
+                ["Instr", "Will you require an access code to open the quiz?", "1"],
+                [ "MC",["Yes", "No"], "2"],
+                ["Instr", "Would you like to automatically publish new quizzes?", "1"],
+                [ "MC",["Yes", "No"], "2"],
+                ["Instr", "What is the standard amount of time between quiz open date and quiz due date?", "1"],
+                [ "FillIn", "2"],
+                ["Instr", "What is the standard amount of time between quiz due date and quiz close date?", "1"],
                 [ "FillIn", "2"]
             ]
         }
