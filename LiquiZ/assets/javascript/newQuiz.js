@@ -701,9 +701,18 @@ function create_question(preference) {
     matchRight.className = "matchChoice";
     matchRight.addEventListener('keydown', autosize);
 
+
+
+
+
+
+
+
     var multiSurveys = Util.span("", "", "multiSurveys" + count);
     console.log(multiChoices.id);
     multiSurveys.style.display = "none";
+
+    var addChoice4 = Util.button("+", function () {add_MS("multiSurveys" + count)}, "four");
 
     var surveyCont1 = document.createElement("textarea");
     surveyCont1.placeholder = "Please input the content of the first survey";
@@ -725,6 +734,7 @@ function create_question(preference) {
     surveyCont4.id = "4surveyCont" + count;
     surveyCont4.className = "multiChoice";
 
+    multiSurveys.appendChild(addChoice4);
     multiSurveys.appendChild(surveyCont1);
     multiSurveys.appendChild(surveyCont2);
     multiSurveys.appendChild(surveyCont3);
@@ -734,6 +744,8 @@ function create_question(preference) {
     console.log(multiChoices.id);
     surveyChoices.style.display = "none";
     surveyChoices.className = "SurveyChoice";
+
+    var addChoice5 = Util.button("+", function () {add_MSC("surveyChoices" + count)}, "four");
 
     var surveyC1 = document.createElement("textarea");
     surveyC1.placeholder = "Please input the First choice of your surveys";
@@ -755,6 +767,7 @@ function create_question(preference) {
     surveyC4.id = "4surveyC" + count;
     surveyC4.className = "multiChoice";
 
+    surveyChoices.appendChild(addChoice5);
     surveyChoices.appendChild(surveyC1);
     surveyChoices.appendChild(surveyC2);
     surveyChoices.appendChild(surveyC3);
@@ -844,6 +857,30 @@ function add_MCD(no) {
     questionMCDNew.className = "multiChoice";
     newMCD.appendChild(questionMCDNew);
     MCD_Index++;
+}
+
+var MS_Index = 5;
+function add_MS(no) {
+    var newMS = document.getElementById(no);
+    var newNo = no.substring(12);
+    var questionMSNew = document.createElement("textarea");
+    questionMSNew.placeholder = "New Choice";
+    questionMSNew.id = MS_Index + "surveyCont" + newNo;
+    questionMSNew.className = "multiChoice";
+    newMS.appendChild(questionMSNew);
+    MS_Index++;
+}
+
+var MSC_Index = 5;
+function add_MSC(no) {
+    var newMSC = document.getElementById(no);
+    var newNo = no.substring(13);
+    var questionMSCNew = document.createElement("textarea");
+    questionMSCNew.placeholder = "New Choice";
+    questionMSCNew.id = MSC_Index + "surveyC" + newNo;
+    questionMSCNew.className = "multiChoice";
+    newMSC.appendChild(questionMSCNew);
+    MSC_Index++;
 }
 
 function remove_question(no) {
@@ -1188,30 +1225,25 @@ function tableToJson4(Divs) {
             operFinal.push(addOn);
         }else if(document.getElementById("type_row"+i).value == "Survey") {
             operFinal.push("Survey");
-            operCont2 = "[" + document.getElementById("1surveyC" + i).value;
-            if(document.getElementById("2surveyC" + i).value != "") {
-                operCont2 += "," + document.getElementById("2surveyC" + i).value;
+
+            var allChoices = "";
+            for(var q = 1; q < MS_Index - 1 ; q++) {
+                allChoices = allChoices + document.getElementById(q + "surveyCont" + i).value + ",";
             }
-            if(document.getElementById("3surveyC" + i).value != "") {
-                operCont2 += "," + document.getElementById("3surveyC" + i).value;
-            }
-            if(document.getElementById("4surveyC" + i).value != "") {
-                operCont2 += "," + document.getElementById("4surveyC" + i).value;
-            }
-            operCont2 += "]";
+            allChoices = allChoices + document.getElementById(MS_Index - 1 + "surveyCont" + i).value;
+            MS_Index = 5;
+            operCont2 = "[" + allChoices + "]";
+
             operFinal.push(operCont2);
 
-            operCont3 = "[" + document.getElementById("1surveyCont" + i).value;
-            if(document.getElementById("2surveyCont" + i).value != "") {
-                operCont3 += "," + document.getElementById("2surveyCont" + i).value;
+            var allChoices = "";
+            for(var q = 1; q < MSC_Index - 1 ; q++) {
+                allChoices = allChoices + document.getElementById(q + "surveyC" + i).value + ",";
             }
-            if(document.getElementById("3surveyCont" + i).value != "") {
-                operCont3 += "," + document.getElementById("3surveyCont" + i).value;
-            }
-            if(document.getElementById("4surveyCont" + i).value != "") {
-                operCont3 += "," + document.getElementById("4surveyCont" + i).value;
-            }
-            operCont3 += "]";
+            allChoices = allChoices + document.getElementById(MSC_Index - 1 + "surveyC" + i).value;
+            MSC_Index = 5;
+            operCont3 = "[" + allChoices + "]";
+
             operFinal.push(operCont3);
             operFinal.push(addOn);
         }
