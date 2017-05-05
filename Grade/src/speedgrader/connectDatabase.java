@@ -255,7 +255,9 @@ public class connectDatabase {
 			String temp = "select * from fileaddress where studentid='" + studentId + "'" + "and assignmentid= '"+assignmentId +"'";	
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(temp);
-            address = rs.getString("filename");
+			while (rs.next()) {
+				address = rs.getString("filename");
+			}         
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
