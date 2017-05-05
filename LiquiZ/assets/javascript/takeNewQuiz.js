@@ -152,7 +152,7 @@ Util2.subClass(Display, takeNewQuiz);
 takeNewQuiz.prototype.draw = function(div){
     var header = Util.h1(this.title, "h03");
     // var clearButton = Util.button("Clear localStorage",function () {sessionStorage.clear(); launch(quizIndex, quizDetailPayLoad, 'up3')}, "three");
-    var clearButton = Util.button("Quiz List",function () {launch(quizIndex, quizDetailPayLoad, 'up3')}, "three");
+    var clearButton = Util.button("Quiz List",function () {launch(quizIndex, quizDetailPayLoad, 'up3')}, "two");
     header.appendChild(clearButton);
     clearElements("up2");
     document.getElementById("up2").appendChild(header);

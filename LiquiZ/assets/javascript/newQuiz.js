@@ -527,53 +527,121 @@ function create_question(preference) {
     questionInstr.id = "instr_row" + count;
     questionInstr.addEventListener('keydown', autosize);
 
-
-
-
-
-
-
-
-
     var th5 = document.createElement("p");
     th5.id = "5th" + count;
     th5.appendChild(document.createTextNode("Please input the content of this question"));
     th5.style.display = "none";
     th5.className = "th5";
 
+
+
+
+
+
+
+
+
     var multiChoices = Util.span("", "", "multiChoices" + count);
     console.log(multiChoices.id);
     multiChoices.style.display = "none";
 
-    var questionCont1 = document.createElement("textarea");
-    questionCont1.placeholder = "First Choice";
-    questionCont1.id = "1cont_row" + count;
-    questionCont1.className = "multiChoice";
+    var questionMC1 = document.createElement("textarea");
+    questionMC1.placeholder = "First Choice";
+    questionMC1.id = "1MC_row" + count;
+    questionMC1.className = "multiChoice";
 
-    var questionCont2 = document.createElement("textarea");
-    questionCont2.placeholder = "Second Choice";
-    questionCont2.id = "2cont_row" + count;
-    questionCont2.className = "multiChoice";
+    var questionMC2 = document.createElement("textarea");
+    questionMC2.placeholder = "Second Choice";
+    questionMC2.id = "2MC_row" + count;
+    questionMC2.className = "multiChoice";
 
-    var questionCont3 = document.createElement("textarea");
-    questionCont3.placeholder = "Third Choice";
-    questionCont3.id = "3cont_row" + count;
-    questionCont3.className = "multiChoice";
+    var questionMC3 = document.createElement("textarea");
+    questionMC3.placeholder = "Third Choice";
+    questionMC3.id = "3MC_row" + count;
+    questionMC3.className = "multiChoice";
 
-    var questionCont4 = document.createElement("textarea");
-    questionCont4.placeholder = "Forth Choice";
-    questionCont4.id = "4cont_row" + count;
-    questionCont4.className = "multiChoice";
+    var questionMC4 = document.createElement("textarea");
+    questionMC4.placeholder = "Forth Choice";
+    questionMC4.id = "4MC_row" + count;
+    questionMC4.className = "multiChoice";
 
-    var addChoice = Util.button("Add Choice", function () {add_Choice("multiChoices" + count)}, "three");
+    var addChoice1 = Util.button("+", function () {add_MC("multiChoices" + count)}, "four");
 
-    multiChoices.appendChild(questionCont1);
-    multiChoices.appendChild(questionCont2);
-    multiChoices.appendChild(questionCont3);
-    multiChoices.appendChild(questionCont4);
-    multiChoices.appendChild(addChoice);
+    multiChoices.appendChild(addChoice1);
+    multiChoices.appendChild(questionMC1);
+    multiChoices.appendChild(questionMC2);
+    multiChoices.appendChild(questionMC3);
+    multiChoices.appendChild(questionMC4);
 
 
+
+
+    var multiChoicesSel = Util.span("", "", "multiChoicesSel" + count);
+    console.log(multiChoicesSel.id);
+    multiChoicesSel.style.display = "none";
+
+    var questionMCS1 = document.createElement("textarea");
+    questionMCS1.placeholder = "First Choice";
+    questionMCS1.id = "1MCS_row" + count;
+    questionMCS1.className = "multiChoice";
+
+    var questionMCS2 = document.createElement("textarea");
+    questionMCS2.placeholder = "Second Choice";
+    questionMCS2.id = "2MCS_row" + count;
+    questionMCS2.className = "multiChoice";
+
+    var questionMCS3 = document.createElement("textarea");
+    questionMCS3.placeholder = "Third Choice";
+    questionMCS3.id = "3MCS_row" + count;
+    questionMCS3.className = "multiChoice";
+
+    var questionMCS4 = document.createElement("textarea");
+    questionMCS4.placeholder = "Forth Choice";
+    questionMCS4.id = "4MCS_row" + count;
+    questionMCS4.className = "multiChoice";
+
+    var addChoice2 = Util.button("+", function () {add_MCS("multiChoicesSel" + count)}, "four");
+
+    multiChoicesSel.appendChild(addChoice2);
+    multiChoicesSel.appendChild(questionMCS1);
+    multiChoicesSel.appendChild(questionMCS2);
+    multiChoicesSel.appendChild(questionMCS3);
+    multiChoicesSel.appendChild(questionMCS4);
+
+
+
+
+    var multiChoicesDrop = Util.span("", "", "multiChoicesDrop" + count);
+    console.log(multiChoicesDrop.id);
+    multiChoicesDrop.style.display = "none";
+
+    var questionMCD1 = document.createElement("textarea");
+    questionMCD1.placeholder = "First Choice";
+    questionMCD1.id = "1MCD_row" + count;
+    questionMCD1.className = "multiChoice";
+
+    var questionMCD2 = document.createElement("textarea");
+    questionMCD2.placeholder = "Second Choice";
+    questionMCD2.id = "2MCD_row" + count;
+    questionMCD2.className = "multiChoice";
+
+    var questionMCD3 = document.createElement("textarea");
+    questionMCD3.placeholder = "Third Choice";
+    questionMCD3.id = "3MCD_row" + count;
+    questionMCD3.className = "multiChoice";
+
+    var questionMCD4 = document.createElement("textarea");
+    questionMCD4.placeholder = "Forth Choice";
+    questionMCD4.id = "4MCD_row" + count;
+    questionMCD4.className = "multiChoice";
+
+    var addChoice3 = Util.button("+", function () {add_MCD("multiChoicesDrop" + count)}, "four");
+
+    multiChoicesDrop.appendChild(addChoice3);
+    multiChoicesDrop.appendChild(questionMCD1);
+    multiChoicesDrop.appendChild(questionMCD2);
+    multiChoicesDrop.appendChild(questionMCD3);
+    multiChoicesDrop.appendChild(questionMCD4);
 
 
 
@@ -724,6 +792,8 @@ function create_question(preference) {
     Quest.appendChild(selectList);
     Quest.appendChild(th5);
     Quest.appendChild(multiChoices);
+    Quest.appendChild(multiChoicesSel);
+    Quest.appendChild(multiChoicesDrop);
     Quest.appendChild(numbersSet);
     Quest.appendChild(gridSet);
     Quest.appendChild(matrixRSet);
@@ -740,16 +810,40 @@ function create_question(preference) {
     quests.appendChild(Quest);
 }
 
-var index = 5;
-function add_Choice(no) {
-    var newChoices = document.getElementById(no);
+var MC_Index = 5;
+function add_MC(no) {
+    var newMC = document.getElementById(no);
     var newNo = no.substring(12);
-    var questionContNew = document.createElement("textarea");
-    questionContNew.placeholder = "First Choice";
-    questionContNew.id = index + "cont_row" + newNo;
-    questionContNew.className = "multiChoice";
-    newChoices.appendChild(questionContNew);
-    index++;
+    var questionMCNew = document.createElement("textarea");
+    questionMCNew.placeholder = "New Choice";
+    questionMCNew.id = MC_Index + "MC_row" + newNo;
+    questionMCNew.className = "multiChoice";
+    newMC.appendChild(questionMCNew);
+    MC_Index++;
+}
+
+var MCS_Index = 5;
+function add_MCS(no) {
+    var newMCS = document.getElementById(no);
+    var newNo = no.substring(15);
+    var questionMCSNew = document.createElement("textarea");
+    questionMCSNew.placeholder = "New Choice";
+    questionMCSNew.id = MCS_Index + "MCS_row" + newNo;
+    questionMCSNew.className = "multiChoice";
+    newMCS.appendChild(questionMCSNew);
+    MCS_Index++;
+}
+
+var MCD_Index = 5;
+function add_MCD(no) {
+    var newMCD = document.getElementById(no);
+    var newNo = no.substring(16);
+    var questionMCDNew = document.createElement("textarea");
+    questionMCDNew.placeholder = "New Choice";
+    questionMCDNew.id = MCD_Index + "MCD_row" + newNo;
+    questionMCDNew.className = "multiChoice";
+    newMCD.appendChild(questionMCDNew);
+    MCD_Index++;
 }
 
 function remove_question(no) {
@@ -763,9 +857,11 @@ function remove_question(no) {
 
 function createClickHandler3(loc,no){
     console.log(no);
-    if(loc.value == "Multi Choice" || loc.value == "Multi Choice Select" || loc.value == "Multi Choice drop") {
+    if(loc.value == "Multi Choice") {
         document.getElementById('5th' + no).style.display = 'block';
         document.getElementById('multiChoices' + no).style.display = 'block';
+        document.getElementById('multiChoicesSel' + no).style.display = 'none';
+        document.getElementById('multiChoicesDrop' + no).style.display = 'none';
         document.getElementById('numbersSet' + no).style.display = 'none';
         document.getElementById('gridSet' + no).style.display = 'none';
         document.getElementById('matrixRSet' + no).style.display = 'none';
@@ -776,9 +872,44 @@ function createClickHandler3(loc,no){
         document.getElementById('matchRight' + no).style.display = 'none';
         document.getElementById('multiSurveys' + no).style.display = 'none';
         document.getElementById('surveyChoices' + no).style.display = 'none';
+        document.getElementById('dragDropSet' + no).style.display = 'none';
+    }else if(loc.value == "Multi Choice drop") {
+        document.getElementById('5th' + no).style.display = 'block';
+        document.getElementById('multiChoices' + no).style.display = 'none';
+        document.getElementById('multiChoicesSel' + no).style.display = 'none';
+        document.getElementById('multiChoicesDrop' + no).style.display = 'block';
+        document.getElementById('numbersSet' + no).style.display = 'none';
+        document.getElementById('gridSet' + no).style.display = 'none';
+        document.getElementById('matrixRSet' + no).style.display = 'none';
+        document.getElementById('matrixCSet' + no).style.display = 'none';
+        document.getElementById('clozeSet' + no).style.display = 'none';
+        document.getElementById('codesSet' + no).style.display = 'none';
+        document.getElementById('matchLeft' + no).style.display = 'none';
+        document.getElementById('matchRight' + no).style.display = 'none';
+        document.getElementById('multiSurveys' + no).style.display = 'none';
+        document.getElementById('surveyChoices' + no).style.display = 'none';
+        document.getElementById('dragDropSet' + no).style.display = 'none';
+    }else if(loc.value == "Multi Choice Select") {
+        document.getElementById('5th' + no).style.display = 'block';
+        document.getElementById('multiChoices' + no).style.display = 'none';
+        document.getElementById('multiChoicesSel' + no).style.display = 'block';
+        document.getElementById('multiChoicesDrop' + no).style.display = 'none';
+        document.getElementById('numbersSet' + no).style.display = 'none';
+        document.getElementById('gridSet' + no).style.display = 'none';
+        document.getElementById('matrixRSet' + no).style.display = 'none';
+        document.getElementById('matrixCSet' + no).style.display = 'none';
+        document.getElementById('clozeSet' + no).style.display = 'none';
+        document.getElementById('codesSet' + no).style.display = 'none';
+        document.getElementById('matchLeft' + no).style.display = 'none';
+        document.getElementById('matchRight' + no).style.display = 'none';
+        document.getElementById('multiSurveys' + no).style.display = 'none';
+        document.getElementById('surveyChoices' + no).style.display = 'none';
+        document.getElementById('dragDropSet' + no).style.display = 'none';
     }else if(loc.value == "Numbers") {
         document.getElementById('5th' + no).style.display = 'block';
         document.getElementById('multiChoices' + no).style.display = 'none';
+        document.getElementById('multiChoicesSel' + no).style.display = 'none';
+        document.getElementById('multiChoicesDrop' + no).style.display = 'none';
         document.getElementById('numbersSet' + no).style.display = 'block';
         document.getElementById('gridSet' + no).style.display = 'none';
         document.getElementById('matrixRSet' + no).style.display = 'none';
@@ -789,9 +920,12 @@ function createClickHandler3(loc,no){
         document.getElementById('matchRight' + no).style.display = 'none';
         document.getElementById('multiSurveys' + no).style.display = 'none';
         document.getElementById('surveyChoices' + no).style.display = 'none';
+        document.getElementById('dragDropSet' + no).style.display = 'none';
     }else if(loc.value == "Grid") {
         document.getElementById('5th' + no).style.display = 'block';
         document.getElementById('multiChoices' + no).style.display = 'none';
+        document.getElementById('multiChoicesSel' + no).style.display = 'none';
+        document.getElementById('multiChoicesDrop' + no).style.display = 'none';
         document.getElementById('numbersSet' + no).style.display = 'none';
         document.getElementById('gridSet' + no).style.display = 'block';
         document.getElementById('matrixRSet' + no).style.display = 'none';
@@ -802,10 +936,12 @@ function createClickHandler3(loc,no){
         document.getElementById('matchRight' + no).style.display = 'none';
         document.getElementById('multiSurveys' + no).style.display = 'none';
         document.getElementById('surveyChoices' + no).style.display = 'none';
-
+        document.getElementById('dragDropSet' + no).style.display = 'none';
     }else if(loc.value == "Cloze") {
         document.getElementById('5th' + no).style.display = 'block';
         document.getElementById('multiChoices' + no).style.display = 'none';
+        document.getElementById('multiChoicesSel' + no).style.display = 'none';
+        document.getElementById('multiChoicesDrop' + no).style.display = 'none';
         document.getElementById('numbersSet' + no).style.display = 'none';
         document.getElementById('gridSet' + no).style.display = 'none';
         document.getElementById('matrixRSet' + no).style.display = 'none';
@@ -816,10 +952,12 @@ function createClickHandler3(loc,no){
         document.getElementById('matchRight' + no).style.display = 'none';
         document.getElementById('multiSurveys' + no).style.display = 'none';
         document.getElementById('surveyChoices' + no).style.display = 'none';
-
+        document.getElementById('dragDropSet' + no).style.display = 'none';
     }else if(loc.value == "Codes") {
         document.getElementById('5th' + no).style.display = 'block';
         document.getElementById('multiChoices' + no).style.display = 'none';
+        document.getElementById('multiChoicesSel' + no).style.display = 'none';
+        document.getElementById('multiChoicesDrop' + no).style.display = 'none';
         document.getElementById('numbersSet' + no).style.display = 'none';
         document.getElementById('gridSet' + no).style.display = 'none';
         document.getElementById('matrixRSet' + no).style.display = 'none';
@@ -830,10 +968,12 @@ function createClickHandler3(loc,no){
         document.getElementById('matchRight' + no).style.display = 'none';
         document.getElementById('multiSurveys' + no).style.display = 'none';
         document.getElementById('surveyChoices' + no).style.display = 'none';
-
+        document.getElementById('dragDropSet' + no).style.display = 'none';
     }else if(loc.value == "Matching") {
         document.getElementById('5th' + no).style.display = 'block';
         document.getElementById('multiChoices' + no).style.display = 'none';
+        document.getElementById('multiChoicesSel' + no).style.display = 'none';
+        document.getElementById('multiChoicesDrop' + no).style.display = 'none';
         document.getElementById('numbersSet' + no).style.display = 'none';
         document.getElementById('gridSet' + no).style.display = 'none';
         document.getElementById('matrixRSet' + no).style.display = 'none';
@@ -844,10 +984,12 @@ function createClickHandler3(loc,no){
         document.getElementById('matchRight' + no).style.display = 'block';
         document.getElementById('multiSurveys' + no).style.display = 'none';
         document.getElementById('surveyChoices' + no).style.display = 'none';
-
+        document.getElementById('dragDropSet' + no).style.display = 'none';
     } else if(loc.value == "Fill in" || loc.value == "Essay" || loc.value == "File Upload") {
         document.getElementById('5th' + no).style.display = 'none';
         document.getElementById('multiChoices' + no).style.display = 'none';
+        document.getElementById('multiChoicesSel' + no).style.display = 'none';
+        document.getElementById('multiChoicesDrop' + no).style.display = 'none';
         document.getElementById('numbersSet' + no).style.display = 'none';
         document.getElementById('gridSet' + no).style.display = 'none';
         document.getElementById('matrixRSet' + no).style.display = 'none';
@@ -858,10 +1000,12 @@ function createClickHandler3(loc,no){
         document.getElementById('matchRight' + no).style.display = 'none';
         document.getElementById('multiSurveys' + no).style.display = 'none';
         document.getElementById('surveyChoices' + no).style.display = 'none';
-
+        document.getElementById('dragDropSet' + no).style.display = 'none';
     } else if(loc.value == "Matrix") {
         document.getElementById('5th' + no).style.display = 'block';
         document.getElementById('multiChoices' + no).style.display = 'none';
+        document.getElementById('multiChoicesSel' + no).style.display = 'none';
+        document.getElementById('multiChoicesDrop' + no).style.display = 'none';
         document.getElementById('numbersSet' + no).style.display = 'none';
         document.getElementById('gridSet' + no).style.display = 'none';
         document.getElementById('matrixRSet' + no).style.display = 'block';
@@ -872,10 +1016,12 @@ function createClickHandler3(loc,no){
         document.getElementById('matchRight' + no).style.display = 'none';
         document.getElementById('multiSurveys' + no).style.display = 'none';
         document.getElementById('surveyChoices' + no).style.display = 'none';
-
+        document.getElementById('dragDropSet' + no).style.display = 'none';
     }else if(loc.value == "Survey") {
         document.getElementById('5th' + no).style.display = 'block';
         document.getElementById('multiChoices' + no).style.display = 'none';
+        document.getElementById('multiChoicesSel' + no).style.display = 'none';
+        document.getElementById('multiChoicesDrop' + no).style.display = 'none';
         document.getElementById('numbersSet' + no).style.display = 'none';
         document.getElementById('gridSet' + no).style.display = 'none';
         document.getElementById('matrixRSet' + no).style.display = 'none';
@@ -886,10 +1032,12 @@ function createClickHandler3(loc,no){
         document.getElementById('matchRight' + no).style.display = 'none';
         document.getElementById('multiSurveys' + no).style.display = 'block';
         document.getElementById('surveyChoices' + no).style.display = 'block';
-
+        document.getElementById('dragDropSet' + no).style.display = 'none';
     }else if(loc.value == "Drag and Drop") {
         document.getElementById('5th' + no).style.display = 'block';
         document.getElementById('multiChoices' + no).style.display = 'none';
+        document.getElementById('multiChoicesSel' + no).style.display = 'none';
+        document.getElementById('multiChoicesDrop' + no).style.display = 'none';
         document.getElementById('numbersSet' + no).style.display = 'none';
         document.getElementById('gridSet' + no).style.display = 'none';
         document.getElementById('matrixRSet' + no).style.display = 'none';
@@ -901,7 +1049,6 @@ function createClickHandler3(loc,no){
         document.getElementById('multiSurveys' + no).style.display = 'none';
         document.getElementById('surveyChoices' + no).style.display = 'none';
         document.getElementById('dragDropSet' + no).style.display = 'block';
-
     }
 }
 
@@ -956,12 +1103,38 @@ function tableToJson4(Divs) {
             operFinal.push(addOn);
         }else if(document.getElementById("type_row"+i).value == "Multi Choice"){
             operFinal.push("MC");
-            operCont2 = "[" + document.getElementById("1cont_row"+i).value + "," + document.getElementById("2cont_row"+i).value + "," + document.getElementById("3cont_row"+i).value + "," + document.getElementById("4cont_row"+i).value + "]";
+            var allChoices = "";
+            for(var q = 1; q < MC_Index - 1 ; q++) {
+                allChoices = allChoices + document.getElementById(q + "MC_row" + i).value + ",";
+            }
+            allChoices = allChoices + document.getElementById(MC_Index - 1 + "MC_row" + i).value;
+            MC_Index = 5;
+            operCont2 = "[" + allChoices + "]";
+            // operCont2 = "[" + document.getElementById("1cont_row"+i).value + "," + document.getElementById("2cont_row"+i).value + "," + document.getElementById("3cont_row"+i).value + "," + document.getElementById("4cont_row"+i).value + "]";
             operFinal.push(operCont2);
             operFinal.push(addOn);
         }else if(document.getElementById("type_row"+i).value == "Multi Choice Select"){
             operFinal.push("MCS");
-            operCont2 = "[" + document.getElementById("1cont_row"+i).value + "," + document.getElementById("2cont_row"+i).value + "," + document.getElementById("3cont_row"+i).value + "," + document.getElementById("4cont_row"+i).value + "]";
+            var allChoices = "";
+            for(var q = 1; q < MCS_Index - 1 ; q++) {
+                allChoices = allChoices + document.getElementById(q + "MCS_row" + i).value + ",";
+            }
+            allChoices = allChoices + document.getElementById(MCS_Index - 1 + "MCS_row" + i).value;
+            MCS_Index = 5;
+            operCont2 = "[" + allChoices + "]";
+            // operCont2 = "[" + document.getElementById("1cont_row"+i).value + "," + document.getElementById("2cont_row"+i).value + "," + document.getElementById("3cont_row"+i).value + "," + document.getElementById("4cont_row"+i).value + "]";
+            operFinal.push(operCont2);
+            operFinal.push(addOn);
+        }else if(document.getElementById("type_row"+i).value == "Multi Choice drop"){
+            operFinal.push("MCDrop");
+            var allChoices = "";
+            for(var q = 1; q < MCD_Index - 1 ; q++) {
+                allChoices = allChoices + document.getElementById(q + "MCD_row" + i).value + ",";
+            }
+            allChoices = allChoices + document.getElementById(MCD_Index - 1 + "MCD_row" + i).value;
+            MCD_Index = 5;
+            operCont2 = "[" + allChoices + "]";
+            // operCont2 = "[" + document.getElementById("1cont_row"+i).value + "," + document.getElementById("2cont_row"+i).value + "," + document.getElementById("3cont_row"+i).value + "," + document.getElementById("4cont_row"+i).value + "]";
             operFinal.push(operCont2);
             operFinal.push(addOn);
         }else if(document.getElementById("type_row"+i).value == "Fill in"){
@@ -1002,11 +1175,6 @@ function tableToJson4(Divs) {
             operFinal.push(operCont2);
             operCont3 = document.getElementById("matrixCSet"+i).value;
             operFinal.push(operCont3);
-            operFinal.push(addOn);
-        }else if(document.getElementById("type_row"+i).value == "Multi Choice drop"){
-            operFinal.push("MCDrop");
-            operCont2 = "[" + document.getElementById("1cont_row"+i).value + "," + document.getElementById("2cont_row"+i).value + "," + document.getElementById("3cont_row"+i).value + "," + document.getElementById("4cont_row"+i).value + "]";
-            operFinal.push(operCont2);
             operFinal.push(addOn);
         }else if(document.getElementById("type_row"+i).value == "Matching"){
             operFinal.push("Match");

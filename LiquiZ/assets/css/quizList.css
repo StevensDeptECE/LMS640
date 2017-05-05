@@ -192,6 +192,46 @@
     transform: translateY(2px);
 }
 
+.four {
+    display: block;
+    font-size: 22px;
+    text-align: center;
+    line-height: 44px;
+    text-decoration: none;
+    color: white;
+    background-color: #3e8e41;
+    border-radius: 50%;
+    position: relative;
+    top: 6em;
+    left: 620px;
+    width: 66px;
+    height: 66px;
+    outline: none;
+    margin-top: -22px;
+    margin-left: -62px;
+    text-shadow: 0 -1px -1px #3e8e41;
+    -moz-box-shadow: 0 4px 0 #3e8e41, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 4px 0 #3e8e41, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 0 #3e8e41, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+    -moz-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+    -webkit-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+}
+.four:hover {
+    background-color: #3e8e41;
+    text-shadow: 0 -1px -1px #3e8e41;
+    -moz-box-shadow: 0 4px 0 #3e8e41, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 4px 0 #3e8e41, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 0 #3e8e41, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
+}
+.four:active {
+    margin-top: -18px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 /*For checkbox*/
 .newCheckbox {
     width: 80px;
@@ -389,6 +429,7 @@
     height: 1.2em;
     outline: none;
     box-shadow: inset 1px 1px 0px 1px #888888;
+    resize: vertical;
 }
 .matchChoice{
     overflow:hidden;
