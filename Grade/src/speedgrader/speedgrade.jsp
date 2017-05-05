@@ -7,8 +7,12 @@
 <%@page import="java.net.URL"%>
 <%@page import="java.io.FileReader"%>
 <%@page import="java.io.BufferedReader"%> 
+<%@ page import="com.controller.connectDatabase" %>
+<%@ page import="com.controller.readFiles" %>
+  <%@ page  import="java.util.LinkedHashMap" %>  
+<%@ page  import="java.util.Map" %>
+<%@ page  import="java.util.HashMap" %>
 
-   
  
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +25,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+  
   <style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
     .row.content {height: 1500px}
@@ -110,51 +123,141 @@
      <button type="button" class="btn btn-info">SpeedGrader</button>
       </div>
       
-  
-    
-      <hr>
-      <h2>Assignment</h2>
-      <h5><span class="glyphicon glyphicon-time"></span> </h5>
-      
-      <p><%
-    String filePath = "/Users/xinyu/Desktop/Boggle.java";%>
-    <textarea name="message" rows="25" cols="120">
-   <%
-            
-            
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
-            //BufferedReader br = new InputStreamReader(new FileInputStream(txtFilePath));
-            StringBuilder sb = new StringBuilder();
-            String line;
+   
+   
 
-            while((line = reader.readLine())!= null){ %>
-         <% 	out.println(line); 
-            	  %>
-         <%    }
-          //out.println(sb.toString()); 
-         reader.close();
+
+<head>
+
+<title>AJAX calls using Jquery in Servlet</title>
+        <script src="http://code.jquery.com/jquery-latest.js"> 
+$('.selectpicker').selectpicker({
+	  style: 'btn btn-info',
+	  size: 4
+	});
+  
+        </script>
+        <script>
+            $(document).ready(function() {                        
+                $('#submit').click(function(event) {  
+                   // var username=$('#user').val();
+                      var username = $("#box1 option:selected").text();
+                 $.get('ActionServlet',{user:username},function(responseText) { 
+                        $('#message').text(responseText);         
+                    });
+                });
+            });
+        </script>
+</head>
+<body>
+<form id="form1">
+<!-- <h1>AJAX Demo using Jquery in JSP and Servlet</h1>
+Enter your Name: -->
+<!-- <input type="text" id="user"/> -->
+<select class="selectpicker"  data-style="btn-primary" id="box1">
+ <option value="98">HW1Computeprimes</option>
+<option value="7122">HW2PrimesUsing MillerRabin</option>
+<option value="142">HW3GrowArray</option>
+<option value="97">HW4LinkedListclass</option>
+<option value="722">HW5TrieDictionary</option>
+<option value="14">HW6Sorting</option>
+<option value="99">HW7HashMapLinearChaining</option>
+<option value="72">HW8Boggle</option>
+<option value="42">GraphSearchAlgorithms</option>
+</select>
+<input type="button" id="submit" value=" Submit"/>
+<div id="welcometext">
+</div>
+</form>
+</body>
+
+ 
+ 
+    
+      <h2>Assignment1</h2>
+      <h5><span class="glyphicon glyphicon-time"></span> </h5>
+   
+
+<% String s = "assignment1";
+String temp = "assignment1";
+
+
+ 
+ %>
+  <p>
+   <% String filePath = "/Users/xinyu/Desktop/"+temp+".java";%>
+    <textarea id = "message" name="message" rows="25" cols="120">
+ <%          
+             BufferedReader reader = new BufferedReader(new FileReader(filePath));
+             String line;
+             while((line = reader.readLine())!= null){
+            	StringBuilder sb = new StringBuilder();
+            	sb.append(line);
+            	out.println(sb.toString()); 
+             }        
+         reader.close(); 
+ 
+	 
+ reader.close(); 
+ 
         %>
-      </textarea>
-      </p>
-      <hr>
-      
-      <h4>Make a Grade:</h4>
-      <form id="myform" name="myform" method="post" action="test2.jsp">
+            
+ <%connectDatabase cd = new connectDatabase();
+ String path = "/Users/xinyu/Documents/workspaces/TomcatTest/conf/conf.properties";
+   cd.insertGrade("1234","4321");
+   String fileaddress = cd.getAddress("1620001", "HW1-Compute primes");
+   out.println(fileaddress);
+   //cd.updataGrade ("ow", "gaile");
+   int grade = cd.getGrade("1620001", "cpe64001");
+   String comment = cd.getComment("1620001", "cpe64001");
+ %>    </textarea>
+ </p>
+     <%if (grade < 0) {%>
+     <h3>Not yet graded</h3>
+     <% }%>
+     <%if (grade >= 0) {%>
+     <h3>Current grade:  <% out.println(grade);%></h3>
+     <h3>Current comment:  <% out.println(comment);%></h3>
+     <% }%>
+     <br></br>
+     <button id="startbutton" onclick="myFunction()">Start Grading</button>
+
+<div  id="myDIV" style="visibility:hidden;">
+<h4>Make a Grade:</h4>
+      <form type="hidden" id="myform" name="myform" method="post" action="transmitToSuccessPage.jsp">
     <input type="text"  name="Grade" />
      <br><br>
      <h4>Leave a Comment:</h4>  
     <div class="form-group">
           <textarea class="form-control" rows="3" required name="Comment"></textarea>
         </div>     
-    <input type="submit" value="submit" onclick="window.location.href='test2.jsp'" />
+    <input type="submit" value="submit" onclick="window.location.href='transmitToSuccessPage.jsp'" />
    </form>
+</div>
+<script>
+function myFunction() {
+    var x = document.getElementById('myDIV');
+    var y = document.getElementById('startbutton');
+    if (x.style.visibility === 'hidden') {
+        x.style.visibility = 'visible';
+        y.style.visibility = 'hidden';
+    } else {
+        x.style.visibility = 'hidden';
+        y.style.visibility = 'visible';
+    }
+}
+</script>
      
-
       
-    
-      
-
-
-
+     <!--  <h4>Make a Grade:</h4>
+      <form id="myform" name="myform" method="post" action="transmitToSuccessPage.jsp">
+    <input type="text"  name="Grade" />
+     <br><br>
+     <h4>Leave a Comment:</h4>  
+    <div class="form-group">
+          <textarea class="form-control" rows="3" required name="Comment"></textarea>
+        </div>     
+    <input type="submit" value="submit" onclick="window.location.href='transmitToSuccessPage.jsp'" />
+   </form> -->
 </body>
 </html>
