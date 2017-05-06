@@ -1,0 +1,22 @@
+<h1 id="notelisth1">Note List</h1>
+
+<div id ="contenttable">
+<table class="table table-inverse table-bordered table-condensed table-striped table-hover" id="note-data">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Summary</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each noteList}}
+        <tr class='clickable-row' data-href="/note/{{id}}">
+            <td>{{NoteTitle}}</td>
+            <td>{{NoteSummary}}</td>
+        </tr>
+    {{/each}}
+
+    </tbody>
+</table>
+</div>
+<button type="submit" class="btn btn-default" id="addnewnote">Add new note</button>

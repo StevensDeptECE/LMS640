@@ -1,0 +1,190 @@
+<main class="container" >
+<h1>Profile</h1>
+<div class="row">
+    <div class="col-sm-6">
+        <ul class="nav nav-tabs nav-justified">
+            <li id='tag1' class="active"><a href="#profile">Profile</a></li>
+            {{!-- <li id='tag2'><a href="#edit">Edit Profile</a></li> --}}
+            <li id='tag3'><a href="#question">Homework</a></li>
+            <li id='tag4'><a href="#answer">Job</a></li>
+        </ul>
+    </div>
+</div>
+<div class="container" id="bodycontainer">
+    <div id="tag1content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-3">
+                <div class="text-center">
+                    <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" class="avatar img-circle" alt="avatar">
+                    
+                </div>
+            </div>
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+                <div class="alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <!-- <i class="fa fa-coffee"></i> -->
+                    This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                </div>
+                <h2>{{user.name}}</h2>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Name:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" value="{{user.name}}" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Email:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" value={{user.email}} disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Point:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" value={{user.points}} disabled>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="form-group">
+                        <label class="col-lg-3 control-label">Time Zone:</label>
+                        <div class="col-lg-8">
+                            <div class="ui-select">
+                                <select id="user_time_zone" class="form-control">
+                                    <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                                    <option value="Alaska">(GMT-09:00) Alaska</option>
+                                    <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                                    <option value="Arizona">(GMT-07:00) Arizona</option>
+                                    <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                                    <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                                    <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                                    <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="tag2content" class="hidden">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-3">
+                <div class="text-center">
+                    <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="avatar" >
+                    <p>Upload a different photo...</p>
+                    <label><input type="file" class="form-control"></label>
+                </div>
+            </div>
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+                <div class="alert alert-danger hidden" id="edit-form-alert">
+                </div>
+                <h2>Personal info</h2>
+                <form class="form-horizontal" id="edit-profile-form" role="form">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Name:</label>
+                        <div class="col-lg-8">
+                            <label><input class="form-control" id="edit-name" name="name" type="text" placeholder="{{user.name}}" value="{{user.name}}"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Email:</label>
+                        <div class="col-lg-8">
+                                <label><input class="form-control" id="edit-email" name="email" type="text" value="{{user.email}}"></label>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="form-group">
+                        <label class="col-lg-3 control-label">Time Zone:</label>
+                        <div class="col-lg-8">
+                            <div class="ui-select">
+                                <select id="user_time_zone" class="form-control">
+                                    <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                                    <option value="Alaska">(GMT-09:00) Alaska</option>
+                                    <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                                    <option value="Arizona">(GMT-07:00) Arizona</option>
+                                    <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                                    <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                                    <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                                    <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Password:</label>
+                        <div class="col-md-8">
+                            <label><input class="form-control" type="password" id="edit-password" name="password" placeholder="Enter Your Password"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Confirm password:</label>
+                        <div class="col-md-8">
+                            <label><input class="form-control" id="edit-confirm-password" name="confirm_password" type="password" placeholder="Confirm Your Password"></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-8">
+                            <input type="submit" class="btn btn-primary" value="Save Changes">
+                            <span></span>
+                            <input type="reset" class="btn btn-default" value="Reset">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="tag3content" class="hidden">
+        <table class="table table-inverse table-bordered table-condensed table-striped table-hover" id="note-data">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Due</th>
+                    <th>File</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <p>{{a}}</p>
+                {{#each homworks}}
+                {{!-- <tr class='clickable-row' data-href="/post/{{_id}}"> --}}
+                <tr>
+                    <td>{{course}}</td>
+                    <td>{{due}}</td>
+                    <td>{{file}}</td>
+                    <td>{{grade}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <div id="tag4content" class="hidden">
+        <table class="table table-inverse table-bordered table-condensed table-striped table-hover" id="note-data">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Body</th>
+                </tr>
+            </thead>
+            <tbody>
+                <p>{{a}}</p>
+                {{#each answerList}}
+                <tr class='clickable-row' data-href="/post/{{postId}}">
+                    <td>{{title}}</td>
+                    <td>{{body}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </table>
+</div>
+</div>
+</main>

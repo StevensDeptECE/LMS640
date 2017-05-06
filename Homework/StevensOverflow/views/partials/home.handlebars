@@ -1,0 +1,23 @@
+<p>Hi, {{user.name}}</p>
+<div id ="contenttable">
+<table class="table table-inverse table-bordered table-condensed table-striped table-hover" id="note-data">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Votes</th>
+    </tr>
+    </thead>
+    <tbody>
+    <p>{{a}}</p>
+
+    {{#each postList}}
+        <tr class='clickable-row' data-href="/post/{{_id}}">
+            <td>{{title}}</td>
+            <td>{{username}}</td>
+            <td>{{vote}}</td>
+            {{!-- <td>{{body}}</td> --}}
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

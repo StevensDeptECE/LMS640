@@ -1,0 +1,17 @@
+<h3>Post new question</h1>
+<div class="alert alert-danger hidden" id="post-form-alert"></div>
+{{#if isUserAuth}}
+<!-- post window with markdown -->
+<form id="post-form" action="/posting" method="post">
+	<div class="form-group col-sm-7">
+		<input class="form-control" name="title" type="text" placeholder="Title?">
+		
+	</div>
+	<textarea id="inputField" ondragenter='rangeEnterHandler(event)' ondrop='dropHandler(event)' data-width="700" name="body" id="status-box" data-provide="markdown" rows="10"></textarea>
+	<button type="submit" class="btn btn-primary" style="margin-top: 10px">Submit</button>
+</form>
+<!-- endpost window with markdown -->
+{{/if}}
+{{#if isUserNotAuth}}
+<div class="alert alert-warning col-sm-8" style="margin-top: 10px;" role="alert">Please sign in to ask question</div>
+{{/if}}

@@ -1,0 +1,171 @@
+<div class="row question-header">
+    <!-- <a class="question-header-link" href="#" title="questoin header"></a> -->
+    <h3>{{post.title}}</h3>
+</div>
+<div class="row">
+    <div class="mainbar col-sm-12 col-md-8">
+        <div id="questoin-id" class="question">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="votecell">
+                            <!-- post id is the identifier for this post -->
+                            <div class="vote">
+                                <a class="vote-up-off vote-up" id="{{post._id}}" title="This question shows research effort; it is useful and clear">up vote</a>
+                                <span class="vote-count-post" id="vote-count-{{post._id}}">{{post.vote}}</span>
+                                <a class="vote-down-off vote-down" id="{{post._id}}" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+                            </div>
+                        </td>
+                        <td class="postcell">
+                            <div>
+                                <div class="post-text">
+                                    <p>{{{post.body}}}</p>
+                                </div>
+                                <div class="post-taglist">
+                                    
+                                </div>
+                                <div class="row share-and-userInfo" style="padding-left: 15px;">
+                                    <div class="col-sm-4 share-box">
+                                        <!-- begin facebook share button -->
+                                        <div class="fb-share-button"
+                                            data-href="http://localhost:8000/"
+                                            data-layout="button_count">
+                                        </div>
+                                        <!-- end facebook share button -->
+                                    </div>
+                                    <div class="col-sm-4 postInfo-box">
+                                        <p>Post Date:{{post.date}}</p>
+                                    </div>
+                                    <div class="col-sm-4 userInfo-box" onclick="window.location='/profile/{{post.userid}}'">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <img class=" user-icon" src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="">
+                                            </div>
+                                            <div class="user-name">
+                                                <p style="margin-bottom: 0;">{{post.username}}</p>
+                                                <p>Points:{{post.userpoints}}</p>
+                                            </div>
+                                            <div class="user-info">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        {{#each answer}}
+        <div class="answer">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="votecell">
+                            <div class="vote">
+                                <a class="vote-up-off vote-up" id="{{_id}}" title="This question shows research effort; it is useful and clear">up vote</a>
+                                <span class="vote-count-post" id="vote-count-{{_id}}">{{vote}}</span>
+                                <a class="vote-down-off vote-down" id="{{_id}}" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+                            </div>
+                        </td>
+                        <td class="postcell">
+                            <div class="post-text">
+                                <p>{{{body}}}</p>
+                            </div>
+                            <div class="post-taglist">
+                                
+                            </div>
+                            <div class="row share-and-userInfo">
+                                <div class="col-sm-4 share-box">
+                                    <div class="fb-share-button"
+                                        data-href="http://localhost:8000/"
+                                        data-layout="button_count">
+                                    </div>
+                                    <div class="accept-btn-box" id="{{_id}}">
+                                        {{#if ../post/notAccepted}}
+                                        {{#if ../isQuestionOwner}}
+                                        <button type="button" class="btn btn-primary btn-sm accept-btn">Accept</button>
+                                        {{/if}}
+                                        {{/if}}
+                                        {{#if accepted}}
+                                        <div class="accepted-label">
+                                            <p>Answer Accepted</p>
+                                        </div>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 postInfo-box">
+                                    <p>Post date: {{date}}</p>
+                                </div>
+                                <div class="col-sm-4 userInfo-box" onclick="window.location='/profile/{{userid}}'">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <img class=" user-icon" src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="">
+                                        </div>
+                                        <div class="col-sm-8 user-name">
+                                            <p style="margin-bottom: 0;">{{username}}</p>
+                                            <p>Points: {{userpoints}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="votecell"></td>
+                        <td>
+                            <div id="comment-block-{{_id}}">
+                                {{#each comments}}
+                                <div class="comment">
+                                    <span>{{body}} - </span><a href="/profile/{{userid}}" title="comment user">{{username}}</a>
+                                </div>
+                                {{/each}}
+                                <div class="add-comment comment">
+                                    <button class="comment-btn" id="comment-{{_id}}" onclick="commentbtnevent('{{_id}}')" title="add your comment">add your comment</button>
+                                </div>
+                                <form id="comment-form-{{_id}}" class="hidden" action="/commenting" method="post">
+                                    <div class="form-group col-sm-7">
+                                        <input class="form-control" name="body" type="text" placeholder="Comment...">
+                                    </div>
+                                    <div class="form-group col-sm-7">
+                                        <input hidden name="answerid" type="text" value="{{_id}}">
+                                    </div>
+                                    
+                                    {{!--  <label class="checkbox">
+                                        <input name="publish" type="checkbox"> Publish
+                                    </label> --}}
+                                    <hr/>
+                                    <button type="submit" class="btn">Add comment</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {{/each}}
+    </div>
+    <div class="sidebar hidden-sm col-md-4">
+        
+    </div>
+</div>
+<!-- post window with markdown -->
+{{#if isUserAuth}}
+<h3>Your Answer</h3>
+<form action="/answering" method="post" id="answer-form">
+    <div class="form-group col-sm-7">
+        <input class="form-control hidden" name="title" type="text" placeholder="Answer Title">
+    </div>
+    <div class="form-group col-sm-7 hidden">
+        <input hidden name="postid" type="text" value="{{post._id}}">
+    </div>
+    <textarea id="inputField" ondragenter='rangeEnterHandler(event)' ondrop='dropHandler(event)' data-width="700" name="body" data-provide="markdown" rows="10"></textarea>
+    <button type="submit" class="btn btn-primary" style="margin-top: 10px">Submit</button>
+</form>
+{{/if}}
+{{#if isUserNotAuth}}
+<div class="alert alert-warning col-sm-8" style="margin-top: 10px;" role="alert">Please sign in to ask question</div>
+{{/if}}
+<!-- endpost window with markdown -->

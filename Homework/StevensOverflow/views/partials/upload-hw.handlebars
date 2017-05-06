@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    </head>
+    <body>
+        
+        
+        <!--         <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            PROJECT
+            <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a id="java">JAVA</a></li>
+                <li><a id="cpp">CPP</a></li>
+                <li><a id="javascript">JAVASCRIPT</a></li>
+            </ul>
+        </div> -->
+        <form action="/upload-hw" method="post" enctype="multipart/form-data">
+            Select image to upload:</br>
+            <input type="radio" name="project-type" value="java" checked> JAVA<br>
+            <input type="radio" name="project-type" value="cpp"> CPP<br>
+            <input type="radio" name="project-type" value="javascript"> JAVASCRIPT<br>
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="submit" value="Upload Image" name="submit">
+        </form>
+    </body>
+</html>
