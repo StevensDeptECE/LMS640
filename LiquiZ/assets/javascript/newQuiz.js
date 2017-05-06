@@ -783,14 +783,14 @@ function create_question(preference) {
     /*add function to display preview of image*/
     imgUpload.onchange = function() {readURL(this, count)};
     var imgDiv = document.createElement('span');
-	imgDiv.className += 'imgDiv';
+    imgDiv.className += 'imgDiv';
     imgDiv.id = "img" + count;
     var image = document.createElement("img");
     image.id = "blah" + count;
     image.src = "#";
     image.alt = "image";
     image.style.display = "none";
-	imgDiv.appendChild(image);
+    imgDiv.appendChild(image);
     dragAndDrop.appendChild(imgUpload);
     dragAndDrop.appendChild(imgDiv);
 
@@ -1131,7 +1131,7 @@ function tableToJson4(Divs) {
             for(var i = 0; i < locations.length; i++){
                 var left = locations[i].style.left;
                 var top = locations[i].style.top;
-               locationArray += "left:" + left.substring(0,left.indexOf("p")) + ",top:" + top.substring(0,top.indexOf("p")) + "},";
+                locationArray += "left:" + left.substring(0,left.indexOf("p")) + ",top:" + top.substring(0,top.indexOf("p")) + "},";
             }
             var operCont3 = locationArray.substring(0,locationArray.length-1);
             operCont3 += "]";
@@ -1315,21 +1315,21 @@ function guid() {
 
 /*function for displaying a preview of an image for drag and drop*/
 function readURL(input, count) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#blah' + count)
-                        .attr('src', e.target.result)
-                        .width(150)
-                        .height(200)
-                        .css("display", "block")
-                        .click(function(ev){getClickPosition(ev.target, ev, count);});
-                    sessionStorage.setItem("imgData", reader.result);
-                };
-                reader.readAsDataURL(input.files[0]);
-                var clickImage = Util.span("Now click the image where you want to add a box.","dragDropInstruction");
-                $('#dragDropSet' + count).append(clickImage);
-            }
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#blah' + count)
+                .attr('src', e.target.result)
+                .width(150)
+                .height(200)
+                .css("display", "block")
+                .click(function(ev){getClickPosition(ev.target, ev, count);});
+            sessionStorage.setItem("imgData", reader.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+        var clickImage = Util.span("Now click the image where you want to add a box.","dragDropInstruction");
+        $('#dragDropSet' + count).append(clickImage);
+    }
 }
 
 /*function for drag and drop editor that gets the x and y coordinates of a click on an image*/
@@ -1360,7 +1360,7 @@ function createDropLocation(xpos, ypos, div, count){
         termBox.className += "dragDropOption";
         termBox.id = guid();
         termBox.appendChild(document.createTextNode(dragDropAnswer));
-  //      parent.appendChild(dropLocation);
+        //      parent.appendChild(dropLocation);
         parent.appendChild(termBox);
     }
 
@@ -1479,11 +1479,11 @@ var quizPreferencePayload =
 
         },
         "licenses": {
-        "free": ["No license, do whatever you like", null],
+            "free": ["No license, do whatever you like", null],
             "cc-by": ["Creative Commons with attribution",
-            "https://en.wikipedia.org/wiki/Creative_Commons_license#Types_of_licenses",
-            "https://creativecommons.org/licenses"
-        ],
+                "https://en.wikipedia.org/wiki/Creative_Commons_license#Types_of_licenses",
+                "https://creativecommons.org/licenses"
+            ],
             "cc-sa": ["Creative Commons Share Alike", null, "https://creativecommons.org/licenses"],
             "NC": ["Non-commercial only", null, null],
             "ND": ["No Derivative Works (use verbatim only)", null, null],
@@ -1493,7 +1493,7 @@ var quizPreferencePayload =
         "rights": {
             // who gets to share my stuff by default?
             "copy": "Copyright ($year$) Dov Kruger, all rights reserved",
-                "default": "GPL", // if I don't explicitly tag it, everyone can use under GPL
+            "default": "GPL", // if I don't explicitly tag it, everyone can use under GPL
         }
 
     };
