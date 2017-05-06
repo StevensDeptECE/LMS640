@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Grade distribution</title>
+
+		<script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+		<style type="text/css">
+${demo.css}
+		</style>
+
+
+	</head>
+	<body>
+       
+<script src="/Users/sukiekuruwa/Downloads/Highcharts-5.0.7/code/highcharts.src.js"></script>
+<script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+
+
+<!--Range1: <input type="text" name="fname" id = "range11" value = "1"> - <input type="text" name="fname"id = "range12" value = "59">
+<button type="button" onclick="myFunction1()">Submit</button><br>-->
+		<script type="text/javascript">
+var test1 = 2;
+
+
+payload = JSON.parse('{"name": ["jhon","tom","sarsha","mike","judy"],"ID":[1234,3345,6576,5776,4634],"subject": ["assignment","test","quiz"],"grade" : [[87,98,76], [88,87,90],[89,90,78],[65,78,66],[89,88,79]]}')
+
+function graph() {
+var stunum = payload.name.length;
+var subnum = payload.subject.length;
+
+var range1 = [0,59];
+;
+var range2 = [60,69];
+var range3 = [70,79];
+var range4 = [80,89];
+var range5 = [90,100];
+
+//get subject's names 
+var aname = [];
+//var sub = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]];
+for(var i = 0 ; i < subnum; i++){
+    aname[i] = payload.subject[i];
+    //sub[i] = [0,0,0,0,0];
+}
+var sub = new Array();
+for(var i = 0; i < subnum ; i++){
+    sub[i] = [0,0,0,0,0]; 
+}
+//var aname = ['assignment','test','quiz'];
+var grade = payload.grade;
+//var sub = [0,0,0,0,0]
+for(var j = 0; j < subnum; j++){
+ for(var i = 0 ; i<stunum; i++){
+    if(grade[i][j] >= range1[0] && grade[i][j] <range1[1]) sub[j][0]++;
+    else if(grade[i][j] >= range2[0] && grade[i][j] <= range2[1]) sub[j][1]++;
+    else if(grade[i][j] >=range3[0] && grade[i][j] <=range3[1]) sub[j][2]++;
+    else if(grade[i][j] >= range4[0] && grade[i][j] <=range4[1]) sub[j][3]++;
+    else if(grade[i][j] >= range5[0] && grade[i][j] <=range5[1] ) sub[j][4]++;
+ }
+}
+    //document.getElementById("wrapper").innHTML = "";
+    $(function () {
+    Highcharts.chart('wrapper', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'grades distribution'
+        },
+        xAxis: {
+            categories: aname
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'number of students'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 25,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                }
+            }
+        },
+        series: [{
+            name: range1[0] +' - '+range1[1], 
+            data: [sub[0][0], sub[1][0], sub[2][0]]
+                  
+        }, {
+            name: range2[0]+' - '+range2[1],
+            data: [sub[0][1], sub[1][1], sub[2][1]]
+        }, {
+            name: range3[0]+' - '+range3[1],
+            data: [sub[0][2], sub[1][2], sub[2][2]]
+        },{
+            name: range4[0]+' - '+range4[1],
+            data: [sub[0][3], sub[1][3], sub[2][3]]
+        }, {
+            name: range5[0]+' - '+range5[1],
+            data: [sub[0][4], sub[1][4], sub[2][4]]
+        }]
+    });
+});
+
+}
+
+
+
+function graph1() {
+    m1 = document.getElementById("range11").value;
+    n1 = document.getElementById("range12").value;
+    m2 = document.getElementById("range21").value;
+    n2 = document.getElementById("range22").value;
+    m3 = document.getElementById("range31").value;
+    n3 = document.getElementById("range32").value;
+    m4 = document.getElementById("range41").value;
+    n4 = document.getElementById("range42").value;
+    m5 = document.getElementById("range51").value;
+    n5 = document.getElementById("range52").value;
+var stunum = payload.name.length;
+var subnum = payload.subject.length;
+
+var range1 = [m1,n1];
+
+var range2 = [m2,n2];
+var range3 = [m3,n3];
+var range4 = [m4,n4];
+var range5 = [m5,n5];
+
+//get subject's names 
+var aname = [];
+//var sub = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]];
+for(var i = 0 ; i < subnum; i++){
+    aname[i] = payload.subject[i];
+    //sub[i] = [0,0,0,0,0];
+}
+var sub = new Array();
+for(var i = 0; i < subnum ; i++){
+    sub[i] = [0,0,0,0,0]; 
+}
+//var aname = ['assignment','test','quiz'];
+var grade = payload.grade;
+//var sub = [0,0,0,0,0]
+for(var j = 0; j < subnum; j++){
+ for(var i = 0 ; i<stunum; i++){
+    if(grade[i][j] >= range1[0] && grade[i][j] <range1[1]) sub[j][0]++;
+    else if(grade[i][j] >= range2[0] && grade[i][j] <= range2[1]) sub[j][1]++;
+    else if(grade[i][j] >=range3[0] && grade[i][j] <=range3[1]) sub[j][2]++;
+    else if(grade[i][j] >= range4[0] && grade[i][j] <=range4[1]) sub[j][3]++;
+    else if(grade[i][j] >= range5[0] && grade[i][j] <=range5[1] ) sub[j][4]++;
+ }
+}
+    document.getElementById("wrapper").innHTML = "";
+    $(function () {
+    Highcharts.chart('wrapper', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'grades distribution'
+        },
+        xAxis: {
+            categories: aname
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'number of students'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 25,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                }
+            }
+        },
+        series: [{
+            name: range1[0] +' - '+range1[1], 
+            data: [sub[0][0], sub[1][0], sub[2][0]]
+                  
+        }, {
+            name: range2[0]+' - '+range2[1],
+            data: [sub[0][1], sub[1][1], sub[2][1]]
+        }, {
+            name: range3[0]+' - '+range3[1],
+            data: [sub[0][2], sub[1][2], sub[2][2]]
+        },{
+            name: range4[0]+' - '+range4[1],
+            data: [sub[0][3], sub[1][3], sub[2][3]]
+        }, {
+            name: range5[0]+' - '+range5[1],
+            data: [sub[0][4], sub[1][4], sub[2][4]]
+        }]
+    });
+});
+
+}
+graph();
+// function reload() {
+//     m =;
+//     n =;
+//     graph(m, n);
+// }
+
+		</script>
+
+
+<div id="wrapper" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+Range1: <input type="text" name="fname" id = "range11" onchange="myFunction1()" value = "0"> - <input type="text" name="fname"id = "range12" onchange="myFunction2()" value="59"></br>
+Range2: <input type="text" name="fname" id = "range21" onchange="myFunction1()" value = "60"> - <input type="text" name="fname"id = "range22" onchange="myFunction2()" value="69"></br>
+Range3: <input type="text" name="fname" id = "range31" onchange="myFunction1()" value = "70"> - <input type="text" name="fname"id = "range32" onchange="myFunction2()" value="79"></br>
+Range4: <input type="text" name="fname" id = "range41" onchange="myFunction1()" value = "80"> - <input type="text" name="fname"id = "range42" onchange="myFunction2()" value="89"></br>
+Range5: <input type="text" name="fname" id = "range51" onchange="myFunction1()" value = "90"> - <input type="text" name="fname"id = "range52" onchange="myFunction2()" value="100"></br>
+
+<script>
+    function myFunction1() {
+    var x = document.getElementById("range11");
+    return x;
+}
+   function myFunction2() {
+    var x = document.getElementById("range12");
+    return x;
+}
+</script>
+<button type="button" onclick="graph1()">Submit</button><br>
+
+
+
+
+
+</form>
+
+	</body>
+</html>
