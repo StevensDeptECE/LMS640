@@ -23,31 +23,69 @@ router.use(function(req, res, next) {
 router.route('/posts')
 
       .get(function(req, res) {
+        Post.find(function(err,data) {
+            if(err) {
+              res.send(500, {message:err});
+            }
 
-        res.send({message: 'TODO return all posts'});
-
+            return res.json(data);
+        });
       })
 
       .post(function(req, res) {
+        if(!req.isAuthenticated()) {
+          return res.send(401, {message : 'please login first'});
+        }
 
-        res.send({message: 'create a new post'});
+        var post = new Post();
+        post.text = req.body.text;
+        post.created_by = req.body.created_by;
+        post.save(function(err,post) {
+          if(err) {
+            res.send(500,{message: err});
+          }
+          res.json(post);
+        });
       });
 
 router.route('/posts/:id')
 
       .get(function(req, res) {
-        
-        res.send({message: "TODO return a post with Id" + req.params.id});
+        Post.findById(req.params.id, function(err,data) {
+          if(err) {
+            res.send(err);
+          }
+          res.json(data);
+        });
       })
-
+      //updates specified post
       .put(function(req, res) {
+          Post.findById(req.params.id, function(err,post) {
+            if(err) {
+              res.send(err);
+            }
+            post.text = req.body.text;
+            post.created_by = req.body.created_by;
 
-        res.send({message: "TODO modify a posts with ID" + req.params.id});
-
+            post.save(function(err,post) {
+              if(err) {
+                res.send(err);
+              }
+              res.json(post);
+                
+            });
+          });
       })
 
       .delete(function(req, res) {
+        Post.remove({
+          _id:req.params.id
+        }, function(err) {
+          if(err)
+            res.send(err);
+          
+          res.json({message:"successfully delete"});
+        })
 
-        res.send({message: "TODO delete a posts with ID"  + req.params.id});
       })
 module.exports = router;
