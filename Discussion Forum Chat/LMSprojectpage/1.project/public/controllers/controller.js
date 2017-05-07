@@ -36,6 +36,7 @@ myApp.factory('selectedProject', function () {
 
 
 
+
  myApp.directive('fileModel', ['$parse', function ($parse) {
         return {
            restrict: 'A',
@@ -77,28 +78,6 @@ myApp.factory('selectedProject', function () {
         };
      }]);  
 
-function infoCtrl($scope, $http, selectedProject){
-  console.log("Hello World from info controller");
-      $scope.selectedProject = selectedProject.getSelectedID();
-      console.log($scope.selectedProject);
-      $scope.requestSent = false;
-      $scope.getProjectDetails = function(id) {
-        console.log(id);
-        if($scope.project) {
-          return project;
-        }
-        if(!$scope.requestSent) {
-          $http.get('/projectlist/' + id).success(function(response) {
-            $scope.project = response;
-            $scope.requestSent = false;
-          });
-          $scope.requestSent = true;
-        }
-        return project;
-      }; 
-
-
-}
 
 function discussionCtrl($scope,$http) {
 
@@ -145,8 +124,11 @@ function infoCtrl($scope, $http, selectedProject){
       $scope.selectedProject = selectedProject.getSelectedID();
       console.log($scope.selectedProject);
       $scope.requestSent = false;
+      var ID = $scope.selectedProject;
       $scope.getProjectDetails = function(id) {
         console.log(id);
+        ID=id;
+        console.log("bibgv "+ID)
         if($scope.project) {
           return project;
         }
@@ -160,22 +142,34 @@ function infoCtrl($scope, $http, selectedProject){
         return project;
       };
 
-      $scope.edit = function() {
-        console.log(id);
+      $scope.edit = function(id) {
+        console.log();
         $http.get('/projectlist/' + id).success(function(response) {
           $scope.project = response;
         });
-      };
-
-      var refresh = function() {
+      };  
+      console.log(selectedProject);
+      var refresh = function(id) {
         $http.get('/projectlist').success(function(response) {
           console.log("I got the data I requested");
           $scope.projectlist = response;
           $scope.project = "";
         });
+        console.log(id);
+        $http.get('/commentlist/' + id).success(function(response) {
+          console.log("I got comment data I requested");
+          $scope.commentlist = response;
+          $scope.comment = "";
+        });        
       };
+      refresh(ID);
 
-      refresh();
+      $scope.update = function(id) {
+        console.log(id);
+        $http.put('/projectlist/' + id).success(function(response) {
+          refresh();
+        })
+      };
 
       $scope.update = function() {
         console.log($scope.project._id);
@@ -183,22 +177,20 @@ function infoCtrl($scope, $http, selectedProject){
           refresh();
         })
       };
+
+      $scope.createComment = function (id){
+        console.log(id);
+        $http.post('/commentlist/'+ id, $scope.comment).success(function(response) {
+          console.log(response);
+          refresh(id);
+        });
+      }      
 }
 
 function AppCtrl($scope, $http, selectedProject){
     console.log("Hello World from controller");
     
     
-     $scope.uploadFile = function(){
-       var file = $scope.myFile;
-       
-       console.log('file is ' );
-       console.dir(file);
-       
-       var uploadUrl = "/fileUpload";
-       fileUpload.uploadFileToUrl(file, uploadUrl);
-      };
-
       var refresh = function() {
         $http.get('/projectlist').success(function(response) {
           console.log("I got the data I requested");
