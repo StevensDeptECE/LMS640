@@ -11,6 +11,7 @@ var http = require('http');
 var multer  = require('multer');
 var Project = require('./app/models/project');
 var Discussion = require('./app/models/discussion');
+var Comment = require('./app/models/comment');
 var path = require('path');
 var http = require('http');
 var multer  = require('multer');
@@ -113,12 +114,38 @@ app.put('/projectlist/:id',function(req, res){
   var id = req.params.id;
   var query = id;
   console.log(id);
-  Project.findOneAndUpdate({name: "test"}, {$set:{name: req.body.name, info: req.body.info, team: req.body.team ,courseId: req.body.courseId}}, {new: true}, function(err, doc){
+  Project.findOneAndUpdate({name: req.body.name}, {$set:{name: req.body.name, info: req.body.info, team: req.body.team ,courseId: req.body.courseId}}, {new: true}, function(err, doc){
     if(err){
         console.log("Something wrong when updating data!");
     } else {
       res.json(doc);
     }
+  });
+});
+
+app.get('/commentlist/:id', function (req, res) {
+  var id = req.params.id;
+  console.log("Querying the database for comments with project id: " + id);
+  Comment.find({projectid: id}, function(err, docs) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(docs);
+    }  
+  });
+});
+
+app.post('/commentlist/:id', function(req,res){
+  console.log('starting a discussion');
+  var comment = new Comment();
+  comment.projectid = req.params.id;
+  comment.comment= req.body.comment;
+  comment.save(function(err, comment){
+    if (err) {
+    res.send(err);
+  } else {
+    res.send('discussion started');
+  }
   });
 });
 
