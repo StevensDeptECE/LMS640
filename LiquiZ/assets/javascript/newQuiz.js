@@ -534,13 +534,6 @@ function create_question(preference) {
     th5.className = "th5";
 
 
-
-
-
-
-
-
-
     var multiChoices = Util.span("", "", "multiChoices" + count);
     console.log(multiChoices.id);
     multiChoices.style.display = "none";
@@ -572,8 +565,6 @@ function create_question(preference) {
     multiChoices.appendChild(questionMC2);
     multiChoices.appendChild(questionMC3);
     multiChoices.appendChild(questionMC4);
-
-
 
 
     var multiChoicesSel = Util.span("", "", "multiChoicesSel" + count);
@@ -609,8 +600,6 @@ function create_question(preference) {
     multiChoicesSel.appendChild(questionMCS4);
 
 
-
-
     var multiChoicesDrop = Util.span("", "", "multiChoicesDrop" + count);
     console.log(multiChoicesDrop.id);
     multiChoicesDrop.style.display = "none";
@@ -644,12 +633,6 @@ function create_question(preference) {
     multiChoicesDrop.appendChild(questionMCD4);
 
 
-
-
-
-
-
-
     var numbersSet = document.createElement("textarea");
     numbersSet.placeholder = "Please input the number of places";
     numbersSet.id = "numbersSet" + count;
@@ -680,6 +663,7 @@ function create_question(preference) {
     clozeSet.className = "inputCode";
     clozeSet.addEventListener('keydown', autosize);
 
+
     var codesSet = document.createElement("textarea");
     codesSet.placeholder = "Please input the codes";
     codesSet.id = "codesSet" + count;
@@ -700,12 +684,6 @@ function create_question(preference) {
     matchRight.style.display = "none";
     matchRight.className = "matchChoice";
     matchRight.addEventListener('keydown', autosize);
-
-
-
-
-
-
 
 
     var multiSurveys = Util.span("", "", "multiSurveys" + count);
@@ -773,6 +751,7 @@ function create_question(preference) {
     surveyChoices.appendChild(surveyC3);
     surveyChoices.appendChild(surveyC4);
 
+
     var dragAndDrop = document.createElement("span");
     var imgUpload = document.createElement("input");
     imgUpload.type = "file";
@@ -794,8 +773,10 @@ function create_question(preference) {
     dragAndDrop.appendChild(imgUpload);
     dragAndDrop.appendChild(imgDiv);
 
+
     var bt1 = Util.button("Delete", function () {remove_question(count)}, "three");
     bt1.style.display = "block";
+
 
     Quest.appendChild(QuestionID);
     Quest.appendChild(questionTitle);
@@ -1227,24 +1208,23 @@ function tableToJson4(Divs) {
             operFinal.push("Survey");
 
             var allChoices = "";
-            for(var q = 1; q < MS_Index - 1 ; q++) {
-                allChoices = allChoices + document.getElementById(q + "surveyCont" + i).value + ",";
-            }
-            allChoices = allChoices + document.getElementById(MS_Index - 1 + "surveyCont" + i).value;
-            MS_Index = 5;
-            operCont2 = "[" + allChoices + "]";
-
-            operFinal.push(operCont2);
-
-            var allChoices = "";
             for(var q = 1; q < MSC_Index - 1 ; q++) {
                 allChoices = allChoices + document.getElementById(q + "surveyC" + i).value + ",";
             }
             allChoices = allChoices + document.getElementById(MSC_Index - 1 + "surveyC" + i).value;
             MSC_Index = 5;
             operCont3 = "[" + allChoices + "]";
-
             operFinal.push(operCont3);
+
+            var allChoices = "";
+            for(var q = 1; q < MS_Index - 1 ; q++) {
+                allChoices = allChoices + document.getElementById(q + "surveyCont" + i).value + ",";
+            }
+            allChoices = allChoices + document.getElementById(MS_Index - 1 + "surveyCont" + i).value;
+            MS_Index = 5;
+            operCont2 = "[" + allChoices + "]";
+            operFinal.push(operCont2);
+
             operFinal.push(addOn);
         }
         var comps = [];
