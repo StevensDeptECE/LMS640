@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan');
+var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var bcrypt = require('bcrypt');
@@ -10,33 +10,42 @@ var LocalStrategy = require('passport-local').Strategy;
 //global.passport = passport;
 var session = require('express-session');
 var mongoose = require('mongoose');
+var multer  = require('multer');
 //Initialize models
-var models = require('./models/user');
-
+// var models = require('./models');
+var path = require('path');
 var api = require('./routes/api');
 var index = require('./routes/index');
 var auth = require('./routes/authenticate')(passport);
 
-//conect to mongoose
-mongoose.connect('mongodb://localhost:27017/Discussion-page');
+mongoose.Promise = require('bluebird');
 
+//conect to mongoose
+mongoose.connect('mongodb://localhost:27017/project', function(err) {  //27017 is the mongodb port
+  if(err) {
+    console.log('Not connected to the database: ' + err);
+  } else {
+    console.log('Successfully connected to MongoDB');
+  }
+});
 
 var app = express();
 
 //view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+app.use(morgan('dev'));
 app.use(session({
     secret: 'god will help you'
 }));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.static(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
 // app.get('*', function(req, res) {
 //     res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
