@@ -1,0 +1,38 @@
+<html ng-app="myApp">
+<div  class=col-sm-9>
+	<div class=col-lg-1></div>
+	<div class=col-lg-8>
+	<div>
+		<legend>({{ getProjectDetails(selectedProject) }})</legend>
+		<h2 >{{project.name}} </h2>
+		<div>
+		<textarea name="message"  class="form-control"  ng-model="project.info" rows="3" cols="50" ></textarea> 
+		</div>
+		<br>
+		</div>
+		<div class="btn-group pull-right" >
+		<button class="btn btn-warning"  ng-click="edit(project._id)">Edit</button>
+		</div>
+	<button class="btn btn-danger" ng-click="update(project._id)">Update</button>
+	<div ng-controller = "myCtrl">
+   		<input type = "file" file-model = "myFile"/>
+		<button ng-click = "uploadFile()">Upload File</button>
+    </div>
+    <br>
+    <div ng-repeat = "comment in commentlist" >
+    	<div class="d-block" >{{comment.comment}}</div>
+    	<br>
+    </div>
+
+    <div>
+		<textarea name="comment"  class="form-control"  ng-model="comment.comment" rows="3" cols="10" ></textarea> 
+	</div>
+	<button class="btn btn-primary" ng-click="createComment(project._id)" type="button" >Comment</button>
+
+	<!-- <div ng-repeat="pdiscussion in projectlist">{{pdiscussion.discussion}}</div> -->
+	
+	<a href="#/home"> Back</a>
+	</div>
+	
+</div>
+</html>
