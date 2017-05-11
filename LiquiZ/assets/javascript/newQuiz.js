@@ -753,23 +753,30 @@ function create_question(preference) {
 
 
     var dragAndDrop = document.createElement("span");
+
     var imgUpload = document.createElement("input");
     imgUpload.type = "file";
     imgUpload.accept = "image/*";
+
     dragAndDrop.id = "dragDropSet" + count;
     dragAndDrop.style.display = "none";
     dragAndDrop.className = "dragAndDrop";
+
     /*add function to display preview of image*/
     imgUpload.onchange = function() {readURL(this, count)};
+
     var imgDiv = document.createElement('span');
     imgDiv.className += 'imgDiv';
     imgDiv.id = "img" + count;
+
     var image = document.createElement("img");
     image.id = "blah" + count;
     image.src = "#";
     image.alt = "image";
     image.style.display = "none";
+
     imgDiv.appendChild(image);
+
     dragAndDrop.appendChild(imgUpload);
     dragAndDrop.appendChild(imgDiv);
 
@@ -1096,7 +1103,9 @@ function tableToJson4(Divs) {
             operFinal.push("DragDrop");
             /*get file name*/
             var filename = document.getElementById("dragDropSet"+i).firstChild.value;
-            filename = "imgData";
+            // filename = "imgData";
+            filename = "cat.jpg";
+
             operFinal.push(filename);
             /*get text options*/
             var dragDropOptions = document.getElementsByClassName("dragDropOption");
@@ -1106,14 +1115,25 @@ function tableToJson4(Divs) {
             }
             var operCont2 = optionArray.substring(0, optionArray.length-1);
             operCont2 += "]";
+
             /*get drop locations*/
-            var locations = document.getElementsByClassName("dragdropLocation");
-            var locationArray = "[{";
+            var locations = document.getElementsByClassName("dragdropLocation111");
+            // var locations = dropLocation;
+
+            // var locationArray = "[{";
+            // for(var i = 0; i < locations.length; i++){
+            //     var left = locations[i].style.left;
+            //     var top = locations[i].style.top;
+            //     locationArray += "left:" + left.substring(0,left.indexOf("p")) + ",top:" + top.substring(0,top.indexOf("p")) + "},";
+            // }
+
+            var locationArray = "[";
             for(var i = 0; i < locations.length; i++){
                 var left = locations[i].style.left;
                 var top = locations[i].style.top;
-                locationArray += "left:" + left.substring(0,left.indexOf("p")) + ",top:" + top.substring(0,top.indexOf("p")) + "},";
+                locationArray += "{" + "left:" + left.substring(0,left.indexOf("p")) + ",top:" + top.substring(0,top.indexOf("p")) + "},";
             }
+
             var operCont3 = locationArray.substring(0,locationArray.length-1);
             operCont3 += "]";
             operFinal.push(operCont2);
@@ -1300,13 +1320,14 @@ function readURL(input, count) {
         reader.onload = function (e) {
             $('#blah' + count)
                 .attr('src', e.target.result)
-                .width(150)
-                .height(200)
+                // .width(150)
+                // .height(200)
                 .css("display", "block")
                 .click(function(ev){getClickPosition(ev.target, ev, count);});
             sessionStorage.setItem("imgData", reader.result);
         };
         reader.readAsDataURL(input.files[0]);
+
         var clickImage = Util.span("Now click the image where you want to add a box.","dragDropInstruction");
         $('#dragDropSet' + count).append(clickImage);
     }
@@ -1317,6 +1338,7 @@ function getClickPosition(canvas, event, count) {
     var rect = canvas.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
+
     createDropLocation(x, y, event.target, count);
 }
 
@@ -1326,21 +1348,28 @@ function createDropLocation(xpos, ypos, div, count){
     /*if user enters something and hits okay build location and answer, otherwise do nothing*/
     if (dragDropAnswer != null && dragDropAnswer != "") {
         var parent = document.getElementById("img" + count);
+
         /*create location on image to drop*/
         var coord = "left:" + (xpos-10) + "px; top:"+ (ypos-10) + "px;";
+
         var dropLocation = document.createElement('span');
-        dropLocation.className += "dragdropLocation";
+        dropLocation.className += "dragdropLocation111";
+
         dropLocation.name = "dragDrop";
         dropLocation.id = guid();
+
         dropLocation.setAttribute("ondrop","drop(event)");
         dropLocation.setAttribute("ondragover","allowDrop(event)");
-        dropLocation.setAttribute("style","position:absolute; "+ coord);
+        dropLocation.setAttribute("style","position:absolute; " + coord);
+
         /*create draggable option*/
         var termBox = document.createElement('text');
         termBox.className += "dragDropOption";
         termBox.id = guid();
         termBox.appendChild(document.createTextNode(dragDropAnswer));
-        //      parent.appendChild(dropLocation);
+
+        dropLocation.style.display = "none";
+        parent.appendChild(dropLocation);
         parent.appendChild(termBox);
     }
 
