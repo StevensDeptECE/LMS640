@@ -1,0 +1,13 @@
+<div ng-controller="TabsDemoCtrl">
+    <tabset>
+        <tab heading="Discussion">
+            <ul>
+                <li ng-repeat="tab in tabs">
+                    <h3>{{tab.title}}</h3>
+                    {{tab.content}}
+                </li>
+            </ul>
+        </tab>
+        <tab heading="Project">project</tab>
+    </tabset>
+</div>
