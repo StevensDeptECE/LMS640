@@ -1101,12 +1101,20 @@ function tableToJson4(Divs) {
         var operFinal = [];
         if(document.getElementById("type_row"+i).value == "Drag and Drop"){
             operFinal.push("DragDrop");
-            /*get file name*/
-            var filename = document.getElementById("dragDropSet"+i).firstChild.value;
-            // filename = "imgData";
-            filename = "cat.jpg";
 
-            operFinal.push(filename);
+            /*get file name*/
+            // var filename = "cat.jpg";
+            // operFinal.push(filename);
+
+            // var filename = document.getElementById("dragDropSet"+i).firstChild.value;
+            // filename = "imgData";
+            // operFinal.push(filename);
+
+            var picture = sessionStorage.getItem('imgData');
+            // var filename = document.createElement('img');
+            // filename.src = picture;
+            operFinal.push(picture);
+
             /*get text options*/
             var dragDropOptions = document.getElementsByClassName("dragDropOption");
             var optionArray = "[";
@@ -1117,25 +1125,16 @@ function tableToJson4(Divs) {
             operCont2 += "]";
 
             /*get drop locations*/
-            var locations = document.getElementsByClassName("dragdropLocation111");
-            // var locations = dropLocation;
-
-            // var locationArray = "[{";
-            // for(var i = 0; i < locations.length; i++){
-            //     var left = locations[i].style.left;
-            //     var top = locations[i].style.top;
-            //     locationArray += "left:" + left.substring(0,left.indexOf("p")) + ",top:" + top.substring(0,top.indexOf("p")) + "},";
-            // }
-
+            var locations = document.getElementsByClassName("dragdropLocation");
             var locationArray = "[";
             for(var i = 0; i < locations.length; i++){
                 var left = locations[i].style.left;
                 var top = locations[i].style.top;
                 locationArray += "{" + "left:" + left.substring(0,left.indexOf("p")) + ",top:" + top.substring(0,top.indexOf("p")) + "},";
             }
-
             var operCont3 = locationArray.substring(0,locationArray.length-1);
             operCont3 += "]";
+
             operFinal.push(operCont2);
             operFinal.push(operCont3);
             operFinal.push(addOn);
@@ -1353,7 +1352,7 @@ function createDropLocation(xpos, ypos, div, count){
         var coord = "left:" + (xpos-10) + "px; top:"+ (ypos-10) + "px;";
 
         var dropLocation = document.createElement('span');
-        dropLocation.className += "dragdropLocation111";
+        dropLocation.className += "dragdropLocation";
 
         dropLocation.name = "dragDrop";
         dropLocation.id = guid();
