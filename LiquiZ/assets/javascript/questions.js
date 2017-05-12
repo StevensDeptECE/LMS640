@@ -209,8 +209,22 @@ DragDrop.prototype.draw = function(div) {
 		ev.dataTransfer.effectAllowed = 'move';
 		ev.dataTransfer.setData("Text")
 	}
-    var image = new Img(this.image);
-    image.draw(div);
+
+	if (this.image.length < 50) {
+        var image = new Img(this.image);
+        image.draw(div);
+    } else {
+        var image = document.createElement("img");
+        console.log(this.image);
+        image.src = this.image;
+        image.id = this.id;
+        image.setAttribute('draggable', 'false');
+        var imgDiv = document.createElement('div');
+        imgDiv.className += 'imgDiv';
+        imgDiv.appendChild(image);
+        div.appendChild(imgDiv);
+    }
+
 	var imgDiv = div.getElementsByClassName("imgDiv");
 	/*create draggable items*/
 	var optionsBox = document.createElement('div');
