@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <!--- css style files --->
+    <link href="stylesheets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/bower_components/amazeui/dist/css/amazeui.min.css" rel="stylesheet">
+
+    <title>Welcome to Chatting Room</title>
+    <style>
+        .title {
+            text-align: center;
+        }
+
+        .chat-content-container {
+            height: 29rem;
+            overflow-y: scroll;
+            border: 1px solid silver;
+        }
+
+        .div-right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body ng-app="chatApp">
+<div class="container">
+    <!-- title start -->
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="title">
+                <div class="am-g am-g-fixed">
+                    <div class="am-u-sm-12">
+                        <h1 class="am-text-primary">Chatting Room</h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <!-- title end -->
+    <div class="row" id="mainRow">
+        <!-- list of user -->
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">List Of User</div>
+                        <div class="panel-body">
+                            <ul class="list-group" ng-controller="dbList">
+                                <li class="list-group-item" ng-repeat="dbUsers in userList">
+                                    {{dbUsers.name}}
+                                </li>
+                            </ul>
+                            <form action="/chat/insert" method="post">
+                                <div class="div-right" ng-controller="myCtrl">
+                                    First Name: <input type="text" name="name" id="name" ng-model="firstName"><br>
+                                    Password: <input type="text" name="password" id="password" ng-model="lastName"><br>
+                                    <div class="div-right">
+                                        <form action="/chat/del" method="post">
+                                            <div class="btn-group" role="group">
+                                                <button type="submit" class="btn btn-danger btn-xs">Sign Out</button>
+                                            </div>
+                                        </form>
+                                        <div class="btn-group" role="group">
+                                            <button type="submit" class="btn btn-success btn-xs">Sign In</button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    Full Name: {{firstName + " " + lastName}}
+                                    <!--- test database --->
+                                    <h3>Get Data</h3>
+                                    <a href="/chat/get-data">Load Data</a>
+
+                                </div>
+                            </form>
+                            <div ng-controller="dbList">
+                                {{userList[3].name}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <!-- chat content start -->
+            <div class="chat-content col-xs-12 col-sm-12" ng-controller="chatCtrl as chat">
+                <div class="am-g am-g-fixed chat-content-container" scroll-glue-bottom="glued">
+                    <div class="am-u-sm-12">
+                        <ul id="message-list" class="am-comments-list am-comments-list-flip">
+                            <li class="am-comment am-comment" ng-repeat="message in chat.messages | date">
+                                <!-- update the last chat -->
+
+                                <a href="javascript:void(0)"><img src="public/images/Mario.png" alt=""
+                                                                  class="am-comment-avatar" width="48" height="48"/></a>
+                                <div class="am-comment-main">
+                                    <header class="am-comment-hd">
+                                        <div class="am-comment-meta"><a href="javascript:void(0)"
+                                                                        class="am-comment-author">{{message.username}}</a>
+                                            <time>{{message.date}}
+                                            </time>
+                                        </div>
+
+                                    </header>
+                                    <!--- what's going on with following code --->
+                                    <div class="am-comment-bd" ng-bind-html="message.message | to_trusted">
+
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- message input start -->
+            <div ng-controller="chatCtrl as user">
+                <div class="message-input am-margin-top">
+                    <div class="am-g am-g-fixed">
+                        <div class="am-u-sm-12">
+                            <form class="am-form">
+                                <div class="am-form-group">
+                                    <div id="editor" ready="ready" class="ueditor" ng-model="content"
+                                         config="_simpleConfig"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-g am-g-fixed am-margin-top">
+                    <div class="am-u-sm-6">
+                        <div id="message-input-nickname" class="am-input-group am-input-group-primary">
+                            <span class="am-input-group-label"><i class="am-icon-user"></i></span>
+                            <input id="nickname" type="text" ng-model="user.username" class="am-form-field"/>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-6">
+                        <button type="submit" ready="ready" class="am-btn am-btn-primary" ng-click="user.sendMessage()">
+                            <i class="am-icon-send"></i> Send
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!--- test database --->
+</div>
+</body>
+<!--- reserved for javascript --->
+<script src="stylesheets/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="stylesheets/bower_components/angular/angular.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+
+<script charset="utf-8" src="stylesheets/bower_components/ueditor/ueditor.config.js"></script>
+<script charset="utf-8" src="stylesheets/bower_components/ueditor/lang/en/en.js"></script>
+<script type="text/javascript" src="http://ueditor.baidu.com/ueditor/ueditor.all.js"></script>
+
+<script type="text/javascript" src="stylesheets/bower_components/angular-ueditor/dist/angular-ueditor.min.js"></script>
+<script type="text/javascript"
+        src="public/stylesheets/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script type="text/javascript" src="public/stylesheets/bower_components/angular-scroll-glue/src/scrollglue.js"></script>
+
+<script type="text/javascript" src="http://ueditor.baidu.com/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="http://ueditor.baidu.com/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" src="http://cdn.staticfile.org/angular.js/1.3.0-beta.13/angular.min.js"></script>
+<script type="text/javascript" src="http://cdn.staticfile.org/angular.js/1.3.0-beta.13/angular-route.min.js"></script>
+
+<!-- deal with send message and receive message
+<script src="public/javascripts/chatRoom.js"></script>-->
+
+<script src="./public/javascripts/chatRoom.js"></script>
+<script src="./public/javascripts/dbHttpService.js"></script>
+
+</html>

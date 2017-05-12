@@ -1,0 +1,33 @@
+{
+  "name": "angular-scroll-glue",
+  "description": "An AngularJs directive that automatically scrolls to the bottom of an element on changes in it's scope.",
+  "main": "src/scrollglue.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "test"
+  ],
+  "keywords": [
+    "scroll",
+    "glue"
+  ],
+  "authors": [
+    "Lukas Wegmann"
+  ],
+  "homepage": "https://github.com/Luegg/angularjs-scroll-glue",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Luegg/angularjs-scroll-glue.git"
+  },
+  "version": "2.2.0",
+  "_release": "2.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.2.0",
+    "commit": "421d6b6be54cb0a057df8d865c5d804fd8f32053"
+  },
+  "_source": "https://github.com/Luegg/angularjs-scroll-glue.git",
+  "_target": "^2.2.0",
+  "_originalSource": "angular-scroll-glue",
+  "_direct": true
+}
