@@ -13,7 +13,7 @@ MC.prototype.draw = function(div) {
         label.className = "control control--radio";
 		var xbutton = document.createElement('INPUT');
 		xbutton.type = 'Radio';
-		xbutton.name = "choice";
+		xbutton.name = "choice" + this.id;
 		var diva = document.createElement("div");
 		diva.className = "control__indicator";
         label.appendChild(xbutton);
