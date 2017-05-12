@@ -101,6 +101,7 @@ function submitQuizButton(payload){
 
 submitQuizButton.prototype.draw = function(){
     alert("Are you sure you want to submit?");
+	launch(quizIndex, quizDetailPayLoad, 'up3');
 }
 
 var submissionInfo = "";
