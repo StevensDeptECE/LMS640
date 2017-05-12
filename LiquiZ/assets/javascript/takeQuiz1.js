@@ -135,7 +135,6 @@ takeQuiz.prototype.draw = function(div){
     clearElements("up3");
     this.div.appendChild(this.navDiv);
     div.appendChild(this.div);
-   // div.appendChild(this.navDiv);
     this.sidebar.draw();
     for (var i = 0; i < this.questions.length; ++i) {
         this.questions[i].draw();
@@ -144,7 +143,7 @@ takeQuiz.prototype.draw = function(div){
     submitQuiz.type = "submit";
     submitQuiz.innerHTML ="Submit Quiz";
     submitQuiz.className = "two";
-   // submitQuiz.onclick = SubmitQuiz();
+    submitQuiz.id = "submitQuiz-button";
     this.div.appendChild(submitQuiz);
 };
 
