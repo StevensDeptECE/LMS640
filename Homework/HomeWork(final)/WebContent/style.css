@@ -1,0 +1,164 @@
+body {
+    background-image: url("background.png");
+    background-repeat:repeat;
+}
+#login {
+    text-align: right;
+    font-size: 20px;
+}
+#courseDashboard {
+    background-color: white;
+    position:relative;
+    top:20%;
+    left:20%;
+    height:1500px;
+    width: 60%;
+    margin-top: 100px;
+    text-align: center;
+}
+.coursetitle {
+    text-align: left;
+    height: 50px;
+    width:60%;
+    padding-top: 18px;
+    padding-bottom: 25px;
+    margin: 20px;
+}
+.coursetitle p{
+     font-size: 35px;
+     font-weight: bolder;
+}
+.table table-hover tr th  {
+   font-size: 60px;
+   padding-top: 50px;
+   padding-bottom:50px;
+}
+#createcourse {
+    background-color:aquamarine;
+    border:1px solid aquamarine;
+    border-radius:50%;
+    position:absolute;
+    top:50px;
+    right:50px;
+    float:right;
+    clear:left;
+    height:80px;
+    width:80px;
+    clear:left;
+    line-height: 80px;
+    text-align: center;
+}
+.course {
+    padding: 20px;
+    font-size: 18px;
+    text-decoration: none;
+}
+/* page3 */
+.course p {
+    text-align: left;
+    padding: 10px;
+  
+}
+#createAssignment {
+    background-color:aquamarine;
+    border:1px solid aquamarine;
+    border-radius:50%;
+    position:absolute;
+    top:50px;
+    right:50px;
+    float:right;
+    clear:left;
+    height:100px;
+    width:100px;
+    clear:left;
+    line-height:100px;
+    text-align: center;
+    
+}
+/* page4 */
+
+.left {
+    background-color: transparent;
+    width: 50%;
+    float:left;
+    padding: 30px;
+}
+
+.right {
+    background-color: transparent;
+    width: 50%;
+    float:right;
+    clear:right;
+    padding: 30px;
+}
+
+.homeworkName {
+    font-size: 28px;
+    padding: 15px;
+}
+.dropdown {
+   padding: 0px 250px 0px 10px;
+}
+.textarea {
+    padding: 10px 20px 0px 10px;
+}
+.console, .comment {
+    padding: 40px 10px 0px 30px;
+}
+.gradeinput {
+    padding: 40px 10px 0px 180px;
+    
+}
+.entergradebutton {
+    padding: 40px 100px 0px 10px;
+}
+.commentdropdown {
+    padding: 0px 10px 0px 30px;
+}
+.compilebuttons {
+    padding: 10px 20px 0px 170px;
+}
+
+/* page5 */
+
+.gradesList {
+    background-color:aquamarine;
+    border:1px solid aquamarine;
+    height:100px;
+    width:100px;
+    border-radius:50%;
+    position:absolute;
+    top:50px;
+    right:50px;
+    float:right;
+    clear:left;
+    line-height: 100px;
+    text-align: center;
+}
+
+.quiz {
+    background-color:blueviolet;
+    border:1px solid blueviolet;
+    border-radius:50%;
+    position:absolute;
+    top:200px;
+    right:100px;
+    float:right;
+    clear:left;
+    height:100px;
+    width:100px;
+    clear:left;
+    line-height: 100px;
+    text-align: center;
+}
+/* page6 */
+.form-group {
+   padding: 20px 10px 0px 30px;
+}
+/* page7 */
+
+.Login {
+    
+    padding: 300px 300px 300px 300px;
+    line-height: inherit;
+}
