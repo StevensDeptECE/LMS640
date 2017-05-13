@@ -104,6 +104,29 @@ function updateLimit() {
 	return false;
 }
 
+function login() {
+	$.ajax({
+		type:"POST",
+		url:"login.jsp",
+		data:$('#login').serialize(),
+		async:false,
+		error:function(request) {
+			alert("Connection error:" + request.error);
+		},
+		success:function(data) {
+			var payload = JSON.parse(data);
+			if (payload.isValid) {
+				$(".overlay").fadeToggle("fast");
+				document.getElementById("wrapper").innerHTML="Hello" + payload.username;
+			} else {
+				alert("Wrong password or username");
+			}
+		}
+	});
+	return false;
+}
+
 function clickDropDown(i) {
     document.getElementById("myDropdown" + i).classList.toggle("show");
 }
+
