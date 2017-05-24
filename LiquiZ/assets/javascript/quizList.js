@@ -11,7 +11,7 @@ quizIndex.prototype.draw = function(s) {
     }
     console.log("Printing Util");
     console.log(Util);
-    var header = Util.h1("Quiz List","h03");
+    var header = Util.h1("Quizzes","h1-LiquiZ");
     clearElements("up3");
 
     // this function could use one button to enter two kinds of quiz builder;
